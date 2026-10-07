@@ -1,0 +1,981 @@
+{
+  "A1_stok_oran_2026Q1_D_cevrilmis": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "A1_akim_oran_2026Q1_D_cevrilmis": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "A1_akim_oran_2026Q1_D_cevrilmemis": [
+    NaN,
+    2.071,
+    -2.031,
+    0.803,
+    -1.224,
+    1.0,
+    0.084,
+    0.582
+  ],
+  "A6_degerleme_getirisi_medyan_agirlikli_std": {
+    "altin_sdr": 0.01659356445751813,
+    "para_mevduat": 0.011714321660924367,
+    "borclanma_senedi": 0.024355810214931255,
+    "kredi": 0.019341962902602813,
+    "hisse_ozkaynak": 0.07070966584418495,
+    "sigorta_emeklilik": 0.016305103967745177,
+    "turev": 0.02237365852032834,
+    "diger": 0.029554528937224205
+  },
+  "A6_orantili_dagitim_testi": {
+    "altin_sdr": {
+      "R2": 0.994,
+      "korelasyon": 0.998
+    },
+    "para_mevduat": {
+      "R2": 0.784,
+      "korelasyon": 0.901
+    },
+    "borclanma_senedi": {
+      "R2": 0.69,
+      "korelasyon": 0.855
+    },
+    "kredi": {
+      "R2": 0.737,
+      "korelasyon": 0.869
+    },
+    "hisse_ozkaynak": {
+      "R2": 0.699,
+      "korelasyon": 0.843
+    },
+    "sigorta_emeklilik": {
+      "R2": 0.958,
+      "korelasyon": 0.986
+    },
+    "turev": {
+      "R2": 0.503,
+      "korelasyon": 0.709
+    },
+    "diger": {
+      "R2": 0.645,
+      "korelasyon": 0.807
+    }
+  },
+  "nfp_2026Q1_trilyonTL": {
+    "H": 21.395,
+    "F": -30.108,
+    "B": -0.481,
+    "K": -6.44,
+    "D": 15.635
+  },
+  "sim_F_zarar_lam0.0": {
+    "H": -0.013,
+    "F": 0.0,
+    "B": -0.562,
+    "K": -0.138,
+    "D": -0.286
+  },
+  "sim_F_zarar_lam0.5": {
+    "H": -0.095,
+    "F": -0.049,
+    "B": -0.346,
+    "K": -0.104,
+    "D": -0.405
+  },
+  "sim_F_zarar_lam0.8": {
+    "H": -0.084,
+    "F": -0.045,
+    "B": -0.195,
+    "K": -0.064,
+    "D": -0.613
+  },
+  "sim_F_kar": {
+    "H": 0.296,
+    "F": 0.0,
+    "B": 0.134,
+    "K": 0.162,
+    "D": 0.408
+  },
+  "hane_taksit": {
+    "nesne": "kart hariç tüketici kredisi taksiti / hane kullanılabilir geliri",
+    "kimlige_giris": "yok",
+    "L_giris": "yok",
+    "aciklama": "Borç açılışı NL işlemidir. Kayıp, ödeme dönmeyince L ile dağılır. Bu pay ikisine de yazılmaz.",
+    "faiz_serisi": "TP.BKR.TRY.KTFTUK",
+    "kart": "2024 kart stoku 1.795 milyar TL, tüketici stoku 2.012 milyar TL. Kart orana girmez.",
+    "yillar": [
+      {
+        "yil": 2022,
+        "stok_gelir": 0.117,
+        "aralik_faiz": 0.231,
+        "taksit_gelir_18y": 0.0277,
+        "anapara_gelir_18y": 0.0007,
+        "taksit_gelir_5y": 0.0418,
+        "anapara_gelir_5y": 0.0148,
+        "faiz_gelir": 0.027
+      },
+      {
+        "yil": 2023,
+        "stok_gelir": 0.093,
+        "aralik_faiz": 0.347,
+        "taksit_gelir_18y": 0.0324,
+        "anapara_gelir_18y": 0.0002,
+        "taksit_gelir_5y": 0.0417,
+        "anapara_gelir_5y": 0.0094,
+        "faiz_gelir": 0.0323
+      },
+      {
+        "yil": 2024,
+        "stok_gelir": 0.075,
+        "aralik_faiz": 0.53,
+        "taksit_gelir_18y": 0.0398,
+        "anapara_gelir_18y": 0.0,
+        "taksit_gelir_5y": 0.0451,
+        "anapara_gelir_5y": 0.0054,
+        "faiz_gelir": 0.0398
+      }
+    ],
+    "2024_taksit_gelir_18y": 0.0398,
+    "2024_taksit_gelir_5y": 0.0451,
+    "2024_faiz_gelir": 0.0398,
+    "bis_hane_2026Q1_eksi_ortalama_puan": {
+      "NO": 6.2,
+      "DK": -4.8,
+      "NL": -3.8
+    },
+    "turkiye_ozel_kesim_gsyh": {
+      "2024Q4": 0.287,
+      "2026Q1": 0.258,
+      "ortalama": 0.137,
+      "sapma_puan": 12.1
+    }
+  },
+  "hane_alt": {
+    "varsayim": "Kullanıcı: hane borcu asgariye yakın. Taban Ha borç payı %40; varlık payı %5 (mevduat yoğunluğu). Ölçüm değil.",
+    "H_toplam_2026Q1_trilyonTL": {
+      "varlik": 29.11,
+      "borc": 7.72,
+      "NFP": 21.4
+    },
+    "taban_NFP_trilyonTL": {
+      "Ha asgari": {
+        "varlik": 1.46,
+        "borc": 3.09,
+        "NFP": -1.63
+      },
+      "Hm memur": {
+        "varlik": 4.37,
+        "borc": 1.54,
+        "NFP": 2.82
+      },
+      "Ho diğer": {
+        "varlik": 23.29,
+        "borc": 3.09,
+        "NFP": 20.2
+      }
+    },
+    "faiz_ihtiyac_%": 63.21,
+    "tasima_kapasitesi_trilyonTL": {
+      "Ha_asgari": 0.92,
+      "Hm_memur": 1.17,
+      "dayanak": "taksit/gelir<=%30, 36 ay"
+    },
+    "kapasite_kisi_basi_bin_TL": {
+      "Ha": 135,
+      "Hm": 318
+    },
+    "gozlenen_hane_stresi_trilyonTL": {
+      "takipteki_tuketici_2026-09": 0.372,
+      "ust(takipteki+yakin_izleme_hane_payi)": 2.47
+    },
+    "ima_edilen_Ha_borc_payi_ust_siniri": {
+      "stres_alt(sadece takipteki)": 0.17,
+      "stres_orta": 0.27,
+      "stres_ust(takipteki+hane payı yakın izleme)": 0.44
+    },
+    "duyarlilik": [
+      {
+        "borc_payi_Ha": 0.18,
+        "Ha_borcu_tr": 1.39,
+        "kisi_basi_borc_bin_TL": 203,
+        "borc/yillik_gelir": 0.6,
+        "yillik_faiz/yillik_gelir": 0.38,
+        "Ha_kapasitesi_tr": 0.92,
+        "odenemez_borc_tr": 0.47,
+        "tanınırsa_ek_karsilik_tr": 0.32,
+        "ek_karsilik/ozkaynak": 0.07,
+        "u_yasal_sermaye": 0.26,
+        "lambda_B": 0.0
+      },
+      {
+        "borc_payi_Ha": 0.3,
+        "Ha_borcu_tr": 2.32,
+        "kisi_basi_borc_bin_TL": 338,
+        "borc/yillik_gelir": 1.0,
+        "yillik_faiz/yillik_gelir": 0.63,
+        "Ha_kapasitesi_tr": 0.92,
+        "odenemez_borc_tr": 1.39,
+        "tanınırsa_ek_karsilik_tr": 0.95,
+        "ek_karsilik/ozkaynak": 0.21,
+        "u_yasal_sermaye": 0.77,
+        "lambda_B": 0.0
+      },
+      {
+        "borc_payi_Ha": 0.4,
+        "Ha_borcu_tr": 3.09,
+        "kisi_basi_borc_bin_TL": 451,
+        "borc/yillik_gelir": 1.34,
+        "yillik_faiz/yillik_gelir": 0.85,
+        "Ha_kapasitesi_tr": 0.92,
+        "odenemez_borc_tr": 2.16,
+        "tanınırsa_ek_karsilik_tr": 1.47,
+        "ek_karsilik/ozkaynak": 0.32,
+        "u_yasal_sermaye": 1.19,
+        "lambda_B": 0.16
+      },
+      {
+        "borc_payi_Ha": 0.47,
+        "Ha_borcu_tr": 3.63,
+        "kisi_basi_borc_bin_TL": 530,
+        "borc/yillik_gelir": 1.57,
+        "yillik_faiz/yillik_gelir": 0.99,
+        "Ha_kapasitesi_tr": 0.92,
+        "odenemez_borc_tr": 2.71,
+        "tanınırsa_ek_karsilik_tr": 1.84,
+        "ek_karsilik/ozkaynak": 0.41,
+        "u_yasal_sermaye": 1.49,
+        "lambda_B": 0.33
+      },
+      {
+        "borc_payi_Ha": 0.7,
+        "Ha_borcu_tr": 5.4,
+        "kisi_basi_borc_bin_TL": 789,
+        "borc/yillik_gelir": 2.34,
+        "yillik_faiz/yillik_gelir": 1.48,
+        "Ha_kapasitesi_tr": 0.92,
+        "odenemez_borc_tr": 4.48,
+        "tanınırsa_ek_karsilik_tr": 3.04,
+        "ek_karsilik/ozkaynak": 0.67,
+        "u_yasal_sermaye": 2.46,
+        "lambda_B": 0.59
+      },
+      {
+        "borc_payi_Ha": 0.9,
+        "Ha_borcu_tr": 6.95,
+        "kisi_basi_borc_bin_TL": 1014,
+        "borc/yillik_gelir": 3.01,
+        "yillik_faiz/yillik_gelir": 1.9,
+        "Ha_kapasitesi_tr": 0.92,
+        "odenemez_borc_tr": 6.02,
+        "tanınırsa_ek_karsilik_tr": 4.09,
+        "ek_karsilik/ozkaynak": 0.9,
+        "u_yasal_sermaye": 3.31,
+        "lambda_B": 0.7
+      }
+    ],
+    "yorum": [
+      "Yüksek Ha payı (%70 gibi), kişi başı borcu yıllık gelirin birkaç katına çıkarır; yalnız 1 gelirli kişi varsayımıyla taşınamaz. Böyle bir pay ancak (a) çok gelirli haneler, (b) borcu borçla çevirme (kart rotatifi, yapılandırma) ya da (c) gizli temerrüt ile tutarlı olabilir.",
+      "Gözlenen stresle çapraz kontrol: tüm stres Ha'da olsa bile ima edilen Ha borç payı en çok ~%17-44 (ima_edilen_Ha_borc_payi_ust_siniri). Bunun üstündeki pay, ödenemeyen borcun henüz stres olarak görünmediği (borçla çevirme/yapılandırma) anlamına gelir = gizli kırılganlık (yük stoku).",
+      "Temerrüt sıfır toplamlı transfer değildir: banka karşılık ayırır, hane borcu silinmez (bireysel iflas/borçtan kurtulma yok, DOĞRULANMADI). Sistem net kayıp."
+    ]
+  },
+  "vys_kanali": {
+    "EVDS_takipteki_toplam_mrTL": {
+      "2025-12": 577.2,
+      "2026-03": 665.7,
+      "2026-05": 723.0,
+      "2026-06": 756.6,
+      "2026-09": 887.0
+    },
+    "EVDS_takipteki_tuketici_mrTL": {
+      "2025-12": 236.6,
+      "2026-03": 273.6,
+      "2026-05": 293.8,
+      "2026-06": 315.4,
+      "2026-09": 372.5
+    },
+    "brut_takip_girisi_ve_satis_payi": {
+      "Oca-May_2026": {
+        "dStok": 145.8,
+        "satis": 42.7,
+        "brut_giris": 188.5,
+        "satis_payi": 0.226
+      },
+      "Nis-Haz_2026": {
+        "dStok": 90.9,
+        "satis": 25.7,
+        "brut_giris": 116.6,
+        "satis_payi": 0.22
+      },
+      "not": "satış tutarı anapara varsayıldı; stok ile tanım farkı olabilir (faiz dahil/hariç)"
+    },
+    "satis/takipteki_stok(yillik_hiz)": 0.142,
+    "satis_duzeltilmis_takip_orani": {
+      "raporlanan(EVDS takipteki/krediler)": 0.0289,
+      "VYS_portfoyu_eklenince": 0.0338,
+      "fark_puan": 0.49
+    },
+    "hane_yuku_mrTL": {
+      "bankada_takipteki_tuketici_2026-06": 315.4,
+      "VYS_devraldigi_hane_payi(%80 varsayim)": 105.6,
+      "toplam_gorunen_yuk": 421.0,
+      "banka_raporlamasi_eksik_%": 25.1
+    },
+    "fiyat": [
+      {
+        "portfoy": "Akbank_Haz26",
+        "fiyat_%anapara": 15.8,
+        "net_defter_%": 18.0,
+        "banka_ek_kar(+)/zarar(-)_puan": -2.2,
+        "hane_borcu_kalan_%": 100.0,
+        "VYS_iskonto_%": 84.2
+      },
+      {
+        "portfoy": "Garanti_Ağu26",
+        "fiyat_%anapara": 14.6,
+        "net_defter_%": 18.0,
+        "banka_ek_kar(+)/zarar(-)_puan": -3.4,
+        "hane_borcu_kalan_%": 100.0,
+        "VYS_iskonto_%": 85.4
+      },
+      {
+        "portfoy": "dusuk(Sozcu)",
+        "fiyat_%anapara": 12.5,
+        "net_defter_%": 18.0,
+        "banka_ek_kar(+)/zarar(-)_puan": -5.5,
+        "hane_borcu_kalan_%": 100.0,
+        "VYS_iskonto_%": 87.5
+      },
+      {
+        "portfoy": "yuksek_portfoy",
+        "fiyat_%anapara": 28.5,
+        "net_defter_%": 18.0,
+        "banka_ek_kar(+)/zarar(-)_puan": 10.5,
+        "hane_borcu_kalan_%": 100.0,
+        "VYS_iskonto_%": 71.5
+      }
+    ],
+    "yorum": [
+      "Satış fiyatı anaparanın %12-16'sı. Ortalama TGA karşılığı (%82) alınırsa net defter %18 ve satış küçük bir zarar (-2..-5 puan) yazar; ama satılan havuzlar büyük olasılıkla eski ve neredeyse tamamen karşılanmış (DOĞRULANMADI), bu durumda satış bankaya KÂR yazar (karşılık iadesi). Her iki durumda hane borcu %100 olarak kalır ve VYŞ %85 iskontoyla aldığı alacağı tahsil etmeye çalışır.",
+      "Bu kanal raporlanan takip oranını düşürür ve zararı bankanın dışına, VYŞ + hane arasına taşır; ölçülen 'sistemik yük' eksik sayılır.",
+      "VYŞ portföyü (132 mr TL) takipteki stokun (EVDS, Haz 2026) yaklaşık %16'sı: kanal küçük ama hızlı büyüyor (yıllık +%67,7)."
+    ]
+  },
+  "temerrut_cift_kayit": {
+    "nesne": "hane, tüketici kredisi + kart; gözlenen: EVDS takipteki tüketici, VYŞ hane payı, satış payı; varsayım: faiz, tahsilat",
+    "baslangic_Eyl2026_mrTL": {
+      "bankada_takipteki_tuketici": 372.5,
+      "VYS_hane_payi": 105.6
+    },
+    "gozlenen_hane_brut_giris_ceyrek_mrTL": 62.3,
+    "satis_payi": 0.22,
+    "varsayim": {
+      "gecikme_faizi_yillik_%": 63.2,
+      "omur_boyu_tahsilat_%anapara": 16.5,
+      "tahsilat_ceyrek_sayisi": 20,
+      "uyari": "Gecikme faizi (yasal sınırlar) ve tahsilat hızı doğrulanmadı; birikmiş faiz bu iki varsayıma bağlı."
+    },
+    "deftersel_fark": [
+      "banka: karşılık ayırır, faiz tahakkuk ettirmez (non-accrual)",
+      "VYŞ: π*anapara maliyet",
+      "hane: borç nominal kalır ve faizle büyür"
+    ],
+    "tablo": [
+      {
+        "ceyrek": 0,
+        "anapara_toplam_mrTL": 478.1,
+        "bankada": 372.5,
+        "VYS": 105.6,
+        "birikmis_gecikme_faizi": 0.0,
+        "borclu_yuku(nominal)": 478.1,
+        "alacakli_tasidigi_deger": 82.9,
+        "borclu_yuku_fazlasi": 395.2,
+        "fazla/borclu_yuku_%": 82.7,
+        "kumulatif_banka_karsilik_mrTL": 0.0,
+        "karsilik/serbest_sermaye_%": 0.0
+      },
+      {
+        "ceyrek": 1,
+        "anapara_toplam_mrTL": 536.5,
+        "bankada": 418.0,
+        "VYS": 118.4,
+        "birikmis_gecikme_faizi": 89.3,
+        "borclu_yuku(nominal)": 625.8,
+        "alacakli_tasidigi_deger": 93.0,
+        "borclu_yuku_fazlasi": 532.8,
+        "fazla/borclu_yuku_%": 85.1,
+        "kumulatif_banka_karsilik_mrTL": 39.9,
+        "karsilik/serbest_sermaye_%": 3.2
+      },
+      {
+        "ceyrek": 2,
+        "anapara_toplam_mrTL": 594.4,
+        "bankada": 463.2,
+        "VYS": 131.2,
+        "birikmis_gecikme_faizi": 203.2,
+        "borclu_yuku(nominal)": 797.6,
+        "alacakli_tasidigi_deger": 103.1,
+        "borclu_yuku_fazlasi": 694.5,
+        "fazla/borclu_yuku_%": 87.1,
+        "kumulatif_banka_karsilik_mrTL": 79.8,
+        "karsilik/serbest_sermaye_%": 6.5
+      },
+      {
+        "ceyrek": 3,
+        "anapara_toplam_mrTL": 651.8,
+        "bankada": 508.0,
+        "VYS": 143.8,
+        "birikmis_gecikme_faizi": 345.5,
+        "borclu_yuku(nominal)": 997.4,
+        "alacakli_tasidigi_deger": 113.0,
+        "borclu_yuku_fazlasi": 884.4,
+        "fazla/borclu_yuku_%": 88.7,
+        "kumulatif_banka_karsilik_mrTL": 119.6,
+        "karsilik/serbest_sermaye_%": 9.7
+      },
+      {
+        "ceyrek": 4,
+        "anapara_toplam_mrTL": 708.8,
+        "bankada": 552.5,
+        "VYS": 156.3,
+        "birikmis_gecikme_faizi": 521.1,
+        "borclu_yuku(nominal)": 1229.9,
+        "alacakli_tasidigi_deger": 122.9,
+        "borclu_yuku_fazlasi": 1107.0,
+        "fazla/borclu_yuku_%": 90.0,
+        "kumulatif_banka_karsilik_mrTL": 159.5,
+        "karsilik/serbest_sermaye_%": 12.9
+      },
+      {
+        "ceyrek": 5,
+        "anapara_toplam_mrTL": 765.3,
+        "bankada": 596.5,
+        "VYS": 168.8,
+        "birikmis_gecikme_faizi": 735.3,
+        "borclu_yuku(nominal)": 1500.6,
+        "alacakli_tasidigi_deger": 132.7,
+        "borclu_yuku_fazlasi": 1367.9,
+        "fazla/borclu_yuku_%": 91.2,
+        "kumulatif_banka_karsilik_mrTL": 199.4,
+        "karsilik/serbest_sermaye_%": 16.1
+      },
+      {
+        "ceyrek": 6,
+        "anapara_toplam_mrTL": 821.4,
+        "bankada": 640.2,
+        "VYS": 181.1,
+        "birikmis_gecikme_faizi": 994.4,
+        "borclu_yuku(nominal)": 1815.8,
+        "alacakli_tasidigi_deger": 142.4,
+        "borclu_yuku_fazlasi": 1673.4,
+        "fazla/borclu_yuku_%": 92.2,
+        "kumulatif_banka_karsilik_mrTL": 239.3,
+        "karsilik/serbest_sermaye_%": 19.4
+      },
+      {
+        "ceyrek": 7,
+        "anapara_toplam_mrTL": 876.9,
+        "bankada": 683.6,
+        "VYS": 193.3,
+        "birikmis_gecikme_faizi": 1306.0,
+        "borclu_yuku(nominal)": 2183.0,
+        "alacakli_tasidigi_deger": 152.0,
+        "borclu_yuku_fazlasi": 2030.9,
+        "fazla/borclu_yuku_%": 93.0,
+        "kumulatif_banka_karsilik_mrTL": 279.1,
+        "karsilik/serbest_sermaye_%": 22.6
+      },
+      {
+        "ceyrek": 8,
+        "anapara_toplam_mrTL": 932.0,
+        "bankada": 726.6,
+        "VYS": 205.4,
+        "birikmis_gecikme_faizi": 1678.7,
+        "borclu_yuku(nominal)": 2610.7,
+        "alacakli_tasidigi_deger": 161.6,
+        "borclu_yuku_fazlasi": 2449.1,
+        "fazla/borclu_yuku_%": 93.8,
+        "kumulatif_banka_karsilik_mrTL": 319.0,
+        "karsilik/serbest_sermaye_%": 25.8
+      }
+    ]
+  },
+  "odemeyen_gosterge": {
+    "tanim": "ödemeyen payı = hane ve firma için ayrı; G1 resmi takip oranı, G2 VYŞ eklenir, G3 yakın izleme eklenir",
+    "G1_takip_orani_%": {
+      "hane": {
+        "2024-06": 2.09,
+        "2025-06": 3.81,
+        "2026-09": 5.09
+      },
+      "firma": {
+        "2024-06": 1.49,
+        "2025-06": 1.73,
+        "2026-09": 2.52
+      },
+      "hane/firma_2026-09": 2.02
+    },
+    "kesit_2026-06": {
+      "G1": {
+        "hane_%": 4.57,
+        "firma_%": 2.33
+      },
+      "G2_VYS_eklenince": {
+        "hane_%": 6.01,
+        "firma_%": 2.46
+      },
+      "G3_yakin_izleme_eklenince": {
+        "alt(hane payi %45,6)": {
+          "hane_%": 19.73,
+          "firma_%": 9.29
+        },
+        "ust(hane payi %80)": {
+          "hane_%": 27.69,
+          "firma_%": 5.09
+        }
+      }
+    },
+    "kisi_gostergesi_yasal_takibe_giris_aylik": {
+      "2026-01": 262000,
+      "2026-02": 221000,
+      "2026-03": 220000,
+      "2026-04": 213775,
+      "2026-05": 210255,
+      "2026-06": 297309,
+      "2026-07": 264580
+    },
+    "kisi_gostergesi_not": "akım, çıkanlar netlenmiyor, aynı kişi kart+kredi tek sayılır; Oca-Tem 2026 toplamı = 1688919 (benzersiz kişi sayısı değildir)",
+    "uyari": [
+      "G3 'ÖDEMEYEN' değil 'ödeme riski altında': yakın izlemenin büyük kısmı gecikmesiz (FİR 2026-I, TFRS 9 'riskte kayda değer artış'); 'gecikmesi olan yakın izleme' TGA ile birlikte ~%5 (FİR). G1/G2 ödeme yapmayanları, G3 olası ödemeyenleri de içerir.",
+      "G2/G3 tek kesit; zaman serisi yok (VYŞ ve yakın izleme serisi yok).",
+      "Yakın izleme hane/firma kırılımı yayımlanmıyor: aralık [%45,6 .. %80] varsayım; FİR artışı ağırlıkla haneye bağlıyor.",
+      "Paydalar: EVDS yurt içi şube kredileri; yakın izleme TBB (farklı kapsam), karşılaştırma yaklaşık.",
+      "Firma tarafı KOBİ ve büyük firma ayrımını içermiyor (KOBİ TGA yaklaşık %3,4, büyük firma %1,4 - FİR 2026-I)."
+    ]
+  },
+  "L_cift_kayit": {
+    "parametreler": {
+      "e0_alacakli_kayip_orani": 0.8266,
+      "beklenen_tahsilat": 0.165,
+      "gecikme_faizi_yillik_%": 63.2,
+      "serbest_sermaye_trilyonTL": 1.236,
+      "satis_payi": 0.22
+    },
+    "H_satiri_agirliklari_yukumluluk_enstruman": {
+      "para_mevduat": 0.0,
+      "borclanma_senedi": 0.0,
+      "kredi": 0.942,
+      "sigorta_emeklilik": 0.0,
+      "diger": 0.058
+    },
+    "H_satiri_eski_v2": {
+      "H": 0.0,
+      "F": 0.025,
+      "B": 0.587,
+      "K": 0.107,
+      "D": 0.28
+    },
+    "H_satiri_yeni": {
+      "H": 0.0,
+      "F": 0.025,
+      "B": 0.954,
+      "K": 0.021,
+      "D": 0.0
+    },
+    "F_satiri_eski_v2": {
+      "H": 0.013,
+      "F": 0.0,
+      "B": 0.562,
+      "K": 0.138,
+      "D": 0.286
+    },
+    "F_satiri_yeni(L_bil)": {
+      "H": 0.188,
+      "F": 0.0,
+      "B": 0.396,
+      "K": 0.124,
+      "D": 0.292
+    },
+    "senaryolar": {
+      "A_hane_Ha_odenemez_borc_taninir": {
+        "borclu": "H",
+        "anapara_trilyonTL": 2.16,
+        "ESKI_transfer_lam0.5": {
+          "H": -2.141,
+          "F": -0.001,
+          "B": -0.007,
+          "K": -0.002,
+          "D": -0.008
+        },
+        "YENI_cift_kayit": {
+          "t=0": {
+            "H": -0.208,
+            "F": -0.154,
+            "B": -1.236,
+            "K": -0.109,
+            "D": -0.079,
+            "toplam": -1.785
+          },
+          "t=4": {
+            "H": -2.012,
+            "F": -0.154,
+            "B": -1.236,
+            "K": -0.109,
+            "D": -0.079,
+            "toplam": -3.59
+          },
+          "t=8": {
+            "H": -5.292,
+            "F": -0.154,
+            "B": -1.236,
+            "K": -0.109,
+            "D": -0.079,
+            "toplam": -6.87
+          }
+        },
+        "t0_alacakli_kaybi_toplam": 1.785,
+        "banka_sermaye_asimi": 0.467
+      },
+      "B_hane_gozlenen_4_ceyrek_giris": {
+        "borclu": "H",
+        "anapara_trilyonTL": 0.249,
+        "ESKI_transfer_lam0.5": {
+          "H": -0.249,
+          "F": 0.0,
+          "B": 0.0,
+          "K": 0.0,
+          "D": 0.0
+        },
+        "YENI_cift_kayit": {
+          "t=0": {
+            "H": -0.0,
+            "F": -0.005,
+            "B": -0.196,
+            "K": -0.004,
+            "D": -0.0,
+            "toplam": -0.206
+          },
+          "t=4": {
+            "H": -0.208,
+            "F": -0.005,
+            "B": -0.196,
+            "K": -0.004,
+            "D": -0.0,
+            "toplam": -0.414
+          },
+          "t=8": {
+            "H": -0.587,
+            "F": -0.005,
+            "B": -0.196,
+            "K": -0.004,
+            "D": -0.0,
+            "toplam": -0.793
+          }
+        },
+        "t0_alacakli_kaybi_toplam": 0.206,
+        "banka_sermaye_asimi": 0.0
+      },
+      "C_firma_1_trilyon_temerrut": {
+        "borclu": "F",
+        "anapara_trilyonTL": 1.0,
+        "ESKI_transfer_lam0.5": {
+          "H": -0.095,
+          "F": -0.049,
+          "B": -0.346,
+          "K": -0.104,
+          "D": -0.405
+        },
+        "YENI_cift_kayit": {
+          "t=0": {
+            "H": -0.155,
+            "F": -0.0,
+            "B": -0.327,
+            "K": -0.102,
+            "D": -0.242,
+            "toplam": -0.827
+          },
+          "t=4": {
+            "H": -0.155,
+            "F": -0.835,
+            "B": -0.327,
+            "K": -0.102,
+            "D": -0.242,
+            "toplam": -1.662
+          },
+          "t=8": {
+            "H": -0.155,
+            "F": -2.354,
+            "B": -0.327,
+            "K": -0.102,
+            "D": -0.242,
+            "toplam": -3.181
+          }
+        },
+        "t0_alacakli_kaybi_toplam": 0.827,
+        "banka_sermaye_asimi": 0.0
+      }
+    },
+    "yorum": [
+      "Eski modelde borçlu (özellikle net alacaklı H) zararı kendi tamponuyla emiyor görünür; yeni modelde alacaklı t=0'da kaybı tanır, borçlu rahatlamaz ve faiz yükü birikir.",
+      "Eski H satırı borcun ~%28'ini D'ye yazıyordu (hane dış kredisi yok); yeni satır bankaya dayalı, D=0.",
+      "Birikmiş faiz yükü varsayıma bağlıdır (gecikme faizi=ihtiyaç faizi, kısmi ödeme yok); alacaklı kaybı ise gözlenen karşılık ve satış fiyatına dayanır."
+    ]
+  },
+  "dis_borc_artisi": {
+    "kaynak": "EVDS bie_brutdbborclu (milyon USD -> milyar USD), USD/TRY çeyrek sonu; TL = USD*kur",
+    "rapor_ile_uyumsuzluk": {
+      "karsilastirma": {
+        "2023": {
+          "rapor": {
+            "Kamu+TCMB": 247,
+            "Özel": 245,
+            "Toplam": 492
+          },
+          "EVDS": {
+            "Kamu+TCMB": 194.3,
+            "Özel": 238.3,
+            "Toplam": 432.6
+          },
+          "fark_Kamu+TCMB": 52.7,
+          "fark_Özel": 6.7
+        },
+        "2024": {
+          "rapor": {
+            "Kamu+TCMB": 254,
+            "Özel": 264,
+            "Toplam": 517
+          },
+          "EVDS": {
+            "Kamu+TCMB": 208.2,
+            "Özel": 253.0,
+            "Toplam": 461.2
+          },
+          "fark_Kamu+TCMB": 45.8,
+          "fark_Özel": 11.0
+        },
+        "2025-Q3": {
+          "rapor": {
+            "Kamu+TCMB": 264,
+            "Özel": 301,
+            "Toplam": 565
+          },
+          "EVDS": {
+            "Kamu+TCMB": 215.6,
+            "Özel": 285.8,
+            "Toplam": 501.4
+          },
+          "fark_Kamu+TCMB": 48.4,
+          "fark_Özel": 15.2
+        },
+        "2026-Q2": {
+          "rapor": {
+            "Kamu+TCMB": 221,
+            "Özel": 318,
+            "Toplam": 539
+          },
+          "EVDS": {
+            "Kamu+TCMB": 221.0,
+            "Özel": 318.0,
+            "Toplam": 539.0
+          },
+          "fark_Kamu+TCMB": -0.0,
+          "fark_Özel": 0.0
+        }
+      },
+      "sonuc": "2026-Q2'de birebir uyuşuyor; önceki yıllarda Kamu+TCMB raporda ~30-55 mr USD YÜKSEK (EVDS'de çıkmıyor), Özel yakın. EVDS serisiyle Kamu+TCMB 2023-Q4'ten 2026-Q2'ye ARTIYOR (194 -> 221), raporda AZALIYOR (247 -> 221): 'rotasyon' (kamu azaldı, özel arttı) EVDS'de görünmüyor. Raporun kaynak dosyası/tanımı (örn. farklı kamu kapsamı) doğrulanmalı."
+    },
+    "stok_milyar_USD": {
+      "2023-Q4": {
+        "Kamu": 147.9,
+        "TCMB": 46.4,
+        "Özel": 238.3,
+        "Toplam": 432.6,
+        "Özel_pay_%": 55.1,
+        "USDTRY": 29.4
+      },
+      "2024-Q4": {
+        "Kamu": 173.5,
+        "TCMB": 34.7,
+        "Özel": 253.0,
+        "Toplam": 461.2,
+        "Özel_pay_%": 54.9,
+        "USDTRY": 35.22
+      },
+      "2025-Q4": {
+        "Kamu": 198.3,
+        "TCMB": 25.0,
+        "Özel": 299.5,
+        "Toplam": 522.7,
+        "Özel_pay_%": 57.3,
+        "USDTRY": 42.86
+      },
+      "2026-Q1": {
+        "Kamu": 191.6,
+        "TCMB": 24.3,
+        "Özel": 305.0,
+        "Toplam": 520.9,
+        "Özel_pay_%": 58.6,
+        "USDTRY": 44.38
+      },
+      "2026-Q2": {
+        "Kamu": 197.9,
+        "TCMB": 23.1,
+        "Özel": 318.0,
+        "Toplam": 539.0,
+        "Özel_pay_%": 59.0,
+        "USDTRY": 46.56
+      }
+    },
+    "ayristirma_2023Q4_to_son": {
+      "Kamu": {
+        "USD_t0_mr": 147.9,
+        "USD_t1_mr": 197.9,
+        "dUSD_mr": 50.0,
+        "dTL_trilyon": 4.87,
+        "yeni_borclanma_TL_trilyon": 1.47,
+        "kur_etkisi_TL_trilyon": 3.4
+      },
+      "TCMB": {
+        "USD_t0_mr": 46.4,
+        "USD_t1_mr": 23.1,
+        "dUSD_mr": -23.3,
+        "dTL_trilyon": -0.29,
+        "yeni_borclanma_TL_trilyon": -0.68,
+        "kur_etkisi_TL_trilyon": 0.4
+      },
+      "Özel": {
+        "USD_t0_mr": 238.3,
+        "USD_t1_mr": 318.0,
+        "dUSD_mr": 79.7,
+        "dTL_trilyon": 7.8,
+        "yeni_borclanma_TL_trilyon": 2.34,
+        "kur_etkisi_TL_trilyon": 5.46
+      },
+      "Toplam": {
+        "USD_t0_mr": 432.6,
+        "USD_t1_mr": 539.0,
+        "dUSD_mr": 106.4,
+        "dTL_trilyon": 12.38,
+        "yeni_borclanma_TL_trilyon": 3.13,
+        "kur_etkisi_TL_trilyon": 9.25
+      }
+    },
+    "ayristirma_2025Q4_to_son": {
+      "Kamu": {
+        "USD_t0_mr": 198.3,
+        "USD_t1_mr": 197.9,
+        "dUSD_mr": -0.3,
+        "dTL_trilyon": 0.72,
+        "yeni_borclanma_TL_trilyon": -0.01,
+        "kur_etkisi_TL_trilyon": 0.73
+      },
+      "TCMB": {
+        "USD_t0_mr": 25.0,
+        "USD_t1_mr": 23.1,
+        "dUSD_mr": -1.9,
+        "dTL_trilyon": 0.01,
+        "yeni_borclanma_TL_trilyon": -0.08,
+        "kur_etkisi_TL_trilyon": 0.09
+      },
+      "Özel": {
+        "USD_t0_mr": 299.5,
+        "USD_t1_mr": 318.0,
+        "dUSD_mr": 18.4,
+        "dTL_trilyon": 1.96,
+        "yeni_borclanma_TL_trilyon": 0.79,
+        "kur_etkisi_TL_trilyon": 1.17
+      },
+      "Toplam": {
+        "USD_t0_mr": 522.7,
+        "USD_t1_mr": 539.0,
+        "dUSD_mr": 16.2,
+        "dTL_trilyon": 2.69,
+        "yeni_borclanma_TL_trilyon": 0.7,
+        "kur_etkisi_TL_trilyon": 1.99
+      }
+    },
+    "modelde_D_NFP(trilyonTL)_son_ceyrekler": {
+      "2024-Q2": {
+        "NFP_D": 10.85,
+        "net_islem": 0.07,
+        "degerleme": 0.45
+      },
+      "2024-Q3": {
+        "NFP_D": 9.51,
+        "net_islem": -0.97,
+        "degerleme": -0.37
+      },
+      "2024-Q4": {
+        "NFP_D": 10.84,
+        "net_islem": 0.59,
+        "degerleme": 0.74
+      },
+      "2025-Q1": {
+        "NFP_D": 10.99,
+        "net_islem": 0.68,
+        "degerleme": -0.53
+      },
+      "2025-Q2": {
+        "NFP_D": 12.08,
+        "net_islem": 0.67,
+        "degerleme": 0.41
+      },
+      "2025-Q3": {
+        "NFP_D": 11.96,
+        "net_islem": -0.19,
+        "degerleme": 0.08
+      },
+      "2025-Q4": {
+        "NFP_D": 14.13,
+        "net_islem": 1.13,
+        "degerleme": 1.05
+      },
+      "2026-Q1": {
+        "NFP_D": 15.63,
+        "net_islem": 1.73,
+        "degerleme": -0.22
+      }
+    },
+    "modelde_D_NFP_son4ceyrek_toplami": {
+      "net_islem": 3.34,
+      "degerleme": 1.31,
+      "dNFP": 4.65
+    },
+    "L_bil_D_payi_zaman": {
+      "F": {
+        "2018-Q3": 0.287,
+        "2021-Q4": 0.279,
+        "2023-Q4": 0.272,
+        "2026-Q1": 0.292
+      },
+      "B": {
+        "2018-Q3": 0.33,
+        "2021-Q4": 0.218,
+        "2023-Q4": 0.218,
+        "2026-Q1": 0.217
+      },
+      "K": {
+        "2018-Q3": 0.271,
+        "2021-Q4": 0.208,
+        "2023-Q4": 0.207,
+        "2026-Q1": 0.168
+      }
+    },
+    "yorum": [
+      "TL cinsinden dış borç artışı iki bileşenden oluşur: yeni borçlanma (USD artışı) ve TL değer kaybının kapanış stokuna etkisi. Kur etkisi gerçek borçlanma olmadan TL yükünü büyütür.",
+      "Modelde bu, D'nin net finansal değerindeki artışın işlem (NL) + değerleme (R) ayrımıdır; değerleme zararın aktarımının asıl taşıyıcısıdır."
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "faiz": {
+    "donem": "2026-09",
+    "ihtiyac_%": 63.21,
+    "son12ay_ort_%": 61.48
+  },
+  "memur/asgari": {
+    "Ocak-Haz (61.890/28.075)": 2.2,
+    "Temmuz (70.251/28.075)": 2.5
+  },
+  "grup_buyuklugu_milyon": {
+    "asgari_4a_yaklasik": 6.85,
+    "memur_4c_SGK_Ocak26": 3.67,
+    "kadrolu_Haz26": 3.58
+  },
+  "tablo": [
+    {
+      "grup": "Asgari ücretli (net)",
+      "net_gelir": 28076,
+      "gelir/bekar_yasam_maliyeti": 0.57,
+      "gelir/acliksiniri_4kisi": 0.74,
+      "gelir/yoksulluksiniri_4kisi": 0.23,
+      "kapasite_bekar_TL(gelir-yasam)": -20809,
+      "kapasite_4kisi_TL(gelir-aclik)": -9726,
+      "taksit_50bin_36ay": 3126,
+      "taksit/gelir_50bin": 0.111,
+      "taksit_100bin_36ay": 6253,
+      "taksit/gelir_100bin": 0.223,
+      "taksit_250bin_36ay": 15632,
+      "taksit/gelir_250bin": 0.557
+    },
+    {
+      "grup": "Memur, bekâr kök (hesap)",
+      "net_gelir": 66188,
+      "gelir/bekar_yasam_maliyeti": 1.35,
+      "gelir/acliksiniri_4kisi": 1.75,
+      "gelir/yoksulluksiniri_4kisi": 0.54,
+      "kapasite_bekar_TL(gelir-yasam)": 17303,
+      "kapasite_4kisi_TL(gelir-aclik)": 28387,
+      "taksit_50bin_36ay": 3126,
+      "taksit/gelir_50bin": 0.047,
+      "taksit_100bin_36ay": 6253,
+      "taksit/gelir_100bin": 0.094,
+      "taksit_250bin_36ay": 15632,
+      "taksit/gelir_250bin": 0.236
+    },
+    {
+      "grup": "En düşük memur (aile yardımlı)",
+      "net_gelir": 70251,
+      "gelir/bekar_yasam_maliyeti": 1.44,
+      "gelir/acliksiniri_4kisi": 1.86,
+      "gelir/yoksulluksiniri_4kisi": 0.57,
+      "kapasite_bekar_TL(gelir-yasam)": 21366,
+      "kapasite_4kisi_TL(gelir-aclik)": 32450,
+      "taksit_50bin_36ay": 3126,
+      "taksit/gelir_50bin": 0.045,
+      "taksit_100bin_36ay": 6253,
+      "taksit/gelir_100bin": 0.089,
+      "taksit_250bin_36ay": 15632,
+      "taksit/gelir_250bin": 0.223
+    }
+  ],
+  "uyari": "Gelir ve maliyet rakamları haber/sendika derlemesi; memur bekâr rakamı benim hesabım; ücretle çalışanın tek gelirli olduğu varsayımı; hane geliri yerine bireysel gelir."
+}

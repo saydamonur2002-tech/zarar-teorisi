@@ -1,0 +1,147 @@
+{
+  "K_kanal_son4ceyrek_donemler": [
+    "2025-Q2",
+    "2025-Q3",
+    "2025-Q4",
+    "2026-Q1"
+  ],
+  "K_gelir_kaynagi_payi": {
+    "H": 0.573,
+    "F": 0.427
+  },
+  "K_harcama_alici_payi": {
+    "H": 0.437,
+    "F": 0.353,
+    "B": 0.132,
+    "D": 0.079
+  },
+  "K_son4ceyrek_toplam_trilyonTL": {
+    "gelir": 14.43,
+    "harcama(ozel kesime)": 11.16,
+    "faiz": 2.47
+  },
+  "T1_butce_vs_NLK": {
+    "n": 45,
+    "korelasyon_seviye": 0.626,
+    "korelasyon_fark": -0.148,
+    "ortalama_oran_NL/butce": 1.194
+  },
+  "T2_matris_testi": {
+    "n_ceyrek": 45,
+    "R2_Lm_modeli(havuz)": 0.868,
+    "R2_kiyas_toplam_varlik_payi": 0.862,
+    "R2_kiyas_transfer_yok": null,
+    "sektor_bazli_korelasyon": {
+      "H": 0.935,
+      "F": 0.991,
+      "B": 0.729,
+      "K": 0.644,
+      "D": 0.939
+    },
+    "isaret_dogrulugu_yuzde": {
+      "H": 91.1,
+      "F": 97.8,
+      "B": 88.9,
+      "K": 75.6,
+      "D": 91.1
+    }
+  },
+  "T2_donem_ornekleri_trilyonTL": {
+    "2018-Q3": {
+      "gozlenen": {
+        "H": 0.083,
+        "F": -0.311,
+        "B": 0.109,
+        "K": -0.101,
+        "D": 0.22
+      },
+      "tahmin": {
+        "H": 0.173,
+        "F": -0.348,
+        "B": 0.223,
+        "K": -0.161,
+        "D": 0.113
+      }
+    },
+    "2021-Q4": {
+      "gozlenen": {
+        "H": 0.819,
+        "F": -1.068,
+        "B": -0.196,
+        "K": -0.326,
+        "D": 0.771
+      },
+      "tahmin": {
+        "H": 1.078,
+        "F": -1.129,
+        "B": -0.095,
+        "K": -0.247,
+        "D": 0.393
+      }
+    },
+    "2023-Q2": {
+      "gozlenen": {
+        "H": 1.15,
+        "F": -0.857,
+        "B": -0.07,
+        "K": -0.843,
+        "D": 0.62
+      },
+      "tahmin": {
+        "H": 1.549,
+        "F": -1.001,
+        "B": 0.347,
+        "K": -0.665,
+        "D": -0.23
+      }
+    },
+    "2025-Q4": {
+      "gozlenen": {
+        "H": 1.107,
+        "F": -2.12,
+        "B": -0.427,
+        "K": -0.476,
+        "D": 1.916
+      },
+      "tahmin": {
+        "H": 1.799,
+        "F": -1.798,
+        "B": -0.202,
+        "K": -0.79,
+        "D": 0.992
+      }
+    }
+  },
+  "T3_ikinci_tur_OLS(F zarari t -> y t+1)": {
+    "RB": {
+      "beta": -0.078,
+      "t": -1.61,
+      "n": 43
+    },
+    "RK": {
+      "beta": 0.026,
+      "t": 0.41,
+      "n": 43
+    },
+    "RH": {
+      "beta": 0.174,
+      "t": 2.37,
+      "n": 43
+    },
+    "NL_B": {
+      "beta": 0.065,
+      "t": 1.95,
+      "n": 43
+    },
+    "NL_K": {
+      "beta": -0.244,
+      "t": -4.49,
+      "n": 43
+    },
+    "NL_H": {
+      "beta": 0.142,
+      "t": 3.34,
+      "n": 43
+    }
+  }
+}

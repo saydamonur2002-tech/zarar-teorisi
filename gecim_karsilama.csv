@@ -1,0 +1,28 @@
+kalem,donem,tutar_tl,kaynak
+net_asgari_ucret,2026,28075.50,CSGB Asgari Ucret Tespit Komisyonu 1 Ocak 2026
+brut_asgari_ucret,2026,33030.00,CSGB
+aclik_siniri_4kisi,2026-01,31223.88,TURK-IS
+yoksulluk_siniri_4kisi,2026-01,101706.40,TURK-IS
+bekar_yasama,2026-01,40540.91,TURK-IS
+aclik_siniri_4kisi,2026-09,37800.92,TURK-IS Eylul 2026
+yoksulluk_siniri_4kisi,2026-09,123130.00,TURK-IS Eylul 2026
+bekar_yasama,2026-09,48884.82,TURK-IS Eylul 2026
+karsilama_aclik_yuzde,2026-01,89.92,net asgari / aclik
+karsilama_yoksulluk_yuzde,2026-01,27.60,net asgari / yoksulluk
+karsilama_bekar_yuzde,2026-01,69.25,net asgari / bekar yasama
+karsilama_aclik_yuzde,2026-09,74.27,net asgari / aclik
+karsilama_yoksulluk_yuzde,2026-09,22.80,net asgari / yoksulluk
+karsilama_bekar_yuzde,2026-09,57.43,net asgari / bekar yasama
+istihdam_bin,2026-08,32507,TUIK mevsim etkisinden arindirilmis
+istihdam_orani_yuzde,2026-08,48.4,TUIK
+issizlik_orani_yuzde,2026-08,7.8,TUIK
+issiz_bin,2026-08,2740,TUIK
+isgucune_katilma_yuzde,2026-08,52.5,TUIK
+atil_isgucu_yuzde,2026-08,31.0,TUIK genis tanim
+kadin_istihdam_yuzde,2026-08,31.5,TUIK
+erkek_istihdam_yuzde,2026-08,65.8,TUIK
+genc_issizlik_15_24_yuzde,2026-08,13.0,TUIK
+mahsup_faiz_akisi_yillik_milyar,2026,18.193,360.1 milyar net acik x 90/365 x (0.52-0.3151)
+aclik_farki_aylik_tl,2026-09,9725.42,aclik - net asgari
+mahsup_kisi_basi_aylik_tl,2026-09,46.64,yillik akis / 32.507 milyon istihdam / 12
+mahsup_aclik_farki_kapatma_yuzde,2026-09,0.48,kisi basi akis / aclik farki

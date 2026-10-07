@@ -1,0 +1,148 @@
+ZARAR TEORISI - STOK-AKIS (SFC) MODELI: VERI, KALIBRASYON, TESTLER
+Kaynak: TCMB EVDS3 (anahtarsiz herkese acik uc nokta), 7 Ekim 2026'da cekildi. Birim: bin TL (aksi belirtilmedikce).
+Hazneler: H (S.14+S.15), F (S.11), B' (S.12 - TCMB), K' (S.13 + TCMB), D (S.2), U (uyumsuzluk)
+
+CALISTIRMA SIRASI
+  evds_cek.py        ham veri (stok/akim/butce)    ->  *_ham.csv
+  kalibre_matris.py  v1 matrisler (arsiv, v2 gecer)
+  akis_model.py      v2: temiz stok-akis paneli, SFC matrisi, L/G, Lm, simulator
+  butce_kanali.py    K'nin vergi/faiz/harcama kanali + fiscal_shock()
+  entegre_ve_test.py butce uyumu, matris geriye donuk testi, ikinci-tur OLS
+  kur_kanali.py      doviz maruziyet payi (f) tahmini ve test
+  bilateral_D.py     D satiri icin brut dis borc (borclu sektore gore) ile bilateral L
+  hane_taksit.py     hane taksit/gelir (kart haric). NL ve L ye yazilmaz.
+(_*.py dosyalari gecici kontrol betikleridir.)
+
+ANA CIKTILAR
+  temiz_stok_akis_paneli.csv   stok, islem, degerleme (enstruman x hazne x taraf), 2015-Q1..2026-Q1
+  sfc_islem_akis_matrisi.csv   enstruman x hazne net edinim + NL satiri
+  L_v2_/G_v2_/Lm_*             matrisler (2026-Q1); matris_v2_zaman_serisi.csv
+  L_bil_*                      D satiri gercek dis borc verisiyle kisitli L
+  butce_aktarim_ceyreklik.csv, K_kanal_paylari_son4ceyrek.csv
+  fx_maruziyet.csv             hazne x enstruman x taraf doviz payi
+  *_ozeti.json                 test sonuclari
+
+DUZELTILEN ANOMALILER
+  A1 EVDS S.2 (D) kalemleri ters etiketli -> cevrildi (stok ve akimda dogrulandi; oran 1,000).
+  A2 S.12 TCMB'yi iceriyordu -> B' = S.12 - S.121, K' = S.13 + S.121.
+  A3 2010-2020 D uyumsuzlugu (D'nin %2-12'si) tamamen "Parasal altin ve SDR" enstrumaninda;
+     2021'den sonra 0. U haznesinde tutuluyor. Nedeni (karsiliksiz parasal altin / siniflama degisikligi)
+     DOGRULANMADI. (Onceki "%0,001" ifadem yanlisti.)
+  A4 2010-2014 yalniz yil sonu: akis/degerleme 2015-Q1'den.
+  A5 K'nin kar kanali: ozkaynak yukumlulugu yok -> butce kanali eklendi (vergi, faiz, harcama).
+  A6 Toplu L, enstruman heterojenligini gizliyordu -> Lm matrisleri.
+  A7 D satiri icin gercek bilateral veri (brut dis borc, borclu sektore gore) -> L_bil.
+
+STOK-AKIS KIMLIGI: NFP_t = NFP_t-1 + NL_t (islem) + R_t (degerleme). Islem akislari 2021'den beri tam kapaniyor.
+
+BUTCE KANALI (K): Merkezi yonetim gelir/gider (EVDS, aylik->ceyreklik). Siniflama kapanisi: gelir, gider ve cari transfer
+  alt kalemleri ust kalemleri %0,0 sapmayla veriyor. Mukellef hazne ayrimi VARSAYIMDIR (gelir/mulkiyet/tuketim vergisi->H,
+  kurumlar/dis ticaret->F, damga-harc-diger yari yari). Son 4 ceyrek: vergi yuku H %57, F %43;
+  harcama alicisi H %44, F %35, B %13, D %8. K' net islem akisi ile butce dengesi: seviye korelasyonu 0,63 ama
+  FARK korelasyonu -0,15 -> butce (merkezi yonetim) K'yi (SGK, yerel yonetim, TCMB dahil) tam temsil etmiyor.
+
+TEST SONUCLARI VE ANLAMI
+  T2 Matris geriye donuk testi (45 ceyrek, altin/SDR haric): borclu degerlemesini alacakli degerlemesine tasima.
+     Orantili Lm R2=0,868; basit varlik-payi kiyasi 0,862 -> matris, kurulus varsayiminin otesinde bilgi EKLEMIYOR.
+     Doviz-agirlikli dagitim daha kotu (R2=0,565). Bilateral D kisiti (L_bil) iyilestirmedi (R2=0,856; D'de MAE esit).
+     D'nin buyuk kur donemlerinde kazanci sistematik az tahmin ediliyor (2025-Q4: gozlenen 1,92, tahmin 0,99-1,12).
+     Aciklama adayi: D'nin hisse/FDI ve YP-TL bilesimi enstruman ici bilesim verisi yok (DOGRULANMADI).
+  T3 Ikinci tur (F'nin degerleme zarari -> t+1): K'nin net islemi -0,24 trilyon TL per 1 trilyon (t=-4,5, n=43):
+     zarar bir sonraki ceyrekte K'nin borclanmasina ~%24 yansiyor. B icin anlamli iz yok. Degerleme-bazli
+     cikti (RB, RH) kurun kendi otokorelasyonuyla kirlenmis olabilir.
+  => lam ve kappa genel olarak TANIMLANAMADI; yalniz F->K kenari icin ampirik capa var (~0,24, tek bagimlilik).
+  Dis borc ile finansal hesaplar tutarli: D'nin borc benzeri varligina oran medyan 1,12.
+
+SIMULATOR: akis_model.simulate() (finansal) ve butce_kanali.fiscal_shock() (bütçe). lam/kappa senaryo parametresidir.
+
+HANE TAKSIT (hane_taksit.py): Kart haric tuketici stoku / kullanilabilir gelir, carpi esit taksit katsayisi.
+  Faiz TP.BKR.TRY.KTFTUK Aralik stok. 2022 %11,7 stok, %23,1 faiz -> 18 yilda taksit/gelir %2,8.
+  2023 %9,3 ve %34,7 -> %3,2. 2024 %7,5 ve %53,0 -> %4,0. 5 yilda 2024 %4,5.
+  Stok gelire gore kuculdu; oran faiz yuzunden yukseldi. %53'te anapara payi erir, oran faiz faturasidir.
+  Kart 2024'te 1.795 milyar TL, tuketici stoku 2.012 milyar TL; kart disarida.
+  Bu pay NL degildir (borc acilisi islemdir) ve L degildir (kayip odeme donmeyince dagilir).
+  BIS hane serisi 17 ulke, 1999-Q1..2026-Q1. 2026-Q1 kendi ortalamasindan: Norvec +6,2, Danimarka -4,8, Hollanda -3,8.
+  Turkiye o 17'de yok. Yayimlanan seri ozel kesim / GSYH: 2026-Q1 %25,8, ortalama %13,7 (2002-Q1..2026-Q1, n=97), sapma +12,1 puan.
+ACIK: hisse/FDI ve para birimi kirilimi, banka kredi kayiplari (BDDK TGA/karsilik), hane desil kirilimi, SGK+yerel yonetim.
+
+--- LAMBDA KALIBRASYONU (kalibre_lambda.py, kalibre_lambda_ozeti.json) ---
+Veri: F'nin net degerleme zarari (panel) -> bankanin GERCEKLESEN kredi zarari = Mevduat Bankalari Kar-Zarar Hesabi
+  "Takipteki Alacaklar Ozel Provizyonu" (TP.PFVPBI10.K21; yil ici birikimli -> aylik -> ceyrek). 2015-Q1..2022-Q2, n=26-30.
+  Her iki seri GSYH'ye bolundu (nominal ortak trend sahte korelasyon uretmesin). Newey-West t (gecikme 2).
+SONUC: beta_h hepsinde NEGATIF ve ANLAMSIZ (h0..h4: -0,003..-0,015; t = -0,9..-1,3).
+  theta = beta / L[F->B] ~ -0,03 +- 0,02 -> %95 ust sinir ~ %1,4. F'nin degerleme zarari bankanin provizyonuna GECMIYOR.
+  Gucu: %5 gecis olsaydi t~2,5 beklenirdi; yani >=%4 gecis reddedilir.
+YORUM: degerleme zarari ile kredi zarari ayni sey degil; F'nin zarari F'de kaliyor (yuk stoku) ya da banka tarafindan tanimlanmiyor
+  (yakin izleme/yapilandirma, bkz. Drive "dondurma" raporu). Bu, teorinin "yuk stoku birikimi" onermesi ile tutarli ama
+  teoriyi KANITLAMAZ: alternatif aciklama BDDK duzenlemeleri (karsilik kurallari) ve enflasyonla erime.
+  lam (cok adimli gecis) bu veriyle TANIMLANAMADI; default-tipi kaskad simulasyonu bu parametre olmadan bulgu olarak okunmamali.
+
+!!! GERI CEKME: T3'te bildirdigim "F zararinin %24'u sonraki ceyrekte K'nin borclanmasina yansiyor (t=-4,5)" bulgusu
+  GSYH-normalize edildiginde kayboluyor (K net islem, h0..h3: beta -0,02..-0,10, t = -0,7..-1,7). Onceki sonuc
+  ortak nominal trendin urunu olabilir. F->K ~0,24 capasini KULLANMAYIN.
+
+--- LAMBDA: DURUM BAGIMLI KALIBRASYON (kalibre_lambda_rapor.py, kalibre_lambda_rapor_ozeti.json) ---
+Girdi: Eylul 2026 "dondurma" raporu (Drive: dondurma_olcumu_2026-09.xlsx; TBB/BDDK Haz 2026) + EVDS bankacilik sektoru bilancosu (bie_pbtop, 2026-06).
+  II. Grup 2.624 mr TL (+%59), yapilandirilmis 1.361 mr TL (II. Grup icinde), karsilik: II. Grup %12, yapilandirilmis %16, TGA %82.
+  Ozkaynak 4.530 mr TL, krediler 26.183, toplam varlik 52.613.
+Tutarlilik: harmanlanmis II. Grup karsilik orani %14,07 (rapor: %14 OK); II. Grup/kredi %10,0 (rapor ~%10 OK);
+  TGA/kredi EVDS %3,13 vs BDDK %2,90 (kapsam farki).
+Bekleyen zarar cebi (II. Grup tamami TGA'ya gecerse ek karsilik): 1.782 mr TL = ozkaynagin %39'u.
+  -> Ozkaynak esiginde lambda_B = 0 (kritik tanima orani s*=2,54; yani imkansiz). Sektor TOPLAMI.
+Yasal sermaye esigi (SYR %16,5 [onceki girdi, yeniden dogrulanmadi], asgari %12 [VARSAYIM]): serbest sermaye 1.236 mr TL;
+  cep/serbest sermaye = %144; kritik tanima orani s*=%69. s=%75 -> lambda_B=0,08; s=%100 -> lambda_B=0,31 (asan 547 mr TL;
+  L_B satiriyla H 243, F 127, K 84, D 92 mr TL). Asan kisim fiilen cogunlukla kredi daralmasi/kamu destegi olarak gelir; L_B ile
+  dagitim sozlesmesel varsayimdir.
+Buyukluk kiyasi: II. Grup'un son 12 aylik artisi (974 mr TL) ~ F'nin son 4 ceyrek degerleme zararinin (4,79 trilyon TL) %20'si
+  (nedensellik degil; FIR artisi agirlikla haneye baglar).
+KALIBRE EDILMEYEN: tanima orani s (II. Grup -> TGA gecis hizi/zamani) -> lambda'nin ZAMAN boyutu hala tanimsiz.
+
+--- HANE ALT BOLUNMESI (hane_alt.py; akis_model.py icinde cagrilir -> akis_model_ozeti.json['hane_alt'], hane_alt_nfp.csv) ---
+H = Ha asgari ucretli + Hm memur + Ho diger. KULLANICI VARSAYIMI: hane borcunun %70'i Ha'da (taban); varlik/mevduat Ha %5, Hm %15, Ho %80. OLCUM DEGIL.
+Kapasite: taksit/gelir<=%30, 36 ay, ihtiyac faizi %63,2: kisi basi Ha 135 bin TL, Hm 318 bin TL; grup toplami Ha 0,92, Hm 1,17 trilyon TL.
+Taban sonuc (2026-Q1, trilyon TL): Ha NFP -3,95 (varlik 1,46, borc 5,40); Hm +3,60; Ho +21,75. Ha borcu kisi basi ~789 bin TL = yillik gelirin 2,3 kati.
+Capraz kontrol: gozlenen hane stresinden (takipteki 0,37 .. +yakin izleme hane payi 2,47 tr TL) ima edilen Ha borc payi ust siniri %17-44;
+%70 bunun cok uzerinde -> ya cok gelirli haneler ya borcu borcla cevirme ya da gizli temerrut. Gizli kisim = yuk stoku.
+Tanınma senaryosu: Ha payi %47 -> lambda_B 0,33; %70 -> 0,59; %90 -> 0,70 (yasal serbest sermaye 1,24 tr TL, tum odenemez borc taninirsa).
+Temerrut sifir toplamli transfer degildir; hane borcu silinmez (bireysel iflas yok, DOGRULANMADI) -> sistem net kayip.
+
+--- VYS (VARLIK YONETIM SIRKETI) KANALI (vys_kanali.py; akis_model_ozeti.json['vys_kanali']) ---
+Hane payi %40 taban senaryo (hane_alt.py D_A_BASE) ile calisir. Olumlu olcutu: model hatasiz + %40, gozlenen stresin ima ettigi %17-44 araligi icinde
+  (ust sinira yakin; yalniz yakin izlemenin %80'i hane varsayimiyla gecer; orta stresle %27'yi asar).
+Veri (haber/FIR derlemesi, resmi seriyle dogrulanmadi): bankalarin TGA satisi 2024 40,7 mr TL; 2026 Oca-May 42,7; Nis-Haz 25,7 (rekor);
+  VYS devraldigi portfoy 132 mr TL (+%67,7); fiyat anaparanin ~%12-16'si (bazi portfoyler %25-32); bireysel pay ~%80 (2025).
+Sonuc: brut yeni takip girisinin ~%22'si VYS'ye satiliyor (hem Oca-May hem Nis-Haz). Satis-duzeltilmis takip orani %2,89 -> %3,38 (+0,49 puan).
+  Hane yukunun ~%25'i (VYS'nin devraldigi hane payi, %80 varsayimiyla 106 mr TL) banka raporlamasinin disinda.
+Uyari: satilan havuzlarin karsilik duzeyi bilinmiyor; satis bankaya zarar mi kar mi yazar belirsiz. Hane borcu her durumda %100 kalir.
+
+--- TEMERRUT CIFT KAYIT (temerrut_cift_kayit.py) ve ODEMEYEN GOSTERGESI (odemeyen_gosterge.py, odemeyen_payi_aylik.csv) ---
+Cift kayit (hane, tuketici+kart): alacakli defteri karsilik ayirir, faiz tahakkuk ettirmez; VYS pi*anapara; borclu defteri borc nominal kalir ve gecikme
+  faiziyle buyur (bireysel iflas yok, DOGRULANMADI). Fark = "borclu yuku fazlasi". Gozlenen: Eyl 2026 bankada takipteki tuketici 372,5 mr TL,
+  VYS hane payi 105,6, brut hane takip girisi ~62 mr TL/ceyrek, satis payi %22. Varsayim: gecikme faizi %63,2 (ihtiyac faizi), omur boyu tahsilat %16,5 (20 ceyrek).
+Sonuc: bugun fazla 395 mr TL (nominal yukun %83'u); 4 ceyrek sonra 1.107 mr TL (yalniz anapara: 586); bankada kumulatif karsilik 160 mr TL = serbest sermayenin %12,9'u.
+  Banka tarafi hafif, borclu tarafi buyuk. Birikmis faiz en zayif varsayim (yasal sinirlar, kismi odeme dogrulanmadi).
+Odemeyen gostergesi (hane/firma ayri): G1 takip: hane %2,09 (2024-06) -> %3,81 (2025-06) -> %5,09 (2026-09); firma %1,49 -> %1,73 -> %2,52; hane/firma ~2,0.
+  2026-06 kesit: G2 (VYS eklenince) hane %6,0, firma %2,5; G3 (yakin izleme eklenince) hane %20-28, firma %5-9 (yakin izleme 'odeme riski altinda', cogu gecikmesiz).
+
+--- L MATRISININ CIFT KAYDA BAGLANMASI (L_cift_kayit.py; akis_model_ozeti.json['L_cift_kayit']; L_cift_2026-Q1.csv, L_baglanan_2026-Q1.csv) ---
+Eski: borclu zarari L ile alacaklilara tasir, borclu tamponla emer, toplam = x. Yeni: alacakli t=0'da e0*P*L[j,i] kaybini tanir (e0=%82,66: karsilik/satis),
+banka serbest sermayeyi (1,236 tr TL) asan kismi L[B,.] ile yayar; borclu rahatlamaz, gecikme faizi birikir (%63,2, kismi odeme yok -> VARSAYIM).
+H satiri bankaya dayali (kredi %94 -> B; D=0; eski satirda D=%28 hataydi). F satiri L_bil (gercek dis borc kisitli).
+Senaryolar (trilyon TL; eski | yeni t=0 / t=4 / t=8):
+ A hane Ha odenemez borc 2,16 tanindi: eski H -2,14 (diger ~0) | yeni toplam -1,79 / -3,59 / -6,87; B -1,24 (tum serbest sermaye), asim 0,47 yayilir, H faiz yuku -0,21/-2,01/-5,29
+ B hane gozlenen 4 ceyrek giris 0,249: eski H -0,25 | yeni toplam -0,21 / -0,41 / -0,79 (B -0,196)
+ C firma 1,0: eski D -0,41 B -0,35 | yeni t=0 B -0,33 D -0,24 H -0,155 (supheli) K -0,10; F faiz yuku 8 ceyrekte -2,35; toplam -0,83 / -1,66 / -3,18
+Kusur: F satirinda H payi 0,188 (enstruman ici orantili dagitim; hane varliklari mevduat = bankaya alacak). H haric yeniden normalize: B 0,49 K 0,15 D 0,36.
+Not: banka asiminin L[B,.] ile yayilmasi SOZLESMESELDIR; fiilen cogunlukla K'ya (sermaye destegi) gelir.
+Not: A senaryosu kaybi sifirdan sayar (odenemez borc henuz karsiliklanmamis); hane_alt'taki 'ek karsilik' (lambda_B=0,16) mevcut %14 karsiligin ustunu sayar.
+
+--- DIS BORC STOKU ARTISI (dis_borc_artisi.py; akis_model_ozeti.json['dis_borc_artisi']; dis_borc_ham.csv) ---
+Kaynak: EVDS bie_brutdbborclu (brut dis borc, borclu sektore gore, milyon USD, ceyreklik) + USD/TRY ceyrek sonu. EVDS ici tutarli (Kamu+TCMB+Ozel = Toplam, sapma 0).
+2023-Q4 -> 2026-Q2: toplam 432,6 -> 539,0 mr USD (+106,4) = +12,38 tr TL; yeni borclanma 3,13 tr TL (%25), KUR ETKISI 9,25 tr TL (%75).
+  Ozel +79,7 mr USD (TL +7,80: yeni 2,34 / kur 5,46); Kamu +50,0 (TL +4,87: yeni 1,47 / kur 3,40); TCMB -23,3 (TL -0,29).
+2025-Q4 -> 2026-Q2: +16,2 mr USD = +2,69 tr TL; yeni 0,70, kur 1,99 (%74).
+Modeldeki karsilik (D'nin NFP'si, finansal hesaplar): son 4 ceyrek (2025-Q2..2026-Q1) +4,65 tr TL = net islem +3,34 (%72) + degerleme +1,31 (%28).
+  Brut borcta kur payi %75, D'nin NETTE %28: farkli nesneler (D'nin net pozisyonu varliklari da icerir; Turkiye'nin yurt disi varliklari da kurla degerlenir - dogrulanmadi).
+!!! RAPOR TUTARSIZLIGI: Eylul "Bilanco Rotasyonu" raporu (Drive) 2026-Q2'de EVDS ile BIREBIR uyusuyor (221/318/539) ama onceki yillarda Kamu+TCMB EVDS'den 46-53 mr USD YUKSEK
+  (2023: 247 vs 194,3; 2024: 254 vs 208,2; 2025-Q3: 264 vs 215,6); Ozel yakin (245/238; 264/253; 301/286). EVDS serisiyle Kamu+TCMB 2023-Q4 -> 2026-Q2 ARTIYOR (194 -> 221),
+  raporda AZALIYOR (247 -> 221). 'Rotasyon' (kamu azaldi, ozel artti) EVDS'te gorunmuyor; ikisi de artti. Raporun kaynak dosyasi/tanimi dogrulanmali.

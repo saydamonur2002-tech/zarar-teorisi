@@ -1,0 +1,54 @@
+{
+  "nesne": "kart hariç tüketici kredisi taksiti / hane kullanılabilir geliri",
+  "kimlige_giris": "yok",
+  "L_giris": "yok",
+  "aciklama": "Borç açılışı NL işlemidir. Kayıp, ödeme dönmeyince L ile dağılır. Bu pay ikisine de yazılmaz.",
+  "faiz_serisi": "TP.BKR.TRY.KTFTUK",
+  "kart": "2024 kart stoku 1.795 milyar TL, tüketici stoku 2.012 milyar TL. Kart orana girmez.",
+  "yillar": [
+    {
+      "yil": 2022,
+      "stok_gelir": 0.117,
+      "aralik_faiz": 0.231,
+      "taksit_gelir_18y": 0.0277,
+      "anapara_gelir_18y": 0.0007,
+      "taksit_gelir_5y": 0.0418,
+      "anapara_gelir_5y": 0.0148,
+      "faiz_gelir": 0.027
+    },
+    {
+      "yil": 2023,
+      "stok_gelir": 0.093,
+      "aralik_faiz": 0.347,
+      "taksit_gelir_18y": 0.0324,
+      "anapara_gelir_18y": 0.0002,
+      "taksit_gelir_5y": 0.0417,
+      "anapara_gelir_5y": 0.0094,
+      "faiz_gelir": 0.0323
+    },
+    {
+      "yil": 2024,
+      "stok_gelir": 0.075,
+      "aralik_faiz": 0.53,
+      "taksit_gelir_18y": 0.0398,
+      "anapara_gelir_18y": 0.0,
+      "taksit_gelir_5y": 0.0451,
+      "anapara_gelir_5y": 0.0054,
+      "faiz_gelir": 0.0398
+    }
+  ],
+  "2024_taksit_gelir_18y": 0.0398,
+  "2024_taksit_gelir_5y": 0.0451,
+  "2024_faiz_gelir": 0.0398,
+  "bis_hane_2026Q1_eksi_ortalama_puan": {
+    "NO": 6.2,
+    "DK": -4.8,
+    "NL": -3.8
+  },
+  "turkiye_ozel_kesim_gsyh": {
+    "2024Q4": 0.287,
+    "2026Q1": 0.258,
+    "ortalama": 0.137,
+    "sapma_puan": 12.1
+  }
+}
