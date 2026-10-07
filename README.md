@@ -4,7 +4,7 @@ Türkiye finansal hesapları üzerine stok-akış tutarlı (stock-flow consisten
 
 Hazneler: **H** (S.14+S.15 hane), **F** (S.11 firmalar), **B′** (S.12 − TCMB), **K′** (S.13 + TCMB), **D** (S.2 dış alem), **U** (uyumsuzluk).
 
-Ayrıntılı not, düzeltilen anomaliler ve test sonuçları: [`OKU.txt`](OKU.txt).
+Ayrıntılı not: [`OKU.txt`](OKU.txt). Ölçülmemiş paylar ve kapanmamış iddialar: [`VARSAYIM_UYARISI.md`](VARSAYIM_UYARISI.md).
 
 ## Ne işe yarar, ne işe yaramaz
 
@@ -12,7 +12,7 @@ Bu bir kapalı muhasebe iskeleti ve kalibrasyon çalışmasıdır; politika reç
 
 `NFP_t = NFP_{t-1} + NL_t (işlem) + R_t (değerleme)`
 
-Hane alt bölünmesi (asgari ücretli / memur / diğer), mükellef-hazne ayrımı ve VYS hane payı **ölçüm değil, kullanıcı varsayımıdır**. `OKU.txt` içinde “DOĞRULANMADI” diye işaretlenen yerler (parasal altın/SDR uyumsuzluğu, bireysel iflasın borç silmemesi) modele girdi gibi okunmamalı.
+Hane alt bölünmesi, mükellef-hazne ayrımı, VYS hane payı, gecikme faizi ve sermaye eşiği ölçüm değildir. Liste ve gerekçe [`VARSAYIM_UYARISI.md`](VARSAYIM_UYARISI.md) dosyasında. `OKU.txt` içinde “DOĞRULANMADI” diye işaretlenen yerler modele girdi gibi okunmamalı.
 
 ## Çalıştırma sırası
 
