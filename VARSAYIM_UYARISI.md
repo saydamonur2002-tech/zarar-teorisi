@@ -6,9 +6,13 @@ Bu depo kapalı bir muhasebe iskeleti ve kalibrasyondur. Aşağıdaki sayılar �
 
 ## Elle konmuş varsayımlar
 
-**Hane alt bölünmesi ölçüm değildir.** H = Ha (asgari ücretli) + Hm (memur) + Ho (diğer). Kullanıcı varsayımı: hane borcunun %70'i Ha'da; varlık/mevduat Ha %5, Hm %15, Ho %80. Bu taban senaryodur (`hane_alt.py`). 2026-Q1'de bu paylarla Ha net finansal pozisyonu −3,95 trilyon TL çıkar (varlık 1,46, borç 5,40); kişi başı borç ~789 bin TL, yıllık gelirin 2,3 katı.
+**Hane alt bölünmesi ölçüm değildir.** H = Ha (asgari ücretli) + Hm (memur) + Ho (diğer). Varlık/mevduat payı Ha %5, Hm %15, Ho %80; bu da ölçüm değil. Borç payında iki katman var, karıştırılmamalı.
 
-Çapraz kontrol aynı notta duruyor. Gözlenen hane stresinden (takipteki 0,37 trilyon TL ile yakın izlemenin hane payı 2,47 trilyon TL) ima edilen Ha borç payının üst sınırı %17–44. %70 bunun çok üstünde. Üç ihtimal açık: ya çok gelirli haneler borcun çoğunu taşıyor, ya borç borçla çevriliyor, ya da gizli temerrüt var. Gizli kısım "yük stoku" diye adlandırıldı; bu bir ölçüm değil, payın fazla gelmesinin yorumu.
+İlk kullanıcı varsayımı %70'di. `OKU.txt` satır 101 hâlâ bunu taban diye yazıyor ve Ha netini −3,95 trilyon TL veriyor (varlık 1,46, borç 5,40, kişi başı ~789 bin TL, yıllık gelirin 2,3 katı). Bu sayı %70 duyarlılık satırının sayısıdır, çalışan taban değildir.
+
+Çalışan taban `hane_alt.py` içinde `D_A_BASE = 0.40`. Yorum satırı bunu açıkça söylüyor: ilk varsayım %70'ti, gözlenen stresle uyumlu aralığın üstündeydi, taban %40'a indirildi. 2026-Q1'de bu payla Ha neti −1,63 trilyon TL (varlık 1,46, borç 3,09); kişi başı 451 bin TL, yıllık gelirin 1,34 katı; ödenemez kısım 2,16 trilyon; tanınırsa lambda_B = 0,16. %70 hâlâ duyarlılık tablosunda duruyor: orada lambda_B = 0,59.
+
+Çapraz kontrol: gözlenen hane stresinden (takipteki 0,37 trilyon TL ile yakın izlemenin hane payı 2,47 trilyon TL) ima edilen Ha borç payının üst sınırı %17–44. %40 bu bandın üst kenarı, %70 bandın dışında. %70 ancak çok gelirli haneler, borcu borçla çevirme ya da gizli temerrüt ile tutulur. "Yük stoku" bu üçüncünün adı; ölçüm değil.
 
 **VYS hane payı da taban.** `vys_kanali.py` hane payını %40 ile çalıştırır. Olumlu ölçütü şuydu: model hatasız ve %40, gözlenen stresin ima ettiği %17–44 aralığının içinde, üst sınıra yakın. Yakın izlemenin %80'i hane varsayımıyla geçer; orta stresle %27'yi aşar. VYS'nin devraldığı portföyde bireysel pay ~%80 varsayımıyla hane yükünün ~%25'i (106 milyar TL) banka raporlamasının dışında kalır. Satılan havuzların karşılık düzeyi bilinmiyor; satış bankaya zarar mı kâr mı yazar belirsiz. Hane borcu her iki durumda da nominal kalır.
 
