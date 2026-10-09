@@ -1,0 +1,6 @@
+rol_id,ad_rg,bas,durum,ilk_tarih,ilk_yon,onceki_tarih,onceki_yon,gecikme_gun,gecikme_kova,geri_adim_kurali
+R05,Murat UYSAL,2019-07-05,olculdu,2019-07-25,gevsek,2018-09-13,siki,20,kisa,ters
+R06,Naci AĞBAL,2020-11-06,olculdu,2020-11-19,siki,2020-09-24,siki,13,kisa,devam
+R07,Şahap KAVCIOĞLU,2021-03-19,olculdu,2021-09-23,gevsek,2020-12-24,siki,188,uzun,ters
+R08,Hafize Gaye ERKAN,2023-06-08,olculdu,2023-06-22,siki,2022-10-20,gevsek,14,kisa,ters
+R09,Fatih KARAHAN,2024-02-02,ilk_karar_gunu_acilmadi,,,,,,,

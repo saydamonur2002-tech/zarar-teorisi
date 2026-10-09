@@ -1,0 +1,6 @@
+hipotez,sonuc,neden
+H-A,test edilemez,Beyan ve karar günü var. Küme sabit doğrulanamadı. Yanlışlayıcı küme şartına bağlı. Lehte yazılmadı.
+H-B,test edilemez,4483 kırılımı yok. Katsayı yok. Haberle doldurulmadı.
+H-C,karışık,Rol dönümünde gecikme kovası ve geri adım kuralı. Yaptırım yok. Hizip kodu boş olduğu için hizip oyuncudur cümlesi yok.
+H-D,test edilemez,Kasa sıkılığı belirsiz. Küme yenilgisi kodu yok. Aynı hafta satır çöpe.
+H-E,test edilemez,Hizip ve kasa kontrol edilemedi. Artık pay hesaplanmadı. Küçük n.
