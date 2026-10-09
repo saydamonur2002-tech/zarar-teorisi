@@ -1,0 +1,9 @@
+Kilit tarihi: 2026-10-09. İkinci tur. Eski kapi_kasa_hafta.csv satırlarına uygulanmaz.
+
+Kural, yalnız bu dosyadan sonra kodlanan karar satırında:
+- Karar haftasında USD/TRY (TP.DK.USD.A.YTL) yukarı ve brüt rezerv (TP.AB.TOPLAM) aşağı ise sıkı adayı.
+- Bu iki yön aynı değilse belirsiz kalır.
+- Gevşek kodu bu kilitte yoktur.
+- Net rezerv birincil haftalık seri (bie_abres2, bie_ulusdovlkd, bie_swaptektarf dışında yeni bir seri) bulunursa brüt vekil düşer.
+- Swap stoku net rezerv diye birleştirilmez.
+- Eski belirsiz hücre sıkıya çevrilmez.

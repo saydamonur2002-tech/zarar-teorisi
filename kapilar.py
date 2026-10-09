@@ -7,10 +7,13 @@ Kurallar, sonuçtan önce:
 - Gecikme kovası: rol başlangıcından ilk sıfır-dışı karara gün < 32 ise kısa, değilse uzun.
 - Aynı ISO haftasında TCMB rol kararı ile PPK kararı varsa satır çöp. İki tarafa da yazılmaz.
 - Beyan ile sonraki sıfır-dışı karar arasında TCMB rol kararı varsa satır çöp.
-- Kasa sıkılığı: kur, brüt rezerv, net rezervden en az ikisi. Net haftalık birincil seri yoksa sıkılık belirsiz.
+- Kasa sıkılığı, tur1 satırında belirsiz kalır. Kilit öncesi hücre sıkıya çevrilmez.
+- tur2 satırı: karar haftasında USD/TRY yukarı ve TP.AB.TOPLAM aşağı ise sıkı adayı. Değilse belirsiz. Gevşek kodu yok.
+- Haftalık birincil net rezerv serisi doğrulanmadı. Swap stoku net rezerv diye birleştirilmez.
 - Cari denge aylıktır. Haftalık kasa kuralına girmez.
-- Hizip kodu boşsa hizip cümlesi yazılmaz. Kohort hizip değildir.
+- Hizip kodu boşsa hizip cümlesi yazılmaz. Kohort ve aynı karar numarası hizip değildir.
 - Destek yalnız yanlışlayıcı tutmamış ve ayırt eden satır varsa.
+- "Ayakta değil" yazılmaz.
 """
 
 from __future__ import annotations
@@ -256,9 +259,36 @@ def main() -> int:
             "net_yon": "birincil_seri_yok",
             "cari_ay_yon": cari_yon,
             "cari_deger": "" if cari_v is None else f"{cari_v:.1f}",
+            "kural": k.get("kural") or "tur1",
             "kasa_sikilik": "belirsiz",
-            "kasa_neden": "haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi",
+            "kasa_neden": "",
         })
+    for row, k in zip(kasa_satir, [x for x in kararlar if x["yon"] != "degil"]):
+        if row["kural"] != "tur2":
+            row["kasa_sikilik"] = "belirsiz"
+            row["kasa_neden"] = "kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi"
+        elif row["kur_yon"] == "yukari" and row["brut_yon"] == "asagi":
+            row["kasa_sikilik"] = "siki_aday"
+            row["kasa_neden"] = "kilit: kur yukari ve TP.AB.TOPLAM asagi"
+        else:
+            row["kasa_sikilik"] = "belirsiz"
+            row["kasa_neden"] = "kilit: iki yon ayni degil veya gozlem yok; gevsek kodu yok"
+
+    onceki_yon = None
+    for k in kararlar:
+        if k["yon"] == "degil":
+            k["geri_adim"] = "degil"
+            continue
+        if onceki_yon is None:
+            k["geri_adim"] = "onceki_yok"
+        elif isaret(k["yon"]) != isaret(onceki_yon):
+            k["geri_adim"] = "ters"
+        else:
+            k["geri_adim"] = "devam"
+        onceki_yon = k["yon"]
+    geri_harita = {k["tarih"]: k["geri_adim"] for k in kararlar}
+    for row in kasa_satir:
+        row["geri_adim"] = geri_harita.get(row["tarih"], "")
 
     # TCMB rol profili
     def sifir_disi(gun: date, once: bool) -> dict | None:
@@ -403,7 +433,7 @@ def main() -> int:
             "taraf": hc_taraf,
             "cop_satir": cop_kasa,
             "guven": "düşük",
-            "neden": f"Dönüm {len(donumler)}. İki gösterge kayan {hc_tutan}. Kaymayan {hc_tutmayan}. Yaptırım boş. Hizip adı yazılmadı.",
+            "neden": f"Dönüm {len(donumler)}. İki gösterge birlikte kayan {hc_tutan} rol kuralı kaydıdır. Kaymayan {hc_tutmayan}. Yaptırım boş. Hizip adı yok.",
         },
         {
             "kapi": "kasa",
@@ -412,15 +442,52 @@ def main() -> int:
             "taraf": "yok",
             "cop_satir": cop_kasa,
             "guven": "düşük",
-            "neden": "Kur ve brüt var. Haftalık net rezerv birincil serisi yok. Sıkılık belirsiz. Belirsiz lehte değil.",
+            "neden": "",
+        },
+        {
+            "kapi": "nusha",
+            "veri": "var",
+            "ayirt_etti": "hayır",
+            "taraf": "yok",
+            "cop_satir": 0,
+            "guven": "orta",
+            "neden": "2023/284 ek listesi 20230604-1.pdf içinde okundu. Altı koltukta bitiş bulundu. Aynı karar atama kümesidir. Hizip kodu boş. Yeni atananların kendi bitişi bulunamadı.",
         },
     ]
+
+    tur2_geri = [
+        r for r in kasa_satir
+        if r["kural"] == "tur2" and r["geri_adim"] == "ters" and r["cop"] == 0
+    ]
+    tur2_siki = [r for r in tur2_geri if r["kasa_sikilik"] == "siki_aday"]
+    if not tur2_geri:
+        hd = "test edilemez"
+        hd_neden = "Yeni kodlanan geri adım satırı yok. Eski belirsiz satır teste girmedi."
+        kasa_neden = "tur2 geri adım yok. Eski satır belirsiz kaldı."
+    elif tur2_siki:
+        hd = "test edilemez"
+        tarihler = ", ".join(r["tarih"] for r in tur2_siki)
+        hd_neden = (
+            f"Sıkı adayı geri adım {len(tur2_siki)} ({tarihler}). Hizip kodu boş. "
+            "Küme değişmeden şartı doğrulanamadı. Kasa gevşekken küme yenilgisi cümlesi yazılmadı."
+        )
+        kasa_neden = hd_neden
+    else:
+        hd = "test edilemez"
+        hd_neden = (
+            f"Yeni geri adım {len(tur2_geri)}. Kilit sıkı adayı demedi, belirsiz kaldı. "
+            "Eski belirsiz hücre sıkıya çevrilmedi. Küme kodu yok."
+        )
+        kasa_neden = hd_neden
+    for kapi in kapilar:
+        if kapi["kapi"] == "kasa":
+            kapi["neden"] = kasa_neden
 
     hipotez = [
         {
             "hipotez": "H-A",
             "sonuc": "test edilemez",
-            "neden": "Beyan ve karar günü var. Küme sabit doğrulanamadı. Yanlışlayıcı küme şartına bağlı. Lehte yazılmadı.",
+            "neden": "2024-W04, 2024-W12 ve 2024-W52 konuşmalar arşivi listesi kilitlendi, yön kodlanmadı. Eski beş konuşma evren değil. Küme sabit doğrulanamadı.",
         },
         {
             "hipotez": "H-B",
@@ -430,12 +497,12 @@ def main() -> int:
         {
             "hipotez": "H-C",
             "sonuc": hc,
-            "neden": "Rol dönümünde gecikme kovası ve geri adım kuralı. Yaptırım yok. Hizip kodu boş olduğu için hizip oyuncudur cümlesi yok.",
+            "neden": "Rol dönümünde gecikme kovası ve geri adım kuralı. İki gösterge birlikte kayan dönüm rol kuralı kaydıdır. Hizip kodu boş. Oyuncu küme cümlesi yok.",
         },
         {
             "hipotez": "H-D",
-            "sonuc": "test edilemez",
-            "neden": "Kasa sıkılığı belirsiz. Küme yenilgisi kodu yok. Aynı hafta satır çöpe.",
+            "sonuc": hd,
+            "neden": hd_neden,
         },
         {
             "hipotez": "H-E",
@@ -445,14 +512,16 @@ def main() -> int:
     ]
 
     teori = (
-        "Bu kayıtta iki teori de ayakta değil. "
-        "H-C rol düzeyinde karışıktır ve hizip adı taşımaz. "
-        "H-A, H-B, H-D ve H-E test edilemez. Ayrım kapanmadı."
+        "İkinci tur ölçümü. Nüsha: 2023/284 ek listesi okundu, ilgili koltuklarda bitiş bulundu. "
+        "Aynı karar atama kümesidir, hizip kodu boş. "
+        "Sıkılık kuralı yalnız tur2 satırında. "
+        "Tıkaç adı konmadı: nüsha ile sıkılık aynı adı göstermiyor. "
+        "Ceza kapalı. Bilgi kapısı açılmadı. Tek imza tıkaç ilanı değil."
     )
 
     yaz(
         "kapi_kasa_hafta.csv",
-        ["tarih", "yon", "cop", "kur_yon", "kur_once", "kur_sonra", "brut_yon", "brut_once", "brut_sonra",
+        ["tarih", "yon", "cop", "kural", "geri_adim", "kur_yon", "kur_once", "kur_sonra", "brut_yon", "brut_once", "brut_sonra",
          "net_yon", "cari_ay_yon", "cari_deger", "kasa_sikilik", "kasa_neden"],
         kasa_satir,
     )
@@ -503,7 +572,9 @@ def main() -> int:
     sonuc = {
         "teori": teori,
         "tikac_adi": "konmadi",
-        "uyari": "Küçük n. OCR. 2023/284 ek listesi yok. Net rezerv yok. Hizip yok. Kodlama hata payı var.",
+        "uyari": "Küçük n. OCR. Yeni atananların kendi bitişi bulunamadı. Haftalık net rezerv serisi doğrulanmadı. Hizip yok. 2023-06-23 ile 2024-01-24 arası gün satırı tek tek açılmadı. Kodlama hata payı var.",
+        "nusha": "bitis_bulundu",
+        "tikac_kapali": "ceza kapalı; bilgi kapısı açılmadı; sıkılık küme şartıyla ayırt etmedi",
         "evds_hata": evds.get("hata", ""),
         "cop_zaman": cop_zaman,
         "cop_kasa": cop_kasa,

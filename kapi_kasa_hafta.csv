@@ -1,23 +1,26 @@
-tarih,yon,cop,kur_yon,kur_once,kur_sonra,brut_yon,brut_once,brut_sonra,net_yon,cari_ay_yon,cari_deger,kasa_sikilik,kasa_neden
-2018-06-07,siki,0,yukari,4.4834,4.6095,yukari,106645.0,106748.0,birincil_seri_yok,acik,-2715.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2018-09-13,siki,0,asagi,6.6824,6.3945,asagi,88752.0,87574.0,birincil_seri_yok,fazla,4042.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2019-07-25,gevsek,0,yukari,5.6929,5.7135,yukari,98320.0,98386.0,birincil_seri_yok,fazla,3387.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2019-09-12,gevsek,0,yukari,5.6656,5.7711,asagi,101851.0,100874.0,birincil_seri_yok,fazla,4238.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2019-10-24,gevsek,0,asagi,5.8915,5.7712,yukari,104493.0,104985.0,birincil_seri_yok,fazla,3401.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2020-01-16,gevsek,0,asagi,5.9571,5.8827,yukari,106214.0,106455.0,birincil_seri_yok,acik,-1160.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2020-02-19,gevsek,0,yukari,6.0271,6.0578,asagi,104056.0,102670.0,birincil_seri_yok,acik,-587.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2020-03-17,gevsek,0,yukari,6.1098,6.3628,asagi,104164.0,93447.0,birincil_seri_yok,acik,-4943.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2020-04-22,gevsek,0,yukari,6.7752,6.9593,asagi,87909.0,86446.0,birincil_seri_yok,acik,-5085.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2020-05-21,gevsek,0,asagi,6.9789,6.7841,yukari,84428.0,92406.0,birincil_seri_yok,acik,-3841.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2020-09-24,siki,0,yukari,7.4678,7.6570,asagi,86318.0,83517.0,birincil_seri_yok,acik,-1763.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2020-11-19,siki,0,asagi,8.0477,7.7195,yukari,82350.0,85085.0,birincil_seri_yok,acik,-3454.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2020-12-24,siki,0,asagi,7.7873,7.6321,yukari,91806.0,94628.0,birincil_seri_yok,acik,-3210.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2021-03-18,siki,1,asagi,7.5952,7.4980,yukari,91611.0,93161.0,birincil_seri_yok,acik,-3007.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2021-09-23,gevsek,0,yukari,8.4272,8.6349,yukari,120786.0,122043.0,birincil_seri_yok,fazla,3070.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2021-10-21,gevsek,0,yukari,9.0222,9.3140,asagi,125727.0,125141.0,birincil_seri_yok,fazla,3932.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2021-11-18,gevsek,0,yukari,9.7812,10.3993,yukari,127690.0,128403.0,birincil_seri_yok,acik,-2341.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2021-12-16,gevsek,0,yukari,13.6241,14.6350,asagi,122890.0,116873.0,birincil_seri_yok,acik,-3265.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2022-08-18,gevsek,0,yukari,17.9308,17.9411,asagi,113737.0,112249.0,birincil_seri_yok,acik,-1529.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2022-09-22,gevsek,0,yukari,18.2321,18.2949,asagi,114738.0,110802.0,birincil_seri_yok,acik,-1954.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2022-10-20,gevsek,0,asagi,18.5664,18.5661,asagi,116025.0,113967.0,birincil_seri_yok,acik,-864.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
-2023-06-22,siki,0,asagi,23.5989,23.5493,yukari,102800.0,107560.0,birincil_seri_yok,fazla,1064.0,belirsiz,haftalik net rezerv birincil serisi yok; uc seriden sikilik kurulmadi
+tarih,yon,cop,kural,geri_adim,kur_yon,kur_once,kur_sonra,brut_yon,brut_once,brut_sonra,net_yon,cari_ay_yon,cari_deger,kasa_sikilik,kasa_neden
+2018-06-07,siki,0,tur1,onceki_yok,yukari,4.4834,4.6095,yukari,106645.0,106748.0,birincil_seri_yok,acik,-2715.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2018-09-13,siki,0,tur1,devam,asagi,6.6824,6.3945,asagi,88752.0,87574.0,birincil_seri_yok,fazla,4042.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2019-07-25,gevsek,0,tur1,ters,yukari,5.6929,5.7135,yukari,98320.0,98386.0,birincil_seri_yok,fazla,3387.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2019-09-12,gevsek,0,tur1,devam,yukari,5.6656,5.7711,asagi,101851.0,100874.0,birincil_seri_yok,fazla,4238.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2019-10-24,gevsek,0,tur1,devam,asagi,5.8915,5.7712,yukari,104493.0,104985.0,birincil_seri_yok,fazla,3401.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2020-01-16,gevsek,0,tur1,devam,asagi,5.9571,5.8827,yukari,106214.0,106455.0,birincil_seri_yok,acik,-1160.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2020-02-19,gevsek,0,tur1,devam,yukari,6.0271,6.0578,asagi,104056.0,102670.0,birincil_seri_yok,acik,-587.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2020-03-17,gevsek,0,tur1,devam,yukari,6.1098,6.3628,asagi,104164.0,93447.0,birincil_seri_yok,acik,-4943.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2020-04-22,gevsek,0,tur1,devam,yukari,6.7752,6.9593,asagi,87909.0,86446.0,birincil_seri_yok,acik,-5085.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2020-05-21,gevsek,0,tur1,devam,asagi,6.9789,6.7841,yukari,84428.0,92406.0,birincil_seri_yok,acik,-3841.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2020-09-24,siki,0,tur1,ters,yukari,7.4678,7.6570,asagi,86318.0,83517.0,birincil_seri_yok,acik,-1763.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2020-11-19,siki,0,tur1,devam,asagi,8.0477,7.7195,yukari,82350.0,85085.0,birincil_seri_yok,acik,-3454.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2020-12-24,siki,0,tur1,devam,asagi,7.7873,7.6321,yukari,91806.0,94628.0,birincil_seri_yok,acik,-3210.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2021-03-18,siki,1,tur1,devam,asagi,7.5952,7.4980,yukari,91611.0,93161.0,birincil_seri_yok,acik,-3007.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2021-09-23,gevsek,0,tur1,ters,yukari,8.4272,8.6349,yukari,120786.0,122043.0,birincil_seri_yok,fazla,3070.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2021-10-21,gevsek,0,tur1,devam,yukari,9.0222,9.3140,asagi,125727.0,125141.0,birincil_seri_yok,fazla,3932.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2021-11-18,gevsek,0,tur1,devam,yukari,9.7812,10.3993,yukari,127690.0,128403.0,birincil_seri_yok,acik,-2341.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2021-12-16,gevsek,0,tur1,devam,yukari,13.6241,14.6350,asagi,122890.0,116873.0,birincil_seri_yok,acik,-3265.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2022-08-18,gevsek,0,tur1,devam,yukari,17.9308,17.9411,asagi,113737.0,112249.0,birincil_seri_yok,acik,-1529.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2022-09-22,gevsek,0,tur1,devam,yukari,18.2321,18.2949,asagi,114738.0,110802.0,birincil_seri_yok,acik,-1954.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2022-10-20,gevsek,0,tur1,devam,asagi,18.5664,18.5661,asagi,116025.0,113967.0,birincil_seri_yok,acik,-864.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2023-06-22,siki,0,tur1,ters,asagi,23.5989,23.5493,yukari,102800.0,107560.0,birincil_seri_yok,fazla,1064.0,belirsiz,kilit oncesi satir; eski belirsiz hucre sikiliga cevrilmedi
+2024-01-25,siki,0,tur2,devam,yukari,30.0721,30.2145,asagi,138090.9,137160.5,birincil_seri_yok,acik,-2543.0,siki_aday,kilit: kur yukari ve TP.AB.TOPLAM asagi
+2024-03-21,siki,0,tur2,devam,yukari,32.0390,32.3294,asagi,127896.7,123844.3,birincil_seri_yok,acik,-4079.0,siki_aday,kilit: kur yukari ve TP.AB.TOPLAM asagi
+2024-12-26,gevsek,0,tur2,ters,yukari,34.9529,35.2162,asagi,156194.0,155057.3,birincil_seri_yok,acik,-5010.0,siki_aday,kilit: kur yukari ve TP.AB.TOPLAM asagi

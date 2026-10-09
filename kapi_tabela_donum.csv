@@ -2,3 +2,4 @@ onceki,sonraki,gecikme,kural,kayma_sayisi,yanlislayici,yaptirim
 R05,R06,kisa->kisa,ters->devam,1,tutmadi,yok
 R06,R07,kisa->uzun,devam->ters,2,tuttu,yok
 R07,R08,uzun->kisa,ters->ters,1,tutmadi,yok
+R08,R09,kisa->uzun,ters->devam,2,tuttu,yok
