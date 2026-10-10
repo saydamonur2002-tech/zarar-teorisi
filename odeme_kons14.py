@@ -119,14 +119,22 @@ def lider_servis(stok) -> pd.DataFrame:
 
 
 def ozet(df: pd.DataFrame) -> pd.DataFrame:
-    keys = [c for c in df.columns if c not in ("kal", "yerel", "reel", "yk", "fazla", "s")]
-    return df.groupby(keys, dropna=False).agg(
-        kal=("kal", "mean"),
-        yerel=("yerel", "mean"),
-        reel=("reel", "mean"),
-        yk=("yk", "mean"),
-        fazla=("fazla", "median"),
-    ).reset_index()
+    gcols = ["test"]
+    for c in ("mev_k", "srv_k", "fx", "lider_srv_sifir"):
+        if c in df.columns:
+            gcols.append(c)
+    agg = {
+        "kal": ("kal", "mean"),
+        "yerel": ("yerel", "mean"),
+        "reel": ("reel", "mean"),
+        "yk": ("yk", "mean"),
+        "fazla": ("fazla", "median"),
+    }
+    if "ust10_mev" in df.columns:
+        agg["ust10_mev"] = ("ust10_mev", "mean")
+    if "ust10_srv" in df.columns:
+        agg["ust10_srv"] = ("ust10_srv", "mean")
+    return df.groupby(gcols, dropna=False).agg(**agg).reset_index()
 
 
 def grafik(tablo: pd.DataFrame, dosya: Path) -> None:
@@ -150,6 +158,12 @@ def grafik(tablo: pd.DataFrame, dosya: Path) -> None:
     plt.close(fig)
 
 
+def _spearman_satir(etiket: str, fx: str, ad: str, r, p) -> str:
+    if r is None or p is None or (isinstance(r, float) and np.isnan(r)):
+        return f"Spearman ({etiket}, {fx}): {ad} tanımsız (tüm hücrelerde kal=0)."
+    return f"Spearman ({etiket}, {fx}): {ad} {r:.3f} (p = {p:.4g})."
+
+
 def rapor(sonuc: dict, ozet_df: pd.DataFrame) -> str:
     k = sonuc["karar"]
     s = [
@@ -170,7 +184,7 @@ def rapor(sonuc: dict, ozet_df: pd.DataFrame) -> str:
         f"Mevduat tek başına (servis eşit): kal FX çevrilebilir mev70 = {k['mev70_eq_kal_fxroll']:.2f}.",
         "",
         f"Spearman (mev70_srv, FX çevrilebilir): servis–kalıcılık {k['sp_srv_kal']:.3f} (p = {k['sp_srv_kal_p']:.4g}).",
-        f"Spearman (mev_kontrol, FX çevrilemez): mevduat–kalıcılık {k['sp_mev_kal']:.3f} (p = {k['sp_mev_kal_p']:.4g}).",
+        _spearman_satir("mev_kontrol", "FX çevrilemez", "mevduat–kalıcılık", k["sp_mev_kal"], k["sp_mev_kal_p"]),
         "",
         "### Mev 0,70 × servis (ortalama)",
         "",
@@ -273,7 +287,7 @@ def main_kons14() -> None:
         "seed0": SEED0,
     }
     (KOK / "odeme_kons14_sonuc.json").write_text(
-        json.dumps(sonuc, ensure_ascii=False, indent=2, default=_jd) + "\n",
+        json.dumps(json.loads(json.dumps(sonuc, default=_jd)), ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     eski = (KOK / "ODEME_ZINCIRI.md").read_text(encoding="utf-8")
