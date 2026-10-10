@@ -1,0 +1,308 @@
+{
+  "hukum": "desteklendi",
+  "gerekce": "Orta kilitte düşük banka ve yüksek gecikme maliyeti, yüksek banka ve düşük gecikmeye göre kalıcılığı pratik eşikle uzatıyor.",
+  "uyari": "Sentetik ağ. TCMB sektör verisine, finansal hesaplara veya bu depodaki L/G matrislerine kalibre edilmedi. Sayılar ölçüm değildir.",
+  "karar_olculeri": {
+    "soksuz_kalicilik": 0.0,
+    "kontrast_sistematik": true,
+    "kontrast_p_tek": 6.980297849122034e-15,
+    "kontrast_p_iki": 1.3960595698244068e-14,
+    "kontrast_ortalama_fark": 16.775,
+    "kontrast_medyan_fark": 18.0,
+    "maliyet_n": 0,
+    "maliyet_p_tek": 1.0,
+    "maliyet_p_iki": 1.0,
+    "maliyet_medyan_fark": null,
+    "kilit_egim": {
+      "egim_medyan": 3.25,
+      "egim_ortalama": 2.79875,
+      "p_tek_yan": 5.605178500162479e-14,
+      "medyan_aralik": 12.0,
+      "uc_medyanlar": [
+        0.0,
+        0.0,
+        0.0,
+        6.0,
+        12.0
+      ],
+      "yon_tutar": true,
+      "destek": true
+    },
+    "gecikme_egim": {
+      "egim_medyan": 4.892703862660944,
+      "egim_ortalama": 9.601394849785407,
+      "p_tek_yan": 8.04102203540895e-09,
+      "medyan_aralik": 3.0,
+      "uc_medyanlar": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        3.0
+      ],
+      "yon_tutar": true,
+      "destek": true
+    },
+    "banka_egim": {
+      "egim_medyan": -2.5,
+      "egim_ortalama": -2.3475,
+      "p_tek_yan": 1.7577115982025645e-13,
+      "medyan_aralik": 14.0,
+      "uc_medyanlar": [
+        14.0,
+        4.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "yon_tutar": true,
+      "destek": true
+    },
+    "permutasyon_p": 0.001,
+    "permutasyon_aralik": 20.1875
+  },
+  "ks": {
+    "kotu_vs_iyi": {
+      "istatistik": 0.975,
+      "p": 1.6543612251061143e-64,
+      "medyan_fark": 18.0,
+      "ortalama_fark": 16.775
+    },
+    "rastgele_vs_baz": {
+      "istatistik": 0.23750000000000004,
+      "p": 0.01808821291473872,
+      "medyan_fark": 0.0,
+      "ortalama_fark": 3.35
+    },
+    "kilit_4_vs_0": {
+      "istatistik": 0.9125,
+      "p": 9.587696371271996e-43,
+      "medyan_fark": 12.0,
+      "ortalama_fark": 10.975
+    },
+    "banka_0_vs_4": {
+      "istatistik": 0.875,
+      "p": 1.5748585172210243e-36,
+      "medyan_fark": 14.0,
+      "ortalama_fark": 12.3875
+    },
+    "gecikme_4_vs_0": {
+      "istatistik": 0.5249999999999999,
+      "p": 8.489165039780623e-11,
+      "medyan_fark": 3.0,
+      "ortalama_fark": 5.3125
+    }
+  },
+  "kose": {
+    "iyi": {
+      "kilit": [
+        0.85,
+        3
+      ],
+      "gecikme": 0.0,
+      "banka": 4.0
+    },
+    "kotu": {
+      "kilit": [
+        0.85,
+        3
+      ],
+      "gecikme": 0.6,
+      "banka": 0.0
+    },
+    "baz": {
+      "kilit": [
+        0.85,
+        3
+      ],
+      "gecikme": 0.15,
+      "banka": 1.0
+    },
+    "iyi_ortalama": 0.0,
+    "iyi_medyan": 0.0,
+    "iyi_olasilik": 0.0,
+    "baz_ortalama": 0.4375,
+    "baz_medyan": 0.0,
+    "baz_olasilik": 0.0375,
+    "kotu_ortalama": 16.775,
+    "kotu_medyan": 18.0,
+    "kotu_olasilik": 0.95,
+    "rastgele_ortalama": 3.7875,
+    "rastgele_medyan": 0.0
+  },
+  "aktarim": {
+    "kotu_kose_buyukten_kucuge_medyan": 0.43167584746766957,
+    "spearman_aktarim_kucuk_yavaslik": 0.5685285138334188,
+    "spearman_p": 3.7702000997489255e-08,
+    "yorum": "Kötü köşede, büyük borçlunun ödeyemediği tutarın küçük alacaklıya düşen payı ile küçük−büyük yavaşlık farkı arasındaki Spearman."
+  },
+  "gun_kaymasi": {
+    "kotu_baz": {
+      "spearman": -0.09523637168196307,
+      "p": 0.17542685148905848,
+      "ilk_onda_bir_kesisim": 0.0,
+      "not": null
+    },
+    "kotu_iyi": {
+      "spearman": null,
+      "p": null,
+      "ilk_onda_bir_kesisim": null,
+      "not": "Bir köşede yavaşlık sabit; sıra tanımsız."
+    }
+  },
+  "sekil_deneyi_ortalama_kalicilik": {
+    "alpha_0": {
+      "banka_0": 1.175,
+      "banka_4": 0.0
+    },
+    "dogrusal_0_30": {
+      "banka_0": 14.9625,
+      "banka_4": 0.0
+    },
+    "konveks_gamma_1_8_alpha_0_30": {
+      "banka_0": 16.0875,
+      "banka_4": 0.0
+    }
+  },
+  "kalibrasyon": [
+    {
+      "aday": "A",
+      "tampon": [
+        1.25,
+        1.85
+      ],
+      "sok_sektor": 2,
+      "sok_kalan_likidite": 0.55,
+      "soksuz_kalicilik": 0.0,
+      "baz_ortalama": 0.0,
+      "baz_medyan": 0.0,
+      "baz_std": 0.0,
+      "baz_olay": 0.0,
+      "ic_bolge": false,
+      "yedek_secim": false
+    },
+    {
+      "aday": "B",
+      "tampon": [
+        1.05,
+        1.55
+      ],
+      "sok_sektor": 2,
+      "sok_kalan_likidite": 0.35,
+      "soksuz_kalicilik": 0.0,
+      "baz_ortalama": 0.0,
+      "baz_medyan": 0.0,
+      "baz_std": 0.0,
+      "baz_olay": 0.0,
+      "ic_bolge": false,
+      "yedek_secim": false
+    },
+    {
+      "aday": "C",
+      "tampon": [
+        0.95,
+        1.4
+      ],
+      "sok_sektor": 3,
+      "sok_kalan_likidite": 0.3,
+      "soksuz_kalicilik": 0.0,
+      "baz_ortalama": 0.65,
+      "baz_medyan": 0.0,
+      "baz_std": 1.6100644994246944,
+      "baz_olay": 0.075,
+      "ic_bolge": false,
+      "yedek_secim": true
+    }
+  ],
+  "secilen_aday": {
+    "ad": "C",
+    "lo": 0.95,
+    "hi": 1.4,
+    "n_sek": 3,
+    "kalan": 0.3,
+    "ek_oran": 0.08,
+    "ek_kalan": 0.45
+  },
+  "sok_buyuklugu_kontrol": {
+    "A": {
+      "iyi": {
+        "ortalama": 0.0,
+        "medyan": 0.0,
+        "olasilik": 0.0,
+        "yeni_tahsil": 1.0
+      },
+      "baz": {
+        "ortalama": 0.0,
+        "medyan": 0.0,
+        "olasilik": 0.0,
+        "yeni_tahsil": 1.0
+      },
+      "kotu": {
+        "ortalama": 0.0,
+        "medyan": 0.0,
+        "olasilik": 0.0,
+        "yeni_tahsil": 0.9996983210039996
+      }
+    },
+    "B": {
+      "iyi": {
+        "ortalama": 0.0,
+        "medyan": 0.0,
+        "olasilik": 0.0,
+        "yeni_tahsil": 1.0
+      },
+      "baz": {
+        "ortalama": 0.0,
+        "medyan": 0.0,
+        "olasilik": 0.0,
+        "yeni_tahsil": 0.9944253175498741
+      },
+      "kotu": {
+        "ortalama": 9.475,
+        "medyan": 13.0,
+        "olasilik": 0.65,
+        "yeni_tahsil": 0.6926930647671791
+      }
+    }
+  },
+  "ag": {
+    "dugum": 204,
+    "kenar": 1205,
+    "yogunluk": 0.02909784603496571,
+    "ortalama_kume": 0.09541346604723039,
+    "ortalama_cikis_derece": 5.9068627450980395,
+    "ortalama_giris_derece": 5.9068627450980395,
+    "giris_guc_hhi": 0.007820898752423679,
+    "giris_guc_gini": 0.3904828998589216,
+    "cikis_guc_gini": 0.1687635769189384,
+    "pagerank_gini": 0.6154801674098824,
+    "buyuk_dugum": 51,
+    "kucuk_dugum": 102,
+    "net_borclu_payi": 0.6274509803921569
+  },
+  "varsayimlar": {
+    "dugum": 204,
+    "sektor": 17,
+    "firma_basi_sektor": 12,
+    "periyot": "Ay gibi okunabilir; takvim iddiasi yok.",
+    "ufuk": 24,
+    "periyot_ici_tur": 4,
+    "monte_carlo": 80,
+    "tohum": 20261010,
+    "ag": "Her firma 2 aynı sektör, 3 yukarı akım, 1 aynı sıra komşu sektör alacaklısına borçlanır. Ağırlık 0.30 * sqrt(boyut_i * boyut_j) * U(0.6, 1.4). Boyut lognormal(0, 0.55), medyan 1. Büyük: üst çeyrek, banka erişimi 1. Küçük: alt yarı, erişim 0.20. Orta: 0.45.",
+    "likidite": "Başlangıç likidite = U(0.95, 1.4) * aylık borç + 0.20 * boyut. U sırası ağ tohumuna bağlı, parametreler arasında ortaktır.",
+    "sok": "3 rastgele sektörde likidite × 0.3. Kalan firmaların %8 kadarı × 0.45. Şok büyüklüğü sabit; hangi sektörün vurulduğu tohumla değişir ve parametre hücreleri arasında eşleştirilmiştir.",
+    "kilit": "Ödeme oranı eşiğin altındaysa firma sonraki `sure` periyotta hiç ödemez. Izgarası (eşik, süre): [(0.5, 1), (0.7, 2), (0.85, 3), (0.95, 5), (0.99, 8)].",
+    "gecikme": "Doğrusal: alpha * ödenmeyen. Konveks yan deney: alpha * ödenmeyen * (ödenmeyen/fatura)^(gamma-1), gamma=1.8. Alpha ızgarası [0.0, 0.05, 0.15, 0.3, 0.6]. Maliyet alacaklının likiditesinden düşer; sıfırın altı silinir, yeni borç yazılmaz. Reel kayıptır, transfere yazılmaz.",
+    "banka": "Çarpan ızgarası [0.0, 0.5, 1.0, 2.0, 4.0], tavan = çarpan * erişim * (aylık borç + 0.25*boyut). Çekilen tutar dış likiditedir. Likidite aylık borcun 1.25 katını aşarsa fazlanın yarısı limiti yerine koyar.",
+    "dis_akis": "Her periyot sonunda likiditeye (aylık borç − aylık alacak) eklenir. Herkes tam öderse stok yerinde kalır. Bu akım sözleşmenin büyüklüğündedir; kaçırılan tahsilatı karşılamaz.",
+    "bloke": "Yeni fatura tahsil oranı < 0.7 veya sıkıntılı düğüm payı >= 0.25. Yeni fatura tahsili, ödemenin devreden ve yeni kısım arasında oransal payıdır. Kalıcılık bu periyotların sayısı. Olasılık: kalıcılık >= 4.",
+    "sabit_tutulan": "Kenar kümesi, ağırlıklar, boyut, tampon sırası, şok çarpanları.",
+    "degisen": "Kilit eşiği/süresi, gecikme alpha, banka çarpanı."
+  },
+  "soksuz": {
+    "kalicilik": 0.0,
+    "ortalama_hacim": 1.0,
+    "arrears_orani": 0.0
+  }
+}
