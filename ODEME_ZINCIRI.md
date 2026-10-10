@@ -1,3 +1,44 @@
+# Ödeme zinciri, faiz gecikme hipotezi (tur 13)
+
+Kenar varsayım. Faiz geliri açık modellenmedi; mev/serv oranı ve α ile gecikme.
+
+## Hüküm
+
+Kontrol şoksuz kal 0.00, reel 0.000. Faiz gecikme hipotezi elendi (α>0 vs 0, kayıtlı eşikler). Anlamlı artış yok; servis/mev ayrımı belirsiz. Lider α=0,50 (mev70): kal fark medyan 0.00, p = 1.
+
+## Varsayımlar
+
+150 firma. Mevduat/aylık servis > 3.0 iken ödeme oranı ×(1−α). α ∈ {0, 0,15, 0,30}. MC 50, tohum 20274010+s. π = 0.0225. FX çevrilebilir/çevrilemez ayrı.
+
+Kontrol şoksuz: kal 0.00, reel 0.000.
+Faiz gecikme elendi: True. Servis yükü bağımlılığı: Anlamlı artış yok; servis/mev ayrımı belirsiz..
+
+Spearman (α>0, FX çevrilemez): mevduat–kalıcılık 0.407, servis–kalıcılık 0.468.
+
+## Hücre × α (ortalama; reel FX çevrilemez)
+
+| Hücre | α=0 kal | α=0,15 kal | α=0,30 kal | α=0 yavaş | α=0,30 yavaş | α=0 reel | α=0,30 reel | Yerel α=0 / 0,30 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| mev10_eq | 0.00 | 0.00 | 0.00 | 0.000 | 0.000 | 0.454 | 0.454 | 0.00 / 0.00 |
+| mev40_eq | 0.00 | 0.00 | 0.00 | 0.000 | 0.000 | 0.490 | 0.490 | 0.00 / 0.00 |
+| mev70_eq | 0.00 | 0.00 | 0.00 | 0.000 | 0.000 | 0.558 | 0.558 | 0.00 / 0.00 |
+| mev10_s70 | 0.00 | 0.00 | 0.00 | 0.000 | 0.000 | 0.154 | 0.154 | 0.00 / 0.00 |
+| mev40_s70 | 0.84 | 0.84 | 1.02 | 0.000 | 0.000 | 0.230 | 0.230 | 0.00 / 0.00 |
+| mev70_s70 | 2.66 | 2.66 | 2.66 | 0.099 | 0.112 | 0.394 | 0.394 | 3.10 / 3.72 |
+
+## Lider gecikme (mev 0,70, servis eşit, FX çevrilemez)
+
+- Lider gecikme kapalı: kal 0.00, yavaş 0.000, yerel 0.00.
+- Lider gecikme açık: kal 0.00, yavaş 0.000, yerel 0.00.
+- Eşli fark (kapalı − açık) kal medyan 0.00, p = 1.
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_faiz13_hucre.csv`, `odeme_faiz13_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, tur 12: Gini ve kalıcılık
 
 Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım.

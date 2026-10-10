@@ -430,6 +430,11 @@ def tek_kosu_temiz(
     fx_carpan: np.ndarray | None = None,
     fx_kur_gecis: float = 0.0,
     kapasite: np.ndarray | None = None,
+    faiz_gecikme: np.ndarray | None = None,
+    faiz_mev: np.ndarray | None = None,
+    faiz_serv: np.ndarray | None = None,
+    faiz_esik: float = 3.0,
+    faiz_lider_zorla: np.ndarray | None = None,
 ) -> tuple[np.ndarray, np.ndarray | None, np.ndarray]:
     """tek_kosu'nun sok maskesini acik argumanla alan surumu.
 
@@ -587,6 +592,14 @@ def tek_kosu_temiz(
             poz = owed > 1e-10
             ratio[poz] = np.minimum(1.0, cap[poz] / owed[poz])
             ratio *= active.astype(np.float64)
+            if faiz_mev is not None and faiz_serv is not None and faiz_gecikme is not None:
+                rv = faiz_mev / np.maximum(faiz_serv, 1e-12)
+                elig = rv > faiz_esik
+                if faiz_lider_zorla is not None:
+                    elig = elig | faiz_lider_zorla
+                pen = faiz_gecikme > 0
+                adj = elig & pen
+                ratio[adj] *= 1.0 - faiz_gecikme[adj]
             desired = owed * ratio
             if secim:
                 room = np.maximum(pay_cap - paid_cum, 0.0)
@@ -1735,6 +1748,6 @@ if __name__ == "__main__":
 
         main_mahsup()
     else:
-        from odeme_kons12 import main_kons12
+        from odeme_faiz13 import main_faiz13
 
-        main_kons12()
+        main_faiz13()
