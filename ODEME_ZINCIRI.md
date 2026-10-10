@@ -1,3 +1,93 @@
+# Ödeme zinciri, tur 3: heterojen limit
+
+Sentetik ağ ve varsayılmış limit dağılımı. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir. KAP tabanlı ağ bu turda yok.
+
+## Hüküm
+
+Heterojen limitte parametre kolu C şokunda açık kalıyor, tam banka baskınlığı kırılıyor. Çarpan 4, sıfır çizgisi olan firmalar dururken her hücreyi sıfıra yapıştırmıyor. Tur 2'deki tam baskınlık, herkese pozitif basamak limiti verilmesine bağlıydı. Seçim kuralı sistem kalıcılığını uzatmıyor. KAP ağı bu turda yok.
+
+## Limit varsayımı
+
+KAP ağı eklenmedi. Depoda firma düzeyinde KAP kenarı yok; finansal hesap matrisi kimden kime ödeme ağı değil.
+
+Birim tavan A × (aylık borç + 0,25 × boyut). A, sınıf içinde: küçük P(0)=0,50 ve değilse LogNormal(ln 0,35; 0,60); orta P(0)=0,25 ve LogNormal(ln 0,80; 0,50); büyük P(0)=0,05 ve LogNormal(ln 1,50; 0,45). Tavan 6,0'da kırpılır. Hücre çarpanı bunu çarpar. Sıfır erişim her çarpanda sıfır kalır. Çekim tohumu 20261010+7000+koşu, hücreler arası eşli. Bu dağılım ölçüm değildir.
+
+Gerçekleşen erişim. Küçük: sıfır payı 0.50, pozitiflerin medyan erişimi 0.36. Orta: sıfır payı 0.27, pozitiflerin medyan erişimi 0.81. Büyük: sıfır payı 0.04, pozitiflerin medyan erişimi 1.48.
+
+Şoksuz, basamak, çarpan 1: ortalama kalıcılık 0.00. Şoksuz, dağılım, çarpan 1: 0.00. Şoksuz, dağılım, seçim açık: 0.00.
+
+## C şoku
+
+Basamak iyi / baz / kötü / seçim: 0.00 / 0.53 / 17.17 / 0.00.
+
+Dağılım iyi / baz / kötü / seçim: 0.00 / 0.60 / 17.17 / 0.00.
+
+Dağılım, kötü − iyi: ortalama 17.17, medyan 18.00, tek yanlı p = 9.953e-12.
+
+Çarpan 4, 25 hücrenin en yüksek ortalaması 8.75. Çarpan 0, en yüksek hücre ortalaması 20.30. Çarpan 4'te ortalama aralık 8.75; çarpan 0'da 20.30.
+
+Çarpan 4'te ortalaması 1 ve üstü olan hücreler: eşik 0.99 / süre 8, α 0.60, ortalama 8.75; eşik 0.95 / süre 5, α 0.60, ortalama 6.27; eşik 0.99 / süre 8, α 0.30, ortalama 5.67; eşik 0.99 / süre 8, α 0.15, ortalama 2.40; eşik 0.95 / süre 5, α 0.30, ortalama 2.28; eşik 0.85 / süre 3, α 0.60, ortalama 1.60. α = 0 iken çarpan 4, kilit ne olursa olsun ortalama 0.
+
+Permütasyon: hücre ortalamalarının aralığı 20.30, p = 0.001.
+
+Çarpan 0'da kötü köşe, basamak 17.17, dağılım 17.17. Çarpan sıfır her iki kuralda da tavanı siler.
+
+Seçim açık ile baz arasında pratik uzama yok.
+
+Seçim − baz, dağılım: ortalama fark -0.60, medyan 0.00, uzama p = 0.9997.
+
+Küçük alacaklı payı, seçim − baz: medyan fark -0.0007, n = 60, tek yanlı p = 0.2286. Kötü − baz medyan farkı -0.023. Hücre medyanları 0.37–0.43.
+
+Dağılım, kötü köşede sektör yavaşlığı 10.9–16.4. Seçimde 2.6–18.2. Bazda en yavaş üç: Perakende 5.3, Diğer hizmet 4.9, Toptan 2.6.
+
+Firma sırası, dağılım, C şoku: kötü ile baz Spearman -0.107 (p = 0.129); seçim ile baz Spearman -0.354 (p = 2.05e-07).
+
+## Şok taraması, dağılım
+
+Dağılımda parametre kolu taranan pencerenin en yumuşak ucunda da açık: 1 sektör, kalan likidite 0.70, kötü−iyi ortalama 5.93. Anlamlı şok 20 / 20. Yirmi karşılaştırma ham p ile duruyor. Pencerenin içinde kapanış yok. Adlandırılan şoklar: yumusak: iyi 0.00, baz 0.00, kötü 8.48, seçim 0.00; c: iyi 0.00, baz 0.60, kötü 17.17, seçim 0.00; sert: iyi 0.00, baz 3.63, kötü 20.42, seçim 0.00.
+
+| Sektör | Kalan | Şiddet | İyi | Baz | Kötü | Seçim | Kötü−iyi | p | Kol |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 1 | 0.70 | 0.30 | 0.00 | 0.00 | 5.93 | 0.00 | 5.93 | 1.1e-09 | evet |
+| 1 | 0.55 | 0.45 | 0.00 | 0.00 | 6.93 | 0.00 | 6.93 | 3.59e-10 | evet |
+| 1 | 0.40 | 0.60 | 0.00 | 0.00 | 8.38 | 0.00 | 8.38 | 3.61e-10 | evet |
+| 2 | 0.70 | 0.60 | 0.00 | 0.00 | 5.17 | 0.00 | 5.17 | 1.15e-07 | evet |
+| 1 | 0.30 | 0.70 | 0.00 | 0.00 | 10.02 | 0.00 | 10.02 | 1.65e-10 | evet |
+| 1 | 0.20 | 0.80 | 0.00 | 0.02 | 11.17 | 0.00 | 11.17 | 1.11e-10 | evet |
+| 2 | 0.55 | 0.90 | 0.00 | 0.00 | 8.48 | 0.00 | 8.48 | 1.64e-09 | evet |
+| 3 | 0.70 | 0.90 | 0.00 | 0.00 | 7.88 | 0.00 | 7.88 | 1.53e-09 | evet |
+| 2 | 0.40 | 1.20 | 0.00 | 0.00 | 12.13 | 0.00 | 12.13 | 1.63e-10 | evet |
+| 4 | 0.70 | 1.20 | 0.00 | 0.00 | 8.78 | 0.00 | 8.78 | 3.5e-10 | evet |
+| 3 | 0.55 | 1.35 | 0.00 | 0.00 | 11.58 | 0.00 | 11.58 | 7.44e-11 | evet |
+| 2 | 0.30 | 1.40 | 0.00 | 0.00 | 13.98 | 0.00 | 13.98 | 1.07e-10 | evet |
+| 2 | 0.20 | 1.60 | 0.00 | 0.13 | 15.87 | 0.00 | 15.87 | 2.14e-11 | evet |
+| 3 | 0.40 | 1.80 | 0.00 | 0.12 | 15.52 | 0.00 | 15.52 | 1.53e-11 | evet |
+| 4 | 0.55 | 1.80 | 0.00 | 0.00 | 14.20 | 0.00 | 14.20 | 1.02e-11 | evet |
+| 3 | 0.30 | 2.10 | 0.00 | 0.60 | 17.17 | 0.00 | 17.17 | 9.95e-12 | evet |
+| 4 | 0.40 | 2.40 | 0.00 | 0.23 | 17.88 | 0.00 | 17.88 | 5.92e-12 | evet |
+| 3 | 0.20 | 2.40 | 0.00 | 1.60 | 18.93 | 0.00 | 18.93 | 5.89e-12 | evet |
+| 4 | 0.30 | 2.80 | 0.00 | 1.48 | 19.62 | 0.00 | 19.62 | 4.83e-12 | evet |
+| 4 | 0.20 | 3.20 | 0.00 | 3.63 | 20.42 | 0.00 | 20.42 | 4.22e-12 | evet |
+
+## Hangi hipotez hangi koşulda
+
+Parametre kolu heterojen limitte de açık: C şokunda kötü köşe iyiden pratik eşiğin üstünde uzun. Tam baskınlık kırıldı. Çarpan 4, herkese pozitif basamak verildiği tur 2'deki gibi bütün hücreleri sıfıra yapıştırmıyor. Sıfır çizgi kitlesi, yüksek çarpanın sistemi tek başına kapatmasını engelliyor. Seçim kuralı kendi tavanını 4 kata çıkarıyor ama sıfır çizgiyi doldurmuyor. Bu, bazdan daha uzun bir sistem tıkanması ve daha büyük bir küçük-alacaklı payını birlikte üretmedi. “Bedel zayıf halkaya akar” dağılımda da zayıf kaldı. Sıkı parametre ve seçim, küçük alacaklı payını 5 puan büyütmüyor.
+
+## Varsayımlar
+
+Tohum 20261010. Limit çekimi 20268010+koşu. Monte Carlo 60. Ufuk 24 periyot. 204 firma, 17 sektör. Ağ tur 2 ile aynı sentetik çizim.
+
+Seçim, firmanın kendi birim tavanını 4 katına çıkarır. Sıfır çizgiyi doldurmaz. α = 0, kilit eşiği 0,50, süre 1.
+
+Bloke periyot ve pratik uzama tur 2 ile aynı: yeni fatura tahsili < 0,70 veya sıkıntılı düğüm payı ≥ 0,25; uzama medyan ≥ 2, ya da ortalama ≥ 2 ve koşuların en az dörtte biri.
+
+Tekrar: `python3 odeme_zinciri.py`. Tur 2 tabloları `odeme_hucre.csv` ve `odeme_sok_esik.csv` içinde durur.
+
+Dosyalar: `odeme_limit_hucre.csv`, `odeme_limit_sok.csv`, `odeme_limit_kosu.csv`, `odeme_limit.png`, `odeme_limit_maliyet.png`, `odeme_limit_sonuc.json`.
+
+
+<!-- TUR2 -->
+
 # Ödeme zinciri, tur 2: şok eşiği ve yerel seçim
 
 Sentetik ağ. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir.

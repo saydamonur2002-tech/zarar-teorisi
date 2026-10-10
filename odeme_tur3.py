@@ -220,6 +220,28 @@ def grafik(tarama, tablo, patika, basamak_c, dosya: Path) -> None:
     plt.close(fig)
 
 
+def banka4_cumle(tablo: pd.DataFrame) -> str:
+    sert = tablo[(tablo.banka == 4) & (tablo.kalicilik_ortalama >= 1.0)].sort_values(
+        "kalicilik_ortalama", ascending=False
+    )
+    if sert.empty:
+        return "Çarpan 4 olan hücrelerin hepsinde ortalama kalıcılık 1'in altında."
+    parca = [
+        f"eşik {r.kilit_esik:.2f} / süre {int(r.kilit_sure)}, α {r.gecikme_alpha:.2f}, ortalama {r.kalicilik_ortalama:.2f}"
+        for r in sert.itertuples()
+    ]
+    sifir_alpha = tablo[(tablo.banka == 4) & (np.isclose(tablo.gecikme_alpha, 0.0))]
+    ek = ""
+    if len(sifir_alpha) and float(sifir_alpha.kalicilik_ortalama.max()) < 1e-9:
+        ek = " α = 0 iken çarpan 4, kilit ne olursa olsun ortalama 0."
+    return (
+        "Çarpan 4'te ortalaması 1 ve üstü olan hücreler: "
+        + "; ".join(parca)
+        + "."
+        + ek
+    )
+
+
 def rapor_metni(sonuc, tarama, tablo) -> str:
     k = sonuc["karar"]
     e = sonuc["erisim"]
@@ -270,6 +292,8 @@ def rapor_metni(sonuc, tarama, tablo) -> str:
         f"Çarpan 0, en yüksek hücre ortalaması {k['banka0_max']:.2f}. "
         f"Çarpan 4'te ortalama aralık {k['banka4_aralik']:.2f}; çarpan 0'da {k['banka0_aralik']:.2f}.",
         "",
+        banka4_cumle(tablo),
+        "",
         f"Permütasyon: hücre ortalamalarının aralığı {k['perm_aralik']:.2f}, p = {k['perm_p']:.3f}.",
         "",
         f"Çarpan 0'da kötü köşe, basamak {k['basamak_kotu']:.2f}, dağılım {k['dagilim_kotu']:.2f}. "
@@ -280,7 +304,7 @@ def rapor_metni(sonuc, tarama, tablo) -> str:
         f"Seçim − baz, dağılım: ortalama fark {k['secim_ortalama_fark']:.2f}, medyan {k['secim_medyan_fark']:.2f}, "
         f"uzama p = {k['secim_p_uzama']:.4g}.",
         "",
-        f"Küçük alacaklı payı, seçim − baz: medyan fark {k['pay_medyan_fark']}, n = {k['pay_n']}, "
+        f"Küçük alacaklı payı, seçim − baz: medyan fark {k['pay_medyan_fark'] if k['pay_medyan_fark'] is None else float(k['pay_medyan_fark']):.4f}, n = {k['pay_n']}, "
         f"tek yanlı p = {k['pay_p']:.4g}. Kötü − baz medyan farkı {k['pay_kotu_baz']:.3f}. "
         f"Hücre medyanları {k['pay_min']:.2f}–{k['pay_max']:.2f}.",
         "",
