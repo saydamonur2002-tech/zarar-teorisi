@@ -1,3 +1,58 @@
+# Ödeme zinciri, tur 11: lider ve üst %10 mevduat dağıtımı
+
+Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım. Girdi-çıktı ve limit serisi yok.
+
+## Hüküm
+
+Kontrol şoksuz kalıcılık 0.00, reel 0.000. Lider ve üst %10 dağıtım kalıcılığı arasında kayıtlı anlamlı büyük fark yok; 'üst %10'un tamamı gerekir' iddiası elenmedi. Dağıtımın mahsup bloke'sini kapatması kayıtlı medyan≥2 eşiğiyle desteklenmedi. Mev 0,70: lider ve üst %10 dağıtımı aynı dinamik kalıcılığı veriyor (ort. 0). Mahsup+dağıt kolunda reel ve küçük fazla 0,05 altında; FX/zayıf halka mahsupla kapanmıyor elenmedi.
+
+## Varsayımlar
+
+150 firma, servis/alacak eşit. Mevduat üst %10: 0,10 / 0,40 / 0,70. MC 50, tohum 20276010+s. FX çevrilemez, π = 0.0225, valf 0.25. Mahsup+dağıtım: mevduat payı dağıtılır, sonra optimal mahsup.
+
+Kontrol şoksuz: kalıcılık 0.00, reel 0.000.
+
+Tek düğüm yeter (lider vs üst %10 fark kuralı): False. Üst %10'un tamamı gerekir (elenmedi): True. Dağıtım mahsup bloke'sini kapatır: False. FX/zayıf halka mahsupla kapanmıyor (elenmedi): True.
+
+## Hücre × kol
+
+| Hücre | Kol | Brüt önce | Brüt sonra | Kalıcılık | Reel | Küçük yavaş | Fazla medyan | P(fazla≥0,05) | Temerrüt | Kilitli | Batık |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| esit | yok | 3.09 | 3.09 | 0.00 | 0.454 | 0.000 | 0.022 | 0.00 | 0.0 | 0.0 | 0.0 |
+| esit | mahsup | 3.09 | 2.07 | 0.00 | 0.000 | 0.000 | nan | nan | 0.0 | 0.0 | 0.0 |
+| esit | mahsup_lider | 3.09 | 2.07 | 0.00 | 0.000 | 0.000 | nan | nan | 1.0 | 0.0 | 1.0 |
+| esit | mahsup_ust10 | 3.09 | 2.07 | 0.00 | 0.000 | 0.000 | nan | nan | 15.0 | 0.0 | 15.0 |
+| mev40 | yok | 3.09 | 3.09 | 0.00 | 0.490 | 0.000 | 0.035 | 0.00 | 0.0 | 0.0 | 0.0 |
+| mev40 | mahsup | 3.09 | 2.07 | 0.00 | 0.000 | 0.000 | nan | nan | 0.0 | 0.0 | 0.0 |
+| mev40 | mahsup_lider | 3.09 | 2.07 | 0.00 | 0.000 | 0.000 | nan | nan | 1.0 | 0.0 | 1.0 |
+| mev40 | mahsup_ust10 | 3.09 | 2.07 | 0.00 | 0.000 | 0.000 | nan | nan | 15.0 | 0.0 | 15.0 |
+| mev70 | yok | 3.09 | 3.09 | 0.00 | 0.558 | 0.000 | 0.033 | 0.00 | 59.7 | 17.2 | 42.6 |
+| mev70 | mahsup | 3.09 | 2.07 | 1.20 | 0.000 | 0.052 | nan | nan | 50.7 | 0.0 | 50.7 |
+| mev70 | mahsup_lider | 3.09 | 2.07 | 0.00 | 0.000 | 0.000 | nan | nan | 0.0 | 0.0 | 0.0 |
+| mev70 | mahsup_ust10 | 3.09 | 2.07 | 0.00 | 0.000 | 0.000 | nan | nan | 15.0 | 0.0 | 15.0 |
+
+## Lider − üst %10 dağıtım (kalıcılık, eşli Wilcoxon)
+
+- **esit**: medyan fark (lider−üst10) 0.00, p = 1.
+- **mev40**: medyan fark (lider−üst10) 0.00, p = 1.
+- **mev70**: medyan fark (lider−üst10) 0.00, p = 1.
+
+## Mahsup+dağıt − mahsup (kalıcılık)
+
+- **esit / lider**: medyan Δkal 0.00, p = 1.
+- **esit / üst10**: medyan Δkal 0.00, p = 1.
+- **mev40 / lider**: medyan Δkal 0.00, p = 1.
+- **mev40 / üst10**: medyan Δkal 0.00, p = 1.
+- **mev70 / lider**: medyan Δkal 0.00, p = 0.006937.
+- **mev70 / üst10**: medyan Δkal 0.00, p = 0.006937.
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_kons11_hucre.csv`, `odeme_kons11.png`, `odeme_kons11_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, tur 10: mevduat konsantrasyonu ve mahsup
 
 Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım. Girdi-çıktı ve limit serisi yok.
