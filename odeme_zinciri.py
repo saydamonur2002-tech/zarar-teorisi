@@ -1728,6 +1728,13 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    from odeme_kons8 import main_kons8
+    import os
 
-    main_kons8()
+    if os.environ.get("ODEME_MAHSUP"):
+        from odeme_mahsup import main as main_mahsup
+
+        main_mahsup()
+    else:
+        from odeme_kons8 import main_kons8
+
+        main_kons8()
