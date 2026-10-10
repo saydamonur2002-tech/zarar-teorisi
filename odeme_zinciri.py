@@ -1735,6 +1735,6 @@ if __name__ == "__main__":
 
         main_mahsup()
     else:
-        from odeme_kons11 import main_kons11
+        from odeme_kons12 import main_kons12
 
-        main_kons11()
+        main_kons12()

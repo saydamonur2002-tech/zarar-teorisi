@@ -1,3 +1,48 @@
+# Ödeme zinciri, tur 12: Gini ve kalıcılık
+
+Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım.
+
+## Hüküm
+
+Kontrol: kalıcılık 0.00, reel 0.000, eşit Gini 0.000. Spearman Gini–kalıcılık (mahsup kolları) 0.252 (p = 6e-08). Küçük ΔGini + büyük kalıcılık düşüşü birlikte kayıtlı eşikte çıkmadı. Lider vs üst %10: Gini farkı ≥0,20, kalıcılık farkı anlamsız — Gini düşüşünden çok tek düğüm payı belirliyor. Mahsup+dağıt: reel ve fazla 0,05 altında; FX/zayıf halka mahsupla kapanmıyor elenmedi.
+
+## Varsayımlar
+
+150 firma mevduat Gini. Baz Gini = ham çekim (yok kol). ΔGini = Gini_kol − Gini_baz. MC 50, tohum 20277010+s. FX çevrilemez, π = 0.0225.
+
+Kontrol şoksuz: kalıcılık 0.00, reel 0.000, Gini(eşit) 0.000.
+
+Spearman Gini–kalıcılık (mahsup kolları): 0.252 (p = 6.004e-08).
+Küçük ΔGini bloke kırar: False. Gini değil tek düğüm payı: True. FX/zayıf halka elenmedi: True.
+
+| Hücre | Kol | Gini | ΔGini | Brüt→sonra | Kal | Reel | Küçük yavaş | Fazla med |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| esit | yok | 0.000 | 0.000 | 3.09 | 0.00 | 0.454 | 0.000 | 0.022 |
+| esit | mahsup | 0.000 | 0.000 | 2.07 | 0.00 | 0.000 | 0.000 | — |
+| esit | mahsup_lider | 0.007 | 0.007 | 2.07 | 0.00 | 0.000 | 0.000 | — |
+| esit | mahsup_ust10 | 0.100 | 0.100 | 2.07 | 0.00 | 0.000 | 0.000 | — |
+| mev40 | yok | 0.451 | 0.000 | 3.09 | 0.00 | 0.490 | 0.000 | 0.035 |
+| mev40 | mahsup | 0.451 | 0.000 | 2.07 | 0.00 | 0.000 | 0.000 | — |
+| mev40 | mahsup_lider | 0.382 | -0.069 | 2.07 | 0.00 | 0.000 | 0.000 | — |
+| mev40 | mahsup_ust10 | 0.238 | -0.213 | 2.07 | 0.00 | 0.000 | 0.000 | — |
+| mev70 | yok | 0.749 | 0.000 | 3.09 | 0.00 | 0.558 | 0.000 | 0.033 |
+| mev70 | mahsup | 0.749 | 0.000 | 2.07 | 1.44 | 0.000 | 0.050 | — |
+| mev70 | mahsup_lider | 0.514 | -0.234 | 2.07 | 0.00 | 0.000 | 0.000 | — |
+| mev70 | mahsup_ust10 | 0.211 | -0.537 | 2.07 | 0.00 | 0.000 | 0.000 | — |
+
+## Lider − üst %10 (eşli)
+
+- **esit**: ΔGini fark -0.093, Δkal 0.00, p_kal = 1.
+- **mev40**: ΔGini fark 0.145, Δkal 0.00, p_kal = 1.
+- **mev70**: ΔGini fark 0.304, Δkal 0.00, p_kal = 1.
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_kons12_hucre.csv`, `odeme_kons12.png`, `odeme_kons12_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, tur 11: lider ve üst %10 mevduat dağıtımı
 
 Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım. Girdi-çıktı ve limit serisi yok.
