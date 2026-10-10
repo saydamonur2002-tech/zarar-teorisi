@@ -1,0 +1,56 @@
+{
+  "uyari": "Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım. Girdi-çıktı ve limit serisi yok.",
+  "ozet": "Kontrol şoksuz kalıcılık 0.00, reel 0.000. Spearman mevduat–reel (mahsupsuz) 0.961 (p = 2.45e-84). Mevduat 0,40 → 0,70 fark medyan 0.00, p = nan; konsantrasyon–kalıcılık iddiası bu turda desteklenmedi. Lider mevduat dağıtımı: önceden kayıtlı medyan ≥ 2 eşiği tutmadı (mev70 mahsup ort. kal 2.32 → lider 0.00, eşli p = 5.24e-05). Mahsup kolunda reel kayıp ve küçük fazla 0,05 altında; 'FX/zayıf halka mahsupla kapanmıyor' elenmedi.",
+  "karar": {
+    "soksuz_kal": 0.0,
+    "soksuz_reel": 0.0,
+    "mev70_kal_mahsup": 2.32,
+    "mev70_kal_lider": 0.0,
+    "sp_mev_kal": null,
+    "sp_mev_kal_p": null,
+    "sp_mev_reel": 0.9607837042319841,
+    "sp_mev_reel_p": 2.452066460866521e-84,
+    "mev_destek": false,
+    "mev_kal_fark": 0.0,
+    "mev_kal_p": NaN,
+    "lider_destek": false,
+    "lider_fark": {
+      "esit": {
+        "kal_med": 0.0,
+        "kal_p": 1.0,
+        "reel_med": 0.0,
+        "reel_p": 1.0
+      },
+      "mev40": {
+        "kal_med": 0.0,
+        "kal_p": 1.0,
+        "reel_med": 0.0,
+        "reel_p": 1.0
+      },
+      "mev70": {
+        "kal_med": 0.0,
+        "kal_p": 5.237286781893232e-05,
+        "reel_med": 0.0,
+        "reel_p": 1.0
+      }
+    },
+    "fx_zayif_elenmedi": true
+  },
+  "kontrol": {
+    "soksuz": {
+      "kal": 0.0,
+      "yerel": 0.0,
+      "reel": 0.0,
+      "fazla": NaN,
+      "pay": NaN,
+      "defter": 0.04723686983379,
+      "yk_med": 0.0,
+      "yb_med": 0.0,
+      "yavas_fark": 0.0,
+      "od_ku_pay": NaN
+    }
+  },
+  "pi_aylik": 0.02252836631957411,
+  "n_mc": 50,
+  "seed0": 20275010
+}

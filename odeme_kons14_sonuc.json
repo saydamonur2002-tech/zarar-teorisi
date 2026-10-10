@@ -1,0 +1,21 @@
+{
+  "uyari": "Lider sentetik; TCMB sektör payı. Kenar varsayım.",
+  "ozet": "Mev 0,70: servis 0,10→0,70 kal fark (FX çevrilebilir) medyan 12.00, p = 1.85e-09; FX çevrilemez 3.00, p = 7.51e-10. Servis konsantrasyonu desteklenir. Mevduat tek başına (servis eşit) kal çevrilebilir mev70 = 0.00. Lider servis sıfır: kal fark 0.00, p = 1 — elenir.",
+  "karar": {
+    "srv_baglayici": true,
+    "srv_fark_roll": 12.0,
+    "srv_p_roll": 1.8486720287815457e-09,
+    "srv_fark_fx": 3.0,
+    "srv_p_fx": 7.51415554817138e-10,
+    "sp_srv_kal": 0.7064710041408533,
+    "sp_srv_kal_p": 1.5033294261507556e-31,
+    "sp_mev_kal": null,
+    "sp_mev_kal_p": null,
+    "mev70_eq_kal_fxroll": 0.0,
+    "lider_dkal": 0.0,
+    "lider_p": 1.0,
+    "lider_srv_belirler": false
+  },
+  "n_mc": 50,
+  "seed0": 20275010
+}
