@@ -1748,6 +1748,6 @@ if __name__ == "__main__":
 
         main_mahsup()
     else:
-        from odeme_faiz13 import main_faiz13
+        from odeme_kons14 import main_kons14
 
-        main_faiz13()
+        main_kons14()
