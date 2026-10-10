@@ -133,14 +133,19 @@ def hukum(k) -> tuple[str, str]:
         parca.append("Küçük alacaklının reel kayıp payı defter payının en az 5 puan üstünde.")
     if k.get("fx_reel"):
         parca.append("FX hattını iade etmek reel fatura kaybını en az 5 puan düşürür.")
-    if k.get("ikame_reel"):
+    if k.get("ikame_reel_cozer"):
         parca.append("İthal payını sıfırlamak reel fatura kaybını en az 5 puan düşürür.")
+    if k.get("uzama", 0) <= -2 and not k.get("kaynak_reel"):
+        parca.append(
+            "TL+FX şoku, TL-yalnız köşeye göre kalıcılığı kısaltıyor. Teslimat düşünce TL yükümlülüğü de küçülüyor. "
+            "Reel fatura kaybı bu kısalmanın içinde değil, ayrı hesapta duruyor."
+        )
     hipotez = " ".join(parca)
     if k["silim_gerekli_degil"] and k["kaynak_reel"] and k["zayif"] and not k["soksuz_uyumsuz"]:
         ozet = (
             "TL+FX şokunda enflasyon valfi kalıcılığı ve reel fatura kaybını pratik eşiğin üstünde kısaltmıyor. "
             "Silim yükü yazabilir; reel tıkanmayı çözdüğü desteklenmiyor. "
-            "Kısıt eklenince kalıcılık uzuyor. Çözen kanal rapordaki iade ve ikame karşılaştırmasında."
+            "FX hattını iade etmek veya ithal payını sıfırlamak reel kaybı kapatır."
         )
     else:
         ozet = hipotez
@@ -392,7 +397,7 @@ def main_tur5() -> None:
         "ikame_cozer": bool(ikame_test["valf"]),
         "zayif": zayif,
         "fx_reel": fx_reel,
-        "ikame_reel": ikame_reel,
+        "ikame_reel_cozer": ikame_reel,
         "tl_kapali": float(tl_k[:, oz.F_KAL].mean()),
         "tl_acik": float(tl_a[:, oz.F_KAL].mean()),
         "tl_kisalma": tl_test["fark_ortalama"],

@@ -1,3 +1,75 @@
+# Ödeme zinciri, tur 5: reel kısıt
+
+Sentetik ağ ve sentetik ithal payları. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir.
+
+## Hüküm
+
+Reel kısıt yokken kötü köşede kalıcılık uzun ve valf onu pratik eşiğin üstünde kısaltmıyor. TL+FX şokunda valf ne kalıcılığı ne reel kaybı pratik eşiğin üstünde kısaltıyor. Enflasyon siliminin reel tıkanma için gerekli olduğu desteklenmiyor. Reel katmanın kalıcılığı uzattığı iddia bu eşikte kapanmadı. Ne valf ne FX iadesi ne ithal ikamesi kalıcılığı pratik eşiğin üstünde düşürüyor. Küçük alacaklının reel kayıp payı defter payını 5 puan aşmıyor. Zayıf halka bu kanalda da zayıf. FX hattını iade etmek reel fatura kaybını en az 5 puan düşürür. İthal payını sıfırlamak reel fatura kaybını en az 5 puan düşürür. TL+FX şoku, TL-yalnız köşeye göre kalıcılığı kısaltıyor. Teslimat düşünce TL yükümlülüğü de küçülüyor. Reel fatura kaybı bu kısalmanın içinde değil, ayrı hesapta duruyor.
+
+## Kural
+
+İthal payları sentetiktir. Normal FX hattı firmanın kendi bir aylık ithal gereksinimidir. FX şokunda şoklanan firmaların hattı × 0,30. TL tahsilatı FX’e dönmez. Valf yalnız TL alacağını eritir; FX hizmetini ve ithal gereksinimini eritmez. Kur geçişkenliği birincilde 0. Üretim, FX kapsamı ile gelen yerli teslimatın minimumudur. Tahsil gerçekleşen faturaya göredir. Reel kayıp bloke sayacına yazılmaz.
+
+Şoksuz, kısıt yok: kalıcılık 0.00. Şoksuz, kısıt var: kalıcılık 0.00, reel kayıp oranı 0.0000.
+
+## C şoku, kötü köşe
+
+TL yalnız, valf kapalı / açık: 17.46 / 17.46. Kısalma 0.00, p = 1.
+
+TL+FX, valf kapalı / açık: 8.12 / 8.12. Kısalma 0.00, p = 1.
+
+Reel kayıp oranı, TL yalnız 0.0000, TL+FX kapalı 0.3783, valf açık 0.3783. Fark (kapalı − açık) 0.0000.
+
+FX açığı, TL+FX kapalı 0.164. Nominal erime oranı, valf açık 0.0761.
+
+FX hattı iade: kalıcılık 18.34, reel kayıp 0.0000, kapalı FX’e göre kısalma -10.22, p = 1.
+
+İthal ikamesi (pay 0): kalıcılık 17.46, reel kayıp 0.0000, kısalma -9.34, p = 1.
+
+Kur geçişkenliği 1, valf açık: kalıcılık 8.12, reel kayıp 0.3783. Birincil hükme girmez.
+
+Kapasite × 0,70, FX şoku yok, valf kapalı: kalıcılık 10.24, reel kayıp 0.1718. Birincil hükme girmez.
+
+Küçük alacaklının reel kayıp payı 0.403, defter payı 0.401, fazla medyan 0.001.
+
+İyi köşe, TL+FX, valf kapalı / açık: kalıcılık 0.00 / 0.00, reel kayıp 0.3783 / 0.3783, valf periyodu 0.00.
+
+## Şoklar, kötü köşe
+
+| Şok | TL kapalı | TL açık | FX kapalı | FX açık | FX reel | İade |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| yumusak | 8.76 | 8.76 | 6.74 | 6.74 | 0.334 | 9.62 |
+| c | 17.46 | 17.46 | 8.12 | 8.12 | 0.378 | 18.34 |
+| sert | 20.38 | 20.38 | 11.12 | 11.06 | 0.424 | 20.74 |
+
+## FX hattı ayı, C, kötü köşe, TL+FX
+
+| Ay | Valf | Kalıcılık | Reel kayıp | FX açığı |
+| ---: | --- | ---: | ---: | ---: |
+| 0.50 | kapalı | 0.00 | 0.689 | 0.582 |
+| 0.50 | açık | 0.00 | 0.689 | 0.582 |
+| 1.00 | kapalı | 8.12 | 0.378 | 0.164 |
+| 1.00 | açık | 8.12 | 0.378 | 0.164 |
+| 2.00 | kapalı | 11.66 | 0.216 | 0.094 |
+| 2.00 | açık | 11.66 | 0.216 | 0.094 |
+
+## Hangi hipotez hangi koşulda
+
+Reel kısıt yokken kötü köşede kalıcılık uzun ve valf onu pratik eşiğin üstünde kısaltmıyor. TL+FX şokunda valf ne kalıcılığı ne reel kaybı pratik eşiğin üstünde kısaltıyor. Enflasyon siliminin reel tıkanma için gerekli olduğu desteklenmiyor. Reel katmanın kalıcılığı uzattığı iddia bu eşikte kapanmadı. Ne valf ne FX iadesi ne ithal ikamesi kalıcılığı pratik eşiğin üstünde düşürüyor. Küçük alacaklının reel kayıp payı defter payını 5 puan aşmıyor. Zayıf halka bu kanalda da zayıf. FX hattını iade etmek reel fatura kaybını en az 5 puan düşürür. İthal payını sıfırlamak reel fatura kaybını en az 5 puan düşürür. TL+FX şoku, TL-yalnız köşeye göre kalıcılığı kısaltıyor. Teslimat düşünce TL yükümlülüğü de küçülüyor. Reel fatura kaybı bu kısalmanın içinde değil, ayrı hesapta duruyor.
+
+## Varsayımlar
+
+Tohum 20261010. Limit çekimi 20268010. Monte Carlo 50. 204 firma, 17 sektör. Banka tavanı tur 3 dağılımı. Valf eşiği 0,25, π = 0,30.
+
+İthal payı sektör sırasında: 0,12, 0,28, 0,22, 0,35, 0,55, 0,48, 0,50, 0,52, 0,45, 0,18, 0,15, 0,08, 0,30, 0,20, 0,05, 0,06, 0,08. FX hizmeti 0,05 × ithal payı × sözleşme satışı. Üç Leontief turu. Kapasite birincilde 1.
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_reel_hucre.csv`, `odeme_reel.png`, `odeme_reel_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, tur 4: enflasyon kanalı
 
 Sentetik ağ. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir.

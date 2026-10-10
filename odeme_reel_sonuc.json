@@ -1,0 +1,217 @@
+{
+  "uyari": "Sentetik ağ ve sentetik ithal payları. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir.",
+  "ozet": "Reel kısıt yokken kötü köşede kalıcılık uzun ve valf onu pratik eşiğin üstünde kısaltmıyor. TL+FX şokunda valf ne kalıcılığı ne reel kaybı pratik eşiğin üstünde kısaltıyor. Enflasyon siliminin reel tıkanma için gerekli olduğu desteklenmiyor. Reel katmanın kalıcılığı uzattığı iddia bu eşikte kapanmadı. Ne valf ne FX iadesi ne ithal ikamesi kalıcılığı pratik eşiğin üstünde düşürüyor. Küçük alacaklının reel kayıp payı defter payını 5 puan aşmıyor. Zayıf halka bu kanalda da zayıf. FX hattını iade etmek reel fatura kaybını en az 5 puan düşürür. İthal payını sıfırlamak reel fatura kaybını en az 5 puan düşürür. TL+FX şoku, TL-yalnız köşeye göre kalıcılığı kısaltıyor. Teslimat düşünce TL yükümlülüğü de küçülüyor. Reel fatura kaybı bu kısalmanın içinde değil, ayrı hesapta duruyor.",
+  "hipotez": "Reel kısıt yokken kötü köşede kalıcılık uzun ve valf onu pratik eşiğin üstünde kısaltmıyor. TL+FX şokunda valf ne kalıcılığı ne reel kaybı pratik eşiğin üstünde kısaltıyor. Enflasyon siliminin reel tıkanma için gerekli olduğu desteklenmiyor. Reel katmanın kalıcılığı uzattığı iddia bu eşikte kapanmadı. Ne valf ne FX iadesi ne ithal ikamesi kalıcılığı pratik eşiğin üstünde düşürüyor. Küçük alacaklının reel kayıp payı defter payını 5 puan aşmıyor. Zayıf halka bu kanalda da zayıf. FX hattını iade etmek reel fatura kaybını en az 5 puan düşürür. İthal payını sıfırlamak reel fatura kaybını en az 5 puan düşürür. TL+FX şoku, TL-yalnız köşeye göre kalıcılığı kısaltıyor. Teslimat düşünce TL yükümlülüğü de küçülüyor. Reel fatura kaybı bu kısalmanın içinde değil, ayrı hesapta duruyor.",
+  "karar": {
+    "soksuz_uyumsuz": false,
+    "tekrar": true,
+    "silim_gerekli_degil": true,
+    "valf_kalicilik": false,
+    "valf_reel": false,
+    "kaynak_reel": false,
+    "fx_cozer": false,
+    "ikame_cozer": false,
+    "zayif": true,
+    "fx_reel": true,
+    "ikame_reel": 0.0,
+    "tl_kapali": 17.46,
+    "tl_acik": 17.46,
+    "tl_kisalma": 0.0,
+    "tl_p": 1.0,
+    "fx_kapali": 8.12,
+    "fx_acik": 8.12,
+    "fx_kisalma": 0.0,
+    "fx_p": 1.0,
+    "reel_tl": 0.0,
+    "reel_fx": 0.3782533585677348,
+    "reel_fx_acik": 0.3782533585677348,
+    "reel_dusme": 0.0,
+    "reel_p": 1.0,
+    "fx_acigi": 0.16373025486902829,
+    "erime_fx": 0.07608164470763575,
+    "iade": 18.34,
+    "iade_reel": 0.0,
+    "iade_kisalma": -10.22,
+    "iade_p": 0.9999999961122088,
+    "ikame": 17.46,
+    "ikame_kisalma": -9.34,
+    "ikame_p": 0.9999999514389163,
+    "gecis": 8.12,
+    "gecis_reel": 0.3782533585677348,
+    "kapasite": 10.24,
+    "kapasite_reel": 0.17183768786440137,
+    "kucuk_reel_pay": 0.4033466022430084,
+    "defter": 0.40114392962458895,
+    "fazla_medyan": 0.0012494667795459047,
+    "iyi_kapali": 0.0,
+    "iyi_acik": 0.0,
+    "iyi_reel": 0.3782533585677348,
+    "iyi_reel_acik": 0.3782533585677348,
+    "iyi_pi": 0.0,
+    "uzama": -9.34,
+    "uzama_p": 0.9999999514389163,
+    "ikame_reel_cozer": true
+  },
+  "sok": {
+    "yumusak": {
+      "tl_kapali": {
+        "kalicilik": 8.76,
+        "reel": 0.0,
+        "erime": 0.0,
+        "fx_acik": 0.0,
+        "pi": 0.0
+      },
+      "tl_acik": {
+        "kalicilik": 8.76,
+        "reel": 0.0,
+        "erime": 0.15221775207506286,
+        "fx_acik": 0.0,
+        "pi": 7.3
+      },
+      "fx_kapali": {
+        "kalicilik": 6.74,
+        "reel": 0.33421733804688897,
+        "erime": 0.0,
+        "fx_acik": 0.13248219470236602,
+        "pi": 0.0
+      },
+      "fx_acik": {
+        "kalicilik": 6.74,
+        "reel": 0.33421733804688897,
+        "erime": 0.06740977164118105,
+        "fx_acik": 0.13248219470236602,
+        "pi": 4.12
+      },
+      "fx_iade": {
+        "kalicilik": 9.62,
+        "reel": 0.0,
+        "erime": 0.0,
+        "fx_acik": 0.0,
+        "pi": 0.0
+      }
+    },
+    "c": {
+      "tl_kapali": {
+        "kalicilik": 17.46,
+        "reel": 0.0,
+        "erime": 0.0,
+        "fx_acik": 0.0,
+        "pi": 0.0
+      },
+      "tl_acik": {
+        "kalicilik": 17.46,
+        "reel": 0.0,
+        "erime": 0.35383600652635727,
+        "fx_acik": 0.0,
+        "pi": 15.66
+      },
+      "fx_kapali": {
+        "kalicilik": 8.12,
+        "reel": 0.3782533585677348,
+        "erime": 0.0,
+        "fx_acik": 0.16373025486902829,
+        "pi": 0.0
+      },
+      "fx_acik": {
+        "kalicilik": 8.12,
+        "reel": 0.3782533585677348,
+        "erime": 0.07608164470763575,
+        "fx_acik": 0.16373025486902829,
+        "pi": 5.16
+      },
+      "fx_iade": {
+        "kalicilik": 18.34,
+        "reel": 0.0,
+        "erime": 0.0,
+        "fx_acik": 0.0,
+        "pi": 0.0
+      }
+    },
+    "sert": {
+      "tl_kapali": {
+        "kalicilik": 20.38,
+        "reel": 0.0,
+        "erime": 0.0,
+        "fx_acik": 0.0,
+        "pi": 0.0
+      },
+      "tl_acik": {
+        "kalicilik": 20.38,
+        "reel": 0.0,
+        "erime": 0.41104333133741533,
+        "fx_acik": 0.0,
+        "pi": 18.52
+      },
+      "fx_kapali": {
+        "kalicilik": 11.12,
+        "reel": 0.4235129209188043,
+        "erime": 0.0,
+        "fx_acik": 0.19667964714239405,
+        "pi": 0.0
+      },
+      "fx_acik": {
+        "kalicilik": 11.06,
+        "reel": 0.4235129209188043,
+        "erime": 0.09269260298193022,
+        "fx_acik": 0.19667964714239405,
+        "pi": 6.98
+      },
+      "fx_iade": {
+        "kalicilik": 20.74,
+        "reel": 0.0,
+        "erime": 0.0,
+        "fx_acik": 0.0,
+        "pi": 0.0
+      }
+    }
+  },
+  "ay_tablo": [
+    {
+      "ay": 0.5,
+      "valf": false,
+      "kalicilik": 0.0,
+      "reel": 0.6891266792838673,
+      "acik": 0.5818651274345141
+    },
+    {
+      "ay": 0.5,
+      "valf": true,
+      "kalicilik": 0.0,
+      "reel": 0.6891266792838673,
+      "acik": 0.5818651274345141
+    },
+    {
+      "ay": 1.0,
+      "valf": false,
+      "kalicilik": 8.12,
+      "reel": 0.3782533585677348,
+      "acik": 0.16373025486902829
+    },
+    {
+      "ay": 1.0,
+      "valf": true,
+      "kalicilik": 8.12,
+      "reel": 0.3782533585677348,
+      "acik": 0.16373025486902829
+    },
+    {
+      "ay": 2.0,
+      "valf": false,
+      "kalicilik": 11.66,
+      "reel": 0.21614477632441986,
+      "acik": 0.09356014563944472
+    },
+    {
+      "ay": 2.0,
+      "valf": true,
+      "kalicilik": 11.66,
+      "reel": 0.21614477632441986,
+      "acik": 0.09356014563944472
+    }
+  ],
+  "soksuz_tl": 0.0,
+  "soksuz_reel": 0.0,
+  "soksuz_reel_kayip": 0.0,
+  "n_mc": 50,
+  "tohum": 20261010
+}
