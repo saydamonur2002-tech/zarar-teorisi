@@ -141,6 +141,43 @@ KAP ve TCMB kalibrasyonu yoktur.
 
   Soksuz, birincil valf: kalicilik >= 1 veya erime > 0 ise kanal duragan
   akisla uyumsuz isaretlenir. Esik ve pi sonuca gore ayarlanmaz.
+
+Tur 5 (reel kisit), sonuc gorulmeden. Paylar sentetiktir; TCMB/KAP/stok-akis
+kalibrasyonu yoktur. Banka tavani tur 3 dagilimidir (sifir cizgi kitlesi var).
+Banka carpani 0 bu dagilimi siler.
+
+  Ithal payi, sektor sirasiyla: 0.12, 0.28, 0.22, 0.35, 0.55, 0.48, 0.50,
+  0.52, 0.45, 0.18, 0.15, 0.08, 0.30, 0.20, 0.05, 0.06, 0.08.
+  FX hatti normalde fx_ay * firmanin kendi ithal gereksinimi. Birincil fx_ay=1.
+  FX sokunda soklanan firmalarin hatti x 0.30. TL tahsilati FX'e donusmez.
+  FX borc hizmeti her periyot 0.05 * ithal payi * sozlesme satisi, dis alacakliya,
+  TL likiditeden. Valf bu hizmeti eritmez. Kur geciskenligi birincilde 0.
+  Uretim, FX kapsami ile gelen yerli teslimatin minimumu (3 Leontief turu).
+  Gerceklesen fatura w0 * g_tedarikci. Tahsil, gerceklesen faturaya gore;
+  tam odeme tahsil 1'dir. Reel kayip ayri hesaptir, bloke sayacina yazilmaz.
+  Kapasite tavani birincilde 1.
+
+  Birincil valf tur 4 ile ayni: esik 0.25, pi 0.30. Kose: kotu alpha 0.60 banka 0,
+  iyi alpha 0 banka 4, kilit orta. Sok C: 3 sektor, TL likidite x 0.30.
+
+  Tekrar: reel kisit yokken kotu kosede valf kaliciligi pratik esikle kisaltmaz
+  ve kalicilik uzundur (ortalama >= 10).
+
+  Silim gerekli degil: TL+FX sokunda, kotu kosede, valf acik kapaliya gore
+  kaliciligi pratik esikle kisaltmiyor VE reel kayip orani (kayip / (V0*T))
+  en az 0.05 dusmuyor. O zaman "enflasyon silimi gerekliydi" desteklenmez.
+
+  Reel katman kaynak: tekrar saglanir, TL+FX kotu kose TL-yalniz kotu koseden
+  pratik esikle uzun, ve valf bu uzamayi kapatmiyor.
+
+  Kanal: FX hatti iade (carpan 1) veya ithal ikamesi (pay 0) kaliciligi
+  pratik esikle kisaltiyorsa o kanal cozer. Valf kisaltiyorsa o da yazilir.
+  Reel kayip dusup kalicilik dusmuyorsa kanal yalnizca reel kaydi kapatir.
+
+  Zayif halka: kucuk alacaklinin reel kayip payi eksi defter payi medyani < 0.05.
+
+  Soksuz, fx_ay=1, valf kapali: kalicilik >= 1 veya reel kayip orani > 0.01 ise
+  katman duragan akisla uyumsuz isaretlenir. Pay ve fx_ay sonuca gore ayarlanmaz.
 """
 
 from __future__ import annotations
@@ -225,7 +262,15 @@ F_M_KU, F_M_BU, F_M_TOP, F_M_B2K = 9, 10, 11, 12
 F_Y_KU, F_Y_BU, F_Y_DIS, F_Y_SOK = 13, 14, 15, 16
 F_HACIM, F_KILPAY, F_ARREAR = 17, 18, 19
 F_PI_N, F_ER_TOP, F_ER_KU, F_ER_BU, F_ER_KDB = 20, 21, 22, 23, 24
-N_F = 25
+F_REEL, F_REEL_KU, F_FX_ACIK = 25, 26, 27
+N_F = 28
+# Sentetik ithal girdi payi. Olcum degil. Sira SEKTOR ile ayni.
+ITHAL_PAY = np.array(
+    [0.12, 0.28, 0.22, 0.35, 0.55, 0.48, 0.50, 0.52, 0.45, 0.18, 0.15, 0.08, 0.30, 0.20, 0.05, 0.06, 0.08],
+    dtype=np.float64,
+)
+FX_HIZMET = 0.05
+FX_KALAN = 0.30
 
 ADAYLAR = [
     dict(ad="A", lo=1.25, hi=1.85, n_sek=2, kalan=0.55, ek_oran=0.05, ek_kalan=0.75),
@@ -376,6 +421,13 @@ def tek_kosu_temiz(
     yerel: bool = False,
     fx_pay: np.ndarray | None = None,
     fx_gecis: float = 1.0,
+    reel: bool = False,
+    ithal: np.ndarray | None = None,
+    fx_ay: float = 1.0,
+    fx_sok: bool = False,
+    fx_kalan: float = FX_KALAN,
+    fx_kur_gecis: float = 0.0,
+    kapasite: np.ndarray | None = None,
 ) -> tuple[np.ndarray, np.ndarray | None, np.ndarray]:
     """tek_kosu'nun sok maskesini acik argumanla alan surumu.
 
@@ -424,6 +476,19 @@ def tek_kosu_temiz(
     er_top = er_ku = er_bu = er_kdb = 0.0
     pi_n = 0
     kanal = enflasyon_pi > 0.0
+    reel_top = reel_ku = 0.0
+    fx_acik_top = 0.0
+    kur = 1.0
+    kur_sonra = 1.0
+    if reel:
+        ith = net["boyut"] * 0.0 if ithal is None else np.asarray(ithal, dtype=float)
+        satis = np.bincount(alacakli, weights=w0, minlength=N).astype(np.float64)
+        ihtiyac = ith * satis
+        giris_w = np.bincount(borclu, weights=w0, minlength=N).astype(np.float64)
+        kap = np.ones(N) if kapasite is None else np.asarray(kapasite, dtype=float)
+        hizmet = FX_HIZMET * ihtiyac
+    else:
+        ith = ihtiyac = giris_w = kap = hizmet = None
 
     def erit(due_in: np.ndarray, mask: np.ndarray) -> tuple[np.ndarray, np.ndarray | None]:
         if not kanal or not np.any(mask):
@@ -439,7 +504,7 @@ def tek_kosu_temiz(
         return yeni, due_in - yeni
 
     def biriktir(erime: np.ndarray | None) -> None:
-        nonlocal er_top, er_ku, er_bu, er_kdb, pi_n
+        nonlocal er_top, er_ku, er_bu, er_kdb, pi_n, kur_sonra
         if erime is None:
             return
         er_top += float(erime.sum())
@@ -450,10 +515,39 @@ def tek_kosu_temiz(
         if idx_ku_borc.size:
             er_kdb += float(erime[idx_ku_borc].sum())
         pi_n += 1
+        if fx_kur_gecis > 0.0:
+            kur_sonra = kur * (1.0 + fx_kur_gecis * enflasyon_pi)
 
     for t in range(T):
         inactive = lock > 0
-        due = w0 + arrears
+        if reel:
+            kur = kur_sonra
+            fx_mult = np.ones(N)
+            if fx_sok:
+                fx_mult[sokta] = fx_kalan
+            g_fx = np.ones(N)
+            var = ihtiyac > 1e-12
+            g_fx[var] = np.minimum(1.0, (fx_ay * ihtiyac[var] * fx_mult[var]) / ihtiyac[var])
+            g_fx = np.minimum(g_fx, kap)
+            g = g_fx.copy()
+            for _ in range(3):
+                gelen = np.bincount(borclu, weights=w0 * g[alacakli], minlength=N)
+                dolum = np.ones(N)
+                dol = giris_w > 1e-12
+                dolum[dol] = gelen[dol] / giris_w[dol]
+                g = np.minimum(g_fx, dolum)
+            w_yeni = w0 * g[alacakli]
+            kayip = w0 - w_yeni
+            reel_top += float(kayip.sum())
+            if idx_ku.size:
+                reel_ku += float(kayip[idx_ku].sum())
+            if float(ihtiyac.sum()) > 1e-12:
+                fx_acik_top += float(np.maximum(ihtiyac - fx_ay * ihtiyac * fx_mult, 0.0).sum() / ihtiyac.sum())
+            odeme_fx = np.minimum(liq, hizmet * kur)
+            liq -= odeme_fx
+        else:
+            w_yeni = w0
+        due = w_yeni + arrears
         if kanal and yerel:
             owed = np.zeros(N)
             np.add.at(owed, borclu, due)
@@ -547,8 +641,9 @@ def tek_kosu_temiz(
         share = float((inactive | fail).mean())
         kilit_pay += share
         pay_edge = due - unpaid
-        yeni = np.divide(pay_edge * w0, due, out=np.zeros_like(pay_edge), where=due > 1e-12)
-        tahsil = float(yeni.sum()) / V0
+        yeni = np.divide(pay_edge * w_yeni, due, out=np.zeros_like(pay_edge), where=due > 1e-12)
+        taban_yeni = float(w_yeni.sum())
+        tahsil = float(yeni.sum()) / taban_yeni if taban_yeni > 1e-12 else 1.0
         hacim_toplam += tahsil
         hacim_dar = tahsil < HACIM_ESIK
         kilit_dar = share >= KILIT_PAY_ESIK
@@ -606,6 +701,9 @@ def tek_kosu_temiz(
     out[F_ER_KU] = er_ku
     out[F_ER_BU] = er_bu
     out[F_ER_KDB] = er_kdb
+    out[F_REEL] = reel_top
+    out[F_REEL_KU] = reel_ku
+    out[F_FX_ACIK] = fx_acik_top / T
     return out, hacim_oran, yavas
 
 
@@ -646,6 +744,8 @@ def kosu_hucre(
     net, aday, carpanlar, ia, ib, ic, tohumlar,
     gamma=1.0, patika=False, secim=False, tabanlar=None,
     enflasyon_esik=1.0, enflasyon_pi=0.0, yerel=False, fx_pay=None, fx_gecis=1.0,
+    reel=False, ithal=None, fx_ay=1.0, fx_sok=False, fx_kalan=FX_KALAN,
+    fx_kur_gecis=0.0, kapasite=None,
 ):
     esik, sure = KILIT[ia]
     alpha = GECIKME[ib]
@@ -665,6 +765,8 @@ def kosu_hucre(
             gamma=gamma, patika=patika, secim=secim, secim_taban=birim,
             enflasyon_esik=enflasyon_esik, enflasyon_pi=enflasyon_pi, yerel=yerel,
             fx_pay=fx_pay, fx_gecis=fx_gecis,
+            reel=reel, ithal=ithal, fx_ay=fx_ay, fx_sok=fx_sok, fx_kalan=fx_kalan,
+            fx_kur_gecis=fx_kur_gecis, kapasite=kapasite,
         )
         blok[s] = out
         yavas_top += yavas
@@ -1615,6 +1717,6 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    from odeme_tur4 import main_tur4
+    from odeme_tur5 import main_tur5
 
-    main_tur4()
+    main_tur5()
