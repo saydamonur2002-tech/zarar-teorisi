@@ -262,8 +262,8 @@ F_M_KU, F_M_BU, F_M_TOP, F_M_B2K = 9, 10, 11, 12
 F_Y_KU, F_Y_BU, F_Y_DIS, F_Y_SOK = 13, 14, 15, 16
 F_HACIM, F_KILPAY, F_ARREAR = 17, 18, 19
 F_PI_N, F_ER_TOP, F_ER_KU, F_ER_BU, F_ER_KDB = 20, 21, 22, 23, 24
-F_REEL, F_REEL_KU, F_FX_ACIK = 25, 26, 27
-N_F = 28
+F_REEL, F_REEL_KU, F_FX_ACIK, F_YEREL = 25, 26, 27, 28
+N_F = 29
 # Sentetik ithal girdi payi. Olcum degil. Sira SEKTOR ile ayni.
 ITHAL_PAY = np.array(
     [0.12, 0.28, 0.22, 0.35, 0.55, 0.48, 0.50, 0.52, 0.45, 0.18, 0.15, 0.08, 0.30, 0.20, 0.05, 0.06, 0.08],
@@ -459,6 +459,7 @@ def tek_kosu_temiz(
     V0 = float(w0.sum())
 
     bloke_n = 0
+    yerel_bloke_n = 0
     hacim_n = 0
     kilit_n = 0
     hacim_toplam = 0.0
@@ -644,6 +645,9 @@ def tek_kosu_temiz(
         esik_kars = esik - (1e-8 if secim else 0.0)
         fail = (~inactive) & poz & (pay_ratio < esik_kars)
         yavas += np.where(inactive | (pay_ratio < 0.70), 1.0, 0.0)
+        yavas_an = inactive | (pay_ratio < 0.70)
+        if kucuk.any() and float(yavas_an[kucuk].mean()) >= 0.40:
+            yerel_bloke_n += 1
         share = float((inactive | fail).mean())
         kilit_pay += share
         pay_edge = due - unpaid
@@ -710,6 +714,7 @@ def tek_kosu_temiz(
     out[F_REEL] = reel_top
     out[F_REEL_KU] = reel_ku
     out[F_FX_ACIK] = fx_acik_top / T
+    out[F_YEREL] = yerel_bloke_n
     return out, hacim_oran, yavas
 
 
@@ -1723,6 +1728,6 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    from odeme_dagilim import main_dagilim
+    from odeme_kons7 import main_kons7
 
-    main_dagilim()
+    main_kons7()
