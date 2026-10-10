@@ -1,3 +1,49 @@
+# Ödeme zinciri, tur 15: servis eşiği
+
+Lider sentetik; TCMB sektör payı. Kenar varsayım.
+
+## Hüküm
+
+Eşik taraması (FX çevrilebilir): kal ort. 0,50=0.24, 0,55=2.04, 0,60=7.26, 0,65=9.96, 0,70=12.28; kademeli: 0,50→0,70 arası kal artıyor, yalnızca 0,70 sıçraması değil. Servis artısı–kal Spearman (FX çevrilebilir) 0.706 (p = 5.69e-39); artı–kal ilişkisi güçlü/kayıtlı eşik altında değil. Lider servis sıfır kal fark 0.00, p = 0.841. Reel artış 0,70−0,50 (FX çevrilemez) medyan -0.0948; küçük fazla medyan 0.0454, P(fazla≥0,05) = 0.02.
+
+## Varsayımlar
+
+150 firma. Lider = en yüksek mevduatlı sentetik düğüm. MC 50, tohum 20276010+s. Mevduat üst %10 = 0.7. Servis eşiği (0.5, 0.55, 0.6, 0.65, 0.7). π = 0.0. Valf 0.25. Servis artısı = srv hedefi − 0.1 (eşit dağılım referansı). FX ayrı.
+
+Sıçrama 0,70'e özgü (band 0,55–0,65 kal artmıyor): False (FX çevrilebilir), False (FX çevrilemez).
+Servis artısı bağlayıcı zayıflar: False (FX çevrilebilir), False (FX çevrilemez).
+
+Spearman (esik, FX çevrilebilir): servis artısı–kalıcılık 0.706 (p = 5.686e-39).
+Spearman (esik, FX çevrilebilir): servis artısı–küçük yavaş tanımsız.
+Spearman (esik, FX çevrilemez): servis artısı–kalıcılık 0.679 (p = 3.58e-35).
+Spearman (esik, FX çevrilemez): servis artısı–küçük yavaş 0.639 (p = 4.901e-30).
+
+Lider servis sıfır (mev70+srv70, FX çevrilebilir): kal fark medyan 0.00, p = 0.8413.
+
+Reel artış (FX çevrilemez, srv 0,70 − 0,50): medyan -0.0948, p = 1. Küçük fazla medyan (srv 0,70): 0.0454; P(fazla≥0.05) = 0.02.
+
+### Servis eşiği (mev 0,70, ortalama)
+
+| srv %10 | FX | Kalıcılık | Yerel | Küçük yavaş | Reel |
+| ---: | --- | ---: | ---: | ---: | ---: |
+| 0.50 | çevrilebilir | 0.24 | 0.00 | 0.000 | 0.000 |
+| 0.50 | çevrilemez | 0.00 | 0.00 | 0.000 | 0.488 |
+| 0.55 | çevrilebilir | 2.04 | 0.00 | 0.000 | 0.000 |
+| 0.55 | çevrilemez | 0.06 | 0.00 | 0.000 | 0.471 |
+| 0.60 | çevrilebilir | 7.26 | 0.00 | 0.000 | 0.000 |
+| 0.60 | çevrilemez | 0.90 | 0.02 | 0.003 | 0.450 |
+| 0.65 | çevrilebilir | 9.96 | 0.00 | 0.000 | 0.000 |
+| 0.65 | çevrilemez | 1.92 | 0.40 | 0.020 | 0.425 |
+| 0.70 | çevrilebilir | 12.28 | 0.00 | 0.000 | 0.000 |
+| 0.70 | çevrilemez | 2.56 | 2.80 | 0.097 | 0.393 |
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_kons15_hucre.csv`, `odeme_kons15.png`, `odeme_kons15_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, tur 14: servis konsantrasyonu
 
 Lider sentetik; TCMB sektör payı. Kenar varsayım.
