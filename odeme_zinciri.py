@@ -41,6 +41,36 @@ Karar kurali, tam tarama calismadan once yazildi:
 
 Kalibrasyon (aday sok/tampon) yalnizca soksuz saglik ve baz hucrenin ic
 varyansina bakar. Kose kontrastina bakilmaz.
+
+Tur 2 (secim kurali ve sok esigi), sonuc gorulmeden:
+
+  Tampon Aday C'de sabit: U(0.95, 1.40), ek sok %8 x 0.45.
+  Aday C benzeri sok: 3 sektor, likidite x 0.30.
+  Yumusak: 2 sektor, x 0.55. Sert: 4 sektor, x 0.20.
+  Tarama: sektor sayisi {1,2,3,4} x kalan likidite {0.70,0.55,0.40,0.30,0.20}.
+  Hucre basi 60 esli kosu.
+
+  Yerel secim acikken her periyot, hucre parametresinin yerine:
+    banka tavani calisma araliginin en genis ucu (carpan 4, erisim payi durur);
+    cekis yalnizca nakit gevsek kilit cubugunun (borcun %50'si) altindaysa,
+    cubuga yetecek kadar (limit korunur, borcun tamami icin eritilmez);
+    gecikme alpha = 0 (ceza asagi itilir);
+    kendi kilit esigi 0.50, suresi 1.
+  Nakit borcu karsiliyorsa tam odenir. Secim kapaliyken eski kural: hucre
+  parametresi, borc kadar cekis.
+
+  Parametre kolu anlamli: kotu kose (alpha 0.60, banka 0, kilit orta) eksi
+  iyi kose (alpha 0, banka 4, kilit orta) medyan fark >= 2 veya
+  (ortalama >= 2 ve kosularin >= %25'i en az 2) ve tek yanli Wilcoxon p<0.05.
+  Esik: bu testi gecen en dusuk siddet = sektor_sayisi * (1 - kalan).
+
+  Banka baskin: C sokunda banka carpani 4 olan her hucrenin ortalama
+  kaliciligi < 1 ve banka 0'da en az bir hucre ortalamasi >= 4.
+
+  Secim iddiasi destek: ayni C sokunda secim acik eksi baz (secim kapali)
+  kaliciligi bu pratik esikle uzatir VE kucuk alacakli payi >= 5 puan artar
+  (tek yanli p<0.05, en az 30 cift). Uzama yoksa iddia desteklenmez.
+  Pay bandi 10 puandan darsa "bedel zayif halkaya akar" zayif kalir.
 """
 
 from __future__ import annotations
@@ -268,6 +298,7 @@ def tek_kosu_temiz(
     sok_disi: np.ndarray,
     gamma: float = 1.0,
     patika: bool = False,
+    secim: bool = False,
 ) -> tuple[np.ndarray, np.ndarray | None, np.ndarray]:
     """tek_kosu'nun sok maskesini acik argumanla alan surumu.
 
@@ -280,6 +311,12 @@ def tek_kosu_temiz(
     buyuk = net["buyuk"]
     kucuk = net["kucuk"]
     sokta = ~sok_disi
+    if secim:
+        # Genis tavan, gevsek kilit, ceza sifir. Cekis asagida sinirlanir.
+        bank_max = np.maximum(np.asarray(bank_max, dtype=float), BANKA[-1] * net["banka_taban"])
+        esik = 0.50
+        sure = 1
+        alpha = 0.0
 
     liq = lik0.copy()
     bank = bank_max.copy()
@@ -307,6 +344,16 @@ def tek_kosu_temiz(
         inactive = lock > 0
         due = w0 + arrears
         unpaid = due.copy()
+        if secim:
+            owed_full = np.zeros(N)
+            np.add.at(owed_full, borclu, due)
+            bar = esik * owed_full
+            # Nakit cubugun ustundeyse bankaya dokunma; altindaysa yalniz cubuga tamamla.
+            pay_cap = np.minimum(owed_full, liq)
+            kisa_nakit = liq + 1e-12 < bar
+            ek = np.minimum(bank, np.maximum(bar - liq, 0.0))
+            pay_cap = np.where(kisa_nakit, np.minimum(owed_full, liq + ek), pay_cap)
+            paid_cum = np.zeros(N)
         for _ in range(TURLAR):
             owed = np.zeros(N)
             np.add.at(owed, borclu, unpaid)
@@ -318,6 +365,13 @@ def tek_kosu_temiz(
             poz = owed > 1e-10
             ratio[poz] = np.minimum(1.0, cap[poz] / owed[poz])
             ratio *= active.astype(np.float64)
+            desired = owed * ratio
+            if secim:
+                room = np.maximum(pay_cap - paid_cum, 0.0)
+                desired = np.minimum(desired, room)
+                ratio = np.divide(desired, owed, out=np.zeros(N), where=owed > 1e-10)
+                ratio *= active.astype(np.float64)
+                paid_cum += owed * ratio
             pay = unpaid * ratio[borclu]
             paid_node = owed * ratio
             from_cash = np.minimum(liq, paid_node)
@@ -365,7 +419,9 @@ def tek_kosu_temiz(
         if idx_b2k.size:
             od_b2k += float(unpaid[idx_b2k].sum())
 
-        fail = (~inactive) & poz & (pay_ratio < esik)
+        # Secimde cubugu tutturan (oran ~= esik) kilitlenmesin.
+        esik_kars = esik - (1e-8 if secim else 0.0)
+        fail = (~inactive) & poz & (pay_ratio < esik_kars)
         yavas += np.where(inactive | (pay_ratio < 0.70), 1.0, 0.0)
         share = float((inactive | fail).mean())
         kilit_pay += share
@@ -429,7 +485,7 @@ def hazirla(net: dict, aday: dict, carpan: np.ndarray | None) -> tuple[np.ndarra
     return lik0 * carpan, carpan >= 0.999
 
 
-def kosu_hucre(net, aday, carpanlar, ia, ib, ic, tohumlar, gamma=1.0, patika=False):
+def kosu_hucre(net, aday, carpanlar, ia, ib, ic, tohumlar, gamma=1.0, patika=False, secim=False):
     esik, sure = KILIT[ia]
     alpha = GECIKME[ib]
     bmax0 = BANKA[ic] * net["banka_taban"]
@@ -440,7 +496,7 @@ def kosu_hucre(net, aday, carpanlar, ia, ib, ic, tohumlar, gamma=1.0, patika=Fal
     for s in tohumlar:
         lik, dis = hazirla(net, aday, carpanlar[s])
         out, yol, yavas = tek_kosu_temiz(
-            net, lik, bmax0, esik, sure, alpha, dis, gamma=gamma, patika=patika
+            net, lik, bmax0, esik, sure, alpha, dis, gamma=gamma, patika=patika, secim=secim
         )
         blok[s] = out
         yavas_top += yavas
@@ -1391,4 +1447,6 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    main()
+    from odeme_tur2 import main_tur2
+
+    main_tur2()
