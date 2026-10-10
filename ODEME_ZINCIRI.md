@@ -1,3 +1,43 @@
+# Ödeme zinciri, tur 9: mahsup + FX şoku
+
+Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım. Girdi-çıktı ve limit serisi yok.
+
+## Hüküm
+
+Kontrol şoksuz kalıcılık 0.00, reel 0.000. Mahsup sonrası kalıcılık farkı pratik eşik veya p eşiğini geçmedi; 'bloke kısalır' iddiası bu turda desteklenmedi. Mahsup reel kayıp veya küçük fazlada anlamlı iyileşme gösterdi; 'kapatmaz' iddiası zayıfladı.
+
+## Varsayımlar
+
+150 firma. TCMB 2026-Q1 toplamları sabit. Monte Carlo 50, tohum 20274010+s. FX çevrilemez (fx_sok, hat ×0,30). Valf eşiği 0.25, π aylık 0.0225 (Ocak 2026 TÜFE). Mahsup: optimal_mahsup (net pozisyon korunur). Şok mahsup sonrası aynı dinamik kural.
+
+Kontrol şoksuz: kalıcılık 0.00, reel 0.000.
+
+Mahsup kalıcılığı kısaltır (destek): False. Mahsup reel/zayıf halkayı kapatmaz (elenmedi): False.
+
+## Hücre × kol (ortalama)
+
+| Hücre | Kol | Brüt önce | Brüt sonra | Silinen % | Kalıcılık | Reel | Küçük yavaş | Fazla medyan | P(fazla≥0,05) | Temerrüt | Kilitli | Batık |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| esit | yok | 3.09 | 3.09 | 0.0 | 0.00 | 0.454 | 0.000 | 0.022 | 0.00 | 0.0 | 0.0 | 0.0 |
+| esit | mahsup | 3.09 | 2.07 | 33.0 | 0.00 | 0.000 | 0.000 | nan | nan | 0.0 | 0.0 | 0.0 |
+| ms70 | yok | 3.09 | 3.09 | 0.0 | 2.66 | 0.394 | 0.099 | 0.046 | 0.06 | 18.6 | 2.6 | 16.0 |
+| ms70 | mahsup | 3.09 | 1.83 | 40.8 | 14.22 | 0.000 | 0.000 | nan | nan | 15.3 | 0.0 | 15.3 |
+| msa70 | yok | 3.09 | 3.09 | 0.0 | 2.68 | 0.383 | 0.000 | 0.050 | 0.52 | 18.6 | 1.8 | 16.9 |
+| msa70 | mahsup | 3.09 | 1.92 | 37.7 | 3.64 | 0.296 | 0.000 | 0.014 | 0.06 | 15.0 | 0.0 | 15.0 |
+
+## Mahsup − mahsupsuz (Wilcoxon eşli)
+
+- **esit**: Δkal medyan 0.00, p = 1; Δreel 0.454, p = 7.687e-13; Δfazla 0.000.
+- **ms70**: Δkal medyan -13.00, p = 1; Δreel 0.395, p = 8.882e-16; Δfazla 0.000.
+- **msa70**: Δkal medyan -1.00, p = 1; Δreel 0.091, p = 4.202e-08; Δfazla 0.034.
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_kons9_hucre.csv`, `odeme_kons9.png`, `odeme_kons9_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, tur 8: zayıf halka ve lider-ayna
 
 Stoklar ölçülmüş (TCMB 2026-Q1). Kenar ve dağılım varsayım. Çekilmemiş limit ve girdi-çıktı yok.

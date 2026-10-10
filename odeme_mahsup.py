@@ -17,7 +17,11 @@ MAHSUP_KOK = KOK / "mahsup"
 if str(MAHSUP_KOK) not in sys.path:
     sys.path.insert(0, str(MAHSUP_KOK))
 
+import numpy as np
+
 from mahsuplasma import BorcAgi, Firma, Parametreler, calistir, rapor_yaz  # noqa: E402
+from mahsuplasma.mahsup import dongu_iptali, mahsup_ozeti, optimal_mahsup  # noqa: E402
+from mahsuplasma.model import teshis  # noqa: E402
 from mahsuplasma.odeme import eisenberg_noe, sirali_odeme  # noqa: E402
 
 from odeme_dagilim import F0, N_FIRMA, stok_yukle  # noqa: E402
@@ -30,6 +34,69 @@ def _ad(idx: int) -> str:
     if idx < F0:
         return MACRO[idx]
     return f"F{idx - F0}"
+
+
+def _name_to_idx(nd: int) -> dict[str, int]:
+    m = {MACRO[i]: i for i in range(F0)}
+    for f in range(F0, nd):
+        m[f"F{f - F0}"] = f
+    return m
+
+
+def ag_kenarlari_pakete(pak: dict, ag: BorcAgi) -> dict:
+    """Kenar listesini günceller; lik/kucuk/fx aynı kalır."""
+    import copy
+
+    out = copy.deepcopy(pak)
+    net = out["net"]
+    nd = int(out["lik"].size)
+    idx = _name_to_idx(nd)
+    borclu, alacakli, w0 = [], [], []
+    for b in ag.borclar:
+        if b.tutar < 1e-12:
+            continue
+        borclu.append(idx[b.borclu])
+        alacakli.append(idx[b.alacakli])
+        w0.append(float(b.tutar))
+    borclu_a = np.asarray(borclu, dtype=np.int32)
+    alacakli_a = np.asarray(alacakli, dtype=np.int32)
+    w0_a = np.asarray(w0, dtype=np.float64)
+    net["borclu"] = borclu_a
+    net["alacakli"] = alacakli_a
+    net["w0"] = w0_a
+    net["borc"] = np.bincount(borclu_a, weights=w0_a, minlength=nd).astype(np.float64)
+    net["alacak"] = np.bincount(alacakli_a, weights=w0_a, minlength=nd).astype(np.float64)
+    net["dis_akis"] = net["borc"] - net["alacak"]
+    kucuk, buyuk = net["kucuk"], net["buyuk"]
+    net["idx_ku_al"] = np.flatnonzero(kucuk[alacakli_a])
+    net["idx_bu_al"] = np.flatnonzero(buyuk[alacakli_a])
+    net["idx_bu_borc"] = np.flatnonzero(buyuk[borclu_a])
+    net["idx_b2k"] = np.flatnonzero(buyuk[borclu_a] & kucuk[alacakli_a])
+    return out
+
+
+def mahsup_paket(pak: dict, yontem: str = "optimal") -> tuple[dict, dict, BorcAgi, BorcAgi]:
+    ag = paket_to_ag(pak)
+    if yontem == "dongu":
+        ag2, _ = dongu_iptali(ag)
+    else:
+        ag2 = optimal_mahsup(ag)
+    oz = mahsup_ozeti(ag, ag2)
+    return ag_kenarlari_pakete(pak, ag2), oz, ag, ag2
+
+
+def statik_teshis(ag: BorcAgi, holding_odeme_orani: float = 0.5) -> dict:
+    tur = max((b.vade for b in ag.borclar), default=1) + 2
+    sir = sirali_odeme(ag, tur=tur, holding_odeme_orani=holding_odeme_orani)
+    en = eisenberg_noe(ag)
+    sinif = teshis(ag, sir, en)
+    firma = [ad for ad, f in ag.firmalar.items() if f.katman != "hane"]
+    tem = len([ad for ad in sir["temerrut"] if ad in firma])
+    return {
+        "temerrut": tem,
+        "kilitli": len([ad for ad in firma if sinif.get(ad) == "kilitli"]),
+        "batik": len([ad for ad in firma if sinif.get(ad) == "batik"]),
+    }
 
 
 def paket_to_ag(pak: dict) -> BorcAgi:

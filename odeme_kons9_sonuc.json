@@ -1,0 +1,50 @@
+{
+  "uyari": "Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım. Girdi-çıktı ve limit serisi yok.",
+  "ozet": "Kontrol şoksuz kalıcılık 0.00, reel 0.000. Mahsup sonrası kalıcılık farkı pratik eşik veya p eşiğini geçmedi; 'bloke kısalır' iddiası bu turda desteklenmedi. Mahsup reel kayıp veya küçük fazlada anlamlı iyileşme gösterdi; 'kapatmaz' iddiası zayıfladı.",
+  "karar": {
+    "soksuz_kal": 0.0,
+    "soksuz_reel": 0.0,
+    "mahsup_kal_destek": false,
+    "mahsup_reel_elenmedi": false,
+    "fark": {
+      "esit": {
+        "kal_med": 0.0,
+        "kal_p": 1.0,
+        "reel_med": 0.45408167359827367,
+        "reel_p": 7.687298972140174e-13,
+        "fazla_med": 0.0
+      },
+      "ms70": {
+        "kal_med": -13.0,
+        "kal_p": 0.9999999997985409,
+        "reel_med": 0.39547067381854606,
+        "reel_p": 8.881784197001252e-16,
+        "fazla_med": 0.0
+      },
+      "msa70": {
+        "kal_med": -1.0,
+        "kal_p": 0.9999967571683214,
+        "reel_med": 0.09111865596313173,
+        "reel_p": 4.201559633543184e-08,
+        "fazla_med": 0.033707011953584096
+      }
+    }
+  },
+  "kontrol": {
+    "soksuz": {
+      "kal": 0.0,
+      "yerel": 0.0,
+      "reel": 0.0,
+      "fazla": NaN,
+      "pay": NaN,
+      "defter": 0.04723686983379,
+      "yk_med": 0.0,
+      "yb_med": 0.0,
+      "yavas_fark": 0.0,
+      "od_ku_pay": NaN
+    }
+  },
+  "pi_aylik": 0.02252836631957411,
+  "n_mc": 50,
+  "seed0": 20274010
+}
