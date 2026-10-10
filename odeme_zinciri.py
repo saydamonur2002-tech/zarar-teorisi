@@ -427,6 +427,7 @@ def tek_kosu_temiz(
     fx_ay: float = 1.0,
     fx_sok: bool = False,
     fx_kalan: float = FX_KALAN,
+    fx_carpan: np.ndarray | None = None,
     fx_kur_gecis: float = 0.0,
     kapasite: np.ndarray | None = None,
 ) -> tuple[np.ndarray, np.ndarray | None, np.ndarray]:
@@ -526,7 +527,10 @@ def tek_kosu_temiz(
             kur = kur_sonra
             fx_mult = np.ones(nd)
             if fx_sok:
-                fx_mult[sokta] = fx_kalan
+                if fx_carpan is None:
+                    fx_mult[sokta] = fx_kalan
+                else:
+                    fx_mult = np.asarray(fx_carpan, dtype=float)
             g_fx = np.ones(nd)
             var = ihtiyac > 1e-12
             g_fx[var] = np.minimum(1.0, (fx_ay * ihtiyac[var] * fx_mult[var]) / ihtiyac[var])
@@ -1719,6 +1723,6 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    from odeme_gercek import main_gercek
+    from odeme_dagilim import main_dagilim
 
-    main_gercek()
+    main_dagilim()
