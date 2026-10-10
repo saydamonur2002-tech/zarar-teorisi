@@ -1,3 +1,51 @@
+# Ödeme zinciri, tur 8: zayıf halka ve lider-ayna
+
+Stoklar ölçülmüş (TCMB 2026-Q1). Kenar ve dağılım varsayım. Çekilmemiş limit ve girdi-çıktı yok.
+
+## Hüküm
+
+Kontrol: şoksuz reel 0.000, eşit FX çevrilemez reel 0.454 (sapma 0.000). Zayıf halka: üç hücrede de medyan fazla 0,05’in altında ve küçük–büyük yavaş farkı anlamlı değil. Sistematik aktarım iddiası elendi. Lider-ayna: yalnızca servis+alacak sıfırlanınca kalıcılık değişmiyor (p = 1); mevduat da dağıtılınca kalıcılık düşüyor (baz−tam medyan 0.50, p = 5.22e-06). Lider mevduatı sonucu taşır; servis/alacak lider payı tek başına değil.
+
+## Varsayımlar
+
+150 firma alt düğümü. TCMB 2026-Q1 toplamları sabit. Monte Carlo 50, tohum 20273010+s. Lider = en büyük mevduatlı firma. Lider sıfır: kütlesi kalan N−1 firmaya eşit dağıtılır.
+
+Kontrol şoksuz: kalıcılık 0.00, reel 0.000. Eşit pay FX çevrilemez reel 0.454 (hedef 0,454, sapma 0.000).
+
+Spearman (Tur 7 ızgarası, FX çevrilemez): servis–küçük yavaş 0.741, mevduat–reel 0.843.
+
+Zayıf halka elendi mi: True. Lider elendi mi: False.
+
+## Zayıf halka
+
+| Hücre | FX | Kalıcılık | Reel | Fazla medyan | P(fazla≥0,05) | Yavaş fark medyan | Ödenmeyen küçük pay |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| esit | çevrilebilir | 0.00 | 0.000 | nan | nan | 0.000 | nan |
+| esit | çevrilemez | 0.00 | 0.454 | 0.022 | 0.00 | 0.000 | nan |
+| ms70 | çevrilebilir | 12.84 | 0.000 | nan | nan | 0.000 | 0.000 |
+| ms70 | çevrilemez | 2.66 | 0.395 | 0.045 | 0.04 | 0.083 | 0.000 |
+| msa70 | çevrilebilir | 12.86 | 0.000 | nan | nan | 0.000 | 0.000 |
+| msa70 | çevrilemez | 2.62 | 0.398 | 0.048 | 0.42 | 0.000 | 0.000 |
+
+## Lider-ayna (FX çevrilemez)
+
+| Kol | Kalıcılık | Küçük yavaş medyan | Fazla medyan |
+| --- | ---: | ---: | ---: |
+| baz | 2.62 | 0.000 | 0.048 |
+| rol_sifir | 2.62 | 0.000 | 0.048 |
+| tam_sifir | 1.42 | 0.000 | 0.051 |
+
+Baz − rol sıfır: kalıcılık fark medyan 0.00, p = 1. Yavaş fark 0.000, p = 1.
+
+Baz − tam sıfır: kalıcılık fark medyan 0.50, p = 5.218e-06. Yavaş fark 0.000, p = 1.
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_kons8_hucre.csv`, `odeme_kons8.png`, `odeme_kons8_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, konsantrasyon (servis / alacak / çizgi)
 
 Stoklar ölçülmüş (TCMB 2026-Q1). Kenar ve firma içi dağılım varsayım. Çekilmemiş limit serisi ve girdi-çıktı tablosu yok.

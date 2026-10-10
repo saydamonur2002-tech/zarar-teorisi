@@ -1728,6 +1728,6 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    from odeme_kons7 import main_kons7
+    from odeme_kons8 import main_kons8
 
-    main_kons7()
+    main_kons8()
