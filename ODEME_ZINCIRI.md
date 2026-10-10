@@ -1,3 +1,59 @@
+# Ödeme zinciri, dağılım stresi
+
+Stoklar TCMB finansal hesapları, 2026-Q1. Kenar ve firma içi dağılım varsayımdır. Çekilmemiş limit ve girdi-çıktı tablosu yoktur. Sayılar firma faturası ölçümü değildir.
+
+## Hüküm
+
+Eşit paylaşım agregatı tekrarlıyor: kalıcılık 0, döviz çevrilemezken reel kayıp önceki bantta. Sistemik bloke periyot artmıyor ve FX çevrilebilirken reel kayıp artmıyor. Küçük firmaların yavaş ödeme payı 0.177 artıyor (p = 3.772e-10). Agregat sayaç bunu bloke periyot olarak görmüyor. Yerel yavaşlık gizli kalıyor. Aynı yerel fark, bir aylık çizgi herkese açıkken sıfır, çizgi en küçük yarıya kapalıyken geri geliyor. Ölçülmüş aylık enflasyon, yüksek konsantrasyonda reel FX kaybını ve kalıcılığı eşiğin üstünde kapatmıyor. Küçük firmaların reel kayıp payı defter payını 5 puan aşmıyor. Zayıf halka bu kanalda da zayıf.
+
+## Ne ölçülmüş, ne varsayım
+
+Stoklar TCMB 2026-Q1. Firma haznesi 150 alt düğüme bölündü. Toplam mevduat, kredi stoku ve aylık servis korunuyor. Kenar, yükümlülüğün alacaklı varlık payına bölünmesidir. Girdi-çıktı tablosu yok. Çekilmemiş limit seride yok.
+
+Üst yüzde 10 mevduat payı 0,10, 0,40 ve 0,70. Birincil streste borç servisi ve alacak eşit. Kontrolde ikisi de mevduat payını izliyor. Yan kolda bir aylık servis kadar çizgi, en küçük p0 firmaya kapalı. Bu çizgi ölçülmedi.
+
+TÜFE 2025-01–2026-01: yıllık 0.306, aylık π = 0.0225. Monte Carlo 50. Tohum 20261010+9000.
+
+Eşit paylaşım, FX çevrilemez, valf kapalı: kalıcılık 0.00, reel kayıp 0.454. Agregat hedef 0,454. Sapma 0.000.
+
+Yüksek konsantrasyon, eşit servis, çizgi yok, FX yok: kalıcılık farkı 0.00 (p = 1), reel fark 0.000 (p = 1), küçük firma yavaşlık farkı 0.177 (p = 3.772e-10).
+
+Aynı hücre, FX çevrilemez: kalıcılık 0.00, reel kayıp 0.558. Valf açık: kalıcılık 0.00, reel 0.558, kısalma 0.00 (p = 1), reel düşüş 0.000.
+
+Küçük firma reel payı 0.080, defter payı 0.047, fazla medyan 0.033.
+
+Eşleşen kontrol, yüksek konsantrasyon, FX çevrilemez: kalıcılık 0.00, reel kayıp 0.454, fazla medyan 0.004.
+
+Varsayılmış bir aylık çizgi, yüksek konsantrasyon, p0 = 0,50 eksi p0 = 0: kalıcılık farkı 0.00 (p = 1), yavaşlık farkı 0.177 (p = 3.772e-10).
+
+## Hücreler, valf kapalı
+
+| Üst %10 | Servis | Çizgi | p0 | FX | Kalıcılık | Reel | Küçük yavaşlık | Fazla |
+| ---: | --- | ---: | ---: | --- | ---: | ---: | ---: | ---: |
+| 0.10 | eşit | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
+| 0.10 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.454 | 0.000 | 0.022 |
+| 0.40 | eşit | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
+| 0.40 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.490 | 0.000 | 0.035 |
+| 0.70 | eşit | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.177 | — |
+| 0.70 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.558 | 0.000 | 0.033 |
+| 0.10 | eşleşen | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
+| 0.10 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.454 | 0.000 | 0.022 |
+| 0.40 | eşleşen | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
+| 0.40 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.454 | 0.000 | 0.010 |
+| 0.70 | eşleşen | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
+| 0.70 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.454 | 0.000 | 0.004 |
+| 0.70 | eşit | 1 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
+| 0.70 | eşit | 1 | 0.00 | çevrilemez | 0.00 | 0.558 | 0.000 | 0.033 |
+| 0.70 | eşit | 1 | 0.50 | çevrilebilir | 0.00 | 0.000 | 0.177 | — |
+| 0.70 | eşit | 1 | 0.50 | çevrilemez | 0.00 | 0.558 | 0.000 | 0.033 |
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_dagilim_hucre.csv`, `odeme_dagilim.png`, `odeme_dagilim_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, ölçülmüş stoklar
 
 Stoklar TCMB finansal hesapları, 2026-Q1, milyar TL biriminden trilyona çevrildi. Kenar ölçülmüş fatura değildir: yükümlülük, alacaklı varlık payına bölünür. Vade ve valf eşiği varsayımdır. Çekilmemiş limit yoktur.

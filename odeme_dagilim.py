@@ -282,13 +282,13 @@ def grafik(tablo: pd.DataFrame, dosya: Path) -> None:
     fig, ax = plt.subplots(1, 2, figsize=(10.2, 4.3))
     x = np.arange(3)
     gen = 0.35
-    kap = [float(alt[(alt.kons == k) & (~alt.fx)].kalicilik.iloc[0]) for k in KONS]
-    ac = [float(alt[(alt.kons == k) & alt.fx].kalicilik.iloc[0]) for k in KONS]
+    kap = [float(alt[(alt.kons == k) & (~alt.fx)].yavas_kucuk.iloc[0]) for k in KONS]
+    ac = [float(alt[(alt.kons == k) & alt.fx].yavas_kucuk.iloc[0]) for k in KONS]
     ax[0].bar(x - gen / 2, kap, width=gen, label="FX çevrilebilir", color="#4C78A8")
     ax[0].bar(x + gen / 2, ac, width=gen, label="FX çevrilemez", color="#E45756")
     ax[0].set_xticks(x, ["Üst %10 = %10", "Üst %10 = %40", "Üst %10 = %70"])
-    ax[0].set_ylabel("Ortalama bloke periyot")
-    ax[0].set_title("Eşit servis, çizgi yok")
+    ax[0].set_ylabel("Küçük firmanın yavaş dönem payı")
+    ax[0].set_title("Sistemik bloke her hücrede 0")
     ax[0].legend(frameon=False, fontsize=8)
     reel_kap = [float(alt[(alt.kons == k) & alt.fx].reel.iloc[0]) for k in KONS]
     valf = tablo[(tablo.line_ay == 0) & (~tablo.eslesme) & tablo.valf & tablo.fx]
@@ -315,8 +315,10 @@ def hukum(k: dict) -> str:
         parca.append("Eşit paylaşım ölçülmüş agregatı tekrarlamadı. Dağılım karşılaştırması bu yüzden zayıf.")
     if k["gizli"]:
         parca.append(
-            "Yüksek konsantrasyon veya sıfır çizgi, toplam stok aynıyken bloke, yerel yavaşlık veya reel kaybı eşiğin üstünde artırıyor. "
-            "Agregat tampon yerel tıkanmayı gizliyor."
+            "Sistemik bloke periyot artmıyor ve FX çevrilebilirken reel kayıp artmıyor. "
+            f"Küçük firmaların yavaş ödeme payı {k['yuksek_yk_fark']:.3f} artıyor (p = {k['yuksek_yk_p']:.4g}). "
+            "Agregat sayaç bunu bloke periyot olarak görmüyor. Yerel yavaşlık gizli kalıyor. "
+            "Aynı yerel fark, bir aylık çizgi herkese açıkken sıfır, çizgi en küçük yarıya kapalıyken geri geliyor."
         )
     else:
         parca.append(
@@ -383,10 +385,11 @@ def rapor_metni(sonuc: dict, tablo: pd.DataFrame) -> str:
     ]
     kap = tablo[~tablo.valf]
     for _, r in kap.iterrows():
+        fazla = "—" if not np.isfinite(r.fazla) else f"{r.fazla:.3f}"
         s.append(
             f"| {r.kons:.2f} | {'eşleşen' if r.eslesme else 'eşit'} | {r.line_ay:.0f} | {r.p0:.2f} | "
             f"{'çevrilemez' if r.fx else 'çevrilebilir'} | {r.kalicilik:.2f} | {r.reel:.3f} | "
-            f"{r.yavas_kucuk:.3f} | {r.fazla:.3f} |"
+            f"{r.yavas_kucuk:.3f} | {fazla} |"
         )
     s.extend([
         "",
