@@ -1,3 +1,80 @@
+# Ödeme zinciri, konsantrasyon (servis / alacak / çizgi)
+
+Stoklar ölçülmüş (TCMB 2026-Q1). Kenar ve firma içi dağılım varsayım. Çekilmemiş limit serisi ve girdi-çıktı tablosu yok.
+
+## Hüküm
+
+Mevduat×servis (FX çevrilemez): mevduat hedefi–küçük yavaş Spearman 0.503 (p = 0.168), servis hedefi–küçük yavaş 0.741 (p = 0.0224), mevduat–reel kayıp 0.843 (p = 0.00429). Mevduat 0,70 servis eşit: sistemik kalıcılık 0.00, yerel 0.00, küçük yavaş 0.000 — önceki tur tekrarı. Mevduat ve servis birlikte 0,70: FX çevrilebilirken kalıcılık 10.44, FX çevrilemezken 1.92, reel kayıp 0.595. Servis de konsantre olunca agregatın gizlediği sistemik bloke çıkıyor; yalnızca mevduat konsantre servis eşitken çıkmıyor. Alacak üst %10 payı arttıkça küçük firmaların alacak payı düşüyor (Spearman -1.00). Reel kayıp fazlası medyan 0.033; 5 puan eşiği aşılmadı. Zayıf halka: küçük reel kayıp payı alacak konsantrasyonunda da 5 puanı aşmıyor. Çizgi (mev 0,70, servis eşit, FX çevrilebilir): herkes yavaş 0.000, üst %10 0.170 (yerel bloke 0.12), alt yarı 0.000. Sistemik kalıcılık 0.
+
+## Varsayımlar
+
+150 firma alt düğümü. TCMB 2026-Q1 toplamları sabit. Kenar paylaşım kuralı önceki turla aynı. Girdi-çıktı ve çekilmemiş limit yok. Monte Carlo 50, tohum 20272010+s. Sistemik bloke sayacı değişmedi (%25 sikintili pay). Yerel bloke: alt yarı firmada o periyotta yavaş oranı ortalaması ≥ 0,40.
+
+Test 1 (3×3 mevduat×servis, FX çevrilemez): mevduat hedefi ile küçük yavaşlık Spearman 0.503 (p = 0.1677); servis hedefi ile küçük yavaşlık 0.741 (p = 0.02237); mevduat hedefi ile reel kayıp 0.843 (p = 0.00429).
+
+Mevduat 0,70 servis eşit: kalıcılık 0.00, yerel 0.00, yavaş 0.000. Mev=srv=0,70: FX çevrilebilir kalıcılık 10.44, FX çevrilemez 1.92, reel 0.595.
+
+Alacak konsantrasyonu (FX çevrilemez, servis eşit): alacak hedefi ile küçük alacak payı Spearman -1.000; reel kayıp fazlası medyan 0.033 (5 puan eşiği aşılmadı).
+
+Alacak 0,70, servis konsantre: küçük alacak payı 0.458; servis eşitken 0.458.
+
+Çizgi (mevduat 0,70, servis eşit, FX çevrilebilir): herkes / üst %10 / alt yarı — sistemik 0.00 / 0.00 / 0.00; yerel 0.00 / 0.12 / 0.00; küçük yavaş 0.000 / 0.170 / 0.000.
+
+## Test 1 — mevduat × servis (ortalama)
+
+| Mev %10 | Srv %10 | FX | Kalıcılık | Yerel | Küçük yavaş | Reel |
+| ---: | ---: | --- | ---: | ---: | ---: | ---: |
+| 0.10 | 0.10 | çevrilebilir | 0.00 | 0.00 | 0.000 | 0.000 |
+| 0.10 | 0.10 | çevrilemez | 0.00 | 0.00 | 0.000 | 0.454 |
+| 0.10 | 0.40 | çevrilebilir | 0.00 | 0.00 | 0.008 | 0.000 |
+| 0.10 | 0.40 | çevrilemez | 0.00 | 0.00 | 0.001 | 0.458 |
+| 0.10 | 0.70 | çevrilebilir | 0.00 | 0.00 | 0.018 | 0.000 |
+| 0.10 | 0.70 | çevrilemez | 0.00 | 0.00 | 0.003 | 0.528 |
+| 0.40 | 0.10 | çevrilebilir | 0.00 | 0.00 | 0.000 | 0.000 |
+| 0.40 | 0.10 | çevrilemez | 0.00 | 0.00 | 0.000 | 0.490 |
+| 0.40 | 0.40 | çevrilebilir | 0.00 | 0.00 | 0.029 | 0.000 |
+| 0.40 | 0.40 | çevrilemez | 0.00 | 0.00 | 0.003 | 0.507 |
+| 0.40 | 0.70 | çevrilebilir | 1.26 | 0.00 | 0.037 | 0.000 |
+| 0.40 | 0.70 | çevrilemez | 0.36 | 0.00 | 0.005 | 0.552 |
+| 0.70 | 0.10 | çevrilebilir | 0.00 | 0.12 | 0.170 | 0.000 |
+| 0.70 | 0.10 | çevrilemez | 0.00 | 0.00 | 0.000 | 0.558 |
+| 0.70 | 0.40 | çevrilebilir | 0.00 | 0.00 | 0.143 | 0.000 |
+| 0.70 | 0.40 | çevrilemez | 0.00 | 0.00 | 0.014 | 0.571 |
+| 0.70 | 0.70 | çevrilebilir | 10.44 | 0.00 | 0.096 | 0.000 |
+| 0.70 | 0.70 | çevrilemez | 1.92 | 0.00 | 0.012 | 0.595 |
+
+## Test 2 — alacak
+
+| Alac %10 | Servis | FX | Kalıcılık | Yerel | Küçük yavaş | Reel | Küçük alacak payı |
+| ---: | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 0.10 | konsantre | çevrilebilir | 0.00 | 0.12 | 0.170 | 0.000 | 0.500 |
+| 0.10 | konsantre | çevrilemez | 0.00 | 0.00 | 0.000 | 0.558 | 0.500 |
+| 0.10 | eşit | çevrilebilir | 0.00 | 0.12 | 0.170 | 0.000 | 0.500 |
+| 0.10 | eşit | çevrilemez | 0.00 | 0.00 | 0.000 | 0.558 | 0.500 |
+| 0.40 | konsantre | çevrilebilir | 0.00 | 0.00 | 0.156 | 0.000 | 0.481 |
+| 0.40 | konsantre | çevrilemez | 0.00 | 0.00 | 0.077 | 0.511 | 0.481 |
+| 0.40 | eşit | çevrilebilir | 0.00 | 2.46 | 0.224 | 0.000 | 0.481 |
+| 0.40 | eşit | çevrilemez | 0.00 | 0.00 | 0.030 | 0.554 | 0.481 |
+| 0.70 | konsantre | çevrilebilir | 13.76 | 0.00 | 0.105 | 0.000 | 0.458 |
+| 0.70 | konsantre | çevrilemez | 2.66 | 0.00 | 0.076 | 0.379 | 0.458 |
+| 0.70 | eşit | çevrilebilir | 0.96 | 12.42 | 0.290 | 0.000 | 0.458 |
+| 0.70 | eşit | çevrilemez | 0.00 | 0.00 | 0.039 | 0.548 | 0.458 |
+
+## Test 3 — çizgi kime açık (FX çevrilebilir)
+
+| Çizgi | Kalıcılık | Yerel | Küçük yavaş | Reel |
+| --- | ---: | ---: | ---: | ---: |
+| herkes | 0.00 | 0.00 | 0.000 | 0.000 |
+| ust10 | 0.00 | 0.12 | 0.170 | 0.000 |
+| alt_yarim | 0.00 | 0.00 | 0.000 | 0.000 |
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_kons7_hucre.csv`, `odeme_kons7.png`, `odeme_kons7_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, dağılım stresi
 
 Stoklar TCMB finansal hesapları, 2026-Q1. Kenar ve firma içi dağılım varsayımdır. Çekilmemiş limit ve girdi-çıktı tablosu yoktur. Sayılar firma faturası ölçümü değildir.

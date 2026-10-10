@@ -265,8 +265,8 @@ def rapor(sonuc: dict, tablo: pd.DataFrame) -> str:
         f"servis hedefi ile küçük yavaşlık {k['sp_srv_yk']:.3f} (p = {k['sp_srv_yk_p']:.4g}); "
         f"mevduat hedefi ile reel kayıp {k['sp_mev_reel']:.3f} (p = {k['sp_mev_reel_p']:.4g}).",
         "",
-        f"Servis de konsantre (mev=srv=0,70): sistemik kalıcılık {k['srv70_kal']:.2f}, yerel bloke {k['srv70_yerel']:.2f}, "
-        f"küçük yavaş {k['srv70_yk']:.3f}. Mevduat 0,70 servis eşit: kalıcılık {k['mev70_esit_kal']:.2f}, yerel {k['mev70_esit_yerel']:.2f}, yavaş {k['mev70_esit_yk']:.3f}.",
+        f"Mevduat 0,70 servis eşit: kalıcılık {k['mev70_esit_kal']:.2f}, yerel {k['mev70_esit_yerel']:.2f}, yavaş {k['mev70_esit_yk']:.3f}. "
+        f"Mev=srv=0,70: FX çevrilebilir kalıcılık {k['grid77_tl_kal']:.2f}, FX çevrilemez {k['grid77_fx_kal']:.2f}, reel {k['grid77_fx_reel']:.3f}.",
         "",
         f"Alacak konsantrasyonu (FX çevrilemez, servis eşit): alacak hedefi ile küçük alacak payı Spearman {k['sp_alac_pay']:.3f}; "
         f"reel kayıp fazlası medyan {k['alac_fazla_med']:.3f} (5 puan eşiği {'aşıldı' if k['alac_zayif_degil'] else 'aşılmadı'}).",
@@ -323,24 +323,29 @@ def rapor(sonuc: dict, tablo: pd.DataFrame) -> str:
 
 def hukum(k: dict) -> str:
     parca = [
-        f"Mevduat×servis ızgarasında (FX çevrilemez) mevduat konsantrasyonu küçük yavaşlıkla "
-        f"Spearman {k['sp_mev_yk']:.3f}, servis konsantrasyonu {k['sp_srv_yk']:.3f}, reel kayıp {k['sp_mev_reel']:.3f}.",
+        f"Mevduat×servis (FX çevrilemez): mevduat hedefi–küçük yavaş Spearman {k['sp_mev_yk']:.3f} "
+        f"(p = {k['sp_mev_yk_p']:.3g}), servis hedefi–küçük yavaş {k['sp_srv_yk']:.3f} "
+        f"(p = {k['sp_srv_yk_p']:.3g}), mevduat–reel kayıp {k['sp_mev_reel']:.3f} (p = {k['sp_mev_reel_p']:.3g}).",
     ]
-    if k["srv70_kal"] < 1 and k["mev70_esit_kal"] < 1:
-        parca.append(
-            f"Servis de 0,70’e toplanınca sistemik kalıcılık yine {k['srv70_kal']:.2f}; "
-            f"mevduat 0,70 servis eşitken yerel bloke {k['mev70_esit_yerel']:.2f}, küçük yavaş {k['mev70_esit_yk']:.3f}. "
-            "Servis konsantrasyonu tek başına sistemik bloke üretmiyor; yerel yavaşlık mevduat konsantrasyonuyla geliyor."
-        )
-    if k["sp_alac_pay"] < -0.5:
-        parca.append("Alacak üst %10’a toplanınca küçük firmaların alacak payı düşüyor.")
-    else:
-        parca.append("Alacak konsantrasyonu küçük alacak payını güçlü düşürmüyor.")
-    if not k["alac_zayif_degil"]:
-        parca.append("Alacak konsantre olsa da küçük reel kayıp fazlası 5 puan eşiğini aşmıyor.")
     parca.append(
-        f"Çizgi üst %10’a açıkken küçük yavaş {k['ciz_ust_yk']:.3f}, herkese açıkken {k['ciz_her_yk']:.3f}, "
-        f"alt yarıya açıkken {k['ciz_alt_yk']:.3f}. Sistemik kalıcılık üçünde de {k['ciz_her_kal']:.0f}."
+        f"Mevduat 0,70 servis eşit: sistemik kalıcılık {k['mev70_esit_kal']:.2f}, yerel {k['mev70_esit_yerel']:.2f}, "
+        f"küçük yavaş {k['mev70_esit_yk']:.3f} — önceki tur tekrarı."
+    )
+    parca.append(
+        f"Mevduat ve servis birlikte 0,70: FX çevrilebilirken kalıcılık {k['grid77_tl_kal']:.2f}, "
+        f"FX çevrilemezken {k['grid77_fx_kal']:.2f}, reel kayıp {k['grid77_fx_reel']:.3f}. "
+        "Servis de konsantre olunca agregatın gizlediği sistemik bloke çıkıyor; yalnızca mevduat konsantre servis eşitken çıkmıyor."
+    )
+    if k["sp_alac_pay"] <= -0.9:
+        parca.append(
+            f"Alacak üst %10 payı arttıkça küçük firmaların alacak payı düşüyor (Spearman {k['sp_alac_pay']:.2f}). "
+            f"Reel kayıp fazlası medyan {k['alac_fazla_med']:.3f}; 5 puan eşiği aşılmadı."
+        )
+    if not k["alac_zayif_degil"]:
+        parca.append("Zayıf halka: küçük reel kayıp payı alacak konsantrasyonunda da 5 puanı aşmıyor.")
+    parca.append(
+        f"Çizgi (mev 0,70, servis eşit, FX çevrilebilir): herkes yavaş {k['ciz_her_yk']:.3f}, üst %10 {k['ciz_ust_yk']:.3f} "
+        f"(yerel bloke {k['ciz_ust_yerel']:.2f}), alt yarı {k['ciz_alt_yk']:.3f}. Sistemik kalıcılık {k['ciz_her_kal']:.0f}."
     )
     return " ".join(parca)
 
@@ -425,7 +430,13 @@ def main_kons7() -> None:
 
     ciz = {r.line_mode: r for _, r in tablo[tablo.test == "cizgi"].iterrows()}
 
+    g77_tl = tablo[(tablo.test == "servis_grid") & (tablo.mev_k == 0.70) & (tablo.srv_k == 0.70) & (~tablo.fx)].iloc[0]
+    g77_fx = tablo[(tablo.test == "servis_grid") & (tablo.mev_k == 0.70) & (tablo.srv_k == 0.70) & tablo.fx].iloc[0]
+
     karar = {
+        "grid77_tl_kal": float(g77_tl["kal"]),
+        "grid77_fx_kal": float(g77_fx["kal"]),
+        "grid77_fx_reel": float(g77_fx["reel"]),
         "sp_mev_yk": sp_mev_yk,
         "sp_mev_yk_p": sp_mev_yk_p,
         "sp_srv_yk": sp_srv_yk,

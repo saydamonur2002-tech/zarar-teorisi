@@ -1,0 +1,43 @@
+{
+  "uyari": "Stoklar ölçülmüş (TCMB 2026-Q1). Kenar ve firma içi dağılım varsayım. Çekilmemiş limit serisi ve girdi-çıktı tablosu yok.",
+  "ozet": "Mevduat×servis (FX çevrilemez): mevduat hedefi–küçük yavaş Spearman 0.503 (p = 0.168), servis hedefi–küçük yavaş 0.741 (p = 0.0224), mevduat–reel kayıp 0.843 (p = 0.00429). Mevduat 0,70 servis eşit: sistemik kalıcılık 0.00, yerel 0.00, küçük yavaş 0.000 — önceki tur tekrarı. Mevduat ve servis birlikte 0,70: FX çevrilebilirken kalıcılık 10.44, FX çevrilemezken 1.92, reel kayıp 0.595. Servis de konsantre olunca agregatın gizlediği sistemik bloke çıkıyor; yalnızca mevduat konsantre servis eşitken çıkmıyor. Alacak üst %10 payı arttıkça küçük firmaların alacak payı düşüyor (Spearman -1.00). Reel kayıp fazlası medyan 0.033; 5 puan eşiği aşılmadı. Zayıf halka: küçük reel kayıp payı alacak konsantrasyonunda da 5 puanı aşmıyor. Çizgi (mev 0,70, servis eşit, FX çevrilebilir): herkes yavaş 0.000, üst %10 0.170 (yerel bloke 0.12), alt yarı 0.000. Sistemik kalıcılık 0.",
+  "karar": {
+    "sp_mev_yk": 0.5027933178237151,
+    "sp_mev_yk_p": 0.16771149983993536,
+    "sp_srv_yk": 0.7409585736349484,
+    "sp_srv_yk_p": 0.022365427657171578,
+    "sp_mev_reel": 0.8432740427115677,
+    "sp_mev_reel_p": 0.004289748768094634,
+    "srv70_kal": 1.92,
+    "srv70_yerel": 0.0,
+    "srv70_yk": 0.011822222222222224,
+    "mev70_esit_kal": 0.0,
+    "mev70_esit_yerel": 0.0,
+    "mev70_esit_yk": 0.0002,
+    "sp_alac_pay": -1.0,
+    "alac_fazla_med": 0.032917324632603204,
+    "alac_zayif_degil": false,
+    "alac70_kucuk_alac": 0.45766773083477796,
+    "alac70_esit_kucuk_alac": 0.45766773083477796,
+    "ciz_her_kal": 0.0,
+    "ciz_ust_kal": 0.0,
+    "ciz_alt_kal": 0.0,
+    "ciz_her_yerel": 0.0,
+    "ciz_ust_yerel": 0.12,
+    "ciz_alt_yerel": 0.0,
+    "ciz_her_yk": 0.0,
+    "ciz_ust_yk": 0.17026666666666665,
+    "ciz_alt_yk": 0.0,
+    "grid77_tl_kal": 10.44,
+    "grid77_fx_kal": 1.92,
+    "grid77_fx_reel": 0.5948765454630977
+  },
+  "tufe": {
+    "yoy": 0.3064848474101396,
+    "son": "2026-01",
+    "baz": "2025-01",
+    "kaynak": "EVDS TP.FG.J0"
+  },
+  "n_mc": 50,
+  "seed0": 20272010
+}
