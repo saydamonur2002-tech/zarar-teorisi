@@ -180,6 +180,10 @@ def rapor_metni(sonuc, tarama) -> str:
         f"Kötü köşe kapalı / açık: {k['kotu_kapali']:.2f} / {k['kotu_acik']:.2f}. "
         f"Kısalma ortalama {k['kisalma_ortalama']:.2f}, medyan {k['kisalma_medyan']:.2f}, tek yanlı p = {k['kisalma_p']:.4g}.",
         "",
+        sonuc.get("tikanma_metin", ""),
+        "",
+        sonuc.get("izgara_metin", ""),
+        "",
         f"İyi köşe kapalı / açık: {k['iyi_kapali']:.2f} / {k['iyi_acik']:.2f}. "
         f"Baz kapalı / açık: {k['baz_kapali']:.2f} / {k['baz_acik']:.2f}.",
         "",
@@ -246,6 +250,22 @@ def rapor_metni(sonuc, tarama) -> str:
     return "\n".join(satir)
 
 
+def tikanma_metni(kap, ac) -> str:
+    return (
+        f"Kötü köşe, birincil valf. Ortalama yeni tahsil kapalı {kap[:, oz.F_HACIM].mean():.2f}, "
+        f"açık {ac[:, oz.F_HACIM].mean():.2f}. "
+        f"Hacim eşiğinin altında kalan periyot {kap[:, oz.F_HAC].mean():.2f} ve {ac[:, oz.F_HAC].mean():.2f}. "
+        f"Kilit payı eşiğinin üstünde kalan periyot {kap[:, oz.F_KIL].mean():.2f} ve {ac[:, oz.F_KIL].mean():.2f}. "
+        "Bloke sayımı bu ikisinin birleşimidir. "
+        + (
+            "Ortalama tahsil yükselir, 0,70 eşiğinin altında kalır. Hacim sayacı ve kilit sayacı kısalmaz."
+            if ac[:, oz.F_HACIM].mean() < oz.HACIM_ESIK
+            and abs(ac[:, oz.F_HAC].mean() - kap[:, oz.F_HAC].mean()) < 0.5
+            else "Açık kanalda tahsil ya da sayaç kapalı kanaldan ayrılıyor."
+        )
+    )
+
+
 def hukum(k) -> tuple[str, str]:
     parca = []
     if k["soksuz_uyumsuz"]:
@@ -293,10 +313,18 @@ def hukum(k) -> tuple[str, str]:
             "Zincir içi küçük pay sistematik büyümüyor. Banka limiti genişken valf açılmıyor. "
             "Küçük alacaklı, defter payından fazla erime taşımıyor. Kalibrasyon kapanmadı."
         )
+    elif (not k["valf"]) and k["aktarim"] and k["hiyerarsi"] and k["zayif"] and not k["soksuz_uyumsuz"]:
+        ozet = (
+            "Sistem valfi kötü köşede reel yükü alacaklıya yazıyor; zincir içi küçük pay 5 puan büyümüyor. "
+            "Kalıcılığı pratik eşiğin üstünde kısaltmıyor: bloke periyot sayısı yerinde kalıyor. "
+            "Banka çarpanı 4 iken valf açılmıyor. Küçük alacaklı erimeyi defter payıyla taşıyor. "
+            "Yerel erken silme, birincil kuralın dışında, kötü köşede kalıcılığı sıfırlıyor. "
+            "Yüksek gecikmede kısalma yok. Banka kapalıyken α = 0 ve α = 0,15 olan iki hücrede kısalma eşiği geçiliyor. "
+            "Kalibrasyon kapanmadı."
+        )
     elif (not k["valf"]) and k["hiyerarsi"]:
         ozet = (
-            "Enflasyon kanalı bu kuralda kalıcılığı pratik eşiğin üstünde kısaltmıyor. "
-            "Banka limiti genişken valf yine kapalı. Aktarımın enflasyona kaydığı iddiası desteklenmedi. "
+            "Enflasyon kanalı kalıcılığı pratik eşiğin üstünde kısaltmıyor. Banka çarpanı 4 iken valf kapalı. "
             "Kalibrasyon kapanmadı."
         )
     else:
@@ -466,6 +494,7 @@ def main_tur4() -> None:
                     for p, pi in enumerate(PILER):
                         h = acik[1, a, b, c, e, p]
                         kap = kapali[1, a, b, c]
+                        pay = pay_kucuk(h)
                         satirlar.append({
                             "sok": "c",
                             "kilit": ia,
@@ -482,7 +511,7 @@ def main_tur4() -> None:
                             "kisalma": float((kap[:, oz.F_KAL] - h[:, oz.F_KAL]).mean()),
                             "pi_periyot": float(h[:, oz.F_PI_N].mean()),
                             "erime_oran": float(erime_oran(h, v0).mean()),
-                            "kucuk_odenmeyen_payi": float(np.nanmean(pay_kucuk(h))),
+                            "kucuk_odenmeyen_payi": float(np.nanmean(pay)) if np.isfinite(pay).any() else float("nan"),
                         })
     tablo = pd.DataFrame(satirlar)
     tablo.to_csv(KOK / "odeme_enf_hucre.csv", index=False)
@@ -532,6 +561,25 @@ def main_tur4() -> None:
         "pay_buyumedi": pay_buyumedi,
     }
     ozet, hipotez = hukum(karar)
+    tikanma = tikanma_metni(kotu_ka, kotu_ac)
+    izgara_parca = []
+    for a, ia in enumerate(KILIT_IX):
+        for b, ib in enumerate(ALPHA_IX):
+            for c, ic in enumerate(BANK_IX):
+                if (a, b, c) == KOTU:
+                    continue
+                test = kisa_mi(kapali[1, a, b, c], acik[1, a, b, c, BIRINCIL_E, BIRINCIL_P])
+                if test["valf"]:
+                    izgara_parca.append(
+                        f"kilit {oz.KILIT[ia][0]:.2f} / süre {oz.KILIT[ia][1]}, α {oz.GECIKME[ib]:.2f}, "
+                        f"banka {oz.BANKA[ic]:.1f}, kısalma ortalama {test['fark_ortalama']:.2f}, "
+                        f"medyan {test['fark_medyan']:.2f}, p = {test['p']:.3g}"
+                    )
+    izgara = (
+        "Birincil kötü köşe α = 0,60 kısalmaz. Aynı eşik ve π ile pratik eşiği geçen diğer hücreler: "
+        + ("; ".join(izgara_parca) if izgara_parca else "yok")
+        + "."
+    )
     grafik(ozet_sok, tablo, KOK / "odeme_enf.png")
     sonuc = {
         "uyari": (
@@ -550,6 +598,8 @@ def main_tur4() -> None:
         "soksuz_erime": float(erime_oran(s1[None, :], v0)[0]),
         "soksuz_yerel": float(s2[oz.F_KAL]),
         "soksuz_yerel_erime": float(erime_oran(s2[None, :], v0)[0]),
+        "tikanma_metin": tikanma,
+        "izgara_metin": izgara,
         "n_mc": N_MC,
         "tohum": oz.TOHUM,
     }

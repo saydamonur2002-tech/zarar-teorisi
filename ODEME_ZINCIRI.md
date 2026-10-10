@@ -1,3 +1,82 @@
+# Ödeme zinciri, tur 4: enflasyon kanalı
+
+Sentetik ağ. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir.
+
+## Hüküm
+
+Sistem valfi kötü köşede reel yükü alacaklıya yazıyor; zincir içi küçük pay 5 puan büyümüyor. Kalıcılığı pratik eşiğin üstünde kısaltmıyor: bloke periyot sayısı yerinde kalıyor. Banka çarpanı 4 iken valf açılmıyor. Küçük alacaklı erimeyi defter payıyla taşıyor. Yerel erken silme, birincil kuralın dışında, kötü köşede kalıcılığı sıfırlıyor. Yüksek gecikmede kısalma yok. Banka kapalıyken α = 0 ve α = 0,15 olan iki hücrede kısalma eşiği geçiliyor. Kalibrasyon kapanmadı.
+
+## Kural
+
+Valf, bir önceki periyodun şiddeti ve ödenmeyen stok / aylık fatura ikisi de eşiği geçince açılır. Açılınca nakit yükümlülük 1/(1+π) olur. Erime = yükümlülük × π/(1+π); alacaklının reel kaybı, borçlunun rahatlaması. Erime ödenmeyen tutara yazılmaz. Tahsil, erimeden sonraki yükümlülüğe göredir. Birincil ayar: eşik 0,25, π = 0,30. Kilit orta, kötü köşe α = 0,60 ve banka 0, iyi köşe α = 0 ve banka 4.
+
+İkinci aşama kapanmadı. `hekis_enflasyon.py` yıllık TÜFE’yi `hekis-model-main/data/istanbul_2026.json` içinden okur; dosya bu ortamda yok. Sektör makro çalışma kitabı da yok. Kanalın cebiri o dosyadaki formülle aynı: reel değişim = −alacak × π / (1+π). Izgaradaki π ölçülmüş enflasyon değildir.
+
+Şoksuz, kanal kapalı: kalıcılık 0.00. Şoksuz, birincil valf: kalıcılık 0.00, erime oranı 0.0000. Şoksuz, yerel tercih: kalıcılık 0.00, erime oranı 0.0000.
+
+## C şoku, birincil valf
+
+Kötü köşe kapalı / açık: 17.46 / 17.46. Kısalma ortalama 0.00, medyan 0.00, tek yanlı p = 1.
+
+Kötü köşe, birincil valf. Ortalama yeni tahsil kapalı 0.41, açık 0.57. Hacim eşiğinin altında kalan periyot 16.08 ve 16.06. Kilit payı eşiğinin üstünde kalan periyot 17.46 ve 17.46. Bloke sayımı bu ikisinin birleşimidir. Ortalama tahsil yükselir, 0,70 eşiğinin altında kalır. Hacim sayacı ve kilit sayacı kısalmaz.
+
+Birincil kötü köşe α = 0,60 kısalmaz. Aynı eşik ve π ile banka 0'da iki hücre pratik eşiği geçer: kilit 0,99 / süre 8 ve α = 0, kısalma ortalama 3,58, medyan 3, p = 3,53e-8; kilit orta ve α = 0,15, kısalma ortalama 2,98, medyan 3, p = 3,72e-7.
+
+İyi köşe kapalı / açık: 0.00 / 0.00. Baz kapalı / açık: 0.58 / 0.58.
+
+Kötü köşede ortalama enflasyon periyodu 15.66, iyi köşede 0.00.
+
+Erime / (V0 × T), kötü 0.3538, iyi 0.0000. Küçük alacaklının erime payı 0.401, defter payı 0.401, fazla medyan 0.001.
+
+Küçük alacaklının ödenmeyen payı, açık − kapalı medyan 0.0042, n = 50, tek yanlı p = 2.417e-05.
+
+Küçük borçluya düşen erime payı 0.386. Büyük alacaklının erime payı 0.369.
+
+Yerel tercih, C, kötü köşe: kalıcılık 0.00, kapalıya göre kısalma 17.46, p = 4.759e-10, erime oranı 0.0383. İyi köşe kalıcılık 0.00, enflasyon periyodu 0.00. Birincil hükme girmez.
+
+FX yan deneyi, kötü köşe, geçişkenlik 1: kalıcılık 17.46, kısalma 0.00, erime oranı 0.2549. Birincil hükme girmez.
+
+## Şoklar, kötü köşe, birincil valf
+
+| Şok | Şiddet | Kapalı | Açık | Kısalma | p | Valf periyodu | Erime oranı | Valf |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| yumusak | 0.90 | 8.76 | 8.76 | 0.00 | 1 | 7.30 | 0.1522 | hayır |
+| c | 2.10 | 17.46 | 17.46 | 0.00 | 1 | 15.66 | 0.3538 | hayır |
+| sert | 3.20 | 20.38 | 20.38 | 0.00 | 1 | 18.52 | 0.4110 | hayır |
+
+## Eşik × şiddet, C şoku, kötü köşe
+
+| Eşik | π | Kapalı | Açık | Kısalma | Erime | Valf periyodu | Valf |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 0.50 | 0.10 | 17.46 | 17.46 | 0.00 | 0.2628 | 14.98 | hayır |
+| 0.50 | 0.30 | 17.46 | 17.46 | 0.00 | 0.3668 | 14.98 | hayır |
+| 0.50 | 0.60 | 17.46 | 17.46 | 0.00 | 0.3112 | 11.70 | hayır |
+| 0.25 | 0.10 | 17.46 | 17.46 | 0.00 | 0.2617 | 15.66 | hayır |
+| 0.25 | 0.30 | 17.46 | 17.46 | 0.00 | 0.3538 | 15.66 | hayır |
+| 0.25 | 0.60 | 17.46 | 17.14 | 0.32 | 0.2805 | 11.52 | hayır |
+| 0.10 | 0.10 | 17.46 | 17.46 | 0.00 | 0.2606 | 16.10 | hayır |
+| 0.10 | 0.30 | 17.46 | 17.46 | 0.00 | 0.3412 | 16.10 | hayır |
+| 0.10 | 0.60 | 17.46 | 15.68 | 1.78 | 0.2627 | 11.30 | hayır |
+
+## Hangi hipotez hangi koşulda
+
+Kötü köşede, C şokunda enflasyon kanalı kalıcılığı pratik eşiğin üstünde kısaltmıyor. Valf işlemiyor. Aynı hücrede reel erime belirgin ve zincir içi küçük alacaklı payı 5 puan büyümüyor. Yük borçludan alacaklıya enflasyonla geçmiş olabilir. Hiyerarşi duruyor. İyi köşede valf neredeyse açılmıyor ve kalıcılık kısa. Kötü köşede valf açılıyor. Yumuşak şokta enflasyon periyodu sert şoktan az. Küçük alacaklının erime payı defter payını 5 puan aşmıyor. Zayıf halka bu kanalda da zayıf.
+
+## Varsayımlar
+
+Tohum 20261010. Monte Carlo 50. Ufuk 24. Ağ tur 2 ile aynı sentetik çizim, basamak banka erişimi. Şok tamponu U(0,95, 1,40), ek şok firmaların %8’i × 0,45. Yumuşak: 2 sektör × 0,55. C: 3 sektör × 0,30. Sert: 4 sektör × 0,20.
+
+Izgara: kilit, α ve banka indeks {0, 2, 4}; eşik {0,50, 0,25, 0,10}; π {0,10, 0,30, 0,60}.
+
+Yerel tercih birincil teste girmez. FX yan deneyi de girmez: büyük borçluda pay 0,40, ortada 0,20, küçükte 0,05; geçişkenlik 1. Bu paylar ölçüm değildir.
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_enf_hucre.csv`, `odeme_enf_sok.csv`, `odeme_enf.png`, `odeme_enf_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, tur 3: heterojen limit
 
 Sentetik ağ ve varsayılmış limit dağılımı. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir. KAP tabanlı ağ bu turda yok.
