@@ -421,6 +421,7 @@ def tek_kosu_temiz(
     yerel: bool = False,
     fx_pay: np.ndarray | None = None,
     fx_gecis: float = 1.0,
+    fx_hizmet: float | None = None,
     reel: bool = False,
     ithal: np.ndarray | None = None,
     fx_ay: float = 1.0,
@@ -452,7 +453,8 @@ def tek_kosu_temiz(
     liq = lik0.copy()
     bank = bank_max.copy()
     arrears = np.zeros(w0.shape[0], dtype=np.float64)
-    lock = np.zeros(N, dtype=np.int16)
+    nd = int(net["borc"].shape[0])
+    lock = np.zeros(nd, dtype=np.int16)
     V0 = float(w0.sum())
 
     bloke_n = 0
@@ -463,7 +465,7 @@ def tek_kosu_temiz(
 
     od_ku = od_bu = od_top = od_b2k = od_bb = 0.0
     m_ku = m_bu = m_top = m_b2k = 0.0
-    yavas = np.zeros(N, dtype=np.float64)
+    yavas = np.zeros(nd, dtype=np.float64)
     kilit_pay = 0.0
 
     idx_ku = net["idx_ku_al"]
@@ -482,11 +484,11 @@ def tek_kosu_temiz(
     kur_sonra = 1.0
     if reel:
         ith = net["boyut"] * 0.0 if ithal is None else np.asarray(ithal, dtype=float)
-        satis = np.bincount(alacakli, weights=w0, minlength=N).astype(np.float64)
+        satis = np.bincount(alacakli, weights=w0, minlength=nd).astype(np.float64)
         ihtiyac = ith * satis
-        giris_w = np.bincount(borclu, weights=w0, minlength=N).astype(np.float64)
-        kap = np.ones(N) if kapasite is None else np.asarray(kapasite, dtype=float)
-        hizmet = FX_HIZMET * ihtiyac
+        giris_w = np.bincount(borclu, weights=w0, minlength=nd).astype(np.float64)
+        kap = np.ones(nd) if kapasite is None else np.asarray(kapasite, dtype=float)
+        hizmet = (FX_HIZMET if fx_hizmet is None else fx_hizmet) * ihtiyac
     else:
         ith = ihtiyac = giris_w = kap = hizmet = None
 
@@ -522,17 +524,17 @@ def tek_kosu_temiz(
         inactive = lock > 0
         if reel:
             kur = kur_sonra
-            fx_mult = np.ones(N)
+            fx_mult = np.ones(nd)
             if fx_sok:
                 fx_mult[sokta] = fx_kalan
-            g_fx = np.ones(N)
+            g_fx = np.ones(nd)
             var = ihtiyac > 1e-12
             g_fx[var] = np.minimum(1.0, (fx_ay * ihtiyac[var] * fx_mult[var]) / ihtiyac[var])
             g_fx = np.minimum(g_fx, kap)
             g = g_fx.copy()
             for _ in range(3):
-                gelen = np.bincount(borclu, weights=w0 * g[alacakli], minlength=N)
-                dolum = np.ones(N)
+                gelen = np.bincount(borclu, weights=w0 * g[alacakli], minlength=nd)
+                dolum = np.ones(nd)
                 dol = giris_w > 1e-12
                 dolum[dol] = gelen[dol] / giris_w[dol]
                 g = np.minimum(g_fx, dolum)
@@ -549,7 +551,7 @@ def tek_kosu_temiz(
             w_yeni = w0
         due = w_yeni + arrears
         if kanal and yerel:
-            owed = np.zeros(N)
+            owed = np.zeros(nd)
             np.add.at(owed, borclu, due)
             kapasite = liq + bank
             kisa = (owed > 1e-10) & (kapasite + 1e-12 < esik * owed)
@@ -560,7 +562,7 @@ def tek_kosu_temiz(
             biriktir(erime)
         unpaid = due.copy()
         if secim:
-            owed_full = np.zeros(N)
+            owed_full = np.zeros(nd)
             np.add.at(owed_full, borclu, due)
             bar = esik * owed_full
             # Nakit cubugun ustundeyse bankaya dokunma; altindaysa yalniz cubuga tamamla.
@@ -568,15 +570,15 @@ def tek_kosu_temiz(
             kisa_nakit = liq + 1e-12 < bar
             ek = np.minimum(bank, np.maximum(bar - liq, 0.0))
             pay_cap = np.where(kisa_nakit, np.minimum(owed_full, liq + ek), pay_cap)
-            paid_cum = np.zeros(N)
+            paid_cum = np.zeros(nd)
         for _ in range(TURLAR):
-            owed = np.zeros(N)
+            owed = np.zeros(nd)
             np.add.at(owed, borclu, unpaid)
             active = ~inactive
             need = np.maximum(owed - liq, 0.0)
             draw = np.minimum(bank, need) * active
             cap = (liq + draw) * active
-            ratio = np.ones(N)
+            ratio = np.ones(nd)
             poz = owed > 1e-10
             ratio[poz] = np.minimum(1.0, cap[poz] / owed[poz])
             ratio *= active.astype(np.float64)
@@ -584,7 +586,7 @@ def tek_kosu_temiz(
             if secim:
                 room = np.maximum(pay_cap - paid_cum, 0.0)
                 desired = np.minimum(desired, room)
-                ratio = np.divide(desired, owed, out=np.zeros(N), where=owed > 1e-10)
+                ratio = np.divide(desired, owed, out=np.zeros(nd), where=owed > 1e-10)
                 ratio *= active.astype(np.float64)
                 paid_cum += owed * ratio
             pay = unpaid * ratio[borclu]
@@ -598,11 +600,11 @@ def tek_kosu_temiz(
         unpaid[unpaid < 1e-12] = 0.0
         liq[liq < 0.0] = 0.0
 
-        owed0 = np.zeros(N)
+        owed0 = np.zeros(nd)
         np.add.at(owed0, borclu, due)
-        unpaid_node = np.zeros(N)
+        unpaid_node = np.zeros(nd)
         np.add.at(unpaid_node, borclu, unpaid)
-        pay_ratio = np.ones(N)
+        pay_ratio = np.ones(nd)
         poz = owed0 > 1e-10
         pay_ratio[poz] = 1.0 - unpaid_node[poz] / owed0[poz]
 
@@ -619,7 +621,7 @@ def tek_kosu_temiz(
                 m_bu += float(cost_e[idx_bu].sum())
             if idx_b2k.size:
                 m_b2k += float(cost_e[idx_b2k].sum())
-            drain = np.zeros(N)
+            drain = np.zeros(nd)
             np.add.at(drain, alacakli, cost_e)
             liq -= drain
             liq[liq < 0.0] = 0.0
@@ -752,7 +754,7 @@ def kosu_hucre(
     n = carpanlar.shape[0]
     blok = np.empty((n, N_F), dtype=np.float64)
     patikalar = np.empty((n, T), dtype=np.float64) if patika else None
-    yavas_top = np.zeros(N, dtype=np.float64)
+    yavas_top = np.zeros(int(net["borc"].shape[0]), dtype=np.float64)
     for s in tohumlar:
         if tabanlar is None:
             birim = net["banka_taban"]
@@ -1717,6 +1719,6 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    from odeme_tur5 import main_tur5
+    from odeme_gercek import main_gercek
 
-    main_tur5()
+    main_gercek()

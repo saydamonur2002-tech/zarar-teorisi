@@ -1,3 +1,49 @@
+# Ödeme zinciri, ölçülmüş stoklar
+
+Stoklar TCMB finansal hesapları, 2026-Q1, milyar TL biriminden trilyona çevrildi. Kenar ölçülmüş fatura değildir: yükümlülük, alacaklı varlık payına bölünür. Vade ve valf eşiği varsayımdır. Çekilmemiş limit yoktur.
+
+## Hüküm
+
+Şoksuz patika bloke üretmiyor. Firma mevduatının ölçülmüş en büyük çeyreklik düşüşü kalıcılığı 0 periyotta bırakıyor. Döviz kredisinin çevrilmediği patikada kalıcılık 0, reel kayıp 0.454. Valf açıkken 0 ve 0.454. π aylık 0.0225. Valf periyodu 0: zincir bloke olmayınca valf açılmıyor, erime 0. FX çevirmeme şokunda valf kalıcılığı 2 periyottan az değiştiriyor ve reel kaybı 5 puandan az düşürüyor. Ölçülmüş aylık enflasyon bu kısıtı kapatmıyor. Kenar, finansal hesap stokunun orantılı karşı taraf dağılımıdır; firma faturası değildir. Aynı ağda firma mevduatını × 0,30 kesmek, ölçülmüş düşüş değildir: kalıcılık 0.
+
+## Ne ölçülmüş, ne varsayım
+
+Dönem 2026-Q1. Birim trilyon TL. Firma mevduatı 8.59, firma kredi yükümlülüğü 25.34, diğer yükümlülük 6.41.
+
+Kredi döviz payı (değerleme regresyonu, F yükümlülük) 0.596. Mevduat döviz payı 0.580. FX mevduat / FX kredi stoku = 0.330. Firma mevduatının en büyük çeyreklik düşüşü -0.079. Firma aylık servis 1.67; mevduat bunun 5.1 katı.
+
+TÜFE 2025-01–2026-01: yıllık 0.306, aylık π = 0.0225. Kaynak EVDS TP.FG.J0.
+
+Kısa kredi 12 ay, uzun kredi 60 ay, diğer hesap 12 ay servis edilir. Bu vade ölçülmedi. Çekilmemiş banka limiti seride yok, çizgi sıfır. Valf eşiği 0,25 model kuralıdır. Girdi-çıktı ithal katsayısı yok. Reel kısıt, firmanın döviz kredisini çevirememesidir.
+
+Karşı taraf matrisi `Lm`: borçlunun yükümlülüğü, alacaklıların varlık payına bölünür. Bu, depodaki kendi uyarısıyla ölçülmüş bir fatura ağı değildir.
+
+## Tek patika
+
+Monte Carlo yok. Matris tek. Kısalma eşiği 2 bloke periyot, reel kayıp eşiği 0,05. p-değeri yok. `asiri` satırı ölçülmüş düşüş değildir: önceki turlardaki × 0,30 likidite kesimi, bu stoklara uygulanır.
+
+| Patika | Valf | Bloke | Reel kayıp | Erime | Valf periyodu |
+| --- | --- | ---: | ---: | ---: | ---: |
+| soksuz | kapalı | 0 | 0.000 | 0.000 | 0 |
+| soksuz | açık | 0 | 0.000 | 0.000 | 0 |
+| mevduat | kapalı | 0 | 0.000 | 0.000 | 0 |
+| mevduat | açık | 0 | 0.000 | 0.000 | 0 |
+| fx | kapalı | 0 | 0.454 | 0.000 | 0 |
+| fx | açık | 0 | 0.454 | 0.000 | 0 |
+| iki | kapalı | 0 | 0.454 | 0.000 | 0 |
+| iki | açık | 0 | 0.454 | 0.000 | 0 |
+| asiri | kapalı | 0 | 0.000 | 0.000 | 0 |
+| asiri | açık | 0 | 0.000 | 0.000 | 0 |
+
+FX çevirmemede hane, alacaklı olarak reel kaybın 0.021 kadarını taşır. Hane defter payı 0.028.
+
+Tekrar: `python3 odeme_zinciri.py`.
+
+Dosyalar: `odeme_gercek.png`, `odeme_gercek_sonuc.json`.
+
+
+<!-- ONCEKI -->
+
 # Ödeme zinciri, tur 5: reel kısıt
 
 Sentetik ağ ve sentetik ithal payları. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir.
