@@ -102,6 +102,45 @@ duzeyinde KAP kenari yok; finansal hesap matrisi kimden kime odeme agi degil.
 
   Soksuz, dagilim, carpan 1, orta kilit ve alpha: kalicilik >= 1 ise dagilim
   duragan akisla uyumsuz isaretlenir. Olcek sonuca gore yeniden ayarlanmaz.
+
+Tur 4 (enflasyon kanali), sonuc gorulmeden. Ag basamak erisimli tur 2 agidir.
+KAP ve TCMB kalibrasyonu yoktur.
+
+  Nominal katman: borc ve alacak ayni kenardir. Valf acilinca o periyodun
+  nakdi yukumlulugu (yeni fatura + arrears) 1/(1+pi) ile carpilir.
+  Erime = yukumluluk * pi/(1+pi). Bu, hekis_enflasyon.reel_degisim ile ayni
+  cebirdir. Alacakli reel kaybeder, borclu ayni tutarda rahatlar. Erime
+  odenmeyen sayilmaz. Tahsil orani, erimeden sonraki nakdi yukumluluge gore
+  hesaplanir; tam odeme tahsil 1'dir. Yeni fatura gelecek periyotta yine w0'dur.
+
+  Sistem valfi, bir onceki periyodun siddeti ve temizlik stoku ikisi de esikte
+  ise acilir. Siddet = max(0, (0.70-tahsil)/0.70, (sikintili pay-0.25)/0.25).
+  Temizlik stoku = arrears / normal aylik fatura. Ilk periyotta gecikme yoktur.
+  Birincil ayar: esik 0.25, pi 0.30. Izgara esik {0.50, 0.25, 0.10},
+  pi {0.10, 0.30, 0.60}. Kilit, alpha ve banka ucer seviye (indeks 0, 2, 4).
+  Kanal kapali: pi uygulanmaz.
+
+  Yerel tercih ayri koldur, birincil teste girmez: nakdi kilit esiginin
+  altinda kalan borclu kendi kenarini 1/(1+pi) yapar. Sistem valfiyle birlikte
+  calismaz.
+
+  Valf destek: C sokunda kotu kose (kilit orta, alpha 0.60, banka 0),
+  kapali eksi birincil acik kalicilik pratik esikle kisa ve tek yanli
+  Wilcoxon p<0.05.
+
+  Aktarim destek: ayni hucrede kumulatif erime / (V0 * T) ortalamasi >= 0.02
+  ve kucuk alacaklinin odenmeyen payi acikta kapaliya gore 5 puan artmiyor.
+
+  Hiyerarsi korunur: C sokunda iyi kose (alpha 0, banka 4) birincil acikta
+  ortalama enflasyon periyodu < 1 ve kalicilik < 1; kotu kosede enflasyon
+  periyodu >= 2; yumusak soktaki kotu kose enflasyon periyodu, sert soktan
+  kucuk.
+
+  Zayif halka bu kanalda zayif: kucuk alacaklinin erime payi eksi defter payi
+  medyani < 0.05.
+
+  Soksuz, birincil valf: kalicilik >= 1 veya erime > 0 ise kanal duragan
+  akisla uyumsuz isaretlenir. Esik ve pi sonuca gore ayarlanmaz.
 """
 
 from __future__ import annotations
@@ -185,7 +224,8 @@ F_OD_KU, F_OD_BU, F_OD_TOP, F_OD_B2K, F_OD_BB = 4, 5, 6, 7, 8
 F_M_KU, F_M_BU, F_M_TOP, F_M_B2K = 9, 10, 11, 12
 F_Y_KU, F_Y_BU, F_Y_DIS, F_Y_SOK = 13, 14, 15, 16
 F_HACIM, F_KILPAY, F_ARREAR = 17, 18, 19
-N_F = 20
+F_PI_N, F_ER_TOP, F_ER_KU, F_ER_BU, F_ER_KDB = 20, 21, 22, 23, 24
+N_F = 25
 
 ADAYLAR = [
     dict(ad="A", lo=1.25, hi=1.85, n_sek=2, kalan=0.55, ek_oran=0.05, ek_kalan=0.75),
@@ -331,6 +371,11 @@ def tek_kosu_temiz(
     patika: bool = False,
     secim: bool = False,
     secim_taban=None,
+    enflasyon_esik: float = 1.0,
+    enflasyon_pi: float = 0.0,
+    yerel: bool = False,
+    fx_pay: np.ndarray | None = None,
+    fx_gecis: float = 1.0,
 ) -> tuple[np.ndarray, np.ndarray | None, np.ndarray]:
     """tek_kosu'nun sok maskesini acik argumanla alan surumu.
 
@@ -373,10 +418,52 @@ def tek_kosu_temiz(
     idx_bu = net["idx_bu_al"]
     idx_bb = net["idx_bu_borc"]
     idx_b2k = net["idx_b2k"]
+    idx_ku_borc = np.flatnonzero(kucuk[borclu])
+    sigma_lag = 0.0
+    cleanup_lag = 0.0
+    er_top = er_ku = er_bu = er_kdb = 0.0
+    pi_n = 0
+    kanal = enflasyon_pi > 0.0
+
+    def erit(due_in: np.ndarray, mask: np.ndarray) -> tuple[np.ndarray, np.ndarray | None]:
+        if not kanal or not np.any(mask):
+            return due_in, None
+        carp = np.ones(due_in.shape[0], dtype=np.float64)
+        if fx_pay is None:
+            carp[mask] = 1.0 / (1.0 + enflasyon_pi)
+        else:
+            tl = (1.0 - fx_pay) / (1.0 + enflasyon_pi)
+            doviz = fx_pay * (1.0 + fx_gecis * enflasyon_pi)
+            carp[mask] = tl[mask] + doviz[mask]
+        yeni = due_in * carp
+        return yeni, due_in - yeni
+
+    def biriktir(erime: np.ndarray | None) -> None:
+        nonlocal er_top, er_ku, er_bu, er_kdb, pi_n
+        if erime is None:
+            return
+        er_top += float(erime.sum())
+        if idx_ku.size:
+            er_ku += float(erime[idx_ku].sum())
+        if idx_bu.size:
+            er_bu += float(erime[idx_bu].sum())
+        if idx_ku_borc.size:
+            er_kdb += float(erime[idx_ku_borc].sum())
+        pi_n += 1
 
     for t in range(T):
         inactive = lock > 0
         due = w0 + arrears
+        if kanal and yerel:
+            owed = np.zeros(N)
+            np.add.at(owed, borclu, due)
+            kapasite = liq + bank
+            kisa = (owed > 1e-10) & (kapasite + 1e-12 < esik * owed)
+            due, erime = erit(due, kisa[borclu])
+            biriktir(erime)
+        elif kanal and t > 0 and sigma_lag >= enflasyon_esik and cleanup_lag >= enflasyon_esik:
+            due, erime = erit(due, np.ones(due.shape[0], dtype=bool))
+            biriktir(erime)
         unpaid = due.copy()
         if secim:
             owed_full = np.zeros(N)
@@ -486,6 +573,12 @@ def tek_kosu_temiz(
         liq += net["dis_akis"]
         liq[liq < 0.0] = 0.0
         arrears = unpaid
+        sigma_lag = max(
+            0.0,
+            (HACIM_ESIK - tahsil) / HACIM_ESIK,
+            (share - KILIT_PAY_ESIK) / KILIT_PAY_ESIK,
+        )
+        cleanup_lag = float(arrears.sum() / V0)
 
     out = np.empty(N_F, dtype=np.float64)
     out[F_KAL] = bloke_n
@@ -508,6 +601,11 @@ def tek_kosu_temiz(
     out[F_HACIM] = hacim_toplam / T
     out[F_KILPAY] = kilit_pay / T
     out[F_ARREAR] = float(arrears.sum() / V0)
+    out[F_PI_N] = pi_n
+    out[F_ER_TOP] = er_top
+    out[F_ER_KU] = er_ku
+    out[F_ER_BU] = er_bu
+    out[F_ER_KDB] = er_kdb
     return out, hacim_oran, yavas
 
 
@@ -544,7 +642,11 @@ def limit_birimleri(net: dict, n: int, tohum: int) -> tuple[np.ndarray, np.ndarr
     return tavan, erisim
 
 
-def kosu_hucre(net, aday, carpanlar, ia, ib, ic, tohumlar, gamma=1.0, patika=False, secim=False, tabanlar=None):
+def kosu_hucre(
+    net, aday, carpanlar, ia, ib, ic, tohumlar,
+    gamma=1.0, patika=False, secim=False, tabanlar=None,
+    enflasyon_esik=1.0, enflasyon_pi=0.0, yerel=False, fx_pay=None, fx_gecis=1.0,
+):
     esik, sure = KILIT[ia]
     alpha = GECIKME[ib]
     n = carpanlar.shape[0]
@@ -561,6 +663,8 @@ def kosu_hucre(net, aday, carpanlar, ia, ib, ic, tohumlar, gamma=1.0, patika=Fal
         out, yol, yavas = tek_kosu_temiz(
             net, lik, bmax0, esik, sure, alpha, dis,
             gamma=gamma, patika=patika, secim=secim, secim_taban=birim,
+            enflasyon_esik=enflasyon_esik, enflasyon_pi=enflasyon_pi, yerel=yerel,
+            fx_pay=fx_pay, fx_gecis=fx_gecis,
         )
         blok[s] = out
         yavas_top += yavas
@@ -1511,6 +1615,6 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    from odeme_tur3 import main_tur3
+    from odeme_tur4 import main_tur4
 
-    main_tur3()
+    main_tur4()
