@@ -70,7 +70,38 @@ Tur 2 (secim kurali ve sok esigi), sonuc gorulmeden:
   Secim iddiasi destek: ayni C sokunda secim acik eksi baz (secim kapali)
   kaliciligi bu pratik esikle uzatir VE kucuk alacakli payi >= 5 puan artar
   (tek yanli p<0.05, en az 30 cift). Uzama yoksa iddia desteklenmez.
-  Pay bandi 10 puandan darsa "bedel zayif halkaya akar" zayif kalir.
+  Pay, kotu kose eksi bazda 5 puandan az artiyorsa ve secim de 5 puan
+  buyutmuyorsa "bedel zayif halkaya akar" zayif kalir.
+
+Tur 3 (limit dagilimi), sonuc gorulmeden. KAP agi eklenmedi: depoda firma
+duzeyinde KAP kenari yok; finansal hesap matrisi kimden kime odeme agi degil.
+
+  Ag, sok maskesi ve parametre izgarasi tur 2 ile ayni. Degisen yalnizca
+  birim banka tavani. Basamak erisim (buyuk 1, orta 0.45, kucuk 0.20) yerini
+  su varsayima birakir. Olcek S_i = aylik borc + 0.25 * boyut.
+  Kucuk (alt yari): P(A=0)=0.50, degilse LogNormal(ln 0.35, 0.60).
+  Orta: P(A=0)=0.25, degilse LogNormal(ln 0.80, 0.50).
+  Buyuk (ust ceyrek): P(A=0)=0.05, degilse LogNormal(ln 1.50, 0.45).
+  A, 6.0'da kirpilir. Birim tavan = A_i * S_i. Hucre carpani bunu carpar;
+  A=0 her carpanda sifir kalir. Cekim, kosu basina TOHUM+7000+s, hucreler
+  arasi esli. Bu dagilim TCMB veya KAP olcumu degildir.
+
+  Secim acikken tavan, firmanin kendi biriminin 4 katina genisler.
+  Cizgisi sifir olan firma secimle cizgi edinemez.
+
+  Baskinlik dagilimda surer: C sokunda carpan 4 olan 25 hucrenin hepsinde
+  ortalama kalicilik < 1 ve carpan 0'da en az bir hucre ortalamasi >= 4.
+  Saglanmazsa tur 2'deki tam baskinlik, herkese pozitif basamak limiti
+  verilmesine bagli kalir.
+
+  Parametre kolu ayni kotu-iyi kurali. Dagilimda gecmezse tur 2 bagimliligi
+  basamak erisime ozgu raporlanir.
+
+  Carpan 0 her iki kuralda da tavani sifirlar; kotu kose bu yuzden dagilimdan
+  etkilenmemelidir. Dagilim, pozitif carpanda isler.
+
+  Soksuz, dagilim, carpan 1, orta kilit ve alpha: kalicilik >= 1 ise dagilim
+  duragan akisla uyumsuz isaretlenir. Olcek sonuca gore yeniden ayarlanmaz.
 """
 
 from __future__ import annotations
@@ -299,6 +330,7 @@ def tek_kosu_temiz(
     gamma: float = 1.0,
     patika: bool = False,
     secim: bool = False,
+    secim_taban=None,
 ) -> tuple[np.ndarray, np.ndarray | None, np.ndarray]:
     """tek_kosu'nun sok maskesini acik argumanla alan surumu.
 
@@ -313,7 +345,9 @@ def tek_kosu_temiz(
     sokta = ~sok_disi
     if secim:
         # Genis tavan, gevsek kilit, ceza sifir. Cekis asagida sinirlanir.
-        bank_max = np.maximum(np.asarray(bank_max, dtype=float), BANKA[-1] * net["banka_taban"])
+        # secim_taban, firmanin carpan-1 tavani. Verilmezse basamak tabani.
+        birim = net["banka_taban"] if secim_taban is None else np.asarray(secim_taban, dtype=float)
+        bank_max = np.maximum(np.asarray(bank_max, dtype=float), BANKA[-1] * birim)
         esik = 0.50
         sure = 1
         alpha = 0.0
@@ -485,18 +519,48 @@ def hazirla(net: dict, aday: dict, carpan: np.ndarray | None) -> tuple[np.ndarra
     return lik0 * carpan, carpan >= 0.999
 
 
-def kosu_hucre(net, aday, carpanlar, ia, ib, ic, tohumlar, gamma=1.0, patika=False, secim=False):
+def limit_birimleri(net: dict, n: int, tohum: int) -> tuple[np.ndarray, np.ndarray]:
+    """Esli birim tavan (n, N) ve erisim A (n, N). Varsayim, olcum degil.
+
+    Sinif olasiliklari ve lognormal merkezler modul belgesindeki tur 3 kurali.
+    """
+    olcek = net["borc"] + 0.25 * net["boyut"]
+    buyuk = net["buyuk"]
+    kucuk = net["kucuk"]
+    p0 = np.where(kucuk, 0.50, np.where(buyuk, 0.05, 0.25))
+    merkez = np.where(kucuk, 0.35, np.where(buyuk, 1.50, 0.80))
+    sig = np.where(kucuk, 0.60, np.where(buyuk, 0.45, 0.50))
+    tavan = np.empty((n, N), dtype=np.float64)
+    erisim = np.empty((n, N), dtype=np.float64)
+    for s in range(n):
+        rng = np.random.default_rng(tohum + s)
+        u = rng.random(N)
+        z = rng.normal(size=N)
+        a = np.exp(np.log(merkez) + sig * z)
+        a = np.where(u < p0, 0.0, a)
+        a = np.minimum(a, 6.0)
+        erisim[s] = a
+        tavan[s] = a * olcek
+    return tavan, erisim
+
+
+def kosu_hucre(net, aday, carpanlar, ia, ib, ic, tohumlar, gamma=1.0, patika=False, secim=False, tabanlar=None):
     esik, sure = KILIT[ia]
     alpha = GECIKME[ib]
-    bmax0 = BANKA[ic] * net["banka_taban"]
     n = carpanlar.shape[0]
     blok = np.empty((n, N_F), dtype=np.float64)
     patikalar = np.empty((n, T), dtype=np.float64) if patika else None
     yavas_top = np.zeros(N, dtype=np.float64)
     for s in tohumlar:
+        if tabanlar is None:
+            birim = net["banka_taban"]
+        else:
+            birim = tabanlar[s]
+        bmax0 = BANKA[ic] * birim
         lik, dis = hazirla(net, aday, carpanlar[s])
         out, yol, yavas = tek_kosu_temiz(
-            net, lik, bmax0, esik, sure, alpha, dis, gamma=gamma, patika=patika, secim=secim
+            net, lik, bmax0, esik, sure, alpha, dis,
+            gamma=gamma, patika=patika, secim=secim, secim_taban=birim,
         )
         blok[s] = out
         yavas_top += yavas
@@ -1447,6 +1511,6 @@ Tekrar: `python3 odeme_zinciri.py`. Ağ tohumu {TOHUM}.
 
 
 if __name__ == "__main__":
-    from odeme_tur2 import main_tur2
+    from odeme_tur3 import main_tur3
 
-    main_tur2()
+    main_tur3()
