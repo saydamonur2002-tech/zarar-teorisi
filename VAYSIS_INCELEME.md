@@ -33,8 +33,11 @@ Kaynak: kamuya açık kayıt, 2026-10-11. vaysis.com (ana sayfa, KVKK sayfası, 
 | 2025-07-29 | "Out of Business" kaydı | PitchBook |
 | 2026-03-25 | alan adı kaydında son değişiklik | RDAP |
 | 2026-05-12 | üçüncü arşiv: başlık "Lovable App", açıklama "Lovable Generated Project"; şablon, içerik girilmemiş | Wayback |
-| 2026-06-18 | dördüncü arşiv: "VAYSIS — Alacak Yönlendirme Platformu" | Wayback |
-| 2026-10-11 | bugün: "Valörlü Alacak Yönetim Sistemi"; fiyat, KYC, token, e-imza akışı | vaysis.com |
+| 2026-06-18 | dördüncü arşiv: "VAYSIS — Alacak Yönlendirme Platformu"; paket `index-D0QH9EsT.js` / `index-CKYaPJ6D.css`; derleme kimliği `8675a573` | Wayback |
+| 2026-06-18 → 2026-10-11 | ara arşiv yok | Wayback |
+| 2026-10-11 | bugün: aynı paket, aynı derleme kimliği `8675a573`; yalnız Lovable izleme betiği değişmiş. "Valörlü Alacak Yönetim Sistemi", fiyat, KYC, token, e-imza akışı bu pakette | vaysis.com |
+
+Bugünkü içerik en geç 2026-06-18'de yayındaydı (aynı JS/CSS adı ve derleme kimliği); o tarihten bu yana kod değişmemiş. "İki ay önce açıldı" (2026-08) kayıtla desteklenmez; bugünkü sürüm ≥ 4 ay önce yayında. İlk yayın tarihi 2026-05-12 (boş şablon) ile 2026-06-18 arasında; gün bilinmiyor.
 
 Okuma (yorum): İlk açılış 2020 (site) / 2019 (şirket). 2026'da açılan, **yeniden yapılmış site**: 2026-05'te boş Lovable şablonu, 2026-06'da ad, 2026-10'da bugünkü içerik. 2020–2021 sitesinde ne vardı bilinmiyor (JS arşivlenmemiş). Yani "2026'da açıldı" doğru değil; "2026'da yeniden açıldı / yeniden yazıldı" kayıtla uyumlu. 2021-05 ile 2026-04 arası boşluk faaliyet yokluğu demek değil; arşivleme olmaması demek.
 
