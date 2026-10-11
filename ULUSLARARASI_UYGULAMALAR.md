@@ -1,7 +1,7 @@
 # Uluslararası uygulamalar: çok taraflı alacak-borç mahsubu
 
 Soru: "Tek sistem"in (özellikle adım 1: e-fatura alacak-borç döngülerinin nakitsiz mahsubu) ulusal ölçekte uygulandığı ülkeler.
-Kaynak: kamuya açık kayıt, 2026-10-11; 12 web sorgusu; kurum raporları, resmî gazeteler, merkez bankası çalışma kâğıdı (HNB W-66), akademik makale (Fleischman–Dini–Littera 2020; Rostowski 1993). Veri: `uluslararasi_uygulamalar.csv` (14 satır).
+Kaynak: kamuya açık kayıt, 2026-10-11; 18 web sorgusu (12 adım 1, 6 adım 2–5 ve bütün); kurum raporları, resmî gazeteler, merkez bankası çalışma kâğıdı (HNB W-66), akademik makale (Fleischman–Dini–Littera 2020; Rostowski 1993). Veri: `uluslararasi_uygulamalar.csv` (21 satır).
 Kural: hacim yalnız kaynağın yazdığı; "hesap" diye işaretlenen bölme işlemi benim. Bulunamayan "bulunamadı, N sorgu".
 
 ## 1. Ulusal, zorunlu, kamu işleticili (adım 1 ile aynı araç)
@@ -43,9 +43,23 @@ Kural: hacim yalnız kaynağın yazdığı; "hesap" diye işaretlenen bölme iş
 | --- | --- | --- |
 | 1 e-fatura mahsup | Slovenya, RS, Romanya (canlı); Çin, Rusya, FRY (tarihsel) | `bulundu`; nesne dar (gecikmiş borç) |
 | 2 ödeme planı | bulunamadı; AB 2011/7 ve Sırbistan 60 gün yasası süre sınırı koyar | `bulunamadi` |
-| 3 kredisiz, faiz durur | tersi bulundu (kredi enjeksiyonu); faizin durması bulunamadı | `ters_bulundu` |
-| 4 endeksli hedef primli senet | aranmadı | `aranmadi` |
-| 5 boş stok kira | aranmadı | `aranmadi` |
+| 3 kredisiz, faiz durur | tersi bulundu (kredi enjeksiyonu); faizin durması bulunamadı; en yakın Macaristan 2020 (bileşik faiz durur) | `ters_bulundu` / `kismi` |
+| 4 endeksli hedef primli senet | endeks ayağı: Şili UF 1967, Brezilya ORTN 1964, Meksika UDI 1995; hedef prim, 1/7 pay, 20 yıl kilit yok | `kismi` |
+| 5 boş stok kira | İrlanda NAMA/NARPS (2.957 konut; 1.366'sı 20 yıl kira), İspanya SAREB (21.000 sunuldu, 350 alındı) | `bulundu` (girdi farklı) |
+
+## 4a. Modelin kendisi: beş adım bir arada
+
+Arama: 12 + 6 sorgu. **Bulunamadı.** Hiçbir ülke adım 1 (mahsup) ile adım 2–5'i aynı pakette uygulamamış. Bulunan ikili birleşimler:
+
+| Ülke, yıl | Birleşim | Nesne | Kayıt | Karşı kayıt |
+| --- | --- | --- | --- | --- |
+| Meksika 1995 | adım 2 (ödeme planı: vade uzatma, anapara erteleme) + adım 4 (UDI, TÜFE'ye endeksli birim) | **banka kredisi**; ticari alacak değil | UDI kararnamesi 01-04-1995; ADE 11-09-1995: 13 ay sabit faiz, işletme %25 | Expansión: işletme kredilerinde UDI "başarısız" (güvensizlik, yüksek reel faiz) |
+| Brezilya 1964 | adım 4 (ORTN endeksli tahvil) + adım 5 (SFH/BNH konut finansmanı) | endeksli tasarruf → **yeni inşa** kredisi; boş stok değil | Lei 4.357, Lei 4.380 | çift endeks (bakiye fiyat, taksit ücret) FCVS açığı; "borçların ebedileşmesi" |
+| Macaristan 2020 | adım 3'e en yakın: ödeme moratoryumu, bileşik faiz yasak, biriken faiz eşit taksit | banka kredisi | 47/2020 Korm. rendelet | faiz durmadı; IMF SPN/09/15 moratoryumu "son çare" sayar |
+| İrlanda 2012–2025 | adım 5: borç çözümünden gelen konut → 20 yıl kira | kötü banka teminat stoku | NAMA 2.957 sosyal konut; NARPS 1.366, 356 mn EUR | NARPS **piyasa fiyatıyla satın alır**; önerilen 7.653'ün %39'u alındı |
+| İspanya 2023–2024 | adım 5: boş stok → sosyal kira | kötü banka stoku | 21.000 boş konut sunuldu; ~2.000 geçici devir; ~6.000 sosyal kira | bir yılda idarelere satış 350 (%1,6); 12.000'i onarım ister |
+
+Üçlü veya daha fazla birleşim yok. "Faizin tamamen durması" ulusal ölçekte bulunamadı (3 sorgu). Adım 4'ün "hedef prim" ve "1/7 sahip payı" hiçbir kayıtta yok.
 
 ## 5. Okuma (yorum; ölçüm değil)
 
@@ -56,7 +70,7 @@ Kural: hacim yalnız kaynağın yazdığı; "hesap" diye işaretlenen bölme iş
 
 ## Ne denmez
 
-- "Model dünyada uygulanmış" denmez: yalnız adım 1, dar nesneyle.
+- "Model dünyada uygulanmış" denmez: adım 1 dar nesneyle var; adım 2–5 ayrı ayrı ve banka kredisi/konut nesnesiyle var; beş adım bir arada bulunamadı (18 sorgu).
 - "Slovenya'da çalıştı, Türkiye'de de çalışır" denmez: nesne, ölçek, kamu bacağı farklı; Türkiye ölçümü yok.
 - "Çin 219 milyar temizledi, mahsup işe yarar" denmez: 52 milyar kredi ile.
 - "Yüzde 8 GSYH" Türkiye'ye çevrilmez; RS'nin 5 yıllık kümülatifi.

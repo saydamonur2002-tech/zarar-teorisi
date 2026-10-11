@@ -18,7 +18,7 @@ Bu depodaki parçaları:
 - Beş yıl senaryosu (ölçüm değil; taban EVDS, beklenti anket, model etkisi varsayım bandı): `python3 bes_yil_senaryo.py` → [BES_YIL_SENARYO.md](BES_YIL_SENARYO.md), `bes_yil_senaryo.csv`
 - Benzer öneriler (Türk öneren şartı; kamuya açık kayıt, 9 sorgu): [BENZER_ONERILER.md](BENZER_ONERILER.md), `benzer_oneriler.csv`
 - Vaysis incelemesi (adım 1'in tek Türk karşılığı; site, istemci kodu, PitchBook, Wayback): [VAYSIS_INCELEME.md](VAYSIS_INCELEME.md)
-- Uluslararası uygulamalar (Slovenya, Republika Srpska, Romanya canlı; Çin, Rusya, FRY tarihsel; 12 sorgu): [ULUSLARARASI_UYGULAMALAR.md](ULUSLARARASI_UYGULAMALAR.md), `uluslararasi_uygulamalar.csv`
+- Uluslararası uygulamalar (adım 1: Slovenya, Republika Srpska, Romanya canlı; Çin, Rusya, FRY tarihsel; adım 2–5 kısmi: Meksika, Brezilya, Macaristan, İrlanda, İspanya; beş adım bir arada bulunamadı; 18 sorgu): [ULUSLARARASI_UYGULAMALAR.md](ULUSLARARASI_UYGULAMALAR.md), `uluslararasi_uygulamalar.csv`
 
 ## Beş adım
 
