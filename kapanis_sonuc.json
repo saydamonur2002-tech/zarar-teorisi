@@ -1,0 +1,53 @@
+{
+  "on_kayit": "c24fb00",
+  "kosu_sozu": "bitti",
+  "isler": {
+    "is1_esleme": {
+      "H-K1": "temiz",
+      "etiket": "temiz",
+      "eski_tavan": 0.0728,
+      "yeni_tavan": 0.2582,
+      "durum": "ust_sinir",
+      "not": "iki değer, ust_sinir"
+    },
+    "is2_silinen": {
+      "H-K2": "temiz",
+      "etiket": "temiz",
+      "adim1_dolu_satir": [],
+      "esleme_silinen_bos": true,
+      "not": "silinen boş; xls yok"
+    },
+    "is3_senet": {
+      "H-K3": "temiz",
+      "etiket": "temiz",
+      "kilit": "modellenmedi",
+      "satir": "modellenmedi",
+      "kod": [],
+      "not": "kilit duruyor; satır modellenmedi; kod yok"
+    },
+    "is4_kapilar": {
+      "H-K4": "temiz",
+      "etiket": "temiz",
+      "kilit": {
+        "vade_dilimi": "bos",
+        "odenmeyen_emir": "bos",
+        "gecis_payi": "bos"
+      },
+      "veri_bos": {
+        "gecis_payi": true,
+        "vade_dilimi": true,
+        "odenmeyen_emir": true
+      },
+      "not": "üçü boş; varsayim_esik.csv eşikleri taşınmadı"
+    },
+    "is5_test": {
+      "H-T": "temiz",
+      "etiket": "temiz",
+      "akis_satiri": "temiz",
+      "not": "test var; son satır testten"
+    }
+  },
+  "son": "bitti",
+  "kaynak": "test_bes_adim.py",
+  "not": "Tavan 0,2582 üst sınır; silinen boş. Koşunun sözü ile testin sözü ayrı."
+}

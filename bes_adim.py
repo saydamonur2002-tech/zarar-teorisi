@@ -12,7 +12,7 @@ sınırı, aynı EVDS stoku birden çok satırda) ve yeni_tavan (çift düzeyi: 
 metinde yoksa EVDS konsolide olmayan aynı-araç üst sınırı; ortak = min; yeni_tavan = Σortak / Σbrüt). İkisi ayrı
 sütun. Silinen boş: kimden-kime xls depoda yok. Üst sınır, skor değil.
 
-Çıktı: adim1_stok.csv, adim2.csv, adim3.csv, adim4.csv, adim5.csv, bes_adim_sonuc.json, BES_ADIM.md
+Çıktı: adim1_stok.csv, adim2.csv, adim3.csv, adim4.csv, adim5.csv, bes_adim_sonuc.json (kosu; son boş), BES_ADIM.md\nSon satır (`son`) test_bes_adim.py'den gelir; koşu yazmaz.
 """
 
 from __future__ import annotations
@@ -235,7 +235,8 @@ def md(son: dict) -> str:
         for ad, v in k["kapilar"].items():
             s.append(f"- {ad}: {'boş' if v['bos'] else 'DOLU'} (`{v['dosya']}` {v['sutun']})")
         s.append(f"- Etiket: `{k['etiket']}`. {k['not']}")
-    s += ["", f"## Son satır: `{son['son']}`" + (f" ({son['neden']})" if son.get("neden") else ""), ""]
+    s += ["", f"## Koşunun sözü: `{son['kosu']}`" + (f" ({son['neden']})" if son.get("neden") else ""), "",
+          "Son satır (`bes_adim_sonuc.json` `son`) koşudan gelmez; `python3 test_bes_adim.py` yazar. Kaynak test.", ""]
     if "1" in a:
         x = a["1"]
         s += ["## Adım 1 stok, iki sütun", "",
@@ -254,29 +255,30 @@ def md(son: dict) -> str:
 
 
 def main() -> None:
-    son: dict = {"on_kontrol": on_kontrol(), "adimlar": {}, "kilitli_kapilar": None, "son": None}
+    son: dict = {"on_kontrol": on_kontrol(), "adimlar": {}, "kilitli_kapilar": None, "kosu": None,
+                 "son": None, "son_kaynak": "test_bes_adim.py; koşu yazmaz"}
     if not son["on_kontrol"]["akis_satiri_degismedi"]:
-        son["son"] = "durdu"; son["neden"] = "adım 1 akış satırı değişmiş"
+        son["kosu"] = "durdu"; son["neden"] = "adım 1 akış satırı değişmiş"
     else:
         for i, fn in enumerate((adim1, adim2, adim3, adim4, adim5), start=1):
             r = fn()
             son["adimlar"][str(i)] = r
             print(f"adım {i}: {r['etiket']}  ({r['dosya']})")
             if r["etiket"] == "ihlal":
-                son["son"] = "durdu"; son["neden"] = f"adım {i} ihlal"
+                son["kosu"] = "durdu"; son["neden"] = f"adım {i} ihlal"
                 break
         else:
             son["kilitli_kapilar"] = kilitli_kapilar()
             print("kilitli kapı:", {k: ("boş" if v["bos"] else "DOLU") for k, v in son["kilitli_kapilar"]["kapilar"].items()})
-            son["son"] = "bitti" if son["kilitli_kapilar"]["etiket"] == "temiz" else "durdu"
-            if son["son"] == "durdu":
+            son["kosu"] = "bitti" if son["kilitli_kapilar"]["etiket"] == "temiz" else "durdu"
+            if son["kosu"] == "durdu":
                 son["neden"] = "kilitli kapı dolu"
     (KOK / "bes_adim_sonuc.json").write_text(json.dumps(son, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (KOK / "BES_ADIM.md").write_text(md(son), encoding="utf-8")
     a1 = son["adimlar"].get("1")
     if a1:
         print(f"adım 1 stok: eski_tavan {a1['eski_tavan']} | yeni_tavan {a1['yeni_tavan']} | silinen boş")
-    print("son:", son["son"])
+    print("koşu:", son["kosu"], "| son: boş; test_bes_adim.py yazar")
 
 
 if __name__ == "__main__":

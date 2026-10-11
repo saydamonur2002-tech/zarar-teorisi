@@ -91,5 +91,14 @@
     "etiket": "temiz",
     "not": "varsayim_esik.csv eşikleri varsayım; kapıya taşınmaz."
   },
-  "son": "bitti"
+  "kosu": "bitti",
+  "son": "bitti",
+  "son_kaynak": "test_bes_adim.py",
+  "test_kontrol": {
+    "esleme_iki_deger": "temiz",
+    "silinen_bos": "temiz",
+    "senet_kilit": "temiz",
+    "uc_kapi_bos": "temiz",
+    "akis_satiri": "temiz"
+  }
 }

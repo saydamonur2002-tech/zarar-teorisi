@@ -21,7 +21,9 @@ Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` i
 - odenmeyen_emir: boş (`vadeli_kalicilik.csv` odenmeyen_emir_milyar)
 - Etiket: `temiz`. varsayim_esik.csv eşikleri varsayım; kapıya taşınmaz.
 
-## Son satır: `bitti`
+## Koşunun sözü: `bitti`
+
+Son satır (`bes_adim_sonuc.json` `son`) koşudan gelmez; `python3 test_bes_adim.py` yazar. Kaynak test.
 
 ## Adım 1 stok, iki sütun
 
