@@ -9,8 +9,10 @@
    Katman sonuçları birbirine taşınmaz; her satır kendi dosyasını ve dönemini gösterir.
 
 Girdi: model/pasta/*.csv (tek-sistem c01b60a), EVDS anahtarsız uç nokta, bu depodaki *_sonuc.json.
-Çıktı: tek_sistem_kopru.csv (mutabakat), tek_sistem_esleme.csv (beş adım), tek_sistem_kopru_sonuc.json,
-        TEK_SISTEM_KOPRU.md, tek_sistem_kopru_ham.csv (EVDS önbellek)
+Girdi ek: konsolide olmayan akım grupları (bie_finhestnks62011/62014/620122), GSYİH (bie_gsyhhrccar),
+depodaki TÜİK-TCMB Sektör Bilançoları 2024 xls (finansman gideri, faaliyet kârı, firma sayısı).
+Çıktı: tek_sistem_kopru.csv (mutabakat + akım + referans), tek_sistem_esleme.csv (beş adım), tek_sistem_kopru_sonuc.json,
+        TEK_SISTEM_KOPRU.md, tek_sistem_kopru_ham.csv ve tek_sistem_kopru_akim_ham.csv (EVDS önbellek)
 """
 
 from __future__ import annotations
@@ -46,8 +48,24 @@ SERI_CEYREK = {
 SERI_AYLIK = {
     "gercek_kisi_YP": "TP.HPBITABLO2.7",    # banka mevduatı, gerçek kişi YP, TL karşılığı
 }
+# Konsolide olmayan AKIM (işlem) serileri; çeyreklik, yıllık toplam = 4 çeyrek. Kur/değerleme içermez.
+SERI_AKIM = {
+    "F_F4_akim": "TP.FINHESTNKS62011.ZP34",
+    "H_F4_akim": "TP.FINHESTNKS62014.ZP34",
+    "B_VF4_akim": "TP.FINHESTNKS620122.ZP12",
+    "GSYIH": "TP.GSYIH20.BY.B1GQ",            # harcama yöntemi, cari fiyat; çeyreklik, yıllık toplam
+}
+AKIM_URL = {
+    "F_F4_akim": f"{URL_EVDS}/bie_finhestnks62011", "H_F4_akim": f"{URL_EVDS}/bie_finhestnks62014",
+    "B_VF4_akim": f"{URL_EVDS}/bie_finhestnks620122", "GSYIH": f"{URL_EVDS}/bie_gsyhhrccar",
+}
+# TÜİK-TCMB Sektör Bilançoları 2024 (depodaki xls; bin TL; 17 NACE kesimi, K ve O yok)
+XLS_GELIR = KOK / "Ekonomik faaliyetlere ve yıllara göre firmaların  gelir tablosu .xls"
+XLS_TEMEL = KOK / "Ekonomik faaliyetlere ve yıllara göre temel göstergeler.xls"
+URL_SEKTOR = "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Reel+Sektor+Istatistikleri/Sektor+Bilancolari"
 
 HAM = KOK / "tek_sistem_kopru_ham.csv"
+HAM_AKIM = KOK / "tek_sistem_kopru_akim_ham.csv"
 
 
 def _oku_csv(p: Path) -> dict[str, dict[str, float | None]]:
@@ -100,6 +118,80 @@ def evds_cek() -> dict[str, dict[str, float | None]]:
     return veri
 
 
+def akim_cek() -> dict[str, dict[str, float | None]]:
+    """Yıl → {anahtar: 4 çeyrek toplamı}. Eksik çeyrekli yıl (ör. cari yıl) yazılmaz."""
+    try:
+        q = _fetch(list(SERI_AKIM.values()), "6", start="01-01-2022")
+    except Exception as exc:  # noqa: BLE001
+        if not HAM_AKIM.exists():
+            raise
+        print("EVDS akım erişilemedi, ham dosya kullanılıyor:", exc)
+        out: dict[str, dict[str, float | None]] = {}
+        with HAM_AKIM.open(encoding="utf-8-sig") as f:
+            for row in csv.DictReader(f):
+                out.setdefault(row["yil"], {})[row["anahtar"]] = float(row["milyar_tl"]) if row["milyar_tl"] else None
+        return out
+    top: dict[str, dict[str, list[float]]] = {}
+    for d, row in q.items():
+        for k, s in SERI_AKIM.items():
+            if s in row:
+                top.setdefault(d[:4], {}).setdefault(k, []).append(row[s])
+    out = {y: {k: (sum(v) if len(v) == 4 else None) for k, v in r.items()} for y, r in sorted(top.items())}
+    with HAM_AKIM.open("w", newline="", encoding="utf-8-sig") as f:
+        w = csv.writer(f)
+        w.writerow(["yil", "anahtar", "seri", "ceyrek_sayisi", "milyar_tl"])
+        for y, r in sorted(top.items()):
+            for k, v in r.items():
+                w.writerow([y, k, SERI_AKIM[k], len(v), f"{sum(v):.4f}" if len(v) == 4 else ""])
+    return out
+
+
+def sektor_bilanco() -> dict:
+    """Depodaki TÜİK-TCMB Sektör Bilançoları xls: finansman giderleri, faaliyet kârı (17 kesim toplamı), firma sayısı."""
+    import math  # noqa: PLC0415
+    import re  # noqa: PLC0415
+
+    import pandas as pd  # noqa: PLC0415
+
+    out: dict = {"kaynak": "TÜİK-TCMB Sektör Bilançoları İstatistikleri, 2024 (depodaki xls)", "url": URL_SEKTOR,
+                 "finansman_gideri": {}, "faaliyet_kari": {}, "firma_sayisi": {}, "kesim_sayisi": 0}
+    if not XLS_GELIR.exists():
+        out["not"] = "xls bulunamadı"
+        return out
+    df = pd.ExcelFile(XLS_GELIR).parse(0, header=None)
+    yillar = [int(float(v)) for v in df.iloc[3].values[2:]]
+    fin = {y: 0.0 for y in yillar}
+    faal = {y: 0.0 for y in yillar}
+    n = 0
+    for _, row in df.iterrows():
+        c1 = str(row[1]).strip() if str(row[1]) != "nan" else ""
+        if c1.startswith("H-Finansman giderleri"):
+            n += 1
+            for y, v in zip(yillar, row.values[2:]):
+                fin[y] += float(v)
+        elif c1.startswith("Faaliyet karı veya zararı"):
+            for y, v in zip(yillar, row.values[2:]):
+                faal[y] += float(v)
+    out["kesim_sayisi"] = n
+    out["finansman_gideri"] = {str(y): round(fin[y] / 1e6, 1) for y in yillar}  # bin TL → milyar
+    out["faaliyet_kari"] = {str(y): round(faal[y] / 1e6, 1) for y in yillar}
+    if XLS_TEMEL.exists():
+        t = pd.ExcelFile(XLS_TEMEL).parse(0, header=None)
+        kol = {}
+        for j, v in enumerate(t.iloc[2].values):
+            if re.fullmatch(r"\d{4}(\.0)?", str(v)):
+                kol[int(float(v))] = j
+        for y, j in kol.items():
+            s = 0.0
+            for _, row in t.iterrows():
+                if str(row[1]).startswith("Toplam"):
+                    v = row[j]
+                    if isinstance(v, (int, float)) and not math.isnan(v):
+                        s += v
+            out["firma_sayisi"][str(y)] = int(s)
+    return out
+
+
 def _ham_oku() -> dict[str, dict[str, float | None]]:
     veri: dict[str, dict[str, float | None]] = {d: {} for d in DONEMLER}
     with HAM.open(encoding="utf-8-sig") as f:
@@ -116,9 +208,10 @@ def _oran(a: float | None, b: float | None) -> float | None:
     return None if (a is None or not b) else round(a / b, 3)
 
 
-def mutabakat(ts: dict, ev: dict) -> list[dict]:
+def mutabakat(ts: dict, ev: dict, ak: dict | None = None) -> list[dict]:
     """Tek-sistem BDDK kredi stokları ↔ EVDS finansal hesap stokları. Tanım farkı satır notunda."""
     k = ts["kredi"]
+    ak = ak or {}
     rows: list[dict] = []
     esle = (
         ("Ticari stok", "F_F4_yuk", "Firma (S.11) F.4 kredi yükümlülüğü; banka + banka dışı + yurt dışı borç veren"),
@@ -154,6 +247,61 @@ def mutabakat(ts: dict, ev: dict) -> list[dict]:
                 "seri": SERI_CEYREK[anahtar], "kaynak_url": f"{URL_EVDS}/bie_finhestnks{SERI_CEYREK[anahtar].split('.')[1][10:]}",
                 "not": "EVDS sütunu Q4−Q4 stok farkıdır; kur ve değerleme içerir, net akış değildir. Tek-sistem BDDK net akış.",
             })
+    # Net akış ↔ konsolide olmayan AKIM (işlem) serisi, 4 çeyrek toplamı. Kur/değerleme dışarıda.
+    for y1 in YILLAR[1:]:
+        for kalem, anahtar in (("Net akis ticari", "F_F4_akim"), ("Net akis bireysel", "H_F4_akim"), ("Net akis toplam", "B_VF4_akim")):
+            tsv = k.get(kalem, {}).get(y1)
+            fl = ak.get(y1, {}).get(anahtar)
+            rows.append({
+                "blok": "akim", "donem": y1, "kalem": kalem, "tek_sistem_milyar": _r(tsv),
+                "evds_anahtar": anahtar, "evds_milyar": _r(fl),
+                "fark_milyar": None if (tsv is None or fl is None) else _r(fl - tsv),
+                "evds_bolu_tek": _oran(fl, tsv),
+                "seri": SERI_AKIM[anahtar], "kaynak_url": AKIM_URL[anahtar],
+                "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. "
+                       "Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı.",
+            })
+    return rows
+
+
+def referans(ts: dict, ak: dict, sb: dict) -> list[dict]:
+    """RAPOR.md'nin referans rakamları: GSYİH ve firma finansman gideri. Yıl eşleşmezse eşlenmez."""
+    rows: list[dict] = []
+    g25 = ak.get("2025", {}).get("GSYIH")
+    rows.append({
+        "blok": "referans", "donem": "2025", "kalem": "GSYİH (cari, harcama)", "tek_sistem_milyar": 63021.0,
+        "evds_anahtar": "GSYIH", "evds_milyar": _r(g25), "fark_milyar": None if g25 is None else _r(g25 - 63021.0),
+        "evds_bolu_tek": _oran(g25, 63021.0), "seri": SERI_AKIM["GSYIH"], "kaynak_url": AKIM_URL["GSYIH"],
+        "not": "RAPOR.md 'milli gelir 63.021 milyar'. EVDS 4 çeyrek toplamı, bugünkü sürüm; fark revizyon olabilir, RAPOR sürüm vermez.",
+    })
+    f25 = ak.get("2025", {}).get("F_F4_akim")
+    rows.append({
+        "blok": "referans", "donem": "2025", "kalem": "ticari net akış / GSYİH", "tek_sistem_milyar": round(100 * 5208.0 / 63021.0, 2),
+        "evds_anahtar": "F_F4_akim/GSYIH", "evds_milyar": None if (f25 is None or not g25) else round(100 * f25 / g25, 2),
+        "fark_milyar": None, "evds_bolu_tek": None, "seri": f"{SERI_AKIM['F_F4_akim']} / {SERI_AKIM['GSYIH']}",
+        "kaynak_url": AKIM_URL["F_F4_akim"],
+        "not": "Yüzde. RAPOR.md: 'kredi itişi milli gelirin yüzde 8,3'ü'. EVDS: firma F.4 akımı / GSYİH, tüm borç verenler. "
+               "'Fiyata üçte biri geçse' varsayımı bu depoda ölçülmedi.",
+    })
+    fg = sb.get("finansman_gideri", {})
+    fk = sb.get("faaliyet_kari", {})
+    fs = sb.get("firma_sayisi", {})
+    for y in ("2023", "2024"):
+        rows.append({
+            "blok": "referans", "donem": y, "kalem": "firma finansman gideri", "tek_sistem_milyar": None,
+            "evds_anahtar": "sektor_bilanco", "evds_milyar": fg.get(y), "fark_milyar": None, "evds_bolu_tek": None,
+            "seri": "TÜİK-TCMB Sektör Bilançoları, gelir tablosu H satırı", "kaynak_url": URL_SEKTOR,
+            "not": f"{sb.get('kesim_sayisi')} NACE kesimi toplamı (K ve O yok); firma sayısı {fs.get(y, '—'):,}; faaliyet kârı {fk.get(y)}; "
+                   f"finansman/faaliyet kârı {round(fg[y] / fk[y], 3) if fg.get(y) and fk.get(y) else '—'}. Tek-sistem bu yıl için sayı vermez.",
+        })
+    rows.append({
+        "blok": "referans", "donem": "2025", "kalem": "firma finansman gideri", "tek_sistem_milyar": 4300.0,
+        "evds_anahtar": "sektor_bilanco", "evds_milyar": None, "fark_milyar": None, "evds_bolu_tek": None,
+        "seri": "", "kaynak_url": URL_SEKTOR,
+        "not": "RAPOR.md '2025'te firma finansman gideri 4.300 milyar'. Birincil kaynakta 2025 bulunamadı: Sektör Bilançoları son yayın 2024. "
+               f"2024 ölçümü {fg.get('2024')} ile yıl farklı, eşlenmez. tek-sistem Olcum.csv 'Finansman bolu faaliyet kari' 2025 "
+               f"{ts['olcum'].get('Finansman bolu faaliyet kari', {}).get('2025')}; 2024 ölçümü {round(fg['2024'] / fk['2024'], 3) if fg.get('2024') and fk.get('2024') else '—'} (yan yana).",
+    })
     return rows
 
 
@@ -206,7 +354,7 @@ def esleme(ev: dict) -> list[dict]:
         "deger": None if oz.get("kredi_ihtiyaci_sart") is None else _r(oz.get("kredi_ihtiyaci_sart"), 2),
         "birim": "trilyon TL/ay", "durum": "modellendi",
         "not": f"brüt {oz.get('kredi_ihtiyaci_brut')} → şart {oz.get('kredi_ihtiyaci_sart')}. Faizin durması modellenmedi; "
-               "tek-sistem 2025 firma finansman gideri 4.300 (RAPOR.md) bu depoda ölçülmedi.",
+               "firma finansman gideri referans bloğunda ölçüldü (Sektör Bilançoları 2024; 2025 bulunamadı).",
         "dosya": "odeme_mahsup_sonuc.json",
     })
     rows.append({
@@ -242,6 +390,22 @@ def esleme(ev: dict) -> list[dict]:
     return rows
 
 
+def nakis_kontrol(ts: dict) -> str:
+    """Kredi_Akisi.csv: Net akis_t == Stok_t − Stok_{t−1} mi? Sayı yorum değil, dosyanın kendi kimliği."""
+    k = ts["kredi"]
+    cift = (("Net akis ticari", "Ticari stok"), ("Net akis bireysel", "Bireysel stok"), ("Net akis toplam", "Toplam kredi stoku"))
+    n = tut = 0
+    for i in range(1, len(YILLAR)):
+        y0, y1 = YILLAR[i - 1], YILLAR[i]
+        for na, st in cift:
+            a, b, c = k.get(na, {}).get(y1), k.get(st, {}).get(y1), k.get(st, {}).get(y0)
+            if a is None or b is None or c is None:
+                continue
+            n += 1
+            tut += abs((b - c) - a) <= 1.0
+    return f"{tut}/{n} hücre ±1 içinde"
+
+
 def _deger_str(x) -> str:
     if x is None:
         return ""
@@ -250,7 +414,7 @@ def _deger_str(x) -> str:
     return f"{x:,.4f}" if abs(x) < 1 else f"{x:,.1f}"
 
 
-def md_yaz(mut: list[dict], esl: list[dict], ts: dict, ev: dict) -> str:
+def md_yaz(mut: list[dict], esl: list[dict], ts: dict, ev: dict, ref: list[dict]) -> str:
     def f(x, n=1):
         return "" if x is None else f"{x:,.{n}f}"
 
@@ -275,8 +439,21 @@ def md_yaz(mut: list[dict], esl: list[dict], ts: dict, ev: dict) -> str:
     for r in mut:
         if r["blok"] == "akis_stok_farki" and r["tek_sistem_milyar"] is not None:
             s.append(f"| {r['donem'][:4]} | {r['kalem']} | {f(r['tek_sistem_milyar'])} | {f(r['evds_milyar'])} | {f(r['fark_milyar'])} | {f(r['evds_bolu_tek'], 3)} |")
-    s += ["", "Stok farkı kur ve değerleme içerir; net akış değildir. Konsolide olmayan akış serisi bu köprüde çekilmedi.", "",
-          "## 3. Beş adım → katman", "",
+    s += ["", "Stok farkı kur ve değerleme içerir; net akış değildir. İşlem akımı aşağıda ayrı.", "",
+          "## 2b. Net akış ↔ konsolide olmayan akım (işlem, 4 çeyrek toplamı, milyar TL)", "",
+          "| Yıl | Kalem | Tek-sistem net akış | EVDS akım | Fark | EVDS/tek | Seri |", "| --- | --- | ---: | ---: | ---: | ---: | --- |"]
+    for r in mut:
+        if r["blok"] == "akim" and r["tek_sistem_milyar"] is not None:
+            s.append(f"| {r['donem']} | {r['kalem']} | {f(r['tek_sistem_milyar'])} | {f(r['evds_milyar'])} | {f(r['fark_milyar'])} | {f(r['evds_bolu_tek'], 3)} | `{r['seri']}` |")
+    s += ["", f"Ölçüm: tek-sistem `Kredi_Akisi.csv` 'Net akis' satırları yıl sonu stok farkına eşittir ({nakis_kontrol(ts)}); "
+          "işlem akımı değil, kur ve değerleme içerir. Bu yüzden hane (TL kredi) satırında EVDS akımı tek-sistem'e yakın, "
+          "ticari (YP payı var) satırında EVDS işlem akımı tek-sistem'in altında kalır. Firma F.4 kapsamı (tüm borç verenler) ise "
+          "ters yönde çalışır; iki etki bu seriden ayrılmaz, ayrılmadı.", "",
+          "## 2c. RAPOR.md referans rakamları", "",
+          "| Dönem | Kalem | Tek-sistem | Ölçüm | Kaynak | Not |", "| --- | --- | ---: | ---: | --- | --- |"]
+    for r in ref:
+        s.append(f"| {r['donem']} | {r['kalem']} | {f(r['tek_sistem_milyar'])} | {f(r['evds_milyar'])} | {r['evds_anahtar']} | {r['not']} |")
+    s += ["", "## 3. Beş adım → katman", "",
           "| Adım | Tek-sistem | Katman | Nesne | Dönem | Değer | Birim | Durum |", "| ---: | --- | --- | --- | --- | ---: | --- | --- |"]
     for r in esl:
         s.append(f"| {r['adim']} | {r['tek_sistem']} | `{r['katman']}` | {r['nesne']} | {r['donem'] or ''} | "
@@ -300,14 +477,17 @@ def md_yaz(mut: list[dict], esl: list[dict], ts: dict, ev: dict) -> str:
 def main() -> None:
     ts = tek_sistem_yukle()
     ev = evds_cek()
-    mut = mutabakat(ts, ev)
+    ak = akim_cek()
+    sb = sektor_bilanco()
+    mut = mutabakat(ts, ev, ak)
+    ref = referans(ts, ak, sb)
     esl = esleme(ev)
 
     alanlar = ["blok", "donem", "kalem", "tek_sistem_milyar", "evds_anahtar", "evds_milyar", "fark_milyar", "evds_bolu_tek", "seri", "kaynak_url", "not"]
     with (KOK / "tek_sistem_kopru.csv").open("w", newline="", encoding="utf-8-sig") as fh:
         w = csv.DictWriter(fh, fieldnames=alanlar)
         w.writeheader()
-        for r in mut:
+        for r in mut + ref:
             w.writerow({k: ("" if r.get(k) is None else r.get(k)) for k in alanlar})
     alan_e = ["adim", "tek_sistem", "katman", "nesne", "donem", "deger", "birim", "durum", "not", "dosya"]
     with (KOK / "tek_sistem_esleme.csv").open("w", newline="", encoding="utf-8-sig") as fh:
@@ -321,16 +501,22 @@ def main() -> None:
         "mahsup_kodu": "mahsup/mahsuplasma == tek-sistem-mahsup.zip (bayt bayt aynı)",
         "donemler": list(DONEMLER),
         "evds": {d: {k: _r(v) for k, v in row.items()} for d, row in ev.items()},
-        "mutabakat": mut, "esleme": esl,
+        "akim_yillik": ak, "sektor_bilanco": sb,
+        "mutabakat": mut, "referans": ref, "esleme": esl,
         "kural": "katman sonuçları taşınmaz; BDDK ve EVDS farkı açıklanır, kapatılmaz",
     }
     (KOK / "tek_sistem_kopru_sonuc.json").write_text(json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (KOK / "TEK_SISTEM_KOPRU.md").write_text(md_yaz(mut, esl, ts, ev), encoding="utf-8")
+    (KOK / "TEK_SISTEM_KOPRU.md").write_text(md_yaz(mut, esl, ts, ev, ref), encoding="utf-8")
 
     print("=== Tek sistem köprüsü ===")
     for r in mut:
         if r["blok"] == "mutabakat" and r["tek_sistem_milyar"] is not None and r["donem"].startswith("2025"):
             print(f"{r['donem']} {r['kalem']:<20} tek {r['tek_sistem_milyar']:>10,.1f}  evds {r['evds_milyar']:>10,.1f}  {r['evds_anahtar']:<12} oran {r['evds_bolu_tek']}")
+    for r in mut:
+        if r["blok"] == "akim" and r["donem"] == "2025":
+            print(f"2025 akım {r['kalem']:<20} tek {r['tek_sistem_milyar']:>10,.1f}  evds {r['evds_milyar']:>10,.1f}  oran {r['evds_bolu_tek']}")
+    for r in ref:
+        print(f"ref {r['donem']} {r['kalem']:<28} tek {r['tek_sistem_milyar']}  ölçüm {r['evds_milyar']}")
     for r in esl:
         print(f"adım {r['adim']} {r['durum']:<14} {r['katman']:<22} {r['nesne']} = {r['deger']}")
 

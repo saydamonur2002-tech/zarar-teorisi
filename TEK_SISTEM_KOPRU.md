@@ -45,7 +45,33 @@ EVDS 2026-Q1 (tek-sistem henüz yok): F_F4_yuk 25,339.8; H_F4_yuk 6,755.1; B_VF4
 | 2025 | Net akis bireysel | 1,768.0 | 2,069.6 | 301.6 | 1.171 |
 | 2025 | Net akis toplam | 7,227.0 | 7,525.0 | 298.0 | 1.041 |
 
-Stok farkı kur ve değerleme içerir; net akış değildir. Konsolide olmayan akış serisi bu köprüde çekilmedi.
+Stok farkı kur ve değerleme içerir; net akış değildir. İşlem akımı aşağıda ayrı.
+
+## 2b. Net akış ↔ konsolide olmayan akım (işlem, 4 çeyrek toplamı, milyar TL)
+
+| Yıl | Kalem | Tek-sistem net akış | EVDS akım | Fark | EVDS/tek | Seri |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| 2023 | Net akis ticari | 2,924.0 | 1,829.5 | -1,094.5 | 0.626 | `TP.FINHESTNKS62011.ZP34` |
+| 2023 | Net akis bireysel | 1,139.0 | 1,239.7 | 100.7 | 1.088 | `TP.FINHESTNKS62014.ZP34` |
+| 2023 | Net akis toplam | 4,062.0 | 2,872.6 | -1,189.4 | 0.707 | `TP.FINHESTNKS620122.ZP12` |
+| 2024 | Net akis ticari | 3,132.0 | 3,039.3 | -92.7 | 0.970 | `TP.FINHESTNKS62011.ZP34` |
+| 2024 | Net akis bireysel | 1,138.0 | 1,312.8 | 174.8 | 1.154 | `TP.FINHESTNKS62014.ZP34` |
+| 2024 | Net akis toplam | 4,271.0 | 4,123.2 | -147.8 | 0.965 | `TP.FINHESTNKS620122.ZP12` |
+| 2025 | Net akis ticari | 5,208.0 | 4,820.9 | -387.1 | 0.926 | `TP.FINHESTNKS62011.ZP34` |
+| 2025 | Net akis bireysel | 1,768.0 | 2,067.7 | 299.7 | 1.170 | `TP.FINHESTNKS62014.ZP34` |
+| 2025 | Net akis toplam | 7,227.0 | 5,762.8 | -1,464.2 | 0.797 | `TP.FINHESTNKS620122.ZP12` |
+
+Ölçüm: tek-sistem `Kredi_Akisi.csv` 'Net akis' satırları yıl sonu stok farkına eşittir (9/9 hücre ±1 içinde); işlem akımı değil, kur ve değerleme içerir. Bu yüzden hane (TL kredi) satırında EVDS akımı tek-sistem'e yakın, ticari (YP payı var) satırında EVDS işlem akımı tek-sistem'in altında kalır. Firma F.4 kapsamı (tüm borç verenler) ise ters yönde çalışır; iki etki bu seriden ayrılmaz, ayrılmadı.
+
+## 2c. RAPOR.md referans rakamları
+
+| Dönem | Kalem | Tek-sistem | Ölçüm | Kaynak | Not |
+| --- | --- | ---: | ---: | --- | --- |
+| 2025 | GSYİH (cari, harcama) | 63,021.0 | 63,240.5 | GSYIH | RAPOR.md 'milli gelir 63.021 milyar'. EVDS 4 çeyrek toplamı, bugünkü sürüm; fark revizyon olabilir, RAPOR sürüm vermez. |
+| 2025 | ticari net akış / GSYİH | 8.3 | 7.6 | F_F4_akim/GSYIH | Yüzde. RAPOR.md: 'kredi itişi milli gelirin yüzde 8,3'ü'. EVDS: firma F.4 akımı / GSYİH, tüm borç verenler. 'Fiyata üçte biri geçse' varsayımı bu depoda ölçülmedi. |
+| 2023 | firma finansman gideri |  | 2,120.2 | sektor_bilanco | 17 NACE kesimi toplamı (K ve O yok); firma sayısı 1,070,419; faaliyet kârı 3797.9; finansman/faaliyet kârı 0.558. Tek-sistem bu yıl için sayı vermez. |
+| 2024 | firma finansman gideri |  | 3,143.4 | sektor_bilanco | 17 NACE kesimi toplamı (K ve O yok); firma sayısı 1,104,027; faaliyet kârı 3746.2; finansman/faaliyet kârı 0.839. Tek-sistem bu yıl için sayı vermez. |
+| 2025 | firma finansman gideri | 4,300.0 |  | sektor_bilanco | RAPOR.md '2025'te firma finansman gideri 4.300 milyar'. Birincil kaynakta 2025 bulunamadı: Sektör Bilançoları son yayın 2024. 2024 ölçümü 3143.4 ile yıl farklı, eşlenmez. tek-sistem Olcum.csv 'Finansman bolu faaliyet kari' 2025 0.7718; 2024 ölçümü 0.839 (yan yana). |
 
 ## 3. Beş adım → katman
 
@@ -67,7 +93,7 @@ Notlar:
 - Adım 1 / sektör akış ağı, optimal_mahsup, brüt çıkış silinen oranı: Sektör düzeyi akış; bilateral e-fatura eşleşmesi değil. tek-sistem mahsuplasma paketi (mahsup/) aynı kod. (`mahsup_sektor_ozet.json`)
 - Adım 1 / araç-ayrı karşı bacak tavanı (üst sınır): Stok silimi akış oranına eşitlenmez; tavan dağılım değildir. H-S araç ayrı silinen yokken skorlanmaz. (`stok_silim_sonuc.json`)
 - Adım 2 / mahsup sonrası akış + şart kaldıracı; temerrüt sayısı: holding_odeme_orani 0.5, ucret_gecis_beta 0.3; ağ sentetik, ölçüm değil. (`odeme_mahsup_sonuc.json`)
-- Adım 3 / kredi ihtiyacı brüt → şart: brüt 0.0 → şart 0.0. Faizin durması modellenmedi; tek-sistem 2025 firma finansman gideri 4.300 (RAPOR.md) bu depoda ölçülmedi. (`odeme_mahsup_sonuc.json`)
+- Adım 3 / kredi ihtiyacı brüt → şart: brüt 0.0 → şart 0.0. Faizin durması modellenmedi; firma finansman gideri referans bloğunda ölçüldü (Sektör Bilançoları 2024; 2025 bulunamadı). (`odeme_mahsup_sonuc.json`)
 - Adım 3 / firma F.4 kredi yükümlülüğü (EVDS): tek-sistem ticari stok 2025 17.302 (BDDK) ile mutabakat tablosunda karşılaştırılır. (`tek_sistem_kopru.csv`)
 - Adım 4 / hane vadeli mevduat (VF.2 ZP8): Senedin adresi olacak stok; senet ve prim mekanizması bu depoda modellenmedi. Altın ve arsa stoku burada yok. (`tek_sistem_kopru.csv`)
 - Adım 4 / firma vadeli mevduat (VF.2 ZP8): Senedin adresi olacak stok; senet ve prim mekanizması bu depoda modellenmedi. Altın ve arsa stoku burada yok. (`tek_sistem_kopru.csv`)

@@ -76,6 +76,97 @@
       "gercek_kisi_YP": 6639.4
     }
   },
+  "akim_yillik": {
+    "2022": {
+      "F_F4_akim": 1533.2082792986998,
+      "H_F4_akim": 568.8777059547,
+      "B_VF4_akim": 1962.7808277756,
+      "GSYIH": 15325.8574918225
+    },
+    "2023": {
+      "F_F4_akim": 1829.4600922743,
+      "H_F4_akim": 1239.6943781290001,
+      "B_VF4_akim": 2872.643300629,
+      "GSYIH": 27091.4690647014
+    },
+    "2024": {
+      "F_F4_akim": 3039.2831060929,
+      "H_F4_akim": 1312.8437832372001,
+      "B_VF4_akim": 4123.2187249673,
+      "GSYIH": 44675.9729279119
+    },
+    "2025": {
+      "F_F4_akim": 4820.8558425651,
+      "H_F4_akim": 2067.7319321136997,
+      "B_VF4_akim": 5762.750650294,
+      "GSYIH": 63240.5239927702
+    },
+    "2026": {
+      "F_F4_akim": null,
+      "H_F4_akim": null,
+      "B_VF4_akim": null,
+      "GSYIH": null
+    }
+  },
+  "sektor_bilanco": {
+    "kaynak": "TÜİK-TCMB Sektör Bilançoları İstatistikleri, 2024 (depodaki xls)",
+    "url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Reel+Sektor+Istatistikleri/Sektor+Bilancolari",
+    "finansman_gideri": {
+      "2009": 36.7,
+      "2010": 32.8,
+      "2011": 60.5,
+      "2012": 48.1,
+      "2013": 78.3,
+      "2014": 81.4,
+      "2015": 129.6,
+      "2016": 147.1,
+      "2017": 183.8,
+      "2018": 377.1,
+      "2019": 318.9,
+      "2020": 401.6,
+      "2021": 790.8,
+      "2022": 1102.6,
+      "2023": 2120.2,
+      "2024": 3143.4
+    },
+    "faaliyet_kari": {
+      "2009": 72.6,
+      "2010": 78.7,
+      "2011": 104.8,
+      "2012": 100.2,
+      "2013": 128.5,
+      "2014": 136.2,
+      "2015": 184.7,
+      "2016": 203.6,
+      "2017": 286.4,
+      "2018": 415.4,
+      "2019": 445.3,
+      "2020": 610.7,
+      "2021": 1083.9,
+      "2022": 2469.4,
+      "2023": 3797.9,
+      "2024": 3746.2
+    },
+    "firma_sayisi": {
+      "2009": 548833,
+      "2010": 569123,
+      "2011": 589851,
+      "2012": 592412,
+      "2013": 601985,
+      "2014": 617681,
+      "2015": 645570,
+      "2016": 671244,
+      "2017": 707840,
+      "2018": 749615,
+      "2019": 788167,
+      "2020": 845120,
+      "2021": 915397,
+      "2022": 1005238,
+      "2023": 1070419,
+      "2024": 1104027
+    },
+    "kesim_sayisi": 17
+  },
   "mutabakat": [
     {
       "blok": "mutabakat",
@@ -453,6 +544,190 @@
       "seri": "TP.FINHESTNKS122.ZP12",
       "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks122",
       "not": "EVDS sütunu Q4−Q4 stok farkıdır; kur ve değerleme içerir, net akış değildir. Tek-sistem BDDK net akış."
+    },
+    {
+      "blok": "akim",
+      "donem": "2023",
+      "kalem": "Net akis ticari",
+      "tek_sistem_milyar": 2924.0,
+      "evds_anahtar": "F_F4_akim",
+      "evds_milyar": 1829.5,
+      "fark_milyar": -1094.5,
+      "evds_bolu_tek": 0.626,
+      "seri": "TP.FINHESTNKS62011.ZP34",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks62011",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    },
+    {
+      "blok": "akim",
+      "donem": "2023",
+      "kalem": "Net akis bireysel",
+      "tek_sistem_milyar": 1139.0,
+      "evds_anahtar": "H_F4_akim",
+      "evds_milyar": 1239.7,
+      "fark_milyar": 100.7,
+      "evds_bolu_tek": 1.088,
+      "seri": "TP.FINHESTNKS62014.ZP34",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks62014",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    },
+    {
+      "blok": "akim",
+      "donem": "2023",
+      "kalem": "Net akis toplam",
+      "tek_sistem_milyar": 4062.0,
+      "evds_anahtar": "B_VF4_akim",
+      "evds_milyar": 2872.6,
+      "fark_milyar": -1189.4,
+      "evds_bolu_tek": 0.707,
+      "seri": "TP.FINHESTNKS620122.ZP12",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks620122",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    },
+    {
+      "blok": "akim",
+      "donem": "2024",
+      "kalem": "Net akis ticari",
+      "tek_sistem_milyar": 3132.0,
+      "evds_anahtar": "F_F4_akim",
+      "evds_milyar": 3039.3,
+      "fark_milyar": -92.7,
+      "evds_bolu_tek": 0.97,
+      "seri": "TP.FINHESTNKS62011.ZP34",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks62011",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    },
+    {
+      "blok": "akim",
+      "donem": "2024",
+      "kalem": "Net akis bireysel",
+      "tek_sistem_milyar": 1138.0,
+      "evds_anahtar": "H_F4_akim",
+      "evds_milyar": 1312.8,
+      "fark_milyar": 174.8,
+      "evds_bolu_tek": 1.154,
+      "seri": "TP.FINHESTNKS62014.ZP34",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks62014",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    },
+    {
+      "blok": "akim",
+      "donem": "2024",
+      "kalem": "Net akis toplam",
+      "tek_sistem_milyar": 4271.0,
+      "evds_anahtar": "B_VF4_akim",
+      "evds_milyar": 4123.2,
+      "fark_milyar": -147.8,
+      "evds_bolu_tek": 0.965,
+      "seri": "TP.FINHESTNKS620122.ZP12",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks620122",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    },
+    {
+      "blok": "akim",
+      "donem": "2025",
+      "kalem": "Net akis ticari",
+      "tek_sistem_milyar": 5208.0,
+      "evds_anahtar": "F_F4_akim",
+      "evds_milyar": 4820.9,
+      "fark_milyar": -387.1,
+      "evds_bolu_tek": 0.926,
+      "seri": "TP.FINHESTNKS62011.ZP34",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks62011",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    },
+    {
+      "blok": "akim",
+      "donem": "2025",
+      "kalem": "Net akis bireysel",
+      "tek_sistem_milyar": 1768.0,
+      "evds_anahtar": "H_F4_akim",
+      "evds_milyar": 2067.7,
+      "fark_milyar": 299.7,
+      "evds_bolu_tek": 1.17,
+      "seri": "TP.FINHESTNKS62014.ZP34",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks62014",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    },
+    {
+      "blok": "akim",
+      "donem": "2025",
+      "kalem": "Net akis toplam",
+      "tek_sistem_milyar": 7227.0,
+      "evds_anahtar": "B_VF4_akim",
+      "evds_milyar": 5762.8,
+      "fark_milyar": -1464.2,
+      "evds_bolu_tek": 0.797,
+      "seri": "TP.FINHESTNKS620122.ZP12",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks620122",
+      "not": "EVDS sütunu konsolide olmayan akım (işlem), 4 çeyrek toplamı; kur ve değerleme içermez. Tek-sistem 'net akış' Kredi_Akisi.csv'de yıl sonu stok farkıdır (kur dahil). Borç veren kapsamı da farklı."
+    }
+  ],
+  "referans": [
+    {
+      "blok": "referans",
+      "donem": "2025",
+      "kalem": "GSYİH (cari, harcama)",
+      "tek_sistem_milyar": 63021.0,
+      "evds_anahtar": "GSYIH",
+      "evds_milyar": 63240.5,
+      "fark_milyar": 219.5,
+      "evds_bolu_tek": 1.003,
+      "seri": "TP.GSYIH20.BY.B1GQ",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_gsyhhrccar",
+      "not": "RAPOR.md 'milli gelir 63.021 milyar'. EVDS 4 çeyrek toplamı, bugünkü sürüm; fark revizyon olabilir, RAPOR sürüm vermez."
+    },
+    {
+      "blok": "referans",
+      "donem": "2025",
+      "kalem": "ticari net akış / GSYİH",
+      "tek_sistem_milyar": 8.26,
+      "evds_anahtar": "F_F4_akim/GSYIH",
+      "evds_milyar": 7.62,
+      "fark_milyar": null,
+      "evds_bolu_tek": null,
+      "seri": "TP.FINHESTNKS62011.ZP34 / TP.GSYIH20.BY.B1GQ",
+      "kaynak_url": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks62011",
+      "not": "Yüzde. RAPOR.md: 'kredi itişi milli gelirin yüzde 8,3'ü'. EVDS: firma F.4 akımı / GSYİH, tüm borç verenler. 'Fiyata üçte biri geçse' varsayımı bu depoda ölçülmedi."
+    },
+    {
+      "blok": "referans",
+      "donem": "2023",
+      "kalem": "firma finansman gideri",
+      "tek_sistem_milyar": null,
+      "evds_anahtar": "sektor_bilanco",
+      "evds_milyar": 2120.2,
+      "fark_milyar": null,
+      "evds_bolu_tek": null,
+      "seri": "TÜİK-TCMB Sektör Bilançoları, gelir tablosu H satırı",
+      "kaynak_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Reel+Sektor+Istatistikleri/Sektor+Bilancolari",
+      "not": "17 NACE kesimi toplamı (K ve O yok); firma sayısı 1,070,419; faaliyet kârı 3797.9; finansman/faaliyet kârı 0.558. Tek-sistem bu yıl için sayı vermez."
+    },
+    {
+      "blok": "referans",
+      "donem": "2024",
+      "kalem": "firma finansman gideri",
+      "tek_sistem_milyar": null,
+      "evds_anahtar": "sektor_bilanco",
+      "evds_milyar": 3143.4,
+      "fark_milyar": null,
+      "evds_bolu_tek": null,
+      "seri": "TÜİK-TCMB Sektör Bilançoları, gelir tablosu H satırı",
+      "kaynak_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Reel+Sektor+Istatistikleri/Sektor+Bilancolari",
+      "not": "17 NACE kesimi toplamı (K ve O yok); firma sayısı 1,104,027; faaliyet kârı 3746.2; finansman/faaliyet kârı 0.839. Tek-sistem bu yıl için sayı vermez."
+    },
+    {
+      "blok": "referans",
+      "donem": "2025",
+      "kalem": "firma finansman gideri",
+      "tek_sistem_milyar": 4300.0,
+      "evds_anahtar": "sektor_bilanco",
+      "evds_milyar": null,
+      "fark_milyar": null,
+      "evds_bolu_tek": null,
+      "seri": "",
+      "kaynak_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Istatistikler/Reel+Sektor+Istatistikleri/Sektor+Bilancolari",
+      "not": "RAPOR.md '2025'te firma finansman gideri 4.300 milyar'. Birincil kaynakta 2025 bulunamadı: Sektör Bilançoları son yayın 2024. 2024 ölçümü 3143.4 ile yıl farklı, eşlenmez. tek-sistem Olcum.csv 'Finansman bolu faaliyet kari' 2025 0.7718; 2024 ölçümü 0.839 (yan yana)."
     }
   ],
   "esleme": [
@@ -501,7 +776,7 @@
       "deger": 0.0,
       "birim": "trilyon TL/ay",
       "durum": "modellendi",
-      "not": "brüt 0.0 → şart 0.0. Faizin durması modellenmedi; tek-sistem 2025 firma finansman gideri 4.300 (RAPOR.md) bu depoda ölçülmedi.",
+      "not": "brüt 0.0 → şart 0.0. Faizin durması modellenmedi; firma finansman gideri referans bloğunda ölçüldü (Sektör Bilançoları 2024; 2025 bulunamadı).",
       "dosya": "odeme_mahsup_sonuc.json"
     },
     {
