@@ -67,6 +67,9 @@ SEKTOR_AD = {
 
 
 def evds_indir() -> pd.DataFrame:
+    if HAM.exists() and __import__("os").environ.get("MAHSUP_EVDS_YENILE") != "1":
+        print(f"Mevcut ham kullanılıyor: {HAM.name} (yenilemek için MAHSUP_EVDS_YENILE=1)", flush=True)
+        return pd.read_csv(HAM, encoding="utf-8-sig")
     rows = []
     for g in EVDS_GRUPLAR:
         try:

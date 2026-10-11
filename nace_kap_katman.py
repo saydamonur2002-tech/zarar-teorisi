@@ -33,7 +33,21 @@ OUT_NACE = KOK / "nace_bolum_donem.csv"
 OUT_KAP = KOK / "kap_kenar.csv"
 OUT_YS = KOK / "mahsup_yogun_seyrek.csv"
 OUT_RAPOR = KOK / "NACE_KAP_RAPOR.md"
+OUT_SONUC = KOK / "nace_kap_sonuc.json"
+KAP_KENAR_COLS = (
+    "aciklayan",
+    "karsi_taraf",
+    "yon",
+    "tutar",
+    "para_birimi",
+    "donem",
+    "url",
+    "bildirim_tarihi",
+    "kaynak_alinti",
+)
 DONEMLER = ("2025-Q4", "2026-Q1")
+YOGUN_DONEM = "2026-Q1"
+HM_ESIK = 0.15
 # Not: bunlar istihdam/sanayi endeksi; finansal hesap NACE bölümü değil (yanlış raf).
 # Asıl kapı: TÜİK birincil dosya (bu betikte henüz çekilmedi).
 NACE_EVDS_YANLIS_RAF = (
@@ -130,6 +144,22 @@ def parse_ilisikli_html(html: str, meta: dict) -> list[dict]:
     return rows
 
 
+def kap_kenar_df(kenar: list[dict]) -> pd.DataFrame:
+    df = pd.DataFrame(kenar)
+    if df.empty:
+        return pd.DataFrame(columns=list(KAP_KENAR_COLS))
+    return df
+
+
+def kap_kenar_yukle() -> pd.DataFrame:
+    if not OUT_KAP.exists() or OUT_KAP.stat().st_size == 0:
+        return pd.DataFrame(columns=list(KAP_KENAR_COLS))
+    try:
+        return pd.read_csv(OUT_KAP)
+    except pd.errors.EmptyDataError:
+        return pd.DataFrame(columns=list(KAP_KENAR_COLS))
+
+
 def kap_kenarlari(disclosures: list[dict], max_detay: int = 120) -> list[dict]:
     kilit = json.loads(KILIT.read_text(encoding="utf-8"))
     keys = kilit["bildirim"]["konu_anahtarlari"]
@@ -176,6 +206,32 @@ def nace_evds_dene() -> pd.DataFrame | None:
         except Exception as exc:  # noqa: BLE001
             log({"kaynak": "EVDS", "grup": g, "hata": str(exc)})
     return None
+
+
+def grup_ici_pay(kenar_df: pd.DataFrame) -> float | None:
+    """Karşı taraf grup eşleşmesi yoksa None."""
+    if kenar_df.empty or "grup_ici" not in kenar_df.columns:
+        return None
+    g = kenar_df["grup_ici"]
+    if g.isna().all():
+        return None
+    return float(g.mean())
+
+
+def hm_etiket(yogun: float, sey_oran: float, n_kenar: int, grup_ici: float | None) -> str | None:
+    """H-M: yalnız test_edilemez | matris_eseri | hipotez_duser | ters_yon. Grup içi >50% ise None."""
+    if grup_ici is not None and grup_ici > 0.5:
+        return None
+    if n_kenar < 30 or not np.isfinite(sey_oran):
+        return "test_edilemez"
+    fark = yogun - sey_oran
+    if fark >= HM_ESIK:
+        return "matris_eseri"
+    if abs(fark) < HM_ESIK:
+        return "hipotez_duser"
+    if fark <= -HM_ESIK:
+        return "ters_yon"
+    return "test_edilemez"
 
 
 def seyrek_mahsup(kenar_df: pd.DataFrame) -> dict | None:
@@ -246,45 +302,61 @@ def main() -> None:
     pd.DataFrame(nace_rows).to_csv(OUT_NACE, index=False, encoding="utf-8-sig")
 
     # KAP
-    disc = kap_disclosure_windows()
-    n_disclosure = len(disc)
-    n_ilisikli_baslik = sum(
-        1
-        for d in disc
-        if any(k.lower() in f"{d.get('subject','')} {d.get('summary','')}".lower() for k in ("ilişkili taraf", "İlişkili Taraf"))
-    )
-    log({"kaynak": "KAP", "islem": "ozet", "benzersiz_bildirim": n_disclosure, "ilisikli_taraf_baslik": n_ilisikli_baslik})
-    kenar = kap_kenarlari(disc)
-    pd.DataFrame(kenar).to_csv(OUT_KAP, index=False, encoding="utf-8-sig")
+    import os
 
-    ys = []
-    for p in DONEMLER:
-        sub = hazne[hazne.donem == p]
-        if not sub.empty:
-            ys.append({"donem": p, "tip": "yogun_hazne_Lm", "silinen_oran": float(sub.ag_silinen_oran.iloc[0])})
-    sk = seyrek_mahsup(pd.DataFrame(kenar))
-    if sk:
-        sk["donem"] = "2025-Q4–2026-Q1"
-        ys.append(sk)
-    pd.DataFrame(ys).to_csv(OUT_YS, index=False, encoding="utf-8-sig")
-
-    n_kenar = len(kenar)
-    yogun = ys[-1]["silinen_oran"] if ys else float("nan")
-    sey_oran = sk["silinen_oran"] if sk else float("nan")
-    if n_kenar < 30:
-        hm = "test_edilemez"
-    elif sk is None or not np.isfinite(sey_oran):
-        hm = "test_edilemez"
-    elif (yogun - sey_oran) >= 0.15:
-        hm = "tutmuyor"
-    elif abs(yogun - sey_oran) < 0.15:
-        hm = "karışık"
+    if os.environ.get("NACE_KAP_SKIP_KAP") == "1" and OUT_KAP.exists():
+        kenar_df = kap_kenar_yukle()
+        kenar = kenar_df.to_dict("records")
+        n_disclosure = n_ilisikli_baslik = -1
+        log({"kaynak": "KAP", "islem": "atla", "dosya": OUT_KAP.name})
     else:
-        hm = "yanlışlıyor"
+        disc = kap_disclosure_windows()
+        n_disclosure = len(disc)
+        n_ilisikli_baslik = sum(
+            1
+            for d in disc
+            if any(
+                k.lower() in f"{d.get('subject','')} {d.get('summary','')}".lower()
+                for k in ("ilişkili taraf", "İlişkili Taraf")
+            )
+        )
+        log({"kaynak": "KAP", "islem": "ozet", "benzersiz_bildirim": n_disclosure, "ilisikli_taraf_baslik": n_ilisikli_baslik})
+        kenar = kap_kenarlari(disc)
+        kap_kenar_df(kenar).to_csv(OUT_KAP, index=False, encoding="utf-8-sig")
 
-    # H-N: NACE bölümleri arası silme farkı — bölüm yoksa test edilemez (F/B hazne farkı bu test değil).
-    hn = "test_edilemez" if nace_raw is None else "hesaplandi (nace_bolum_donem.csv)"
+    yogun = float(hazne.loc[hazne.donem == YOGUN_DONEM, "ag_silinen_oran"].iloc[0])
+    kenar_df = pd.DataFrame(kenar)
+    n_kenar = len(kenar_df)
+    sk = seyrek_mahsup(kenar_df)
+    sey_oran = float(sk["silinen_oran"]) if sk else float("nan")
+    grup_ici = grup_ici_pay(kenar_df)
+    hm = hm_etiket(yogun, sey_oran, n_kenar, grup_ici)
 
+    ys_rows = [
+        {"donem": YOGUN_DONEM, "tip": "yogun_hazne_Lm", "silinen_oran": yogun, "fark_yogun_seyrek": float("nan")},
+    ]
+    if sk:
+        ys_rows.append(
+            {
+                "donem": "2025-Q4–2026-Q1",
+                "tip": "seyrek_KAP",
+                "silinen_oran": sey_oran,
+                "fark_yogun_seyrek": yogun - sey_oran if np.isfinite(sey_oran) else float("nan"),
+                "kenar_sayisi": n_kenar,
+            }
+        )
+    ys_rows.append(
+        {
+            "donem": YOGUN_DONEM,
+            "tip": "hm_etiket",
+            "silinen_oran": float("nan"),
+            "fark_yogun_seyrek": yogun - sey_oran if np.isfinite(sey_oran) else float("nan"),
+            "hm": hm or "grup_ici_50_asildi_HM_yazilmaz",
+        }
+    )
+    pd.DataFrame(ys_rows).to_csv(OUT_YS, index=False, encoding="utf-8-sig")
+
+    hn = "test_edilemez" if nace_raw is None else "karışık"
     hk = "test_edilemez" if n_kenar < 30 else "karışık"
 
     kap_kenar_durum = (
@@ -293,6 +365,20 @@ def main() -> None:
         else ("tutarlı tablo görülmedi (0 sayısal kenar)" if n_kenar == 0 else f"tutarlı tablo yetersiz ({n_kenar} kenar)")
     )
     sey_metin = "yok" if not np.isfinite(sey_oran) else f"{100 * sey_oran:.1f}%"
+    hm_satir = hm if hm else f"(yazılmaz — grup içi pay >50% önce H-K; pay={grup_ici})"
+    fark_metin = "—" if not np.isfinite(sey_oran) else f"{100 * (yogun - sey_oran):+.1f} puan"
+
+    sonuc = {
+        "yogun_2026_q1": yogun,
+        "seyrek_silinen_oran": sey_oran if np.isfinite(sey_oran) else None,
+        "fark_puan": yogun - sey_oran if np.isfinite(sey_oran) else None,
+        "kap_kenar_sayisi": n_kenar,
+        "H-M": hm,
+        "H-N": hn,
+        "H-K": hk,
+        "grup_ici_pay": grup_ici,
+    }
+    OUT_SONUC.write_text(json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     rapor = f"""# NACE + KAP katman raporu
 
@@ -301,14 +387,14 @@ def main() -> None:
 | Katman | Durum |
 | --- | --- |
 | Hazne (H,F,B,K,D) | {'duruyor' if hazne_ok else 'eksik dönem'} — `mahsup_sektor_donem.csv` (trilyon TL/ay) |
-| NACE bölüm | {'proxy eklendi' if nace_raw is not None else '**test edilemez** — bölüm tablosu yok (TÜİK birincil çekilmedi)'} |
-| KAP kenar | {kap_kenar_durum}; H-M seyrek kol {'≥30' if n_kenar >= 30 else '<30'} |
+| NACE bölüm | {'eklendi' if nace_raw is not None else 'bulunamadı — bölüm tablosu yok (TÜİK birincil çekilmedi)'} |
+| KAP kenar | {kap_kenar_durum}; sayısal kenar {n_kenar} |
 
 ## 2. Yanlışlayıcılar
 
-- **H-M (matris eseri):** {hm}. Yoğun L^m üst sınır silinen oran (2026-Q1 agregat): {100 * yogun:.1f}%. Seyrek KAP: {sey_metin} ({n_kenar} kenar). Seyrek karşıt yokken %42,7 yoğun üst sınır olarak durur.
-- **H-N (NACE bölümleri arası silme farkı):** {hn}. Bölüm tablosu olmadan F/B hazne silme oranları (**%18,1 / %95,5**) bu hipotezin sınavı değil; hazne katmanının öncülü. “Firma tek tip” cümlesi NACE ister; bölüm yokken ne düşer ne tutar.
-- **H-K (grup içi):** {hk}. Karşı taraf / grup eşleşmesi yetersiz.
+- **H-M:** `{hm_satir}`. Yoğun L^m üst sınır ({YOGUN_DONEM}): {100 * yogun:.1f}. Seyrek KAP: {sey_metin}. Fark (yoğun−seyrek): {fark_metin}. Etiket kümesi: test_edilemez | matris_eseri | hipotez_duser | ters_yon.
+- **H-N:** `{hn}`. NACE bölüm × dönem tablosu yok; F/B hazne farkı bu sınav değil.
+- **H-K:** `{hk}`.
 
 ## 3. NACE araması (düzeltme)
 
@@ -319,13 +405,13 @@ def main() -> None:
 
 ## 4. KAP tarama
 
-- Benzersiz bildirim (aylık pencereler): {n_disclosure}. Başlıkta “ilişkili taraf”: {n_ilisikli_baslik}.
+- Benzersiz bildirim (aylık pencereler): {n_disclosure if n_disclosure >= 0 else '(önbellek)'}. Başlıkta “ilişkili taraf”: {n_ilisikli_baslik if n_ilisikli_baslik >= 0 else '(önbellek)'}.
 - `byCriteria` yanıtı **2000/tavan**; tavan kesilmiş aylarda ilişkili taraf metni dışarıda kalmış olabilir.
 - HTML gövdede sayı çıkmayan satır → kenar yazılmadı (sentetik doldurma yok). Sonuç: **tutarlı tablo görülmedi**, “bildirim yok” değil.
 
 ## 5. Dosyalar
 
-- `nace_bolum_donem.csv`, `kap_kenar.csv`, `mahsup_yogun_seyrek.csv`
+- `nace_bolum_donem.csv`, `kap_kenar.csv`, `mahsup_yogun_seyrek.csv`, `nace_kap_sonuc.json`
 - `nace_kap_arama_gunlugu.jsonl`, `kap_universe_kilit.json`
 
 ## 6. Sınır ve sonraki risk
