@@ -16,6 +16,7 @@ Bu depodaki parçaları:
 - Beş adım sırayla, tek koşu (etiket kapılı; adım 1 stok eski/yeni tavan ayrı): `python3 bes_adim.py` → [BES_ADIM.md](BES_ADIM.md), `adim1_stok.csv` … `adim5.csv`, `bes_adim_sonuc.json` (`kosu`)
 - Kapanış, tek test (son satırı test yazar): `python3 test_bes_adim.py` → `kapanis_sonuc.json`, `bes_adim_sonuc.json` `son`; kilitler `senet_kilit.txt`, `kapi_kilit.txt`
 - Beş yıl senaryosu (ölçüm değil; taban EVDS, beklenti anket, model etkisi varsayım bandı): `python3 bes_yil_senaryo.py` → [BES_YIL_SENARYO.md](BES_YIL_SENARYO.md), `bes_yil_senaryo.csv`
+- Benzer öneriler (Türk öneren şartı; kamuya açık kayıt, 9 sorgu): [BENZER_ONERILER.md](BENZER_ONERILER.md), `benzer_oneriler.csv`
 
 ## Beş adım
 
