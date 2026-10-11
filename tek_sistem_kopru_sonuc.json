@@ -752,14 +752,17 @@
     {
       "adim": 1,
       "tek_sistem": "Aynı adım, stok tarafı",
-      "katman": "stok_silim.py",
-      "nesne": "araç-ayrı karşı bacak tavanı (üst sınır)",
+      "katman": "stok_silim.py; bes_adim.py",
+      "nesne": "karşı bacak tavanı (üst sınır): eski satır toplamı / yeni çift düzeyi",
       "donem": "2026-Q1",
-      "deger": 0.0728,
+      "deger": null,
+      "eski_tavan": 0.0728,
+      "yeni_tavan": 0.2582,
+      "silinen": null,
       "birim": "oran (üst sınır)",
-      "durum": "test_edilemez",
-      "not": "Stok silimi akış oranına eşitlenmez; tavan dağılım değildir. H-S araç ayrı silinen yokken skorlanmaz.",
-      "dosya": "stok_silim_sonuc.json"
+      "durum": "ust_sinir",
+      "not": "0,2582 üst sınır. Üç ters yön metinde yok. EVDS tavanı bacak diye konmuş. Silinen boş. Xls yok. Yüzde 20 bu kuraldan çıkmadı.",
+      "dosya": "stok_silim_sonuc.json; adim1_stok.csv"
     },
     {
       "adim": 2,

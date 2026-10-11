@@ -311,7 +311,7 @@ def _json(p: str) -> dict:
 
 
 def esleme(ev: dict) -> list[dict]:
-    """Beş adım → bu depodaki katman. Durum: olculdu / modellendi / modellenmedi / olculmedi."""
+    """Beş adım → bu depodaki katman. Durum: olculdu / modellendi / modellenmedi / olculmedi / baska_nesne / ust_sinir."""
     ms = _json("mahsup_sektor_ozet.json")
     om = _json("odeme_mahsup_sonuc.json")
     ss = _json("stok_silim_sonuc.json")
@@ -331,13 +331,17 @@ def esleme(ev: dict) -> list[dict]:
         "dosya": "mahsup_sektor_ozet.json",
     })
     tavan = ss.get("karsi_bacak_tavan_kapi", {})
+    ba = _json("bes_adim_sonuc.json") if (KOK / "bes_adim_sonuc.json").exists() else {}
+    a1 = (ba.get("adimlar") or {}).get("1", {})
     rows.append({
         "adim": 1, "tek_sistem": "Aynı adım, stok tarafı",
-        "katman": "stok_silim.py", "nesne": "araç-ayrı karşı bacak tavanı (üst sınır)",
-        "donem": ss.get("donem"), "deger": _r(tavan.get("arac_ayri_oran_ust_sinir"), 4), "birim": "oran (üst sınır)",
-        "durum": ss.get("H-S", "test_edilemez"),
-        "not": "Stok silimi akış oranına eşitlenmez; tavan dağılım değildir. H-S araç ayrı silinen yokken skorlanmaz.",
-        "dosya": "stok_silim_sonuc.json",
+        "katman": "stok_silim.py; bes_adim.py", "nesne": "karşı bacak tavanı (üst sınır): eski satır toplamı / yeni çift düzeyi",
+        "donem": ss.get("donem"), "deger": None,
+        "eski_tavan": _r(tavan.get("arac_ayri_oran_ust_sinir"), 4), "yeni_tavan": _r(a1.get("yeni_tavan"), 4), "silinen": None,
+        "birim": "oran (üst sınır)", "durum": "ust_sinir",
+        "not": "0,2582 üst sınır. Üç ters yön metinde yok. EVDS tavanı bacak diye konmuş. Silinen boş. Xls yok. Yüzde 20 bu kuraldan çıkmadı."
+               + ("" if a1.get("yeni_tavan") is not None else " yeni_tavan boş: bes_adim_sonuc.json yok."),
+        "dosya": "stok_silim_sonuc.json; adim1_stok.csv",
     })
     oz = om.get("ozet", {})
     rows.append({
@@ -470,13 +474,18 @@ def md_yaz(mut: list[dict], esl: list[dict], ts: dict, ev: dict, ref: list[dict]
     s += ["", "## 3. Beş adım → katman", "",
           "| Adım | Tek-sistem | Katman | Nesne | Dönem | Değer | Birim | Durum |", "| ---: | --- | --- | --- | --- | ---: | --- | --- |"]
     for r in esl:
+        if r.get("eski_tavan") is not None or r.get("yeni_tavan") is not None:
+            deger = f"eski_tavan {_deger_str(r.get('eski_tavan'))} / yeni_tavan {_deger_str(r.get('yeni_tavan'))}; silinen boş"
+        else:
+            deger = _deger_str(r["deger"])
         s.append(f"| {r['adim']} | {r['tek_sistem']} | `{r['katman']}` | {r['nesne']} | {r['donem'] or ''} | "
-                 f"{_deger_str(r['deger'])} | {r['birim'] or ''} | {r['durum']} |")
+                 f"{deger} | {r['birim'] or ''} | {r['durum']} |")
     s += ["", "Notlar:", ""]
     for r in esl:
         s.append(f"- Adım {r['adim']} / {r['nesne']}: {r['not']}" + (f" (`{r['dosya']}`)" if r["dosya"] else ""))
     hn = adim1_kontrol(esl)
-    s += ["", "Adım 1 nesne düzeltmesi: sayı değişmedi, etiket `olculdu` → `baska_nesne`. Stok tavanı satırı bu turda düzeltilmedi; ayrı gedik.",
+    s += ["", "Adım 1 nesne düzeltmesi: sayı değişmedi, etiket `olculdu` → `baska_nesne`. Stok satırı iki değer taşır "
+          "(`eski_tavan`, `yeni_tavan`; `bes_adim.py`), etiket `ust_sinir`, silinen boş.",
           f"- **H-N1** (etiket nesneyi taşır): `{hn['H-N1']}`. {hn['H-N1_not']}",
           f"- **H-N2** (sayı bozulur): `{hn['H-N2']}`. {hn['H-N2_not']}"]
     ol = ts["olcum"]
@@ -507,7 +516,7 @@ def main() -> None:
         w.writeheader()
         for r in mut + ref:
             w.writerow({k: ("" if r.get(k) is None else r.get(k)) for k in alanlar})
-    alan_e = ["adim", "tek_sistem", "katman", "nesne", "donem", "deger", "birim", "durum", "not", "dosya"]
+    alan_e = ["adim", "tek_sistem", "katman", "nesne", "donem", "deger", "eski_tavan", "yeni_tavan", "silinen", "birim", "durum", "not", "dosya"]
     with (KOK / "tek_sistem_esleme.csv").open("w", newline="", encoding="utf-8-sig") as fh:
         w = csv.DictWriter(fh, fieldnames=alan_e)
         w.writeheader()
