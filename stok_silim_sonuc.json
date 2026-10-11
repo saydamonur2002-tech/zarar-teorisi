@@ -1,0 +1,17 @@
+{
+  "donem": "2026-Q1",
+  "birim": "milyar TL (Finansal Hesaplar raporu)",
+  "H-S": "test_edilemez",
+  "arac_ayri_silinen_oran": null,
+  "arac_birlesik_silinen_oran": 0.6349654296599407,
+  "akis_oran_kiyaslama_disinda": 0.427,
+  "f_yukumluluk_milyar": {
+    "kredi": 25339.7607982257,
+    "mevduat": 0.0,
+    "borclanma_senedi": 993.08777076,
+    "hisse": 17987.2705216991,
+    "diger_borc": 6412.1744434859,
+    "toplam_yukumluluk": 50732.2935341707
+  },
+  "banka_ayrimi": "banka ayrılmadı (PFK konsolide)"
+}
