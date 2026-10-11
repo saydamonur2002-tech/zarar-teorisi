@@ -1,0 +1,58 @@
+{
+  "kaynak": "EVDS finansal hesaplar (bie_finhestnks710* stok, 610* akım, 710121/610121 TCMB)",
+  "ham_dosya": "mahsup_evds_ham.csv",
+  "kenar_kurali": "Aylık kredi+diger servis × L^m; trilyon TL/ay; bilateral ölçüm değil",
+  "mahsup": "optimal_mahsup (net pozisyon sabit)",
+  "donemler": [
+    "2025-Q4",
+    "2026-Q1"
+  ],
+  "donem_ozet": [
+    {
+      "donem": "2025-Q4",
+      "brut_once_trilyon_ay": 2.899699252881205,
+      "brut_sonra_trilyon_ay": 1.68,
+      "silinen_oran": 0.42062957103888793,
+      "en_cok_silinen_sektor": "B"
+    },
+    {
+      "donem": "2026-Q1",
+      "brut_once_trilyon_ay": 3.0876847912349548,
+      "brut_sonra_trilyon_ay": 1.77,
+      "silinen_oran": 0.4267549572985822,
+      "en_cok_silinen_sektor": "B"
+    }
+  ],
+  "son_donem_siralama": [
+    {
+      "sektor": "B",
+      "sektor_ad": "Bankalar (TCMB ayrılmış)",
+      "silinen_cikis": 0.4245990008655917,
+      "silinen_cikis_oran": 0.9550156433976191
+    },
+    {
+      "sektor": "F",
+      "sektor_ad": "Finansal olmayan kuruluşlar",
+      "silinen_cikis": 0.30245210489413976,
+      "silinen_cikis_oran": 0.18084350757134768
+    },
+    {
+      "sektor": "D",
+      "sektor_ad": "Devlet / yerleşik olmayan",
+      "silinen_cikis": 0.2556878999894683,
+      "silinen_cikis_oran": 1.0
+    },
+    {
+      "sektor": "K",
+      "sektor_ad": "Bankacılık dışı finansal",
+      "silinen_cikis": 0.245437136300955,
+      "silinen_cikis_oran": 1.0
+    },
+    {
+      "sektor": "H",
+      "sektor_ad": "Hane (+NPISH)",
+      "silinen_cikis": 0.08950864918479995,
+      "silinen_cikis_oran": 0.1906432380749797
+    }
+  ]
+}
