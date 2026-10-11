@@ -12,11 +12,11 @@ Bülten: [YSHİ 2024](https://data.tuik.gov.tr/Bulten/Index?p=Yillik-Sanayi-ve-H
 ## 2. Çıktı
 
 - `nace_tuik_agirlik.csv` (149 satır)
-- `nace_bolum_donem.csv` (F hazne bölünmesi yalnız yabancı kaynak payı varsa)
+- `nace_bolum_donem.csv` (F hazne brüt çıkışı yalnız yabancı kaynak payıyla bölündü; `brut_cikis_sonra` ve `silinen_oran` boş)
 
 ## 3. H-N
 
-**test_edilemez** — silinen_oran bölüm bazında ölçülmedi; F/B hazne yüzdeleri H-N sınavı değil.
+**test_edilemez** — `silinen_oran` ve `brut_cikis_sonra` bölüm bazında boş. F hazne silmesi yapıştırılmadı. F/B hazne yüzdeleri H-N sınavı değil.
 
 ## 4. Kapsam dışı / pay uyumsuz
 
