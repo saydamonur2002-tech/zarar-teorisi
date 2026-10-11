@@ -70,13 +70,84 @@ def yshi_yolu() -> Path | None:
 
 
 def sektor_bilanco_yolu() -> Path | None:
+    oncelik = (
+        "*referans*yıl*bilanço*.xls",
+        "*referans*yil*bilanc*.xls",
+        "*referans*bilanço*.xls",
+    )
+    for pat in oncelik:
+        hits = sorted(KOK.glob(pat))
+        if hits:
+            return hits[0]
     for cand in sorted(KOK.glob("*.xls")) + sorted(KOK.glob("*.xlsx")):
         ad = cand.name.lower()
+        if "bilanço hesapları" in ad or "bilanco hesap" in ad:
+            if "referans" in ad or "sekt" in ad:
+                return cand
         if "sekt" in ad and ("bilanç" in ad or "bilanc" in ad):
             return cand
-        if "sector balance" in ad or "sektor bilanc" in ad:
-            return cand
     return None
+
+
+def _referans_yil_bilanco(path: Path) -> list[dict]:
+    """TÜİK–TCMB Sektör Bilançoları: NACE sütunlu referans yıl tablosu."""
+    x = pd.ExcelFile(path)
+    sh = "t2" if "t2" in x.sheet_names else x.sheet_names[0]
+    df = pd.read_excel(path, sheet_name=sh, header=None)
+    log(
+        {
+            "kaynak": "sektor_bilanco",
+            "dosya": path.name,
+            "tablo": sh,
+            "format": "referans_yil_nace_sutun",
+            "url": SEKTOR_BIL_URL,
+        }
+    )
+    out: list[dict] = []
+    nace_row = 4
+    for j in range(1, df.shape[1]):
+        h = df.iloc[nace_row, j]
+        if pd.isna(h):
+            continue
+        m = re.match(r"^([A-Z])\s*[- ]", str(h).strip())
+        if not m:
+            continue
+        kod = m.group(1).upper()
+        ad = str(h).split("\n")[0].strip()
+        aktif = _sayi(df.iloc[128, j])
+        kisa = _sayi(df.iloc[130, j])
+        uzun = _sayi(df.iloc[180, j])
+        yab_top = None
+        if kisa is not None or uzun is not None:
+            yab_top = (kisa or 0.0) + (uzun or 0.0)
+        ozk = None
+        if aktif is not None and yab_top is not None:
+            ozk = aktif - yab_top
+        notu = "kapsam_disi" if kod in KAPSAM_DISI else YIL_UYARISI
+        for gost, val in (
+            ("aktif", aktif),
+            ("kisa_vadeli_yabanci_kaynak", kisa),
+            ("uzun_vadeli_yabanci_kaynak", uzun),
+            ("yabanci_kaynak_toplam", yab_top),
+            ("ozkaynak", ozk),
+        ):
+            if val is None:
+                continue
+            out.append(
+                {
+                    "kaynak": "sektor_bilanco",
+                    "yil": YSHI_YIL,
+                    "nace_kisim": kod,
+                    "nace_ad": ad,
+                    "gosterge": gost,
+                    "deger": val,
+                    "pay": None,
+                    "dosya_url": SEKTOR_BIL_URL,
+                    "tablo_adi": f"{path.name} / {sh}",
+                    "not": notu,
+                }
+            )
+    return out
 
 
 def parse_yshi(path: Path) -> list[dict]:
@@ -140,7 +211,10 @@ def parse_yshi(path: Path) -> list[dict]:
 
 
 def parse_sektor_bilanco(path: Path) -> list[dict]:
-    """NACE × yabancı kaynak sütunları dosyada varsa okur; yoksa boş."""
+    """NACE × bilanço kalemleri; referans yıl geniş tablo veya satır bazlı format."""
+    ad = path.name.lower()
+    if "referans" in ad and ("bilanç" in ad or "bilanc" in ad):
+        return _referans_yil_bilanco(path)
     x = pd.ExcelFile(path)
     log({"kaynak": "sektor_bilanco", "dosya": path.name, "sayfa": x.sheet_names, "url": SEKTOR_BIL_URL})
     out: list[dict] = []
@@ -225,7 +299,11 @@ def pay_uyumsuz(isaret: dict[str, float], ciro_pay: dict[str, float]) -> list[st
     return bad
 
 
-def f_hazne_bolum(hazne_path: Path, yabanci_pay: dict[str, float]) -> list[dict]:
+def f_hazne_bolum(
+    hazne_path: Path,
+    yabanci_pay: dict[str, float],
+    ciro_pay: dict[str, float],
+) -> list[dict]:
     if not yabanci_pay or not hazne_path.exists():
         return []
     hazne = pd.read_csv(hazne_path)
@@ -233,11 +311,15 @@ def f_hazne_bolum(hazne_path: Path, yabanci_pay: dict[str, float]) -> list[dict]
     if f.empty:
         return []
     f = f.iloc[0]
-    tot_pay = sum(yabanci_pay.values())
+    kodlar = sorted(set(yabanci_pay) | set(ciro_pay))
+    tot_pay = sum(yabanci_pay.get(k, 0.0) for k in kodlar if k in yabanci_pay)
     if tot_pay <= 0:
         return []
     rows = []
-    for kod, pay in sorted(yabanci_pay.items()):
+    for kod in kodlar:
+        pay = yabanci_pay.get(kod)
+        if pay is None:
+            continue
         w = pay / tot_pay
         rows.append(
             {
@@ -246,7 +328,7 @@ def f_hazne_bolum(hazne_path: Path, yabanci_pay: dict[str, float]) -> list[dict]
                 "brut_cikis_once": float(f["brut_cikis_once"]) * w,
                 "brut_cikis_sonra": float(f["brut_cikis_sonra"]) * w,
                 "silinen_oran": None,
-                "ciro_pay_2024": None,
+                "ciro_pay_2024": ciro_pay.get(kod),
                 "yabanci_kaynak_pay_2024": pay,
                 "kaynak": (
                     f"S.11 (F) hazne brüt çıkış × Sektör Bilançoları yabancı kaynak payı; {YIL_UYARISI}; "
@@ -258,7 +340,11 @@ def f_hazne_bolum(hazne_path: Path, yabanci_pay: dict[str, float]) -> list[dict]
 
 
 def hn_etiket(bilanco_rows: list[dict], bolum_rows: list[dict]) -> str:
-    yab = [r for r in bilanco_rows if r["gosterge"].startswith("yabanci") and r["pay"] is not None]
+    yab = [
+        r
+        for r in bilanco_rows
+        if r["gosterge"] == "yabanci_kaynak_toplam" and r.get("not") != "kapsam_disi" and r["pay"] is not None
+    ]
     if len(yab) < 5:
         return "test_edilemez"
     if not bolum_rows or all(r.get("silinen_oran") is None for r in bolum_rows):
@@ -305,7 +391,10 @@ def main() -> None:
     yab_pay = {
         r["nace_kisim"]: r["pay"]
         for r in agirlik
-        if r["kaynak"] == "sektor_bilanco" and r["gosterge"].startswith("yabanci") and r["pay"] is not None
+        if r["kaynak"] == "sektor_bilanco"
+        and r["gosterge"] == "yabanci_kaynak_toplam"
+        and r.get("not") != "kapsam_disi"
+        and r["pay"] is not None
     }
     uyumsuz = pay_uyumsuz(yab_pay, ciro_pay)
     for r in agirlik:
@@ -315,7 +404,7 @@ def main() -> None:
     pd.DataFrame(agirlik).to_csv(OUT_AGIRLIK, index=False, encoding="utf-8-sig")
 
     hazne_csv = KOK / "mahsup_sektor_donem.csv"
-    bolum = f_hazne_bolum(hazne_csv, yab_pay)
+    bolum = f_hazne_bolum(hazne_csv, yab_pay, ciro_pay)
     if not bolum and yshi_path:
         for kod, cp in ciro_pay.items():
             bolum.append(
@@ -353,7 +442,7 @@ def main() -> None:
 | Kaynak | Dosya | Tablo | Yıl | NACE |
 | --- | --- | --- | --- | --- |
 | YSHİ (faaliyet) | {yshi_path.name if yshi_path else 'bulunamadı'} | `{YSHI_TABLO}` | {YSHI_YIL} | Rev.2 kısım |
-| Sektör Bilançoları | {bil_path.name if bil_path else 'bulunamadı (GitHub)'} | — | {YSHI_YIL} | — |
+| Sektör Bilançoları | {bil_path.name if bil_path else 'bulunamadı (GitHub)'} | `t2` | {YSHI_YIL} | Rev.2 kısım (sütun) |
 
 Bülten: [YSHİ 2024]({YSHI_URL}). Sektör bilanço bülteni: [{SEKTOR_BIL_URL}]({SEKTOR_BIL_URL}).
 

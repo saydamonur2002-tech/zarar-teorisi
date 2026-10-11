@@ -5,13 +5,13 @@
 | Kaynak | Dosya | Tablo | Yıl | NACE |
 | --- | --- | --- | --- | --- |
 | YSHİ (faaliyet) | Ekonomik faaliyetlere göre temel göstergeler, 2024.xls | `t2` | 2024 | Rev.2 kısım |
-| Sektör Bilançoları | bulunamadı (GitHub) | — | 2024 | — |
+| Sektör Bilançoları | Ekonomik faaliyetlere göre firmaların referans yıl bilanço hesapları .xls | `t2` | 2024 | Rev.2 kısım (sütun) |
 
 Bülten: [YSHİ 2024](https://data.tuik.gov.tr/Bulten/Index?p=Yillik-Sanayi-ve-Hizmet-Istatistikleri-2024-54051). Sektör bilanço bülteni: [https://data.tuik.gov.tr/Bulten/Index?p=Sektor-Bilancolari-2024-54080](https://data.tuik.gov.tr/Bulten/Index?p=Sektor-Bilancolari-2024-54080).
 
 ## 2. Çıktı
 
-- `nace_tuik_agirlik.csv` (64 satır)
+- `nace_tuik_agirlik.csv` (149 satır)
 - `nace_bolum_donem.csv` (F hazne bölünmesi yalnız yabancı kaynak payı varsa)
 
 ## 3. H-N
@@ -20,8 +20,8 @@ Bülten: [YSHİ 2024](https://data.tuik.gov.tr/Bulten/Index?p=Yillik-Sanayi-ve-H
 
 ## 4. Kapsam dışı / pay uyumsuz
 
-- Kapsam dışı (A,K,O): (tabloda yok)
-- pay_uyumsuz (ciro vs yabancı kaynak >10 puan): — (bilanço payı yok)
+- Kapsam dışı (A,K,O): A
+- pay_uyumsuz (ciro vs yabancı kaynak >10 puan): F, G
 
 ## 5. Arama günlüğü
 
