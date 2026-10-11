@@ -1,6 +1,6 @@
 # Vaysis incelemesi
 
-Kaynak: kamuya açık kayıt, 2026-10-11. vaysis.com (ana sayfa, KVKK sayfası, istemci JS paketi `assets/index-D0QH9EsT.js` 2,6 MB), PitchBook profili, bouncewatch profili, Wayback Machine, 3 web sorgusu. Şirketle görüşülmedi. Kurucu adı bulunamadı (2 sorgu). Alıntılar 15 kelimeyi geçmez; niyet atfedilmez.
+Kaynak: kamuya açık kayıt, 2026-10-11. vaysis.com (ana sayfa, KVKK sayfası, istemci JS paketi `assets/index-D0QH9EsT.js` 2,6 MB), PitchBook profili, bouncewatch profili, Wayback Machine (4 arşiv), RDAP alan adı kaydı, 3 web sorgusu. Şirketle görüşülmedi. Kurucu adı bulunamadı (2 sorgu). Alıntılar 15 kelimeyi geçmez; niyet atfedilmez.
 
 ## 1. Kimlik ve durum
 
@@ -12,12 +12,31 @@ Kaynak: kamuya açık kayıt, 2026-10-11. vaysis.com (ana sayfa, KVKK sayfası, 
 | Hızlandırıcı | 07-10-2020, "Accelerator/Incubator"; program adı yok | PitchBook |
 | Durum | "Out of Business", 29-07-2025 | PitchBook |
 | Site | Canlı, "© 2026 VAYSIS"; "Geliştirme: Lovable · Yayınlama: Natro" | vaysis.com |
-| Wayback | Tek kayıt: 2026-05-12; 2021–2025 kayıt yok | archive.org |
+| Alan adı | vaysis.com kaydı 11-11-2014; son değişiklik 25-03-2026; yazmaç Nics Telekomünikasyon; NS Natro | RDAP (Verisign) |
+| Wayback | 4 kayıt: 2020-10-13, 2021-04-20, 2026-05-12, 2026-06-18; 2021-05 → 2026-04 arası kayıt yok | archive.org |
 | Eski ad | "Vadeli Alacak Yönlendirme Sistemi" | bouncewatch |
 | Yeni ad | "Valörlü Alacak Yönetim Sistemi" | vaysis.com |
 | Kurucu | bulunamadı | 2 sorgu |
 
 Çelişki: PitchBook 2025'te faaliyet dışı yazar; site 2026'da canlı ve yeniden yapılmış (Lovable, yapay zekâ ile uygulama üreten araç). İkisi de kayıt; hangisinin güncel olduğu bu kaynaklarla belirlenemedi. Faaliyet hacmi, üye sayısı, mahsup tutarı hiçbir kaynakta yok.
+
+### 1a. Ne zaman açılmış (zaman çizgisi; kayıt tarihleri)
+
+| Tarih | Kayıt | Kaynak |
+| --- | --- | --- |
+| 2014-11-11 | vaysis.com alan adı alındı | RDAP |
+| 2019 | şirket kuruluşu | PitchBook, bouncewatch |
+| 2020-10-07 | hızlandırıcı/kuluçka kaydı | PitchBook |
+| 2020-10-13 | ilk site arşivi: başlık "Vaysis / Vadeli Alacak Yönlendirme Sistemi"; Vue uygulaması, Google Analytics kimliği var; içerik JS'siz görünmez | Wayback |
+| 2021-04-20 | ikinci arşiv: başlık "Vaysis"; `vaysis-frontend` Vue uygulaması; JS dosyaları arşivde yok (404) | Wayback |
+| 2021-05 → 2026-04 | arşiv yok | Wayback |
+| 2025-07-29 | "Out of Business" kaydı | PitchBook |
+| 2026-03-25 | alan adı kaydında son değişiklik | RDAP |
+| 2026-05-12 | üçüncü arşiv: başlık "Lovable App", açıklama "Lovable Generated Project"; şablon, içerik girilmemiş | Wayback |
+| 2026-06-18 | dördüncü arşiv: "VAYSIS — Alacak Yönlendirme Platformu" | Wayback |
+| 2026-10-11 | bugün: "Valörlü Alacak Yönetim Sistemi"; fiyat, KYC, token, e-imza akışı | vaysis.com |
+
+Okuma (yorum): İlk açılış 2020 (site) / 2019 (şirket). 2026'da açılan, **yeniden yapılmış site**: 2026-05'te boş Lovable şablonu, 2026-06'da ad, 2026-10'da bugünkü içerik. 2020–2021 sitesinde ne vardı bilinmiyor (JS arşivlenmemiş). Yani "2026'da açıldı" doğru değil; "2026'da yeniden açıldı / yeniden yazıldı" kayıtla uyumlu. 2021-05 ile 2026-04 arası boşluk faaliyet yokluğu demek değil; arşivleme olmaması demek.
 
 ## 2. Mekanizma (sitenin yazdığı)
 
