@@ -49,6 +49,10 @@ SERI_CEYREK = {
 SERI_AYLIK = {
     "mb_p311_tl": "TP.BL066.A",
     "mb_p311_yp": "TP.BL082.A",
+    "mb_p3111_nakit_tl": "TP.BL0661.A",
+    "mb_p3111_nakit_yp": "TP.BL0821.A",
+    "mb_p3112_altin_tl": "TP.BL0662.A",
+    "mb_p3112_altin_yp": "TP.BL0822.A",
     "mb_p31_tl": "TP.BL065.A",
     "mb_p31_yp": "TP.BL081.A",
     "banka_resmi_tl": "TP.HPBITABLO3.9",
@@ -134,16 +138,18 @@ def satirlar(veri: dict) -> list[dict]:
         })
         mb_tl, mb_yp = v["mb_p311_tl"], v["mb_p311_yp"]
         mb_top = None if (mb_tl is None or mb_yp is None) else mb_tl + mb_yp
-        altin = ALTIN_YILSONU.get(d)
+        nakit = None if v["mb_p3111_nakit_tl"] is None else v["mb_p3111_nakit_tl"] + (v["mb_p3111_nakit_yp"] or 0)
+        altin = None if v["mb_p3112_altin_tl"] is None else v["mb_p3112_altin_tl"] + (v["mb_p3112_altin_yp"] or 0)
+        altin_yr = ALTIN_YILSONU.get(d)
         rows.append({
-            "donem": d, "parca": "merkez_banka", "stok_milyar": _r(mb_top),
-            "seri": f"{SERI_AYLIK['mb_p311_tl']} + {SERI_AYLIK['mb_p311_yp']}", "kaynak_url": URL_MBBLNCA,
-            "not": (f"TCMB bilançosu P311 Hazine, genel ve özel bütçeli idareler: TL {_r(mb_tl)} + YP {_r(mb_yp)}. "
-                    "YP içinde Hazine altını var; altın yalnız yıl sonu ayrılır"
-                    + (f" (altın {altin:.1f}, nakit {_r(mb_top - altin)}; yıllık bilanço)" if altin and mb_top else "")
+            "donem": d, "parca": "merkez_banka", "stok_milyar": _r(nakit),
+            "seri": f"{SERI_AYLIK['mb_p3111_nakit_tl']} + {SERI_AYLIK['mb_p3111_nakit_yp']}", "kaynak_url": URL_MBBLNCA,
+            "not": (f"TCMB bilançosu P3111 nakit (Hazine, genel ve özel bütçeli idareler): TL {_r(v['mb_p3111_nakit_tl'])} + YP {_r(v['mb_p3111_nakit_yp'])}. "
+                    f"P311 toplam {_r(mb_top)} = nakit + altın {_r(altin)} (altın F.1, mevduat değil)"
+                    + (f"; yıllık bilanço altın {altin_yr:.1f} ile uyumlu" if altin_yr else "")
                     + ". Hazine tek başına ayrılmadı; THKH bu kalemin içinde olabilir, seri ayırmaz.")
-                   if mb_top is not None else "veri yok",
-            "pay_hane_yuzde": pay(mb_top), **yan,
+                   if nakit is not None else "veri yok",
+            "pay_hane_yuzde": pay(nakit), **yan,
         })
         rows.append({
             "donem": d, "parca": "banka", "stok_milyar": None,
@@ -158,7 +164,8 @@ def satirlar(veri: dict) -> list[dict]:
 def hipotezler(veri: dict) -> dict:
     ref = "2026-Q1"
     v = veri[ref]
-    my, gy, hane, mb = v["my_vf2"], v["gy_vf2"], v["hane_vf2"], (v["mb_p311_tl"] or 0) + (v["mb_p311_yp"] or 0)
+    my, gy, hane = v["my_vf2"], v["gy_vf2"], v["hane_vf2"]
+    mb = (v["mb_p3111_nakit_tl"] or 0) + (v["mb_p3111_nakit_yp"] or 0)
     ayri = my is not None and gy is not None and my < gy
     hl = "ayri" if ayri else "test_edilemez"
     buyukluk = None
@@ -168,7 +175,7 @@ def hipotezler(veri: dict) -> dict:
         "donem": ref,
         "H-L": hl,
         "H-L_not": (f"Merkezi yönetim VF.2 {my:,.1f} < GY VF.2 {gy:,.1f}; ayrı EVDS serisi (S.1311). "
-                    f"Hane VF.2 {hane:,.1f}; MY/hane = %{100*my/hane:.1f}; TCMB P311/hane = %{100*mb/hane:.1f}. "
+                    f"Hane VF.2 {hane:,.1f}; MY/hane = %{100*my/hane:.1f}; TCMB P3111 nakit/hane = %{100*mb/hane:.1f}. "
                     "Büyüklük kontrol kanıtı değildir."),
         "H-L_buyukluk": buyukluk,
         "H-L2": "silinen_bos",
@@ -186,7 +193,7 @@ def arama_gunlugu() -> list[dict]:
         {"grup": "bie_finhestnks1313 / 1314", "sonuc": "açıldı", "not": "Yerel yönetim, SGK; GY toplamı kontrolü"},
         {"grup": "bie_finhestnks13", "sonuc": "açıldı", "not": "GY toplamı (yan sütun)"},
         {"grup": "bie_finhestnks14", "sonuc": "açıldı", "not": "Hane VF.2 (yüzde 10 eşiği)"},
-        {"grup": "bie_mbblnca", "sonuc": "açıldı", "not": "TCMB bilançosu aylık; P311 TL/YP. Yıl sonu yıllık bilançoyla birebir (2024: 1.001,1; 2025: 1.372,4)"},
+        {"grup": "bie_mbblnca", "sonuc": "açıldı", "not": "TCMB bilançosu aylık; P311 = P3111 nakit + P3112 altın, TL/YP. Yıl sonu yıllık bilançoyla birebir (2024: 1.001,1; 2025: 1.372,4)"},
         {"grup": "bie_abanlbil", "sonuc": "açıldı, kullanılmadı", "not": "Analitik bilanço 'Kamu Mevduatı' TL; 'Kamu ve Diğer Döviz Mevduatı' karışık"},
         {"grup": "bie_hpbitablo3", "sonuc": "açıldı", "not": "Resmî kuruluşlar TL; GY kapsamı, MY ayrılmaz"},
         {"grup": "bie_hpbitablo2/4/8", "sonuc": "açıldı, boş", "not": "YP veya toplam mevduatta resmî ayrımı yok"},
@@ -208,20 +215,21 @@ def rapor(rows: list[dict], hip: dict, veri: dict) -> str:
         durum = "ayrılmadı" if r["stok_milyar"] is None else "bulundu"
         st = "" if r["stok_milyar"] is None else f"{r['stok_milyar']:,.1f}"
         s.append(f"| {r['parca']} | {durum} | {st} | `{r['seri']}` | {r['not']} |")
-    s += ["", "## Dönemler", "", "| Dönem | MY VF.2 | TCMB P311 (TL+YP) | Banka resmî TL (GY) | GY VF.2 | Hane VF.2 | MY/hane % |",
-          "| --- | ---: | ---: | ---: | ---: | ---: | ---: |"]
+    s += ["", "## Dönemler", "", "| Dönem | MY VF.2 | TCMB P3111 nakit | TCMB P3112 altın | Banka resmî TL (GY) | GY VF.2 | Hane VF.2 | MY/hane % |",
+          "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
     for d, v in veri.items():
-        mb = None if v["mb_p311_tl"] is None else v["mb_p311_tl"] + (v["mb_p311_yp"] or 0)
+        mb = None if v["mb_p3111_nakit_tl"] is None else v["mb_p3111_nakit_tl"] + (v["mb_p3111_nakit_yp"] or 0)
+        au = None if v["mb_p3112_altin_tl"] is None else v["mb_p3112_altin_tl"] + (v["mb_p3112_altin_yp"] or 0)
         f = lambda x: "" if x is None else f"{x:,.1f}"
         pay = "" if (v["my_vf2"] is None or not v["hane_vf2"]) else f"{100*v['my_vf2']/v['hane_vf2']:.1f}"
-        s.append(f"| {d} | {f(v['my_vf2'])} | {f(mb)} | {f(v['banka_resmi_tl'])} | {f(v['gy_vf2'])} | {f(v['hane_vf2'])} | {pay} |")
+        s.append(f"| {d} | {f(v['my_vf2'])} | {f(mb)} | {f(au)} | {f(v['banka_resmi_tl'])} | {f(v['gy_vf2'])} | {f(v['hane_vf2'])} | {pay} |")
     s += ["", "## Yanlışlayıcılar", "",
           f"- **H-L:** `{hip['H-L']}` ({hip['H-L_buyukluk']}). {hip['H-L_not']}",
           f"- **H-L2:** `{hip['H-L2']}`. {hip['H-L2_not']}",
           "- **THKH:** ayrılmadı. Dayanak 4749 m.12; CB Kararı 17 (RG 8.8.2018/30500). Stok serisi yok; haberden tutar doldurulmadı.",
           "", "## Sınır", "",
           "- GY toplamı yan sütundur, lider değildir. Resmî kuruluşlar (banka) GY kapsamıdır.",
-          "- TCMB P311 YP içinde Hazine altını var; altın yalnız yıl sonu ayrılır. Finansal hesaplarda altın F.1'dir, VF.2'ye girmez.",
+          "- TCMB P311 = P3111 nakit + P3112 altın; merkez_banka satırı yalnız nakittir. Finansal hesaplarda altın F.1'dir, VF.2'ye girmez.",
           "- Hane 15.357 ve firma stokları lider sütununa girmez. Stok silimi tavanı ve akış %42,7 bu dosyada yok.",
           "", "## Arama günlüğü", "", "| Grup | Sonuç | Not |", "| --- | --- | --- |"]
     s += [f"| `{g['grup']}` | {g['sonuc']} | {g['not']} |" for g in arama_gunlugu()]

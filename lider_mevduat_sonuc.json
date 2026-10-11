@@ -3,7 +3,7 @@
   "hipotez": {
     "donem": "2026-Q1",
     "H-L": "ayri",
-    "H-L_not": "Merkezi yönetim VF.2 2,933.6 < GY VF.2 3,398.8; ayrı EVDS serisi (S.1311). Hane VF.2 15,356.8; MY/hane = %19.1; TCMB P311/hane = %8.8. Büyüklük kontrol kanıtı değildir.",
+    "H-L_not": "Merkezi yönetim VF.2 2,933.6 < GY VF.2 3,398.8; ayrı EVDS serisi (S.1311). Hane VF.2 15,356.8; MY/hane = %19.1; TCMB P3111 nakit/hane = %7.8. Büyüklük kontrol kanıtı değildir.",
     "H-L_buyukluk": "buyuk",
     "H-L2": "silinen_bos",
     "H-L2_not": "Lider parçasının ters bacağı yok: TCMB ve bankalar GY'de mevduat tutmaz; GY mevduat yükümlülüğü (360.8) tamamı S.1311 ihraçlı ve kimden-kime GY–GY 352 kendi içidir. Skora girmez. Tavan yazılmaz.",
@@ -23,6 +23,10 @@
       "my_f2_yuk": 113.7,
       "mb_p311_tl": 317.5,
       "mb_p311_yp": 683.6,
+      "mb_p3111_nakit_tl": 317.5,
+      "mb_p3111_nakit_yp": 503.0,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 180.6,
       "mb_p31_tl": 317.7,
       "mb_p31_yp": 683.6,
       "banka_resmi_tl": 610.8
@@ -39,6 +43,10 @@
       "my_f2_yuk": 108.4,
       "mb_p311_tl": 213.4,
       "mb_p311_yp": 492.1,
+      "mb_p3111_nakit_tl": 213.4,
+      "mb_p3111_nakit_yp": 337.1,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 155.0,
       "mb_p31_tl": 213.6,
       "mb_p31_yp": 492.1,
       "banka_resmi_tl": 520.5
@@ -55,6 +63,10 @@
       "my_f2_yuk": 167.7,
       "mb_p311_tl": 513.3,
       "mb_p311_yp": 597.3,
+      "mb_p3111_nakit_tl": 513.3,
+      "mb_p3111_nakit_yp": 407.7,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 189.6,
       "mb_p31_tl": 513.5,
       "mb_p31_yp": 597.3,
       "banka_resmi_tl": 730.0
@@ -71,6 +83,10 @@
       "my_f2_yuk": 226.4,
       "mb_p311_tl": 771.6,
       "mb_p311_yp": 871.8,
+      "mb_p3111_nakit_tl": 771.6,
+      "mb_p3111_nakit_yp": 641.8,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 230.0,
       "mb_p31_tl": 771.8,
       "mb_p31_yp": 871.8,
       "banka_resmi_tl": 1148.0
@@ -87,6 +103,10 @@
       "my_f2_yuk": 364.3,
       "mb_p311_tl": 580.5,
       "mb_p311_yp": 791.8,
+      "mb_p3111_nakit_tl": 580.5,
+      "mb_p3111_nakit_yp": 523.0,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 268.8,
       "mb_p31_tl": 580.8,
       "mb_p31_yp": 791.8,
       "banka_resmi_tl": 1515.4
@@ -103,6 +123,10 @@
       "my_f2_yuk": 360.8,
       "mb_p311_tl": 574.8,
       "mb_p311_yp": 771.7,
+      "mb_p3111_nakit_tl": 574.8,
+      "mb_p3111_nakit_yp": 617.2,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 154.5,
       "mb_p31_tl": 575.0,
       "mb_p31_yp": 771.7,
       "banka_resmi_tl": 1455.9
@@ -119,6 +143,10 @@
       "my_f2_yuk": null,
       "mb_p311_tl": 595.3,
       "mb_p311_yp": 616.2,
+      "mb_p3111_nakit_tl": 595.3,
+      "mb_p3111_nakit_yp": 476.3,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 139.9,
       "mb_p31_tl": 595.6,
       "mb_p31_yp": 616.2,
       "banka_resmi_tl": 1566.3
@@ -135,6 +163,10 @@
       "my_f2_yuk": null,
       "mb_p311_tl": 582.9,
       "mb_p311_yp": 686.1,
+      "mb_p3111_nakit_tl": 582.9,
+      "mb_p3111_nakit_yp": 532.8,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 153.3,
       "mb_p31_tl": 583.2,
       "mb_p31_yp": 686.1,
       "banka_resmi_tl": 1546.1
@@ -174,7 +206,7 @@
     {
       "grup": "bie_mbblnca",
       "sonuc": "açıldı",
-      "not": "TCMB bilançosu aylık; P311 TL/YP. Yıl sonu yıllık bilançoyla birebir (2024: 1.001,1; 2025: 1.372,4)"
+      "not": "TCMB bilançosu aylık; P311 = P3111 nakit + P3112 altın, TL/YP. Yıl sonu yıllık bilançoyla birebir (2024: 1.001,1; 2025: 1.372,4)"
     },
     {
       "grup": "bie_abanlbil",
