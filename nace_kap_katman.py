@@ -260,45 +260,50 @@ def main() -> None:
     hazne = pd.read_csv(KOK / "mahsup_sektor_donem.csv")
     hazne_ok = set(hazne["donem"].unique()) >= set(DONEMLER)
 
-    # NACE EVDS
-    nace_raw = nace_evds_dene()
-    nace_rows = []
-    if nace_raw is None:
-        for p in DONEMLER:
-            nace_rows.append(
-                {
-                    "nace_bolum": "bulunamadı",
-                    "donem": p,
-                    "brut_cikis_once": None,
-                    "brut_cikis_sonra": None,
-                    "silinen_oran": None,
-                    "kaynak": (
-                        "NACE bölüm mahsupu yok: TÜİK birincil denenmedi; EVDS yanlış raf "
-                        f"({', '.join(NACE_EVDS_YANLIS_RAF)}) 2023–2026 boş — NACE yokluğu kanıtı değil"
-                    ),
-                }
-            )
-    else:
-        # son çeyrek ağırlıkları seri adından bölüm kodu çıkar
-        last = nace_raw.sort_values("donem").groupby("seri").tail(1)
-        tot = last["deger"].clip(lower=0).sum()
-        for _, r in last.iterrows():
-            code = re.search(r"\b([A-U]|CA|CB|CC|CD|CE|CF|CG|CH|CI|CJ|CK|CL|CM|CN|CO|CP|CQ|CR|CS|CT|CU)\b", r["ad"])
-            bolum = code.group(1) if code else r["seri"]
-            w = float(r["deger"]) / tot if tot > 0 else 0.0
-            nace_rows.append({"nace_bolum": bolum, "agirlik": w, "kaynak_seri": r["seri"]})
-        # mahsup F bölünmesi — basitleştirilmiş: ağırlıklı F satırı hazne tablosundan
-        f_hazne = hazne[(hazne.sektor == "F") & (hazne.donem == "2026-Q1")].iloc[0]
-        for nr in nace_rows:
-            nr.update(
-                {
-                    "donem": "2026-Q1",
-                    "brut_cikis_once": f_hazne.brut_cikis_once * nr["agirlik"],
-                    "brut_cikis_sonra": f_hazne.brut_cikis_sonra * nr["agirlik"],
-                    "silinen_oran": f_hazne.silinen_cikis_oran,
-                    "kaynak": "F haznesi payı × TÜİK/EVDS ağırlık (proxy; bilateral değil)",
-                }
-            )
+    tuik_sonuc: dict | None = None
+    nace_raw = None
+    try:
+        import nace_tuik_katman as nt
+
+        if nt.yshi_yolu() is not None:
+            nt.main()
+            tuik_sonuc = json.loads(nt.OUT_SONUC.read_text(encoding="utf-8"))
+            nace_rows = pd.read_csv(nt.OUT_BOLUM, encoding="utf-8-sig").to_dict("records")
+            log({"kaynak": "TÜİK", "islem": "github_xls", "dosya": tuik_sonuc.get("yshi_dosya")})
+        else:
+            nace_rows = []
+    except Exception as exc:  # noqa: BLE001
+        log({"kaynak": "TÜİK", "islem": "hata", "detay": str(exc)})
+        nace_rows = []
+
+    if not nace_rows:
+        nace_raw = nace_evds_dene()
+        if nace_raw is None:
+            for p in DONEMLER:
+                nace_rows.append(
+                    {
+                        "nace_kisim": "bulunamadı",
+                        "donem": p,
+                        "brut_cikis_once": None,
+                        "brut_cikis_sonra": None,
+                        "silinen_oran": None,
+                        "kaynak": (
+                            "NACE bölüm yok: GitHub YSHİ xls yok; EVDS yanlış raf "
+                            f"({', '.join(NACE_EVDS_YANLIS_RAF)}) 2023–2026 boş — NACE yokluğu kanıtı değil"
+                        ),
+                    }
+                )
+        else:
+            last = nace_raw.sort_values("donem").groupby("seri").tail(1)
+            tot = last["deger"].clip(lower=0).sum()
+            for _, r in last.iterrows():
+                code = re.search(
+                    r"\b([A-U]|CA|CB|CC|CD|CE|CF|CG|CH|CI|CJ|CK|CL|CM|CN|CO|CP|CQ|CR|CS|CT|CU)\b",
+                    r["ad"],
+                )
+                bolum = code.group(1) if code else r["seri"]
+                w = float(r["deger"]) / tot if tot > 0 else 0.0
+                nace_rows.append({"nace_kisim": bolum, "agirlik": w, "kaynak_seri": r["seri"]})
     pd.DataFrame(nace_rows).to_csv(OUT_NACE, index=False, encoding="utf-8-sig")
 
     # KAP
@@ -356,7 +361,10 @@ def main() -> None:
     )
     pd.DataFrame(ys_rows).to_csv(OUT_YS, index=False, encoding="utf-8-sig")
 
-    hn = "test_edilemez" if nace_raw is None else "karışık"
+    if tuik_sonuc:
+        hn = tuik_sonuc.get("H-N", "test_edilemez")
+    else:
+        hn = "test_edilemez" if nace_raw is None else "karışık"
     hk = "test_edilemez" if n_kenar < 30 else "karışık"
 
     kap_kenar_durum = (
@@ -375,6 +383,7 @@ def main() -> None:
         "kap_kenar_sayisi": n_kenar,
         "H-M": hm,
         "H-N": hn,
+        "tuik_yshi": tuik_sonuc.get("yshi_dosya") if tuik_sonuc else None,
         "H-K": hk,
         "grup_ici_pay": grup_ici,
     }
@@ -387,13 +396,13 @@ def main() -> None:
 | Katman | Durum |
 | --- | --- |
 | Hazne (H,F,B,K,D) | {'duruyor' if hazne_ok else 'eksik dönem'} — `mahsup_sektor_donem.csv` (trilyon TL/ay) |
-| NACE bölüm | {'eklendi' if nace_raw is not None else 'bulunamadı — bölüm tablosu yok (TÜİK birincil çekilmedi)'} |
+| NACE bölüm | {'TÜİK YSHİ (GitHub xls)' if tuik_sonuc else ('EVDS proxy' if nace_raw is not None else 'bulunamadı')} |
 | KAP kenar | {kap_kenar_durum}; sayısal kenar {n_kenar} |
 
 ## 2. Yanlışlayıcılar
 
 - **H-M:** `{hm_satir}`. Yoğun L^m üst sınır ({YOGUN_DONEM}): {100 * yogun:.1f}. Seyrek KAP: {sey_metin}. Fark (yoğun−seyrek): {fark_metin}. Etiket kümesi: test_edilemez | matris_eseri | hipotez_duser | ters_yon.
-- **H-N:** `{hn}`. NACE bölüm × dönem tablosu yok; F/B hazne farkı bu sınav değil.
+- **H-N:** `{hn}`. Bölüm silinen_oran ölçülmedi; F/B hazne farkı H-N değil. TÜİK: `NACE_TUIK_RAPOR.md`.
 - **H-K:** `{hk}`.
 
 ## 3. NACE araması (düzeltme)
@@ -401,7 +410,8 @@ def main() -> None:
 - Denenen EVDS grupları istihdam/sanayi (`bie_rsistihn`, `bie_istihsk4`, `bie_tsny2010`, …) — finansal hesap NACE bölümü değil.
 - 2023–2026’da 0 satır, yalnızca o grupların o pencerede boş olduğunu gösterir; NACE’nin var/yok kanıtı değil.
 - KAP `abcdCode` sektör/NACE değildir (doğru).
-- Asıl kapı: **TÜİK birincil dosya** — bu turda çekilmedi.
+- TÜİK YSHİ: GitHub `Ekonomik faaliyetlere göre temel göstergeler, 2024.xls` (`python3 nace_tuik_katman.py`).
+- Sektör Bilançoları xls GitHub’da yoksa yabancı kaynak payı ve F hazne bölünmesi yapılmaz.
 
 ## 4. KAP tarama
 

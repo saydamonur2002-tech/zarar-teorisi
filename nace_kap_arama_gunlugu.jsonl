@@ -1,8 +1,3 @@
 {"islem": "basla", "kilit": "kap_universe_kilit.json"}
-{"kaynak": "TÜİK", "islem": "birincil_dosya", "durum": "denenmedi", "not": "data.tuik.gov.tr NACE bölüm ağırlığı bu turda çekilmedi"}
-{"kaynak": "EVDS", "grup": "bie_rsistihn", "seri": 90, "satir": 0}
-{"kaynak": "EVDS", "grup": "bie_istihsk4", "seri": 95, "satir": 0}
-{"kaynak": "EVDS", "grup": "bie_tsny2010", "seri": 37, "satir": 0}
-{"kaynak": "EVDS", "grup": "bie_tsny2015", "hata": "HTTP Error 500: Internal Server Error"}
-{"kaynak": "EVDS", "grup": "bie_istihsk3", "seri": 75, "satir": 0}
+{"kaynak": "TÜİK", "islem": "github_xls", "dosya": "Ekonomik faaliyetlere göre temel göstergeler, 2024.xls"}
 {"kaynak": "KAP", "islem": "atla", "dosya": "kap_kenar.csv"}

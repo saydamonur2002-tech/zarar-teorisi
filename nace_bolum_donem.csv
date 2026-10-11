@@ -1,3 +1,15 @@
-﻿nace_bolum,donem,brut_cikis_once,brut_cikis_sonra,silinen_oran,kaynak
-bulunamadı,2025-Q4,,,,"NACE bölüm mahsupu yok: TÜİK birincil denenmedi; EVDS yanlış raf (bie_rsistihn, bie_istihsk4, bie_tsny2010, bie_tsny2015, bie_istihsk3) 2023–2026 boş — NACE yokluğu kanıtı değil"
-bulunamadı,2026-Q1,,,,"NACE bölüm mahsupu yok: TÜİK birincil denenmedi; EVDS yanlış raf (bie_rsistihn, bie_istihsk4, bie_tsny2010, bie_tsny2015, bie_istihsk3) 2023–2026 boş — NACE yokluğu kanıtı değil"
+﻿nace_kisim,donem,brut_cikis_once,brut_cikis_sonra,silinen_oran,ciro_pay_2024,yabanci_kaynak_pay_2024,kaynak
+B,2026-Q1,,,,0.008455528543587,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+C,2026-Q1,,,,0.2578281710206726,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+D,2026-Q1,,,,0.0356141329840405,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+E,2026-Q1,,,,0.0041573306173522,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+F,2026-Q1,,,,0.0717623683333595,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+G,2026-Q1,,,,0.4641592269068796,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+H,2026-Q1,,,,0.0652435094768245,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+I,2026-Q1,,,,0.0235445296328694,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+J,2026-Q1,,,,0.0156908256976258,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+M,2026-Q1,,,,0.017401669522114,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+N,2026-Q1,,,,0.0243871451764818,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+P,2026-Q1,,,,0.0032009780376522,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+Q,2026-Q1,,,,0.0067428409132286,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+S,2026-Q1,,,,0.0018117431373115,,"YSHI 2024 ciro payı; F hazne bölünmedi (Sektör Bilançoları yok); 2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
