@@ -1,0 +1,16 @@
+{
+  "kilit_tarihi": "2026-03-31",
+  "aciklama": "Bu dosya koşudan önce kilitlenir; çalışma sırasında genişletilmez.",
+  "sirket_evreni": {
+    "kaynak": "KAP REST /tr/api/company/items/IGS/A",
+    "tanim": "BIST'te işlem gören şirketler (IGS, aktif). BIST 100 endeks listesi kamuya açık API'den alınamadı; XU100 yerine tüm IGS kullanılmaz — FR örneklemi IGS içinden.",
+    "not": "Endeks: XU100 hedeflendi, bulunamadı (borsaistanbul.com 404; KAP Endeks API HTML hata)."
+  },
+  "bildirim": {
+    "tipler": ["FR", "ODA"],
+    "konu_anahtarlari": ["İlişkili Taraf", "ilişkili taraf"],
+    "donem_publish": ["2025-10-01", "2026-03-31"],
+    "finansal_donem": ["2025-Q4", "2026-Q1"]
+  },
+  "kenar_kurali": "Yalnızca bildirim gövdesi/ek tablosunda sayısal tutar ve karşı taraf adı birlikte geçen satırlar."
+}

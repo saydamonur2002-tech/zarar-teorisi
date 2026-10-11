@@ -1,0 +1,12 @@
+{"islem": "basla", "kilit": "kap_universe_kilit.json"}
+{"kaynak": "EVDS", "grup": "bie_rsistihn", "seri": 90, "satir": 0}
+{"kaynak": "EVDS", "grup": "bie_istihsk4", "seri": 95, "satir": 0}
+{"kaynak": "EVDS", "grup": "bie_tsny2010", "seri": 37, "satir": 0}
+{"kaynak": "EVDS", "grup": "bie_tsny2015", "hata": "HTTP Error 500: Internal Server Error"}
+{"kaynak": "EVDS", "grup": "bie_istihsk3", "seri": 75, "satir": 0}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2025-10-01", "to": "2025-10-31", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2025-11-01", "to": "2025-11-30", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2025-12-01", "to": "2025-12-31", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2026-01-01", "to": "2026-01-31", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2026-02-01", "to": "2026-02-28", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2026-03-01", "to": "2026-03-31", "adet": 2000}
