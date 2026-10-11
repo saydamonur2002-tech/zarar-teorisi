@@ -12,7 +12,7 @@ Beş adımı bir arada öneren Türk kaynak `bulunamadi` (9 sorgu). Adım adım 
 
 | Adım | Öneri | Öneren | Yıl | Etiket | Benzer olan | Fark |
 | ---: | --- | --- | ---: | --- | --- | --- |
-| 1 | Onaylı e-fatura alacağı token; A→B→C döngü tespiti; otomatik mahsup | Vaysis (şirket, İstanbul; kurucu adı bulunamadı) | 2019 | `bulundu` | e-fatura üzerinden kapalı döngü mahsup | Özel üyelik platformu; faaliyet dışı (PitchBook 29-07-2025); faiz/ödeme planı yok |
+| 1 | Onaylı e-fatura alacağı token; A→B→C döngü tespiti; otomatik mahsup | Vaysis (şirket, İstanbul; kurucu adı bulunamadı) | 2019 | `bulundu` | e-fatura üzerinden kapalı döngü mahsup | Özel üyelik platformu; PitchBook faaliyet dışı (29-07-2025) ile canlı site (2026) çelişir; döngü motoru doğrulanamadı; faiz/ödeme planı yok; bkz. [VAYSIS_INCELEME.md](VAYSIS_INCELEME.md) |
 | 1 | Çok taraflı barter, nakitsiz takas | M. Sırrı Şimşek, *Parasız Ticaret Barter* | 2004 | `kismi` | Nakitsiz çok taraflı mahsup | Mal/hizmet takası; alacak stoku değil; komisyon |
 | 1 | Kamu–mükellef entegre ödeşme sistemi | Ayşe Çelikbaş (muhasebetr) | — | `kismi` | Hesaben kapatma; kamu bacağı | İkili; firma ağı değil |
 | 2 | Holdingler nakdi faizde tutuyor; vade 120–180 gün | Naki Bakır (Dünya) | 2026 | `teshis_oneri_degil` | Adım 2 öncülü (holding ödeme oranı) | Öneri yok |
@@ -30,7 +30,7 @@ Alıntılar ve URL'ler `benzer_oneriler.csv` içinde.
 
 ## Okuma (yorum; ölçüm değil)
 
-- Adım 1'in en yakın Türk karşılığı Vaysis: aynı nesne (e-fatura alacağı, döngü mahsubu). Şirket faaliyet dışı görünüyor; neden kaynakta yok. Sonuç sayısı bulunamadı.
+- Adım 1'in en yakın Türk karşılığı Vaysis: aynı nesne (e-fatura alacağı, döngü mahsubu). PitchBook faaliyet dışı yazar, site 2026'da canlı; hangisi güncel belirlenemedi. Sonuç sayısı bulunamadı. Ayrıntı: [VAYSIS_INCELEME.md](VAYSIS_INCELEME.md).
 - Adım 3'ün "faiz durur" ayağı için bulunan en yakın metin faizi **sabitliyor**, durdurmuyor. Faizin tamamen durmasını öneren Türk kaynak bulunamadı (1 sorgu).
 - Adım 4 için Hazine araçları endeks ayağını taşıyor; hedef primi, 1/7 sahip payı, 20 yıl kilit hiçbirinde yok. HEKİS senediyle eşitlenmez.
 - Adım 5'te öneri çok, uygulama başlamış (TOKİ 2025). Hepsi yeni inşa; HEKİS'in "boş stok" girdisini kullanan Türk öneri bulunamadı.
@@ -39,6 +39,6 @@ Alıntılar ve URL'ler `benzer_oneriler.csv` içinde.
 ## Ne denmez
 
 - "Bu model Türkiye'de önerilmiş" denmez. Beş adım bir arada bulunamadı; ayaklar ayrı ayrı var.
-- "Vaysis başarısız oldu, demek ki mahsup çalışmaz" denmez. Faaliyet dışı kaydı var; neden yok.
+- "Vaysis başarısız oldu, demek ki mahsup çalışmaz" denmez. Faaliyet dışı kaydı var; neden yok; site canlı.
 - Kişilere niyet atfedilmez; yalnız yazılı öneri aktarılır.
 - Hazine tahvili ile hedef primli senet aynı denmez.

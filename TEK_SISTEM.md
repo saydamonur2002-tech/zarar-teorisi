@@ -17,6 +17,7 @@ Bu depodaki parçaları:
 - Kapanış, tek test (son satırı test yazar): `python3 test_bes_adim.py` → `kapanis_sonuc.json`, `bes_adim_sonuc.json` `son`; kilitler `senet_kilit.txt`, `kapi_kilit.txt`
 - Beş yıl senaryosu (ölçüm değil; taban EVDS, beklenti anket, model etkisi varsayım bandı): `python3 bes_yil_senaryo.py` → [BES_YIL_SENARYO.md](BES_YIL_SENARYO.md), `bes_yil_senaryo.csv`
 - Benzer öneriler (Türk öneren şartı; kamuya açık kayıt, 9 sorgu): [BENZER_ONERILER.md](BENZER_ONERILER.md), `benzer_oneriler.csv`
+- Vaysis incelemesi (adım 1'in tek Türk karşılığı; site, istemci kodu, PitchBook, Wayback): [VAYSIS_INCELEME.md](VAYSIS_INCELEME.md)
 
 ## Beş adım
 
