@@ -13,6 +13,7 @@ Bu depodaki parçaları:
 - Mahsup modeli (adım 1-3, çalışan kod): [mahsup/](mahsup/) — tek-sistem zip ile bayt bayt aynı
 - Ödeme zinciri köprüsü: `python3 odeme_mahsup.py`
 - Katman köprüsü (mutabakat + beş adım eşlemesi): `python3 tek_sistem_kopru.py` → [TEK_SISTEM_KOPRU.md](TEK_SISTEM_KOPRU.md), `tek_sistem_kopru.csv`, `tek_sistem_esleme.csv`
+- Beş adım sırayla, tek koşu (etiket kapılı; adım 1 stok eski/yeni tavan ayrı): `python3 bes_adim.py` → [BES_ADIM.md](BES_ADIM.md), `adim1_stok.csv` … `adim5.csv`, `bes_adim_sonuc.json`
 
 ## Beş adım
 

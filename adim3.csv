@@ -1,0 +1,3 @@
+﻿adim,kaynak,nesne,donem,deger,birim,durum,not,dosya
+3,odeme_mahsup.py,"kredi ihtiyacı, şart sonrası",2026-Q1 (sentetik 150 firma),0.0,trilyon TL/ay,modellendi,Faizin durması modellenmedi. 2025 finansman gideri birincilde yok (Sektör Bilançoları son yayın 2024). 2024 3143.4 milyar referans; eşitlenmez. RAPOR 4300 ölçülmedi.,odeme_mahsup_sonuc.json
+3,tek_sistem_kopru.py,firma F.4 kredi yükümlülüğü (EVDS konsolide olmayan),2026-Q1,25339.8,milyar TL,olculdu,"adım değil, stok. BDDK ticari 2025 17302; EVDS/BDDK 1.36 durur (TP.FINHESTNKS11.ZP34).",tek_sistem_kopru.csv
