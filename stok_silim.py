@@ -26,6 +26,15 @@ PDF_URL = (
 PDF_KOK = KOK / "tcmb_kimden_kime_2026Q1.pdf"
 AKIS_ORAN_REF = 0.427  # yalnız H-S kıyası; stok_silim.csv'ye yazılmaz
 HS_ESIK = 0.15
+FIRMALAR_PDF_URL = (
+    "https://www.tcmb.gov.tr/wps/wcm/connect/44363718-828b-4c6a-95e8-066078e93247/"
+    "V.+Firmalar+%28Finansal+Olmayan+Kurulu%C5%9Flar%29.pdf"
+    "?CACHEID=ROOTWORKSPACE-44363718-828b-4c6a-95e8-066078e93247-p-TY44k&MOD=AJPERES"
+)
+FIRMALAR_PDF_KOK = KOK / "tcmb_firmalar_2026Q1.pdf"
+# Hazne adları: PFK parasal ve finansal kuruluş (banka ayrılmadı); GY genel yönetim;
+# repo K (bankacılık dışı finansal) bu dosyada kullanılmaz.
+HAZNE_AD = {"F": "finansal olmayan", "H": "hanehalkı", "PFK": "parasal ve finansal", "GY": "genel yönetim", "ROW": "dünyanın geri kalanı"}
 
 ARACLAR = ("kredi", "mevduat", "borclanma_senedi")
 
@@ -99,7 +108,7 @@ def kenarlar_rapor_metni() -> list[dict]:
         {
             "arac": "kredi",
             "alacakli": "ROW",
-            "borclu": "K",
+            "borclu": "GY",
             "stok": 492.0,
             "alinti": "ROW kredi 492 milyar TL genel yönetim",
             "kaynak_url": PDF_URL,
@@ -139,27 +148,27 @@ def kenarlar_rapor_metni() -> list[dict]:
         },
         {
             "arac": "mevduat",
-            "alacakli": "K",
-            "borclu": "K",
+            "alacakli": "GY",
+            "borclu": "GY",
             "stok": 352.0,
-            "alinti": "Genel yönetim mevduat 352 tamamı K",
+            "alinti": "Genel yönetim mevduat 352 tamamı GY",
             "kaynak_url": PDF_URL,
             "karsi_yok": True,
         },
         {
             "arac": "borclanma_senedi",
             "alacakli": "PFK",
-            "borclu": "K",
+            "borclu": "GY",
             "stok": 10105.0,
-            "alinti": "K senet 10.105 milyar TL PFK elinde",
+            "alinti": "GY senet 10.105 milyar TL PFK elinde",
             "kaynak_url": PDF_URL,
         },
         {
             "arac": "borclanma_senedi",
             "alacakli": "ROW",
-            "borclu": "K",
+            "borclu": "GY",
             "stok": 2639.0,
-            "alinti": "K senet 2.639 milyar TL ROW elinde",
+            "alinti": "GY senet 2.639 milyar TL ROW elinde",
             "kaynak_url": PDF_URL,
         },
     ]
@@ -187,6 +196,33 @@ def evds_f_yukumluluk_2026q1() -> dict:
     if out:
         out["toplam_yukumluluk"] = sum(v for k, v in out.items() if k not in ("toplam_yukumluluk",))
     return out
+
+
+def rapor_f_yukumluluk_paylari() -> dict:
+    """TCMB 2026-I V. Firmalar: yükümlülük 141.474 milyar; pay % (Grafik 20). PDF metninden doğrulanır."""
+    sabit = {
+        "toplam_yukumluluk_milyar": 141474.0,
+        "hisse_pay": 0.486,
+        "diger_borc_pay": 0.328,
+        "kredi_pay": 0.179,
+        "borclanma_senedi_pay": 0.007,
+        "kaynak_url": FIRMALAR_PDF_URL,
+        "dogrulama": "indirilemedi",
+    }
+    try:
+        if not (FIRMALAR_PDF_KOK.exists() and FIRMALAR_PDF_KOK.stat().st_size > 10_000):
+            req = urllib.request.Request(FIRMALAR_PDF_URL, headers={"User-Agent": "Mozilla/5.0"})
+            FIRMALAR_PDF_KOK.write_bytes(urllib.request.urlopen(req, timeout=120).read())
+        import pdfplumber
+
+        with pdfplumber.open(FIRMALAR_PDF_KOK) as pdf:
+            txt = "\n".join(p.extract_text() or "" for p in pdf.pages)
+        ok = all(k in txt for k in ("141.474", "48,6", "32,8"))
+        sabit["dogrulama"] = "metinde 141.474 / 48,6 / 32,8 bulundu" if ok else "metin eşleşmedi"
+        log({"islem": "firmalar_pdf", "dosya": FIRMALAR_PDF_KOK.name, "dogrulama": sabit["dogrulama"]})
+    except Exception as exc:  # noqa: BLE001
+        log({"islem": "firmalar_pdf", "hata": str(exc)})
+    return sabit
 
 
 def karsi_bacak_bul(kenarlar: list[dict], alacakli: str, borclu: str, arac: str) -> float | None:
@@ -223,7 +259,7 @@ def satirlar_uret(kenarlar: list[dict], yontem: str) -> list[dict]:
             )
         return rows
 
-    # arac_birlesik: aynı yönlü çiftte araçları topla, sonra karşı yön
+    # arac_birlesik: sırasız çift bir kez yazılır; silinen = min(bacak_ab, bacak_ba) tek sayım.
     from collections import defaultdict
 
     fwd: dict[tuple[str, str], float] = defaultdict(float)
@@ -236,10 +272,18 @@ def satirlar_uret(kenarlar: list[dict], yontem: str) -> list[dict]:
         key = (k["alacakli"], k["borclu"])
         fwd[key] += float(k["stok"])
         meta[key] = k["alinti"][:60]
+    gorulen: set[frozenset[str]] = set()
     for (a, b), st in sorted(fwd.items()):
-        if (a, b) in skip_pairs:
+        if (a, b) in skip_pairs or a == b:
             continue
+        pair = frozenset((a, b))
+        if pair in gorulen:
+            continue
+        gorulen.add(pair)
         rev = fwd.get((b, a), 0.0)
+        # büyük bacak "stok", küçük bacak "karsi_bacak" olarak tek satır
+        if rev >= st:
+            a, b, st, rev = b, a, rev, st
         kb = rev if rev > 0 else None
         sil = min(st, rev) if rev > 0 else None
         net = st - sil if sil is not None else None
@@ -254,7 +298,7 @@ def satirlar_uret(kenarlar: list[dict], yontem: str) -> list[dict]:
                 "net_kalan": net,
                 "yontem": yontem,
                 "kaynak_url": PDF_URL,
-                "alinti": meta.get((a, b), ""),
+                "alinti": meta.get((a, b), meta.get((b, a), "")),
             }
         )
     return rows
@@ -266,7 +310,8 @@ def _oran_metin(oran: float | None, sil: float, stok: float) -> str:
     return f"{100 * oran:.1f}% ({sil:.0f} / {stok:.0f} milyar TL)"
 
 
-def hs_etiket(rows_ayri: list[dict], f_yuk: dict) -> str:
+def hs_etiket(rows_ayri: list[dict], rapor_pay: dict) -> str:
+    """H-S yalnız araç ayrı ile. Araç ayrı silinen yoksa test_edilemez; stok_dar koşulu ayrı raporlanır."""
     scored = [
         r
         for r in rows_ayri
@@ -274,11 +319,6 @@ def hs_etiket(rows_ayri: list[dict], f_yuk: dict) -> str:
         and not (r["alacakli"] == "PFK" and r["borclu"] == "PFK" and r["arac"] == "mevduat")
     ]
     if not scored:
-        hisse = f_yuk.get("hisse", 0.0)
-        diger = f_yuk.get("diger_borc", 0.0)
-        tot = f_yuk.get("toplam_yukumluluk") or 0.0
-        if tot > 0 and (hisse + diger) / tot > 0.5:
-            return "stok_dar"
         return "test_edilemez"
     stok_top = sum(float(r["stok"]) for r in scored)
     sil_top = sum(float(r["silinen"]) for r in scored)
@@ -289,12 +329,13 @@ def hs_etiket(rows_ayri: list[dict], f_yuk: dict) -> str:
         return "hipotez_duser"
     if oran < AKIS_ORAN_REF - HS_ESIK:
         return "stok_ayri"
-    hisse = f_yuk.get("hisse", 0.0)
-    diger = f_yuk.get("diger_borc", 0.0)
-    tot = f_yuk.get("toplam_yukumluluk") or 0.0
-    if tot > 0 and (hisse + diger) / tot > 0.5:
+    if stok_dar_kosulu(rapor_pay):
         return "stok_dar"
     return "test_edilemez"
+
+
+def stok_dar_kosulu(rapor_pay: dict) -> bool:
+    return (rapor_pay.get("hisse_pay", 0.0) + rapor_pay.get("diger_borc_pay", 0.0)) > 0.5
 
 
 def main() -> None:
@@ -319,33 +360,55 @@ def main() -> None:
     pd.DataFrame(rows).to_csv(OUT_CSV, index=False, encoding="utf-8-sig")
 
     f_yuk = evds_f_yukumluluk_2026q1()
+    rapor_pay = rapor_f_yukumluluk_paylari()
     ayri = [r for r in rows if r["yontem"] == "arac_ayri"]
-    hs = hs_etiket(ayri, f_yuk)
+    hs = hs_etiket(ayri, rapor_pay)
 
     sil_ayri = sum(float(r["silinen"]) for r in ayri if r["silinen"] is not None)
     stok_ayri = sum(float(r["stok"]) for r in ayri if r["silinen"] is not None)
-    sil_bir = sum(float(r["silinen"]) for r in rows if r["yontem"] == "arac_birlesik" and r["silinen"] is not None)
-    stok_bir = sum(float(r["stok"]) for r in rows if r["yontem"] == "arac_birlesik" and r["silinen"] is not None)
+    # Birleşik: sırasız çift tek satır; silinen = min tek sayım; payda = iki bacak brüt (büyük + küçük).
+    bir = [r for r in rows if r["yontem"] == "arac_birlesik" and r["silinen"] is not None]
+    sil_bir = sum(float(r["silinen"]) for r in bir)
+    stok_bir = sum(float(r["stok"]) + float(r["karsi_bacak"]) for r in bir)
+
+    girmeyen_evds = {}
+    if f_yuk.get("toplam_yukumluluk"):
+        t = f_yuk["toplam_yukumluluk"]
+        girmeyen_evds = {
+            "hisse_pay": f_yuk.get("hisse", 0) / t,
+            "diger_borc_pay": f_yuk.get("diger_borc", 0) / t,
+        }
+    rapor_disi_pay = rapor_pay["hisse_pay"] + rapor_pay["diger_borc_pay"]
 
     sonuc = {
         "donem": "2026-Q1",
         "birim": "milyar TL (Finansal Hesaplar raporu)",
         "H-S": hs,
+        "H-S_not": "araç ayrı silinen yok; H-S yalnız araç ayrı ile skorlanır; xls gelmeden kapalı",
+        "arac_ayri_silinen_milyar": sil_ayri,
         "arac_ayri_silinen_oran": sil_ayri / stok_ayri if stok_ayri else None,
-        "arac_birlesik_silinen_oran": sil_bir / stok_bir if stok_bir else None,
+        "arac_birlesik_tekil": {
+            "cift_sayisi": len(bir),
+            "silinen_milyar": sil_bir,
+            "iki_bacak_brut_milyar": stok_bir,
+            "silinen_iki_bacak_brut_oran": sil_bir / stok_bir if stok_bir else None,
+            "not": "model tercihi; kısmi çiftler; H-S'ye girmez",
+        },
         "akis_oran_kiyaslama_disinda": AKIS_ORAN_REF,
-        "f_yukumluluk_milyar": f_yuk,
+        "stok_dar_kosulu_rapor": stok_dar_kosulu(rapor_pay),
+        "girmeyen_pay_rapor": {
+            "hisse_pay": rapor_pay["hisse_pay"],
+            "diger_borc_pay": rapor_pay["diger_borc_pay"],
+            "toplam": rapor_disi_pay,
+            "yukumluluk_milyar": rapor_pay["toplam_yukumluluk_milyar"],
+            "dogrulama": rapor_pay["dogrulama"],
+        },
+        "girmeyen_pay_evds_ayri_stok": girmeyen_evds,
+        "f_yukumluluk_evds_milyar": f_yuk,
         "banka_ayrimi": "banka ayrılmadı (PFK konsolide)",
+        "hazne_adlari": HAZNE_AD,
     }
     OUT_SONUC.write_text(json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    girmeyen = {}
-    if f_yuk.get("toplam_yukumluluk"):
-        t = f_yuk["toplam_yukumluluk"]
-        girmeyen = {
-            "hisse_pay": f_yuk.get("hisse", 0) / t,
-            "diger_borc_pay": f_yuk.get("diger_borc", 0) / t,
-        }
 
     rapor = f"""# Stok silimi raporu (2026-Q1)
 
@@ -364,19 +427,27 @@ Akış mahsupu (~42,7% brüt servis) bu tabloda **yok**.
 - Tam çift matrisi Excel: TCMB Veri Tabloları sayfasında statik link **bulunamadı** (arama günlüğü).
 - B haznesi (TCMB ayrılmış banka) bu tabloya **yapıştırılmadı**.
 
-## 3. Özet oranlar (yalnız karşı bacaklı satırlar)
+## 3. Özet (yalnız karşı bacaklı satırlar)
 
-- Araç ayrı silinen/stok: {_oran_metin(sonuc['arac_ayri_silinen_oran'], sil_ayri, stok_ayri)}
-- Araç birleşik: {_oran_metin(sonuc['arac_birlesik_silinen_oran'], sil_bir, stok_bir)}
+- **Araç ayrı** silinen/stok: {_oran_metin(sonuc['arac_ayri_silinen_oran'], sil_ayri, stok_ayri)} — aynı araçta karşı bacak metinde yok (kredi tek yön, mevduat tek yön).
+- **Araç birleşik, tekil çift** ({len(bir)} çift): silinen **{sil_bir:.0f}** milyar TL (F–PFK 7.195, H–PFK 6.772, PFK–ROW 4.033; tek sayım); iki bacak brüt {stok_bir:.0f}; oran {_oran_metin(sonuc['arac_birlesik_tekil']['silinen_iki_bacak_brut_oran'], sil_bir, stok_bir)}. Model tercihi; kısmi çiftler; **H-S’ye girmez**.
 
 ## 4. H-S
 
-**{hs}** (akış {100*AKIS_ORAN_REF:.1f}% ile kıyas; stok dosyasına yazılmaz)
+**{hs}** — H-S yalnız araç ayrı ile skorlanır; araç ayrı boş. Akış {100*AKIS_ORAN_REF:.1f}% stok dosyasında yok. Birleşik oran “karışım var/yok” kanıtı değildir.
 
-## 5. Girmeyen kalemler (F yükümlülük, EVDS)
+## 5. Girmeyen kalemler (F yükümlülük)
 
-- Hisse payı: {100*girmeyen.get('hisse_pay', 0):.1f}%
-- Diğer borç payı: {100*girmeyen.get('diger_borc_pay', 0):.1f}%
+| Kaynak | Hisse+özk. | Diğer borç | Toplam dışarıda |
+| --- | --- | --- | --- |
+| TCMB 2026-I V. Firmalar (141.474 milyar) | {100*rapor_pay['hisse_pay']:.1f}% | {100*rapor_pay['diger_borc_pay']:.1f}% | **{100*rapor_disi_pay:.1f}%** |
+| EVDS F konsolide stok (ayrı stok, kıyas değil) | {100*girmeyen_evds.get('hisse_pay', 0):.1f}% | {100*girmeyen_evds.get('diger_borc_pay', 0):.1f}% | {100*(girmeyen_evds.get('hisse_pay', 0)+girmeyen_evds.get('diger_borc_pay', 0)):.1f}% |
+
+`stok_dar` koşulu (rapor payı >50%): **{'sağlanıyor' if stok_dar_kosulu(rapor_pay) else 'sağlanmıyor'}**. Etiket yine de yazılmaz: araç ayrı ölçülmeden H-S kapalı. Rapor doğrulaması: {rapor_pay['dogrulama']} ([V. Firmalar]({FIRMALAR_PDF_URL})).
+
+## 5b. Hazne adları
+
+PFK parasal ve finansal kuruluş (banka ayrılmadı); **GY** genel yönetim; repo **K** (bankacılık dışı finansal) bu dosyada kullanılmaz.
 
 ## 6. Dosyalar
 

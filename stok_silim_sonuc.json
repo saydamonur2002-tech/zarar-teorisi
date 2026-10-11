@@ -2,10 +2,30 @@
   "donem": "2026-Q1",
   "birim": "milyar TL (Finansal Hesaplar raporu)",
   "H-S": "test_edilemez",
+  "H-S_not": "araç ayrı silinen yok; H-S yalnız araç ayrı ile skorlanır; xls gelmeden kapalı",
+  "arac_ayri_silinen_milyar": 0,
   "arac_ayri_silinen_oran": null,
-  "arac_birlesik_silinen_oran": 0.6349654296599407,
+  "arac_birlesik_tekil": {
+    "cift_sayisi": 3,
+    "silinen_milyar": 18000.0,
+    "iki_bacak_brut_milyar": 56696.0,
+    "silinen_iki_bacak_brut_oran": 0.31748271482997037,
+    "not": "model tercihi; kısmi çiftler; H-S'ye girmez"
+  },
   "akis_oran_kiyaslama_disinda": 0.427,
-  "f_yukumluluk_milyar": {
+  "stok_dar_kosulu_rapor": true,
+  "girmeyen_pay_rapor": {
+    "hisse_pay": 0.486,
+    "diger_borc_pay": 0.328,
+    "toplam": 0.8140000000000001,
+    "yukumluluk_milyar": 141474.0,
+    "dogrulama": "metinde 141.474 / 48,6 / 32,8 bulundu"
+  },
+  "girmeyen_pay_evds_ayri_stok": {
+    "hisse_pay": 0.354552677764978,
+    "diger_borc_pay": 0.1263923626706722
+  },
+  "f_yukumluluk_evds_milyar": {
     "kredi": 25339.7607982257,
     "mevduat": 0.0,
     "borclanma_senedi": 993.08777076,
@@ -13,5 +33,12 @@
     "diger_borc": 6412.1744434859,
     "toplam_yukumluluk": 50732.2935341707
   },
-  "banka_ayrimi": "banka ayrılmadı (PFK konsolide)"
+  "banka_ayrimi": "banka ayrılmadı (PFK konsolide)",
+  "hazne_adlari": {
+    "F": "finansal olmayan",
+    "H": "hanehalkı",
+    "PFK": "parasal ve finansal",
+    "GY": "genel yönetim",
+    "ROW": "dünyanın geri kalanı"
+  }
 }
