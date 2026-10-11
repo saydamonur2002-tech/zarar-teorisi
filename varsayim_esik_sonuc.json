@@ -1,0 +1,104 @@
+{
+  "esikler_kilitli": {
+    "gecis": [
+      "0",
+      "1/3",
+      "1"
+    ],
+    "vade_gunu": [
+      30,
+      90,
+      180
+    ],
+    "odenmeyen_emir": null
+  },
+  "girdi": {
+    "itis_2025_yuzde": 7.62,
+    "tavan_akis_tavan_dolu": false,
+    "bddk_net_akis_2025": 5208.0,
+    "f4_akim_2025": 4820.9,
+    "bosluk_2025": 387.1,
+    "vade_kirilim": "ayrılmadı",
+    "odenmeyen_emir": "",
+    "ortalama_gun": "",
+    "vade_donem": "2026-Q1"
+  },
+  "satirlar": [
+    {
+      "kapi": "gecis",
+      "esik": "0",
+      "girdi": 7.62,
+      "cikti": 0.0,
+      "birim": "puan",
+      "durum": "varsayim",
+      "not": "itiş 2025 = firma F.4 işlem akımı / GSYH (tavan_akis.csv). Geçiş payı birincil bulunamadı; eşik konuldu, ölçülmedi."
+    },
+    {
+      "kapi": "gecis",
+      "esik": "1/3",
+      "girdi": 7.62,
+      "cikti": 2.54,
+      "birim": "puan",
+      "durum": "varsayim",
+      "not": "itiş 2025 = firma F.4 işlem akımı / GSYH (tavan_akis.csv). Geçiş payı birincil bulunamadı; eşik konuldu, ölçülmedi. 1/3 RAPOR varsayımı, kaynak değil; 2,5 referans notunda."
+    },
+    {
+      "kapi": "gecis",
+      "esik": "1",
+      "girdi": 7.62,
+      "cikti": 7.62,
+      "birim": "puan",
+      "durum": "varsayim",
+      "not": "itiş 2025 = firma F.4 işlem akımı / GSYH (tavan_akis.csv). Geçiş payı birincil bulunamadı; eşik konuldu, ölçülmedi."
+    },
+    {
+      "kapi": "vade_gunu",
+      "esik": 30,
+      "girdi": null,
+      "cikti": "aşılırsa uzar; aşılmazsa uzamaz",
+      "birim": "gün",
+      "durum": "kosullu",
+      "not": "MY vade kırılımı 'ayrılmadı', ortalama gün boş, ödenmeyen emir boş (2026-Q1, vadeli_kalicilik.csv). İki yön de koşullu; ölçüm değil. Seri gelmeden kapı açılmaz."
+    },
+    {
+      "kapi": "vade_gunu",
+      "esik": 90,
+      "girdi": null,
+      "cikti": "aşılırsa uzar; aşılmazsa uzamaz",
+      "birim": "gün",
+      "durum": "kosullu",
+      "not": "MY vade kırılımı 'ayrılmadı', ortalama gün boş, ödenmeyen emir boş (2026-Q1, vadeli_kalicilik.csv). İki yön de koşullu; ölçüm değil. Seri gelmeden kapı açılmaz."
+    },
+    {
+      "kapi": "vade_gunu",
+      "esik": 180,
+      "girdi": null,
+      "cikti": "aşılırsa uzar; aşılmazsa uzamaz",
+      "birim": "gün",
+      "durum": "kosullu",
+      "not": "MY vade kırılımı 'ayrılmadı', ortalama gün boş, ödenmeyen emir boş (2026-Q1, vadeli_kalicilik.csv). İki yön de koşullu; ölçüm değil. Seri gelmeden kapı açılmaz."
+    },
+    {
+      "kapi": "odenmeyen_emir",
+      "esik": null,
+      "girdi": null,
+      "cikti": null,
+      "birim": "milyar TL",
+      "durum": "kosullu",
+      "not": "Ölçü yok (Sayıştay/HMB 320 Bütçe Emanetleri bulunamadı, vadeli_kalicilik). Eşik konmaz. 'Yok' satırı durur."
+    },
+    {
+      "kapi": "bddk_akim",
+      "esik": null,
+      "girdi": 5208.0,
+      "cikti": 387.1,
+      "birim": "milyar TL",
+      "durum": "ayrilmadi",
+      "not": "2025 BDDK ticari net akış 5,208 (stok farkı) − F.4 işlem akımı 4,820.9. Kur/değerleme ile borç veren kapsamı ayrılmadı; eşikle kapatılmaz."
+    }
+  ],
+  "H-V": "temiz",
+  "H-V2": "ayri",
+  "H-V_not": "durumlar ['ayrilmadi', 'kosullu', 'varsayim']; `olculdu` yok",
+  "H-V2_not": "tavan_akis.csv tavan sütunu boş; 2,54 yalnız `varsayim` satırında ve referans notunda"
+}
