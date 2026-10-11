@@ -1,0 +1,94 @@
+{
+  "tanim": "tavan = itiş × geçiş; itiş = firma F.4 işlem akımı (4 çeyrek); stok farkı ayrı sütun",
+  "satirlar": [
+    {
+      "yil": "2023",
+      "f4_akim": 1829.5,
+      "stok_fark": 4111.7,
+      "gsyh": 27091.5,
+      "oran_akim": 6.75,
+      "oran_stok": 15.18,
+      "gecis": null,
+      "tavan": null,
+      "durum": "itis_olculdu; gecis_bulunamadi; tavan_bos",
+      "seri": "TP.FINHESTNKS62011.ZP34; TP.FINHESTNKS11.ZP34; TP.GSYIH20.BY.B1GQ"
+    },
+    {
+      "yil": "2024",
+      "f4_akim": 3039.3,
+      "stok_fark": 3971.2,
+      "gsyh": 44676.0,
+      "oran_akim": 6.8,
+      "oran_stok": 8.89,
+      "gecis": null,
+      "tavan": null,
+      "durum": "itis_olculdu; gecis_bulunamadi; tavan_bos",
+      "seri": "TP.FINHESTNKS62011.ZP34; TP.FINHESTNKS11.ZP34; TP.GSYIH20.BY.B1GQ"
+    },
+    {
+      "yil": "2025",
+      "f4_akim": 4820.9,
+      "stok_fark": 7628.4,
+      "gsyh": 63240.5,
+      "oran_akim": 7.62,
+      "oran_stok": 12.06,
+      "gecis": null,
+      "tavan": null,
+      "durum": "itis_olculdu; gecis_bulunamadi; tavan_bos",
+      "seri": "TP.FINHESTNKS62011.ZP34; TP.FINHESTNKS11.ZP34; TP.GSYIH20.BY.B1GQ"
+    }
+  ],
+  "H-T": "siser",
+  "H-T_not": "2025 oran_stok 12.06 vs oran_akim 7.62 (yüzde GSYH); fark 4.44 puan. RAPOR'un yüzde 8,3'ü stok farkıyla kurulmuştur.",
+  "H-T2": "test_edilemez",
+  "H-T2_not": "geçiş payı birincil bulunamadı; tavan boş; 2,5 puan lehte yazılmaz",
+  "gecis_arama": [
+    {
+      "nerede": "EVDS katalog (evds_katalog_gruplar.json, 680 grup)",
+      "ne": "'çıktı açığı' / 'cikti acigi'",
+      "sonuc": "0 grup; TCMB çıktı açığı Enflasyon Raporu grafiğidir, EVDS serisi yok"
+    },
+    {
+      "nerede": "EVDS katalog",
+      "ne": "'geçiş' / 'geçişkenlik' (kredi→fiyat)",
+      "sonuc": "0 grup; kur geçişkenliği serisi de yok"
+    },
+    {
+      "nerede": "EVDS katalog",
+      "ne": "fiyat: TÜFE (bie_tukfiy2025), Yİ-ÜFE (bie_tufe1yi), H-ÜFE (bie_hufe)",
+      "sonuc": "endeks var; kredi itişinin fiyata geçen payı değil, katsayı değil"
+    },
+    {
+      "nerede": "EVDS katalog",
+      "ne": "beklenti/anket: Piyasa Katılımcıları, Sektörel, Hanehalkı; KKO; Banka Kredileri Eğilim",
+      "sonuc": "var; geçiş payı vermez"
+    },
+    {
+      "nerede": "Depo",
+      "ne": "odeme_enf_sonuc.json, odeme_enf.py",
+      "sonuc": "sentetik ağ; 'Sayılar ölçüm değildir' (dosya uyarısı); kullanılmaz"
+    },
+    {
+      "nerede": "Depo",
+      "ne": "OKU.txt 'gecis'",
+      "sonuc": "TGA geçiş hızı; fiyat geçişi değil"
+    },
+    {
+      "nerede": "tek-sistem RAPOR.md",
+      "ne": "'Fiyata üçte biri geçse'",
+      "sonuc": "varsayım cümlesi, kaynak yok; `varsayim`, tavan diye durmaz"
+    }
+  ],
+  "referans_rapor": {
+    "ticari_net_akis": 5208.0,
+    "gsyh": 63021.0,
+    "oran_yuzde": 8.3,
+    "gecis_varsayim": "üçte biri",
+    "puan": 2.5
+  },
+  "kaynak_url": {
+    "TP.FINHESTNKS62011.ZP34": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks62011",
+    "TP.FINHESTNKS11.ZP34": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks11",
+    "TP.GSYIH20.BY.B1GQ": "https://evds3.tcmb.gov.tr/tumSeriler/bie_gsyhhrccar"
+  }
+}
