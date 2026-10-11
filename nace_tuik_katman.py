@@ -326,12 +326,13 @@ def f_hazne_bolum(
                 "nace_kisim": kod,
                 "donem": "2026-Q1",
                 "brut_cikis_once": float(f["brut_cikis_once"]) * w,
-                "brut_cikis_sonra": float(f["brut_cikis_sonra"]) * w,
+                "brut_cikis_sonra": None,
                 "silinen_oran": None,
                 "ciro_pay_2024": ciro_pay.get(kod),
                 "yabanci_kaynak_pay_2024": pay,
                 "kaynak": (
                     f"S.11 (F) hazne brüt çıkış × Sektör Bilançoları yabancı kaynak payı; {YIL_UYARISI}; "
+                    "brut_cikis_sonra boş: bölümde iki yönlü kalem ölçülmedi, hazne silmesi taşınmadı; "
                     "NACE F (inşaat) ile F haznesi aynı değil"
                 ),
             }
@@ -432,6 +433,7 @@ def main() -> None:
         "kapsam_disi": kapsam_disi,
         "pay_uyumsuz": uyumsuz,
         "yil_uyarisi": YIL_UYARISI,
+        "brut_cikis_sonra": "bos",
     }
     OUT_SONUC.write_text(json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -449,11 +451,11 @@ Bülten: [YSHİ 2024]({YSHI_URL}). Sektör bilanço bülteni: [{SEKTOR_BIL_URL}]
 ## 2. Çıktı
 
 - `nace_tuik_agirlik.csv` ({len(agirlik)} satır)
-- `nace_bolum_donem.csv` (F hazne bölünmesi yalnız yabancı kaynak payı varsa)
+- `nace_bolum_donem.csv` (F hazne brüt çıkışı yalnız yabancı kaynak payıyla bölündü; `brut_cikis_sonra` ve `silinen_oran` boş)
 
 ## 3. H-N
 
-**{hn}** — silinen_oran bölüm bazında ölçülmedi; F/B hazne yüzdeleri H-N sınavı değil.
+**{hn}** — `silinen_oran` ve `brut_cikis_sonra` bölüm bazında boş. F hazne silmesi yapıştırılmadı. F/B hazne yüzdeleri H-N sınavı değil.
 
 ## 4. Kapsam dışı / pay uyumsuz
 
