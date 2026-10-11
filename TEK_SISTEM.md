@@ -32,7 +32,7 @@ Bu depodaki parçaları:
 | 4 | EVDS hane-firma vadeli, HPB gerçek kişi YP (senedin adres stokları) | olculdu; senet modellenmedi |
 | 5 | — | olculmedi |
 
-Ayrıntı ve sayılar `TEK_SISTEM_KOPRU.md` içinde. Katman sonuçları birbirine taşınmaz; tek-sistem BDDK kredi sayıları ile EVDS finansal hesap stokları aynı tanım değildir, fark açıklanır, kapatılmaz.
+Ayrıntı ve sayılar `TEK_SISTEM_KOPRU.md` içinde. Adım 4–5'in HEKİS'teki modeli (hekis-model 6c34a63, `hekis_model/`) `DIGER_REPO_KOPRU.md` içinde; tek-sistem etiketleri orada değişmez. Katman sonuçları birbirine taşınmaz; tek-sistem BDDK kredi sayıları ile EVDS finansal hesap stokları aynı tanım değildir, fark açıklanır, kapatılmaz.
 
 ## Sınır
 

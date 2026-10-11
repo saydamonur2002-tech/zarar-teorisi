@@ -1,0 +1,23 @@
+﻿repo,commit,dosya,nesne,deger,birim,donem,durum,not
+hekis-model,6c34a63,hekis/bind.py; data/istanbul_2026.json,kira akışı: havuz kirası 2+1,20000,TL/ay,2026-08,modellendi,"policy_rent 15000/10000 1+1/1+0, aidat 3000; kaynak alanı 'model varsayimi, gozlem degil'. Gözlem girdisi ayrı: İstanbul ort. kira 45,510 (Emlakjet-Endeksa), Esenyurt medyan 20,000."
+hekis-model,6c34a63,hekis/kira.py; data/ykke_2026_08.json,kira akışı: YKKE gecikmeli yeniden fiyatlama,,,2018-01..2026-08,modellendi,TCMB YKKE girdisiyle hipotez: TÜFE kira_t ~ YKKE yıllık_(t−12); tek nokta; kimlik testi değil (dosya başlığı).
+hekis-model,6c34a63,data/istanbul_2026.json,boş stok: İstanbul gözlem aralığı (alt),225000,konut,,modellendi,"elektrik aboneliği tabanlı; İBB 450,000–750,000; stok 4,500,000. Yöntem farkı, tek sayı değil (kaynak alanı). Model girdisi; bu depoda ölçülmedi."
+hekis-model,6c34a63,SISTEMLER.md,boş stok tam ölçek: İstanbul,450000,konut,tam ölçek (7. yıl),modellendi,"metin rakamı; en olası senaryo, erozyon %25"
+hekis-model,6c34a63,SISTEMLER.md,boş stok tam ölçek: Anadolu (7 şehir),664000,konut,tam ölçek (7. yıl),modellendi,"metin rakamı; en olası senaryo, erozyon %25"
+hekis-model,6c34a63,hekis/zones.py,yerleşen hane: İstanbul tam ölçek (koşu),36963,hane,"tam ölçek, erozyonsuz",modellendi,run_three_zone() varsayılan; kapsam uygun kiracıya 6.6%. Ölçüm değil.
+hekis-model,6c34a63,SISTEMLER.md,yerleşen hane: Anadolu tam ölçek,66900,hane,tam ölçek,modellendi,"metin rakamı; Kocaeli, Konya, Adana fiyat/kira yer tutucu (SISTEMLER.md sınırlar)"
+hekis-model,6c34a63,hekis/zones.py,bedel geliri: İstanbul (koşu),9.37,milyar TL/yıl,"tam ölçek, erozyonsuz",modellendi,"genel %1, lüks %5; parçalar 1.06, 1.76, 6.54 (HEKİS/tampon/lüks); lüks tahsilat %40 varsayım"
+hekis-model,6c34a63,hekis/zones.py,sübvansiyon: İstanbul yıl 1 (koşu),3.92,milyar TL/yıl,"tam ölçek, erozyonsuz",modellendi,bedel/sub 2.39; 20 yıl reel yük 83.8 milyar TL
+hekis-model,6c34a63,SISTEMLER.md,sub / bedel 7. yıl+ (erozyonlu): İstanbul,3.92,milyar TL/yıl (sub),7. yıl+,modellendi,bedel 7.03 milyar TL/yıl; metin rakamı
+hekis-model,6c34a63,SISTEMLER.md,sub / bedel 7. yıl+ (erozyonlu): Anadolu (7 şehir),3.18,milyar TL/yıl (sub),7. yıl+,modellendi,bedel 5.02 milyar TL/yıl; metin rakamı
+hekis-model,6c34a63,SISTEMLER.md,yerel TÜFE puanı: İstanbul,-0.3,puan,tam ölçek,modellendi,"ulusal -0.055 (hane payı ile ölçekli); kira esneklik 0,6: -4.5%. zarar-teorisi TÜFE/NFP serisine girmez (hekis_enflasyon.py ayrı patika)."
+hekis-model,6c34a63,SISTEMLER.md,ΔGini: İstanbul,-0.00066,Gini,tam ölçek,modellendi,Δyoksulluk -0.16 puan; gelir dağılımı ulusal lognormal varsayım
+hekis-model,6c34a63,SISTEMLER.md,yerel TÜFE puanı: Anadolu (7 şehir),-0.35,puan,tam ölçek,modellendi,"ulusal -0.1 (hane payı ile ölçekli); kira esneklik 0,6: -5.2%. zarar-teorisi TÜFE/NFP serisine girmez (hekis_enflasyon.py ayrı patika)."
+hekis-model,6c34a63,SISTEMLER.md,ΔGini: Anadolu (7 şehir),-0.00036,Gini,tam ölçek,modellendi,Δyoksulluk -0.085 puan; gelir dağılımı ulusal lognormal varsayım
+hekis-model,6c34a63,hekis/senet.py; data/SENET.md,HEKİS senedi: ihraç (İstanbul baz),89.2,milyar TL,2026-10-05 tasarım,modellendi,"boş stok karşılığı; anapara TÜFE endeksli, reel kupon 0; prim min(0,10; 0,04×(fiziki endeks−1)); sahip payı 1/7 (tasarım payı); dış alıcıya kapalı; ikincil piyasa yok, 20 yıl kilit; itfa yalnız sistem içinde"
+tek-sistem,c01b60a,model/RAPOR.md,hedef primli endeksli senet,,,2026-10-04 metin,taslak,"anapara lira, enflasyona endeksli; kupon faiz değil, üretim hedefi tutarsa tasarruftan prim (ithal ikamesi döviz tasarrufu payı); çıkış senedi başkasına satmak; ihraç büyüklüğü ve prim formülü yok; kod yok"
+hekis-model + tek-sistem,6c34a63 + c01b60a,hekis/senet.py ↔ model/RAPOR.md,HEKİS senedi ↔ hedef primli senet,,,,esitlenmez,"ihraç farklı (boş konut stoku 89,2 vs tanımsız); prim farklı (fiziki endeks, 1/7 vs ithal ikamesi tasarrufu); çıkış farklı (20 yıl kilit, ikincil piyasa yok vs satış). H-R2 ayri."
+tek-sistem,c01b60a,model/RAPOR.md,adım 5: kira kolu,,,,olculmedi,'Bu kol ölçülmedi.' Tek-sistem cümlesi durur.
+hekis-model,6c34a63,hekis/zones.py; hekis/bind.py; hekis/kira.py,adım 5: kira kolunun modeli,,,2026-10-08,modellendi,HEKİS kira-havuz-oturan modeli var; ölçüm değil; İstanbul ve Anadolu ayrı; tek-sistem adım 5 etiketi değişmez. H-R modellendi.
+hekis-model,6c34a63,PILOT.md,sistem aktifi / mevduat (HEKİS hesabı),0.0029,oran,pilot notu,modellendi,"'Sistem aktifi mevduatın %0,29'u, senet %0,28'i' (PILOT.md). Bu deponun mevduat stoklarıyla yeniden oranlanmadı."
+modeller,,,HEKİS kapalı kira-üretim devresi notu,,,,taslak,"bulunamadı; 3 sorgu denendi. hekis-model README: 'Calisma taslagidir, dogrulanmis bir kamu maliyesi modeli degildir.' Sayı girmez."
