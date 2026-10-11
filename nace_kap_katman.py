@@ -34,7 +34,9 @@ OUT_KAP = KOK / "kap_kenar.csv"
 OUT_YS = KOK / "mahsup_yogun_seyrek.csv"
 OUT_RAPOR = KOK / "NACE_KAP_RAPOR.md"
 DONEMLER = ("2025-Q4", "2026-Q1")
-NACE_EVDS_DENEMELER = (
+# Not: bunlar istihdam/sanayi endeksi; finansal hesap NACE bölümü değil (yanlış raf).
+# Asıl kapı: TÜİK birincil dosya (bu betikte henüz çekilmedi).
+NACE_EVDS_YANLIS_RAF = (
     "bie_rsistihn",
     "bie_istihsk4",
     "bie_tsny2010",
@@ -163,7 +165,8 @@ def kap_kenarlari(disclosures: list[dict], max_detay: int = 120) -> list[dict]:
 
 
 def nace_evds_dene() -> pd.DataFrame | None:
-    for g in NACE_EVDS_DENEMELER:
+    log({"kaynak": "TÜİK", "islem": "birincil_dosya", "durum": "denenmedi", "not": "data.tuik.gov.tr NACE bölüm ağırlığı bu turda çekilmedi"})
+    for g in NACE_EVDS_YANLIS_RAF:
         try:
             rows, n = fetch_group(g, start="01-01-2023", end="07-10-2026", freq="5")
             log({"kaynak": "EVDS", "grup": g, "seri": n, "satir": len(rows)})
@@ -213,7 +216,10 @@ def main() -> None:
                     "brut_cikis_once": None,
                     "brut_cikis_sonra": None,
                     "silinen_oran": None,
-                    "kaynak": f"EVDS NACE/istihdam grupları boş ({', '.join(NACE_EVDS_DENEMELER)})",
+                    "kaynak": (
+                        "NACE bölüm mahsupu yok: TÜİK birincil denenmedi; EVDS yanlış raf "
+                        f"({', '.join(NACE_EVDS_YANLIS_RAF)}) 2023–2026 boş — NACE yokluğu kanıtı değil"
+                    ),
                 }
             )
     else:
@@ -241,6 +247,13 @@ def main() -> None:
 
     # KAP
     disc = kap_disclosure_windows()
+    n_disclosure = len(disc)
+    n_ilisikli_baslik = sum(
+        1
+        for d in disc
+        if any(k.lower() in f"{d.get('subject','')} {d.get('summary','')}".lower() for k in ("ilişkili taraf", "İlişkili Taraf"))
+    )
+    log({"kaynak": "KAP", "islem": "ozet", "benzersiz_bildirim": n_disclosure, "ilisikli_taraf_baslik": n_ilisikli_baslik})
     kenar = kap_kenarlari(disc)
     pd.DataFrame(kenar).to_csv(OUT_KAP, index=False, encoding="utf-8-sig")
 
@@ -269,11 +282,17 @@ def main() -> None:
     else:
         hm = "yanlışlıyor"
 
-    f_sil = hazne[(hazne.sektor == "F") & (hazne.donem == "2026-Q1")]["silinen_cikis_oran"].iloc[0]
-    b_sil = hazne[(hazne.sektor == "B") & (hazne.donem == "2026-Q1")]["silinen_cikis_oran"].iloc[0]
-    hn = "tutmuyor" if abs(f_sil - b_sil) >= 0.10 else "yanlışlıyor (fark <10 puan)"
+    # H-N: NACE bölümleri arası silme farkı — bölüm yoksa test edilemez (F/B hazne farkı bu test değil).
+    hn = "test_edilemez" if nace_raw is None else "hesaplandi (nace_bolum_donem.csv)"
 
     hk = "test_edilemez" if n_kenar < 30 else "karışık"
+
+    kap_kenar_durum = (
+        f"{n_kenar} tutarlı kenar"
+        if n_kenar >= 30
+        else ("tutarlı tablo görülmedi (0 sayısal kenar)" if n_kenar == 0 else f"tutarlı tablo yetersiz ({n_kenar} kenar)")
+    )
+    sey_metin = "yok" if not np.isfinite(sey_oran) else f"{100 * sey_oran:.1f}%"
 
     rapor = f"""# NACE + KAP katman raporu
 
@@ -281,24 +300,37 @@ def main() -> None:
 
 | Katman | Durum |
 | --- | --- |
-| Hazne (H,F,B,K,D) | {'duruyor' if hazne_ok else 'eksik dönem'} — `mahsup_sektor_donem.csv` |
-| NACE bölüm | {'eklendi (proxy)' if nace_raw is not None else '**bulunamadı** — EVDS NACE/istihdam serileri 2023–2026 boş'} |
-| KAP kenar | {n_kenar} kenar — {'test edilebilir (≥30)' if n_kenar >= 30 else '**test edilemez** (<30)'} |
+| Hazne (H,F,B,K,D) | {'duruyor' if hazne_ok else 'eksik dönem'} — `mahsup_sektor_donem.csv` (trilyon TL/ay) |
+| NACE bölüm | {'proxy eklendi' if nace_raw is not None else '**test edilemez** — bölüm tablosu yok (TÜİK birincil çekilmedi)'} |
+| KAP kenar | {kap_kenar_durum}; H-M seyrek kol {'≥30' if n_kenar >= 30 else '<30'} |
 
 ## 2. Yanlışlayıcılar
 
-- **H-M (matris eseri):** {hm}. Yoğun silinen oran (2026-Q1 hazne agregat): {100*yogun:.1f}%. Seyrek KAP: {100*sey_oran:.1f}% ({n_kenar} kenar).
-- **H-N (yük yeri):** {hn}. F silinen oran {100*f_sil:.1f}%, B {100*b_sil:.1f}%.
-- **H-K (grup içi):** {hk}. Grup içi pay ayrıştırması yapılmadı (karşı taraf eşleşmesi yetersiz).
+- **H-M (matris eseri):** {hm}. Yoğun L^m üst sınır silinen oran (2026-Q1 agregat): {100 * yogun:.1f}%. Seyrek KAP: {sey_metin} ({n_kenar} kenar). Seyrek karşıt yokken %42,7 yoğun üst sınır olarak durur.
+- **H-N (NACE bölümleri arası silme farkı):** {hn}. Bölüm tablosu olmadan F/B hazne silme oranları (**%18,1 / %95,5**) bu hipotezin sınavı değil; hazne katmanının öncülü. “Firma tek tip” cümlesi NACE ister; bölüm yokken ne düşer ne tutar.
+- **H-K (grup içi):** {hk}. Karşı taraf / grup eşleşmesi yetersiz.
 
-## 3. Dosyalar
+## 3. NACE araması (düzeltme)
+
+- Denenen EVDS grupları istihdam/sanayi (`bie_rsistihn`, `bie_istihsk4`, `bie_tsny2010`, …) — finansal hesap NACE bölümü değil.
+- 2023–2026’da 0 satır, yalnızca o grupların o pencerede boş olduğunu gösterir; NACE’nin var/yok kanıtı değil.
+- KAP `abcdCode` sektör/NACE değildir (doğru).
+- Asıl kapı: **TÜİK birincil dosya** — bu turda çekilmedi.
+
+## 4. KAP tarama
+
+- Benzersiz bildirim (aylık pencereler): {n_disclosure}. Başlıkta “ilişkili taraf”: {n_ilisikli_baslik}.
+- `byCriteria` yanıtı **2000/tavan**; tavan kesilmiş aylarda ilişkili taraf metni dışarıda kalmış olabilir.
+- HTML gövdede sayı çıkmayan satır → kenar yazılmadı (sentetik doldurma yok). Sonuç: **tutarlı tablo görülmedi**, “bildirim yok” değil.
+
+## 5. Dosyalar
 
 - `nace_bolum_donem.csv`, `kap_kenar.csv`, `mahsup_yogun_seyrek.csv`
 - `nace_kap_arama_gunlugu.jsonl`, `kap_universe_kilit.json`
 
-## 4. Sınır
+## 6. Sınır ve sonraki risk
 
-KAP evreni kilit dosyasında. XU100 listesi bulunamadı. D haznesi NACE tablosuna katılmadı. Alıntılar ≤15 kelime. Brüt üst sınır dili: mahsup sonrası agregat brüt servis akışı düşer; tahsilat iddiası yok.
+D haznesi NACE tablosuna katılmadı. Tahsilat iddiası yok. Olası FR ek PDF/XBRL kenar açarsa önce **grup içi pay**; ilişkili taraf çoğunlukla holding kolu. Seyrek silme oradan düşerse H-M sahte “tutulur”. H-K ayrışmazsa NACE eklemek %42’yi açıklamaz; grup içi bakiyeyi sektörmüş gibi gösterebilir.
 
 Tekrar: `python3 nace_kap_katman.py`
 """

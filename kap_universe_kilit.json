@@ -12,5 +12,7 @@
     "donem_publish": ["2025-10-01", "2026-03-31"],
     "finansal_donem": ["2025-Q4", "2026-Q1"]
   },
-  "kenar_kurali": "Yalnızca bildirim gövdesi/ek tablosunda sayısal tutar ve karşı taraf adı birlikte geçen satırlar."
+  "kenar_kurali": "Yalnızca bildirim gövdesi/ek tablosunda sayısal tutar ve karşı taraf adı birlikte geçen satırlar.",
+  "tarama_notu": "byCriteria yanıtı en fazla 2000 bildirim/istek; aylık pencere kullanılır. Kenar yok = tutarlı tablo görülmedi, bildirim yok anlamına gelmez.",
+  "abcdCode": "KAP alanı; NACE/sektör kodu değildir."
 }
