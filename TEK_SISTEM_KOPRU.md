@@ -77,7 +77,7 @@ Stok farkı kur ve değerleme içerir; net akış değildir. İşlem akımı aş
 
 | Adım | Tek-sistem | Katman | Nesne | Dönem | Değer | Birim | Durum |
 | ---: | --- | --- | --- | --- | ---: | --- | --- |
-| 1 | Lira alacak ve borç e-fatura üzerinden eşleşir; kapalı döngü nakit dolaşmadan kapanır | `mahsup_sektor_evds.py` | sektör akış ağı, optimal_mahsup, brüt çıkış silinen oranı | 2026-Q1 | 0.4270 | oran | olculdu |
+| 1 | Lira alacak ve borç e-fatura üzerinden eşleşir; kapalı döngü nakit dolaşmadan kapanır | `mahsup_sektor_evds.py` | sektör akış ağı, optimal_mahsup, brüt çıkış silinen oranı | 2026-Q1 | 0.4270 | oran | baska_nesne |
 | 1 | Aynı adım, stok tarafı | `stok_silim.py` | araç-ayrı karşı bacak tavanı (üst sınır) | 2026-Q1 | 0.0728 | oran (üst sınır) | test_edilemez |
 | 2 | Kalan net borç silinmez; üstten alta akış planıyla ödenir; alta inen pay ücret | `odeme_mahsup.py` | mahsup sonrası akış + şart kaldıracı; temerrüt sayısı | 2026-Q1 (sentetik 150 firma) | 0 | temerrüt sayısı | modellendi |
 | 3 | Akış banka kredisiyle çevrilmez; eski stokun faizi durur | `odeme_mahsup.py` | kredi ihtiyacı brüt → şart | 2026-Q1 (sentetik 150 firma) | 0.0000 | trilyon TL/ay | modellendi |
@@ -90,7 +90,7 @@ Stok farkı kur ve değerleme içerir; net akış değildir. İşlem akımı aş
 
 Notlar:
 
-- Adım 1 / sektör akış ağı, optimal_mahsup, brüt çıkış silinen oranı: Sektör düzeyi akış; bilateral e-fatura eşleşmesi değil. tek-sistem mahsuplasma paketi (mahsup/) aynı kod. (`mahsup_sektor_ozet.json`)
+- Adım 1 / sektör akış ağı, optimal_mahsup, brüt çıkış silinen oranı: Sektör düzeyi akış. Bilateral e-fatura eşleşmesi değil. Firma çifti yok. KAP kenarı sıfır (nace_kap_sonuc.json kap_kenar_sayisi 0). L^m ile türetilmiş aylık brüt servis, beş hazne. Yüzde 42,7 sektör servisi; adım 1'in nesnesi değil. tek-sistem mahsuplasma paketi (mahsup/) aynı kod. (`mahsup_sektor_ozet.json`)
 - Adım 1 / araç-ayrı karşı bacak tavanı (üst sınır): Stok silimi akış oranına eşitlenmez; tavan dağılım değildir. H-S araç ayrı silinen yokken skorlanmaz. (`stok_silim_sonuc.json`)
 - Adım 2 / mahsup sonrası akış + şart kaldıracı; temerrüt sayısı: holding_odeme_orani 0.5, ucret_gecis_beta 0.3; ağ sentetik, ölçüm değil. (`odeme_mahsup_sonuc.json`)
 - Adım 3 / kredi ihtiyacı brüt → şart: brüt 0.0 → şart 0.0. Faizin durması modellenmedi; firma finansman gideri referans bloğunda ölçüldü (Sektör Bilançoları 2024; 2025 bulunamadı). (`odeme_mahsup_sonuc.json`)
@@ -100,6 +100,10 @@ Notlar:
 - Adım 4 / gerçek kişi YP mevduat (HPB tablo 2): Senedin adresi olacak stok; senet ve prim mekanizması bu depoda modellenmedi. Altın ve arsa stoku burada yok. (`tek_sistem_kopru.csv`)
 - Adım 4 / senet ihracı, prim kaynağı, ikincil piyasa çıkışı: Ne ödeme zinciri ne mahsup paketi bu enstrümanı içerir.
 - Adım 5 / kira akışı: tek-sistem RAPOR.md de 'Bu kol ölçülmedi' der.
+
+Adım 1 nesne düzeltmesi: sayı değişmedi, etiket `olculdu` → `baska_nesne`. Stok tavanı satırı bu turda düzeltilmedi; ayrı gedik.
+- **H-N1** (etiket nesneyi taşır): `temiz`. durum `baska_nesne`, KAP sıfır notu var
+- **H-N2** (sayı bozulur): `temiz`. değer 0.4270 (kilit 0.4270)
 
 ## 4. Tek-sistem'in kendi ölçüsü (taşınmadı, yan yana)
 

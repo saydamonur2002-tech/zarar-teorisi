@@ -324,8 +324,10 @@ def esleme(ev: dict) -> list[dict]:
         "adim": 1, "tek_sistem": "Lira alacak ve borç e-fatura üzerinden eşleşir; kapalı döngü nakit dolaşmadan kapanır",
         "katman": "mahsup_sektor_evds.py", "nesne": "sektör akış ağı, optimal_mahsup, brüt çıkış silinen oranı",
         "donem": ms_son.get("donem"), "deger": _r(ms_son.get("silinen_oran"), 3), "birim": "oran",
-        "durum": "olculdu",
-        "not": "Sektör düzeyi akış; bilateral e-fatura eşleşmesi değil. tek-sistem mahsuplasma paketi (mahsup/) aynı kod.",
+        "durum": "baska_nesne",
+        "not": "Sektör düzeyi akış. Bilateral e-fatura eşleşmesi değil. Firma çifti yok. KAP kenarı sıfır (nace_kap_sonuc.json kap_kenar_sayisi 0). "
+               "L^m ile türetilmiş aylık brüt servis, beş hazne. Yüzde 42,7 sektör servisi; adım 1'in nesnesi değil. "
+               "tek-sistem mahsuplasma paketi (mahsup/) aynı kod.",
         "dosya": "mahsup_sektor_ozet.json",
     })
     tavan = ss.get("karsi_bacak_tavan_kapi", {})
@@ -388,6 +390,18 @@ def esleme(ev: dict) -> list[dict]:
         "durum": "olculmedi", "not": "tek-sistem RAPOR.md de 'Bu kol ölçülmedi' der.", "dosya": "",
     })
     return rows
+
+
+ADIM1_SAYI = 0.427  # kilitli; 0,4270 değişirse H-N2 ihlal
+
+
+def adim1_kontrol(esl: list[dict]) -> dict:
+    r = next(x for x in esl if x["adim"] == 1 and x["katman"] == "mahsup_sektor_evds.py")
+    kap_sifir = "KAP kenarı sıfır" in r["not"]
+    hn1 = "temiz" if (r["durum"] == "baska_nesne" and kap_sifir) else "ihlal"
+    hn2 = "temiz" if (r["deger"] is not None and abs(r["deger"] - ADIM1_SAYI) < 5e-5) else "ihlal"
+    return {"H-N1": hn1, "H-N1_not": f"durum `{r['durum']}`, KAP sıfır notu {'var' if kap_sifir else 'yok'}",
+            "H-N2": hn2, "H-N2_not": f"değer {r['deger']:.4f} (kilit {ADIM1_SAYI:.4f})" if r["deger"] is not None else "değer boş"}
 
 
 def nakis_kontrol(ts: dict) -> str:
@@ -461,6 +475,10 @@ def md_yaz(mut: list[dict], esl: list[dict], ts: dict, ev: dict, ref: list[dict]
     s += ["", "Notlar:", ""]
     for r in esl:
         s.append(f"- Adım {r['adim']} / {r['nesne']}: {r['not']}" + (f" (`{r['dosya']}`)" if r["dosya"] else ""))
+    hn = adim1_kontrol(esl)
+    s += ["", "Adım 1 nesne düzeltmesi: sayı değişmedi, etiket `olculdu` → `baska_nesne`. Stok tavanı satırı bu turda düzeltilmedi; ayrı gedik.",
+          f"- **H-N1** (etiket nesneyi taşır): `{hn['H-N1']}`. {hn['H-N1_not']}",
+          f"- **H-N2** (sayı bozulur): `{hn['H-N2']}`. {hn['H-N2_not']}"]
     ol = ts["olcum"]
     s += ["", "## 4. Tek-sistem'in kendi ölçüsü (taşınmadı, yan yana)", "",
           f"- Kopma payı 2025: {f(ol.get('Kopma payi', {}).get('2025'), 4)}; hipotez {f(ol.get('Hipotez', {}).get('2025'), 2)} "
@@ -501,7 +519,7 @@ def main() -> None:
         "mahsup_kodu": "mahsup/mahsuplasma == tek-sistem-mahsup.zip (bayt bayt aynı)",
         "donemler": list(DONEMLER),
         "evds": {d: {k: _r(v) for k, v in row.items()} for d, row in ev.items()},
-        "akim_yillik": ak, "sektor_bilanco": sb,
+        "akim_yillik": ak, "sektor_bilanco": sb, "adim1_kontrol": adim1_kontrol(esl),
         "mutabakat": mut, "referans": ref, "esleme": esl,
         "kural": "katman sonuçları taşınmaz; BDDK ve EVDS farkı açıklanır, kapatılmaz",
     }
@@ -519,6 +537,8 @@ def main() -> None:
         print(f"ref {r['donem']} {r['kalem']:<28} tek {r['tek_sistem_milyar']}  ölçüm {r['evds_milyar']}")
     for r in esl:
         print(f"adım {r['adim']} {r['durum']:<14} {r['katman']:<22} {r['nesne']} = {r['deger']}")
+    hn = adim1_kontrol(esl)
+    print(f"H-N1 {hn['H-N1']} | H-N2 {hn['H-N2']}")
 
 
 if __name__ == "__main__":
