@@ -1,5 +1,7 @@
 # Modeller
 
+Kaynak: [saydamonur2002-tech/tek-sistem](https://github.com/saydamonur2002-tech/tek-sistem) `c01b60a`, `model/` dizini ve `RAPOR.md` olduğu gibi kopyalandı. Sayılar tek-sistem'in kendi hesabıdır (BDDK, TÜİK, Türk-İş); bu depoda yeniden ölçülmedi. EVDS ile mutabakat `../tek_sistem_kopru.py` içinde.
+
 Depoya hesaplanmış değerler gitti. Excel formülü yerel dosyada duruyor; bu kapı metin alıyor.
 
 - gercek/Turetim.csv: özel sektör net, sepet farkı, kişi başı kredi, açlık iddiası
