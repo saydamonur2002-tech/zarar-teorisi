@@ -1,0 +1,5 @@
+﻿adim,kaynak,nesne,donem,deger,birim,durum,ihrac,prim,cikis,not,dosya
+4,tek_sistem_kopru.py,hane vadeli mevduat (VF.2 ZP8),2026-Q1,8322.4,milyar TL,olculdu,,,,"adres adayı, senet değil",tek_sistem_kopru.csv
+4,tek_sistem_kopru.py,firma vadeli mevduat (VF.2 ZP8),2026-Q1,4400.1,milyar TL,olculdu,,,,"adres adayı, senet değil",tek_sistem_kopru.csv
+4,tek_sistem_kopru.py,gerçek kişi YP mevduat (HPB tablo 2),2026-Q1,6639.4,milyar TL (TL karşılığı),olculdu,,,,"adres adayı, senet değil",tek_sistem_kopru.csv
+4,,hedef primli endeksli senet,,,,modellenmedi,,,,"Ne ödeme zinciri ne mahsup paketi içerir. HEKİS senedi (hekis-model, TÜFE endeksli, reel kupon 0) ile eşitlenmez.",

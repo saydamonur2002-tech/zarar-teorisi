@@ -1,0 +1,109 @@
+{
+  "birim": "milyar TL, dönem sonu",
+  "kapilar": {
+    "1_vade_gunu": {
+      "durum": "ayrılmadı",
+      "not": "Merkezi yönetim vadeli mevduatın vade dilimi kırılımı (1 aya kadar / 1–3 / 3–6 / 6–12 / 12+) EVDS'de yok. Finansal hesaplar yalnız vadesiz/vadeli (ZP7/ZP8). TCMB 'dthvade' ve BDDK aylık bülten vade dilimini sektör toplamı için verir; tür × vade çaprazı yayımlanmaz. HPB tablo 3 resmî kuruluşlar vadesiz/vadeli (TL) GY kapsamıdır, MY diye kullanılmadı.",
+      "kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/81869b75-a522-40cd-a026-a65621d43510/dthvade.html?MOD=AJPERES ; https://www.bddk.org.tr/bultenaylik"
+    },
+    "2_thkh": {
+      "durum": "ayrılmadı",
+      "not": "THKH bakiyesi için ayrı kamu serisi yok (lider_mevduat katmanı: 6 grup kodu + 2 web sorgusu). GY–GY 352 ve MY F.2 (ZP27) aday notunda kalır; vadeli diye etiketlenmez. MY F.2 vadeli (ZP30) ölçülüdür ama ihraç tarafıdır, tutulan vadeli değildir.",
+      "kaynak": "https://evds3.tcmb.gov.tr/tumSeriler/bie_finhestnks1311"
+    },
+    "3_odenmeyen_emir": {
+      "durum": "bulunamadı",
+      "not": "Merkezi yönetim konsolide 320 Bütçe Emanetleri ve 103 Verilen Çekler ve Gönderme Emirleri bakiyesi 2025-Q2 ve Q3 için bulunamadı. Muhasebat portalı (/portal/v2 pages: genel-yonetim-mali-istatistikleri, mali-istatistikler-gfsm-2014e-uyumlu, merkezi-yonetim-alt-sektoru-mali-istatistikleri) dosya bağlantısı vermiyor; 3 sayfa + 3 arama denendi. Bulunan ama testin nesnesi olmayan: GİB Eylül 2025 kurum mizanı (103 hesabı dönem hareketi ~525 milyar, bakiye 0,11; 320 bakiye 0,05) kurum düzeyidir; Sayıştay Adana BB 2024 raporu 320 bekleme gün tablosu belediyedir. Sayıştay HMB raporunda gün sayısı yok. Gün sayısı hiçbir kaynakta MY için yayımlanmıyor.",
+      "kaynak": "https://www.mevzuat.gov.tr/MevzuatMetin/yonetmelik/7.5.20357.pdf ; https://cdn.gib.gov.tr/api/gibportal-file/file/getFileResources?objectKey=arsiv%2Fkurumsal%2Fpdfs%2FmaliTablolar%2F2025%2Feylul%2FMizan_Son_Duzey.pdf ; https://www.sayistay.gov.tr/reports/download/xLYGeJjgp4-adana-buyuksehir-belediyesi ; https://www.sayistay.gov.tr/reports/download/9XQWOwBQpN-hazine-ve-maliye-bakanligi"
+    }
+  },
+  "hipotez": {
+    "girdi": {
+      "2025-Q2_vadeli": 561.9,
+      "2025-Q3_vadeli": 1908.0,
+      "2025-Q2_vadesiz": 1318.5,
+      "2025-Q3_vadesiz": 827.6,
+      "d_vadeli": 1346.1,
+      "d_vadesiz": -490.9,
+      "d_vf2": 855.3
+    },
+    "H-K1": "test_edilemez",
+    "H-K1_not": "Vadeli arttı (+1346.1), vadesiz düştü (-490.9). Ödenmeyen emir ve gün ölçülmedi (kapı 3 bulunamadı). Vadeli artış tek başına lehte yazılmaz.",
+    "H-K2": "ayri_stok",
+    "H-K2_not": "THKH serisi yok; sıçrama THKH ile eşleştirilemedi. Kural gereği etiket ayri_stok; bu 'ayrı olduğu gösterildi' değil 'eşleşme gösterilemedi' demektir. Kalıcılık cümlesi düşer: THKH dışı vadeli, kurum ödemesini kilitlemez.",
+    "yan_olcum": {
+      "tcmb_f2_vadeli_2025-Q3": 1680.6,
+      "my_f2_vadeli_2025-Q3": 48.0,
+      "d_tcmb_f2_vadeli_Q2_Q3": 1458.9,
+      "not": "TCMB vadeli mevduat ihraç eder (F.2 vadeli). Q2→Q3 TCMB F.2 vadeli +1458.9, MY VF.2 vadeli +1346.1; eş hareket ölçüldü, karşı taraf eşlemesi kimden-kime'de yok, bu yüzden eşitlenmez."
+    }
+  },
+  "veri": {
+    "2024-Q4": {
+      "vf2": 1529.9,
+      "para": 0.3,
+      "vadesiz": 746.8,
+      "vadeli": 782.8,
+      "f2": 113.7,
+      "f2_vadeli": 19.4,
+      "tcmb_f2_vadeli": 354.7,
+      "resmi_vadesiz_tl": 287.1,
+      "resmi_vadeli_tl": 323.8
+    },
+    "2025-Q1": {
+      "vf2": 1300.9,
+      "para": 0.4,
+      "vadesiz": 898.4,
+      "vadeli": 402.1,
+      "f2": 108.4,
+      "f2_vadeli": 28.0,
+      "tcmb_f2_vadeli": 1114.4,
+      "resmi_vadesiz_tl": 185.3,
+      "resmi_vadeli_tl": 335.3
+    },
+    "2025-Q2": {
+      "vf2": 1880.9,
+      "para": 0.5,
+      "vadesiz": 1318.5,
+      "vadeli": 561.9,
+      "f2": 167.7,
+      "f2_vadeli": 30.5,
+      "tcmb_f2_vadeli": 221.7,
+      "resmi_vadesiz_tl": 371.6,
+      "resmi_vadeli_tl": 358.5
+    },
+    "2025-Q3": {
+      "vf2": 2736.2,
+      "para": 0.6,
+      "vadesiz": 827.6,
+      "vadeli": 1908.0,
+      "f2": 226.4,
+      "f2_vadeli": 48.0,
+      "tcmb_f2_vadeli": 1680.6,
+      "resmi_vadesiz_tl": 418.0,
+      "resmi_vadeli_tl": 730.0
+    },
+    "2025-Q4": {
+      "vf2": 2798.3,
+      "para": 0.5,
+      "vadesiz": 725.6,
+      "vadeli": 2072.2,
+      "f2": 364.3,
+      "f2_vadeli": 58.9,
+      "tcmb_f2_vadeli": 1756.9,
+      "resmi_vadesiz_tl": 458.1,
+      "resmi_vadeli_tl": 1057.4
+    },
+    "2026-Q1": {
+      "vf2": 2933.6,
+      "para": 0.8,
+      "vadesiz": 822.6,
+      "vadeli": 2110.2,
+      "f2": 360.8,
+      "f2_vadeli": 89.9,
+      "tcmb_f2_vadeli": 1012.0,
+      "resmi_vadesiz_tl": 390.2,
+      "resmi_vadeli_tl": 1065.7
+    }
+  }
+}

@@ -1,0 +1,438 @@
+"""NACE + KAP katmanı (hazne sonucunun üstü). Kamuya açık kaynak; uydurma yok.
+
+Çalıştırma: python3 nace_kap_katman.py
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+KOK = Path(__file__).resolve().parent
+MAHSUP_KOK = KOK / "mahsup"
+if str(MAHSUP_KOK) not in sys.path:
+    sys.path.insert(0, str(MAHSUP_KOK))
+
+from evds_cek import fetch_group  # noqa: E402
+from mahsup_sektor_evds import HAM  # noqa: E402
+from mahsuplasma.ag import BorcAgi, Firma  # noqa: E402
+from mahsuplasma.mahsup import mahsup_ozeti, optimal_mahsup  # noqa: E402
+
+KAP_BASE = "https://www.kap.org.tr"
+KILIT = KOK / "kap_universe_kilit.json"
+GUNLUK = KOK / "nace_kap_arama_gunlugu.jsonl"
+OUT_NACE = KOK / "nace_bolum_donem.csv"
+OUT_KAP = KOK / "kap_kenar.csv"
+OUT_YS = KOK / "mahsup_yogun_seyrek.csv"
+OUT_RAPOR = KOK / "NACE_KAP_RAPOR.md"
+OUT_SONUC = KOK / "nace_kap_sonuc.json"
+KAP_KENAR_COLS = (
+    "aciklayan",
+    "karsi_taraf",
+    "yon",
+    "tutar",
+    "para_birimi",
+    "donem",
+    "url",
+    "bildirim_tarihi",
+    "kaynak_alinti",
+)
+DONEMLER = ("2025-Q4", "2026-Q1")
+YOGUN_DONEM = "2026-Q1"
+HM_ESIK = 0.15
+# Not: bunlar istihdam/sanayi endeksi; finansal hesap NACE bölümü değil (yanlış raf).
+# Asıl kapı: TÜİK birincil dosya (bu betikte henüz çekilmedi).
+NACE_EVDS_YANLIS_RAF = (
+    "bie_rsistihn",
+    "bie_istihsk4",
+    "bie_tsny2010",
+    "bie_tsny2015",
+    "bie_istihsk3",
+)
+
+
+def log(entry: dict) -> None:
+    with GUNLUK.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+
+def kap_get(url: str) -> bytes:
+    req = urllib.request.Request(url, headers={"Referer": f"{KAP_BASE}/tr/bildirim-sorgu", "Accept": "application/json"})
+    with urllib.request.urlopen(req, timeout=90) as r:
+        return r.read()
+
+
+def kap_post_disclosures(from_d: str, to_d: str) -> list[dict]:
+    body = json.dumps({"fromDate": from_d, "toDate": to_d, "mkkMemberOidList": [], "subjectList": []}).encode()
+    req = urllib.request.Request(
+        f"{KAP_BASE}/tr/api/disclosure/members/byCriteria",
+        data=body,
+        headers={"Content-Type": "application/json", "Referer": f"{KAP_BASE}/tr/bildirim-sorgu", "Accept": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=120) as r:
+        return json.loads(r.read().decode())
+
+
+def kap_disclosure_windows() -> list[dict]:
+    """Aylık pencereler (2000 üst sınırı)."""
+    windows = [
+        ("2025-10-01", "2025-10-31"),
+        ("2025-11-01", "2025-11-30"),
+        ("2025-12-01", "2025-12-31"),
+        ("2026-01-01", "2026-01-31"),
+        ("2026-02-01", "2026-02-28"),
+        ("2026-03-01", "2026-03-31"),
+    ]
+    seen = set()
+    out = []
+    for a, b in windows:
+        try:
+            chunk = kap_post_disclosures(a, b)
+            log({"kaynak": "KAP", "islem": "byCriteria", "from": a, "to": b, "adet": len(chunk)})
+            time.sleep(0.6)
+        except urllib.error.HTTPError as e:
+            log({"kaynak": "KAP", "islem": "byCriteria", "from": a, "to": b, "hata": str(e)})
+            continue
+        for d in chunk:
+            idx = d.get("disclosureIndex")
+            if idx in seen:
+                continue
+            seen.add(idx)
+            out.append(d)
+    return out
+
+
+def parse_ilisikli_html(html: str, meta: dict) -> list[dict]:
+    """Basit tablo taraması; tutar yoksa kenar yok."""
+    if not html or "ilişkili" not in html.lower() and "iliskili" not in html.lower():
+        return []
+    rows = []
+    # hücre çiftleri: metin + sayı
+    cells = re.findall(r">([^<>]{2,120})</td>\s*<td[^>]*>\s*([\d.,]+)", html, flags=re.I)
+    for karsi, tut in cells:
+        karsi = re.sub(r"\s+", " ", karsi).strip()
+        if len(karsi) < 3 or karsi.lower() in ("toplam", "total", "-"):
+            continue
+        try:
+            val = float(tut.replace(".", "").replace(",", "."))
+        except ValueError:
+            continue
+        if val <= 0:
+            continue
+        rows.append(
+            {
+                "aciklayan": meta.get("kapTitle", ""),
+                "karsi_taraf": karsi[:200],
+                "yon": "belirsiz",
+                "tutar": val,
+                "para_birimi": "TL",
+                "donem": meta.get("fin_donem", ""),
+                "url": f"{KAP_BASE}/tr/Bildirim/{meta.get('disclosureIndex')}",
+                "bildirim_tarihi": meta.get("publishDate", ""),
+                "kaynak_alinti": karsi[:80],
+            }
+        )
+    return rows
+
+
+def kap_kenar_df(kenar: list[dict]) -> pd.DataFrame:
+    df = pd.DataFrame(kenar)
+    if df.empty:
+        return pd.DataFrame(columns=list(KAP_KENAR_COLS))
+    return df
+
+
+def kap_kenar_yukle() -> pd.DataFrame:
+    if not OUT_KAP.exists() or OUT_KAP.stat().st_size == 0:
+        return pd.DataFrame(columns=list(KAP_KENAR_COLS))
+    try:
+        return pd.read_csv(OUT_KAP)
+    except pd.errors.EmptyDataError:
+        return pd.DataFrame(columns=list(KAP_KENAR_COLS))
+
+
+def kap_kenarlari(disclosures: list[dict], max_detay: int = 120) -> list[dict]:
+    kilit = json.loads(KILIT.read_text(encoding="utf-8"))
+    keys = kilit["bildirim"]["konu_anahtarlari"]
+    aday = []
+    for d in disclosures:
+        blob = f"{d.get('subject','')} {d.get('summary','')}"
+        if any(k.lower() in blob.lower() for k in keys):
+            aday.append(d)
+        elif d.get("disclosureType") == "FR" and "Finansal Tablo" in blob:
+            aday.append(d)
+    aday = aday[:max_detay]
+    kenar = []
+    for d in aday:
+        idx = d["disclosureIndex"]
+        fin_donem = ""
+        if d.get("year") and d.get("period"):
+            q = {1: "Q1", 2: "Q2", 3: "Q3", 4: "Q4"}.get(int(d["period"]), "")
+            fin_donem = f"{d.get('year')}-{q}"
+        meta = {**d, "fin_donem": fin_donem}
+        try:
+            raw = kap_get(f"{KAP_BASE}/tr/api/notification/attachment-detail/{idx}")
+            det = json.loads(raw.decode())
+            time.sleep(0.5)
+        except Exception as exc:  # noqa: BLE001
+            log({"kaynak": "KAP", "islem": "attachment-detail", "index": idx, "hata": str(exc)})
+            continue
+        if not det:
+            continue
+        body = det[0].get("disclosureBody") or []
+        html = body[0] if isinstance(body, list) and body else (body if isinstance(body, str) else "")
+        kenar.extend(parse_ilisikli_html(html, meta))
+    return kenar
+
+
+def nace_evds_dene() -> pd.DataFrame | None:
+    log({"kaynak": "TÜİK", "islem": "birincil_dosya", "durum": "denenmedi", "not": "data.tuik.gov.tr NACE bölüm ağırlığı bu turda çekilmedi"})
+    for g in NACE_EVDS_YANLIS_RAF:
+        try:
+            rows, n = fetch_group(g, start="01-01-2023", end="07-10-2026", freq="5")
+            log({"kaynak": "EVDS", "grup": g, "seri": n, "satir": len(rows)})
+            if len(rows) >= 10:
+                df = pd.DataFrame(rows, columns=["grup", "donem", "seri", "ad", "agg", "deger"])
+                return df
+        except Exception as exc:  # noqa: BLE001
+            log({"kaynak": "EVDS", "grup": g, "hata": str(exc)})
+    return None
+
+
+def grup_ici_pay(kenar_df: pd.DataFrame) -> float | None:
+    """Karşı taraf grup eşleşmesi yoksa None."""
+    if kenar_df.empty or "grup_ici" not in kenar_df.columns:
+        return None
+    g = kenar_df["grup_ici"]
+    if g.isna().all():
+        return None
+    return float(g.mean())
+
+
+def hm_etiket(yogun: float, sey_oran: float, n_kenar: int, grup_ici: float | None) -> str | None:
+    """H-M: yalnız test_edilemez | matris_eseri | hipotez_duser | ters_yon. Grup içi >50% ise None."""
+    if grup_ici is not None and grup_ici > 0.5:
+        return None
+    if n_kenar < 30 or not np.isfinite(sey_oran):
+        return "test_edilemez"
+    fark = yogun - sey_oran
+    if fark >= HM_ESIK:
+        return "matris_eseri"
+    if abs(fark) < HM_ESIK:
+        return "hipotez_duser"
+    if fark <= -HM_ESIK:
+        return "ters_yon"
+    return "test_edilemez"
+
+
+def seyrek_mahsup(kenar_df: pd.DataFrame) -> dict | None:
+    if kenar_df.empty:
+        return None
+    ag = BorcAgi()
+    nodes = set()
+    for _, r in kenar_df.iterrows():
+        nodes.add(r["aciklayan"])
+        nodes.add(r["karsi_taraf"])
+    for n in nodes:
+        ag.firma_ekle(Firma(str(n)[:120], "araci", nakit=0.0))
+    for _, r in kenar_df.iterrows():
+        ag.borc_ekle(str(r["aciklayan"])[:120], str(r["karsi_taraf"])[:120], float(r["tutar"]))
+    once = ag
+    sonra = optimal_mahsup(once)
+    oz = mahsup_ozeti(once, sonra)
+    return {"silinen_oran": oz["silinen_oran"], "kenar_sayisi": len(kenar_df), "tip": "seyrek_KAP"}
+
+
+def main() -> None:
+    if GUNLUK.exists():
+        GUNLUK.unlink()
+    log({"islem": "basla", "kilit": KILIT.name})
+
+    hazne = pd.read_csv(KOK / "mahsup_sektor_donem.csv")
+    hazne_ok = set(hazne["donem"].unique()) >= set(DONEMLER)
+
+    tuik_sonuc: dict | None = None
+    nace_raw = None
+    try:
+        import nace_tuik_katman as nt
+
+        if nt.yshi_yolu() is not None:
+            nt.main()
+            tuik_sonuc = json.loads(nt.OUT_SONUC.read_text(encoding="utf-8"))
+            nace_rows = pd.read_csv(nt.OUT_BOLUM, encoding="utf-8-sig").to_dict("records")
+            log({"kaynak": "TÜİK", "islem": "github_xls", "dosya": tuik_sonuc.get("yshi_dosya")})
+        else:
+            nace_rows = []
+    except Exception as exc:  # noqa: BLE001
+        log({"kaynak": "TÜİK", "islem": "hata", "detay": str(exc)})
+        nace_rows = []
+
+    if not nace_rows:
+        nace_raw = nace_evds_dene()
+        if nace_raw is None:
+            for p in DONEMLER:
+                nace_rows.append(
+                    {
+                        "nace_kisim": "bulunamadı",
+                        "donem": p,
+                        "brut_cikis_once": None,
+                        "brut_cikis_sonra": None,
+                        "silinen_oran": None,
+                        "kaynak": (
+                            "NACE bölüm yok: GitHub YSHİ xls yok; EVDS yanlış raf "
+                            f"({', '.join(NACE_EVDS_YANLIS_RAF)}) 2023–2026 boş — NACE yokluğu kanıtı değil"
+                        ),
+                    }
+                )
+        else:
+            last = nace_raw.sort_values("donem").groupby("seri").tail(1)
+            tot = last["deger"].clip(lower=0).sum()
+            for _, r in last.iterrows():
+                code = re.search(
+                    r"\b([A-U]|CA|CB|CC|CD|CE|CF|CG|CH|CI|CJ|CK|CL|CM|CN|CO|CP|CQ|CR|CS|CT|CU)\b",
+                    r["ad"],
+                )
+                bolum = code.group(1) if code else r["seri"]
+                w = float(r["deger"]) / tot if tot > 0 else 0.0
+                nace_rows.append({"nace_kisim": bolum, "agirlik": w, "kaynak_seri": r["seri"]})
+    pd.DataFrame(nace_rows).to_csv(OUT_NACE, index=False, encoding="utf-8-sig")
+
+    # KAP
+    import os
+
+    if os.environ.get("NACE_KAP_SKIP_KAP") == "1" and OUT_KAP.exists():
+        kenar_df = kap_kenar_yukle()
+        kenar = kenar_df.to_dict("records")
+        n_disclosure = n_ilisikli_baslik = -1
+        log({"kaynak": "KAP", "islem": "atla", "dosya": OUT_KAP.name})
+    else:
+        disc = kap_disclosure_windows()
+        n_disclosure = len(disc)
+        n_ilisikli_baslik = sum(
+            1
+            for d in disc
+            if any(
+                k.lower() in f"{d.get('subject','')} {d.get('summary','')}".lower()
+                for k in ("ilişkili taraf", "İlişkili Taraf")
+            )
+        )
+        log({"kaynak": "KAP", "islem": "ozet", "benzersiz_bildirim": n_disclosure, "ilisikli_taraf_baslik": n_ilisikli_baslik})
+        kenar = kap_kenarlari(disc)
+        kap_kenar_df(kenar).to_csv(OUT_KAP, index=False, encoding="utf-8-sig")
+
+    yogun = float(hazne.loc[hazne.donem == YOGUN_DONEM, "ag_silinen_oran"].iloc[0])
+    kenar_df = pd.DataFrame(kenar)
+    n_kenar = len(kenar_df)
+    sk = seyrek_mahsup(kenar_df)
+    sey_oran = float(sk["silinen_oran"]) if sk else float("nan")
+    grup_ici = grup_ici_pay(kenar_df)
+    hm = hm_etiket(yogun, sey_oran, n_kenar, grup_ici)
+
+    ys_rows = [
+        {"donem": YOGUN_DONEM, "tip": "yogun_hazne_Lm", "silinen_oran": yogun, "fark_yogun_seyrek": float("nan")},
+    ]
+    if sk:
+        ys_rows.append(
+            {
+                "donem": "2025-Q4–2026-Q1",
+                "tip": "seyrek_KAP",
+                "silinen_oran": sey_oran,
+                "fark_yogun_seyrek": yogun - sey_oran if np.isfinite(sey_oran) else float("nan"),
+                "kenar_sayisi": n_kenar,
+            }
+        )
+    ys_rows.append(
+        {
+            "donem": YOGUN_DONEM,
+            "tip": "hm_etiket",
+            "silinen_oran": float("nan"),
+            "fark_yogun_seyrek": yogun - sey_oran if np.isfinite(sey_oran) else float("nan"),
+            "hm": hm or "grup_ici_50_asildi_HM_yazilmaz",
+        }
+    )
+    pd.DataFrame(ys_rows).to_csv(OUT_YS, index=False, encoding="utf-8-sig")
+
+    if tuik_sonuc:
+        hn = tuik_sonuc.get("H-N", "test_edilemez")
+    else:
+        hn = "test_edilemez" if nace_raw is None else "karışık"
+    hk = "test_edilemez" if n_kenar < 30 else "karışık"
+
+    kap_kenar_durum = (
+        f"{n_kenar} tutarlı kenar"
+        if n_kenar >= 30
+        else ("tutarlı tablo görülmedi (0 sayısal kenar)" if n_kenar == 0 else f"tutarlı tablo yetersiz ({n_kenar} kenar)")
+    )
+    sey_metin = "yok" if not np.isfinite(sey_oran) else f"{100 * sey_oran:.1f}%"
+    hm_satir = hm if hm else f"(yazılmaz — grup içi pay >50% önce H-K; pay={grup_ici})"
+    fark_metin = "—" if not np.isfinite(sey_oran) else f"{100 * (yogun - sey_oran):+.1f} puan"
+
+    sonuc = {
+        "yogun_2026_q1": yogun,
+        "seyrek_silinen_oran": sey_oran if np.isfinite(sey_oran) else None,
+        "fark_puan": yogun - sey_oran if np.isfinite(sey_oran) else None,
+        "kap_kenar_sayisi": n_kenar,
+        "H-M": hm,
+        "H-N": hn,
+        "tuik_yshi": tuik_sonuc.get("yshi_dosya") if tuik_sonuc else None,
+        "H-K": hk,
+        "grup_ici_pay": grup_ici,
+    }
+    OUT_SONUC.write_text(json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    rapor = f"""# NACE + KAP katman raporu
+
+## 1. Katman tablosu
+
+| Katman | Durum |
+| --- | --- |
+| Hazne (H,F,B,K,D) | {'duruyor' if hazne_ok else 'eksik dönem'} — `mahsup_sektor_donem.csv` (trilyon TL/ay) |
+| NACE bölüm | {'TÜİK YSHİ (GitHub xls)' if tuik_sonuc else ('EVDS proxy' if nace_raw is not None else 'bulunamadı')} |
+| KAP kenar | {kap_kenar_durum}; sayısal kenar {n_kenar} |
+
+## 2. Yanlışlayıcılar
+
+- **H-M:** `{hm_satir}`. Yoğun L^m üst sınır ({YOGUN_DONEM}): {100 * yogun:.1f}. Seyrek KAP: {sey_metin}. Fark (yoğun−seyrek): {fark_metin}. Etiket kümesi: test_edilemez | matris_eseri | hipotez_duser | ters_yon.
+- **H-N:** `{hn}`. Bölüm silinen_oran ölçülmedi; F/B hazne farkı H-N değil. TÜİK: `NACE_TUIK_RAPOR.md`.
+- **H-K:** `{hk}`.
+
+## 3. NACE araması (düzeltme)
+
+- Denenen EVDS grupları istihdam/sanayi (`bie_rsistihn`, `bie_istihsk4`, `bie_tsny2010`, …) — finansal hesap NACE bölümü değil.
+- 2023–2026’da 0 satır, yalnızca o grupların o pencerede boş olduğunu gösterir; NACE’nin var/yok kanıtı değil.
+- KAP `abcdCode` sektör/NACE değildir (doğru).
+- TÜİK YSHİ: GitHub `Ekonomik faaliyetlere göre temel göstergeler, 2024.xls` (`python3 nace_tuik_katman.py`).
+- Sektör Bilançoları xls GitHub’da yoksa yabancı kaynak payı ve F hazne bölünmesi yapılmaz.
+
+## 4. KAP tarama
+
+- Benzersiz bildirim (aylık pencereler): {n_disclosure if n_disclosure >= 0 else '(önbellek)'}. Başlıkta “ilişkili taraf”: {n_ilisikli_baslik if n_ilisikli_baslik >= 0 else '(önbellek)'}.
+- `byCriteria` yanıtı **2000/tavan**; tavan kesilmiş aylarda ilişkili taraf metni dışarıda kalmış olabilir.
+- HTML gövdede sayı çıkmayan satır → kenar yazılmadı (sentetik doldurma yok). Sonuç: **tutarlı tablo görülmedi**, “bildirim yok” değil.
+
+## 5. Dosyalar
+
+- `nace_bolum_donem.csv`, `kap_kenar.csv`, `mahsup_yogun_seyrek.csv`, `nace_kap_sonuc.json`
+- `nace_kap_arama_gunlugu.jsonl`, `kap_universe_kilit.json`
+
+## 6. Sınır ve sonraki risk
+
+D haznesi NACE tablosuna katılmadı. Tahsilat iddiası yok. Olası FR ek PDF/XBRL kenar açarsa önce **grup içi pay**; ilişkili taraf çoğunlukla holding kolu. Seyrek silme oradan düşerse H-M sahte “tutulur”. H-K ayrışmazsa NACE eklemek %42’yi açıklamaz; grup içi bakiyeyi sektörmüş gibi gösterebilir.
+
+Tekrar: `python3 nace_kap_katman.py`
+"""
+    OUT_RAPOR.write_text(rapor, encoding="utf-8")
+    print(rapor)
+
+
+if __name__ == "__main__":
+    main()

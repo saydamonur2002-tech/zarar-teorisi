@@ -1,0 +1,3 @@
+﻿adim,kaynak,nesne,donem,deger,birim,durum,not,dosya
+5,,kira akışı (tek sistem),,,,olculmedi,tek-sistem RAPOR.md de 'Bu kol ölçülmedi' der.,
+5,hekis-model 6c34a63,kira akışı: havuz kirası 2+1,2026-08,20000.0,TL/ay,modellendi,"Politika kirası; kaynak alanı 'model varsayimi, gozlem degil'. Tek sistem kira satırına yazılmaz.",hekis/bind.py; data/istanbul_2026.json

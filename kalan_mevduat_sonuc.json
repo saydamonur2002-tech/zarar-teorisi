@@ -1,0 +1,56 @@
+{
+  "birim": "milyar TL, dönem sonu",
+  "skor_payda": "H+F+GY",
+  "butun_payda": "brüt kapı; PFK kalan sayılmaz; skor değil",
+  "ozet": {
+    "2025-Q2": {
+      "payda_butun": 39963.2,
+      "payda_hfg": 22282.8,
+      "my": 1880.9,
+      "pay_my_butun": 0.047,
+      "pay_my_hfg": 0.084,
+      "kalan_butun": 0.953,
+      "kalan_hfg": 0.916,
+      "yuzde70": "70in_ustunde",
+      "yuzde70_not": "eşitlik değil; kalan HFG 70'in 22 puan üstü; kullanıcı 70 eksik tahmin",
+      "H_pay_hfg": 0.585,
+      "F_pay_hfg": 0.309,
+      "GY_disi_MY_pay_hfg": 0.022
+    },
+    "2025-Q3": {
+      "payda_butun": 44253.4,
+      "payda_hfg": 24725.9,
+      "my": 2736.2,
+      "pay_my_butun": 0.062,
+      "pay_my_hfg": 0.111,
+      "kalan_butun": 0.938,
+      "kalan_hfg": 0.889,
+      "yuzde70": "70in_ustunde",
+      "yuzde70_not": "eşitlik değil; kalan HFG 70'in 19 puan üstü",
+      "H_pay_hfg": 0.563,
+      "F_pay_hfg": 0.311,
+      "GY_disi_MY_pay_hfg": 0.015
+    },
+    "2026-Q1": {
+      "payda_butun": 48516.5,
+      "payda_hfg": 27349.2,
+      "my": 2933.6,
+      "pay_my_butun": 0.06,
+      "pay_my_hfg": 0.107,
+      "kalan_butun": 0.94,
+      "kalan_hfg": 0.893,
+      "yuzde70": "70in_ustunde",
+      "yuzde70_not": "eşitlik değil; kalan HFG 70'in 19 puan üstü",
+      "H_pay_hfg": 0.562,
+      "F_pay_hfg": 0.314,
+      "GY_disi_MY_pay_hfg": 0.017
+    }
+  },
+  "hipotez": {
+    "H-P": "olculdu",
+    "H-P_not": "Skor H+F+GY paydasında MY dışı pay. 2026-Q1 kalan 0,893. Bütün paydadaki 0,94 skor değil.",
+    "H-P2": "ayri",
+    "H-P2_not": "2025-Q2→Q3 vadeli: MY +239,5%, H +3,3%, F +9,0%. Eşik ±10 puan. Aynı çeyrek, aynı oran değil.",
+    "vade_dilimi": "ayrılmadı; kalıcılık cümlesi yok; H-K1 kapalı"
+  }
+}

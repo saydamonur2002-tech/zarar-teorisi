@@ -1,0 +1,247 @@
+{
+  "birim": "milyar TL, dönem sonu",
+  "hipotez": {
+    "donem": "2026-Q1",
+    "H-L": "ayri",
+    "H-L_not": "Merkezi yönetim VF.2 2,933.6 < GY VF.2 3,398.8; ayrı EVDS serisi (S.1311). Hane VF.2 15,356.8; MY/hane = %19.1; TCMB P3111 nakit/hane = %7.8. Büyüklük kontrol kanıtı değildir.",
+    "H-L_buyukluk": "buyuk",
+    "H-L2": "silinen_bos",
+    "H-L2_not": "Lider parçasının ters bacağı yok: TCMB ve bankalar GY'de mevduat tutmaz; GY mevduat yükümlülüğü (360.8) tamamı S.1311 ihraçlı ve kimden-kime GY–GY 352 kendi içidir. Skora girmez. Tavan yazılmaz.",
+    "thkh": "ayrilmadi",
+    "akis_ve_stok_tavani": "bu katmanda yok"
+  },
+  "veri": {
+    "2024-Q4": {
+      "gy_vf2": 1906.4,
+      "my_vf2": 1529.9,
+      "my_vadesiz": 746.8,
+      "my_vadeli": 782.8,
+      "yerel_vf2": 138.6,
+      "sgk_vf2": 237.9,
+      "hane_vf2": 10805.4,
+      "gy_f2_yuk": 113.7,
+      "my_f2_yuk": 113.7,
+      "mb_p311_tl": 317.5,
+      "mb_p311_yp": 683.6,
+      "mb_p3111_nakit_tl": 317.5,
+      "mb_p3111_nakit_yp": 503.0,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 180.6,
+      "mb_p31_tl": 317.7,
+      "mb_p31_yp": 683.6,
+      "banka_resmi_tl": 610.8
+    },
+    "2025-Q1": {
+      "gy_vf2": 1577.2,
+      "my_vf2": 1300.9,
+      "my_vadesiz": 898.4,
+      "my_vadeli": 402.1,
+      "yerel_vf2": 126.6,
+      "sgk_vf2": 149.7,
+      "hane_vf2": 12437.3,
+      "gy_f2_yuk": 108.4,
+      "my_f2_yuk": 108.4,
+      "mb_p311_tl": 213.4,
+      "mb_p311_yp": 492.1,
+      "mb_p3111_nakit_tl": 213.4,
+      "mb_p3111_nakit_yp": 337.1,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 155.0,
+      "mb_p31_tl": 213.6,
+      "mb_p31_yp": 492.1,
+      "banka_resmi_tl": 520.5
+    },
+    "2025-Q2": {
+      "gy_vf2": 2367.0,
+      "my_vf2": 1880.9,
+      "my_vadesiz": 1318.5,
+      "my_vadeli": 561.9,
+      "yerel_vf2": 169.0,
+      "sgk_vf2": 317.1,
+      "hane_vf2": 13035.9,
+      "gy_f2_yuk": 167.7,
+      "my_f2_yuk": 167.7,
+      "mb_p311_tl": 513.3,
+      "mb_p311_yp": 597.3,
+      "mb_p3111_nakit_tl": 513.3,
+      "mb_p3111_nakit_yp": 407.7,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 189.6,
+      "mb_p31_tl": 513.5,
+      "mb_p31_yp": 597.3,
+      "banka_resmi_tl": 730.0
+    },
+    "2025-Q3": {
+      "gy_vf2": 3112.8,
+      "my_vf2": 2736.2,
+      "my_vadesiz": 827.6,
+      "my_vadeli": 1908.0,
+      "yerel_vf2": 207.6,
+      "sgk_vf2": 169.0,
+      "hane_vf2": 13916.9,
+      "gy_f2_yuk": 226.4,
+      "my_f2_yuk": 226.4,
+      "mb_p311_tl": 771.6,
+      "mb_p311_yp": 871.8,
+      "mb_p3111_nakit_tl": 771.6,
+      "mb_p3111_nakit_yp": 641.8,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 230.0,
+      "mb_p31_tl": 771.8,
+      "mb_p31_yp": 871.8,
+      "banka_resmi_tl": 1148.0
+    },
+    "2025-Q4": {
+      "gy_vf2": 3478.0,
+      "my_vf2": 2798.3,
+      "my_vadesiz": 725.6,
+      "my_vadeli": 2072.2,
+      "yerel_vf2": 255.7,
+      "sgk_vf2": 423.9,
+      "hane_vf2": 14559.9,
+      "gy_f2_yuk": 364.3,
+      "my_f2_yuk": 364.3,
+      "mb_p311_tl": 580.5,
+      "mb_p311_yp": 791.8,
+      "mb_p3111_nakit_tl": 580.5,
+      "mb_p3111_nakit_yp": 523.0,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 268.8,
+      "mb_p31_tl": 580.8,
+      "mb_p31_yp": 791.8,
+      "banka_resmi_tl": 1515.4
+    },
+    "2026-Q1": {
+      "gy_vf2": 3398.8,
+      "my_vf2": 2933.6,
+      "my_vadesiz": 822.6,
+      "my_vadeli": 2110.2,
+      "yerel_vf2": 274.6,
+      "sgk_vf2": 190.6,
+      "hane_vf2": 15356.8,
+      "gy_f2_yuk": 360.8,
+      "my_f2_yuk": 360.8,
+      "mb_p311_tl": 574.8,
+      "mb_p311_yp": 771.7,
+      "mb_p3111_nakit_tl": 574.8,
+      "mb_p3111_nakit_yp": 617.2,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 154.5,
+      "mb_p31_tl": 575.0,
+      "mb_p31_yp": 771.7,
+      "banka_resmi_tl": 1455.9
+    },
+    "2026-Q2": {
+      "gy_vf2": null,
+      "my_vf2": null,
+      "my_vadesiz": null,
+      "my_vadeli": null,
+      "yerel_vf2": null,
+      "sgk_vf2": null,
+      "hane_vf2": null,
+      "gy_f2_yuk": null,
+      "my_f2_yuk": null,
+      "mb_p311_tl": 595.3,
+      "mb_p311_yp": 616.2,
+      "mb_p3111_nakit_tl": 595.3,
+      "mb_p3111_nakit_yp": 476.3,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 139.9,
+      "mb_p31_tl": 595.6,
+      "mb_p31_yp": 616.2,
+      "banka_resmi_tl": 1566.3
+    },
+    "2026-Q3": {
+      "gy_vf2": null,
+      "my_vf2": null,
+      "my_vadesiz": null,
+      "my_vadeli": null,
+      "yerel_vf2": null,
+      "sgk_vf2": null,
+      "hane_vf2": null,
+      "gy_f2_yuk": null,
+      "my_f2_yuk": null,
+      "mb_p311_tl": 582.9,
+      "mb_p311_yp": 686.1,
+      "mb_p3111_nakit_tl": 582.9,
+      "mb_p3111_nakit_yp": 532.8,
+      "mb_p3112_altin_tl": 0.0,
+      "mb_p3112_altin_yp": 153.3,
+      "mb_p31_tl": 583.2,
+      "mb_p31_yp": 686.1,
+      "banka_resmi_tl": 1546.1
+    }
+  },
+  "yilsonu_altin_metin": {
+    "2024-Q4": 180.586,
+    "2025-Q4": 268.811
+  },
+  "kaynaklar": {
+    "yr2025": "https://www3.tcmb.gov.tr/yillikrapor/2025/pdf/3.2%2031.12.2025%20ve%2031.12.2024%20Tarihli%20Bilan%C3%A7olar.pdf",
+    "yr2024": "https://www3.tcmb.gov.tr/yillikrapor/2024/pdf/3.4-Aciklamalar.pdf",
+    "rg17": "https://www.lexpera.com.tr/mevzuat/cumhurbaskani-kararlari/tek-hazine-kurumlar-hesabi-kapsamina-alinacak-kamu-idareleri-ve-hesaplarin-belirlenmesi-hakkinda-3",
+    "kimden_kime": "https://www.tcmb.gov.tr/wps/wcm/connect/bf500c17-e3d5-40bd-8475-370caca9c6fd/VII.+Kimden-Kime+Tablolar%C4%B1.pdf?CACHEID=ROOTWORKSPACE-bf500c17-e3d5-40bd-8475-370caca9c6fd-p-TY4sh&MOD=AJPERES"
+  },
+  "arama_gunlugu": [
+    {
+      "grup": "bie_finhestnks1311",
+      "sonuc": "açıldı",
+      "not": "Merkezi yönetim (S.1311) konsolide olmayan stok; VF.2, F.2"
+    },
+    {
+      "grup": "bie_finhestnks1313 / 1314",
+      "sonuc": "açıldı",
+      "not": "Yerel yönetim, SGK; GY toplamı kontrolü"
+    },
+    {
+      "grup": "bie_finhestnks13",
+      "sonuc": "açıldı",
+      "not": "GY toplamı (yan sütun)"
+    },
+    {
+      "grup": "bie_finhestnks14",
+      "sonuc": "açıldı",
+      "not": "Hane VF.2 (yüzde 10 eşiği)"
+    },
+    {
+      "grup": "bie_mbblnca",
+      "sonuc": "açıldı",
+      "not": "TCMB bilançosu aylık; P311 = P3111 nakit + P3112 altın, TL/YP. Yıl sonu yıllık bilançoyla birebir (2024: 1.001,1; 2025: 1.372,4)"
+    },
+    {
+      "grup": "bie_abanlbil",
+      "sonuc": "açıldı, kullanılmadı",
+      "not": "Analitik bilanço 'Kamu Mevduatı' TL; 'Kamu ve Diğer Döviz Mevduatı' karışık"
+    },
+    {
+      "grup": "bie_hpbitablo3",
+      "sonuc": "açıldı",
+      "not": "Resmî kuruluşlar TL; GY kapsamı, MY ayrılmaz"
+    },
+    {
+      "grup": "bie_hpbitablo2/4/8",
+      "sonuc": "açıldı, boş",
+      "not": "YP veya toplam mevduatta resmî ayrımı yok"
+    },
+    {
+      "grup": "bie_mevduat",
+      "sonuc": "açıldı, kullanılmadı",
+      "not": "Arşiv seri; banka grubu bazında resmî kuruluşlar"
+    },
+    {
+      "grup": "bie_finhestnks1312 / 71311 / 61311",
+      "sonuc": "boş",
+      "not": "Kimden-kime MY alt sektörü yok"
+    },
+    {
+      "grup": "bie_hznakit, bie_hazine, bie_hazinenakit, bie_nakitdenge, bie_kamufin, bie_hzborc",
+      "sonuc": "boş",
+      "not": "THKH / Hazine nakit rezervi stok serisi EVDS'de bulunamadı"
+    },
+    {
+      "grup": "web: HMB nakit gerçekleşmeleri",
+      "sonuc": "akım",
+      "not": "Aylık nakit dengesi akımdır; THKH bakiyesi yayımlanmıyor (2 sorgu denendi)"
+    }
+  ]
+}

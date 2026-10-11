@@ -1,0 +1,35 @@
+{
+  "birim": "milyar TL, dönem sonu",
+  "ozet": {
+    "2025-Q4": {
+      "tutulan_toplam_S1_ROW": 49956.0,
+      "ihrac_toplam_S1_ROW": 44661.0,
+      "kimlik_acigi": 5294.9,
+      "tcmb_P3_toplam": 9024.6,
+      "tcmb_P33_diger": 15.2,
+      "tcmb_P311_nakit": 1103.6,
+      "tcmb_P311_altin": 268.8,
+      "banka_toplam": 28535.1,
+      "lider_disi_tutulan": 47157.6,
+      "turetilmis": {
+        "Merkezi yönetim banka bacağı (TL+YP)": 1694.3,
+        "GY YP banka bacağı": 858.1
+      }
+    },
+    "2026-Q1": {
+      "tutulan_toplam_S1_ROW": 52447.5,
+      "ihrac_toplam_S1_ROW": 46150.8,
+      "kimlik_acigi": 6296.7,
+      "tcmb_P3_toplam": 9415.6,
+      "tcmb_P33_diger": 14.9,
+      "tcmb_P311_nakit": 1192.0,
+      "tcmb_P311_altin": 154.5,
+      "banka_toplam": 29055.1,
+      "lider_disi_tutulan": 49513.9,
+      "turetilmis": {
+        "Merkezi yönetim banka bacağı (TL+YP)": 1740.8,
+        "GY YP banka bacağı": 749.6
+      }
+    }
+  }
+}

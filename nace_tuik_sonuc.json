@@ -1,0 +1,14 @@
+{
+  "yshi_dosya": "Ekonomik faaliyetlere göre temel göstergeler, 2024.xls",
+  "sektor_bilanco_dosya": "Ekonomik faaliyetlere göre firmaların referans yıl bilanço hesapları .xls",
+  "nace_surumu": "NACE Rev.2 kısım (YSHI tablosu)",
+  "H-N": "test_edilemez",
+  "kapsam_disi": [
+    "A"
+  ],
+  "pay_uyumsuz": [
+    "F",
+    "G"
+  ],
+  "yil_uyarisi": "2024 faaliyet veya bilanço ağırlığı, 2026-Q1 akışına uygulandı."
+}

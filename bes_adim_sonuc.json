@@ -1,0 +1,104 @@
+{
+  "on_kontrol": {
+    "on_kayit": "87f0317",
+    "akis_satiri": {
+      "deger": 0.427,
+      "durum": "baska_nesne"
+    },
+    "akis_satiri_degismedi": true
+  },
+  "adimlar": {
+    "1": {
+      "adim": 1,
+      "dosya": "adim1_stok.csv",
+      "eski_tavan": 0.0728,
+      "yeni_tavan": 0.2582,
+      "yeni_tavan_yalniz_metin": 0.3175,
+      "ortak_milyar": 20363.4,
+      "brut_milyar": 78870.4,
+      "cift": 6,
+      "dolu_cift": 6,
+      "silinen": null,
+      "xls": false,
+      "H-S1": "temiz",
+      "H-S2": "temiz",
+      "etiket": "temiz"
+    },
+    "2": {
+      "adim": 2,
+      "dosya": "adim2.csv",
+      "temerrut": 0,
+      "durum": "modellendi",
+      "parametre": "holding_odeme_orani 0.5; ucret_gecis_beta 0.3",
+      "H-A2": "temiz",
+      "etiket": "temiz"
+    },
+    "3": {
+      "adim": 3,
+      "dosya": "adim3.csv",
+      "kredi_ihtiyaci": 0.0,
+      "f_f4_yuk": 25339.8,
+      "finansman_gideri_2024": 3143.4,
+      "finansman_gideri_2025": null,
+      "bddk_2025": 17302.0,
+      "evds_bolu_bddk": 1.359,
+      "H-A3": "temiz",
+      "etiket": "temiz"
+    },
+    "4": {
+      "adim": 4,
+      "dosya": "adim4.csv",
+      "adres_adayi": {
+        "hane vadeli mevduat (VF.2 ZP8)": 8322.4,
+        "firma vadeli mevduat (VF.2 ZP8)": 4400.1,
+        "gerçek kişi YP mevduat (HPB tablo 2)": 6639.4
+      },
+      "senet": "modellenmedi",
+      "ihrac": null,
+      "prim": null,
+      "cikis": null,
+      "H-A4": "temiz",
+      "etiket": "temiz"
+    },
+    "5": {
+      "adim": 5,
+      "dosya": "adim5.csv",
+      "kira": "olculmedi",
+      "hekis_kira_tl_ay": 20000.0,
+      "hekis": "modellendi",
+      "H-A5": "temiz",
+      "etiket": "temiz"
+    }
+  },
+  "kilitli_kapilar": {
+    "kapilar": {
+      "gecis_payi": {
+        "bos": true,
+        "dosya": "tavan_akis.csv",
+        "sutun": "gecis, tavan"
+      },
+      "vade_dilimi": {
+        "bos": true,
+        "dosya": "vadeli_kalicilik.csv",
+        "sutun": "vade_kirilim, ortalama_gun"
+      },
+      "odenmeyen_emir": {
+        "bos": true,
+        "dosya": "vadeli_kalicilik.csv",
+        "sutun": "odenmeyen_emir_milyar"
+      }
+    },
+    "etiket": "temiz",
+    "not": "varsayim_esik.csv eşikleri varsayım; kapıya taşınmaz."
+  },
+  "kosu": "bitti",
+  "son": "bitti",
+  "son_kaynak": "test_bes_adim.py",
+  "test_kontrol": {
+    "esleme_iki_deger": "temiz",
+    "silinen_bos": "temiz",
+    "senet_kilit": "temiz",
+    "uc_kapi_bos": "temiz",
+    "akis_satiri": "temiz"
+  }
+}
