@@ -187,6 +187,7 @@ def evds_f_yukumluluk_2026q1() -> dict:
         "borclanma_senedi": "F.3.Borçlanma Senetleri, Finansal Olmayan",
         "hisse": "F.5.Hisse Senetleri ve Özkaynaklar, Finansal Olmayan",
         "diger_borc": "F.8.Diğer Borçlar, Finansal Olmayan",
+        "F0_toplam_yukumluluk_71011": "F.0.Toplam Yükümlülükler, Finansal Olmayan",
     }
     out = {}
     for k, frag in keys.items():
@@ -194,7 +195,9 @@ def evds_f_yukumluluk_2026q1() -> dict:
         if not hit.empty:
             out[k] = float(hit.iloc[0].Deger) / 1e6
     if out:
-        out["toplam_yukumluluk"] = sum(v for k, v in out.items() if k not in ("toplam_yukumluluk",))
+        out["toplam_yukumluluk"] = sum(
+            v for k, v in out.items() if k not in ("toplam_yukumluluk", "F0_toplam_yukumluluk_71011")
+        )
     return out
 
 
@@ -223,6 +226,74 @@ def rapor_f_yukumluluk_paylari() -> dict:
     except Exception as exc:  # noqa: BLE001
         log({"islem": "firmalar_pdf", "hata": str(exc)})
     return sabit
+
+
+TAVAN_HAM = KOK / "stok_silim_tavan_ham.csv"
+# Konsolide OLMAYAN stok: rapor stokuyla aynı (S.11 F.0 = 141.474). Konsolide seri (71011) 50.777 → aynı stok değil.
+TAVAN_GRUP = {
+    "F": "bie_finhestnks11",
+    "H": "bie_finhestnks14",
+    "PFK": "bie_finhestnks12t",
+    "GY": "bie_finhestnks13",
+    "ROW": "bie_finhestnks2",
+}
+ARAC_KALEM = {"kredi": "4.Krediler", "mevduat": "2.Para ve Mevduat", "borclanma_senedi": "3.Borçlanma Senetleri"}
+# Repo A1: EVDS S.2 kalemleri ters etiketli (VF ↔ F). Diğer sektörlerde VF varlık, F yükümlülük.
+ROW_TERS = True
+
+
+def tavan_ham_yukle() -> pd.DataFrame | None:
+    if TAVAN_HAM.exists() and TAVAN_HAM.stat().st_size > 100:
+        return pd.read_csv(TAVAN_HAM, encoding="utf-8-sig")
+    try:
+        import sys
+
+        if str(KOK) not in sys.path:
+            sys.path.insert(0, str(KOK))
+        from evds_cek import fetch_group
+
+        rows = []
+        for hz, g in TAVAN_GRUP.items():
+            r, n = fetch_group(g, start="01-01-2026", end="07-10-2026")
+            rows += [(hz, g) + tuple(x[1:]) for x in r if x[1] == "2026-Q1"]
+            log({"islem": "tavan_evds", "hazne": hz, "grup": g, "seri": n, "satir_2026Q1": sum(1 for x in r if x[1] == "2026-Q1")})
+        df = pd.DataFrame(rows, columns=["hazne", "grup", "donem", "seri", "ad", "agg", "deger"])
+        df.to_csv(TAVAN_HAM, index=False, encoding="utf-8-sig")
+        return df
+    except Exception as exc:  # noqa: BLE001
+        log({"islem": "tavan_evds", "hata": str(exc)})
+        return None
+
+
+def _kalem(df: pd.DataFrame, hazne: str, taraf: str, arac: str) -> tuple[float | None, str | None]:
+    """taraf: 'varlik' | 'yukumluluk'. Dönüş milyar TL ve seri kodu."""
+    on = "VF." if taraf == "varlik" else "F."
+    if hazne == "ROW" and ROW_TERS:
+        on = "F." if taraf == "varlik" else "VF."
+    key = on + ARAC_KALEM[arac]
+    s = df[(df.hazne == hazne) & df.ad.str.replace(" ", "").str.startswith(key.replace(" ", ""))]
+    if s.empty:
+        return None, None
+    return float(s.iloc[0].deger) / 1e6, str(s.iloc[0].seri)
+
+
+def karsi_bacak_tavan(df: pd.DataFrame | None, alacakli: str, borclu: str, arac: str) -> dict:
+    """Ters bacak = borçlu → alacaklı aynı araçta. Tavan = min(borçlunun varlığı, alacaklının yükümlülüğü).
+    Kapıdır, skor değildir; seri tam ise üst sınır, alt küme ise delinir."""
+    out = {"karsi_bacak_tavan": None, "tavan_seri": None, "tavan_tipi": "veri_yok"}
+    if df is None or alacakli == borclu:
+        out["tavan_tipi"] = "kendi_ici" if alacakli == borclu else "veri_yok"
+        return out
+    v, sv = _kalem(df, borclu, "varlik", arac)
+    y, sy = _kalem(df, alacakli, "yukumluluk", arac)
+    adaylar = [(x, s) for x, s in ((v, sv), (y, sy)) if x is not None]
+    if not adaylar:
+        return out
+    tavan, seri = min(adaylar, key=lambda t: t[0])
+    out["karsi_bacak_tavan"] = round(tavan, 1)
+    out["tavan_seri"] = f"{sv or '-'} | {sy or '-'}"
+    out["tavan_tipi"] = "yapisal_0" if tavan == 0 else "evds_konsolide_olmayan"
+    return out
 
 
 def karsi_bacak_bul(kenarlar: list[dict], alacakli: str, borclu: str, arac: str) -> float | None:
@@ -357,9 +428,35 @@ def main() -> None:
     log({"islem": "kenar", "kaynak": "VII_metin", "adet": len(kenarlar), "bos_cift": "matris tablosu PDF'te vektör yok"})
 
     rows = satirlar_uret(kenarlar, "arac_ayri") + satirlar_uret(kenarlar, "arac_birlesik")
+    tavan_df = tavan_ham_yukle()
+    for r in rows:
+        if r["yontem"] == "arac_ayri":
+            r.update(karsi_bacak_tavan(tavan_df, r["alacakli"], r["borclu"], r["arac"]))
+        else:
+            r.update({"karsi_bacak_tavan": None, "tavan_seri": None, "tavan_tipi": "birlesik_uygulanmaz"})
     pd.DataFrame(rows).to_csv(OUT_CSV, index=False, encoding="utf-8-sig")
 
+    # Stok kıyası: konsolide olmayan F.0 (rapor) vs konsolide (önceki JSON'daki 50.7k)
+    stok_kiyas = {}
+    if tavan_df is not None:
+        f0 = tavan_df[(tavan_df.hazne == "F") & tavan_df.ad.str.startswith("F.0.Toplam Yükümlülükler")]
+        if not f0.empty:
+            stok_kiyas["evds_konsolide_olmayan_F0_milyar"] = round(float(f0.iloc[0].deger) / 1e6, 1)
+            stok_kiyas["seri"] = str(f0.iloc[0].seri)
+    stok_kiyas["evds_konsolide_71011_toplam_milyar"] = None  # aşağıda f_yuk ile dolar
+    stok_kiyas["rapor_F_yukumluluk_milyar"] = 141474.0
+    stok_kiyas["not"] = "Tavan konsolide OLMAYAN seriden; rapor stokuyla aynı. Konsolide 71011 (≈50.777) aynı stok değil."
+
+    ayri_tavan = [r for r in rows if r["yontem"] == "arac_ayri" and r["tavan_tipi"] not in ("kendi_ici",)]
+    tavan_toplam = sum(float(r["karsi_bacak_tavan"]) for r in ayri_tavan if r["karsi_bacak_tavan"] is not None)
+    yapisal_sifir = [f"{r['alacakli']}–{r['borclu']}·{r['arac']}" for r in ayri_tavan if r["tavan_tipi"] == "yapisal_0"]
+    # H-S paydası: araç ayrı ilgili stok = metindeki tek yön bacaklar + ters bacak (tavanıyla); birleşik 56.696 değil
+    payda_ayri_alt = sum(float(r["stok"]) for r in ayri_tavan)
+
     f_yuk = evds_f_yukumluluk_2026q1()
+    stok_kiyas["evds_konsolide_71011_toplam_milyar"] = (
+        round(f_yuk["F0_toplam_yukumluluk_71011"], 1) if f_yuk.get("F0_toplam_yukumluluk_71011") else None
+    )
     rapor_pay = rapor_f_yukumluluk_paylari()
     ayri = [r for r in rows if r["yontem"] == "arac_ayri"]
     hs = hs_etiket(ayri, rapor_pay)
@@ -395,6 +492,22 @@ def main() -> None:
             "not": "model tercihi; kısmi çiftler; H-S'ye girmez",
         },
         "akis_oran_kiyaslama_disinda": AKIS_ORAN_REF,
+        "karsi_bacak_tavan_kapi": {
+            "tanim": "üst sınır; dağılım/olasılık değil; skor değil",
+            "seri_turu": "EVDS konsolide olmayan stok (bie_finhestnks11/14/12t/13/2), 2026-Q1",
+            "yapisal_0": yapisal_sifir,
+            "tavan_toplam_milyar": round(tavan_toplam, 1),
+            "arac_ayri_payda_alt_sinir_milyar": round(payda_ayri_alt, 1),
+            "arac_ayri_oran_ust_sinir": round(tavan_toplam / (payda_ayri_alt + tavan_toplam), 4) if payda_ayri_alt else None,
+            "hipotez_duser_esik": round(AKIS_ORAN_REF - HS_ESIK, 3),
+            "sonuc": (
+                "hipotez_duser olanaksız (üst sınır < eşik); açılırsa stok_ayri + stok_dar koşulu birlikte"
+                if payda_ayri_alt and tavan_toplam / (payda_ayri_alt + tavan_toplam) < AKIS_ORAN_REF - HS_ESIK
+                else "üst sınır eşiği dışlamıyor"
+            ),
+            "kosul": "seri tam ise geçerli; seri alt küme ise tavan delinir",
+            "stok_kiyas": stok_kiyas,
+        },
         "stok_dar_kosulu_rapor": stok_dar_kosulu(rapor_pay),
         "girmeyen_pay_rapor": {
             "hisse_pay": rapor_pay["hisse_pay"],
@@ -409,6 +522,16 @@ def main() -> None:
         "hazne_adlari": HAZNE_AD,
     }
     OUT_SONUC.write_text(json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    def _tavan_satir(r: dict) -> str:
+        t = r["karsi_bacak_tavan"]
+        t_metin = "—" if t is None else f"{float(t):.1f}"
+        return (
+            f"| {r['alacakli']}→{r['borclu']} · {r['arac']} | {float(r['stok']):.0f} | "
+            f"{t_metin} | {r['tavan_tipi']} | `{r['tavan_seri'] or '—'}` |"
+        )
+
+    tavan_tablo = "\n".join(_tavan_satir(r) for r in rows if r["yontem"] == "arac_ayri")
 
     rapor = f"""# Stok silimi raporu (2026-Q1)
 
@@ -444,6 +567,19 @@ Akış mahsupu (~42,7% brüt servis) bu tabloda **yok**.
 | EVDS F konsolide stok (ayrı stok, kıyas değil) | {100*girmeyen_evds.get('hisse_pay', 0):.1f}% | {100*girmeyen_evds.get('diger_borc_pay', 0):.1f}% | {100*(girmeyen_evds.get('hisse_pay', 0)+girmeyen_evds.get('diger_borc_pay', 0)):.1f}% |
 
 `stok_dar` koşulu (rapor payı >50%): **{'sağlanıyor' if stok_dar_kosulu(rapor_pay) else 'sağlanmıyor'}**. Etiket yine de yazılmaz: araç ayrı ölçülmeden H-S kapalı. Rapor doğrulaması: {rapor_pay['dogrulama']} ([V. Firmalar]({FIRMALAR_PDF_URL})).
+
+## 5a. Karşı bacak tavanı — kapı, skor değil
+
+Ters bacak = borçlu→alacaklı **aynı araçta**. Tavan = min(borçlunun o araçtaki varlığı, alacaklının yükümlülüğü), **EVDS konsolide olmayan** 2026-Q1 stok. Seri tam ise üst sınır; alt küme ise delinir.
+
+| Çift · araç | Metin bacağı | Tavan (milyar) | Tip | Seri |
+| --- | --- | --- | --- | --- |
+{tavan_tablo}
+
+- Yapısal sıfır (EVDS büyüklüğünden bağımsız): {', '.join(yapisal_sifir) if yapisal_sifir else '—'}. Firma ve hane mevduat yükümlülüğü yok; firma bankaya kredi vermez.
+- Tavan toplamı {tavan_toplam:.0f}; araç ayrı payda alt sınırı (tek yön bacaklar) {payda_ayri_alt:.0f} → araç ayrı oran üst sınırı **{100 * tavan_toplam / (payda_ayri_alt + tavan_toplam):.1f}%** < eşik {100 * (AKIS_ORAN_REF - HS_ESIK):.1f}%. Birleşik payda 56.696 burada kullanılmaz.
+- Sonuç: `hipotez_duser` **olanaksız** (olasılık değil, üst sınır). Açılırsa yön `stok_ayri`; `stok_dar` koşulu (%81,4) yanında. Bugün açılmaz: xls yok.
+- Stok kıyası: EVDS konsolide olmayan F.0 **{stok_kiyas.get('evds_konsolide_olmayan_F0_milyar', '—')}** ({stok_kiyas.get('seri', '—')}) = rapor 141.474. Konsolide 71011 toplam ≈ 50.777 **aynı stok değil** (sektör içi hisse/diğer borç netleşmiş). Tavan konsolide olmayan seriden.
 
 ## 5b. Hazne adları
 

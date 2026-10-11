@@ -13,6 +13,27 @@
     "not": "model tercihi; kısmi çiftler; H-S'ye girmez"
   },
   "akis_oran_kiyaslama_disinda": 0.427,
+  "karsi_bacak_tavan_kapi": {
+    "tanim": "üst sınır; dağılım/olasılık değil; skor değil",
+    "seri_turu": "EVDS konsolide olmayan stok (bie_finhestnks11/14/12t/13/2), 2026-Q1",
+    "yapisal_0": [
+      "H–PFK·mevduat",
+      "F–PFK·mevduat"
+    ],
+    "tavan_toplam_milyar": 6002.6,
+    "arac_ayri_payda_alt_sinir_milyar": 76507.0,
+    "arac_ayri_oran_ust_sinir": 0.0728,
+    "hipotez_duser_esik": 0.277,
+    "sonuc": "hipotez_duser olanaksız (üst sınır < eşik); açılırsa stok_ayri + stok_dar koşulu birlikte",
+    "kosul": "seri tam ise geçerli; seri alt küme ise tavan delinir",
+    "stok_kiyas": {
+      "evds_konsolide_olmayan_F0_milyar": 141473.5,
+      "seri": "TP.FINHESTNKS11.ZP45",
+      "evds_konsolide_71011_toplam_milyar": 50776.6,
+      "rapor_F_yukumluluk_milyar": 141474.0,
+      "not": "Tavan konsolide OLMAYAN seriden; rapor stokuyla aynı. Konsolide 71011 (≈50.777) aynı stok değil."
+    }
+  },
   "stok_dar_kosulu_rapor": true,
   "girmeyen_pay_rapor": {
     "hisse_pay": 0.486,
@@ -31,6 +52,7 @@
     "borclanma_senedi": 993.08777076,
     "hisse": 17987.2705216991,
     "diger_borc": 6412.1744434859,
+    "F0_toplam_yukumluluk_71011": 50776.5501381707,
     "toplam_yukumluluk": 50732.2935341707
   },
   "banka_ayrimi": "banka ayrılmadı (PFK konsolide)",
