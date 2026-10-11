@@ -1,10 +1,12 @@
 """HEKIS enflasyonunu stok-akis NFP'sine tasir.
 
-Kaynak: hekis/bind.py inflation_paths ve data/istanbul_2026.json.
+Kaynak: hekis_model/hekis/bind.py inflation_paths ve hekis_model/data/istanbul_2026.json
+(hekis-model 6c34a63, depoya kopyalandi; eski zip yolu HEKIS_ZIP ortam degiskeniyle hala verilebilir).
 Ileri patika, modelin kostugu patikadir: Agustos 2026 yillik TUFE dondurulur.
 Reel degisim = -NFP * pi / (1+pi). Alacakli erir, borclu yukunden kurtulur.
 """
 import json
+import os
 import zipfile
 from pathlib import Path
 
@@ -12,7 +14,9 @@ import numpy as np
 
 from akis_model import SEC, load
 
-ZIP = Path(r"c:\Users\asayd\Downloads\hekis-model-main.zip")
+KOK = Path(__file__).resolve().parent
+OBS_DOSYA = KOK / "hekis_model" / "data" / "istanbul_2026.json"
+ZIP = Path(os.environ["HEKIS_ZIP"]) if os.environ.get("HEKIS_ZIP") else None
 OBS = "hekis-model-main/data/istanbul_2026.json"
 
 
@@ -27,8 +31,10 @@ def inflation_paths(obs, horizon=20):
 
 
 def load_obs(zip_path=ZIP):
-    with zipfile.ZipFile(zip_path) as z:
-        return json.loads(z.read(OBS).decode("utf-8"))
+    if zip_path is not None:
+        with zipfile.ZipFile(zip_path) as z:
+            return json.loads(z.read(OBS).decode("utf-8"))
+    return json.loads(OBS_DOSYA.read_text(encoding="utf-8"))
 
 
 def nfp_2026q1():
