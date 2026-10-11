@@ -1,0 +1,138 @@
+{
+  "uyari": "Stoklar TCMB finansal hesapları, 2026-Q1, milyar TL biriminden trilyona çevrildi. Kenar ölçülmüş fatura değildir: yükümlülük, alacaklı varlık payına bölünür. Vade ve valf eşiği varsayımdır. Çekilmemiş limit yoktur.",
+  "ozet": "Şoksuz patika bloke üretmiyor. Firma mevduatının ölçülmüş en büyük çeyreklik düşüşü kalıcılığı 0 periyotta bırakıyor. Döviz kredisinin çevrilmediği patikada kalıcılık 0, reel kayıp 0.454. Valf açıkken 0 ve 0.454. π aylık 0.0225. Valf periyodu 0: zincir bloke olmayınca valf açılmıyor, erime 0. FX çevirmeme şokunda valf kalıcılığı 2 periyottan az değiştiriyor ve reel kaybı 5 puandan az düşürüyor. Ölçülmüş aylık enflasyon bu kısıtı kapatmıyor. Kenar, finansal hesap stokunun orantılı karşı taraf dağılımıdır; firma faturası değildir. Aynı ağda firma mevduatını × 0,30 kesmek, ölçülmüş düşüş değildir: kalıcılık 0.",
+  "olcu": {
+    "likidite_trilyon": {
+      "H": 15.781875542801501,
+      "F": 8.593544693515,
+      "B": 4.1428688159229,
+      "K": 4.832100143971701,
+      "D": 2.7677238582959
+    },
+    "kredi_yukumluluk_trilyon": {
+      "H": 6.8360355396322,
+      "F": 25.3397607982257,
+      "B": 5.9006391483413,
+      "K": 1.8709530059488,
+      "D": 0.589818976
+    },
+    "diger_yukumluluk_trilyon": {
+      "H": 0.422452725013,
+      "F": 6.4121744434859,
+      "B": 3.044071410497,
+      "K": 2.2982074536217,
+      "D": 2.6938974949693
+    },
+    "kisa_pay": {
+      "H": 0.7029739559920797,
+      "F": 0.4237065773821386,
+      "B": 0.2353534808458302,
+      "K": 0.1822918453406271,
+      "D": 0.5433733063386553
+    },
+    "aylik_servis_trilyon": {
+      "H": 0.4695086491847999,
+      "F": 1.67245210489414,
+      "B": 0.4445990008655916,
+      "K": 0.245437136300955,
+      "D": 0.2556878999894683
+    },
+    "fx_kredi_payi_F": 0.5962755835053216,
+    "fx_mevduat_payi_F": 0.5801292831604365,
+    "fx_kapsama_F": 0.3299495883683279,
+    "mevduat_dususu_F": -0.07944592989530483,
+    "kenar": 20,
+    "V0": 3.0876847912349548
+  },
+  "tufe": {
+    "yoy": 0.3064848474101396,
+    "son": "2026-01",
+    "baz": "2025-01",
+    "kaynak": "EVDS TP.FG.J0"
+  },
+  "pi_aylik": 0.02252836631957411,
+  "paket": {
+    "soksuz": {
+      "kapali": {
+        "kalicilik": 0.0,
+        "reel": 0.0,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.0
+      },
+      "acik": {
+        "kalicilik": 0.0,
+        "reel": 0.0,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.0
+      }
+    },
+    "mevduat": {
+      "kapali": {
+        "kalicilik": 0.0,
+        "reel": 0.0,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.0
+      },
+      "acik": {
+        "kalicilik": 0.0,
+        "reel": 0.0,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.0
+      }
+    },
+    "fx": {
+      "kapali": {
+        "kalicilik": 0.0,
+        "reel": 0.45408167359827306,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.6700504116316724
+      },
+      "acik": {
+        "kalicilik": 0.0,
+        "reel": 0.45408167359827306,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.6700504116316724
+      }
+    },
+    "iki": {
+      "kapali": {
+        "kalicilik": 0.0,
+        "reel": 0.45408167359827306,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.6700504116316724
+      },
+      "acik": {
+        "kalicilik": 0.0,
+        "reel": 0.45408167359827306,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.6700504116316724
+      }
+    },
+    "asiri": {
+      "kapali": {
+        "kalicilik": 0.0,
+        "reel": 0.0,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.0
+      },
+      "acik": {
+        "kalicilik": 0.0,
+        "reel": 0.0,
+        "erime": 0.0,
+        "pi": 0.0,
+        "fx_acik": 0.0
+      }
+    }
+  },
+  "hane_reel_pay": 0.02147172553599794,
+  "hane_defter": 0.028055041370187467
+}

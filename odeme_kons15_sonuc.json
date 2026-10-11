@@ -1,0 +1,32 @@
+{
+  "uyari": "Lider sentetik; TCMB sektör payı. Kenar varsayım.",
+  "ozet": "Eşik taraması (FX çevrilebilir): kal ort. 0,50=0.24, 0,55=2.04, 0,60=7.26, 0,65=9.96, 0,70=12.28; kademeli: 0,50→0,70 arası kal artıyor, yalnızca 0,70 sıçraması değil. Servis artısı–kal Spearman (FX çevrilebilir) 0.706 (p = 5.69e-39); artı–kal ilişkisi güçlü/kayıtlı eşik altında değil. Lider servis sıfır kal fark 0.00, p = 0.841. Reel artış 0,70−0,50 (FX çevrilemez) medyan -0.0948; küçük fazla medyan 0.0454, P(fazla≥0,05) = 0.02.",
+  "karar": {
+    "sicrama_070_ozgu_roll": false,
+    "sicrama_070_ozgu_fx": false,
+    "band_d_roll": 12.0,
+    "band_p_roll": 1.8521562431519646e-10,
+    "band_d_fx": 3.0,
+    "band_p_fx": 7.708628950139952e-09,
+    "kal70_median_roll": 12.0,
+    "kal70_median_fx": 3.0,
+    "artis_zayif_roll": false,
+    "artis_zayif_fx": false,
+    "sp_artis_kal_roll": 0.7056013269996574,
+    "sp_artis_kal_roll_p": 5.686440229750364e-39,
+    "sp_artis_yk_roll": NaN,
+    "sp_artis_yk_roll_p": NaN,
+    "sp_artis_kal_fx": 0.6792154940306485,
+    "sp_artis_kal_fx_p": 3.580309981658121e-35,
+    "sp_artis_yk_fx": 0.6385267602666848,
+    "sp_artis_yk_fx_p": 4.9010671798686974e-30,
+    "lider_dkal": 0.0,
+    "lider_p": 0.8413447460685429,
+    "d_reel_median": -0.09484630961288029,
+    "d_reel_p": 1.0,
+    "fazla70_med": 0.04538579595780379,
+    "p_fazla70": 0.02
+  },
+  "n_mc": 50,
+  "seed0": 20276010
+}

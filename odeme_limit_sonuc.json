@@ -1,0 +1,67 @@
+{
+  "uyari": "Sentetik ağ ve varsayılmış limit dağılımı. TCMB finansal hesaplarına, KAP bildirimlerine veya bu depodaki stok-akış matrislerine kalibre edilmedi. Sayılar ölçüm değildir. KAP tabanlı ağ bu turda yok.",
+  "ozet_hukum": "Heterojen limitte parametre kolu C şokunda açık kalıyor, tam banka baskınlığı kırılıyor. Çarpan 4, sıfır çizgisi olan firmalar dururken her hücreyi sıfıra yapıştırmıyor. Tur 2'deki tam baskınlık, herkese pozitif basamak limiti verilmesine bağlıydı. Seçim kuralı sistem kalıcılığını uzatmıyor. KAP ağı bu turda yok.",
+  "hipotez_metin": "Parametre kolu heterojen limitte de açık: C şokunda kötü köşe iyiden pratik eşiğin üstünde uzun. Tam baskınlık kırıldı. Çarpan 4, herkese pozitif basamak verildiği tur 2'deki gibi bütün hücreleri sıfıra yapıştırmıyor. Sıfır çizgi kitlesi, yüksek çarpanın sistemi tek başına kapatmasını engelliyor. Seçim kuralı kendi tavanını 4 kata çıkarıyor ama sıfır çizgiyi doldurmuyor. Bu, bazdan daha uzun bir sistem tıkanması ve daha büyük bir küçük-alacaklı payını birlikte üretmedi. “Bedel zayıf halkaya akar” dağılımda da zayıf kaldı. Sıkı parametre ve seçim, küçük alacaklı payını 5 puan büyütmüyor.",
+  "esik_metin": "Dağılımda parametre kolu taranan pencerenin en yumuşak ucunda da açık: 1 sektör, kalan likidite 0.70, kötü−iyi ortalama 5.93. Anlamlı şok 20 / 20. Yirmi karşılaştırma ham p ile duruyor. Pencerenin içinde kapanış yok. Adlandırılan şoklar: yumusak: iyi 0.00, baz 0.00, kötü 8.48, seçim 0.00; c: iyi 0.00, baz 0.60, kötü 17.17, seçim 0.00; sert: iyi 0.00, baz 3.63, kötü 20.42, seçim 0.00.",
+  "secim_metin": "Seçim açık ile baz arasında pratik uzama yok.",
+  "sektor_metin": "Dağılım, kötü köşede sektör yavaşlığı 10.9–16.4. Seçimde 2.6–18.2. Bazda en yavaş üç: Perakende 5.3, Diğer hizmet 4.9, Toptan 2.6.",
+  "sira_metin": "Firma sırası, dağılım, C şoku: kötü ile baz Spearman -0.107 (p = 0.129); seçim ile baz Spearman -0.354 (p = 2.05e-07).",
+  "karar": {
+    "soksuz_uyumsuz": false,
+    "basamak_iyi": 0.0,
+    "basamak_baz": 0.5333333333333333,
+    "basamak_kotu": 17.166666666666668,
+    "basamak_secim": 0.0,
+    "dagilim_iyi": 0.0,
+    "dagilim_baz": 0.6,
+    "dagilim_kotu": 17.166666666666668,
+    "dagilim_secim": 0.0,
+    "kontrast_ortalama": 17.166666666666668,
+    "kontrast_medyan": 18.0,
+    "kontrast_p_tek": 9.95300140329091e-12,
+    "banka4_max": 8.75,
+    "banka0_max": 20.3,
+    "banka4_aralik": 8.75,
+    "banka0_aralik": 20.3,
+    "perm_aralik": 20.3,
+    "perm_p": 0.001,
+    "kol": true,
+    "baskin": false,
+    "secim_destek": false,
+    "secim_uzadi": false,
+    "secim_ortalama_fark": -0.6,
+    "secim_medyan_fark": 0.0,
+    "secim_p_uzama": 0.999722406554711,
+    "maliyet_kaydi": false,
+    "bedel_zayif": true,
+    "pay_medyan_fark": -0.0007017300847476649,
+    "pay_n": 60,
+    "pay_p": 0.22858288285892242,
+    "pay_min": 0.3686705231212817,
+    "pay_max": 0.4326097987600957,
+    "pay_kotu_baz": -0.02252686955541841
+  },
+  "erisim": {
+    "kucuk": {
+      "sifir_pay": 0.5019607843137255,
+      "pozitif_medyan": 0.3560101785125566,
+      "medyan": 0.0
+    },
+    "orta": {
+      "sifir_pay": 0.269281045751634,
+      "pozitif_medyan": 0.8072824997624932,
+      "medyan": 0.6330196593478576
+    },
+    "buyuk": {
+      "sifir_pay": 0.0434640522875817,
+      "pozitif_medyan": 1.4768825451814152,
+      "medyan": 1.4429017159020225
+    }
+  },
+  "soksuz_basamak": 0.0,
+  "soksuz_dagilim": 0.0,
+  "soksuz_dagilim_secim": 0.0,
+  "n_mc": 60,
+  "tohum": 20261010,
+  "tohum_limit": 20268010
+}

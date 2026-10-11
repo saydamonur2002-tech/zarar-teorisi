@@ -1,0 +1,69 @@
+kosu,sektor,sektor_ad,ortalama_yavas_periyot
+iyi,tarim,Tarım,0.0
+iyi,madencilik,Madencilik,0.0
+iyi,gida,Gıda,0.0
+iyi,tekstil,Tekstil,0.0
+iyi,kimya,Kimya,0.0
+iyi,metal,Metal,0.0
+iyi,makine,Makine,0.0
+iyi,otomotiv,Otomotiv,0.0
+iyi,enerji,Enerji,0.0
+iyi,insaat,İnşaat,0.0
+iyi,toptan,Toptan,0.0
+iyi,perakende,Perakende,0.0
+iyi,tasimacilik,Taşımacılık,0.0
+iyi,bilisim,Bilişim,0.0
+iyi,finansal_hizmet,Finansal hizmet,0.0
+iyi,gayrimenkul,Gayrimenkul,0.0
+iyi,diger_hizmet,Diğer hizmet,0.0
+baz,tarim,Tarım,0.002777777777777778
+baz,madencilik,Madencilik,0.0
+baz,gida,Gıda,0.06388888888888888
+baz,tekstil,Tekstil,0.10277777777777779
+baz,kimya,Kimya,0.10416666666666667
+baz,metal,Metal,0.05694444444444444
+baz,makine,Makine,1.2388888888888887
+baz,otomotiv,Otomotiv,0.6027777777777777
+baz,enerji,Enerji,0.16944444444444443
+baz,insaat,İnşaat,0.8041666666666667
+baz,toptan,Toptan,1.5097222222222222
+baz,perakende,Perakende,5.808333333333333
+baz,tasimacilik,Taşımacılık,0.7277777777777777
+baz,bilisim,Bilişim,0.5055555555555555
+baz,finansal_hizmet,Finansal hizmet,0.25972222222222224
+baz,gayrimenkul,Gayrimenkul,0.10972222222222223
+baz,diger_hizmet,Diğer hizmet,5.547222222222222
+kotu,tarim,Tarım,12.394444444444444
+kotu,madencilik,Madencilik,12.325000000000001
+kotu,gida,Gıda,15.965277777777779
+kotu,tekstil,Tekstil,16.329166666666666
+kotu,kimya,Kimya,15.240277777777779
+kotu,metal,Metal,14.924999999999999
+kotu,makine,Makine,16.41944444444444
+kotu,otomotiv,Otomotiv,15.752777777777778
+kotu,enerji,Enerji,14.06388888888889
+kotu,insaat,İnşaat,11.868055555555557
+kotu,toptan,Toptan,12.10138888888889
+kotu,perakende,Perakende,11.515277777777778
+kotu,tasimacilik,Taşımacılık,15.89722222222222
+kotu,bilisim,Bilişim,16.279166666666665
+kotu,finansal_hizmet,Finansal hizmet,15.6875
+kotu,gayrimenkul,Gayrimenkul,10.905555555555553
+kotu,diger_hizmet,Diğer hizmet,11.006944444444445
+secim,tarim,Tarım,14.490277777777775
+secim,madencilik,Madencilik,15.408333333333333
+secim,gida,Gıda,4.730555555555555
+secim,tekstil,Tekstil,5.67638888888889
+secim,kimya,Kimya,6.222222222222222
+secim,metal,Metal,8.238888888888889
+secim,makine,Makine,5.747222222222223
+secim,otomotiv,Otomotiv,4.798611111111111
+secim,enerji,Enerji,8.291666666666666
+secim,insaat,İnşaat,5.705555555555556
+secim,toptan,Toptan,5.365277777777777
+secim,perakende,Perakende,7.222222222222221
+secim,tasimacilik,Taşımacılık,6.0
+secim,bilisim,Bilişim,6.180555555555556
+secim,finansal_hizmet,Finansal hizmet,4.733333333333334
+secim,gayrimenkul,Gayrimenkul,2.648611111111111
+secim,diger_hizmet,Diğer hizmet,6.194444444444444

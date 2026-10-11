@@ -1,0 +1,51 @@
+{
+  "uyari": "Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım.",
+  "ozet": "Kontrol: kalıcılık 0.00, reel 0.000, eşit Gini 0.000. Spearman Gini–kalıcılık (mahsup kolları) 0.252 (p = 6e-08). Küçük ΔGini + büyük kalıcılık düşüşü birlikte kayıtlı eşikte çıkmadı. Lider vs üst %10: Gini farkı ≥0,20, kalıcılık farkı anlamsız — Gini düşüşünden çok tek düğüm payı belirliyor. Mahsup+dağıt: reel ve fazla 0,05 altında; FX/zayıf halka mahsupla kapanmıyor elenmedi.",
+  "karar": {
+    "soksuz_kal": 0.0,
+    "soksuz_reel": 0.0,
+    "gini_kontrol": 0.0,
+    "sp_gini_kal": 0.25200536901297677,
+    "sp_gini_kal_p": 6.004421909208734e-08,
+    "gini_kirar_destek": false,
+    "gini_kirar_p": 0.001479874374983182,
+    "gini_kirar_dkal": 0.0,
+    "gini_degil_lider": true,
+    "lider_ust10": {
+      "esit": {
+        "dg_med": -0.09337807406081522,
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      },
+      "mev40": {
+        "dg_med": 0.14468231328112363,
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      },
+      "mev70": {
+        "dg_med": 0.30381061916643004,
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      }
+    },
+    "fx_zayif_elenmedi": true
+  },
+  "kontrol": {
+    "soksuz": {
+      "kal": 0.0,
+      "yerel": 0.0,
+      "reel": 0.0,
+      "fazla": NaN,
+      "pay": NaN,
+      "defter": 0.04723686983379,
+      "yk_med": 0.0,
+      "yb_med": 0.0,
+      "yavas_fark": 0.0,
+      "od_ku_pay": NaN
+    },
+    "gini_esit": 0.0
+  },
+  "pi_aylik": 0.02252836631957411,
+  "n_mc": 50,
+  "seed0": 20277010
+}

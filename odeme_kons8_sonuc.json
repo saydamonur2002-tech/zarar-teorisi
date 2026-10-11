@@ -1,0 +1,45 @@
+{
+  "uyari": "Stoklar ölçülmüş (TCMB 2026-Q1). Kenar ve dağılım varsayım. Çekilmemiş limit ve girdi-çıktı yok.",
+  "ozet": "Kontrol: şoksuz reel 0.000, eşit FX çevrilemez reel 0.454 (sapma 0.000). Zayıf halka: üç hücrede de medyan fazla 0,05’in altında ve küçük–büyük yavaş farkı anlamlı değil. Sistematik aktarım iddiası elendi. Lider-ayna: yalnızca servis+alacak sıfırlanınca kalıcılık değişmiyor (p = 1); mevduat da dağıtılınca kalıcılık düşüyor (baz−tam medyan 0.50, p = 5.22e-06). Lider mevduatı sonucu taşır; servis/alacak lider payı tek başına değil.",
+  "karar": {
+    "soksuz_kal": 0.0,
+    "soksuz_reel": 0.0,
+    "esit_reel": 0.45408167359827367,
+    "esit_sapma": 6.106226635438361e-16,
+    "sp_srv_yk": 0.7409585736349484,
+    "sp_mev_reel": 0.8432740427115677,
+    "zayif_elendi": true,
+    "lider_elendi": false,
+    "lider_kal_fark_rol": 0.0,
+    "lider_kal_p_rol": 1.0,
+    "lider_yk_fark_rol": 0.0,
+    "lider_yk_p_rol": 1.0,
+    "lider_kal_fark_tam": 0.5,
+    "lider_kal_p_tam": 5.218010088001692e-06,
+    "lider_yk_fark_tam": 0.0,
+    "lider_yk_p_tam": 1.0
+  },
+  "kontrol": {
+    "soksuz": {
+      "kal": 0.0,
+      "yerel": 0.0,
+      "reel": 0.0,
+      "fazla": NaN,
+      "pay": NaN,
+      "defter": 0.04723686983379,
+      "yk_med": 0.0,
+      "yb_med": 0.0,
+      "yavas_fark": 0.0,
+      "od_ku_pay": NaN
+    },
+    "esit_fx": {
+      "kal": 0.0,
+      "reel": 0.45408167359827367,
+      "fazla": 0.02246663488048401,
+      "yk_med": 0.0,
+      "reel_sapma": 6.106226635438361e-16
+    }
+  },
+  "n_mc": 50,
+  "seed0": 20273010
+}

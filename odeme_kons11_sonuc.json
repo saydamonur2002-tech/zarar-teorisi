@@ -1,0 +1,69 @@
+{
+  "uyari": "Stoklar ölçülmüş (TCMB 2026-Q1). Kenar varsayım. Girdi-çıktı ve limit serisi yok.",
+  "ozet": "Kontrol şoksuz kalıcılık 0.00, reel 0.000. Lider ve üst %10 dağıtım kalıcılığı arasında kayıtlı anlamlı büyük fark yok; 'üst %10'un tamamı gerekir' iddiası elenmedi. Dağıtımın mahsup bloke'sini kapatması kayıtlı medyan≥2 eşiğiyle desteklenmedi. Mev 0,70: lider ve üst %10 dağıtımı aynı dinamik kalıcılığı veriyor (ort. 0). Mahsup+dağıt kolunda reel ve küçük fazla 0,05 altında; FX/zayıf halka mahsupla kapanmıyor elenmedi.",
+  "karar": {
+    "soksuz_kal": 0.0,
+    "soksuz_reel": 0.0,
+    "tek_dugum_destek": false,
+    "ust10_gerekir_elenmedi": true,
+    "dagitim_destek": false,
+    "lider_ust10": {
+      "esit": {
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      },
+      "mev40": {
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      },
+      "mev70": {
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      }
+    },
+    "dagit_mahsup": {
+      "esit/mahsup_lider": {
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      },
+      "esit/mahsup_ust10": {
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      },
+      "mev40/mahsup_lider": {
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      },
+      "mev40/mahsup_ust10": {
+        "kal_med": 0.0,
+        "kal_p": 1.0
+      },
+      "mev70/mahsup_lider": {
+        "kal_med": 0.0,
+        "kal_p": 0.006937202941512724
+      },
+      "mev70/mahsup_ust10": {
+        "kal_med": 0.0,
+        "kal_p": 0.006937202941512724
+      }
+    },
+    "fx_zayif_elenmedi": true
+  },
+  "kontrol": {
+    "soksuz": {
+      "kal": 0.0,
+      "yerel": 0.0,
+      "reel": 0.0,
+      "fazla": NaN,
+      "pay": NaN,
+      "defter": 0.04723686983379,
+      "yk_med": 0.0,
+      "yb_med": 0.0,
+      "yavas_fark": 0.0,
+      "od_ku_pay": NaN
+    }
+  },
+  "pi_aylik": 0.02252836631957411,
+  "n_mc": 50,
+  "seed0": 20276010
+}

@@ -1,0 +1,17 @@
+{
+  "uyari": "Kenar varsayım. Faiz geliri açık modellenmedi; mev/serv oranı ve α ile gecikme.",
+  "ozet": "Kontrol şoksuz kal 0.00, reel 0.000. Faiz gecikme hipotezi elendi (α>0 vs 0, kayıtlı eşikler). Anlamlı artış yok; servis/mev ayrımı belirsiz. Lider α=0,50 (mev70): kal fark medyan 0.00, p = 1.",
+  "karar": {
+    "soksuz_kal": 0.0,
+    "soksuz_reel": 0.0,
+    "faiz_elendi": true,
+    "servis_notu": "Anlamlı artış yok; servis/mev ayrımı belirsiz.",
+    "sp_mev_kal": 0.40740575096088266,
+    "sp_srv_kal": 0.46845414152471065,
+    "lider_dkal": 0.0,
+    "lider_p": 1.0
+  },
+  "pi_aylik": 0.02252836631957411,
+  "n_mc": 50,
+  "seed0": 20274010
+}
