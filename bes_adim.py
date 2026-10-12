@@ -13,6 +13,9 @@ metinde yoksa EVDS konsolide olmayan aynı-araç üst sınırı; ortak = min; ye
 sütun. Silinen boş: kimden-kime xls depoda yok. Üst sınır, skor değil.
 
 Çıktı: adim1_stok.csv, adim2.csv, adim3.csv, adim4.csv, adim5.csv, bes_adim_sonuc.json (kosu; son boş), BES_ADIM.md\nSon satır (`son`) test_bes_adim.py'den gelir; koşu yazmaz.
+
+Yan dosyalar (Faz 1–6; kilit dışı, yalnız okunur, md'de listelenir): adim1_nace.py, adim2_nace_ag.py, adim3_faiz_durma.py,
+adim4_adres_yonlendirme.py, gecis_payi_band.py, adim5_kira.py; harita girdi_haritasi.py. Hiçbiri bu adım dosyalarına yazmaz.
 """
 
 from __future__ import annotations
@@ -203,6 +206,30 @@ def kilitli_kapilar() -> dict:
     return {"kapilar": kapilar, "etiket": etiket, "not": "varsayim_esik.csv eşikleri varsayım; kapıya taşınmaz."}
 
 
+# ---------------------------------------------------------------- yan dosyalar (Faz 1–6; yalnız okunur)
+YAN = (
+    ("1", "adim1_nace_sonuc.json", "adim1_nace.py", ("b_nace_taban", "silinen_max_oran"), "F içi silinen_max oranı", "ust_sinir_nace"),
+    ("2", "adim2_nace_ag_sonuc.json", "adim2_nace_ag.py", ("kalibrasyon", "lambda"), "λ* (G1 çapası)", "kalibrasyon_varsayim"),
+    ("3", "adim3_faiz_durma_sonuc.json", "adim3_faiz_durma.py", ("psi", "psi"), "ψ etkin faiz payı", "olcum_turevi"),
+    ("4", "adim4_adres_yonlendirme_sonuc.json", "adim4_adres_yonlendirme.py", ("adres_toplam_milyar",), "adres toplamı milyar", "olcum"),
+    ("kapı", "gecis_payi_band_sonuc.json", "gecis_payi_band.py", ("ana", "LR_gecis_payi"), "geçiş payı nokta tahmini", "tahmin_ols"),
+    ("5", "adim5_kira_sonuc.json", "adim5_kira.py", ("birim_kira", "tl_m2_ay"), "birim kira TL/m²/ay", "olcum"),
+)
+
+
+def yan_dosyalar() -> list[dict]:
+    out = []
+    for adim, dosya, kod, yol, ad, etiket in YAN:
+        p = KOK / dosya
+        if not p.exists():
+            continue
+        v = json.loads(p.read_text(encoding="utf-8"))
+        for k in yol:
+            v = v.get(k) if isinstance(v, dict) else None
+        out.append({"adim": adim, "dosya": dosya, "kod": kod, "sayi": f"{ad}: {v}", "etiket": etiket})
+    return out
+
+
 # ---------------------------------------------------------------- md
 def md(son: dict) -> str:
     a = son["adimlar"]
@@ -246,6 +273,13 @@ def md(son: dict) -> str:
               f"aynı-araç üst sınırı; ortak = min; Σortak {f(x['ortak_milyar'])} / Σbrüt {f(x['brut_milyar'])}; {x['dolu_cift']}/{x['cift']} çift dolu. "
               f"Yalnız metin iki yön: {f(x['yeni_tavan_yalniz_metin'], 4)}.",
               "- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yaklaşık yüzde 20' bu kuralla çıkmadı; bulunamadı.", ""]
+    yan = yan_dosyalar()
+    if yan:
+        s += ["## Kilit dışı yan dosyalar (Faz 1–6; girdi, sonuç değil)", "",
+              "Adım dosyalarına ve kapılara yazılmaz; etiketiyle okunur. Harita: `GIRDI_HARITASI.md`.", "",
+              "| Adım | Yan dosya | Kod | Sayı | Etiket |", "| --- | --- | --- | --- | --- |"]
+        s += [f"| {y['adim']} | `{y['dosya']}` | `{y['kod']}` | {y['sayi']} | `{y['etiket']}` |" for y in yan]
+        s.append("")
     s += ["## Ne denmez", "",
           "- 'Beş adım kuruldu' denmez. Şu adım şu etiket; kilitli kapı boş.",
           "- 'Stok yüzde X silindi' denmez; silinen boş.",
