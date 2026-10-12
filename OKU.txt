@@ -13,6 +13,7 @@ CALISTIRMA SIRASI
   direnc_yuzdesi.py reform direnc proxy (kira/finans/Ho/kamu); uc_kural + maliyet_kar girdi
   rant_aktor.py aktor bazli rant kanali direnci + kar amorti %; uc_kural + maliyet_kar + direnc girdi
   rant_donus_yili.py eski gelir duzeyine donus yili (rant_aktor ciktisina ek sutun); duyarlilik %2/%3/%5
+  tek_sistem_kademe.py uc ayrik pencere (2027 mahsup, 2028 stok tavan, 2029 mevduat adresi), ceyreklik rampa -> tek_sistem_kademe.csv
   entegre_ve_test.py butce uyumu, matris geriye donuk testi, ikinci-tur OLS
   kur_kanali.py      doviz maruziyet payi (f) tahmini ve test
   bilateral_D.py     D satiri icin brut dis borc (borclu sektore gore) ile bilateral L
