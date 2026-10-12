@@ -1,0 +1,43 @@
+{
+  "faz": 6,
+  "adim": 5,
+  "adim5_csv": "yazilmadi; kira satiri olculmedi kalir",
+  "birim_kira": {
+    "seri": "TP.BK.TR",
+    "donem": "2026-Q2",
+    "tl_m2_ay": 258.45,
+    "yoy": 0.3518,
+    "durum": "olcum",
+    "kapsam": "değerlemesi yapılan konutlar (kredili alım ağırlıklı); tüm kiralık stok değil"
+  },
+  "yeni_kiraci_endeksi": {
+    "seri": "TP.YKKE.TR",
+    "donem": "2026-08",
+    "deger": 336.16,
+    "yoy": 0.264,
+    "durum": "olcum"
+  },
+  "yol_A_band_milyar": [
+    1842.2,
+    2701.9
+  ],
+  "yol_B_proxy_milyar": 254.8,
+  "hekis_bolu_piyasa_100m2": 0.774,
+  "hane_sayisi": 26400000,
+  "m2": [
+    90.0,
+    110.0
+  ],
+  "kiraci_orani": [
+    0.25,
+    0.3
+  ],
+  "sfc": "H içi transfer (kiracı → ev sahibi); H toplam NL 0; Ha/Ho dağılımı; F kurumsal ev sahibi payı ölçülmedi",
+  "etiketler": {
+    "b": "olcum",
+    "m2": "varsayim",
+    "N": "dis_kaynak_elle (doğrulanmadı)",
+    "kiraci_orani": "varsayim",
+    "yol_B": "varsayim_proxy"
+  }
+}

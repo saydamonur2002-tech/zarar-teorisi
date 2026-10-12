@@ -1,0 +1,7 @@
+﻿yol,birim_kira_tl_m2_ay,donem,m2,hane_sayisi,kiraci_orani,kiraci_hane,aylik_kira_tl,kira_yillik_milyar,durum,etiket
+A,258.45,2026-Q2,90.0,26400000,0.25,6600000,23260,1842.2,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
+A,258.45,2026-Q2,90.0,26400000,0.3,7920000,23260,2210.7,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
+A,258.45,2026-Q2,110.0,26400000,0.25,6600000,28430,2251.6,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
+A,258.45,2026-Q2,110.0,26400000,0.3,7920000,28430,2701.9,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
+B,,2026-Q1,,,,,,254.8,varsayim_proxy,"konut_stok 7278.6 (H varlık × 0,25) × 0.035; direnc_yuzdesi proxy"
+karsilastirma,,2026-Q2,,,,,25845,,karsilastirma,"HEKİS havuz kirası 20,000 TL/ay / piyasa 100 m² 25,845 TL/ay = 0.77"
