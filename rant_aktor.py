@@ -3,9 +3,10 @@
 Lobi bağımsız; stok-akış + gelir tablosu proxy. Senaryo; ölçüm değil.
 Girdi: uc_kural_senaryo.csv, maliyet_kar_orani.csv, direnc_yuzdesi.csv (yoksa üretilir).
 
-Çalıştır: python3 rant_aktor.py
+Çalıştır: python3 rant_aktor.py  (dönüş yılı için: python3 rant_donus_yili.py)
 Çıktı: rant_aktor.csv, rant_aktor_kalem.csv, rant_aktor_duyarlik.csv,
         rant_aktor_sonuc.json, RANT_AKTOR.md
+        rant_donus_yili → rant_aktor_donus.csv, rant_donus_yili_*, RANT_DONUS_YILI.md
 """
 
 from __future__ import annotations

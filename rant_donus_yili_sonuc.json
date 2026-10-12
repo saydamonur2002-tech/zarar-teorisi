@@ -1,0 +1,478 @@
+{
+  "meta": {
+    "durum": "senaryo",
+    "olcum_degil": true,
+    "lobi_bagimsiz": true,
+    "tanim_rant_direnci": "rant_kayip / max(|ΔNFP|, rant_baseline×ufuk)",
+    "tanim_amorti": "100 × rant / (faaliyet + rant)",
+    "olculen_F_finansman_faaliyet_2024": {
+      "finansman_milyarTL": 3143.4,
+      "faaliyet_kari_milyarTL": 3746.2,
+      "oran": 0.839
+    },
+    "parametreler": {
+      "agirlik_H": 0.4,
+      "agirlik_F": 0.3,
+      "agirlik_B": 0.2,
+      "agirlik_K": 0.1,
+      "ho_varlik_payi": 0.8,
+      "h_finansal_gelir_orani": 0.12,
+      "fin_kayip_F": 0.5,
+      "fin_kayip_B": 0.35,
+      "fin_kayip_H": 0.15,
+      "b_nim_yillik": 0.028,
+      "f_finansal_gelir_katsayi": 0.46,
+      "k_faiz_harcama_payi_olculdu": 0.131,
+      "ufuk_yil": 5.0,
+      "kira_getiri": 0.035,
+      "n_a": 6850000.0
+    },
+    "stok_proxy": {
+      "H_varlik_milyarTL": 29114.5,
+      "F_borc_milyarTL": 50776.6,
+      "B_varlik_milyarTL": 57103.0,
+      "konut_stok_milyarTL": 7278.6,
+      "durum": "proxy_EVDS_2026Q1"
+    },
+    "baseline_rant_yillik": {
+      "H": 256.21,
+      "F": 1445.96,
+      "B": 1598.88,
+      "K": 1048.0
+    },
+    "donus_tanim": "rant_kayip_ufuk / yillik_rant_dis_gelir_artisi",
+    "donus_parametreler": {
+      "reel_buyume_H": 0.04,
+      "reel_buyume_F": 0.05,
+      "reel_buyume_B": 0.03,
+      "reel_buyume_K": 0.02,
+      "ho_agirlik_H": 0.8,
+      "f_zarf_katsayi": 0.35,
+      "yasam_tasarruf_H_payi": 0.45,
+      "ufuk_yil": 5.0,
+      "n_a": 6850000.0
+    },
+    "uyari": "Senaryo; ölçüm değil. Dönüş yılı rant dışı büyüme varsayımına bağlıdır."
+  },
+  "satirlar": [
+    {
+      "senaryo": "mevcut",
+      "aktor": "H",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 256.21,
+      "rant_kayip_ufuk_milyar": 0.0,
+      "rant_gelir_yillik_sonra_milyar": 256.21,
+      "faaliyet_proxy_milyar": 2307.81,
+      "kar_amorti_yuzde_once": 9.99,
+      "kar_amorti_yuzde_sonra": 9.99,
+      "kar_amorti_dusus_puan": 0.0,
+      "rant_direnci_yuzde": 0.0,
+      "payda_NFP_delta_milyar": 0.0,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 73.85,
+      "rant_dis_artis_not": "reel %4×taban 1846.2",
+      "eski_gelir_donus_yili": "0",
+      "eski_gelir_donus_yili_sayisal": 0.0
+    },
+    {
+      "senaryo": "mevcut",
+      "aktor": "F",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1445.96,
+      "rant_kayip_ufuk_milyar": 0.0,
+      "rant_gelir_yillik_sonra_milyar": 1445.96,
+      "faaliyet_proxy_milyar": 3746.2,
+      "kar_amorti_yuzde_once": 27.85,
+      "kar_amorti_yuzde_sonra": 27.85,
+      "kar_amorti_dusus_puan": 0.0,
+      "rant_direnci_yuzde": 0.0,
+      "payda_NFP_delta_milyar": 0.0,
+      "finansman_faaliyet_ref_F": 0.839,
+      "yillik_rant_dis_gelir_artisi_milyar": 187.31,
+      "rant_dis_artis_not": "reel %5×taban 3746.2",
+      "eski_gelir_donus_yili": "0",
+      "eski_gelir_donus_yili_sayisal": 0.0
+    },
+    {
+      "senaryo": "mevcut",
+      "aktor": "B",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1598.88,
+      "rant_kayip_ufuk_milyar": 0.0,
+      "rant_gelir_yillik_sonra_milyar": 1598.88,
+      "faaliyet_proxy_milyar": 559.61,
+      "kar_amorti_yuzde_once": 74.07,
+      "kar_amorti_yuzde_sonra": 74.07,
+      "kar_amorti_dusus_puan": 0.0,
+      "rant_direnci_yuzde": 0.0,
+      "payda_NFP_delta_milyar": 0.0,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 16.79,
+      "rant_dis_artis_not": "reel %3×taban 559.6",
+      "eski_gelir_donus_yili": "0",
+      "eski_gelir_donus_yili_sayisal": 0.0
+    },
+    {
+      "senaryo": "mevcut",
+      "aktor": "K",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1048.0,
+      "rant_kayip_ufuk_milyar": 0.0,
+      "rant_gelir_yillik_sonra_milyar": 1048.0,
+      "faaliyet_proxy_milyar": 6952.0,
+      "kar_amorti_yuzde_once": 13.1,
+      "kar_amorti_yuzde_sonra": 13.1,
+      "kar_amorti_dusus_puan": 0.0,
+      "rant_direnci_yuzde": 0.0,
+      "payda_NFP_delta_milyar": 0.0,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 139.04,
+      "rant_dis_artis_not": "reel %2×taban 6952.0",
+      "eski_gelir_donus_yili": "0",
+      "eski_gelir_donus_yili_sayisal": 0.0
+    },
+    {
+      "senaryo": "mevcut",
+      "aktor": "TOPLAM",
+      "durum": "senaryo",
+      "rant_direnci_yuzde": 0.0,
+      "agirlik_not": "H40 F30 B20 K10 varsayılan"
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "H",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 256.21,
+      "rant_kayip_ufuk_milyar": 113.8,
+      "rant_gelir_yillik_sonra_milyar": 233.45,
+      "faaliyet_proxy_milyar": 2307.81,
+      "kar_amorti_yuzde_once": 9.99,
+      "kar_amorti_yuzde_sonra": 9.19,
+      "kar_amorti_dusus_puan": 0.8,
+      "rant_direnci_yuzde": 2.12,
+      "payda_NFP_delta_milyar": 5371.8,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 216.36,
+      "rant_dis_artis_not": "reel %4×taban 1846.2; kapsama_proxy 142.5",
+      "eski_gelir_donus_yili": "0.53",
+      "eski_gelir_donus_yili_sayisal": 0.53
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "F",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1445.96,
+      "rant_kayip_ufuk_milyar": 170.33,
+      "rant_gelir_yillik_sonra_milyar": 1411.89,
+      "faaliyet_proxy_milyar": 3746.2,
+      "kar_amorti_yuzde_once": 27.85,
+      "kar_amorti_yuzde_sonra": 27.37,
+      "kar_amorti_dusus_puan": 0.48,
+      "rant_direnci_yuzde": 0.88,
+      "payda_NFP_delta_milyar": -19311.8,
+      "finansman_faaliyet_ref_F": 0.839,
+      "yillik_rant_dis_gelir_artisi_milyar": 335.47,
+      "rant_dis_artis_not": "reel %5×taban 3746.2; zarf×0.11",
+      "eski_gelir_donus_yili": "0.51",
+      "eski_gelir_donus_yili_sayisal": 0.51
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "B",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1598.88,
+      "rant_kayip_ufuk_milyar": 119.23,
+      "rant_gelir_yillik_sonra_milyar": 1575.03,
+      "faaliyet_proxy_milyar": 559.61,
+      "kar_amorti_yuzde_once": 74.07,
+      "kar_amorti_yuzde_sonra": 73.78,
+      "kar_amorti_dusus_puan": 0.29,
+      "rant_direnci_yuzde": 1.49,
+      "payda_NFP_delta_milyar": -967.8,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 16.79,
+      "rant_dis_artis_not": "reel %3×taban 559.6",
+      "eski_gelir_donus_yili": "7.1",
+      "eski_gelir_donus_yili_sayisal": 7.1
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "K",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1048.0,
+      "rant_kayip_ufuk_milyar": 17.03,
+      "rant_gelir_yillik_sonra_milyar": 1044.59,
+      "faaliyet_proxy_milyar": 6952.0,
+      "kar_amorti_yuzde_once": 13.1,
+      "kar_amorti_yuzde_sonra": 13.06,
+      "kar_amorti_dusus_puan": 0.04,
+      "rant_direnci_yuzde": 0.29,
+      "payda_NFP_delta_milyar": 5909.4,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 1078.08,
+      "rant_dis_artis_not": "reel %2×taban 6952.0; butce_kanal 939.0",
+      "eski_gelir_donus_yili": "0.02",
+      "eski_gelir_donus_yili_sayisal": 0.02
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "TOPLAM",
+      "durum": "senaryo",
+      "rant_direnci_yuzde": 1.44,
+      "agirlik_not": "H40 F30 B20 K10 varsayılan"
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "H",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 256.21,
+      "rant_kayip_ufuk_milyar": 289.98,
+      "rant_gelir_yillik_sonra_milyar": 198.21,
+      "faaliyet_proxy_milyar": 2307.81,
+      "kar_amorti_yuzde_once": 9.99,
+      "kar_amorti_yuzde_sonra": 7.91,
+      "kar_amorti_dusus_puan": 2.08,
+      "rant_direnci_yuzde": 22.64,
+      "payda_NFP_delta_milyar": 759.4,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 157.89,
+      "rant_dis_artis_not": "reel %4×taban 1846.2; yasam_tasarruf 5.5; kapsama_proxy 78.5",
+      "eski_gelir_donus_yili": "1.84",
+      "eski_gelir_donus_yili_sayisal": 1.84
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "F",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1445.96,
+      "rant_kayip_ufuk_milyar": 74.81,
+      "rant_gelir_yillik_sonra_milyar": 1431.0,
+      "faaliyet_proxy_milyar": 3746.2,
+      "kar_amorti_yuzde_once": 27.85,
+      "kar_amorti_yuzde_sonra": 27.64,
+      "kar_amorti_dusus_puan": 0.21,
+      "rant_direnci_yuzde": 1.03,
+      "payda_NFP_delta_milyar": 1211.1,
+      "finansman_faaliyet_ref_F": 0.839,
+      "yillik_rant_dis_gelir_artisi_milyar": 335.47,
+      "rant_dis_artis_not": "reel %5×taban 3746.2; zarf×0.11",
+      "eski_gelir_donus_yili": "0.22",
+      "eski_gelir_donus_yili_sayisal": 0.22
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "B",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1598.88,
+      "rant_kayip_ufuk_milyar": 52.37,
+      "rant_gelir_yillik_sonra_milyar": 1588.41,
+      "faaliyet_proxy_milyar": 559.61,
+      "kar_amorti_yuzde_once": 74.07,
+      "kar_amorti_yuzde_sonra": 73.95,
+      "kar_amorti_dusus_puan": 0.12,
+      "rant_direnci_yuzde": 0.66,
+      "payda_NFP_delta_milyar": 22.0,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 16.79,
+      "rant_dis_artis_not": "reel %3×taban 559.6",
+      "eski_gelir_donus_yili": "3.12",
+      "eski_gelir_donus_yili_sayisal": 3.12
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "K",
+      "durum": "senaryo",
+      "rant_gelir_yillik_baseline_milyar": 1048.0,
+      "rant_kayip_ufuk_milyar": 86.23,
+      "rant_gelir_yillik_sonra_milyar": 1030.75,
+      "faaliyet_proxy_milyar": 6952.0,
+      "kar_amorti_yuzde_once": 13.1,
+      "kar_amorti_yuzde_sonra": 12.91,
+      "kar_amorti_dusus_puan": 0.19,
+      "rant_direnci_yuzde": 1.65,
+      "payda_NFP_delta_milyar": -20.4,
+      "finansman_faaliyet_ref_F": "",
+      "yillik_rant_dis_gelir_artisi_milyar": 142.84,
+      "rant_dis_artis_not": "reel %2×taban 6952.0; butce_kanal 3.8",
+      "eski_gelir_donus_yili": "0.6",
+      "eski_gelir_donus_yili_sayisal": 0.6
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "TOPLAM",
+      "durum": "senaryo",
+      "rant_direnci_yuzde": 9.66,
+      "agirlik_not": "H40 F30 B20 K10 varsayılan"
+    }
+  ],
+  "duyarlik": [
+    {
+      "rant_dis_reel_oran_hepsi": 0.02,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "H",
+      "eski_gelir_donus_yili": "0.63",
+      "yillik_rant_dis_gelir_artisi_milyar": 179.43
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.02,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "F",
+      "eski_gelir_donus_yili": "0.76",
+      "yillik_rant_dis_gelir_artisi_milyar": 223.09
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.02,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "B",
+      "eski_gelir_donus_yili": "10.66",
+      "yillik_rant_dis_gelir_artisi_milyar": 11.19
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.02,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "K",
+      "eski_gelir_donus_yili": "0.02",
+      "yillik_rant_dis_gelir_artisi_milyar": 1078.08
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.02,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "H",
+      "eski_gelir_donus_yili": "2.4",
+      "yillik_rant_dis_gelir_artisi_milyar": 120.97
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.02,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "F",
+      "eski_gelir_donus_yili": "0.34",
+      "yillik_rant_dis_gelir_artisi_milyar": 223.09
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.02,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "B",
+      "eski_gelir_donus_yili": "4.68",
+      "yillik_rant_dis_gelir_artisi_milyar": 11.19
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.02,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "K",
+      "eski_gelir_donus_yili": "0.6",
+      "yillik_rant_dis_gelir_artisi_milyar": 142.84
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.03,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "H",
+      "eski_gelir_donus_yili": "0.58",
+      "yillik_rant_dis_gelir_artisi_milyar": 197.9
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.03,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "F",
+      "eski_gelir_donus_yili": "0.65",
+      "yillik_rant_dis_gelir_artisi_milyar": 260.55
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.03,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "B",
+      "eski_gelir_donus_yili": "7.1",
+      "yillik_rant_dis_gelir_artisi_milyar": 16.79
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.03,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "K",
+      "eski_gelir_donus_yili": "0.01",
+      "yillik_rant_dis_gelir_artisi_milyar": 1147.6
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.03,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "H",
+      "eski_gelir_donus_yili": "2.08",
+      "yillik_rant_dis_gelir_artisi_milyar": 139.43
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.03,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "F",
+      "eski_gelir_donus_yili": "0.29",
+      "yillik_rant_dis_gelir_artisi_milyar": 260.55
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.03,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "B",
+      "eski_gelir_donus_yili": "3.12",
+      "yillik_rant_dis_gelir_artisi_milyar": 16.79
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.03,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "K",
+      "eski_gelir_donus_yili": "0.41",
+      "yillik_rant_dis_gelir_artisi_milyar": 212.36
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.05,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "H",
+      "eski_gelir_donus_yili": "0.48",
+      "yillik_rant_dis_gelir_artisi_milyar": 234.82
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.05,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "F",
+      "eski_gelir_donus_yili": "0.51",
+      "yillik_rant_dis_gelir_artisi_milyar": 335.47
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.05,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "B",
+      "eski_gelir_donus_yili": "4.26",
+      "yillik_rant_dis_gelir_artisi_milyar": 27.98
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.05,
+      "senaryo": "uc_kural_kilitli",
+      "aktor": "K",
+      "eski_gelir_donus_yili": "0.01",
+      "yillik_rant_dis_gelir_artisi_milyar": 1286.64
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.05,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "H",
+      "eski_gelir_donus_yili": "1.64",
+      "yillik_rant_dis_gelir_artisi_milyar": 176.36
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.05,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "F",
+      "eski_gelir_donus_yili": "0.22",
+      "yillik_rant_dis_gelir_artisi_milyar": 335.47
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.05,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "B",
+      "eski_gelir_donus_yili": "1.87",
+      "yillik_rant_dis_gelir_artisi_milyar": 27.98
+    },
+    {
+      "rant_dis_reel_oran_hepsi": 0.05,
+      "senaryo": "maliyet_ucuz_revize",
+      "aktor": "K",
+      "eski_gelir_donus_yili": "0.25",
+      "yillik_rant_dis_gelir_artisi_milyar": 351.4
+    }
+  ]
+}
