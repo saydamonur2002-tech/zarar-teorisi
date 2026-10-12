@@ -1,6 +1,6 @@
 # Faz 1 — Adım 1: silinen miktarın hesaplanabilir sınırı (F sektörü içi)
 
-Çalıştır: `python3 adim1_nace.py`. Çıktı: `adim1_nace.csv`, `adim1_nace_kenar.csv`, `adim1_nace_sonuc.json`.
+Çalıştır: `python3 adim1_nace.py`. Çıktı: `adim1_nace.csv`, `adim1_nace_kenar.csv`, `adim1_yuzde20.csv`, `adim1_nace_sonuc.json`.
 
 `adim1_stok.csv` hazneler arası (H, F, B′, K′, D) üst sınırdır; `silinen` sütunu boş kalır ve bu dosya onu doldurmaz. Burada başka bir nesne ölçülür: firma sektörü içindeki karşılıklı ticari borç. İki sayı toplanmaz.
 
@@ -51,7 +51,17 @@ Sektör içi fark, firmaların birbirine olan alacak/borcudur; ZP22 ile ZP44 far
 
 - 39,928.6 × 0.9139 = **36,490.7 milyar** üst sınır (`varsayim_oran_tasima`). 2024 NACE oranı 2026-Q1 EVDS stokuna taşındı; iki kaynak, iki dönem. Varsayım.
 
+## (e) Varsayım: silinen oranı yüzde 20 olursa (koşu)
+
+| taban | brüt (milyar) | yüzde 20 silinen | üst sınır oranı | üst sınır (milyar) | içinde mi | üst sınıra oranı |
+| --- | --- | --- | --- | --- | --- | --- |
+| NACE Σ ticari borç (Sektör Bilançoları 2024) | 14,335.4 | 2,867.1 | 0.9139 | 13,101.1 | evet | 0.22 |
+| EVDS F içi diğer borç ZP44 (2026-Q1) | 39,928.6 | 7,985.7 | 0.9139 | 36,490.7 | evet | 0.22 |
+| Hazneler arası brüt (adim1_stok.csv TOPLAM) | 78,870.4 | 15,774.1 | 0.2582 | 20,364.3 | evet | 0.78 |
+
+- Oran varsayım; üç tabanda sayı. Üst sınır içinde kalması olabilirliği gösterir, gerçekleştiğini değil. adim1_stok.csv silinen boş. Çekim/RAS koşusu 90.5% verir; yüzde 20 onun altında, yani tam graf varsayımına göre temkinli.
+
 ## Ne denmez
 
-- 'Stok yüzde X silindi' denmez; (b) ve (c) üst sınır, (d) varsayım. Gerçek silinen için firma düzeyi kimden-kime gerekir (depoda yok).
+- 'Stok yüzde X silindi' denmez; (b) ve (c) üst sınır, (d) ve (e) varsayım. Gerçek silinen için firma düzeyi kimden-kime gerekir (depoda yok).
 - Hazneler arası `yeni_tavan` 0,2582 ile bu oran toplanmaz; biri hazneler arası, biri F içi.

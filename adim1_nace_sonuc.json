@@ -73,6 +73,50 @@
     "durum": "varsayim_oran_tasima",
     "not": "2024 NACE oranı 2026-Q1 EVDS stokuna taşındı; iki kaynak, iki dönem. Varsayım."
   },
+  "e_senaryo_yuzde20": {
+    "oran": 0.2,
+    "satirlar": [
+      {
+        "taban": "NACE Σ ticari borç (Sektör Bilançoları 2024)",
+        "brut_milyar": 14335.4,
+        "ust_sinir_oran": 0.9139,
+        "ust_sinir_kaynak": "b_nace_taban",
+        "oran": 0.2,
+        "silinen_milyar": 2867.1,
+        "ust_sinir_milyar": 13101.1,
+        "ust_sinir_icinde": true,
+        "ust_sinira_oran": 0.219,
+        "durum": "varsayim_yuzde20"
+      },
+      {
+        "taban": "EVDS F içi diğer borç ZP44 (2026-Q1)",
+        "brut_milyar": 39928.6,
+        "ust_sinir_oran": 0.9139,
+        "ust_sinir_kaynak": "b_nace_taban oranı taşındı (varsayım)",
+        "oran": 0.2,
+        "silinen_milyar": 7985.7,
+        "ust_sinir_milyar": 36490.7,
+        "ust_sinir_icinde": true,
+        "ust_sinira_oran": 0.219,
+        "durum": "varsayim_yuzde20"
+      },
+      {
+        "taban": "Hazneler arası brüt (adim1_stok.csv TOPLAM)",
+        "brut_milyar": 78870.4,
+        "ust_sinir_oran": 0.2582,
+        "ust_sinir_kaynak": "adim1_stok yeni_tavan (ust_sinir)",
+        "oran": 0.2,
+        "silinen_milyar": 15774.1,
+        "ust_sinir_milyar": 20364.3,
+        "ust_sinir_icinde": true,
+        "ust_sinira_oran": 0.775,
+        "durum": "varsayim_yuzde20"
+      }
+    ],
+    "cekim_sonucu_oran": 0.905,
+    "durum": "varsayim_yuzde20",
+    "not": "Oran varsayım; üç tabanda sayı. Üst sınır içinde kalması olabilirliği gösterir, gerçekleştiğini değil. adim1_stok.csv silinen boş."
+  },
   "nace_kisim": 17,
   "kaynak": {
     "bilanco": "Ekonomik faaliyetlere göre firmaların referans yıl bilanço hesapları .xls",
@@ -88,6 +132,7 @@
     "olcum",
     "ust_sinir_nace",
     "varsayim_dagitim",
-    "varsayim_oran_tasima"
+    "varsayim_oran_tasima",
+    "varsayim_yuzde20"
   ]
 }

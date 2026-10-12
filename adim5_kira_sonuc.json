@@ -32,6 +32,109 @@
     0.25,
     0.3
   ],
+  "araliklar": [
+    {
+      "nesne": "birim kira (TL/m²/ay)",
+      "alt": 258.45,
+      "ust": 258.45,
+      "birim": "TL/m²/ay",
+      "durum": "olcum",
+      "not": "TP.BK.TR 2026-Q2; tek nokta"
+    },
+    {
+      "nesne": "konut alanı",
+      "alt": 90.0,
+      "ust": 110.0,
+      "birim": "m²",
+      "durum": "varsayim",
+      "not": ""
+    },
+    {
+      "nesne": "aylık piyasa kirası (kiracı başına)",
+      "alt": 23260,
+      "ust": 28430,
+      "birim": "TL/ay",
+      "durum": "band_varsayim",
+      "not": "b × m²"
+    },
+    {
+      "nesne": "kiracı hane oranı",
+      "alt": 0.25,
+      "ust": 0.3,
+      "birim": "oran",
+      "durum": "varsayim",
+      "not": "TÜİK GYKA civarı; depoda yok"
+    },
+    {
+      "nesne": "kiracı hane sayısı",
+      "alt": 6600000,
+      "ust": 7920000,
+      "birim": "hane",
+      "durum": "dis_kaynak_elle",
+      "not": "N 26,400,000 × κ"
+    },
+    {
+      "nesne": "kira akışı yıllık (yol A)",
+      "alt": 1842.2,
+      "ust": 2701.9,
+      "birim": "milyar TL/yıl",
+      "durum": "band_varsayim",
+      "not": "b × m² × N × κ × 12"
+    },
+    {
+      "nesne": "kira akışı yıllık (yol B proxy)",
+      "alt": 254.8,
+      "ust": 254.8,
+      "birim": "milyar TL/yıl",
+      "durum": "varsayim_proxy",
+      "not": "A ile toplanmaz"
+    },
+    {
+      "nesne": "HEKİS havuz kirası",
+      "alt": 20000.0,
+      "ust": 20000.0,
+      "birim": "TL/ay",
+      "durum": "modellendi",
+      "not": "hekis-model; politika kirası"
+    },
+    {
+      "nesne": "kiracı başına aylık fark (piyasa − HEKİS)",
+      "alt": 3260,
+      "ust": 8430,
+      "birim": "TL/ay",
+      "durum": "band_varsayim",
+      "not": "HEKİS kirası piyasa altında kaldığı sürece"
+    },
+    {
+      "nesne": "Ho→Ha yıllık transfer, kapsama payı 20%",
+      "alt": 51.6,
+      "ust": 160.2,
+      "birim": "milyar TL/yıl",
+      "durum": "band_varsayim",
+      "not": "fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
+    },
+    {
+      "nesne": "Ho→Ha yıllık transfer, kapsama payı 50%",
+      "alt": 129.1,
+      "ust": 400.6,
+      "birim": "milyar TL/yıl",
+      "durum": "band_varsayim",
+      "not": "fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
+    },
+    {
+      "nesne": "Ho→Ha yıllık transfer, kapsama payı 100%",
+      "alt": 258.2,
+      "ust": 801.1,
+      "birim": "milyar TL/yıl",
+      "durum": "band_varsayim",
+      "not": "fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
+    }
+  ],
+  "kapsama_payi": [
+    0.2,
+    0.5,
+    1.0
+  ],
   "sfc": "H içi transfer (kiracı → ev sahibi); H toplam NL 0; Ha/Ho dağılımı; F kurumsal ev sahibi payı ölçülmedi",
   "etiketler": {
     "b": "olcum",

@@ -13,7 +13,7 @@ xls depoda yok. Bu dosya o sütunu DOLDURMAZ. Başka bir nesneyi ölçer: firma 
                      değil; tam grafta sonuç (b) tabanına iner. Faz 2 bu kenar matrisini girdi alır (etiketiyle).
 
 Birim: xls bin TL → milyar TL (÷1e6). EVDS bin TL → milyar TL (÷1e6).
-Çıktı: adim1_nace.csv (kısım satırları + özet), adim1_nace_kenar.csv (çekim kenarları), adim1_nace_sonuc.json, ADIM1_NACE.md.
+Çıktı: adim1_nace.csv (kısım satırları + özet), adim1_nace_kenar.csv (çekim kenarları), adim1_yuzde20.csv ((e) koşusu), adim1_nace_sonuc.json, ADIM1_NACE.md.
 `adim1_stok.csv` ve `tek_sistem_esleme.csv` yazılmaz.
 """
 
@@ -38,6 +38,7 @@ YSHI_XLS = KOK / "Ekonomik faaliyetlere göre temel göstergeler, 2024.xls"
 REFERANS_YIL = 2024
 DONEM_EVDS = "2026-Q1"
 DIS = "DIS"  # dış düğüm: hane, kamu, banka, yurt dışı, kapsam dışı firma
+SENARYO_SILINEN_ORAN = 0.20  # (e) 'yaklaşık yüzde 20' koşusu; varsayım, ölçüm değil
 
 # Sektör Bilançoları t2 satır indeksleri (0 tabanlı; doğrulandı)
 SATIR = {"hazir_degerler": 7, "ticari_alacak_kv": 19, "ticari_alacak_uv": 63, "aktif": 128,
@@ -184,6 +185,36 @@ def cekim_kenarlari(b: pd.DataFrame, dis_brut_borc: float | None = None) -> tupl
                       "not": "Çekim dağılımı ölçüm değil. Tam grafta optimal mahsup (b) tabanına iner; gerçek (seyrek) ağda silinen daha az."}
 
 
+def senaryo_yuzde(fark: dict, taban: dict, cekim: dict) -> dict:
+    """(e) Silinen oranı SENARYO_SILINEN_ORAN (yüzde 20) VARSAYILIRSA ne çıkar: üç tabanda, üst sınırla karşılaştırmalı.
+
+    Oran ölçüm değil; 'yaklaşık yüzde 20' cümlesi için koşu. adim1_stok.csv silinen sütunu dolmaz."""
+    a1 = {r["cift"]: r for r in csv.DictReader((KOK / "adim1_stok.csv").open(encoding="utf-8-sig"))}
+    top = a1.get("TOPLAM", {})
+    brut_hazne = float(top["brut"]) if top.get("brut") else None
+    yeni_tavan = float(top["yeni_tavan"]) if top.get("yeni_tavan") else None
+    o = SENARYO_SILINEN_ORAN
+    tabanlar = [
+        {"taban": "NACE Σ ticari borç (Sektör Bilançoları 2024)", "brut_milyar": taban["brut_milyar"], "ust_sinir_oran": taban["silinen_max_oran"],
+         "ust_sinir_kaynak": "b_nace_taban"},
+        {"taban": "EVDS F içi diğer borç ZP44 (2026-Q1)", "brut_milyar": fark["ZP44"]["sektor_ici"], "ust_sinir_oran": taban["silinen_max_oran"],
+         "ust_sinir_kaynak": "b_nace_taban oranı taşındı (varsayım)"},
+        {"taban": "Hazneler arası brüt (adim1_stok.csv TOPLAM)", "brut_milyar": brut_hazne, "ust_sinir_oran": yeni_tavan,
+         "ust_sinir_kaynak": "adim1_stok yeni_tavan (ust_sinir)"},
+    ]
+    satirlar = []
+    for t in tabanlar:
+        if t["brut_milyar"] is None:
+            continue
+        silinen = o * t["brut_milyar"]
+        ust = None if t["ust_sinir_oran"] is None else t["ust_sinir_oran"] * t["brut_milyar"]
+        satirlar.append({**t, "oran": o, "silinen_milyar": round(silinen, 1), "ust_sinir_milyar": None if ust is None else round(ust, 1),
+                         "ust_sinir_icinde": None if ust is None else bool(silinen <= ust + 1e-9),
+                         "ust_sinira_oran": None if not ust else round(silinen / ust, 3), "durum": "varsayim_yuzde20"})
+    return {"oran": o, "satirlar": satirlar, "cekim_sonucu_oran": cekim["silinen_oran"], "durum": "varsayim_yuzde20",
+            "not": "Oran varsayım; üç tabanda sayı. Üst sınır içinde kalması olabilirliği gösterir, gerçekleştiğini değil. adim1_stok.csv silinen boş."}
+
+
 def _md_table(baslik: list[str], satirlar: list[list]) -> str:
     s = ["| " + " | ".join(baslik) + " |", "| " + " | ".join("---" for _ in baslik) + " |"]
     for r in satirlar:
@@ -204,6 +235,7 @@ def main() -> dict:
     birlesik = {"evds_sektor_ici_zp44_milyar": fark["ZP44"]["sektor_ici"], "nace_silinen_max_oran": taban["silinen_max_oran"],
                 "silinen_ust_milyar": round(fark["ZP44"]["sektor_ici"] * taban["silinen_max_oran"], 1), "durum": "varsayim_oran_tasima",
                 "not": "2024 NACE oranı 2026-Q1 EVDS stokuna taşındı; iki kaynak, iki dönem. Varsayım."}
+    yuzde = senaryo_yuzde(fark, taban, cekim)
 
     alan = ["nace", "ticari_alacak", "ticari_borc", "net", "hazir_degerler", "banka_kredisi_kv", "banka_kredisi_uv", "finansman_gideri",
             "net_satis", "personel_maliyeti", "aktif", "birim", "kaynak", "donem", "durum"]
@@ -228,18 +260,23 @@ def main() -> dict:
         w = csv.DictWriter(fh, fieldnames=alan); w.writeheader()
         for s in satirlar:
             w.writerow({a: ("" if s.get(a) is None else s.get(a)) for a in alan})
+    y_alan = ["taban", "brut_milyar", "oran", "silinen_milyar", "ust_sinir_oran", "ust_sinir_milyar", "ust_sinir_icinde", "ust_sinira_oran", "ust_sinir_kaynak", "durum"]
+    with (KOK / "adim1_yuzde20.csv").open("w", newline="", encoding="utf-8-sig") as fh:
+        w = csv.DictWriter(fh, fieldnames=y_alan); w.writeheader()
+        for t in yuzde["satirlar"]:
+            w.writerow({a: ("" if t.get(a) is None else t.get(a)) for a in y_alan})
     with (KOK / "adim1_nace_kenar.csv").open("w", newline="", encoding="utf-8-sig") as fh:
         w = csv.DictWriter(fh, fieldnames=["borclu", "alacakli", "milyar_tl", "kural", "durum"]); w.writeheader(); w.writerows(kenarlar)
 
     sonuc = {"faz": 1, "adim": 1, "nesne": "F sektörü içi ticari kredi; adim1_stok.csv silinen sütunu DOLDURULMAZ",
-             "a_evds_fark": fark, "b_nace_taban": taban, "c_cekim_mahsup": cekim, "d_oran_tasima": birlesik,
+             "a_evds_fark": fark, "b_nace_taban": taban, "c_cekim_mahsup": cekim, "d_oran_tasima": birlesik, "e_senaryo_yuzde20": yuzde,
              "nace_kisim": len(b), "kaynak": {"bilanco": BILANCO_XLS.name, "gelir": GELIR_XLS.name, "yshi": YSHI_XLS.name,
                                                "evds": ["stok_silim_tavan_ham.csv", "finansal_hesaplar_uzun.csv"]},
-             "adim1_stok_silinen": "bos (dokunulmadi)", "etiketler": ["olcum", "ust_sinir_nace", "varsayim_dagitim", "varsayim_oran_tasima"]}
+             "adim1_stok_silinen": "bos (dokunulmadi)", "etiketler": ["olcum", "ust_sinir_nace", "varsayim_dagitim", "varsayim_oran_tasima", "varsayim_yuzde20"]}
     (KOK / "adim1_nace_sonuc.json").write_text(json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     md = ["# Faz 1 — Adım 1: silinen miktarın hesaplanabilir sınırı (F sektörü içi)", "",
-          "Çalıştır: `python3 adim1_nace.py`. Çıktı: `adim1_nace.csv`, `adim1_nace_kenar.csv`, `adim1_nace_sonuc.json`.", "",
+          "Çalıştır: `python3 adim1_nace.py`. Çıktı: `adim1_nace.csv`, `adim1_nace_kenar.csv`, `adim1_yuzde20.csv`, `adim1_nace_sonuc.json`.", "",
           "`adim1_stok.csv` hazneler arası (H, F, B′, K′, D) üst sınırdır; `silinen` sütunu boş kalır ve bu dosya onu doldurmaz. "
           "Burada başka bir nesne ölçülür: firma sektörü içindeki karşılıklı ticari borç. İki sayı toplanmaz.", "",
           "## (a) Ölçüm: F konsolide olmayan − konsolide, EVDS 2026-Q1 (milyar TL)", "",
@@ -264,12 +301,20 @@ def main() -> dict:
           "## (d) Varsayım: oranı EVDS stokuna taşıma", "",
           f"- {f(birlesik['evds_sektor_ici_zp44_milyar'])} × {birlesik['nace_silinen_max_oran']:.4f} = **{f(birlesik['silinen_ust_milyar'])} milyar** üst sınır "
           f"(`{birlesik['durum']}`). {birlesik['not']}", "",
+          f"## (e) Varsayım: silinen oranı yüzde {int(SENARYO_SILINEN_ORAN * 100)} olursa (koşu)", "",
+          _md_table(["taban", "brüt (milyar)", "yüzde 20 silinen", "üst sınır oranı", "üst sınır (milyar)", "içinde mi", "üst sınıra oranı"],
+                    [[t["taban"], f(t["brut_milyar"]), f(t["silinen_milyar"]), "" if t["ust_sinir_oran"] is None else f"{t['ust_sinir_oran']:.4f}",
+                      f(t["ust_sinir_milyar"]), "" if t["ust_sinir_icinde"] is None else ("evet" if t["ust_sinir_icinde"] else "HAYIR"),
+                      "" if t["ust_sinira_oran"] is None else f"{t['ust_sinira_oran']:.2f}"] for t in yuzde["satirlar"]]), "",
+          f"- {yuzde['not']} Çekim/RAS koşusu {yuzde['cekim_sonucu_oran']:.1%} verir; yüzde 20 onun altında, yani tam graf varsayımına göre temkinli.", "",
           "## Ne denmez", "",
-          "- 'Stok yüzde X silindi' denmez; (b) ve (c) üst sınır, (d) varsayım. Gerçek silinen için firma düzeyi kimden-kime gerekir (depoda yok).",
+          "- 'Stok yüzde X silindi' denmez; (b) ve (c) üst sınır, (d) ve (e) varsayım. Gerçek silinen için firma düzeyi kimden-kime gerekir (depoda yok).",
           "- Hazneler arası `yeni_tavan` 0,2582 ile bu oran toplanmaz; biri hazneler arası, biri F içi.", ""]
     (KOK / "ADIM1_NACE.md").write_text("\n".join(md), encoding="utf-8")
     print(f"(a) F içi ZP44 {fark['ZP44']['sektor_ici']:,.1f} | (b) silinen_max {taban['silinen_max_oran']:.1%} "
           f"({taban['silinen_max_milyar']:,.1f}/{taban['brut_milyar']:,.1f}) | (c) çekim {cekim['silinen_oran']:.1%} | (d) {birlesik['silinen_ust_milyar']:,.1f}")
+    for t in yuzde["satirlar"]:
+        print(f"(e) %20 | {t['taban'][:44]:<44} brüt {t['brut_milyar']:>9,.1f} silinen {t['silinen_milyar']:>8,.1f} üst {t['ust_sinir_milyar']!s:>9} içinde {t['ust_sinir_icinde']}")
     return sonuc
 
 

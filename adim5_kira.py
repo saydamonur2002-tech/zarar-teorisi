@@ -13,7 +13,9 @@ Yol B (depodaki proxy): konut_stok_milyarTL (direnc_yuzdesi: H varlık × 0,25) 
 Karşılaştırma: HEKİS havuz kirası 20.000 TL/ay (modellendi) / piyasa 100 m² kirası (b × 100).
 SFC: kira H(kiracı) → H(ev sahibi) hazne içi transfer; H toplam NL değişmez, Ha/Ho dağılımı değişir. F (kurumsal ev sahibi) payı ölçülmedi.
 
-Çıktı: adim5_kira_ham.csv, adim5_kira.csv, adim5_kira_sonuc.json, ADIM5_KIRA.md.
+Aralıklar (adim5_kira_aralik.csv): bileşenler, HEKİS farkı, kapsama payı {0,20; 0,50; 1,00} ile Ho→Ha yıllık transfer bandı.
+
+Çıktı: adim5_kira_ham.csv, adim5_kira.csv, adim5_kira_aralik.csv, adim5_kira_sonuc.json, ADIM5_KIRA.md.
 """
 
 from __future__ import annotations
@@ -33,6 +35,7 @@ M2 = (90.0, 110.0)
 KIRACI_ORANI = (0.25, 0.30)
 HANE_SAYISI = 26_400_000  # TÜİK ADNKS 2024 hane sayısı; depoda yok, elle; doğrulanmadı
 KIRA_GETIRI_PROXY = 0.035  # direnc_yuzdesi.py varsayımı
+KAPSAMA_PAYI = (0.20, 0.50, 1.00)  # tek sisteme giren kiracı payı; varsayım (yüzde 20 koşusu dahil)
 
 
 def _govde(series, agg, freq, start):
@@ -119,6 +122,34 @@ def main() -> dict:
         for s in satirlar:
             w.writerow({a: ("" if s.get(a) is None else s.get(a)) for a in alan})
 
+    # Aralıklar: bileşenler, HEKİS farkı, kapsama payı (tek sisteme giren kiracı payı)
+    kiraci_hane = [int(HANE_SAYISI * k) for k in KIRACI_ORANI]
+    aylik_tl = [b * m for m in M2]
+    fark_tl = [max(0.0, a - hekis_tl_ay) for a in aylik_tl]  # kiracı başına aylık fark (piyasa − HEKİS)
+    araliklar = [
+        {"nesne": "birim kira (TL/m²/ay)", "alt": b, "ust": b, "birim": "TL/m²/ay", "durum": "olcum", "not": f"{S_BK} {son_bk}; tek nokta"},
+        {"nesne": "konut alanı", "alt": min(M2), "ust": max(M2), "birim": "m²", "durum": "varsayim", "not": ""},
+        {"nesne": "aylık piyasa kirası (kiracı başına)", "alt": round(min(aylik_tl)), "ust": round(max(aylik_tl)), "birim": "TL/ay", "durum": "band_varsayim", "not": "b × m²"},
+        {"nesne": "kiracı hane oranı", "alt": min(KIRACI_ORANI), "ust": max(KIRACI_ORANI), "birim": "oran", "durum": "varsayim", "not": "TÜİK GYKA civarı; depoda yok"},
+        {"nesne": "kiracı hane sayısı", "alt": min(kiraci_hane), "ust": max(kiraci_hane), "birim": "hane", "durum": "dis_kaynak_elle", "not": f"N {HANE_SAYISI:,} × κ"},
+        {"nesne": "kira akışı yıllık (yol A)", "alt": a_min, "ust": a_max, "birim": "milyar TL/yıl", "durum": "band_varsayim", "not": "b × m² × N × κ × 12"},
+        {"nesne": "kira akışı yıllık (yol B proxy)", "alt": None if yol_b is None else round(yol_b, 1), "ust": None if yol_b is None else round(yol_b, 1),
+         "birim": "milyar TL/yıl", "durum": "varsayim_proxy", "not": "A ile toplanmaz"},
+        {"nesne": "HEKİS havuz kirası", "alt": hekis_tl_ay, "ust": hekis_tl_ay, "birim": "TL/ay", "durum": "modellendi", "not": "hekis-model; politika kirası"},
+        {"nesne": "kiracı başına aylık fark (piyasa − HEKİS)", "alt": round(min(fark_tl)), "ust": round(max(fark_tl)), "birim": "TL/ay", "durum": "band_varsayim",
+         "not": "HEKİS kirası piyasa altında kaldığı sürece"},
+    ]
+    for pay in KAPSAMA_PAYI:
+        alt = min(fark_tl) * min(kiraci_hane) * pay * 12 / 1e9
+        ust = max(fark_tl) * max(kiraci_hane) * pay * 12 / 1e9
+        araliklar.append({"nesne": f"Ho→Ha yıllık transfer, kapsama payı {pay:.0%}", "alt": round(alt, 1), "ust": round(ust, 1), "birim": "milyar TL/yıl",
+                          "durum": "band_varsayim", "not": "fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"})
+    a_alan = ["nesne", "alt", "ust", "birim", "durum", "not"]
+    with (KOK / "adim5_kira_aralik.csv").open("w", newline="", encoding="utf-8-sig") as fh:
+        w = csv.DictWriter(fh, fieldnames=a_alan); w.writeheader()
+        for s in araliklar:
+            w.writerow({a: ("" if s.get(a) is None else s.get(a)) for a in a_alan})
+
     yoy_bk, yoy_yk = _yoy(bk, son_bk, False), _yoy(yk, son_yk, True)
     sonuc = {"faz": 6, "adim": 5, "adim5_csv": "yazilmadi; kira satiri olculmedi kalir",
              "birim_kira": {"seri": S_BK, "donem": son_bk, "tl_m2_ay": b, "yoy": None if yoy_bk is None else round(yoy_bk, 4), "durum": "olcum",
@@ -126,13 +157,14 @@ def main() -> dict:
              "yeni_kiraci_endeksi": {"seri": S_YKKE, "donem": son_yk, "deger": yk[son_yk], "yoy": None if yoy_yk is None else round(yoy_yk, 4), "durum": "olcum"},
              "yol_A_band_milyar": [a_min, a_max], "yol_B_proxy_milyar": None if yol_b is None else round(yol_b, 1),
              "hekis_bolu_piyasa_100m2": round(hekis_tl_ay / piyasa_100, 3), "hane_sayisi": HANE_SAYISI, "m2": list(M2), "kiraci_orani": list(KIRACI_ORANI),
+             "araliklar": araliklar, "kapsama_payi": list(KAPSAMA_PAYI),
              "sfc": "H içi transfer (kiracı → ev sahibi); H toplam NL 0; Ha/Ho dağılımı; F kurumsal ev sahibi payı ölçülmedi",
              "etiketler": {"b": "olcum", "m2": "varsayim", "N": "dis_kaynak_elle (doğrulanmadı)", "kiraci_orani": "varsayim", "yol_B": "varsayim_proxy"}}
     (KOK / "adim5_kira_sonuc.json").write_text(json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     f = lambda x, n=1: "" if x is None else f"{x:,.{n}f}"
     md = ["# Faz 6 — Adım 5: kira akışı bandı (satır `olculmedi` kalır)", "",
-          "Çalıştır: `python3 adim5_kira.py`. Çıktı: `adim5_kira_ham.csv`, `adim5_kira.csv`, `adim5_kira_sonuc.json`.", "",
+          "Çalıştır: `python3 adim5_kira.py`. Çıktı: `adim5_kira_ham.csv`, `adim5_kira.csv`, `adim5_kira_aralik.csv`, `adim5_kira_sonuc.json`.", "",
           "`adim5.csv` kira satırı `olculmedi`; bu dosya onu doldurmaz. Kol için hesaplanabilir band burada, her girdi etiketli.", "",
           "## Ölçüm", "",
           f"- Birim kira {S_BK} {son_bk}: **{b:.2f} TL/m²/ay**; yıllık değişim {f(None if yoy_bk is None else yoy_bk * 100)}%. Kapsam: değerlemesi yapılan konutlar.",
@@ -146,6 +178,14 @@ def main() -> dict:
            "Yol A'nın çok altında: proxy finansal varlık payıdır, konut serveti değil. İki yol toplanmaz; A ölçüme yakın, B varsayım.", "",
            "## HEKİS ile karşılaştırma", "",
            f"- HEKİS havuz kirası {hekis_tl_ay:,.0f} TL/ay (`modellendi`) / piyasa 100 m² {piyasa_100:,.0f} TL/ay = **{hekis_tl_ay / piyasa_100:.2f}**. Oran; eşitlenmez.", "",
+           "## Aralıklar (Adım 5)", "",
+           "| nesne | alt | üst | birim | etiket | not |", "| --- | --- | --- | --- | --- | --- |"]
+    md += [f"| {a['nesne']} | {f(a['alt'], 0) if isinstance(a['alt'], (int, float)) and a['alt'] is not None and abs(a['alt']) >= 100 else a['alt']} | "
+           f"{f(a['ust'], 0) if isinstance(a['ust'], (int, float)) and a['ust'] is not None and abs(a['ust']) >= 100 else a['ust']} | {a['birim']} | `{a['durum']}` | {a['not']} |"
+           for a in araliklar]
+    md += ["", "- Transfer satırları: HEKİS kirası piyasa kirasının altında kaldığı sürece kiracının (Ha) kazancı ev sahibinin (Ho) kaybıdır; H toplam NL değişmez. "
+           "Kapsama payı tek sisteme giren kiracı payıdır; yüzde 20 satırı 'yüzde 20' koşusudur.",
+           "- Tüm alt/üst uçlar varsayım aralığının uçlarıdır; güven aralığı değil.", "",
            "## SFC", "", f"- {sonuc['sfc']}.", "",
            "## Ne denmez", "",
            "- 'Kira ölçüldü' denmez; satır `olculmedi`. Band: b ölçüm, geri kalanı varsayım/elle.",
