@@ -7,6 +7,7 @@ CALISTIRMA SIRASI
   kalibre_matris.py  v1 matrisler (arsiv, v2 gecer)
   akis_model.py      v2: temiz stok-akis paneli, SFC matrisi, L/G, Lm, simulator
   butce_kanali.py    K'nin vergi/faiz/harcama kanali + fiscal_shock()
+  uc_kural_senaryo.py uc kural (taban+DTI+geri bildirim) SFC senaryosu; mevcut vs kilitli; simulate+fiscal_shock
   entegre_ve_test.py butce uyumu, matris geriye donuk testi, ikinci-tur OLS
   kur_kanali.py      doviz maruziyet payi (f) tahmini ve test
   bilateral_D.py     D satiri icin brut dis borc (borclu sektore gore) ile bilateral L
