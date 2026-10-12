@@ -1,5 +1,5 @@
 {
-  "uretim": "2026-10-12T12:54:03Z",
+  "uretim": "2026-10-12T13:33:26Z",
   "taban_girdi": {
     "tufe_yillik_2026": 30.65,
     "kart_buyume_13h_yillik": 45.88,
@@ -46,7 +46,7 @@
     },
     "bekar_yasam": {
       "deger": 48885.0,
-      "durum": "olculdu",
+      "durum": "dis_veri",
       "seri": "TÜRK-İŞ bekar yaşam sınırı (Eylül 2026 — kullanıcı/rapor; EVDS değil)",
       "tarih": "2026-09",
       "not_": "Resmi TÜRK-İŞ duyurusundan doğrulanıp güncellenmeli"
