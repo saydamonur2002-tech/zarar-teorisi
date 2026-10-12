@@ -1,0 +1,52 @@
+{
+  "ponzi_servis_esik": 0.4,
+  "hedge_servis_esik": 0.3,
+  "ponzi_fazlasi_tanim": "max(0, borc_servis_orani_Ha - ponzi_esik) * 100 puan",
+  "ozet": {
+    "mevcut": {
+      "donem_bas": "2026-Q4",
+      "donem_son": "2031-Q4",
+      "servis_bas": 0.473,
+      "servis_son": 0.591,
+      "ponzi_fazlasi_pp_bas": 7.3,
+      "ponzi_fazlasi_pp_son": 19.1,
+      "ponzi_fazlasi_pp_delta": 11.8,
+      "ponzi_ceyrek_egim_pp": 0.59,
+      "yon": "artis"
+    },
+    "uc_kural_kilitli": {
+      "donem_bas": "2026-Q4",
+      "donem_son": "2031-Q4",
+      "servis_bas": 0.475,
+      "servis_son": 0.318,
+      "ponzi_fazlasi_pp_bas": 7.5,
+      "ponzi_fazlasi_pp_son": 0.0,
+      "ponzi_fazlasi_pp_delta": -7.5,
+      "ponzi_ceyrek_egim_pp": -0.375,
+      "yon": "azalis"
+    },
+    "maliyet_ucuz_revize": {
+      "donem_bas": "2026-Q4",
+      "donem_son": "2031-Q4",
+      "servis_bas": 0.475,
+      "servis_son": 0.586,
+      "ponzi_fazlasi_pp_bas": 7.5,
+      "ponzi_fazlasi_pp_son": 18.6,
+      "ponzi_fazlasi_pp_delta": 11.1,
+      "ponzi_ceyrek_egim_pp": 0.555,
+      "yon": "artis"
+    },
+    "kademe_mevcut_taban_proxy": {
+      "donem_bas": "2026-Q4",
+      "donem_son": "2031-Q4",
+      "servis_bas": 0.473,
+      "servis_son": 0.2111,
+      "ponzi_fazlasi_pp_bas": 7.3,
+      "ponzi_fazlasi_pp_son": 0.0,
+      "ponzi_fazlasi_pp_delta": -7.3,
+      "ponzi_ceyrek_egim_pp": -0.365,
+      "yon": "azalis"
+    }
+  },
+  "kademe_h_buyume_yillik_varsayim": 0.45
+}
