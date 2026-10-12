@@ -3,7 +3,7 @@
     "durum": "senaryo",
     "olcum_degil": true,
     "direnc_politik_ekonomi_proxy": true,
-    "tanim": "direnc_% = sum(kalem kayıpları) / kar_proxy_kapsama × 100",
+    "tanim": "direnc_% = sum(kalem kayıpları) / (kar_proxy_kapsama + yaşam tasarrufu) × 100",
     "olculen_referans_finansman_faaliyet_2024": 0.839,
     "parametreler": {
       "agirlik_kira": 0.4,
@@ -32,7 +32,7 @@
     },
     "yorum": "Revize yöntem kira/finans/üst gelir lehine mevcut düzeni bozar; direnç yüksek çıkabilir. Sert zam görünür maliyeti F'ye yükler; kira sepeti revizede düştüğü için kalem kaybı büyür.",
     "revize_ozet": {
-      "direnc_yuzdesi": 128.11,
+      "direnc_yuzdesi": 128.88,
       "uygulanabilirlik": "yuksek_direnc",
       "sert_direnc": 283.04
     }
@@ -53,7 +53,7 @@
       "direnc_yuzdesi": null,
       "direnc_yuzdesi_agirlikli": null,
       "uygulanabilirlik_revize": "",
-      "not": "Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama"
+      "not": "Kayıp = mevcuta göre kazanan kesim proxy; payda = kar_proxy + tasarruf"
     },
     {
       "senaryo": "uc_kural_kilitli",
@@ -70,24 +70,24 @@
       "direnc_yuzdesi": 283.04,
       "direnc_yuzdesi_agirlikli": 80.51,
       "uygulanabilirlik_revize": "",
-      "not": "Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama"
+      "not": "Kayıp = mevcuta göre kazanan kesim proxy; payda = kar_proxy + tasarruf"
     },
     {
       "senaryo": "maliyet_ucuz_revize",
       "donem": "2031-Q4",
       "durum": "senaryo",
-      "sistem_kazanci_kar_proxy_milyar": 82.08,
+      "sistem_kazanci_kar_proxy_milyar": 78.53,
       "sistem_kazanci_tasarruf_milyar": 306.26,
-      "sistem_kazanci_toplam_milyar": 388.34,
+      "sistem_kazanci_toplam_milyar": 384.79,
       "kira_konut_ranti_milyar": 232.99,
       "finansal_rant_milyar": 149.63,
-      "ust_gelir_Ho_milyar": 36.12,
+      "ust_gelir_Ho_milyar": 34.55,
       "kamu_ust_unvan_milyar": 78.75,
-      "kayip_toplam_milyar": 497.49,
-      "direnc_yuzdesi": 128.11,
-      "direnc_yuzdesi_agirlikli": 39.45,
+      "kayip_toplam_milyar": 495.92,
+      "direnc_yuzdesi": 128.88,
+      "direnc_yuzdesi_agirlikli": 39.73,
       "uygulanabilirlik_revize": "yuksek_direnc",
-      "not": "Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama"
+      "not": "Kayıp = mevcuta göre kazanan kesim proxy; payda = kar_proxy + tasarruf"
     }
   ],
   "duyarlik": [
@@ -97,9 +97,9 @@
       "agirlik_finans": 0.3,
       "agirlik_ust_gelir": 0.2,
       "agirlik_kamu_unvan": 0.1,
-      "direnc_yuzdesi": 128.11,
-      "kayip_toplam_milyar": 497.49,
-      "sistem_kazanci_kar_proxy_milyar": 82.08
+      "direnc_yuzdesi": 128.88,
+      "kayip_toplam_milyar": 495.92,
+      "sistem_kazanci_kar_proxy_milyar": 78.53
     },
     {
       "tur": "agirlik_grid",
@@ -107,9 +107,9 @@
       "agirlik_finans": 0.25,
       "agirlik_ust_gelir": 0.15,
       "agirlik_kamu_unvan": 0.1,
-      "direnc_yuzdesi": 128.11,
-      "kayip_toplam_milyar": 497.49,
-      "sistem_kazanci_kar_proxy_milyar": 82.08
+      "direnc_yuzdesi": 128.88,
+      "kayip_toplam_milyar": 495.92,
+      "sistem_kazanci_kar_proxy_milyar": 78.53
     },
     {
       "tur": "agirlik_grid",
@@ -117,9 +117,9 @@
       "agirlik_finans": 0.4,
       "agirlik_ust_gelir": 0.2,
       "agirlik_kamu_unvan": 0.1,
-      "direnc_yuzdesi": 128.11,
-      "kayip_toplam_milyar": 497.49,
-      "sistem_kazanci_kar_proxy_milyar": 82.08
+      "direnc_yuzdesi": 128.88,
+      "kayip_toplam_milyar": 495.92,
+      "sistem_kazanci_kar_proxy_milyar": 78.53
     },
     {
       "tur": "agirlik_grid",
@@ -127,27 +127,27 @@
       "agirlik_finans": 0.35,
       "agirlik_ust_gelir": 0.2,
       "agirlik_kamu_unvan": 0.1,
-      "direnc_yuzdesi": 128.11,
-      "kayip_toplam_milyar": 497.49,
-      "sistem_kazanci_kar_proxy_milyar": 82.08
+      "direnc_yuzdesi": 128.88,
+      "kayip_toplam_milyar": 495.92,
+      "sistem_kazanci_kar_proxy_milyar": 78.53
     },
     {
       "tur": "kira_elastikiyet",
       "kira_yasam_elastikiyet": 0.8,
-      "direnc_yuzdesi": 116.11,
-      "kayip_toplam_milyar": 450.9
+      "direnc_yuzdesi": 116.77,
+      "kayip_toplam_milyar": 449.33
     },
     {
       "tur": "kira_elastikiyet",
       "kira_yasam_elastikiyet": 1.0,
-      "direnc_yuzdesi": 128.11,
-      "kayip_toplam_milyar": 497.49
+      "direnc_yuzdesi": 128.88,
+      "kayip_toplam_milyar": 495.92
     },
     {
       "tur": "kira_elastikiyet",
       "kira_yasam_elastikiyet": 1.2,
-      "direnc_yuzdesi": 140.11,
-      "kayip_toplam_milyar": 544.09
+      "direnc_yuzdesi": 140.99,
+      "kayip_toplam_milyar": 542.52
     }
   ]
 }

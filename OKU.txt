@@ -10,6 +10,7 @@ CALISTIRMA SIRASI
   uc_kural_senaryo.py uc kural (taban+DTI+geri bildirim) SFC senaryosu; mevcut vs kilitli; simulate+fiscal_shock
   maliyet_kar_orani.py senaryo maliyet/kar proxy (F+K kanali); olculen finansman/faaliyet referansi ayri
   direnc_yuzdesi.py reform direnc proxy (kira/finans/Ho/kamu); uc_kural + maliyet_kar girdi
+  rant_aktor.py aktor bazli rant kanali direnci + kar amorti %; uc_kural + maliyet_kar + direnc girdi
   entegre_ve_test.py butce uyumu, matris geriye donuk testi, ikinci-tur OLS
   kur_kanali.py      doviz maruziyet payi (f) tahmini ve test
   bilateral_D.py     D satiri icin brut dis borc (borclu sektore gore) ile bilateral L

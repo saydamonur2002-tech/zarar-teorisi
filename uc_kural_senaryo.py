@@ -88,7 +88,7 @@ class Params:
     hedge_servis_esik: float = 0.30
     # Revize: yaşam maliyeti öncelikli kanal (yıllık reel düşüş bandı %3–5)
     yasam_reel_dusus_yillik: float = 0.04  # VARSAYIM
-    taban_yarimyil_nom_artis_yuzde: float = 1.0  # sınırlı zam; %4 yarıyıl örnek patika ayrı senaryo parametresi
+    taban_yarimyil_nom_artis_yuzde: float = 0.85  # sınırlı zam; 2031 kapsama ~%75–80 bandı (maliyet düşüşü ile)
     kamu_makas_daraltma_milyarTL_ceyrek: float = 45.0  # memur standardizasyon, K′→H (VARSAYIM)
     isveren_pay_revize_100tl: float = 22.0  # sert senaryodan düşük
     sgk_indirim_revize_100tl: float = 18.0  # prim indirimi daraltıldı

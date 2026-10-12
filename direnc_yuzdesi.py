@@ -264,13 +264,14 @@ def _md(meta: dict, ana: list[dict]) -> str:
         "",
         "## Senaryo karşılaştırma (2031-Q4)",
         "",
-        "| Senaryo | G (kar proxy) | Kayıp toplam | **Direnç %** | Uygulanabilirlik (revize) |",
-        "| --- | ---: | ---: | ---: | --- |",
+        "| Senaryo | G kapsama | G tasarruf | G toplam | Kayıp | **Direnç %** | Etiket |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | --- |",
     ]
     for r in ana:
         lines.append(
-            f"| {r['senaryo']} | {r['sistem_kazanci_kar_proxy_milyar']} | {r['kayip_toplam_milyar']} | "
-            f"{r['direnc_yuzdesi']} | {r.get('uygulanabilirlik_revize', '')} |"
+            f"| {r['senaryo']} | {r['sistem_kazanci_kar_proxy_milyar']} | {r['sistem_kazanci_tasarruf_milyar']} | "
+            f"{r['sistem_kazanci_toplam_milyar']} | {r['kayip_toplam_milyar']} | {r['direnc_yuzdesi']} | "
+            f"{r.get('uygulanabilirlik_revize', '')} |"
         )
     lines.extend(["", "## Kalemler (milyar TL kayıp)", ""])
     for r in ana:
