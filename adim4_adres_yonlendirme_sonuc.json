@@ -1,0 +1,302 @@
+{
+  "faz": 4,
+  "adim": 4,
+  "adim4_csv": "yazilmadi; senet satiri modellenmedi, senet_kilit.txt durur",
+  "adresler": [
+    {
+      "nesne": "hane vadeli mevduat (VF.2 ZP8)",
+      "hazne": "H",
+      "milyar": 8322.4,
+      "donem": "2026-Q1",
+      "durum": "olcum",
+      "not": ""
+    },
+    {
+      "nesne": "firma vadeli mevduat (VF.2 ZP8)",
+      "hazne": "F",
+      "milyar": 4400.1,
+      "donem": "2026-Q1",
+      "durum": "olcum",
+      "not": ""
+    },
+    {
+      "nesne": "gerçek kişi YP mevduat (HPB tablo 2)",
+      "hazne": "H",
+      "milyar": 6639.4,
+      "donem": "2026-Q1",
+      "durum": "olcum",
+      "not": "TL karşılığı; kur riski kâğıda taşınır mı, karar yok"
+    }
+  ],
+  "adres_toplam_milyar": 19361.9,
+  "ihracci": "K′",
+  "vade_ceyrek": 8,
+  "theta": [
+    0.1,
+    0.25,
+    0.5
+  ],
+  "chi": [
+    0.0,
+    0.5
+  ],
+  "pi": [
+    0.02,
+    0.05
+  ],
+  "K3_pencere": [
+    "2029-Q1",
+    "2029-Q4"
+  ],
+  "kredi_payi_sabiti": 0.08,
+  "endeks_bacagi": "hesaplanmadi (hedef patikasi depoda yok)",
+  "etiketler": {
+    "A_j": "olcum",
+    "u3": "kademe kurgusu",
+    "theta/chi/pi/vade/ihracci": "varsayim",
+    "kredi_payi": "kademe sabiti",
+    "prim_bolu_duran_faiz": "karsilastirma, esitlik degil"
+  },
+  "senaryolar": {
+    "th0.1_chi0.0_pi0.02": {
+      "theta": 0.1,
+      "chi": 0.0,
+      "pi": 0.02,
+      "toplam_ihrac": 1936.0,
+      "toplam_cikis": 1936.0,
+      "tepe_stok": 1936.2,
+      "son_stok": -0.0,
+      "prim_yillik": {
+        "2029": 14.5,
+        "2030": 38.8,
+        "2031": 24.2
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.006,
+        "2030": 0.016,
+        "2031": 0.01
+      },
+      "kredi_itki_azalt_tepe_yillik": 154.9
+    },
+    "th0.1_chi0.0_pi0.05": {
+      "theta": 0.1,
+      "chi": 0.0,
+      "pi": 0.05,
+      "toplam_ihrac": 1936.0,
+      "toplam_cikis": 1936.0,
+      "tepe_stok": 1936.2,
+      "son_stok": -0.0,
+      "prim_yillik": {
+        "2029": 36.4,
+        "2030": 96.8,
+        "2031": 60.6
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.015,
+        "2030": 0.04,
+        "2031": 0.025
+      },
+      "kredi_itki_azalt_tepe_yillik": 154.9
+    },
+    "th0.1_chi0.5_pi0.02": {
+      "theta": 0.1,
+      "chi": 0.5,
+      "pi": 0.02,
+      "toplam_ihrac": 1936.0,
+      "toplam_cikis": 968.0,
+      "tepe_stok": 1936.2,
+      "son_stok": 968.1,
+      "prim_yillik": {
+        "2029": 14.5,
+        "2030": 38.8,
+        "2031": 31.6
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.006,
+        "2030": 0.016,
+        "2031": 0.013
+      },
+      "kredi_itki_azalt_tepe_yillik": 154.9
+    },
+    "th0.1_chi0.5_pi0.05": {
+      "theta": 0.1,
+      "chi": 0.5,
+      "pi": 0.05,
+      "toplam_ihrac": 1936.0,
+      "toplam_cikis": 968.0,
+      "tepe_stok": 1936.2,
+      "son_stok": 968.1,
+      "prim_yillik": {
+        "2029": 36.4,
+        "2030": 96.8,
+        "2031": 78.7
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.015,
+        "2030": 0.04,
+        "2031": 0.033
+      },
+      "kredi_itki_azalt_tepe_yillik": 154.9
+    },
+    "th0.25_chi0.0_pi0.02": {
+      "theta": 0.25,
+      "chi": 0.0,
+      "pi": 0.02,
+      "toplam_ihrac": 4840.4,
+      "toplam_cikis": 4840.4,
+      "tepe_stok": 4840.5,
+      "son_stok": 0.0,
+      "prim_yillik": {
+        "2029": 36.4,
+        "2030": 96.8,
+        "2031": 60.6
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.015,
+        "2030": 0.04,
+        "2031": 0.025
+      },
+      "kredi_itki_azalt_tepe_yillik": 387.2
+    },
+    "th0.25_chi0.0_pi0.05": {
+      "theta": 0.25,
+      "chi": 0.0,
+      "pi": 0.05,
+      "toplam_ihrac": 4840.4,
+      "toplam_cikis": 4840.4,
+      "tepe_stok": 4840.5,
+      "son_stok": 0.0,
+      "prim_yillik": {
+        "2029": 90.8,
+        "2030": 242.0,
+        "2031": 151.3
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.038,
+        "2030": 0.1,
+        "2031": 0.063
+      },
+      "kredi_itki_azalt_tepe_yillik": 387.2
+    },
+    "th0.25_chi0.5_pi0.02": {
+      "theta": 0.25,
+      "chi": 0.5,
+      "pi": 0.02,
+      "toplam_ihrac": 4840.4,
+      "toplam_cikis": 2420.4,
+      "tepe_stok": 4840.5,
+      "son_stok": 2420.2,
+      "prim_yillik": {
+        "2029": 36.4,
+        "2030": 96.8,
+        "2031": 78.7
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.015,
+        "2030": 0.04,
+        "2031": 0.033
+      },
+      "kredi_itki_azalt_tepe_yillik": 387.2
+    },
+    "th0.25_chi0.5_pi0.05": {
+      "theta": 0.25,
+      "chi": 0.5,
+      "pi": 0.05,
+      "toplam_ihrac": 4840.4,
+      "toplam_cikis": 2420.4,
+      "tepe_stok": 4840.5,
+      "son_stok": 2420.2,
+      "prim_yillik": {
+        "2029": 90.8,
+        "2030": 242.0,
+        "2031": 196.6
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.038,
+        "2030": 0.1,
+        "2031": 0.081
+      },
+      "kredi_itki_azalt_tepe_yillik": 387.2
+    },
+    "th0.5_chi0.0_pi0.02": {
+      "theta": 0.5,
+      "chi": 0.0,
+      "pi": 0.02,
+      "toplam_ihrac": 9680.8,
+      "toplam_cikis": 9680.8,
+      "tepe_stok": 9681.0,
+      "son_stok": 0.0,
+      "prim_yillik": {
+        "2029": 72.6,
+        "2030": 193.6,
+        "2031": 121.0
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.03,
+        "2030": 0.08,
+        "2031": 0.05
+      },
+      "kredi_itki_azalt_tepe_yillik": 774.5
+    },
+    "th0.5_chi0.0_pi0.05": {
+      "theta": 0.5,
+      "chi": 0.0,
+      "pi": 0.05,
+      "toplam_ihrac": 9680.8,
+      "toplam_cikis": 9680.8,
+      "tepe_stok": 9681.0,
+      "son_stok": 0.0,
+      "prim_yillik": {
+        "2029": 181.6,
+        "2030": 484.0,
+        "2031": 302.6
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.075,
+        "2030": 0.2,
+        "2031": 0.125
+      },
+      "kredi_itki_azalt_tepe_yillik": 774.5
+    },
+    "th0.5_chi0.5_pi0.02": {
+      "theta": 0.5,
+      "chi": 0.5,
+      "pi": 0.02,
+      "toplam_ihrac": 9680.8,
+      "toplam_cikis": 4840.4,
+      "tepe_stok": 9681.0,
+      "son_stok": 4840.5,
+      "prim_yillik": {
+        "2029": 72.6,
+        "2030": 193.6,
+        "2031": 157.4
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.03,
+        "2030": 0.08,
+        "2031": 0.065
+      },
+      "kredi_itki_azalt_tepe_yillik": 774.5
+    },
+    "th0.5_chi0.5_pi0.05": {
+      "theta": 0.5,
+      "chi": 0.5,
+      "pi": 0.05,
+      "toplam_ihrac": 9680.8,
+      "toplam_cikis": 4840.4,
+      "tepe_stok": 9681.0,
+      "son_stok": 4840.5,
+      "prim_yillik": {
+        "2029": 181.6,
+        "2030": 484.0,
+        "2031": 393.3
+      },
+      "prim_bolu_duran_faiz_k05": {
+        "2029": 0.075,
+        "2030": 0.2,
+        "2031": 0.163
+      },
+      "kredi_itki_azalt_tepe_yillik": 774.5
+    }
+  }
+}
