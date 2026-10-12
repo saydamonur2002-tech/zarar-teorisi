@@ -1,4 +1,4 @@
-"""Üç kural senaryosu (SFC): taban + seçici kredi/DTI + geri bildirim kilitleri.
+"""SFC senaryo uzantısı: üç kural (sert taban) + maliyet ucuzlatma revizesi + mevcut.
 
 Senaryo; ölçüm değil. Politika reçetesi değil; stok-akış tutarlı karşılaştırma.
 Kimlik: NFP_t = NFP_{t-1} + NL_t + R_t (hazne H, F, B, K, D). Birim çıktı: milyar TL (stok/NFP);
@@ -68,6 +68,10 @@ NET_YENI_PAY = {  # yıl 1 -> yıl 3 hedef (lineer geçiş)
 
 FIN_REEL_KAMA_100TL = {"isveren_buyuk": 70, "isveren_kobi": 45, "sgk_indirim": 35, "kamu_ucret": 20}
 KOBİ_DESTEK = {2027: 0.70, 2028: 0.40, 2029: 0.15, 2030: 0.0, 2031: 0.0}
+KOBİ_DESTEK_REVIZE = {2027: 0.35, 2028: 0.15, 2029: 0.05, 2030: 0.0, 2031: 0.0}
+ACLik_ORAN = 37801.0 / 48885.0  # Eyl 2026 referans; DOĞRULANMADI
+
+SENARYOLAR = ("mevcut", "uc_kural_kilitli", "maliyet_ucuz_revize")
 
 
 @dataclass
@@ -82,6 +86,13 @@ class Params:
     fx_unhedged_buyume_mevcut: float = 0.06  # yıllık USD stok, VARSAYIM
     ponzi_servis_esik: float = 0.40
     hedge_servis_esik: float = 0.30
+    # Revize: yaşam maliyeti öncelikli kanal (yıllık reel düşüş bandı %3–5)
+    yasam_reel_dusus_yillik: float = 0.04  # VARSAYIM
+    taban_yarimyil_nom_artis_yuzde: float = 1.0  # sınırlı zam; %4 yarıyıl örnek patika ayrı senaryo parametresi
+    kamu_makas_daraltma_milyarTL_ceyrek: float = 45.0  # memur standardizasyon, K′→H (VARSAYIM)
+    isveren_pay_revize_100tl: float = 22.0  # sert senaryodan düşük
+    sgk_indirim_revize_100tl: float = 18.0  # prim indirimi daraltıldı
+    kapsama_hedef_2031: float = 0.78  # %75–80 bandı ortası
 
 
 @dataclass
@@ -99,6 +110,9 @@ class State:
     doviz_stok_gecmis: list = field(default_factory=list)
     alt20_borc_gelir_ay: float = 2.8  # VARSAYIM başlangıç
     yil_idx: int = 0  # 2027=1
+    zam_faktor_ek_yuzde: float = 0.0  # geri bildirim: maliyet düşmezse taban hızlanır
+    yasam_hedef_gerceklesen: float = 0.0  # izleme
+    f_ucret_kanali_kumul_milyar: float = 0.0  # işveren+simulate F yükü
 
 
 def _quarters():
@@ -167,43 +181,74 @@ def _kilitli_buyume_yillik(kalem: str, tufe: float, st: State) -> float:
     return max(g, -0.05)
 
 
-def _apply_taban_kural(st: State, donem: str, params: Params, kilitli: bool):
-    if not kilitli:
-        # Ücret ocak nominalinde donuk (mevcut mekanizma iddiası)
+def _mod(senaryo: str) -> str:
+    if senaryo == "mevcut":
+        return "mevcut"
+    if senaryo == "uc_kural_kilitli":
+        return "sert"
+    return "revize"
+
+
+def _kredi_kilitli(senaryo: str) -> bool:
+    return senaryo in ("uc_kural_kilitli", "maliyet_ucuz_revize")
+
+
+def _apply_taban_kural(st: State, donem: str, params: Params, senaryo: str):
+    mod = _mod(senaryo)
+    if mod == "mevcut":
         st.net_taban = TABAN["asgari_net_ocak2026"]
         st.kapsama = st.net_taban / st.yasam_maliyeti if st.yasam_maliyeti else st.kapsama
         return
     y, q = _yil(donem), _ceyrek(donem)
-    if donem == "2027-Q1":
-        f = 1 + TABAN["telafi_tufe_varsayim_yuzde"] / 100
-        st.net_taban = TABAN["asgari_net_ocak2026"] * f
-    yi = _yarimyil_idx(donem)
-    if yi >= 0 and q in (1, 3):  # Ocak/Temmuz kama
-        kama = KAMA_YARIMYIL[min(yi, len(KAMA_YARIMYIL) - 1)] + st.kama_ek
-        st.net_taban *= 1 + (kama / 100) * params.geciskenlik_kama_yansima * 0.5  # yarıyıl adımı
-    key = (y, 1 if q <= 2 else 2)
-    if key in PATIKA:
-        tb, yas, kap = PATIKA[key]
-        st.net_taban = tb
-        st.yasam_maliyeti = yas
-        st.kapsama = kap
-    else:
-        st.kapsama = st.net_taban / st.yasam_maliyeti if st.yasam_maliyeti else st.kapsama
-
-
-def _geri_bildirim(st: State, donem: str, kilitli: bool, uretken_pay: float):
-    if not kilitli:
+    if mod == "sert":
+        if donem == "2027-Q1":
+            f = 1 + TABAN["telafi_tufe_varsayim_yuzde"] / 100
+            st.net_taban = TABAN["asgari_net_ocak2026"] * f
+        yi = _yarimyil_idx(donem)
+        if yi >= 0 and q in (1, 3):
+            kama = KAMA_YARIMYIL[min(yi, len(KAMA_YARIMYIL) - 1)] + st.kama_ek
+            st.net_taban *= 1 + (kama / 100) * params.geciskenlik_kama_yansima * 0.5
+        key = (y, 1 if q <= 2 else 2)
+        if key in PATIKA:
+            tb, yas, kap = PATIKA[key]
+            st.net_taban, st.yasam_maliyeti, st.kapsama = tb, yas, kap
+        else:
+            st.kapsama = st.net_taban / st.yasam_maliyeti if st.yasam_maliyeti else st.kapsama
         return
+    # revize: maliyet düşüşü + sınırlı taban zamı (büyük telafi yok)
+    # yasam_reel_dusus_yillik: sepet nominal düşüş hızı (kira/gıda/enerji kanalı; TÜFE ayrı yazılmaz)
+    if y >= 2027 and q in (1, 3):
+        yasam_once = st.yasam_maliyeti
+        st.yasam_maliyeti *= 1 - params.yasam_reel_dusus_yillik / 2
+        st.yasam_hedef_gerceklesen += (yasam_once - st.yasam_maliyeti) / yasam_once if yasam_once else 0.0
+        artis = params.taban_yarimyil_nom_artis_yuzde + st.zam_faktor_ek_yuzde
+        st.net_taban *= 1 + artis / 100
+    st.kapsama = st.net_taban / st.yasam_maliyeti if st.yasam_maliyeti else st.kapsama
+
+
+def _geri_bildirim(st: State, donem: str, senaryo: str, uretken_pay: float, params: Params):
+    if not _kredi_kilitli(senaryo):
+        return
+    mod = _mod(senaryo)
     y = _yil(donem)
     st.uretken_pay_gecmis.append(uretken_pay)
     st.doviz_stok_gecmis.append(st.stok["D_korunmasiz_usd_mr"])
     if len(st.uretken_pay_gecmis) > 8:
         st.uretken_pay_gecmis.pop(0)
         st.doviz_stok_gecmis.pop(0)
-    if y == 2027 and _ceyrek(donem) == 4 and st.kapsama < 0.73:
-        st.kama_ek += 1.0
-    if y == 2029 and _ceyrek(donem) == 4 and st.kapsama < 0.80:
-        st.kama_ek += 1.0
+    if mod == "sert":
+        if y == 2027 and _ceyrek(donem) == 4 and st.kapsama < 0.73:
+            st.kama_ek += 1.0
+        if y == 2029 and _ceyrek(donem) == 4 and st.kapsama < 0.80:
+            st.kama_ek += 1.0
+    if mod == "revize" and _ceyrek(donem) == 4:
+        hedef_dusus = params.yasam_reel_dusus_yillik
+        gercek = min(hedef_dusus, st.yasam_hedef_gerceklesen / max(1, y - 2026))
+        if gercek < hedef_dusus * 0.85:
+            st.zam_faktor_ek_yuzde += 0.5  # maliyet düşmezse zam faktörü artar
+        st.yasam_hedef_gerceklesen = 0.0
+        if st.kapsama < params.kapsama_hedef_2031 - 0.05 and y >= 2029:
+            st.zam_faktor_ek_yuzde += 0.25
     if len(st.uretken_pay_gecmis) >= 2 and all(p < 0.35 for p in st.uretken_pay_gecmis[-2:]):
         st.tuketim_cap_ek_pp -= 2.0
     if len(st.doviz_stok_gecmis) >= 2 and st.doviz_stok_gecmis[-1] > st.doviz_stok_gecmis[-2]:
@@ -243,27 +288,29 @@ def _step(
     kanal,
     prev_doviz,
 ) -> dict:
-    kilitli = senaryo == "uc_kural_kilitli"
+    mod = _mod(senaryo)
+    kredi = _kredi_kilitli(senaryo)
     tufe_y = params.tufe_yol
     gq = _tufe_q(params)
+    f_ucret_nl_milyar = 0.0
 
-    _apply_taban_kural(st, donem, params, kilitli)
+    _apply_taban_kural(st, donem, params, senaryo)
 
     # Stok büyümesi (çeyreklik)
     for k in list(st.stok.keys()):
         if k == "D_korunmasiz_usd_mr":
-            if kilitli:
+            if kredi:
                 gy = SEGMENT_CAP_PP["korunmasiz_doviz"] / 100
             else:
                 gy = params.fx_unhedged_buyume_mevcut
             st.stok[k] *= (1 + gy) ** 0.25
             continue
-        if kilitli:
+        if kredi:
             gy = _kilitli_buyume_yillik(k, tufe_y, st)
         else:
             gy = _mevcut_buyume_yillik(k) if k in ("H_kart", "H_teminatsiz") else 0.12
         mult = _dti_carpan(st, params) if k in ("H_teminatsiz", "H_kart") else 1.0
-        if kilitli and st.limit_dondur and k in ("H_teminatsiz", "H_kart"):
+        if kredi and st.limit_dondur and k in ("H_teminatsiz", "H_kart"):
             mult = 0.0
         st.stok[k] *= (1 + gy * mult) ** 0.25
 
@@ -271,7 +318,7 @@ def _step(
     f_top = st.stok["F_kobi"] + st.stok["F_uretken"]
     net_yeni = (h_top + f_top) * gq * 0.15  # VARSAYIM: çeyrek net akış ~ stok * infl * 0.15
     uretken_pay = st.stok["F_uretken"] / f_top if f_top > 0 else 0.0
-    _geri_bildirim(st, donem, kilitli, uretken_pay)
+    _geri_bildirim(st, donem, senaryo, uretken_pay, params)
 
     # NL (trilyon TL / çeyrek), stok-akış tutarlı özet
     nl = np.zeros(5)
@@ -282,31 +329,47 @@ def _step(
     nl[IDX["B"]] = (dh + df) * 0.008
     nl[IDX["D"]] = (st.stok["D_korunmasiz_usd_mr"] - prev_doviz) * 0.002  # kur kanalı kabaca
 
-    # Talep / ücret etkisi: kilitlide F'ye işçilik maliyeti, H'ye gelir
-    if kilitli and _yil(donem) >= 2027:
+    if mod in ("sert", "revize") and _yil(donem) >= 2027:
         reel_kama_ay = max(0.0, (st.net_taban - TABAN["asgari_net_ocak2026"]) / 24)
-        isveren_pay = FIN_REEL_KAMA_100TL["isveren_kobi"]
         yil = _yil(donem)
-        destek = KOBİ_DESTEK.get(yil, 0.0)
-        isveren_net = isveren_pay * (1 - destek) * reel_kama_ay / 100 * N_A * 1e-9  # trilyon/çeyrek kabaca
-        nl[IDX["F"]] -= isveren_net * 0.25
+        if mod == "sert":
+            isveren_pay = FIN_REEL_KAMA_100TL["isveren_kobi"]
+            destek = KOBİ_DESTEK.get(yil, 0.0)
+            sgk_100 = FIN_REEL_KAMA_100TL["sgk_indirim"]
+            acik_tl_bin = 10e9 / 4 if yil == 2027 else 0.0
+        else:
+            isveren_pay = params.isveren_pay_revize_100tl
+            destek = KOBİ_DESTEK_REVIZE.get(yil, 0.0)
+            sgk_100 = params.sgk_indirim_revize_100tl
+            acik_tl_bin = 0.0
+            # Maliyet düşüşü F marjına (girdi fiyatı), VARSAYIM
+            nl[IDX["F"]] += params.yasam_reel_dusus_yillik * f_top * 0.08 / 4
+        isveren_net = isveren_pay * (1 - destek) * reel_kama_ay / 100 * N_A * 1e-9
+        f_hit = isveren_net * 0.25
+        nl[IDX["F"]] -= f_hit
         nl[IDX["H"]] += isveren_net * 0.15
-        # K′ bütçe kanalı (bin TL): prim indirimi + açık
-        sgk_tl_bin = FIN_REEL_KAMA_100TL["sgk_indirim"] * reel_kama_ay / 100 * N_A * 1e-3 / 3
-        acik_tl_bin = 10e9 / 4 if yil == 2027 else 0.0  # 10 TL prompt -> milyar/yıl VARSAYIM ölçek
+        f_ucret_nl_milyar = f_hit * 1000
+        sgk_tl_bin = sgk_100 * reel_kama_ay / 100 * N_A * 1e-3 / 3
         fs = fiscal_shock("harcama", sgk_tl_bin, kanal)
         for i, s in enumerate(SEC):
             nl[i] += fs[s] / 1e9
-        fs2 = fiscal_shock("vergi", acik_tl_bin * 0.5, kanal)
-        for i, s in enumerate(SEC):
-            nl[i] += fs2[s] / 1e9
-        # simulate: F işçilik şoku yayılımı (bin TL)
+        if acik_tl_bin:
+            fs2 = fiscal_shock("vergi", acik_tl_bin * 0.5, kanal)
+            for i, s in enumerate(SEC):
+                nl[i] += fs2[s] / 1e9
+        if mod == "revize" and _ceyrek(donem) in (1, 3):
+            # Memur standardizasyon: K′ bütçe → H (Hm), F'ye yazılmaz
+            fs_m = fiscal_shock("harcama", params.kamu_makas_daraltma_milyarTL_ceyrek * 1e3, kanal)
+            for i, s in enumerate(SEC):
+                nl[i] += fs_m[s] / 1e9
         x = np.zeros(5)
         x[IDX["F"]] = -isveren_net * 1e9
         imp = simulate(L, G, nfp_bin, x, lam=params.lam, kappa=params.kappa) / 1e9
-        nl += imp * 0.05  # kısmi bağ, VARSAYIM
+        nl += imp * 0.05
+        f_ucret_nl_milyar += float(imp[IDX["F"]] * 50)  # kısmi simulate payı, milyar
+        st.f_ucret_kanali_kumul_milyar += f_ucret_nl_milyar
 
-    if not kilitli:
+    if mod == "mevcut":
         # Ücret erimesi: H talep daralması (reel gelir düşüşü)
         enflasyon_kaybi = (1 + gq) ** 4 - 1
         nl[IDX["H"]] -= 0.02 * enflasyon_kaybi
@@ -339,6 +402,10 @@ def _step(
         "limit_dondur": int(st.limit_dondur),
         "kama_ek_puan": st.kama_ek,
         "tuketim_cap_ek_pp": st.tuketim_cap_ek_pp,
+        "zam_faktor_ek_yuzde": st.zam_faktor_ek_yuzde,
+        "F_ucret_kanali_NL_milyar_ceyrek": round(f_ucret_nl_milyar, 2),
+        "F_ucret_kanali_kumul_milyar": round(st.f_ucret_kanali_kumul_milyar, 1),
+        "aclik_siniri_TL": round(st.yasam_maliyeti * ACLik_ORAN, 0),
         "durum": "senaryo",
     }
 
@@ -362,7 +429,7 @@ def run(params: Params | None = None) -> tuple[list[dict], dict]:
         "uc_kural_birlikte": "Eksik kural tek başına aynı sonucu vermez (prompt); karşılaştırma satırları",
     }
 
-    for senaryo in ("mevcut", "uc_kural_kilitli"):
+    for senaryo in SENARYOLAR:
         st = _init_state(stab, tcs)
         prev_d = st.stok["D_korunmasiz_usd_mr"]
         for donem in _quarters():
@@ -372,59 +439,108 @@ def run(params: Params | None = None) -> tuple[list[dict], dict]:
             prev_d = st.stok["D_korunmasiz_usd_mr"]
             rows.append(row)
 
-    # Karşılaştırma özeti (2031-Q4)
     end = "2031-Q4"
-    m = next(r for r in rows if r["Donem"] == end and r["senaryo"] == "mevcut")
-    u = next(r for r in rows if r["Donem"] == end and r["senaryo"] == "uc_kural_kilitli")
+    keys = (
+        "NFP_H",
+        "NFP_F",
+        "borc_servis_orani_Ha",
+        "uretken_zarf_payi",
+        "korunmasiz_doviz_stok_mr_usd",
+        "kapsama",
+        "net_taban_TL",
+        "yasam_maliyeti_TL",
+        "K_butce_NL_milyar",
+        "F_ucret_kanali_kumul_milyar",
+    )
     meta["karsilastirma_2031Q4"] = {
-        k: {"mevcut": m[k], "uc_kural_kilitli": u[k]}
-        for k in (
-            "NFP_H",
-            "NFP_F",
-            "borc_servis_orani_Ha",
-            "uretken_zarf_payi",
-            "korunmasiz_doviz_stok_mr_usd",
-            "kapsama",
-            "K_butce_NL_milyar",
-        )
+        k: {s: next(r for r in rows if r["Donem"] == end and r["senaryo"] == s)[k] for s in SENARYOLAR}
+        for k in keys
     }
+    sert = meta["karsilastirma_2031Q4"]["F_ucret_kanali_kumul_milyar"]["uc_kural_kilitli"]
+    rev = meta["karsilastirma_2031Q4"]["F_ucret_kanali_kumul_milyar"]["maliyet_ucuz_revize"]
+    meta["F_yuku_aciklama"] = (
+        "Sert senaryoda yaşam maliyeti yüksek kalırken taban agresif artar; işveren payı (45 TL/100) "
+        "ve geniş prim indirimi F NL yükünü büyütür. Revizede reel maliyet düşüşü marjı destekler, "
+        "taban zamı küçük (%4/yarıyıl + geri bildirim), işveren payı düşük, KOBİ desteği dar, "
+        "memur makası K′ kanalına yazılır → kümülatif F ücret kanalı sert: "
+        f"{sert} milyar vs revize: {rev} milyar (senaryo birimi)."
+    )
+    meta["duyarlik_yasam_reel_dusus"] = {}
+    for dusus in (0.03, 0.04, 0.05):
+        p2 = Params(**{**params.__dict__, "yasam_reel_dusus_yillik": dusus})
+        rows2, _ = run_one(p2, stab, tcs, L, G, nfp_bin, kanal, ("maliyet_ucuz_revize",))
+        r2 = next(x for x in rows2 if x["Donem"] == end)
+        meta["duyarlik_yasam_reel_dusus"][str(dusus)] = {
+            "kapsama": r2["kapsama"],
+            "NFP_F": r2["NFP_F"],
+            "F_ucret_kanali_kumul_milyar": r2["F_ucret_kanali_kumul_milyar"],
+        }
     return rows, meta
+
+
+def run_one(params, stab, tcs, L, G, nfp_bin, kanal, senaryolar):
+    rows = []
+    for senaryo in senaryolar:
+        st = _init_state(stab, tcs)
+        prev_d = st.stok["D_korunmasiz_usd_mr"]
+        for donem in _quarters():
+            if donem < "2026-Q4":
+                continue
+            row = _step(st, donem, senaryo, params, L, G, nfp_bin, kanal, prev_d)
+            prev_d = st.stok["D_korunmasiz_usd_mr"]
+            rows.append(row)
+    return rows, {}
 
 
 def _md(meta: dict) -> str:
     lines = [
-        "# Üç kural SFC senaryosu",
+        "# SFC senaryo: sert taban vs maliyet ucuzlatma revizesi",
         "",
         "Stok-akış tutarlı **senaryo**; ölçüm değil. Çalıştır: `python3 uc_kural_senaryo.py`.",
         "",
-        "## Kurallar (kilitli senaryo)",
+        "## Senaryolar",
         "",
-        "1. Taban: telafi + yarıyıl reel kama; üst ücretler yalnız TÜFE (basitleştirildi).",
-        "2. Seçici kredi + DTI: segment tavanları, limit çarpanı, Ponzi bandı.",
-        "3. Geri bildirim: kapsama, alt %20 borç/gelir, üretken pay, döviz stoku.",
+        "| Kod | İçerik |",
+        "| --- | --- |",
+        "| `mevcut` | Donuk nominal taban; kart/tüketici büyüme iddiası |",
+        "| `uc_kural_kilitli` | Sert taban telafisi + kama; işveren yükü F′de |",
+        "| `maliyet_ucuz_revize` | Yaşam maliyeti reel düşüş + sınırlı zam; memur K′; seçici kredi |",
         "",
-        "## Varsayımlar",
+        "## Revize parametreleri (VARSAYIM)",
         "",
-        f"- Ha borç payı: `{meta['parametreler']['ha_borc_payi']}` (VARSAYIM)",
-        f"- Kama geçişkenliği: `{meta['parametreler']['geciskenlik_kama_yansima']}`",
-        f"- TÜFE yolu (yıllık): `{meta['parametreler']['tufe_yol']}`",
-        f"- {meta['eylul_2026_iddialar']}",
+        f"- Yaşam maliyeti reel düşüş (yıllık): `{meta['parametreler']['yasam_reel_dusus_yillik']}`",
+        f"- Taban yarıyıl nominal artış %: `{meta['parametreler']['taban_yarimyil_nom_artis_yuzde']}`",
+        f"- Kamu makas (milyar TL/çeyrek): `{meta['parametreler']['kamu_makas_daraltma_milyarTL_ceyrek']}`",
         "",
-        "## 2031-Q4 karşılaştırma (milyar TL NFP; oranlar birim dosyasında)",
+        "## 2031-Q4 üçlü karşılaştırma",
         "",
-        "| Gösterge | Mevcut | Üç kural kilitli |",
-        "| --- | ---: | ---: |",
+        "| Gösterge | Mevcut | Sert üç kural | Maliyet revize |",
+        "| --- | ---: | ---: | ---: |",
     ]
     for k, v in meta["karsilastirma_2031Q4"].items():
-        lines.append(f"| {k} | {v['mevcut']} | {v['uc_kural_kilitli']} |")
+        lines.append(
+            f"| {k} | {v['mevcut']} | {v['uc_kural_kilitli']} | {v['maliyet_ucuz_revize']} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## F yükü",
+            "",
+            meta.get("F_yuku_aciklama", ""),
+            "",
+            "## Duyarlılık (yalnız revize; yaşam reel düşüş)",
+            "",
+        ]
+    )
+    for rate, d in meta.get("duyarlik_yasam_reel_dusus", {}).items():
+        lines.append(f"- `{rate}`: kapsama {d['kapsama']}, NFP_F {d['NFP_F']}, F ücret kanalı küm. {d['F_ucret_kanali_kumul_milyar']} milyar")
     lines.extend(
         [
             "",
             "## Ne denmez",
             "",
             "- Politika önerisi veya uygulama vaadi değildir.",
-            "- `simulate()` lam/kappa ampirik olarak zayıf (OKU.txt); yayılım katsayısı kısmi.",
-            "- Merkezi bütçe ≠ K′; fiscal_shock mükellef payı varsayımdır.",
+            "- Kira/gıda/enerji kanalları ayrıştırılmadı; tek reel düşüş parametresi.",
             "",
         ]
     )
