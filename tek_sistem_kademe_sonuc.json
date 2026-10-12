@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "donem_bas": "2026-Q4",
+    "donem_son": "2031-Q4",
+    "pencereler": [
+      {
+        "kademe": 1,
+        "kod": "K1_mahsup",
+        "ad": "Mahsuplaşma (akış + firma ağı)",
+        "baslangic": "2027-Q1",
+        "bitis": "2027-Q4",
+        "uzunluk_ceyrek": 4,
+        "katman": "mahsup_sektor_evds.py; odeme_mahsup.py",
+        "ref_etiket": "sektor_brut_silinen_oran",
+        "ref_deger": 0.427,
+        "ref_birim": "oran"
+      },
+      {
+        "kademe": 2,
+        "kod": "K2_stok",
+        "ad": "Stok karşı bacak tavanı",
+        "baslangic": "2028-Q1",
+        "bitis": "2028-Q4",
+        "uzunluk_ceyrek": 4,
+        "katman": "stok_silim.py; adim1_stok",
+        "ref_etiket": "yeni_tavan_ust_sinir",
+        "ref_deger": 0.2582,
+        "ref_birim": "oran"
+      },
+      {
+        "kademe": 3,
+        "kod": "K3_mevduat",
+        "ad": "Mevduat → senet adres yönlendirme",
+        "baslangic": "2029-Q1",
+        "bitis": "2029-Q4",
+        "uzunluk_ceyrek": 4,
+        "katman": "adim4 (adres adayları)",
+        "ref_etiket": "adres_mevduat_toplam",
+        "ref_deger": 19361.9,
+        "ref_birim": "milyar TL"
+      }
+    ],
+    "depo": {
+      "kaynak": "varsayim_sabit",
+      "firma_mahsup_oran": 0.32959478056952846,
+      "yeni_stok_tavan": 0.2582
+    },
+    "kural": "sıralı_pencere; kademeli_rampa; katman_tasinmaz"
+  },
+  "satir_sayisi": 21
+}

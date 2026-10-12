@@ -14,6 +14,7 @@ Bu depodaki parçaları:
 - Ödeme zinciri köprüsü: `python3 odeme_mahsup.py`
 - Katman köprüsü (mutabakat + beş adım eşlemesi): `python3 tek_sistem_kopru.py` → [TEK_SISTEM_KOPRU.md](TEK_SISTEM_KOPRU.md), `tek_sistem_kopru.csv`, `tek_sistem_esleme.csv`
 - Beş adım sırayla, tek koşu (etiket kapılı; adım 1 stok eski/yeni tavan ayrı): `python3 bes_adim.py` → [BES_ADIM.md](BES_ADIM.md), `adim1_stok.csv` … `adim5.csv`, `bes_adim_sonuc.json` (`kosu`)
+- Üç kademe (mahsup → stok tavan → mevduat adresi), ayrık zaman penceresi + çeyreklik rampa: `python3 tek_sistem_kademe.py` → [TEK_SISTEM_KADEME.md](TEK_SISTEM_KADEME.md), `tek_sistem_kademe.csv` (katman taşınmaz; senaryo takvimi)
 - Kapanış, tek test (son satırı test yazar): `python3 test_bes_adim.py` → `kapanis_sonuc.json`, `bes_adim_sonuc.json` `son`; kilitler `senet_kilit.txt`, `kapi_kilit.txt`
 - Beş yıl senaryosu (ölçüm değil; taban EVDS, beklenti anket, model etkisi varsayım bandı): `python3 bes_yil_senaryo.py` → [BES_YIL_SENARYO.md](BES_YIL_SENARYO.md), `bes_yil_senaryo.csv`
 - Benzer öneriler (Türk öneren şartı; kamuya açık kayıt, 9 sorgu): [BENZER_ONERILER.md](BENZER_ONERILER.md), `benzer_oneriler.csv`
