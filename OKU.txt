@@ -123,6 +123,7 @@ Taban sonuc (2026-Q1, D_A_BASE=%40, trilyon TL): Ha NFP -1,63 (varlik 1,46, borc
 Capraz kontrol: gozlenen hane stresinden (takipteki 0,37 .. +yakin izleme hane payi 2,47 tr TL) ima edilen Ha borc payi ust siniri %17-44;
 %40 ust sinira yakin; %70 bandin disinda -> ya cok gelirli haneler ya borcu borcla cevirme ya da gizli temerrut. Gizli kisim = yuk stoku.
 Tanınma senaryosu (duyarlilik): Ha payi %47 -> lambda_B 0,33; %40 taban -> 0,16; %70 -> 0,59; %90 -> 0,70 (yasal serbest sermaye 1,24 tr TL, tum odenemez borc taninirsa).
+  Duyarlilik tablosu: akis_model_ozeti.json['hane_alt']['duyarlilik'] + hane_alt_duyarlik.csv — sutun satir_tipi: taban (yalniz D_A_BASE=%40) | duyarlilik (grid).
 Temerrut sifir toplamli transfer degildir; hane borcu silinmez (bireysel iflas yok, DOGRULANMADI) -> sistem net kayip.
 
 --- VYS (VARLIK YONETIM SIRKETI) KANALI (vys_kanali.py; akis_model_ozeti.json['vys_kanali']) ---

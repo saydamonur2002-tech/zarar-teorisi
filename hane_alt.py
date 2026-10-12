@@ -1,10 +1,10 @@
 """Hane haznesinin alt bölünmesi: asgari ücretli (Ha), memur (Hm), diğer (Ho). Borç asgariye yakın varsayılır.
 
-KULLANICI VARSAYIMI: H'nin borcunun payı Ha'da yoğunlaşır (taban %70). Bu ÖLÇÜM değil varsayımdır; modül bunun
-taşınabilirliğini ayrıca sınar (kapasite + gözlenen stresle çapraz kontrol) ve duyarlılık verir.
+KULLANICI VARSAYIMI: H'nin borcunun payı Ha'da yoğunlaşır. Çalışan taban D_A_BASE=%40; ilk kullanıcı girdisi %70'ti.
+ÖLÇÜM değildir; kapasite + gözlenen stresle çapraz kontrol ve duyarlılık grid'i verilir (satir_tipi: taban | duyarlilik).
 
 Varsayımlar
-  borç payları (Ha, Hm, Ho): taban (0.70, 0.10, 0.20); varlık/mevduat payları (0.05, 0.15, 0.80) (mevduat yoğunluğu: ~2,7 milyon kişi
+  borç payları (Ha, Hm, Ho): taban D_A_BASE=0.40; duyarlılık grid'inde 0.18..0.90; varlık/mevduat (0.05, 0.15, 0.80) (mevduat yoğunluğu: ~2,7 milyon kişi
   ve ≥1 milyon TL hesaplar toplam mevduatın çoğunu tutuyor, BDDK/haber, Eyl 2025; kesin pay yok)
   gelir: asgari net 28.075,50; memur bekâr kök ~66.188 (benim hesabım); kişi sayısı: asgari ~6,85 milyon, memur 3,67 milyon
   taşıma kapasitesi: taksit/gelir <= %30, 36 ay eşit taksit, faiz EVDS ihtiyaç kredisi (akım) son gözlem (KKDF/BSMV hariç)
@@ -73,7 +73,9 @@ def ozet():
         unserv = max(0.0, debt_a - cap_a)
         loss = unserv * (COV_TGA - COV_YI)  # tamamı tanınırsa ek karşılık (trilyon TL)
         u = loss / E_free
+        satir_tipi = "taban" if abs(d_a - D_A_BASE) < 1e-9 else "duyarlilik"
         sens.append({
+            "satir_tipi": satir_tipi,
             "borc_payi_Ha": d_a,
             "Ha_borcu_tr": round(debt_a, 2),
             "kisi_basi_borc_bin_TL": round(debt_a * 1e12 / N_A / 1e3),
@@ -99,6 +101,12 @@ def ozet():
         "kapasite_kisi_basi_bin_TL": {"Ha": round(DTI * ASGARI / fac / 1e3), "Hm": round(DTI * MEMUR / fac / 1e3)},
         "gozlenen_hane_stresi_trilyonTL": {"takipteki_tuketici_2026-09": round(S_low, 3), "ust(takipteki+yakin_izleme_hane_payi)": round(S_high, 2)},
         "ima_edilen_Ha_borc_payi_ust_siniri": imp,
+        "D_A_BASE": D_A_BASE,
+        "duyarlilik_semasi": {
+            "taban": f"satir_tipi=taban yalnizca borc_payi_Ha={D_A_BASE} (D_A_BASE); taban_NFP_trilyonTL ile ayni senaryo.",
+            "duyarlilik": "Diger satirlar grid; calisan kod tabani degildir. Or. %70 ilk kullanici varsayimi, duyarlilik satiridir.",
+            "lambda_B": "Tam taninirsa ek karsilik / yasal serbest sermaye uzerinden senaryo orani; olcum degil.",
+        },
         "duyarlilik": sens,
         "yorum": [
             "Yüksek Ha payı (%70 gibi), kişi başı borcu yıllık gelirin birkaç katına çıkarır; yalnız 1 gelirli kişi varsayımıyla taşınamaz. "
@@ -108,6 +116,7 @@ def ozet():
             "Temerrüt sıfır toplamlı transfer değildir: banka karşılık ayırır, hane borcu silinmez (bireysel iflas/borçtan kurtulma yok, DOĞRULANMADI). Sistem net kayıp.",
         ],
     }
+    pd.DataFrame(sens).to_csv(D / "hane_alt_duyarlik.csv", index=False, encoding="utf-8-sig")
     return out
 
 

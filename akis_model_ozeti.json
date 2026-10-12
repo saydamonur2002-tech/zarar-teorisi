@@ -205,8 +205,15 @@
       "stres_orta": 0.27,
       "stres_ust(takipteki+hane payı yakın izleme)": 0.44
     },
+    "D_A_BASE": 0.4,
+    "duyarlilik_semasi": {
+      "taban": "satir_tipi=taban yalnizca borc_payi_Ha=0.4 (D_A_BASE); taban_NFP_trilyonTL ile ayni senaryo.",
+      "duyarlilik": "Diger satirlar grid; calisan kod tabani degildir. Or. %70 ilk kullanici varsayimi, duyarlilik satiridir.",
+      "lambda_B": "Tam taninirsa ek karsilik / yasal serbest sermaye uzerinden senaryo orani; olcum degil."
+    },
     "duyarlilik": [
       {
+        "satir_tipi": "duyarlilik",
         "borc_payi_Ha": 0.18,
         "Ha_borcu_tr": 1.39,
         "kisi_basi_borc_bin_TL": 203,
@@ -220,6 +227,7 @@
         "lambda_B": 0.0
       },
       {
+        "satir_tipi": "duyarlilik",
         "borc_payi_Ha": 0.3,
         "Ha_borcu_tr": 2.32,
         "kisi_basi_borc_bin_TL": 338,
@@ -233,6 +241,7 @@
         "lambda_B": 0.0
       },
       {
+        "satir_tipi": "taban",
         "borc_payi_Ha": 0.4,
         "Ha_borcu_tr": 3.09,
         "kisi_basi_borc_bin_TL": 451,
@@ -246,6 +255,7 @@
         "lambda_B": 0.16
       },
       {
+        "satir_tipi": "duyarlilik",
         "borc_payi_Ha": 0.47,
         "Ha_borcu_tr": 3.63,
         "kisi_basi_borc_bin_TL": 530,
@@ -259,6 +269,7 @@
         "lambda_B": 0.33
       },
       {
+        "satir_tipi": "duyarlilik",
         "borc_payi_Ha": 0.7,
         "Ha_borcu_tr": 5.4,
         "kisi_basi_borc_bin_TL": 789,
@@ -272,6 +283,7 @@
         "lambda_B": 0.59
       },
       {
+        "satir_tipi": "duyarlilik",
         "borc_payi_Ha": 0.9,
         "Ha_borcu_tr": 6.95,
         "kisi_basi_borc_bin_TL": 1014,

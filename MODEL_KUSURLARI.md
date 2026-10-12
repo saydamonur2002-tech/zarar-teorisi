@@ -16,7 +16,7 @@ Bu dosya, depodaki teknik notların (`OKU.txt`, `VARSAYIM_UYARISI.md`, test öze
 
 | Konu | Durum | Sonuç kayarsa |
 | --- | --- | --- |
-| Ha borç payı (`D_A_BASE`) | **Varsayım.** Taban **%40** (`hane_alt.py`); ilk kullanıcı girdisi %70’ti, gözlenen stres bandının (%17–44) üstündeydi. %70 duyarlılıkta kalır. | `lambda_B`, ödenemez borç, L senaryoları |
+| Ha borç payı (`D_A_BASE`) | **Varsayım.** Taban **%40** (`hane_alt.py`); ilk kullanıcı girdisi %70’ti, gözlenen stres bandının (%17–44) üstündeydi. %70 duyarlılıkta kalır. Duyarlılık tablosunda `satir_tipi`: **taban** \| **duyarlilik** (`akis_model_ozeti.json`, `hane_alt_duyarlik.csv`). | `lambda_B`, ödenemez borç, L senaryoları |
 | VYS hane payı | **Varsayım** (%40 taban; bireysel ~%80 portföy) | VYS kanalı, “rapor dışı yük” |
 | Mükellef–hazne (bütçe) | **Varsayım**; MV sınıflaması kapanır, payer kapanmaz | K′ kanalı, vergi yükü payları |
 | Gecikme faizi / tahsilat | **Varsayım** (%63,2; kısmi ödeme yok) | Çift kayıt “borçlu fazlası” |
