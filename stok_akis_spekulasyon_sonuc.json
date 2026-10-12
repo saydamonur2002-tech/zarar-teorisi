@@ -1,0 +1,29 @@
+{
+  "donem": "2026-Q1",
+  "esikler": {
+    "hedge_servis": 0.3,
+    "ponzi_servis": 0.4
+  },
+  "spekulasyona_yakin_aktörler": [
+    {
+      "Aktor": "H",
+      "spekulasyon_yakinlik_0_1": 1.2,
+      "minsky_rejim_okuma": "ponzi_band"
+    },
+    {
+      "Aktor": "Ha",
+      "spekulasyon_yakinlik_0_1": 1.2,
+      "minsky_rejim_okuma": "ponzi_band"
+    },
+    {
+      "Aktor": "F",
+      "spekulasyon_yakinlik_0_1": 0.678,
+      "minsky_rejim_okuma": "speculative"
+    }
+  ],
+  "matris_dosyalari": [
+    "stok_akis_aktor_matrisi.csv",
+    "stok_akis_enstruman_matrisi_2026Q1.csv",
+    "stok_akis_spekulasyon_matrisi.csv"
+  ]
+}

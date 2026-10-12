@@ -1,0 +1,7 @@
+﻿Donem,Aktor,Aktor_ad,Varlik_trilyonTL,Borc_trilyonTL,NFP_trilyonTL,NL_ceyrek_trilyonTL,R_ceyrek_trilyonTL,servis_gelir_proxy,finansman_faaliyet_orani,takip_G1_yuzde,stok_buyume_yillik_proxy,spekulasyon_yakinlik_0_1,minsky_rejim_okuma,durum
+2026-Q1,H,Hane (S.14+15),29.114,7.719,21.395,0.278,0.908,0.473,,5.09,0.45880000000000004,1.2,ponzi_band,olcum+proxy
+2026-Q1,Ha,Asgari ücretli proxy (Ha),29.114,7.719,21.395,0.278,0.908,0.473,,5.09,0.45880000000000004,1.2,ponzi_band,olcum+proxy
+2026-Q1,F,Firmalar (S.11),20.668,50.777,-30.108,-1.417,-0.981,,0.839,2.52,,0.678,speculative,olcum+proxy
+2026-Q1,K,Kamu K′ (S.13+TCMB),22.834,29.275,-6.44,-1.069,0.524,0.1441,,,,0.534,speculative,olcum+proxy
+2026-Q1,D,Dış alem (S.2),33.787,18.153,15.635,1.726,-0.225,,,,,0.35,dis_finansman,olcum+proxy
+2026-Q1,B,Bankalar B′ (S.12−TCMB),47.097,47.579,-0.481,0.481,-0.227,,,2.52,,0.0,aracı_kredi_genislemesi,olcum+proxy
