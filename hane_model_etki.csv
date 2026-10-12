@@ -7,6 +7,8 @@
 2026-Q4,mevcut,servis_Ha,ponzi_fazlasi_pp,7.3,puan,türetilmiş
 2026-Q4,mevcut,servis_Ha,minsky_band,ponzi,etiket,uc_kural eşik
 2026-Q4,mevcut,kredi_freni,limit_dondur,0,0/1,uc_kural_senaryo
+2026-Q4,mevcut,kredi_freni,limit_yasam_kilit,0,0/1,uc_kural_senaryo
+2026-Q4,mevcut,kredi_freni,yasam_dusus_oran,0.0,oran,uc_kural_senaryo
 2026-Q4,mevcut,doviz_dolay,korunmasiz_doviz_stok_mr_usd,121.8,milyar USD,uc_kural_senaryo
 2026-Q4,mevcut,butce_dolay,K_butce_NL_milyar,0.0,milyar TL/çeyrek,uc_kural_senaryo
 2031-Q4,mevcut,gelir_taban,net_taban_TL,28076.0,TL/ay,uc_kural_senaryo
@@ -17,6 +19,8 @@
 2031-Q4,mevcut,servis_Ha,ponzi_fazlasi_pp,19.1,puan,türetilmiş
 2031-Q4,mevcut,servis_Ha,minsky_band,ponzi,etiket,uc_kural eşik
 2031-Q4,mevcut,kredi_freni,limit_dondur,0,0/1,uc_kural_senaryo
+2031-Q4,mevcut,kredi_freni,limit_yasam_kilit,0,0/1,uc_kural_senaryo
+2031-Q4,mevcut,kredi_freni,yasam_dusus_oran,0.0,oran,uc_kural_senaryo
 2031-Q4,mevcut,doviz_dolay,korunmasiz_doviz_stok_mr_usd,162.9,milyar USD,uc_kural_senaryo
 2031-Q4,mevcut,butce_dolay,K_butce_NL_milyar,0.0,milyar TL/çeyrek,uc_kural_senaryo
 2026-Q4,uc_kural_kilitli,gelir_taban,net_taban_TL,28076.0,TL/ay,uc_kural_senaryo
@@ -27,6 +31,8 @@
 2026-Q4,uc_kural_kilitli,servis_Ha,ponzi_fazlasi_pp,7.4,puan,türetilmiş
 2026-Q4,uc_kural_kilitli,servis_Ha,minsky_band,ponzi,etiket,uc_kural eşik
 2026-Q4,uc_kural_kilitli,kredi_freni,limit_dondur,1,0/1,uc_kural_senaryo
+2026-Q4,uc_kural_kilitli,kredi_freni,limit_yasam_kilit,1,0/1,uc_kural_senaryo
+2026-Q4,uc_kural_kilitli,kredi_freni,yasam_dusus_oran,0.0,oran,uc_kural_senaryo
 2026-Q4,uc_kural_kilitli,doviz_dolay,korunmasiz_doviz_stok_mr_usd,120.0,milyar USD,uc_kural_senaryo
 2026-Q4,uc_kural_kilitli,butce_dolay,K_butce_NL_milyar,0.0,milyar TL/çeyrek,uc_kural_senaryo
 2031-Q4,uc_kural_kilitli,gelir_taban,net_taban_TL,63415.0,TL/ay,uc_kural_senaryo
@@ -37,6 +43,8 @@
 2031-Q4,uc_kural_kilitli,servis_Ha,ponzi_fazlasi_pp,0.0,puan,türetilmiş
 2031-Q4,uc_kural_kilitli,servis_Ha,minsky_band,speculative,etiket,uc_kural eşik
 2031-Q4,uc_kural_kilitli,kredi_freni,limit_dondur,1,0/1,uc_kural_senaryo
+2031-Q4,uc_kural_kilitli,kredi_freni,limit_yasam_kilit,1,0/1,uc_kural_senaryo
+2031-Q4,uc_kural_kilitli,kredi_freni,yasam_dusus_oran,0.0,oran,uc_kural_senaryo
 2031-Q4,uc_kural_kilitli,doviz_dolay,korunmasiz_doviz_stok_mr_usd,120.0,milyar USD,uc_kural_senaryo
 2031-Q4,uc_kural_kilitli,butce_dolay,K_butce_NL_milyar,-24.9,milyar TL/çeyrek,uc_kural_senaryo
 2026-Q4,maliyet_ucuz_revize,gelir_taban,net_taban_TL,28076.0,TL/ay,uc_kural_senaryo
@@ -47,6 +55,8 @@
 2026-Q4,maliyet_ucuz_revize,servis_Ha,ponzi_fazlasi_pp,7.5,puan,türetilmiş
 2026-Q4,maliyet_ucuz_revize,servis_Ha,minsky_band,ponzi,etiket,uc_kural eşik
 2026-Q4,maliyet_ucuz_revize,kredi_freni,limit_dondur,0,0/1,uc_kural_senaryo
+2026-Q4,maliyet_ucuz_revize,kredi_freni,limit_yasam_kilit,0,0/1,uc_kural_senaryo
+2026-Q4,maliyet_ucuz_revize,kredi_freni,yasam_dusus_oran,0.0,oran,uc_kural_senaryo
 2026-Q4,maliyet_ucuz_revize,doviz_dolay,korunmasiz_doviz_stok_mr_usd,120.0,milyar USD,uc_kural_senaryo
 2026-Q4,maliyet_ucuz_revize,butce_dolay,K_butce_NL_milyar,0.0,milyar TL/çeyrek,uc_kural_senaryo
 2031-Q4,maliyet_ucuz_revize,gelir_taban,net_taban_TL,34384.0,TL/ay,uc_kural_senaryo
@@ -57,6 +67,8 @@
 2031-Q4,maliyet_ucuz_revize,servis_Ha,ponzi_fazlasi_pp,19.4,puan,türetilmiş
 2031-Q4,maliyet_ucuz_revize,servis_Ha,minsky_band,ponzi,etiket,uc_kural eşik
 2031-Q4,maliyet_ucuz_revize,kredi_freni,limit_dondur,0,0/1,uc_kural_senaryo
+2031-Q4,maliyet_ucuz_revize,kredi_freni,limit_yasam_kilit,0,0/1,uc_kural_senaryo
+2031-Q4,maliyet_ucuz_revize,kredi_freni,yasam_dusus_oran,0.0,oran,uc_kural_senaryo
 2031-Q4,maliyet_ucuz_revize,doviz_dolay,korunmasiz_doviz_stok_mr_usd,120.0,milyar USD,uc_kural_senaryo
 2031-Q4,maliyet_ucuz_revize,butce_dolay,K_butce_NL_milyar,-2.2,milyar TL/çeyrek,uc_kural_senaryo
 2026-Q1,olcum_panel,hane_alt,NFP_Ha asgari,-1.63,trilyon TL,hane_alt

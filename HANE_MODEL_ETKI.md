@@ -43,6 +43,10 @@
 - **K2 stok tavan:** firma kimden-kime; **hane stokuna yazılmaz**.
 - **K3 mevduat adresi:** tasarruf yönlendirme; hane **YP/vadeli stok** ölçümü tek nokta, dağıtım modellenmedi.
 
+## Ek kilit — yaşam maliyeti ↔ limit (revize)
+
+`limit_dondur` = **stres** (alt-20 borç/gelir > 2,5 ay) **∧** **yaşam kilit** (çeyreklik `yasam_dusus_oran ≥ 0,015`, yalnız Q1/Q3’te hedef düşüş). **Sert/mevcut:** yaşam kilidi bypass. Revizede limit **yalnız maliyet düşen çeyreklerde** (ör. 2027-Q1/Q3).
+
 ## Döviz (hane)
 
 - **`mevcut`:** korunmasız USD stok **121,8 → 162,9 mr USD** (senaryo; kur/kanallar kabaca `R_H`).
