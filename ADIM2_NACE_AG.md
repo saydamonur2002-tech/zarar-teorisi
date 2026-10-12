@@ -8,6 +8,7 @@
 
 - Ölçüm: düğüm nakdi (hazır değerler), ticari borç/alacak toplamları, ücret (personel maliyeti/12), çalışan sayısı; çapa G1 firma takip oranı 2.522% (2026-09).
 - Varsayım: kenar dağılımı (çekim/RAS, Faz 1); dış düğüm brüt borcu (EVDS payı 0.108 → 1,501.4 milyar); vade hepsi 1 tur; ücret aylık dilim; λ* kalibrasyonu.
+- Eksik: A (tarım) YSHİ kapsamı dışı → ücret ve çalışan 0; o kısımda ücret temerrüdü ölçülemez.
 - λ*: brüt aşamada firma ödenmemiş/brüt payını G1'e oturtan nakit çarpanı: **0.8931** (`kalibrasyon_varsayim`). λ=1 ölçülen nakitle koşu ayrı satır.
 - β tavanı: Σücret_aylık / (Σticari borç + Σücret_aylık) = **0.0439**; sentetik 0,3 bunun ÜSTÜNDE. Orantılı dağılım varsayımı: serbest kalan likidite vadesi gelen yükümlülüklere payıyla gider; ücret payı bu kadar. Kısım bazında `adim2_nace_dugum.csv`. Üst sınır, ölçüm değil.
 - Brüt aşama kredi ihtiyacı (8,328.6 milyar, λ=1) stok ölçekli köprü ihtiyacıdır; tüm ticari borç tek turda istenirse. F F.4 stoku ile karşılaştırılır, eşitlenmez.

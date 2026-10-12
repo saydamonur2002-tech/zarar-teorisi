@@ -169,6 +169,7 @@ def main() -> dict:
           f"çapa G1 firma takip oranı {g1['firma_G1_yuzde']}% ({g1['donem']}).",
           f"- Varsayım: kenar dağılımı (çekim/RAS, Faz 1); dış düğüm brüt borcu (EVDS payı {dp['alacak_dis_payi']:.3f} → {f(dis_brut_borc)} milyar); "
           "vade hepsi 1 tur; ücret aylık dilim; λ* kalibrasyonu.",
+          "- Eksik: A (tarım) YSHİ kapsamı dışı → ücret ve çalışan 0; o kısımda ücret temerrüdü ölçülemez.",
           f"- λ*: brüt aşamada firma ödenmemiş/brüt payını G1'e oturtan nakit çarpanı: **{kal.get('lambda')}** (`{kal['durum']}`). "
           "λ=1 ölçülen nakitle koşu ayrı satır.",
           f"- β tavanı: Σücret_aylık / (Σticari borç + Σücret_aylık) = **{beta_tavan:.4f}**; sentetik 0,3 bunun "
