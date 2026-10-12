@@ -16,6 +16,7 @@ from docx.shared import Pt, Cm
 
 KOK = Path(__file__).resolve().parent
 OUT = KOK / "ZARAR_TEORISI_MINSKY_BULGULAR.docx"
+OUT_YAYIN = KOK / "yayin" / "ZARAR_TEORISI_MINSKY_BULGULAR.docx"
 
 
 def _load(name: str) -> dict:
@@ -283,7 +284,10 @@ def build() -> Document:
 def main():
     doc = build()
     doc.save(OUT)
+    OUT_YAYIN.parent.mkdir(parents=True, exist_ok=True)
+    doc.save(OUT_YAYIN)
     print(f"Yazildi: {OUT}")
+    print(f"Yazildi: {OUT_YAYIN}")
 
 
 if __name__ == "__main__":
