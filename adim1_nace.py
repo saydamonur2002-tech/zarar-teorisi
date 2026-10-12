@@ -83,17 +83,26 @@ def bilanco() -> pd.DataFrame:
     return out
 
 
-def personel_maliyeti() -> dict[str, float]:
-    """YSHİ 2024 personel maliyeti (TL → milyar TL), NACE kısım toplamı."""
+def _yshi_sutun(sutun: int, bolen: float) -> dict[str, float]:
     df = pd.read_excel(YSHI_XLS, sheet_name="t2", header=None)
     out = {}
     for r in range(4, df.shape[0]):
         k = _nace_kodu(df.iloc[r, 0])
         if k and "Toplam" in str(df.iloc[r, 1]):
-            v = _sayi(df.iloc[r, 5])
+            v = _sayi(df.iloc[r, sutun])
             if v is not None:
-                out[k] = v / 1e9
+                out[k] = v / bolen
     return out
+
+
+def personel_maliyeti() -> dict[str, float]:
+    """YSHİ 2024 personel maliyeti (TL → milyar TL), NACE kısım toplamı."""
+    return _yshi_sutun(5, 1e9)
+
+
+def calisan_sayisi() -> dict[str, float]:
+    """YSHİ 2024 çalışanlar sayısı (kişi), NACE kısım toplamı."""
+    return _yshi_sutun(3, 1.0)
 
 
 def evds_fark() -> dict:
@@ -125,13 +134,21 @@ def netlestirme_tabani(b: pd.DataFrame) -> dict:
             "not": "Kısım içi (aynı NACE) borç düğümde görünmez; dış düğüm artığı taşır. Üst sınır, ölçüm değil."}
 
 
-def cekim_kenarlari(b: pd.DataFrame) -> tuple[list[dict], dict]:
-    """kenar_ij = TB_i · pay_j, pay_j = TA_j / (ΣTA + dış); dış düğüm iki yönde kalanı alır. Varsayım."""
+def cekim_kenarlari(b: pd.DataFrame, dis_brut_borc: float | None = None) -> tuple[list[dict], dict]:
+    """kenar_ij ∝ TB_i · TA_j, RAS ile satır/sütun toplamlarına oturtulur; dış düğüm artığı taşır. Varsayım.
+
+    dis_brut_borc verilirse dış düğümün firmalara brüt borcu o olur (alacağı = brüt borç + artık); verilmezse yalnız net artık
+    tek yönde durur (Faz 1 üst sınır kurgusu)."""
     ta, tb = b["ticari_alacak"].to_dict(), b["ticari_borc"].to_dict()
     sum_ta, sum_tb = sum(ta.values()), sum(tb.values())
-    # dış düğüm alacağı/borcu: firmaların alacağı ile borcu arasındaki fark tek yönde dışa gider
-    dis_alacak = max(0.0, sum_tb - sum_ta)  # firmalar dışa net borçlu ise dış alacaklı
-    dis_borc = max(0.0, sum_ta - sum_tb)    # firmalar dıştan net alacaklı ise dış borçlu
+    artik = sum_tb - sum_ta  # >0: firmalar dışa net borçlu
+    if dis_brut_borc is None:
+        dis_alacak, dis_borc = max(0.0, artik), max(0.0, -artik)
+    else:
+        dis_borc = dis_brut_borc
+        dis_alacak = dis_brut_borc + artik
+        if dis_alacak < 0:
+            raise ValueError("dış düğüm alacağı negatif; dis_brut_borc artığı karşılamıyor")
     ta_d, tb_d = dict(ta), dict(tb)
     ta_d[DIS], tb_d[DIS] = dis_alacak, dis_borc
     dugumler = list(b.index) + [DIS]
