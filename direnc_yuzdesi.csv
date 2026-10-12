@@ -1,0 +1,4 @@
+﻿senaryo,donem,durum,sistem_kazanci_kar_proxy_milyar,sistem_kazanci_tasarruf_milyar,sistem_kazanci_toplam_milyar,kira_konut_ranti_milyar,finansal_rant_milyar,ust_gelir_Ho_milyar,kamu_ust_unvan_milyar,kayip_toplam_milyar,direnc_yuzdesi,direnc_yuzdesi_agirlikli,uygulanabilirlik_revize,not
+mevcut,2031-Q4,senaryo,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,,Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama
+uc_kural_kilitli,2031-Q4,senaryo,142.51,0.0,142.51,0.0,340.66,62.7,0.0,403.36,283.04,80.51,,Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama
+maliyet_ucuz_revize,2031-Q4,senaryo,82.08,306.26,388.34,232.99,149.63,36.12,78.75,497.49,128.11,39.45,yuksek_direnc,Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama

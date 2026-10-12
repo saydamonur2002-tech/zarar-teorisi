@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "durum": "senaryo",
+    "olcum_degil": true,
+    "direnc_politik_ekonomi_proxy": true,
+    "tanim": "direnc_% = sum(kalem kayıpları) / kar_proxy_kapsama × 100",
+    "olculen_referans_finansman_faaliyet_2024": 0.839,
+    "parametreler": {
+      "agirlik_kira": 0.4,
+      "agirlik_finans": 0.3,
+      "agirlik_ust_gelir": 0.2,
+      "agirlik_kamu_unvan": 0.1,
+      "konut_H_varlik_payi": 0.25,
+      "kira_getiri_orani_yillik": 0.035,
+      "kira_yasam_elastikiyet": 1.0,
+      "finans_kisit_katsayi": 0.08,
+      "ufuk_yil": 5.0,
+      "finansman_faaliyet_ref": 0.84,
+      "ho_varlik_payi": 0.8,
+      "ust_gelir_erosyon_katsayi": 0.55,
+      "kamu_ust_dilim_payi": 0.35,
+      "kamu_makas_milyar_ceyrek": 45.0,
+      "direnc_yuksek_esik": 0.5,
+      "n_a": 6850000.0
+    },
+    "stok_proxy": {
+      "H_varlik_milyarTL": 29114.5,
+      "F_borc_milyarTL": 50776.6,
+      "B_varlik_milyarTL": 57103.0,
+      "konut_stok_milyarTL": 7278.6,
+      "durum": "proxy_EVDS_2026Q1"
+    },
+    "yorum": "Revize yöntem kira/finans/üst gelir lehine mevcut düzeni bozar; direnç yüksek çıkabilir. Sert zam görünür maliyeti F'ye yükler; kira sepeti revizede düştüğü için kalem kaybı büyür.",
+    "revize_ozet": {
+      "direnc_yuzdesi": 128.11,
+      "uygulanabilirlik": "yuksek_direnc",
+      "sert_direnc": 283.04
+    }
+  },
+  "senaryolar": [
+    {
+      "senaryo": "mevcut",
+      "donem": "2031-Q4",
+      "durum": "senaryo",
+      "sistem_kazanci_kar_proxy_milyar": 0.0,
+      "sistem_kazanci_tasarruf_milyar": 0.0,
+      "sistem_kazanci_toplam_milyar": 0.0,
+      "kira_konut_ranti_milyar": 0.0,
+      "finansal_rant_milyar": 0.0,
+      "ust_gelir_Ho_milyar": 0.0,
+      "kamu_ust_unvan_milyar": 0.0,
+      "kayip_toplam_milyar": 0.0,
+      "direnc_yuzdesi": null,
+      "direnc_yuzdesi_agirlikli": null,
+      "uygulanabilirlik_revize": "",
+      "not": "Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama"
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "donem": "2031-Q4",
+      "durum": "senaryo",
+      "sistem_kazanci_kar_proxy_milyar": 142.51,
+      "sistem_kazanci_tasarruf_milyar": 0.0,
+      "sistem_kazanci_toplam_milyar": 142.51,
+      "kira_konut_ranti_milyar": 0.0,
+      "finansal_rant_milyar": 340.66,
+      "ust_gelir_Ho_milyar": 62.7,
+      "kamu_ust_unvan_milyar": 0.0,
+      "kayip_toplam_milyar": 403.36,
+      "direnc_yuzdesi": 283.04,
+      "direnc_yuzdesi_agirlikli": 80.51,
+      "uygulanabilirlik_revize": "",
+      "not": "Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama"
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "donem": "2031-Q4",
+      "durum": "senaryo",
+      "sistem_kazanci_kar_proxy_milyar": 82.08,
+      "sistem_kazanci_tasarruf_milyar": 306.26,
+      "sistem_kazanci_toplam_milyar": 388.34,
+      "kira_konut_ranti_milyar": 232.99,
+      "finansal_rant_milyar": 149.63,
+      "ust_gelir_Ho_milyar": 36.12,
+      "kamu_ust_unvan_milyar": 78.75,
+      "kayip_toplam_milyar": 497.49,
+      "direnc_yuzdesi": 128.11,
+      "direnc_yuzdesi_agirlikli": 39.45,
+      "uygulanabilirlik_revize": "yuksek_direnc",
+      "not": "Kayıp = mevcuta göre kazanan kesim proxy; G = kar_proxy_kapsama"
+    }
+  ],
+  "duyarlik": [
+    {
+      "tur": "agirlik_grid",
+      "agirlik_kira": 0.4,
+      "agirlik_finans": 0.3,
+      "agirlik_ust_gelir": 0.2,
+      "agirlik_kamu_unvan": 0.1,
+      "direnc_yuzdesi": 128.11,
+      "kayip_toplam_milyar": 497.49,
+      "sistem_kazanci_kar_proxy_milyar": 82.08
+    },
+    {
+      "tur": "agirlik_grid",
+      "agirlik_kira": 0.5,
+      "agirlik_finans": 0.25,
+      "agirlik_ust_gelir": 0.15,
+      "agirlik_kamu_unvan": 0.1,
+      "direnc_yuzdesi": 128.11,
+      "kayip_toplam_milyar": 497.49,
+      "sistem_kazanci_kar_proxy_milyar": 82.08
+    },
+    {
+      "tur": "agirlik_grid",
+      "agirlik_kira": 0.3,
+      "agirlik_finans": 0.4,
+      "agirlik_ust_gelir": 0.2,
+      "agirlik_kamu_unvan": 0.1,
+      "direnc_yuzdesi": 128.11,
+      "kayip_toplam_milyar": 497.49,
+      "sistem_kazanci_kar_proxy_milyar": 82.08
+    },
+    {
+      "tur": "agirlik_grid",
+      "agirlik_kira": 0.35,
+      "agirlik_finans": 0.35,
+      "agirlik_ust_gelir": 0.2,
+      "agirlik_kamu_unvan": 0.1,
+      "direnc_yuzdesi": 128.11,
+      "kayip_toplam_milyar": 497.49,
+      "sistem_kazanci_kar_proxy_milyar": 82.08
+    },
+    {
+      "tur": "kira_elastikiyet",
+      "kira_yasam_elastikiyet": 0.8,
+      "direnc_yuzdesi": 116.11,
+      "kayip_toplam_milyar": 450.9
+    },
+    {
+      "tur": "kira_elastikiyet",
+      "kira_yasam_elastikiyet": 1.0,
+      "direnc_yuzdesi": 128.11,
+      "kayip_toplam_milyar": 497.49
+    },
+    {
+      "tur": "kira_elastikiyet",
+      "kira_yasam_elastikiyet": 1.2,
+      "direnc_yuzdesi": 140.11,
+      "kayip_toplam_milyar": 544.09
+    }
+  ]
+}
