@@ -10,9 +10,7 @@ Bu depo kapalı bir muhasebe iskeleti ve kalibrasyondur. Aşağıdaki sayılar �
 
 **Hane alt bölünmesi ölçüm değildir.** H = Ha (asgari ücretli) + Hm (memur) + Ho (diğer). Varlık/mevduat payı Ha %5, Hm %15, Ho %80; bu da ölçüm değil. Borç payında iki katman var, karıştırılmamalı.
 
-İlk kullanıcı varsayımı %70'di. **Çalışan taban** `hane_alt.py` içinde `D_A_BASE = 0.40`. `OKU.txt` hane bölümü taban (%40) ile %70 duyarlılık satırını ayırır; −3,95 trilyon TL Ha neti **yalnızca %70 duyarlılık** içindir, taban değildir.
-
-Çalışan taban `D_A_BASE = 0.40` (tekrar vurgu). Yorum satırı bunu açıkça söylüyor: ilk varsayım %70'ti, gözlenen stresle uyumlu aralığın üstündeydi, taban %40'a indirildi. 2026-Q1'de bu payla Ha neti −1,63 trilyon TL (varlık 1,46, borç 3,09); kişi başı 451 bin TL, yıllık gelirin 1,34 katı; ödenemez kısım 2,16 trilyon; tanınırsa lambda_B = 0,16. %70 hâlâ duyarlılık tablosunda duruyor: orada lambda_B = 0,59.
+İlk kullanıcı varsayımı %70'di. **Çalışan taban** `hane_alt.py` içinde `D_A_BASE = 0.40` (yorum satırı gerekçeyi yazar: stres bandının üstü). `OKU.txt` taban (%40) ile %70 duyarlılığı ayırır; −3,95 trilyon TL Ha neti **yalnızca %70 duyarlılık** içindir. Taban 2026-Q1: Ha neti −1,63 trilyon TL (varlık 1,46, borç 3,09); kişi başı 451 bin TL; ödenemez kısım 2,16 trilyon; tanınırsa lambda_B = 0,16. %70 duyarlılıkta lambda_B = 0,59.
 
 Çapraz kontrol: gözlenen hane stresinden (takipteki 0,37 trilyon TL ile yakın izlemenin hane payı 2,47 trilyon TL) ima edilen Ha borç payının üst sınırı %17–44. %40 bu bandın üst kenarı, %70 bandın dışında. %70 ancak çok gelirli haneler, borcu borçla çevirme ya da gizli temerrüt ile tutulur. "Yük stoku" bu üçüncünün adı; ölçüm değil.
 

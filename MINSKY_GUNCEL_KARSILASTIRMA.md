@@ -1,6 +1,6 @@
 # Minsky rejimi — güncel veri vs model proxy
 
-**Tarih:** 2026-10-12 (EVDS köprü: `acik_veri_ozet.json`). **Minsky moment tarihi yoktur**; bu tablo rejim karşılaştırmasıdır.
+**Tarih:** 2026-10-12 (EVDS köprü: `acik_veri_ozet.json`). **Minsky moment tarihi yoktur**; bu tablo rejim karşılaştırmasıdır. Modelin Minsky tarafının sınırı: [`MODEL_KUSURLARI.md`](MODEL_KUSURLARI.md) §5.
 
 ## 1. Minsky rejimleri (teori)
 
