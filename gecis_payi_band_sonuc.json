@@ -1,0 +1,267 @@
+{
+  "faz": 5,
+  "kapi": "gecis_payi",
+  "tavan_akis_csv": "yazilmadi; gecis/tavan bos (kilitli kapi)",
+  "ana": {
+    "spesifikasyon": "tam örneklem (2015-Q3+), dinamik",
+    "dinamik": true,
+    "orneklem": "2015-Q3..2025-Q4",
+    "n": 42,
+    "r2": 0.75,
+    "b_kredi": [
+      0.1481,
+      0.1041,
+      0.263
+    ],
+    "b_kredi_toplam": 0.5152,
+    "rho": 0.4513,
+    "c_kur": [
+      1.3274,
+      0.5499
+    ],
+    "LR_gecis_payi": 0.9389,
+    "se_nw4": 0.7418,
+    "ci95": [
+      -0.5151,
+      2.3929
+    ],
+    "band_0_1": [
+      0.0,
+      1.0
+    ],
+    "band68_0_1": [
+      0.1971,
+      1.0
+    ],
+    "bes_yil_enflasyon_puan_68": [
+      -7.62,
+      -1.5
+    ],
+    "bes_yil_enflasyon_puan": [
+      -7.62,
+      -0.0
+    ],
+    "durum": "tahmin_ols",
+    "not": "Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz."
+  },
+  "spesifikasyonlar": [
+    {
+      "spesifikasyon": "tam örneklem (2015-Q3+), dinamik",
+      "dinamik": true,
+      "orneklem": "2015-Q3..2025-Q4",
+      "n": 42,
+      "r2": 0.75,
+      "b_kredi": [
+        0.1481,
+        0.1041,
+        0.263
+      ],
+      "b_kredi_toplam": 0.5152,
+      "rho": 0.4513,
+      "c_kur": [
+        1.3274,
+        0.5499
+      ],
+      "LR_gecis_payi": 0.9389,
+      "se_nw4": 0.7418,
+      "ci95": [
+        -0.5151,
+        2.3929
+      ],
+      "band_0_1": [
+        0.0,
+        1.0
+      ],
+      "band68_0_1": [
+        0.1971,
+        1.0
+      ],
+      "bes_yil_enflasyon_puan_68": [
+        -7.62,
+        -1.5
+      ],
+      "bes_yil_enflasyon_puan": [
+        -7.62,
+        -0.0
+      ],
+      "durum": "tahmin_ols",
+      "not": "Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz."
+    },
+    {
+      "spesifikasyon": "tam örneklem (2015-Q3+), statik",
+      "dinamik": false,
+      "orneklem": "2015-Q3..2025-Q4",
+      "n": 42,
+      "r2": 0.627,
+      "b_kredi": [
+        0.2101,
+        0.1874,
+        0.4102
+      ],
+      "b_kredi_toplam": 0.8077,
+      "rho": null,
+      "c_kur": [
+        1.4229,
+        1.2485
+      ],
+      "LR_gecis_payi": 0.8077,
+      "se_nw4": 0.604,
+      "ci95": [
+        -0.3762,
+        1.9916
+      ],
+      "band_0_1": [
+        0.0,
+        1.0
+      ],
+      "band68_0_1": [
+        0.2037,
+        1.0
+      ],
+      "bes_yil_enflasyon_puan_68": [
+        -7.62,
+        -1.55
+      ],
+      "bes_yil_enflasyon_puan": [
+        -7.62,
+        -0.0
+      ],
+      "durum": "tahmin_ols",
+      "not": "Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz."
+    },
+    {
+      "spesifikasyon": "tam örneklem, k=0..1, dinamik (az parametre)",
+      "dinamik": true,
+      "orneklem": "2015-Q3..2025-Q4",
+      "n": 42,
+      "r2": 0.743,
+      "b_kredi": [
+        0.1344,
+        0.0911
+      ],
+      "b_kredi_toplam": 0.2256,
+      "rho": 0.4662,
+      "c_kur": [
+        1.294,
+        0.5209
+      ],
+      "LR_gecis_payi": 0.4226,
+      "se_nw4": 0.6132,
+      "ci95": [
+        -0.7793,
+        1.6244
+      ],
+      "band_0_1": [
+        0.0,
+        1.0
+      ],
+      "band68_0_1": [
+        0.0,
+        1.0
+      ],
+      "bes_yil_enflasyon_puan_68": [
+        -7.62,
+        -0.0
+      ],
+      "bes_yil_enflasyon_puan": [
+        -7.62,
+        -0.0
+      ],
+      "durum": "tahmin_ols",
+      "not": "Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz."
+    },
+    {
+      "spesifikasyon": "2018+ (kur şokları), dinamik",
+      "dinamik": true,
+      "orneklem": "2018-Q1..2025-Q4",
+      "n": 32,
+      "r2": 0.765,
+      "b_kredi": [
+        0.4485,
+        0.1431,
+        0.3194
+      ],
+      "b_kredi_toplam": 0.9111,
+      "rho": 0.3653,
+      "c_kur": [
+        1.441,
+        0.6419
+      ],
+      "LR_gecis_payi": 1.4355,
+      "se_nw4": 0.8149,
+      "ci95": [
+        -0.1616,
+        3.0326
+      ],
+      "band_0_1": [
+        0.0,
+        1.0
+      ],
+      "band68_0_1": [
+        0.6206,
+        1.0
+      ],
+      "bes_yil_enflasyon_puan_68": [
+        -7.62,
+        -4.73
+      ],
+      "bes_yil_enflasyon_puan": [
+        -7.62,
+        -0.0
+      ],
+      "durum": "tahmin_ols",
+      "not": "Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz."
+    },
+    {
+      "spesifikasyon": "2021+ (yüksek enflasyon), dinamik",
+      "dinamik": true,
+      "orneklem": "2021-Q1..2025-Q4",
+      "n": 20,
+      "r2": 0.896,
+      "b_kredi": [
+        1.2966,
+        -2.384,
+        2.3105
+      ],
+      "b_kredi_toplam": 1.2231,
+      "rho": 0.0351,
+      "c_kur": [
+        1.388,
+        1.351
+      ],
+      "LR_gecis_payi": 1.2676,
+      "se_nw4": 0.7626,
+      "ci95": [
+        -0.227,
+        2.7623
+      ],
+      "band_0_1": [
+        0.0,
+        1.0
+      ],
+      "band68_0_1": [
+        0.5051,
+        1.0
+      ],
+      "bes_yil_enflasyon_puan_68": [
+        -7.62,
+        -3.85
+      ],
+      "bes_yil_enflasyon_puan": [
+        -7.62,
+        -0.0
+      ],
+      "durum": "tahmin_ols",
+      "not": "Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz."
+    }
+  ],
+  "rapor_varsayim": 0.3333333333333333,
+  "itis_gsyh_yuzde": 7.62,
+  "seriler": [
+    "TP.FG.J0",
+    "TP.DK.USD.A.YTL",
+    "TP.FINHESTNKS62011.ZP34",
+    "TP.GSYIH20.BY.B1GQ"
+  ],
+  "etiket": "tahmin_ols: ölçüm değil, varsayım değil; kapıya taşınmaz"
+}

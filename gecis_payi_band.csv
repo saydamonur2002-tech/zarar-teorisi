@@ -1,0 +1,9 @@
+﻿nesne,spesifikasyon,orneklem,n,r2,b_kredi_toplam,rho,LR_gecis_payi,se_nw4,ci95_alt,ci95_ust,band_alt,band_ust,band68_alt,band68_ust,bes_yil_puan_alt,bes_yil_puan_ust,bes_yil_puan68_alt,bes_yil_puan68_ust,durum,not
+gecis_payi,"tam örneklem (2015-Q3+), dinamik",2015-Q3..2025-Q4,42,0.75,0.5152,0.4513,0.9389,0.7418,-0.5151,2.3929,0.0,1.0,0.1971,1.0,-7.62,-0.0,-7.62,-1.5,tahmin_ols,Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz.
+gecis_payi,"tam örneklem (2015-Q3+), statik",2015-Q3..2025-Q4,42,0.627,0.8077,,0.8077,0.604,-0.3762,1.9916,0.0,1.0,0.2037,1.0,-7.62,-0.0,-7.62,-1.55,tahmin_ols,Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz.
+gecis_payi,"tam örneklem, k=0..1, dinamik (az parametre)",2015-Q3..2025-Q4,42,0.743,0.2256,0.4662,0.4226,0.6132,-0.7793,1.6244,0.0,1.0,0.0,1.0,-7.62,-0.0,-7.62,-0.0,tahmin_ols,Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz.
+gecis_payi,"2018+ (kur şokları), dinamik",2018-Q1..2025-Q4,32,0.765,0.9111,0.3653,1.4355,0.8149,-0.1616,3.0326,0.0,1.0,0.6206,1.0,-7.62,-0.0,-7.62,-4.73,tahmin_ols,Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz.
+gecis_payi,"2021+ (yüksek enflasyon), dinamik",2021-Q1..2025-Q4,20,0.896,1.2231,0.0351,1.2676,0.7626,-0.227,2.7623,0.0,1.0,0.5051,1.0,-7.62,-0.0,-7.62,-3.85,tahmin_ols,Newey-West(4); mevsim kuklası; LR delta yöntemi. Ölçüm değil; kapıya taşınmaz.
+gecis_payi,RAPOR 'üçte biri',,,,,,0.3333,,,,,,,,,,,,varsayim,tek-sistem RAPOR cümlesi; kaynak yok
+bes_yil_enflasyon_band,mevcut (bes_yil_senaryo),,,,,,,,,,,,,,-7.62,0.0,,,band_tam,"geçiş 0..1 × itiş 7,62 puan GSYH"
+bes_yil_enflasyon_band,daraltılmış (ana tahmin),2015-Q3..2025-Q4,,,,,,,,,,,,,-7.62,-0.0,-7.62,-1.5,tahmin_ols,"95: CI∩[0,1]×7,62 (daralmadı); 68: (LR±se)∩[0,1]×7,62; bes_yil_senaryo dosyaları yazılmadı"
