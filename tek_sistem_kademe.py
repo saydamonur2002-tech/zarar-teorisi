@@ -21,7 +21,13 @@ KOK = Path(__file__).resolve().parent
 AKIS_MAHSUP_ORAN = 0.427  # mahsup_sektor_ozet; baska_nesne, dokunulmaz
 FIRMA_MAHSUP_ORAN = 0.32959478056952846  # odeme_mahsup_sonuc ozet brut_azalma_oran
 YENI_STOK_TAVAN = 0.2582  # adim1 / bes_adim
+ESKI_STOK_TAVAN = 0.0728
 MEVDUAT_ADRES_MILYAR = 8322.4 + 4400.1 + 6639.4  # adim4 üç satır
+ITIS_YILLIK_MILYAR = 4820.9  # tavan_akis 2025 firma F.4 akımı
+F4_STOK_BAS_MILYAR = 25339.8  # tek_sistem_kopru 2026-Q1
+BRUT_KIMDEN_KIME_MILYAR = 78870.4  # adim1 TOPLAM brut
+# VARSAYIM: yönlendirilen mevduat payının yıllık yeni banka kredi itişinden düşülen oranı (modellenmedi)
+K3_MEVDUAT_KREDI_PAYI = 0.08
 
 
 @dataclass(frozen=True)
@@ -112,9 +118,61 @@ def _depo_ref() -> dict:
     try:
         a1 = json.loads((KOK / "bes_adim_sonuc.json").read_text(encoding="utf-8"))["adimlar"]["1"]
         out["yeni_stok_tavan"] = float(a1["yeni_tavan"])
+        out["brut_kimden_kime_milyar"] = float(a1["brut_milyar"])
+        out["eski_stok_tavan"] = float(a1["eski_tavan"])
     except (OSError, KeyError, json.JSONDecodeError, TypeError, ValueError):
         out["yeni_stok_tavan"] = YENI_STOK_TAVAN
+        out["brut_kimden_kime_milyar"] = BRUT_KIMDEN_KIME_MILYAR
+        out["eski_stok_tavan"] = ESKI_STOK_TAVAN
+    try:
+        import csv as _csv
+
+        ta = next(
+            r
+            for r in _csv.DictReader((KOK / "tavan_akis.csv").open(encoding="utf-8-sig"))
+            if r["yil"] == "2025"
+        )
+        out["itis_yillik_milyar"] = float(ta["f4_akim"])
+    except (StopIteration, OSError, KeyError, ValueError):
+        out["itis_yillik_milyar"] = ITIS_YILLIK_MILYAR
+    try:
+        import csv as _csv
+
+        kop = _csv.DictReader((KOK / "tek_sistem_kopru.csv").open(encoding="utf-8-sig"))
+        f4 = next(r for r in kop if r["blok"] == "mutabakat" and r["donem"] == "2026-Q1" and r["evds_anahtar"] == "F_F4_yuk")
+        out["f4_stok_bas_milyar"] = float(f4["evds_milyar"])
+    except (StopIteration, OSError, KeyError, ValueError):
+        out["f4_stok_bas_milyar"] = F4_STOK_BAS_MILYAR
     return out
+
+
+def _borc_etkisi(u1: float, u2: float, u3: float, depo: dict) -> dict:
+    """Kademeli etkin → borç proxy (senaryo; tek defter değil)."""
+    sektor = AKIS_MAHSUP_ORAN
+    itis = float(depo["itis_yillik_milyar"])
+    eski = float(depo.get("eski_stok_tavan") or ESKI_STOK_TAVAN)
+    yeni = float(depo["yeni_stok_tavan"])
+    brut = float(depo.get("brut_kimden_kime_milyar") or BRUT_KIMDEN_KIME_MILYAR)
+    eff_tavan = eski + u2 * (yeni - eski)
+    k1_yil = u1 * sektor * itis
+    k1_ceyrek = k1_yil / 4
+    k2_brut_fazla = u2 * (yeni - eski) * brut
+    k3_yon = u3 * MEVDUAT_ADRES_MILYAR
+    k3_kredi_yil = k3_yon * K3_MEVDUAT_KREDI_PAYI
+    k3_ceyrek = k3_kredi_yil / 4
+    baz_ceyrek = itis / 4
+    net_yeni = max(0.0, baz_ceyrek - k1_ceyrek - k3_ceyrek)
+    return {
+        "k1_itis_azalt_milyar_yillik": round(k1_yil, 1),
+        "k1_itis_azalt_milyar_ceyrek": round(k1_ceyrek, 1),
+        "k2_brut_zincir_fazla_azalt_ust_milyar": round(k2_brut_fazla, 1),
+        "k2_etkin_tavan_orani": round(eff_tavan, 4),
+        "k3_mevduat_yonlendir_milyar": round(k3_yon, 1),
+        "k3_kredi_itki_azalt_milyar_yillik": round(k3_kredi_yil, 1),
+        "k3_kredi_itki_azalt_milyar_ceyrek": round(k3_ceyrek, 1),
+        "f4_net_yeni_baseline_milyar_ceyrek": round(baz_ceyrek, 1),
+        "f4_net_yeni_etkin_milyar_ceyrek": round(net_yeni, 1),
+    }
 
 
 def satirlar_uret() -> list[dict]:
@@ -123,6 +181,9 @@ def satirlar_uret() -> list[dict]:
     sektor_oran = AKIS_MAHSUP_ORAN
     firma_oran = depo["firma_mahsup_oran"]
     stok_tavan = depo["yeni_stok_tavan"]
+    f4 = float(depo["f4_stok_bas_milyar"])
+    f4_baz = f4
+    f4_etkin = f4
     rows = []
     for donem in _iter_donem(DONEM_BAS, DONEM_SON):
         u1 = uygulama_orani(donem, PENCERELER[0])
@@ -135,6 +196,10 @@ def satirlar_uret() -> list[dict]:
             aktif.append("K2")
         if u3 > 0:
             aktif.append("K3")
+        borc = _borc_etkisi(u1, u2, u3, depo)
+        if _idx(donem) >= _idx("2027-Q1"):
+            f4_baz += borc["f4_net_yeni_baseline_milyar_ceyrek"]
+            f4_etkin += borc["f4_net_yeni_etkin_milyar_ceyrek"]
         rows.append({
             "Donem": donem,
             "K1_uygulama_orani": round(u1, 4),
@@ -144,6 +209,10 @@ def satirlar_uret() -> list[dict]:
             "etkin_firma_mahsup_orani": round(u1 * firma_oran, 4),
             "etkin_stok_tavan_orani": round(u2 * stok_tavan, 4),
             "etkin_mevduat_adres_milyar": round(u3 * MEVDUAT_ADRES_MILYAR, 1),
+            **borc,
+            "f4_stok_baseline_kumul_milyar": round(f4_baz, 1),
+            "f4_stok_etkin_kumul_milyar": round(f4_etkin, 1),
+            "f4_stok_fark_milyar": round(f4_baz - f4_etkin, 1),
             "aktif_kademeler": "+".join(aktif) if aktif else "",
             "durum": "senaryo",
         })
@@ -192,7 +261,40 @@ def md(rows: list[dict], meta: dict) -> str:
         lines.append(
             f"| {d} | {r['K1_uygulama_orani']} | {r['K2_uygulama_orani']} | {r['K3_uygulama_orani']} | {note} |"
         )
+    r0 = next(x for x in rows if x["Donem"] == "2026-Q4")
+    r27e = next(x for x in rows if x["Donem"] == "2027-Q4")
+    r29e = next(x for x in rows if x["Donem"] == "2029-Q4")
+    r31e = next(x for x in rows if x["Donem"] == "2031-Q4")
+    itis = meta["depo"]["itis_yillik_milyar"]
     lines += [
+        "",
+        "## Kademeli etkin → borca etkisi (proxy)",
+        "",
+        "Ölçüm değil; katmanlar birleştirilmedi. **Nominal borç silinmez** (tek sistem kuralı). Etki kanalları:",
+        "",
+        "| Kademe | Borç nesnesi | Mekanizma | Formül (kademe uygulama u) |",
+        "| --- | --- | --- | --- |",
+        f"| K1 | Firma **yeni kredi itişi** (F.4 akım proxy) | Brüt mahsup → zinciri çeviren taze akış | `u1 × {AKIS_MAHSUP_ORAN} × itiş_yıllık / 4` çeyrek; itiş={itis} milyar (2025) |",
+        "| K1 | **Net stok** | Mahsup net pozisyonu korur | F.4 stokunda **doğrudan düşüş yok**; yalnız itiş freni |",
+        f"| K2 | **Kimden-kime brüt stok** (üst sınır) | Karşı bacak tavanı yükselir | `u2 × (yeni−eski) × brüt` = brüt fazlalık azaltılabilir tavan |",
+        f"| K3 | **Yeni banka kredi itişi** (varsayım) | Mevduat adresi senede kayar | `u3 × adres × {K3_MEVDUAT_KREDI_PAYI}` / 4 çeyrek; pay VARSAYIM |",
+        "",
+        "**F.4 stok kumul proxy** (2026-Q1 taban → çeyrek net yeni = itiş/4, 2027-Q1’den itibaren K1+K3 düşülür):",
+        "",
+        "| Dönem | K1 itiş azalt (milyar/yıl) | K2 brüt üst (milyar) | K3 kredi azalt (milyar/yıl) | F4 baseline | F4 etkin | Fark |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+        f"| 2026-Q4 | {r0['k1_itis_azalt_milyar_yillik']} | {r0['k2_brut_zincir_fazla_azalt_ust_milyar']} | {r0['k3_kredi_itki_azalt_milyar_yillik']} | {r0['f4_stok_baseline_kumul_milyar']} | {r0['f4_stok_etkin_kumul_milyar']} | {r0['f4_stok_fark_milyar']} |",
+        f"| 2027-Q4 | {r27e['k1_itis_azalt_milyar_yillik']} | {r27e['k2_brut_zincir_fazla_azalt_ust_milyar']} | {r27e['k3_kredi_itki_azalt_milyar_yillik']} | {r27e['f4_stok_baseline_kumul_milyar']} | {r27e['f4_stok_etkin_kumul_milyar']} | {r27e['f4_stok_fark_milyar']} |",
+        f"| 2029-Q4 | {r29e['k1_itis_azalt_milyar_yillik']} | {r29e['k2_brut_zincir_fazla_azalt_ust_milyar']} | {r29e['k3_kredi_itki_azalt_milyar_yillik']} | {r29e['f4_stok_baseline_kumul_milyar']} | {r29e['f4_stok_etkin_kumul_milyar']} | {r29e['f4_stok_fark_milyar']} |",
+        f"| 2031-Q4 | {r31e['k1_itis_azalt_milyar_yillik']} | {r31e['k2_brut_zincir_fazla_azalt_ust_milyar']} | {r31e['k3_kredi_itki_azalt_milyar_yillik']} | {r31e['f4_stok_baseline_kumul_milyar']} | {r31e['f4_stok_etkin_kumul_milyar']} | {r31e['f4_stok_fark_milyar']} |",
+        "",
+        f"Tam kademe (2031-Q4): yıllık itiş freni ≈ **{r31e['k1_itis_azalt_milyar_yillik']} milyar TL** "
+        f"(≈ %{100 * r31e['k1_itis_azalt_milyar_yillik'] / itis:.1f} itiş); "
+        f"K2 brüt üst sınır **{r31e['k2_brut_zincir_fazla_azalt_ust_milyar']} milyar**; "
+        f"K3 kredi itişi freni **{r31e['k3_kredi_itki_azalt_milyar_yillik']} milyar/yıl** (varsayım). "
+        f"F.4 kumul fark **{r31e['f4_stok_fark_milyar']} milyar** — yalnız itiş proxy; kur/değerleme yok.",
+        "",
+        "Hane borcu (`uc_kural_senaryo`) bu takvime **bağlı değil**. Çift kayıtta borçlu defteri nominal kalır.",
         "",
         "## Ne denmez",
         "",
@@ -230,6 +332,18 @@ def main() -> None:
         ],
         "depo": depo,
         "kural": "sıralı_pencere; kademeli_rampa; katman_tasinmaz",
+        "borc_proxy": {
+            "k3_mevduat_kredi_payi_varsayim": K3_MEVDUAT_KREDI_PAYI,
+            "f4_net_yeni_formul": "max(0, itis/4 - u1*sektor*itis/4 - u3*adres*pay/4)",
+            "k2_f4_stoka_dogrudan_girmez": True,
+            "kilometre": {
+                d: {
+                    "f4_fark_milyar": next(r for r in rows if r["Donem"] == d)["f4_stok_fark_milyar"],
+                    "k1_itis_azalt_yillik": next(r for r in rows if r["Donem"] == d)["k1_itis_azalt_milyar_yillik"],
+                }
+                for d in ("2027-Q4", "2029-Q4", "2031-Q4")
+            },
+        },
     }
     alan = list(rows[0].keys())
     with (KOK / "tek_sistem_kademe.csv").open("w", newline="", encoding="utf-8-sig") as fh:

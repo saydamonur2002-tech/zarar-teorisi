@@ -27,6 +27,30 @@ Pencere içi: uygulama oranı çeyrekte `1/n … n/n` (doğrusal kademe). Pencer
 | 2029-Q4 | 1.0 | 1.0 | 1.0 | üçü tam |
 | 2031-Q4 | 1.0 | 1.0 | 1.0 | üçü açık (1,0) |
 
+## Kademeli etkin → borca etkisi (proxy)
+
+Ölçüm değil; katmanlar birleştirilmedi. **Nominal borç silinmez** (tek sistem kuralı). Etki kanalları:
+
+| Kademe | Borç nesnesi | Mekanizma | Formül (kademe uygulama u) |
+| --- | --- | --- | --- |
+| K1 | Firma **yeni kredi itişi** (F.4 akım proxy) | Brüt mahsup → zinciri çeviren taze akış | `u1 × 0.427 × itiş_yıllık / 4` çeyrek; itiş=4820.9 milyar (2025) |
+| K1 | **Net stok** | Mahsup net pozisyonu korur | F.4 stokunda **doğrudan düşüş yok**; yalnız itiş freni |
+| K2 | **Kimden-kime brüt stok** (üst sınır) | Karşı bacak tavanı yükselir | `u2 × (yeni−eski) × brüt` = brüt fazlalık azaltılabilir tavan |
+| K3 | **Yeni banka kredi itişi** (varsayım) | Mevduat adresi senede kayar | `u3 × adres × 0.08` / 4 çeyrek; pay VARSAYIM |
+
+**F.4 stok kumul proxy** (2026-Q1 taban → çeyrek net yeni = itiş/4, 2027-Q1’den itibaren K1+K3 düşülür):
+
+| Dönem | K1 itiş azalt (milyar/yıl) | K2 brüt üst (milyar) | K3 kredi azalt (milyar/yıl) | F4 baseline | F4 etkin | Fark |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2026-Q4 | 0.0 | 0.0 | 0.0 | 25339.8 | 25339.8 | 0.0 |
+| 2027-Q4 | 2058.5 | 0.0 | 0.0 | 30160.6 | 28874.2 | 1286.4 |
+| 2029-Q4 | 2058.5 | 14622.6 | 1549.0 | 39802.2 | 33431.0 | 6371.2 |
+| 2031-Q4 | 2058.5 | 14622.6 | 1549.0 | 49443.8 | 35858.2 | 13585.6 |
+
+Tam kademe (2031-Q4): yıllık itiş freni ≈ **2058.5 milyar TL** (≈ %42.7 itiş); K2 brüt üst sınır **14622.6 milyar**; K3 kredi itişi freni **1549.0 milyar/yıl** (varsayım). F.4 kumul fark **13585.6 milyar** — yalnız itiş proxy; kur/değerleme yok.
+
+Hane borcu (`uc_kural_senaryo`) bu takvime **bağlı değil**. Çift kayıtta borçlu defteri nominal kalır.
+
 ## Ne denmez
 
 - “Üçü aynı defterde eşzamanlı entegre edildi” denmez; yalnız takvim.

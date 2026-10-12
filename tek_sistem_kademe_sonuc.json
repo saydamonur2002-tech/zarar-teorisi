@@ -43,9 +43,32 @@
     "depo": {
       "kaynak": "varsayim_sabit",
       "firma_mahsup_oran": 0.32959478056952846,
-      "yeni_stok_tavan": 0.2582
+      "yeni_stok_tavan": 0.2582,
+      "brut_kimden_kime_milyar": 78870.4,
+      "eski_stok_tavan": 0.0728,
+      "itis_yillik_milyar": 4820.9,
+      "f4_stok_bas_milyar": 25339.8
     },
-    "kural": "sıralı_pencere; kademeli_rampa; katman_tasinmaz"
+    "kural": "sıralı_pencere; kademeli_rampa; katman_tasinmaz",
+    "borc_proxy": {
+      "k3_mevduat_kredi_payi_varsayim": 0.08,
+      "f4_net_yeni_formul": "max(0, itis/4 - u1*sektor*itis/4 - u3*adres*pay/4)",
+      "k2_f4_stoka_dogrudan_girmez": true,
+      "kilometre": {
+        "2027-Q4": {
+          "f4_fark_milyar": 1286.4,
+          "k1_itis_azalt_yillik": 2058.5
+        },
+        "2029-Q4": {
+          "f4_fark_milyar": 6371.2,
+          "k1_itis_azalt_yillik": 2058.5
+        },
+        "2031-Q4": {
+          "f4_fark_milyar": 13585.6,
+          "k1_itis_azalt_yillik": 2058.5
+        }
+      }
+    }
   },
   "satir_sayisi": 21
 }
