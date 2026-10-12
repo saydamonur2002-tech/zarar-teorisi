@@ -4,7 +4,7 @@ Türkiye finansal hesapları üzerine stok-akış tutarlı (stock-flow consisten
 
 Hazneler: **H** (S.14+S.15 hane), **F** (S.11 firmalar), **B′** (S.12 − TCMB), **K′** (S.13 + TCMB), **D** (S.2 dış alem), **U** (uyumsuzluk).
 
-Ayrıntılı not: [`OKU.txt`](OKU.txt). **Model kusurları (revize):** [`MODEL_KUSURLARI.md`](MODEL_KUSURLARI.md). Ölçülmemiş paylar: [`VARSAYIM_UYARISI.md`](VARSAYIM_UYARISI.md). Aktör uyarıları: [`zarar_teorisi_uyarilar.docx`](zarar_teorisi_uyarilar.docx).
+Ayrıntılı not: [`OKU.txt`](OKU.txt). **Model kusurları (revize):** [`MODEL_KUSURLARI.md`](MODEL_KUSURLARI.md). Ölçülmemiş paylar: [`VARSAYIM_UYARISI.md`](VARSAYIM_UYARISI.md). **Yayın (DOCX):** [`ZARAR_TEORISI_MINSKY_BULGULAR.docx`](ZARAR_TEORISI_MINSKY_BULGULAR.docx) — `python3 yayin_zarar_teorisi_docx.py`. Aktör uyarıları: [`zarar_teorisi_uyarilar.docx`](zarar_teorisi_uyarilar.docx).
 
 ## Ne işe yarar, ne işe yaramaz
 

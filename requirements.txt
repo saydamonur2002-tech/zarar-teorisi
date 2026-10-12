@@ -4,3 +4,4 @@ openpyxl
 networkx
 scipy
 matplotlib
+python-docx
