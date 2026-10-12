@@ -1,0 +1,81 @@
+{
+  "uretim": "2026-10-12T12:54:03Z",
+  "taban_girdi": {
+    "tufe_yillik_2026": 30.65,
+    "kart_buyume_13h_yillik": 45.88,
+    "tuketici_kredi_13h_yillik": 43.28,
+    "asgari_net_ocak2026": 28075.5,
+    "bekar_yasam_eyl2026": 48885.0,
+    "kapsama_bekar_yasam": 0.5743
+  },
+  "olcumler": {
+    "kart_13h": {
+      "deger": 45.88,
+      "durum": "olculdu",
+      "seri": "TP.HPBITABLO6.16",
+      "tarih": "2026-09-25 vs 2025-08-22",
+      "not_": "BDDK tablo 6/2 stok bin TL; BDDK tanımı, finansal hesap F.4 ile aynı değil"
+    },
+    "tuketici_13h": {
+      "deger": 43.28,
+      "durum": "olculdu",
+      "seri": "TP.HPBITABLO6.2",
+      "tarih": "2026-09-25 vs 2025-08-22",
+      "not_": "BDDK tablo 6/2 stok bin TL; BDDK tanımı, finansal hesap F.4 ile aynı değil"
+    },
+    "tufe": {
+      "deger": 30.65,
+      "durum": "olculdu",
+      "seri": "TP.FG.J0",
+      "tarih": "2026-01",
+      "not_": "EVDS aylık TÜFE yıllık değişim"
+    },
+    "butce_faiz_harcama_pay": {
+      "deger": 0.1441,
+      "durum": "olculdu",
+      "seri": "MV bütce ham",
+      "tarih": "2026",
+      "not_": "Merkezi yönetim; K′ tam değil"
+    },
+    "tga_tuketici_oran_yuzde": {
+      "deger": 13.0,
+      "durum": "olculdu",
+      "seri": "Takip/Tüketici stok",
+      "tarih": "2026-10-02",
+      "not_": "EVDS; BDDK %2,90 vs EVDS %3,13 kapsam farkı olabilir"
+    },
+    "bekar_yasam": {
+      "deger": 48885.0,
+      "durum": "olculdu",
+      "seri": "TÜRK-İŞ bekar yaşam sınırı (Eylül 2026 — kullanıcı/rapor; EVDS değil)",
+      "tarih": "2026-09",
+      "not_": "Resmi TÜRK-İŞ duyurusundan doğrulanıp güncellenmeli"
+    },
+    "kapsama": {
+      "deger": 0.5743,
+      "durum": "olculdu",
+      "seri": "net_asgari/bekar_yasam",
+      "tarih": "",
+      "not_": "ASGARI=28075.5"
+    },
+    "finansman_faaliyet_2024": {
+      "finansman_milyarTL": null,
+      "faaliyet_kari_milyarTL": null,
+      "oran": null,
+      "durum": "bulunamadi",
+      "kaynak": "TÜİK-TCMB Sektör Bilançoları İstatistikleri, 2024 (depodaki xls)"
+    },
+    "hane_Ha_borc_payi_ust_siniri": {
+      "stres_alt(sadece takipteki)": 0.17,
+      "stres_orta": 0.27,
+      "stres_ust(takipteki+hane payı yakın izleme)": 0.44
+    }
+  },
+  "hala_varsayim": [
+    "Ha borç payı (D_A_BASE)",
+    "K′ bütçe dışı SGK/yerel",
+    "KAP bilateral ağ",
+    "lam/kappa",
+    "rant konut getirisi / Ho payı"
+  ]
+}

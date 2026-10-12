@@ -1,4 +1,4 @@
 ﻿senaryo,donem_son,durum,F_ucret_kumul_milyar,K_butce_NL_kumul_milyar,K_butce_NL_kumul_mutlak_milyar,maliyet_proxy_toplam_milyar,delta_kapsama,kar_proxy_kapsama_milyar,kar_proxy_kapsama_yasam_agirlikli_milyar,kar_proxy_NFP_H_milyar,kar_proxy_Ha_servis_dusus,yasam_maliyeti_TL,N_A_varsayim,yasam_agirlik,delta_NFP_F_milyar,maliyet_kar_orani,F_maliyet_bine_delta_NFP_F,maliyet_kar_orani_kar_NFP_H,maliyet_kar_orani_kar_servis
-mevcut,2031-Q4,senaryo,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4581.4,-0.098,48885.0,6850000.0,1.0,-17060.2,,0.0,0.0,
+mevcut,2031-Q4,senaryo,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4581.8,-0.118,48885.0,6850000.0,1.0,-17060.4,,0.0,0.0,
 uc_kural_kilitli,2031-Q4,senaryo,13647.5,4695.2,4695.2,18342.7,0.28,142.51,142.51,9947.3,0.157,74300.0,6850000.0,1.0,-36369.1,128.71,375.25,1.84,116832.48
 maliyet_ucuz_revize,2031-Q4,senaryo,834.9,-19.0,19.0,853.9,0.287,78.53,78.53,5334.9,-0.111,39943.0,6850000.0,1.0,-15846.2,10.87,52.69,0.16,

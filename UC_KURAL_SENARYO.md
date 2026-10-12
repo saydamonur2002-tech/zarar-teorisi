@@ -20,9 +20,9 @@ Stok-akış tutarlı **senaryo**; ölçüm değil. Çalıştır: `python3 uc_kur
 
 | Gösterge | Mevcut | Sert üç kural | Maliyet revize |
 | --- | ---: | ---: | ---: |
-| NFP_H | 26181.8 | 31553.6 | 26941.2 |
-| NFP_F | -47839.0 | -67150.8 | -46627.9 |
-| borc_servis_orani_Ha | 0.57 | 0.318 | 0.586 |
+| NFP_H | 26182.2 | 31553.6 | 26941.2 |
+| NFP_F | -47839.2 | -67150.8 | -46627.9 |
+| borc_servis_orani_Ha | 0.591 | 0.318 | 0.586 |
 | uretken_zarf_payi | 0.45 | 0.569 | 0.569 |
 | korunmasiz_doviz_stok_mr_usd | 162.9 | 120.0 | 120.0 |
 | kapsama | 0.574 | 0.854 | 0.861 |

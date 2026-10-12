@@ -64,6 +64,16 @@ def _load_tables() -> tuple[list[dict], list[dict], list[dict]]:
     return uc, mk, dr
 
 
+def _butce_faiz_payi() -> float:
+    p = KOK / "acik_veri_ozet.json"
+    if p.exists():
+        j = json.loads(p.read_text(encoding="utf-8"))
+        o = j.get("olcumler", {}).get("butce_faiz_harcama_pay", {})
+        if o.get("deger") is not None:
+            return float(o["deger"])
+    return 0.131
+
+
 def _rant_gelir_baseline(stok: dict, p: RantAktorParams) -> dict[str, float]:
     """Yıllık rant geliri proxy (milyar TL)."""
     kira = stok["konut_stok_milyarTL"] * p.kira_getiri * p.ho_varlik_payi
@@ -75,7 +85,8 @@ def _rant_gelir_baseline(stok: dict, p: RantAktorParams) -> dict[str, float]:
     b_rant = stok["B_varlik_milyarTL"] * p.b_nim_yillik
     # K: faiz gideri = rant çıkışı; gelir tabanı harcama
     k_harcama_proxy = 8000.0  # milyar TL/yıl, VARSAYIM (bütce ölçeği)
-    k_faiz = k_harcama_proxy * p.k_faiz_harcama_payi_olculdu
+    faiz_pay = _butce_faiz_payi()
+    k_faiz = k_harcama_proxy * faiz_pay
     h_faaliyet = p.n_a * ASGARI * 12 / 1e9  # ücret geliri proxy
     return {
         "H": round(h_rant, 2),

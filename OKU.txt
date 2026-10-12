@@ -4,6 +4,7 @@ Hazneler: H (S.14+S.15), F (S.11), B' (S.12 - TCMB), K' (S.13 + TCMB), D (S.2), 
 
 CALISTIRMA SIRASI
   evds_cek.py        ham veri (stok/akim/butce)    ->  *_ham.csv
+  acik_veri_kopru.py EVDS/BDDK tablo6 13h buyume, TÜFE, butce faiz payi, sektor bilanco -> acik_veri_ozet.json
   kalibre_matris.py  v1 matrisler (arsiv, v2 gecer)
   akis_model.py      v2: temiz stok-akis paneli, SFC matrisi, L/G, Lm, simulator
   butce_kanali.py    K'nin vergi/faiz/harcama kanali + fiscal_shock()

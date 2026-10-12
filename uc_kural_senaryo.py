@@ -74,6 +74,18 @@ ACLik_ORAN = 37801.0 / 48885.0  # Eyl 2026 referans; DOĞRULANMADI
 SENARYOLAR = ("mevcut", "uc_kural_kilitli", "maliyet_ucuz_revize")
 
 
+def _get_taban() -> dict:
+    """TABAN + acik_veri_ozet.json (varsa)."""
+    t = dict(TABAN)
+    try:
+        from acik_veri_kopru import taban_girdi
+
+        t.update({k: v for k, v in taban_girdi(t).items() if v is not None})
+    except Exception:
+        pass
+    return t
+
+
 @dataclass
 class Params:
     """Açık varsayımlar; sonuç değildir."""
@@ -148,6 +160,10 @@ def _init_state(stab, tcs) -> State:
     h_borc = Y[:, IDX["H"]].sum() / 1e9
     f_borc = Y[:, IDX["F"]].sum() / 1e9
     d_net = nfp[IDX["D"]]
+    tb = _get_taban()
+    yas = float(tb.get("bekar_yasam_eyl2026") or TABAN["bekar_yasam_eyl2026"])
+    net = float(tb.get("asgari_net_ocak2026") or TABAN["asgari_net_ocak2026"])
+    kap = float(tb.get("kapsama_bekar_yasam") or (net / yas if yas else 0.57))
     st = State(
         nfp=nfp.copy(),
         stok={
@@ -158,15 +174,19 @@ def _init_state(stab, tcs) -> State:
             "F_uretken": f_borc * 0.45,
             "D_korunmasiz_usd_mr": 120.0,  # milyar USD, VARSAYIM; DOĞRULANMADI
         },
+        net_taban=net,
+        yasam_maliyeti=yas,
+        kapsama=kap,
     )
     return st
 
 
 def _mevcut_buyume_yillik(kalem: str) -> float:
+    tb = _get_taban()
     if kalem == "H_kart":
-        return TABAN["kart_buyume_13h_yillik"] / 100
+        return float(tb["kart_buyume_13h_yillik"]) / 100
     if kalem == "H_teminatsiz":
-        return TABAN["tuketici_kredi_13h_yillik"] / 100
+        return float(tb["tuketici_kredi_13h_yillik"]) / 100
     return 0.15  # diğer segmentler, VARSAYIM
 
 
@@ -196,14 +216,16 @@ def _kredi_kilitli(senaryo: str) -> bool:
 def _apply_taban_kural(st: State, donem: str, params: Params, senaryo: str):
     mod = _mod(senaryo)
     if mod == "mevcut":
-        st.net_taban = TABAN["asgari_net_ocak2026"]
+        tb = _get_taban()
+        st.net_taban = float(tb["asgari_net_ocak2026"])
+        st.yasam_maliyeti = float(tb.get("bekar_yasam_eyl2026") or st.yasam_maliyeti)
         st.kapsama = st.net_taban / st.yasam_maliyeti if st.yasam_maliyeti else st.kapsama
         return
     y, q = _yil(donem), _ceyrek(donem)
     if mod == "sert":
         if donem == "2027-Q1":
             f = 1 + TABAN["telafi_tufe_varsayim_yuzde"] / 100
-            st.net_taban = TABAN["asgari_net_ocak2026"] * f
+            st.net_taban = float(_get_taban()["asgari_net_ocak2026"]) * f
         yi = _yarimyil_idx(donem)
         if yi >= 0 and q in (1, 3):
             kama = KAMA_YARIMYIL[min(yi, len(KAMA_YARIMYIL) - 1)] + st.kama_ek
@@ -330,7 +352,7 @@ def _step(
     nl[IDX["D"]] = (st.stok["D_korunmasiz_usd_mr"] - prev_doviz) * 0.002  # kur kanalı kabaca
 
     if mod in ("sert", "revize") and _yil(donem) >= 2027:
-        reel_kama_ay = max(0.0, (st.net_taban - TABAN["asgari_net_ocak2026"]) / 24)
+        reel_kama_ay = max(0.0, (st.net_taban - float(_get_taban()["asgari_net_ocak2026"])) / 24)
         yil = _yil(donem)
         if mod == "sert":
             isveren_pay = FIN_REEL_KAMA_100TL["isveren_kobi"]
@@ -419,13 +441,19 @@ def run(params: Params | None = None) -> tuple[list[dict], dict]:
     kanal = pd.read_csv(KOK / "K_kanal_paylari_son4ceyrek.csv", index_col=0)
 
     rows = []
+    tb = _get_taban()
     meta = {
         "durum": "senaryo",
         "olcum_degil": True,
         "taban_donem": "2026-Q1",
+        "taban_girdi": tb,
         "parametreler": params.__dict__,
         "ha_borc_payi_not": "VARSAYIM; hane_alt D_A_BASE",
-        "eylul_2026_iddialar": "kart %33,4 / tüketici %13,9 DOĞRULANMADI bu depoda",
+        "kredi_buyume_13h": {
+            "kart_yuzde": tb.get("kart_buyume_13h_yillik"),
+            "tuketici_yuzde": tb.get("tuketici_kredi_13h_yillik"),
+            "kaynak": "acik_veri_ozet.json (EVDS BDDK tablo 6)",
+        },
         "uc_kural_birlikte": "Eksik kural tek başına aynı sonucu vermez (prompt); karşılaştırma satırları",
     }
 
@@ -548,6 +576,12 @@ def _md(meta: dict) -> str:
 
 
 def main():
+    try:
+        from acik_veri_kopru import main as av_main
+
+        av_main()
+    except Exception as exc:  # noqa: BLE001
+        print("acik_veri_kopru atlandı:", exc)
     rows, meta = run()
     cols = list(rows[0].keys())
     with (KOK / "uc_kural_senaryo.csv").open("w", newline="", encoding="utf-8-sig") as f:

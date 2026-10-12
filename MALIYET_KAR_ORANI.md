@@ -23,7 +23,7 @@ Faiz yükünün faaliyet kârını ne kadar yediği. Senaryo maliyet/kar ile **k
 
 ## Alternatif kar proxy (isteğe bağlı)
 
-- **mevcut**: NFP_H Δ=4581.4 milyar → maliyet/kar=0.0; Ha servis düşüş=-0.098 → maliyet/kar=None
+- **mevcut**: NFP_H Δ=4581.8 milyar → maliyet/kar=0.0; Ha servis düşüş=-0.118 → maliyet/kar=None
 - **uc_kural_kilitli**: NFP_H Δ=9947.3 milyar → maliyet/kar=1.84; Ha servis düşüş=0.157 → maliyet/kar=116832.48
 - **maliyet_ucuz_revize**: NFP_H Δ=5334.9 milyar → maliyet/kar=0.16; Ha servis düşüş=-0.111 → maliyet/kar=None
 
