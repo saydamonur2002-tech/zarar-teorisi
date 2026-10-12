@@ -1,0 +1,9 @@
+{
+  "cerceve": "uc_kural (agregat H) + hane_alt (Ha/Hm/Ho) + olcum (taksit/BDDK) + kademe/ponzi/doviz (dolay)",
+  "katman_tasinmaz": true,
+  "senaryolar": [
+    "mevcut",
+    "uc_kural_kilitli",
+    "maliyet_ucuz_revize"
+  ]
+}
