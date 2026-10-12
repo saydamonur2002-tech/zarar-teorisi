@@ -1,0 +1,58 @@
+{
+  "nesneler": {
+    "olcum": "EVDS TP.BRUTDBORCLU.G1 (brüt dış borç toplam, milyar USD)",
+    "senaryo": "uc_kural D_korunmasiz_usd_mr (VARSAYIM başlangıç 120)"
+  },
+  "ozet": {
+    "mevcut": {
+      "donem_bas": "2026-Q4",
+      "donem_son": "2031-Q4",
+      "deger_bas": 121.8,
+      "deger_son": 162.9,
+      "delta_milyar_usd": 41.1,
+      "ceyrek_egim": 2.055,
+      "yillik_egim_yaklasik": 8.22,
+      "yon": "artis"
+    },
+    "uc_kural_kilitli": {
+      "donem_bas": "2026-Q4",
+      "donem_son": "2031-Q4",
+      "deger_bas": 120.0,
+      "deger_son": 120.0,
+      "delta_milyar_usd": 0.0,
+      "ceyrek_egim": 0.0,
+      "yillik_egim_yaklasik": 0.0,
+      "yon": "sabit"
+    },
+    "maliyet_ucuz_revize": {
+      "donem_bas": "2026-Q4",
+      "donem_son": "2031-Q4",
+      "deger_bas": 120.0,
+      "deger_son": 120.0,
+      "delta_milyar_usd": 0.0,
+      "ceyrek_egim": 0.0,
+      "yillik_egim_yaklasik": 0.0,
+      "yon": "sabit"
+    },
+    "olcum_brut_dis_toplam": {
+      "donem_bas": "2023-Q4",
+      "donem_son": "2026-Q2",
+      "deger_bas": 432.551,
+      "deger_son": 538.956,
+      "delta_milyar_usd": 106.405,
+      "ceyrek_egim": 10.6405,
+      "yillik_egim_yaklasik": 35.4683,
+      "yon": "artis"
+    },
+    "olcum_brut_dis_ozel": {
+      "donem_bas": "2023-Q4",
+      "donem_son": "2026-Q2",
+      "deger_bas": 238.262,
+      "deger_son": 317.952,
+      "delta_milyar_usd": 79.69,
+      "ceyrek_egim": 7.969,
+      "yillik_egim_yaklasik": 26.5633,
+      "yon": "artis"
+    }
+  }
+}

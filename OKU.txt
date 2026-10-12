@@ -15,6 +15,7 @@ CALISTIRMA SIRASI
   rant_donus_yili.py eski gelir duzeyine donus yili (rant_aktor ciktisina ek sutun); duyarlilik %2/%3/%5
   tek_sistem_kademe.py uc ayrik pencere (2027 mahsup, 2028 stok tavan, 2029 mevduat adresi), ceyreklik rampa -> tek_sistem_kademe.csv
   ponzi_egilim.py Ha servis ponzi fazlasi egilimi (uc_kural + kademe proxy) -> ponzi_egilim.csv, PONZI_EGILIM.md
+  doviz_egilim.py brut dis borc (olcum) + korunmasiz USD stok (senaryo) egilimi -> doviz_egilim.csv, DOVIZ_EGILIM.md
   entegre_ve_test.py butce uyumu, matris geriye donuk testi, ikinci-tur OLS
   kur_kanali.py      doviz maruziyet payi (f) tahmini ve test
   bilateral_D.py     D satiri icin brut dis borc (borclu sektore gore) ile bilateral L
