@@ -11,6 +11,7 @@ CALISTIRMA SIRASI
   uc_kural_senaryo.py uc kural (taban+DTI+geri bildirim) SFC senaryosu; mevcut vs kilitli; simulate+fiscal_shock
   maliyet_kar_orani.py senaryo maliyet/kar proxy (F+K kanali); olculen finansman/faaliyet referansi ayri
   direnc_yuzdesi.py reform direnc proxy (kira/finans/Ho/kamu); uc_kural + maliyet_kar girdi
+  direnc_ekonomik.py karsi aktor direnci (ucret/NFP/butce/emlak gelir; rant degil); uc_kural + maliyet_kar girdi
   rant_aktor.py aktor bazli rant kanali direnci + kar amorti %; uc_kural + maliyet_kar + direnc girdi
   rant_donus_yili.py eski gelir duzeyine donus yili (rant_aktor ciktisina ek sutun); duyarlilik %2/%3/%5
   tek_sistem_kademe.py uc ayrik pencere (2027 mahsup, 2028 stok tavan, 2029 mevduat adresi), ceyreklik rampa -> tek_sistem_kademe.csv

@@ -1,0 +1,331 @@
+{
+  "meta": {
+    "durum": "senaryo",
+    "olcum_degil": true,
+    "rant_kanali_degil": true,
+    "tanim": "direnc_ekonomik_% = aktör ekonomik kayıp / max(|ΔNFP|, faaliyet×ufuk_yil)",
+    "karsı_aktor_tanimi": {
+      "H": "Hazne H: üst dilim gelir + emlak gelir akışı + kredi hacmi (limit)",
+      "Ho": "H içi üst dilim; gelir_dilim + emlak gelir düşüşü",
+      "F": "Kurumsal F: ücret yükü (NL kanalı) + finansman hacmi + NFP",
+      "B": "Bankacılık B: finansman hacmi payı + NFP",
+      "K": "Kamu K′: bütçe NL kaybı + makas transfer (revize)"
+    },
+    "olculen_referans_F_2024": {
+      "finansman_milyarTL": 3143.4,
+      "faaliyet_kari_milyarTL": 3746.2,
+      "oran": 0.839
+    },
+    "parametreler": {
+      "agirlik_H": 0.35,
+      "agirlik_F": 0.3,
+      "agirlik_B": 0.2,
+      "agirlik_K": 0.15,
+      "ufuk_yil": 5.0,
+      "n_a": 6850000.0,
+      "ho_varlik_payi": 0.8,
+      "ust_gelir_erosyon_katsayi": 0.55,
+      "emlak_gelir_orani_yillik": 0.035,
+      "emlak_yasam_elastikiyet": 1.0,
+      "finans_kisit_katsayi": 0.08,
+      "fin_F_pay": 0.55,
+      "fin_B_pay": 0.35,
+      "fin_H_pay": 0.1,
+      "b_nim_yillik": 0.028,
+      "k_harcama_yillik_milyar": 8000.0,
+      "k_makas_milyar_ceyrek": 45.0,
+      "k_makas_ust_dilim": 0.35,
+      "limit_kredi_ceyrek_milyar": 420.0,
+      "nfp_kayip_katsayi": 1.0,
+      "direnc_yuksek_esik": 0.35
+    },
+    "stok_proxy": {
+      "H_varlik_milyarTL": 29114.5,
+      "F_borc_milyarTL": 50776.6,
+      "B_varlik_milyarTL": 57103.0,
+      "konut_stok_milyarTL": 7278.6,
+      "durum": "proxy_EVDS_2026Q1"
+    },
+    "faaliyet_ufuk_baseline": {
+      "H": 11539.03,
+      "F": 34448.0,
+      "B": 7994.42,
+      "K": 40000.0
+    },
+    "iliski_direnc_yuzdesi": "Paralel okuma; direnc_yuzdesi rant/kira kalemleri kullanır, bu modül kullanmaz."
+  },
+  "satirlar": [
+    {
+      "senaryo": "mevcut",
+      "donem": "2031-Q4",
+      "aktor": "H",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 0.0,
+      "faaliyet_ufuk_milyar": 11539.03,
+      "payda_milyar": 11539.03,
+      "NFP_delta_milyar": 0.0,
+      "direnc_ekonomik_yuzde": 0.0,
+      "limit_dondur_ceyrek": 0,
+      "F_ucret_kumul_milyar": 0.0,
+      "K_butce_NL_kumul_milyar": 0.0,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "mevcut",
+      "donem": "2031-Q4",
+      "aktor": "F",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 0.0,
+      "faaliyet_ufuk_milyar": 34448.0,
+      "payda_milyar": 34448.0,
+      "NFP_delta_milyar": 0.0,
+      "direnc_ekonomik_yuzde": 0.0,
+      "limit_dondur_ceyrek": 0,
+      "F_ucret_kumul_milyar": 0.0,
+      "K_butce_NL_kumul_milyar": 0.0,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "mevcut",
+      "donem": "2031-Q4",
+      "aktor": "B",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 0.0,
+      "faaliyet_ufuk_milyar": 7994.42,
+      "payda_milyar": 7994.42,
+      "NFP_delta_milyar": 0.0,
+      "direnc_ekonomik_yuzde": 0.0,
+      "limit_dondur_ceyrek": 0,
+      "F_ucret_kumul_milyar": 0.0,
+      "K_butce_NL_kumul_milyar": 0.0,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "mevcut",
+      "donem": "2031-Q4",
+      "aktor": "K",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 0.0,
+      "faaliyet_ufuk_milyar": 40000.0,
+      "payda_milyar": 40000.0,
+      "NFP_delta_milyar": 0.0,
+      "direnc_ekonomik_yuzde": 0.0,
+      "limit_dondur_ceyrek": 0,
+      "F_ucret_kumul_milyar": 0.0,
+      "K_butce_NL_kumul_milyar": 0.0,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "mevcut",
+      "donem": "2031-Q4",
+      "aktor": "TOPLAM",
+      "durum": "senaryo",
+      "direnc_ekonomik_yuzde": 0.0,
+      "kayip_toplam_milyar": 0.0,
+      "agirlik_not": "H35 F30 B20 K15"
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "donem": "2031-Q4",
+      "aktor": "H",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 8882.7,
+      "faaliyet_ufuk_milyar": 11539.03,
+      "payda_milyar": 11539.03,
+      "NFP_delta_milyar": 5371.4,
+      "direnc_ekonomik_yuzde": 76.98,
+      "limit_dondur_ceyrek": 21,
+      "F_ucret_kumul_milyar": 13647.5,
+      "K_butce_NL_kumul_milyar": 4695.2,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "donem": "2031-Q4",
+      "aktor": "F",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 32959.1,
+      "faaliyet_ufuk_milyar": 34448.0,
+      "payda_milyar": 34448.0,
+      "NFP_delta_milyar": -19311.6,
+      "direnc_ekonomik_yuzde": 95.68,
+      "limit_dondur_ceyrek": 21,
+      "F_ucret_kumul_milyar": 13647.5,
+      "K_butce_NL_kumul_milyar": 4695.2,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "donem": "2031-Q4",
+      "aktor": "B",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 968.2,
+      "faaliyet_ufuk_milyar": 7994.42,
+      "payda_milyar": 7994.42,
+      "NFP_delta_milyar": -968.2,
+      "direnc_ekonomik_yuzde": 12.11,
+      "limit_dondur_ceyrek": 21,
+      "F_ucret_kumul_milyar": 13647.5,
+      "K_butce_NL_kumul_milyar": 4695.2,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "donem": "2031-Q4",
+      "aktor": "K",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 0.0,
+      "faaliyet_ufuk_milyar": 40000.0,
+      "payda_milyar": 40000.0,
+      "NFP_delta_milyar": 5909.4,
+      "direnc_ekonomik_yuzde": 0.0,
+      "limit_dondur_ceyrek": 21,
+      "F_ucret_kumul_milyar": 13647.5,
+      "K_butce_NL_kumul_milyar": 4695.2,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "uc_kural_kilitli",
+      "donem": "2031-Q4",
+      "aktor": "TOPLAM",
+      "durum": "senaryo",
+      "direnc_ekonomik_yuzde": 58.07,
+      "kayip_toplam_milyar": 42810.0,
+      "agirlik_not": "H35 F30 B20 K15"
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "donem": "2031-Q4",
+      "aktor": "H",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 4467.55,
+      "faaliyet_ufuk_milyar": 11539.03,
+      "payda_milyar": 11539.03,
+      "NFP_delta_milyar": 759.2,
+      "direnc_ekonomik_yuzde": 38.72,
+      "limit_dondur_ceyrek": 10,
+      "F_ucret_kumul_milyar": 834.9,
+      "K_butce_NL_kumul_milyar": -19.0,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "donem": "2031-Q4",
+      "aktor": "F",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 834.9,
+      "faaliyet_ufuk_milyar": 34448.0,
+      "payda_milyar": 34448.0,
+      "NFP_delta_milyar": 1211.2,
+      "direnc_ekonomik_yuzde": 2.42,
+      "limit_dondur_ceyrek": 10,
+      "F_ucret_kumul_milyar": 834.9,
+      "K_butce_NL_kumul_milyar": -19.0,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "donem": "2031-Q4",
+      "aktor": "B",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 0.0,
+      "faaliyet_ufuk_milyar": 7994.42,
+      "payda_milyar": 7994.42,
+      "NFP_delta_milyar": 21.9,
+      "direnc_ekonomik_yuzde": 0.0,
+      "limit_dondur_ceyrek": 10,
+      "F_ucret_kumul_milyar": 834.9,
+      "K_butce_NL_kumul_milyar": -19.0,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "donem": "2031-Q4",
+      "aktor": "K",
+      "durum": "senaryo",
+      "kayip_toplam_milyar": 118.15,
+      "faaliyet_ufuk_milyar": 40000.0,
+      "payda_milyar": 40000.0,
+      "NFP_delta_milyar": -20.4,
+      "direnc_ekonomik_yuzde": 0.3,
+      "limit_dondur_ceyrek": 10,
+      "F_ucret_kumul_milyar": 834.9,
+      "K_butce_NL_kumul_milyar": -19.0,
+      "not": "Ekonomik kalem; rant/kira etiketi kullanılmaz"
+    },
+    {
+      "senaryo": "maliyet_ucuz_revize",
+      "donem": "2031-Q4",
+      "aktor": "TOPLAM",
+      "durum": "senaryo",
+      "direnc_ekonomik_yuzde": 14.32,
+      "kayip_toplam_milyar": 5420.6,
+      "agirlik_not": "H35 F30 B20 K15"
+    }
+  ],
+  "duyarlik": [
+    {
+      "ho_varlik_payi": 0.7,
+      "emlak_yasam_elastikiyet": 0.8,
+      "H_direnc_ekonomik": 38.28,
+      "toplam_direnc_ekonomik": 14.17,
+      "H_kayip_milyar": 4416.63
+    },
+    {
+      "ho_varlik_payi": 0.7,
+      "emlak_yasam_elastikiyet": 1.0,
+      "H_direnc_ekonomik": 38.68,
+      "toplam_direnc_ekonomik": 14.31,
+      "H_kayip_milyar": 4463.23
+    },
+    {
+      "ho_varlik_payi": 0.7,
+      "emlak_yasam_elastikiyet": 1.2,
+      "H_direnc_ekonomik": 39.08,
+      "toplam_direnc_ekonomik": 14.45,
+      "H_kayip_milyar": 4509.83
+    },
+    {
+      "ho_varlik_payi": 0.8,
+      "emlak_yasam_elastikiyet": 0.8,
+      "H_direnc_ekonomik": 38.31,
+      "toplam_direnc_ekonomik": 14.18,
+      "H_kayip_milyar": 4420.95
+    },
+    {
+      "ho_varlik_payi": 0.8,
+      "emlak_yasam_elastikiyet": 1.0,
+      "H_direnc_ekonomik": 38.72,
+      "toplam_direnc_ekonomik": 14.32,
+      "H_kayip_milyar": 4467.55
+    },
+    {
+      "ho_varlik_payi": 0.8,
+      "emlak_yasam_elastikiyet": 1.2,
+      "H_direnc_ekonomik": 39.12,
+      "toplam_direnc_ekonomik": 14.46,
+      "H_kayip_milyar": 4514.14
+    },
+    {
+      "ho_varlik_payi": 0.9,
+      "emlak_yasam_elastikiyet": 0.8,
+      "H_direnc_ekonomik": 38.35,
+      "toplam_direnc_ekonomik": 14.19,
+      "H_kayip_milyar": 4425.27
+    },
+    {
+      "ho_varlik_payi": 0.9,
+      "emlak_yasam_elastikiyet": 1.0,
+      "H_direnc_ekonomik": 38.75,
+      "toplam_direnc_ekonomik": 14.33,
+      "H_kayip_milyar": 4471.86
+    },
+    {
+      "ho_varlik_payi": 0.9,
+      "emlak_yasam_elastikiyet": 1.2,
+      "H_direnc_ekonomik": 39.16,
+      "toplam_direnc_ekonomik": 14.48,
+      "H_kayip_milyar": 4518.46
+    }
+  ]
+}

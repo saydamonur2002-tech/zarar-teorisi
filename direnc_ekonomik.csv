@@ -1,0 +1,16 @@
+﻿F_ucret_kumul_milyar,K_butce_NL_kumul_milyar,NFP_delta_milyar,agirlik_not,aktor,direnc_ekonomik_yuzde,donem,durum,faaliyet_ufuk_milyar,kayip_toplam_milyar,limit_dondur_ceyrek,not,payda_milyar,senaryo
+0.0,0.0,0.0,,H,0.0,2031-Q4,senaryo,11539.03,0.0,0,Ekonomik kalem; rant/kira etiketi kullanılmaz,11539.03,mevcut
+0.0,0.0,0.0,,F,0.0,2031-Q4,senaryo,34448.0,0.0,0,Ekonomik kalem; rant/kira etiketi kullanılmaz,34448.0,mevcut
+0.0,0.0,0.0,,B,0.0,2031-Q4,senaryo,7994.42,0.0,0,Ekonomik kalem; rant/kira etiketi kullanılmaz,7994.42,mevcut
+0.0,0.0,0.0,,K,0.0,2031-Q4,senaryo,40000.0,0.0,0,Ekonomik kalem; rant/kira etiketi kullanılmaz,40000.0,mevcut
+,,,H35 F30 B20 K15,TOPLAM,0.0,2031-Q4,senaryo,,0.0,,,,mevcut
+13647.5,4695.2,5371.4,,H,76.98,2031-Q4,senaryo,11539.03,8882.7,21,Ekonomik kalem; rant/kira etiketi kullanılmaz,11539.03,uc_kural_kilitli
+13647.5,4695.2,-19311.6,,F,95.68,2031-Q4,senaryo,34448.0,32959.1,21,Ekonomik kalem; rant/kira etiketi kullanılmaz,34448.0,uc_kural_kilitli
+13647.5,4695.2,-968.2,,B,12.11,2031-Q4,senaryo,7994.42,968.2,21,Ekonomik kalem; rant/kira etiketi kullanılmaz,7994.42,uc_kural_kilitli
+13647.5,4695.2,5909.4,,K,0.0,2031-Q4,senaryo,40000.0,0.0,21,Ekonomik kalem; rant/kira etiketi kullanılmaz,40000.0,uc_kural_kilitli
+,,,H35 F30 B20 K15,TOPLAM,58.07,2031-Q4,senaryo,,42810.0,,,,uc_kural_kilitli
+834.9,-19.0,759.2,,H,38.72,2031-Q4,senaryo,11539.03,4467.55,10,Ekonomik kalem; rant/kira etiketi kullanılmaz,11539.03,maliyet_ucuz_revize
+834.9,-19.0,1211.2,,F,2.42,2031-Q4,senaryo,34448.0,834.9,10,Ekonomik kalem; rant/kira etiketi kullanılmaz,34448.0,maliyet_ucuz_revize
+834.9,-19.0,21.9,,B,0.0,2031-Q4,senaryo,7994.42,0.0,10,Ekonomik kalem; rant/kira etiketi kullanılmaz,7994.42,maliyet_ucuz_revize
+834.9,-19.0,-20.4,,K,0.3,2031-Q4,senaryo,40000.0,118.15,10,Ekonomik kalem; rant/kira etiketi kullanılmaz,40000.0,maliyet_ucuz_revize
+,,,H35 F30 B20 K15,TOPLAM,14.32,2031-Q4,senaryo,,5420.6,,,,maliyet_ucuz_revize
