@@ -4,7 +4,7 @@ Türkiye finansal hesapları üzerine stok-akış tutarlı (stock-flow consisten
 
 Hazneler: **H** (S.14+S.15 hane), **F** (S.11 firmalar), **B′** (S.12 − TCMB), **K′** (S.13 + TCMB), **D** (S.2 dış alem), **U** (uyumsuzluk).
 
-Ayrıntılı not: [`OKU.txt`](OKU.txt). Ölçülmemiş paylar ve kapanmamış iddialar: [`VARSAYIM_UYARISI.md`](VARSAYIM_UYARISI.md). Aktör ve sistem uyarıları: [`zarar_teorisi_uyarilar.docx`](zarar_teorisi_uyarilar.docx).
+Ayrıntılı not: [`OKU.txt`](OKU.txt). **Model kusurları (revize):** [`MODEL_KUSURLARI.md`](MODEL_KUSURLARI.md). Ölçülmemiş paylar: [`VARSAYIM_UYARISI.md`](VARSAYIM_UYARISI.md). Aktör uyarıları: [`zarar_teorisi_uyarilar.docx`](zarar_teorisi_uyarilar.docx).
 
 ## Ne işe yarar, ne işe yaramaz
 
@@ -12,7 +12,7 @@ Bu bir kapalı muhasebe iskeleti ve kalibrasyon çalışmasıdır; politika reç
 
 `NFP_t = NFP_{t-1} + NL_t (işlem) + R_t (değerleme)`
 
-Hane alt bölünmesi, mükellef-hazne ayrımı, VYS hane payı, gecikme faizi ve sermaye eşiği ölçüm değildir. Liste ve gerekçe [`VARSAYIM_UYARISI.md`](VARSAYIM_UYARISI.md) dosyasında. `OKU.txt` içinde “DOĞRULANMADI” diye işaretlenen yerler modele girdi gibi okunmamalı.
+İskelet her kaydın bir yerde oturmasını gösterir; tanımanın **neden/ne zaman/nasıl** olduğunu kurumsal veya davranışsal olarak açıklamaz ([`MODEL_KUSURLARI.md`](MODEL_KUSURLARI.md)). Hane alt bölünmesi (taban Ha borç payı **%40**), mükellef-hazne, VYS payı, gecikme faizi ve sermaye eşiği ölçüm değildir. `OKU.txt` içinde “DOĞRULANMADI” işaretli satırlar sonuç gibi okunmamalı; F→K ~%24 bulgusu geri çekilmiştir.
 
 ## Çalıştırma sırası
 

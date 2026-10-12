@@ -2,6 +2,11 @@ ZARAR TEORISI - STOK-AKIS (SFC) MODELI: VERI, KALIBRASYON, TESTLER
 Kaynak: TCMB EVDS3 (anahtarsiz herkese acik uc nokta), 7 Ekim 2026'da cekildi. Birim: bin TL (aksi belirtilmedikce).
 Hazneler: H (S.14+S.15), F (S.11), B' (S.12 - TCMB), K' (S.13 + TCMB), D (S.2), U (uyumsuzluk)
 
+MODEL KUSUR OZETI (revize): Kapali muhasebe iskeleti her kaybin bir yerde oturmasini gosterir; tanima gecikmesi,
+  kurumsal davranis ve beklenti dinamigi aciklanmaz. Varsayim yuku yuksek; lambda (zarar gecisi) ampirik zayif;
+  Lm matrisi basit varlik payindan cok az oteye gitmez; veri kirilimlari eksik; Minsky muhasebe/eşik proxy'sinde kalir.
+  Ayrintili sentez: MODEL_KUSURLARI.md | pay listesi: VARSAYIM_UYARISI.md
+
 CALISTIRMA SIRASI
   evds_cek.py        ham veri (stok/akim/butce)    ->  *_ham.csv
   acik_veri_kopru.py EVDS/BDDK tablo6 13h buyume, TÜFE, butce faiz payi, sektor bilanco -> acik_veri_ozet.json
@@ -109,12 +114,15 @@ Buyukluk kiyasi: II. Grup'un son 12 aylik artisi (974 mr TL) ~ F'nin son 4 ceyre
 KALIBRE EDILMEYEN: tanima orani s (II. Grup -> TGA gecis hizi/zamani) -> lambda'nin ZAMAN boyutu hala tanimsiz.
 
 --- HANE ALT BOLUNMESI (hane_alt.py; akis_model.py icinde cagrilir -> akis_model_ozeti.json['hane_alt'], hane_alt_nfp.csv) ---
-H = Ha asgari ucretli + Hm memur + Ho diger. KULLANICI VARSAYIMI: hane borcunun %70'i Ha'da (taban); varlik/mevduat Ha %5, Hm %15, Ho %80. OLCUM DEGIL.
+H = Ha asgari ucretli + Hm memur + Ho diger. CALISAN TABAN: hane borcunun %40'i Ha'da (D_A_BASE=0.40, hane_alt.py); OLCUM DEGIL.
+  Ilk kullanici varsayimi %70'ti; gozlenen stres bandi (%17-44) ust sinirinin uzerindeydi -> taban %40'a indirildi.
+  Varlik/mevduat payi Ha %5, Hm %15, Ho %80 (OLCUM DEGIL).
 Kapasite: taksit/gelir<=%30, 36 ay, ihtiyac faizi %63,2: kisi basi Ha 135 bin TL, Hm 318 bin TL; grup toplami Ha 0,92, Hm 1,17 trilyon TL.
-Taban sonuc (2026-Q1, trilyon TL): Ha NFP -3,95 (varlik 1,46, borc 5,40); Hm +3,60; Ho +21,75. Ha borcu kisi basi ~789 bin TL = yillik gelirin 2,3 kati.
+Taban sonuc (2026-Q1, D_A_BASE=%40, trilyon TL): Ha NFP -1,63 (varlik 1,46, borc 3,09); Hm +3,60; Ho +21,75. Ha borcu kisi basi ~451 bin TL ~ yillik gelirin 1,34 kati.
+  DUYARLILIK (%70 pay, ayni donem): Ha NFP -3,95 (borc 5,40); kisi basi ~789 bin TL = yillik gelirin 2,3 kati — taban DEGIL, duyarlik satiri.
 Capraz kontrol: gozlenen hane stresinden (takipteki 0,37 .. +yakin izleme hane payi 2,47 tr TL) ima edilen Ha borc payi ust siniri %17-44;
-%70 bunun cok uzerinde -> ya cok gelirli haneler ya borcu borcla cevirme ya da gizli temerrut. Gizli kisim = yuk stoku.
-Tanınma senaryosu: Ha payi %47 -> lambda_B 0,33; %70 -> 0,59; %90 -> 0,70 (yasal serbest sermaye 1,24 tr TL, tum odenemez borc taninirsa).
+%40 ust sinira yakin; %70 bandin disinda -> ya cok gelirli haneler ya borcu borcla cevirme ya da gizli temerrut. Gizli kisim = yuk stoku.
+Tanınma senaryosu (duyarlilik): Ha payi %47 -> lambda_B 0,33; %40 taban -> 0,16; %70 -> 0,59; %90 -> 0,70 (yasal serbest sermaye 1,24 tr TL, tum odenemez borc taninirsa).
 Temerrut sifir toplamli transfer degildir; hane borcu silinmez (bireysel iflas yok, DOGRULANMADI) -> sistem net kayip.
 
 --- VYS (VARLIK YONETIM SIRKETI) KANALI (vys_kanali.py; akis_model_ozeti.json['vys_kanali']) ---

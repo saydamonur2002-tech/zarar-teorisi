@@ -2,15 +2,17 @@
 
 Bu depo kapalı bir muhasebe iskeleti ve kalibrasyondur. Aşağıdaki sayılar ölçülmüş gerçek gibi okunursa model olduğundan sert görünür. Kaynak not: `OKU.txt` (7 Ekim 2026 çekimi).
 
+**Beş başlıkta kusur sentezi:** [`MODEL_KUSURLARI.md`](MODEL_KUSURLARI.md) (varsayım yükü, lambda, matris, veri kapsamı, Minsky sınırı).
+
 İki sınıf var. **Varsayım:** modele elle konmuş pay, eşik veya faiz. **Doğrulanmadı:** iddia duruyor ama belgeyle kapanmadı. İkisi de sonuç satırına girdi diye yazılmaz.
 
 ## Elle konmuş varsayımlar
 
 **Hane alt bölünmesi ölçüm değildir.** H = Ha (asgari ücretli) + Hm (memur) + Ho (diğer). Varlık/mevduat payı Ha %5, Hm %15, Ho %80; bu da ölçüm değil. Borç payında iki katman var, karıştırılmamalı.
 
-İlk kullanıcı varsayımı %70'di. `OKU.txt` satır 101 hâlâ bunu taban diye yazıyor ve Ha netini −3,95 trilyon TL veriyor (varlık 1,46, borç 5,40, kişi başı ~789 bin TL, yıllık gelirin 2,3 katı). Bu sayı %70 duyarlılık satırının sayısıdır, çalışan taban değildir.
+İlk kullanıcı varsayımı %70'di. **Çalışan taban** `hane_alt.py` içinde `D_A_BASE = 0.40`. `OKU.txt` hane bölümü taban (%40) ile %70 duyarlılık satırını ayırır; −3,95 trilyon TL Ha neti **yalnızca %70 duyarlılık** içindir, taban değildir.
 
-Çalışan taban `hane_alt.py` içinde `D_A_BASE = 0.40`. Yorum satırı bunu açıkça söylüyor: ilk varsayım %70'ti, gözlenen stresle uyumlu aralığın üstündeydi, taban %40'a indirildi. 2026-Q1'de bu payla Ha neti −1,63 trilyon TL (varlık 1,46, borç 3,09); kişi başı 451 bin TL, yıllık gelirin 1,34 katı; ödenemez kısım 2,16 trilyon; tanınırsa lambda_B = 0,16. %70 hâlâ duyarlılık tablosunda duruyor: orada lambda_B = 0,59.
+Çalışan taban `D_A_BASE = 0.40` (tekrar vurgu). Yorum satırı bunu açıkça söylüyor: ilk varsayım %70'ti, gözlenen stresle uyumlu aralığın üstündeydi, taban %40'a indirildi. 2026-Q1'de bu payla Ha neti −1,63 trilyon TL (varlık 1,46, borç 3,09); kişi başı 451 bin TL, yıllık gelirin 1,34 katı; ödenemez kısım 2,16 trilyon; tanınırsa lambda_B = 0,16. %70 hâlâ duyarlılık tablosunda duruyor: orada lambda_B = 0,59.
 
 Çapraz kontrol: gözlenen hane stresinden (takipteki 0,37 trilyon TL ile yakın izlemenin hane payı 2,47 trilyon TL) ima edilen Ha borç payının üst sınırı %17–44. %40 bu bandın üst kenarı, %70 bandın dışında. %70 ancak çok gelirli haneler, borcu borçla çevirme ya da gizli temerrüt ile tutulur. "Yük stoku" bu üçüncünün adı; ölçüm değil.
 
@@ -36,3 +38,13 @@ Bu depo kapalı bir muhasebe iskeleti ve kalibrasyondur. Aşağıdaki sayılar �
 Geriye dönük test (45 çeyrek, altın/SDR hariç): orantılı Lm R² = 0,868; basit varlık-payı kıyası 0,862. Matris, kuruluş varsayımının ötesinde bilgi eklemiyor. Döviz ağırlıklı dağıtım daha kötü (0,565). Bilateral D kısıtı iyileştirmedi (0,856). L ve Lm kapalı muhasebe; kimden kime aktığı ölçülmüş bir ağ değil.
 
 Stok-akış kimliği ayrıdır ve 2021'den beri işlem akışlarında kapanır: NFP_t = NFP_{t−1} + NL_t + R_t. Kapanma, yukarıdaki payların doğru olduğu anlamına gelmez.
+
+## Lambda (zarar geçişi) — zayıf kalibrasyon
+
+- **F → B:** GSYH normalize provizyon regresyonu anlamsız / negatif; geçiş üst sınır ~%1,4 (`kalibre_lambda_ozeti.json`). “F zararı provizyona gitmiyor” ile tutarlı; alternatif: BDDK kuralları, tanıma gecikmesi.
+- **F → K ~%24:** Nominal ikinci tur bulgusu **geri çekildi** (`OKU.txt`); GSYH normalize edilince kaybolur — **kullanmayın**.
+- **lam / kappa:** Genel olarak tanımlanamaz; simülatörde senaryo parametresi. Tanıma hızı **s** kalibre edilmedi.
+
+## Minsky — muhasebe proxy, döngü motoru değil
+
+Rejim okuması (`MINSKY_GUNCEL_KARSILASTIRMA.md`, `uc_kural_senaryo` servis eşikleri) bilanço dilindedir. Beklenti, forbearance, roll-over kesilmesi **endojen modellenmez**; “Minsky moment” **tarih atanmaz**. Ayrıntı: `MODEL_KUSURLARI.md` §5.
