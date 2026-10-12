@@ -7,3 +7,4 @@ vade_gunu,90,,aşılırsa uzar; aşılmazsa uzamaz,gün,kosullu,"MY vade kırıl
 vade_gunu,180,,aşılırsa uzar; aşılmazsa uzamaz,gün,kosullu,"MY vade kırılımı 'ayrılmadı', ortalama gün boş, ödenmeyen emir boş (2026-Q1, vadeli_kalicilik.csv). İki yön de koşullu; ölçüm değil. Seri gelmeden kapı açılmaz."
 odenmeyen_emir,,,,milyar TL,kosullu,"Ölçü yok (Sayıştay/HMB 320 Bütçe Emanetleri bulunamadı, vadeli_kalicilik). Eşik konmaz. 'Yok' satırı durur."
 bddk_akim,,5208.0,387.1,milyar TL,ayrilmadi,"2025 BDDK ticari net akış 5,208 (stok farkı) − F.4 işlem akımı 4,820.9. Kur/değerleme ile borç veren kapsamı ayrılmadı; eşikle kapatılmaz."
+yasam_limit_korel,0.015,,,oran_ceyrek,model,"Revize ek kilit: limit_dondur = stres AND (yasam_dusus_oran >= esik). Sert/mevcut: kilit bypass. Birincil ölçüm yok; uc_kural Params."

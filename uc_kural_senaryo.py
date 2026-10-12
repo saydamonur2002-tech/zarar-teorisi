@@ -105,6 +105,8 @@ class Params:
     isveren_pay_revize_100tl: float = 22.0  # sert senaryodan düşük
     sgk_indirim_revize_100tl: float = 18.0  # prim indirimi daraltıldı
     kapsama_hedef_2031: float = 0.78  # %75–80 bandı ortası
+    # Ek kilit (revize): limit dondur yalnız çeyreklik yaşam maliyeti düşüşü eşiği geçilince
+    yasam_limit_kilit_esik: float = 0.015  # VARSAYIM; hedef ~yasam_reel_dusus_yillik/2 on Q1,Q3
 
 
 @dataclass
@@ -118,6 +120,9 @@ class State:
     kama_ek: float = 0.0  # geri bildirim +1 puan yarıyıl
     tuketim_cap_ek_pp: float = 0.0
     limit_dondur: bool = False
+    limit_stres: bool = False  # alt-20 borç/gelir stres proxy
+    limit_yasam_kilit: bool = False  # ek kilit: yaşam maliyeti yeterince düştü mü
+    yasam_dusus_oran: float = 0.0  # çeyreklik, taban kural sonrası
     uretken_pay_gecmis: list = field(default_factory=list)
     doviz_stok_gecmis: list = field(default_factory=list)
     alt20_borc_gelir_ay: float = 2.8  # VARSAYIM başlangıç
@@ -248,6 +253,26 @@ def _apply_taban_kural(st: State, donem: str, params: Params, senaryo: str):
     st.kapsama = st.net_taban / st.yasam_maliyeti if st.yasam_maliyeti else st.kapsama
 
 
+def _limit_yasam_korel(st: State, yasam_once: float, donem: str, senaryo: str, params: Params) -> None:
+    """Ek kilit: revizede kart/tüketici dondurma yalnız yaşam maliyeti düşüşü ile korele."""
+    mod = _mod(senaryo)
+    dusus = max(0.0, (yasam_once - st.yasam_maliyeti) / yasam_once) if yasam_once else 0.0
+    st.yasam_dusus_oran = dusus
+    y, q = _yil(donem), _ceyrek(donem)
+    hedef_ceyrek = params.yasam_reel_dusus_yillik / 2 if mod == "revize" and y >= 2027 and q in (1, 3) else 0.0
+    if mod != "revize":
+        st.limit_yasam_kilit = True
+    elif y >= 2027 and hedef_ceyrek > 0:
+        st.limit_yasam_kilit = dusus >= params.yasam_limit_kilit_esik
+    else:
+        st.limit_yasam_kilit = False
+    st.limit_stres = st.alt20_borc_gelir_ay > 2.5
+    if mod == "revize":
+        st.limit_dondur = st.limit_stres and st.limit_yasam_kilit
+    else:
+        st.limit_dondur = st.limit_stres
+
+
 def _geri_bildirim(st: State, donem: str, senaryo: str, uretken_pay: float, params: Params):
     if not _kredi_kilitli(senaryo):
         return
@@ -275,10 +300,6 @@ def _geri_bildirim(st: State, donem: str, senaryo: str, uretken_pay: float, para
         st.tuketim_cap_ek_pp -= 2.0
     if len(st.doviz_stok_gecmis) >= 2 and st.doviz_stok_gecmis[-1] > st.doviz_stok_gecmis[-2]:
         st.stok["D_korunmasiz_usd_mr"] = st.doviz_stok_gecmis[-2]  # sıfır tolerans: geri al
-    if st.alt20_borc_gelir_ay > 2.5:
-        st.limit_dondur = True
-    else:
-        st.limit_dondur = False
 
 
 def _servis_orani_ha(st: State, params: Params) -> float:
@@ -316,7 +337,10 @@ def _step(
     gq = _tufe_q(params)
     f_ucret_nl_milyar = 0.0
 
+    yasam_once = st.yasam_maliyeti
     _apply_taban_kural(st, donem, params, senaryo)
+    if kredi:
+        _limit_yasam_korel(st, yasam_once, donem, senaryo, params)
 
     # Stok büyümesi (çeyreklik)
     for k in list(st.stok.keys()):
@@ -422,6 +446,9 @@ def _step(
         "kapsama": round(st.kapsama, 3),
         "K_butce_NL_milyar": round(k_butce, 1),
         "limit_dondur": int(st.limit_dondur),
+        "limit_stres": int(st.limit_stres),
+        "limit_yasam_kilit": int(st.limit_yasam_kilit),
+        "yasam_dusus_oran": round(st.yasam_dusus_oran, 4),
         "kama_ek_puan": st.kama_ek,
         "tuketim_cap_ek_pp": st.tuketim_cap_ek_pp,
         "zam_faktor_ek_yuzde": st.zam_faktor_ek_yuzde,
@@ -539,6 +566,8 @@ def _md(meta: dict) -> str:
         f"- Yaşam maliyeti reel düşüş (yıllık): `{meta['parametreler']['yasam_reel_dusus_yillik']}`",
         f"- Taban yarıyıl nominal artış %: `{meta['parametreler']['taban_yarimyil_nom_artis_yuzde']}`",
         f"- Kamu makas (milyar TL/çeyrek): `{meta['parametreler']['kamu_makas_daraltma_milyarTL_ceyrek']}`",
+        f"- Ek kilit yaşam→limit (revize): `limit_dondur = limit_stres ∧ (yasam_dusus_oran ≥ {meta['parametreler']['yasam_limit_kilit_esik']})` "
+        "(Q1/Q3 yaşam düşüş çeyreklerinde; sert/mevcut bypass).",
         "",
         "## 2031-Q4 üçlü karşılaştırma",
         "",

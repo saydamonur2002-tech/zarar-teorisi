@@ -10,19 +10,19 @@
 | --- | --- | --- | --- |
 | Net taban (TL/ay) | 28,076.0 | 63,415.0 | 34,384.0 |
 | Kapsama | 0.574 | 0.854 | 0.861 |
-| Ha servis/gelir | 0.591 (ponzi) | 0.318 (speculative) | 0.586 (ponzi) |
-| Ponzi fazlası (pp) | 19.100 | 0.000 | 18.600 |
-| NFP_H (milyar TL) | 26,182.2 | 31,553.6 | 26,941.2 |
+| Ha servis/gelir | 0.591 (ponzi) | 0.317 (speculative) | 0.594 (ponzi) |
+| Ponzi fazlası (pp) | 19.100 | 0.000 | 19.400 |
+| NFP_H (milyar TL) | 26,182.2 | 31,553.6 | 26,941.4 |
 | Korunmasız USD stok (mr) | 162.9 | 120.0 | 120.0 |
-| Limit dondur (H kart/tüketici) | 0 | 1 | 1 |
+| Limit dondur (H kart/tüketici) | 0 | 1 | 0 |
 
 ## Eğilim (2026-Q4 → 2031-Q4, senaryo)
 
 | Senaryo | Taban Δ | Servis Δ | Ponzi fazlası Δ (pp) | NFP_H Δ |
 | --- | ---: | ---: | ---: | ---: |
 | `mevcut` | +0 TL | +0.118 | +11.8 | +4581.8 |
-| `uc_kural_kilitli` | +35339 TL | -0.157 | -7.5 | +9947.3 |
-| `maliyet_ucuz_revize` | +6308 TL | +0.111 | +11.1 | +5334.9 |
+| `uc_kural_kilitli` | +35339 TL | -0.157 | -7.4 | +9947.3 |
+| `maliyet_ucuz_revize` | +6308 TL | +0.119 | +11.9 | +5335.1 |
 
 ## Alt hazne (2026-Q1, varsayım — `hane_alt`)
 

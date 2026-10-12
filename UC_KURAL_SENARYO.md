@@ -15,14 +15,15 @@ Stok-akış tutarlı **senaryo**; ölçüm değil. Çalıştır: `python3 uc_kur
 - Yaşam maliyeti reel düşüş (yıllık): `0.04`
 - Taban yarıyıl nominal artış %: `0.85`
 - Kamu makas (milyar TL/çeyrek): `45.0`
+- Ek kilit yaşam→limit (revize): `limit_dondur = limit_stres ∧ (yasam_dusus_oran ≥ 0.015)` (Q1/Q3 yaşam düşüş çeyreklerinde; sert/mevcut bypass).
 
 ## 2031-Q4 üçlü karşılaştırma
 
 | Gösterge | Mevcut | Sert üç kural | Maliyet revize |
 | --- | ---: | ---: | ---: |
-| NFP_H | 26182.2 | 31553.6 | 26941.2 |
-| NFP_F | -47839.2 | -67150.8 | -46627.9 |
-| borc_servis_orani_Ha | 0.591 | 0.318 | 0.586 |
+| NFP_H | 26182.2 | 31553.6 | 26941.4 |
+| NFP_F | -47839.2 | -67150.8 | -46628.0 |
+| borc_servis_orani_Ha | 0.591 | 0.317 | 0.594 |
 | uretken_zarf_payi | 0.45 | 0.569 | 0.569 |
 | korunmasiz_doviz_stok_mr_usd | 162.9 | 120.0 | 120.0 |
 | kapsama | 0.574 | 0.854 | 0.861 |
@@ -37,9 +38,9 @@ Sert senaryoda yaşam maliyeti yüksek kalırken taban agresif artar; işveren p
 
 ## Duyarlılık (yalnız revize; yaşam reel düşüş)
 
-- `0.03`: kapsama 0.818, NFP_F -47202.2, F ücret kanalı küm. 834.9 milyar
-- `0.04`: kapsama 0.861, NFP_F -46627.9, F ücret kanalı küm. 834.9 milyar
-- `0.05`: kapsama 0.897, NFP_F -46026.5, F ücret kanalı küm. 809.7 milyar
+- `0.03`: kapsama 0.818, NFP_F -47202.3, F ücret kanalı küm. 834.9 milyar
+- `0.04`: kapsama 0.861, NFP_F -46628.0, F ücret kanalı küm. 834.9 milyar
+- `0.05`: kapsama 0.897, NFP_F -46026.6, F ücret kanalı küm. 809.7 milyar
 
 ## Ne denmez
 
