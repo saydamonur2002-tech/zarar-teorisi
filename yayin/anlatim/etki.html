@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Etki cephesi — fabrika, köy değil</title>
+<style>
+  :root {
+    --kagit: #e6dece;
+    --kart: #f6f1e6;
+    --murekkep: #1b1612;
+    --soluk: #5e564c;
+    --cizgi: #d4cbb8;
+    --olcum: #2a6844;
+    --vekil: #8c3b1c;
+    --havuz: #1d4e6e;
+    --amber: #8a5a12;
+    --zemin: #efe8da;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--kagit); color: var(--murekkep);
+    font-family: "Liberation Sans", "Noto Sans", sans-serif; }
+  body.kare { width: 1280px; height: 720px; overflow: hidden; background: var(--kart); }
+  .giris { max-width: 1100px; margin: 0 auto; padding: 28px 20px 0; }
+  body.kare .giris { display: none; }
+  .giris h1 { font-family: "Liberation Serif", "Noto Serif", serif; font-weight: 700;
+    font-size: 40px; margin: 6px 0; }
+  .lede { max-width: 68ch; color: var(--soluk); margin: 0 0 8px; }
+  .sar { max-width: 1100px; margin: 0 auto; padding: 8px 20px 64px; }
+  body.kare .sar { max-width: none; margin: 0; padding: 0; }
+  .sahne { display: block; background: var(--kart); border: 1px solid var(--cizgi);
+    margin: 16px 0; padding: 22px 26px 16px; }
+  body.kare .sahne { display: none; margin: 0; border: 0; width: 1280px; height: 720px;
+    padding: 16px 36px 42px; }
+  body.kare .sahne.aktif { display: flex; flex-direction: column; }
+  .ust { display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--soluk); }
+  h2 { font-family: "Liberation Serif", "Noto Serif", serif; font-weight: 700;
+    font-size: 28px; line-height: 1.12; margin: 6px 0 8px; }
+  .alt { color: var(--soluk); margin: 0 0 10px; font-size: 15px; }
+  .govde { display: grid; grid-template-columns: 1.05fr .95fr; gap: 16px; align-items: start; }
+  .tek { grid-template-columns: 1fr; }
+  .halk { background: var(--zemin); border-left: 4px solid var(--vekil);
+    padding: 8px 12px; margin-top: 8px; font-size: 15px; line-height: 1.35; }
+  .dipnot { margin-top: auto; font-size: 12px; color: var(--soluk);
+    border-top: 1px solid var(--cizgi); padding-top: 6px; }
+  .rozet { border: 1px solid var(--cizgi); padding: 2px 8px; letter-spacing: .04em; font-size: 11px; }
+  .rozet.olcum { color: var(--olcum); border-color: var(--olcum); }
+  .rozet.vekil { color: var(--vekil); border-color: var(--vekil); }
+  .rozet.havuz { color: var(--havuz); border-color: var(--havuz); }
+  .kartlar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .kartlar.dort { grid-template-columns: 1fr 1fr; }
+  .kartlar.iki { grid-template-columns: 1fr 1fr; }
+  .kart { background: #fff; border: 1px solid var(--cizgi); padding: 10px 12px; }
+  .kart b { display: block; font-family: "Liberation Serif", serif; font-size: 18px; margin: 0 0 4px; }
+  .kart p { margin: 0; font-size: 14px; line-height: 1.35; }
+  .kart .kim { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--soluk); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--cizgi); }
+  th { color: var(--soluk); font-weight: 600; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  td.olcum, th.olcum { color: var(--olcum); }
+  td.vekil, th.vekil { color: var(--vekil); }
+  .barlar { display: grid; gap: 6px; }
+  .bar { display: grid; grid-template-columns: 148px 1fr 64px; gap: 8px; align-items: center; font-size: 13px; }
+  .iz { height: 10px; background: #e5dccb; border-radius: 99px; overflow: hidden; }
+  .dolu { height: 100%; background: var(--vekil); }
+  .dolu.olcum { background: var(--olcum); }
+  .dolu.havuz { background: var(--havuz); }
+  .boru { display: flex; gap: 8px; align-items: stretch; }
+  .kutu { flex: 1; background: #fff; border: 1px solid var(--cizgi); padding: 10px; font-size: 14px; }
+  .kutu strong { display: block; font-family: "Liberation Serif", serif; font-size: 16px; margin-bottom: 4px; }
+  .ok { align-self: center; color: var(--soluk); font-size: 22px; }
+  .buyuk { font-family: "Liberation Serif", serif; font-size: 54px; line-height: .95; margin: 0;
+    font-variant-numeric: tabular-nums; }
+  .buyuk kucuk { font-size: 16px; color: var(--soluk); display: block; font-family: "Liberation Sans", sans-serif;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+  .uc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .kopru { background: #fff; border: 1px solid var(--cizgi); padding: 8px 10px; }
+  .kopru b { display: block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--soluk); }
+  .kopru .n { font-family: "Liberation Serif", serif; font-size: 26px; margin: 2px 0; }
+  .kaydir { display: grid; gap: 6px; margin: 4px 0 8px; }
+  .satir { display: grid; grid-template-columns: 28px 1fr 42px; gap: 8px; align-items: center; font-size: 14px; }
+  input[type=range] { width: 100%; accent-color: var(--vekil); }
+  .serit { display: none; }
+  body.kare .serit {
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; height: 30px; z-index: 4;
+    align-items: center; justify-content: space-between; padding: 0 28px;
+    background: #1b1612; color: #f6f1e6; font-size: 12px; letter-spacing: .08em;
+  }
+  svg.yol { width: 100%; height: 250px; display: block; }
+  .canli-ust { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; }
+  ul { margin: 4px 0; padding-left: 18px; }
+  li { margin: 3px 0; line-height: 1.3; font-size: 15px; }
+</style>
+</head>
+<body>
+<header class="giris">
+  <p class="ust" style="text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:#8c3b1c">Etki cephesi · artı değer · v0.2</p>
+  <h1>Fabrika, köy değil.</h1>
+  <p class="lede">Yeşil sütun ölçüdür. Kiremit sütun vekildir. Kaydırıcı, üç yayınlanmış ucun olasılık ortalamasını gösterir. Yeni bir simülasyon çalıştırmaz. Bu sayfa politika reçetesi değildir.</p>
+  <div class="canli-ust">
+    <p style="margin:0;font-family:'Liberation Serif',serif;font-size:28px">10 yıl, yaşam dahil: <span id="hero-dis">−16,7</span> vekil</p>
+    <p style="margin:0;color:#5e564c" id="gsyh-dis">GSYH oranı %4,658</p>
+  </div>
+</header>
+<div class="sar">
+
+<section class="sahne" id="kapak">
+  <div class="ust"><span>Etki cephesi</span><span class="rozet vekil">vekil, ölçülmüş alacak değil</span></div>
+  <h2>Dünya bir köy değil. Katları ayrı bir fabrika.</h2>
+  <div class="kartlar">
+    <div class="kart"><span class="kim">Üst kat</span><b>Merkez</b><p>Finans, standart, kural. Coğrafya değil, havuz.</p></div>
+    <div class="kart"><span class="kim">Orta kat</span><b>Yarı çevre</b><p>Montaj ve borç servisi. Türkiye bu katta okunur.</p></div>
+    <div class="kart"><span class="kim">Alt kat</span><b>Çevre</b><p>Hammadde ve ucuz emek. Borunun öteki ucu.</p></div>
+  </div>
+  <p class="halk">Yeşil damga ölçümdür. Kiremit damga vekildir. İkisini aynı kefeye koymak, tartıyı banknot sanmaktır.</p>
+  <div class="dipnot">Kaynak tez: dünya-fabrika. Bu video o tezin modelini anlatır. Reçete yazmaz.</div>
+</section>
+
+<section class="sahne" id="kuram">
+  <div class="ust"><span>01 · Dört lamba</span><span class="rozet">birbirinin yerine geçmez</span></div>
+  <h2>Dört lamba aynı odayı aydınlatır. Dört kapı açmaz.</h2>
+  <div class="kartlar dort">
+    <div class="kart"><span class="kim">Marx</span><b>Artı değer üretimde doğar</b><p>Finans onu böler. Kasada, bankadaki ücretli emek dışında, yeni artı değer doğmaz.</p></div>
+    <div class="kart"><span class="kim">Wallerstein</span><b>Fabrika, köy değil</b><p>Merkez finans tutar. Yarı çevre montaj ve borç servisi taşır. Çevre hammadde verir.</p></div>
+    <div class="kart"><span class="kim">Minsky</span><b>Spekülatif, Ponzi değil</b><p>2024–26 ülke ölçeği spekülatif okunur. Bir Minsky anı, bir tarih verilmez.</p></div>
+    <div class="kart"><span class="kim">Polanyi</span><b>Para ve toprak tahsisata döner</b><p>Rant, ihale, uzun sözleşme piyasadan çıkar. Fiyat gibi görünür, kilit gibi durur.</p></div>
+  </div>
+  <p class="halk">Doğru cümle: üretimdeki artı değer yetmez, finansın payı onu aşar, açık dışarıdan kapanır.</p>
+  <div class="dipnot">Lambalar kaynağın kendi ayrımıdır. Biri ötekinin kanıtı diye okunmaz.</div>
+</section>
+
+<section class="sahne" id="boru">
+  <div class="ust"><span>02 · Boru</span><span class="rozet vekil">üç ağız</span></div>
+  <h2>Müşteri değişir. Musluk aynı yöne bakar.</h2>
+  <div class="boru">
+    <div class="kutu"><strong>Yarı çevre</strong>Boşalma. Montajın ve borç servisinin katı.</div>
+    <div class="ok">→</div>
+    <div class="kutu"><strong>Beş halka</strong>Üretim, mevzuat, rant, bilanço, dış kısıt.</div>
+    <div class="ok">→</div>
+    <div class="kutu"><strong>Üç ağız</strong>Merkeze sızıntı. Tampona şok. Rakibe ikame.</div>
+  </div>
+  <p class="halk">Bölgenin neti, rakibin doldurduğu işten şokun ve dış bağın düşülmesidir. Alıcı değişince boru susmaz.</p>
+  <div class="dipnot">Merkez finans bir ülke değildir. Sızıntının toplandığı havuzdur. Kalan merkez stoku, evrendeki ülkelere eşit ve belirsiz payılır.</div>
+</section>
+
+<section class="sahne" id="halka">
+  <div class="ust"><span>03 · Beş halka</span><span class="rozet vekil">ağırlık, ölçülmüş pay değil</span></div>
+  <h2>En kalın bilezik dış kısıttır. En ince, mevzuattır.</h2>
+  <div class="barlar" style="margin-top:8px">
+    <div class="bar"><span>Dış kısıt</span><div class="iz"><div class="dolu" style="width:100%"></div></div><b>0,28</b></div>
+    <div class="bar"><span>Üretim bağımlılığı</span><div class="iz"><div class="dolu" style="width:79%"></div></div><b>0,22</b></div>
+    <div class="bar"><span>Para sızıntısı</span><div class="iz"><div class="dolu" style="width:71%"></div></div><b>0,20</b></div>
+    <div class="bar"><span>Bilanço aktarımı</span><div class="iz"><div class="dolu" style="width:64%"></div></div><b>0,18</b></div>
+    <div class="bar"><span>Mevzuat kopuşu</span><div class="iz"><div class="dolu" style="width:43%"></div></div><b>0,12</b></div>
+  </div>
+  <p class="halk">Beşi yüzde yüz eder. Tamponda şok kalınlaşır, koridorda dış kısıt, rant havzasında para sızıntısı.</p>
+  <div class="dipnot">31 Ağustos 2026 tez terazisi. Ülkenin kader yasası değildir. Borunun hangi bilezikten geçtiğinin adıdır.</div>
+</section>
+
+<section class="sahne" id="kasa">
+  <div class="ust"><span>04 · İki kasa</span><span class="rozet olcum">tezin ölçülmüş cümleleri</span></div>
+  <h2>Biri kapanır. Öteki kapanmaz.</h2>
+  <div class="kartlar iki">
+    <div class="kart">
+      <span class="kim" style="color:#2a6844">Firma ↔ firma · kapanır</span>
+      <b>Net +42 milyar TL</b>
+      <p>İmalat ile ticaret, brüt 13,4 trilyon TL. Halka kapanır.</p>
+    </div>
+    <div class="kart">
+      <span class="kim" style="color:#8c3b1c">Firma ↔ banka / döviz · kapanmaz</span>
+      <b>Açık 206 milyar $</b>
+      <p>Reel sektörden bankalara 16,8 trilyon TL. Net döviz açığı, Haziran 2026. Öncesi 148 milyar $.</p>
+    </div>
+  </div>
+  <p class="halk">2024’te faaliyet kârının yaklaşık %84’ü finansmana gider. Ülke spekülatiftir. Ponzi diye damgalanmaz.</p>
+  <div class="dipnot">Sıra terstir: yüksek TL faizi döviz kredisini çağırır. Ödenmeyen zarar, fiyatın sebebi değil, ilerideki kur şokunun hammaddesidir.</div>
+</section>
+
+<section class="sahne" id="borc">
+  <div class="ust"><span>05 · Üç kişi</span><span class="rozet">satılmış artı değer</span></div>
+  <h2>Borç, henüz doğmamış artı değerin bugünden satılmasıdır.</h2>
+  <div class="kartlar">
+    <div class="kart"><span class="kim">Üretim</span><b>Satar</b><p>Gelir gelirse borç erir. Gelmezse fatura masaya düşer.</p></div>
+    <div class="kart"><span class="kim">Hane ve kefalet</span><b>Taşır</b><p>Kira, faiz, sağlık, eğitim. Kamunun üstlendiği imza.</p></div>
+    <div class="kart"><span class="kim">Dış alacaklı</span><b>Kurda durur</b><p>Fark, alacaklının döviz kefesine yazılır.</p></div>
+  </div>
+  <p class="halk">Aşınma üç yoldur: enflasyon, silinme, gerçek büyüme. Tek kararla sıfırlanmaz. Londra hukuku ve uzun imtiyaz, kilitlenmiş ranttır. Eşitsiz mübadelenin kendisi değildir.</p>
+  <div class="dipnot">Kaynak, tesisatın yanındadır. “Bir, iki, üç aynı anda biter” cümlesini kabul etmez.</div>
+</section>
+
+<section class="sahne" id="havza">
+  <div class="ust"><span>06 · İhracat</span><span class="rozet olcum">2024 · 261.925 milyon $</span></div>
+  <h2>Yeşil sütun gümrüktür. Kiremit sütun tartıdır.</h2>
+  <div class="govde">
+    <table>
+      <thead><tr><th>Havza</th><th class="r olcum">İhracat</th><th class="r olcum">Pay</th><th class="r vekil">Vekil</th></tr></thead>
+      <tbody>
+        <tr><td>Körfez</td><td class="r olcum">10.313</td><td class="r olcum">%3,9</td><td class="r vekil">5,0</td></tr>
+        <tr><td>Karadeniz</td><td class="r olcum">9.867</td><td class="r olcum">%3,8</td><td class="r vekil">4,9</td></tr>
+        <tr><td>Irak, Bağdat</td><td class="r olcum">5.880</td><td class="r olcum">%2,2</td><td class="r vekil">3,9</td></tr>
+        <tr><td>Irak, kuzey</td><td class="r olcum">4.819</td><td class="r olcum">%1,8</td><td class="r vekil">3,5</td></tr>
+        <tr><td>Bulgaristan</td><td class="r olcum">4.403</td><td class="r olcum">%1,7</td><td class="r vekil">3,4</td></tr>
+        <tr><td>Mısır</td><td class="r olcum">3.523</td><td class="r olcum">%1,4</td><td class="r vekil">3,1</td></tr>
+      </tbody>
+    </table>
+    <div>
+      <div class="barlar">
+        <div class="bar"><span>Körfez</span><div class="iz"><div class="dolu olcum" style="width:100%"></div></div><b></b></div>
+        <div class="bar"><span>Karadeniz</span><div class="iz"><div class="dolu olcum" style="width:96%"></div></div><b></b></div>
+        <div class="bar"><span>Irak Bağdat</span><div class="iz"><div class="dolu olcum" style="width:57%"></div></div><b></b></div>
+        <div class="bar"><span>Irak kuzey</span><div class="iz"><div class="dolu olcum" style="width:47%"></div></div><b></b></div>
+        <div class="bar"><span>Bulgaristan</span><div class="iz"><div class="dolu olcum" style="width:43%"></div></div><b></b></div>
+        <div class="bar"><span>Mısır</span><div class="iz"><div class="dolu olcum" style="width:34%"></div></div><b></b></div>
+      </div>
+      <p class="halk">Vekil 5, on milyar dolar demek değildir. Modelin o havzaya biçtiği ağırlıktır.</p>
+    </div>
+  </div>
+  <div class="dipnot">TİM / Ticaret 2024. Milyon dolar. Pay, toplam ihracatın içindeki dilimdir. “TR pay” sütunu bu tabloda yoktur: o da vekildir.</div>
+</section>
+
+<section class="sahne" id="harita">
+  <div class="ust"><span>07 · Havza neti</span><span class="rozet vekil">senaryo C · dolar değil</span></div>
+  <h2>İhracatta kalın olan, net kefede de artı yazmaz.</h2>
+  <div class="barlar">
+    <div class="bar"><span>Ortadoğu</span><div class="iz"><div class="dolu" style="width:100%"></div></div><b>−1,92</b></div>
+    <div class="bar"><span>Kuzey Afrika</span><div class="iz"><div class="dolu" style="width:73%"></div></div><b>−1,41</b></div>
+    <div class="bar"><span>Balkan</span><div class="iz"><div class="dolu" style="width:61%"></div></div><b>−1,18</b></div>
+    <div class="bar"><span>Orta Asya</span><div class="iz"><div class="dolu" style="width:60%"></div></div><b>−1,16</b></div>
+    <div class="bar"><span>Körfez</span><div class="iz"><div class="dolu" style="width:58%"></div></div><b>−1,11</b></div>
+    <div class="bar"><span>Levant</span><div class="iz"><div class="dolu" style="width:46%"></div></div><b>−0,88</b></div>
+    <div class="bar"><span>Karadeniz</span><div class="iz"><div class="dolu" style="width:43%"></div></div><b>−0,83</b></div>
+    <div class="bar"><span>Kafkasya</span><div class="iz"><div class="dolu" style="width:36%"></div></div><b>−0,70</b></div>
+  </div>
+  <p class="halk">Net = ikame − şok − dış bağ − rant. Körfezin 10,3 milyar dolarlık ihracatı yeşildi. Buradaki −1,11 o dolar değildir.</p>
+  <div class="dipnot">İran vekili −0,28 · Afrika boynu −0,44. Aynı kapsam, senaryo C. Makro özet vekil endeksidir.</div>
+</section>
+
+<section class="sahne" id="stok">
+  <div class="ust"><span>08 · Uluslararası defter</span><span class="rozet vekil">kapanış 0 · kurgu</span></div>
+  <h2>Toplam sıfırdır. Çünkü tartı öyle kurulmuştur.</h2>
+  <div class="govde">
+    <table>
+      <thead><tr><th>Kefe</th><th class="r vekil">Vekil</th><th class="r">Havza köprüsü, mn $</th></tr></thead>
+      <tbody>
+        <tr><td>Türkiye</td><td class="r vekil">−17,2</td><td class="r">−92.542</td></tr>
+        <tr><td>Merkez finans</td><td class="r vekil">+6,1</td><td class="r">+32.896</td></tr>
+        <tr><td>Çin</td><td class="r vekil">+3,8</td><td class="r">+20.488</td></tr>
+        <tr><td>İran</td><td class="r vekil">+1,2</td><td class="r">+6.314</td></tr>
+        <tr><td>Avrupa vekili</td><td class="r vekil">+1,0</td><td class="r">+5.432</td></tr>
+        <tr><td>Havza</td><td class="r vekil">+1,4</td><td class="r">+7.515</td></tr>
+        <tr><td>Bu altı satır</td><td class="r vekil">≈ −3,7</td><td class="r">sıfır değil</td></tr>
+      </tbody>
+    </table>
+    <div>
+      <div class="kart"><b>Brüt kenar ayrıdır</b><p>Havza kaybının brüt kenarı 145,7 milyar dolar. Stokla toplanmaz. Brüt, musluğun kalınlığıdır. Stok, kapta kalan sudur.</p></div>
+      <p class="halk">Bu altı satır sıfır etmez. Tüm matris sıfır eder. Görünmeyen kefeler arayı kapatır. Dolar sütunu havza köprüsüdür.</p>
+    </div>
+  </div>
+  <div class="dipnot">Senaryo C, refah açık. Binde bir: TR −17,191 · MFIN 6,111 · CN 3,806 · IR 1,173 · EU 1,009 · HAVZA 1,396. Balkan aktarımından sonra Avrupa merkezi 0,366’ya iner. Sırbistan −0,012.</div>
+</section>
+
+<section class="sahne" id="kurum">
+  <div class="ust"><span>09 · Ülke ve kurum</span><span class="rozet vekil">37 ülke · 10 kurum</span></div>
+  <h2>Kurumlar küçüktür. Havuz ve rakipler büyüktür.</h2>
+  <div class="govde">
+    <div class="barlar">
+      <div class="bar"><span>Merkez finans</span><div class="iz"><div class="dolu havuz" style="width:100%"></div></div><b>5,66</b></div>
+      <div class="bar"><span>Çin</span><div class="iz"><div class="dolu" style="width:67%"></div></div><b>3,81</b></div>
+      <div class="bar"><span>Rusya</span><div class="iz"><div class="dolu" style="width:66%"></div></div><b>3,71</b></div>
+      <div class="bar"><span>ABD</span><div class="iz"><div class="dolu havuz" style="width:34%"></div></div><b>1,93</b></div>
+      <div class="bar"><span>İran</span><div class="iz"><div class="dolu" style="width:21%"></div></div><b>1,17</b></div>
+      <div class="bar"><span>AB vekili</span><div class="iz"><div class="dolu havuz" style="width:18%"></div></div><b>1,01</b></div>
+      <div class="bar"><span>BAE</span><div class="iz"><div class="dolu" style="width:14%"></div></div><b>0,79</b></div>
+      <div class="bar"><span>Suudi Arabistan</span><div class="iz"><div class="dolu" style="width:13%"></div></div><b>0,73</b></div>
+    </div>
+    <table>
+      <thead><tr><th>Kurum</th><th class="r vekil">Net</th></tr></thead>
+      <tbody>
+        <tr><td>IMF</td><td class="r vekil">0,194</td></tr>
+        <tr><td>AB kurumları</td><td class="r vekil">0,171</td></tr>
+        <tr><td>Dünya Bankası</td><td class="r vekil">0,159</td></tr>
+        <tr><td>EBRD</td><td class="r vekil">0,131</td></tr>
+        <tr><td>BIS</td><td class="r vekil">0,128</td></tr>
+        <tr><td>AIIB</td><td class="r vekil">0,127</td></tr>
+        <tr><td>NATO</td><td class="r vekil">0,113</td></tr>
+        <tr><td>SWIFT vekili</td><td class="r vekil">0,105</td></tr>
+        <tr><td>DTÖ</td><td class="r vekil">0,057</td></tr>
+        <tr><td>Birleşmiş Milletler</td><td class="r vekil">0,042</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dipnot">Net entegre vekil. Kurum doları aidat değildir. Çin’in 3,81’i, Türkiye’den tahsil edilmiş bir fatura değildir.</div>
+</section>
+
+<section class="sahne" id="senaryo">
+  <div class="ust"><span>10 · Üç yol</span><span class="rozet vekil">olasılık ortalaması, yeni simülasyon değil</span></div>
+  <h2>Kaydırıcı dünyayı değiştirmez. Tartının varsayımını değiştirir.</h2>
+  <div class="govde">
+    <div>
+      <p class="buyuk"><kucuk>10 yıl · yaşam dahil</kucuk><span id="hero">−16,7</span></p>
+      <p class="alt" id="gsyh-satir">GSYH oranı %4,658 · soldaki sayı karışımdır, sağdaki üç sayı ucun kendisidir</p>
+      <div class="kaydir">
+        <label class="satir">A <input id="sa" type="range" min="0" max="100" value="22" aria-label="Senaryo A ağırlığı"><span id="la">22</span></label>
+        <label class="satir">B <input id="sb" type="range" min="0" max="100" value="18" aria-label="Senaryo B ağırlığı"><span id="lb">18</span></label>
+        <label class="satir">C <input id="sc" type="range" min="0" max="100" value="60" aria-label="Senaryo C ağırlığı"><span id="lc">60</span></label>
+      </div>
+    </div>
+    <div class="kartlar" style="grid-template-columns:1fr">
+      <div class="kart"><span class="kim">A ucu · atıl bağ · ağırlık <span id="ea">%22</span></span><b id="na">−17,1</b><p>Bu sayı karışım değil, A’nın kendi ucudur. Erozyon 0,35.</p></div>
+      <div class="kart"><span class="kim">B ucu · araçsallaşma · ağırlık <span id="eb">%18</span></span><b id="nb">−32,7</b><p>Bu sayı karışım değil, B’nin kendi ucudur. Merkez çarpanı 1,15.</p></div>
+      <div class="kart"><span class="kim">C ucu · katmanlı oyun · ağırlık <span id="ec">%60</span></span><b id="nc">−11,7</b><p>Bu sayı karışım değil, C’nin kendi ucudur. Erozyon 0,22.</p></div>
+    </div>
+  </div>
+  <p class="halk" id="halk-sen">Ara ağırlık, üç yayınlanmış ucun tartısıdır. A −17,136 · B −32,704 · C −11,683. Kapı skoru kaydırıcıyla oynamaz: bütün 66,4 · C 71,3 · varsayılan beklenen 57,3.</p>
+  <div class="dipnot" id="dip-sen">Rapor: beklenen −16,666 vekil, GSYH %4,658. Olasılıklar ölçülmüş ihtimal değildir.</div>
+</section>
+
+<section class="sahne" id="yol">
+  <div class="ust"><span>11 · On yıl</span><span class="rozet vekil">kalibre C · refah açık · 2027–2036</span></div>
+  <h2>Eksi 17,2’den eksi 12,5’e incelir. Sıfıra çıkmaz.</h2>
+  <svg class="yol" viewBox="0 0 640 230" role="img" aria-label="On yıllık Türkiye neti">
+    <line x1="48" y1="20" x2="600" y2="20" stroke="#d4cbb8"/>
+    <line x1="48" y1="170" x2="600" y2="170" stroke="#d4cbb8"/>
+    <text x="8" y="24" font-size="11" fill="#5e564c">−12</text>
+    <text x="8" y="174" font-size="11" fill="#5e564c">−18</text>
+    <polyline fill="none" stroke="#8c3b1c" stroke-width="3"
+      points="48,126 109,112 170,97 231,83 292,68 353,54 414,39 475,39 536,35 597,32"/>
+    <circle cx="597" cy="32" r="4" fill="#8c3b1c"/>
+    <text x="48" y="198" font-size="12" fill="#5e564c">2027 · zarar</text>
+    <text x="430" y="28" font-size="12" fill="#5e564c">2033–34 düz</text>
+    <text x="500" y="214" font-size="12" fill="#2a6844">2036 · −12,5</text>
+    <text x="360" y="16" font-size="12" fill="#8c3b1c">sıfır bu çerçevenin üstündedir</text>
+  </svg>
+  <div class="kartlar">
+    <div class="kart"><span class="kim">Ham finans sonu</span><b>+0,75</b><p>Kalibrasyondan önce. Yayınlanan yol bu değildir.</p></div>
+    <div class="kart"><span class="kim">Kalibre finans</span><b>−10,1</b><p>Aynı katmanın kalibre hali. On yıl yolu değil.</p></div>
+    <div class="kart"><span class="kim">On yıl, refah açık</span><b>−17,2 → −12,5</b><p>GSYH oranı %4,8’den %3,5’e. Büyüme tahmini değil.</p></div>
+  </div>
+  <div class="dipnot">Binde bir: −17,191 → −12,498. İyileşme 4,693 vekil. GSYH %4,784 → %3,478, yani 1,3 puan. Finans fazının tamamı ~2057 vekiline uzar. Üç kutu toplanmaz.</div>
+</section>
+
+<section class="sahne" id="kopru">
+  <div class="ust"><span>12 · Üç köprü</span><span class="rozet vekil">aynı −17,191 vekil</span></div>
+  <h2>Bir vekil, üç cümle. Dördüncü, onların ortası.</h2>
+  <div class="uc">
+    <div class="kopru"><b>Ödemeler dengesi</b><div class="n">2.088</div><p class="alt">mn $ / vekil · TR satırı 35,9 milyar $</p></div>
+    <div class="kopru"><b>Tüm havza rantı</b><div class="n">5.383</div><p class="alt">mn $ / vekil · TR satırı 92,5 milyar $</p></div>
+    <div class="kopru"><b>Mal ticareti</b><div class="n">4.785</div><p class="alt">mn $ / vekil · TR satırı 82,3 milyar $</p></div>
+  </div>
+  <p class="halk">Geometrik orta: 64,9 milyar dolar. GSYH oranı bu ortayla kurulur. Dört sayıyı toplamak, aynı kefeyi dört kez saymaktır.</p>
+  <div class="kartlar">
+    <div class="kart"><span class="kim olcum">Ölçüm · yatırım geliri gideri</span><b>18,8 milyar $</b><p>2024. Modelin merkez finans kenarı 11,8 milyar $ verir. Eşit değildir.</p></div>
+    <div class="kart"><span class="kim olcum">Ölçüm · net ticaret</span><b>−82,2 milyar $</b><p>2024. Mal köprüsünün çapası bu satıra bakar.</p></div>
+    <div class="kart"><span class="kim">GSYH çapası</span><b>1,36 trilyon $</b><p>2024 vekili. Oran, kaybın buna bölümüdür. Büyüme değil.</p></div>
+  </div>
+  <div class="dipnot">Köprüler: 2.087,88 · 5.383,14 · 4.785,41 mn $/vekil. Orta 64.891,5 mn $. Yatırım geliri 18.841 · net ticaret −82.175 · MFIN kenar 11.821,6 mn $.</div>
+</section>
+
+<section class="sahne" id="sinir">
+  <div class="ust"><span>13 · Sınır</span><span class="rozet">bağıntı, neden değildir</span></div>
+  <h2>Fabrika ayaktadır. Bu video musluğu kapatmaz.</h2>
+  <ul>
+    <li>Model emperyalizmi kanıtlamaz. Vekil, ölçülmüş alacak değildir.</li>
+    <li>Defterin sıfıra kapanması bir keşif değildir. Matris öyle kurulmuştur.</li>
+    <li>Çin’in artı kefesi, Türkiye’den tahsil edilmiş fatura değildir.</li>
+    <li>Minsky anı için tarih yoktur. Ülke spekülatif okunur, Ponzi diye damgalanmaz.</li>
+    <li>Kaydırıcı bir politika düğmesi değildir. On yıl sıfıra varmaz.</li>
+    <li>Ham modelin artı işareti yayınlanan sonuç değildir. Üç köprü toplanmaz.</li>
+    <li>Yan depodaki zarar teorisi içerideki defteri sayar. Bu tartı dışarıdaki boruyu sayar. İkisi toplanmaz.</li>
+  </ul>
+  <p class="halk">Ölçülmüş cümle azdır: ihracat, yatırım geliri, net ticaret, finansmana giden kâr payı, net döviz açığı. Gerisi vekildir.</p>
+  <div class="dipnot">Etki cephesi v0.2 · 13 Ekim 2026. Politika reçetesi değildir. Bağıntı neden değildir.</div>
+</section>
+
+</div>
+<div class="serit"><span>VEKİL · ÖLÇÜM DEĞİL</span><span id="serit-sag">A 22 · B 18 · C 60 · 10 YIL −16,7</span></div>
+<script>
+const UC = { a: -17.136, b: -32.704, c: -11.683 };
+const GY = { a: 4.769, b: 9.101, c: 3.284 };
+const q = new URLSearchParams(location.search);
+let st = {
+  a: q.has("pa") ? +q.get("pa") : 22,
+  b: q.has("pb") ? +q.get("pb") : 18,
+  c: q.has("pc") ? +q.get("pc") : 60
+};
+if (!((st.a + st.b + st.c) > 0)) st = { a: 22, b: 18, c: 60 };
+
+function trSayi(n, k) {
+  const v = Number(n.toFixed(k));
+  const im = v < 0 ? "−" : "";
+  return im + Math.abs(v).toFixed(k).replace(".", ",");
+}
+function dagit(hangi, deger) {
+  deger = Math.max(0, Math.min(100, Math.round(deger)));
+  const diger = ["a", "b", "c"].filter(function (x) { return x !== hangi; });
+  const kalan = 100 - deger;
+  const e0 = st[diger[0]], e1 = st[diger[1]];
+  const t = e0 + e1;
+  const d0 = t ? Math.round(kalan * e0 / t) : Math.round(kalan / 2);
+  st[hangi] = deger;
+  st[diger[0]] = d0;
+  st[diger[1]] = kalan - d0;
+}
+function ciz() {
+  const s = st.a + st.b + st.c || 1;
+  const pa = st.a / s, pb = st.b / s, pc = st.c / s;
+  const bek = pa * UC.a + pb * UC.b + pc * UC.c;
+  const g = pa * GY.a + pb * GY.b + pc * GY.c;
+  document.getElementById("sa").value = st.a;
+  document.getElementById("sb").value = st.b;
+  document.getElementById("sc").value = st.c;
+  document.getElementById("la").textContent = st.a;
+  document.getElementById("lb").textContent = st.b;
+  document.getElementById("lc").textContent = st.c;
+  document.getElementById("hero").textContent = trSayi(bek, 1);
+  document.getElementById("gsyh-satir").textContent =
+    "GSYH %" + trSayi(g, 3).replace("−", "") + " · soldaki karışım, sağdaki uç";
+  document.getElementById("na").textContent = trSayi(UC.a, 1);
+  document.getElementById("nb").textContent = trSayi(UC.b, 1);
+  document.getElementById("nc").textContent = trSayi(UC.c, 1);
+  document.getElementById("ea").textContent = "%" + st.a;
+  document.getElementById("eb").textContent = "%" + st.b;
+  document.getElementById("ec").textContent = "%" + st.c;
+  const sag = "A " + st.a + " · B " + st.b + " · C " + st.c + " · 10 YIL " + trSayi(bek, 1);
+  document.getElementById("serit-sag").textContent = sag;
+  const dis = document.getElementById("hero-dis");
+  if (dis) dis.textContent = trSayi(bek, 1);
+  const gd = document.getElementById("gsyh-dis");
+  if (gd) gd.textContent = "GSYH oranı %" + trSayi(g, 3).replace("−", "");
+  document.getElementById("dip-sen").textContent =
+    "Binde bir: beklenen " + trSayi(bek, 3) + " vekil. Uçlar A −17,136 · B −32,704 · C −11,683. " +
+    "Kapı skoru sabit: bütün 66,4 · C 71,3 · varsayılan karışım 57,3.";
+}
+["sa", "sb", "sc"].forEach(function (id) {
+  document.getElementById(id).addEventListener("input", function (ev) {
+    dagit(id.slice(1), ev.target.value);
+    ciz();
+  });
+});
+if (q.has("kare")) {
+  document.body.classList.add("kare");
+  const el = document.getElementById(q.get("kare"));
+  if (el) el.classList.add("aktif");
+}
+ciz();
+</script>
+</body>
+</html>
