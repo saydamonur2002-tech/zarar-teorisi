@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dosyadaki hukuk — anahtar, defter değildir</title>
+<style>
+  :root {
+    --kagit: #f3efe4;
+    --kart: #fffcf6;
+    --murekkep: #1c1915;
+    --soluk: #5c564c;
+    --cizgi: #d8d0c2;
+    --kiremit: #9c3b2e;
+    --deniz: #1e4d6b;
+    --zeytin: #3d6b4f;
+    --amber: #8a5a12;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--kagit); color: var(--murekkep);
+    font-family: "Liberation Sans", "Noto Sans", sans-serif; }
+  body.kare { width: 1280px; height: 720px; overflow: hidden; }
+  .sar { max-width: 1100px; margin: 0 auto; padding: 8px 20px 48px; }
+  body.kare .sar { max-width: none; margin: 0; padding: 0; }
+  .sahne { display: block; background: var(--kart); border: 1px solid var(--cizgi); margin: 16px 0; padding: 28px 32px 22px; }
+  body.kare .sahne { display: none; margin: 0; border: 0; width: 1280px; height: 720px; padding: 26px 44px 52px; }
+  body.kare .sahne.aktif { display: flex; flex-direction: column; }
+  .ust { display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--soluk); }
+  .rozet { border: 1px solid var(--cizgi); padding: 2px 8px; letter-spacing: .06em; }
+  .rozet.bos { color: var(--kiremit); border-color: var(--kiremit); }
+  .rozet.var { color: var(--zeytin); border-color: var(--zeytin); }
+  .rozet.taslak { color: var(--amber); border-color: var(--amber); }
+  h2 { font-family: "Liberation Serif", "Noto Serif", serif; font-weight: 700; font-size: 34px;
+    line-height: 1.12; margin: 10px 0 8px; }
+  .alt { color: var(--soluk); margin: 0 0 16px; font-size: 16px; }
+  .govde { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items: start; }
+  .tek { grid-template-columns: 1fr; }
+  .halk { background: #f4f0e6; border-left: 4px solid var(--kiremit); padding: 10px 14px; margin-top: 12px; font-size: 16px; line-height: 1.4; }
+  .dipnot { margin-top: auto; font-size: 12px; color: var(--soluk); border-top: 1px solid var(--cizgi); padding-top: 8px; }
+  .kartlar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .kart { background: #fff; border: 1px solid var(--cizgi); padding: 14px 14px 12px; min-height: 150px; }
+  .kart b { display: block; font-family: "Liberation Serif", serif; font-size: 22px; margin: 8px 0 6px; }
+  .kart p { margin: 0; font-size: 14px; line-height: 1.35; }
+  .kapi { width: 54px; height: 72px; border: 3px solid var(--murekkep); border-radius: 4px 4px 0 0; position: relative; }
+  .kapi.deniz { border-color: var(--deniz); } .kapi.zeytin { border-color: var(--zeytin); } .kapi.amber { border-color: var(--amber); }
+  .kapi i { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--murekkep); right: 8px; top: 36px; }
+  .iki { display: flex; gap: 18px; align-items: center; }
+  .kagit-k { width: 120px; height: 78px; border: 2px solid var(--deniz); background: #fff; transform: rotate(-6deg);
+    display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--deniz); }
+  .kagit-k + .kagit-k { transform: rotate(5deg); margin-left: -28px; border-color: var(--kiremit); color: var(--kiremit); }
+  .ip { margin: 18px 0 8px; }
+  .ip-cizgi { height: 4px; background: var(--amber); border-radius: 2px; position: relative; }
+  .ip-uc { display: flex; justify-content: space-between; font-size: 14px; margin-top: 8px; }
+  .damga { display: inline-block; border: 3px solid var(--kiremit); color: var(--kiremit); font-weight: 700;
+    letter-spacing: .18em; padding: 6px 12px; transform: rotate(-8deg); font-size: 18px; margin: 6px 0 36px 6px; }
+  .serit { display: none; }
+  body.kare .serit {
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; height: 32px; z-index: 4;
+    align-items: center; padding: 0 28px; background: #1c1915; color: #f4f0e6;
+    font-size: 12px; letter-spacing: .12em;
+  }
+  ul { margin: 6px 0; padding-left: 18px; }
+  li { margin: 5px 0; line-height: 1.35; }
+</style>
+</head>
+<body>
+<div class="sar">
+
+<section class="sahne" id="kapak">
+  <div class="ust"><span>Dosyadaki hukuk</span><span class="rozet">yürürlükteki kanun değil</span></div>
+  <h2>Anahtar, defterin kendisi değildir.</h2>
+  <p class="alt">Masa yükü sayar. Kapının kilidi, o yükün yer değiştirmesine izin verir.</p>
+  <div class="kartlar">
+    <div class="kart"><div class="kapi deniz"><i></i></div><b>Defter</b><p>Kimin kime borçlu olduğunu yazar. Çizgiyi atmaz.</p></div>
+    <div class="kart"><div class="kapi zeytin"><i></i></div><b>İzin</b><p>Satırın silinmesine kim izin verdi. Komşu, duvar ya da taslak.</p></div>
+    <div class="kart"><div class="kapi amber"><i></i></div><b>Çekmece</b><p>Mühürlenmemiş kâğıt. Hipotez. Hüküm değil.</p></div>
+  </div>
+  <p class="halk">Bir avlu düşünün. Ortada bir masa, beş kapı. Bu video kapıların anahtarını anlatır. Masadaki sayıları değil.</p>
+  <div class="dipnot">Kaynak: depodaki inceleme dosyaları. Mahkeme kararı ve yürürlük metni değildir.</div>
+</section>
+
+<section class="sahne" id="defter">
+  <div class="ust"><span>01 · Masa</span><span class="rozet">defter ayrı, hukuk ayrı</span></div>
+  <h2>Masa, kimin kime borçlu olduğunu yazar. Kapıyı açmaz.</h2>
+  <div class="govde">
+    <div>
+      <p>Ali, Veli’ye borçluysa Veli’nin kâğıdında aynı sayı alacak diye durur. Masayı silmek Ali’yi kurtarmak değildir. Karşılıklı olan iner. Net borç masada kalır.</p>
+      <p class="halk">Çizgiyi kim atabilir. Bir komşu mu, duvardaki kural mı, yoksa henüz mühürlenmemiş bir taslak mı.</p>
+    </div>
+    <div class="kartlar" style="grid-template-columns:1fr">
+      <div class="kart"><b>Üç anahtar</b><p>Biri sistem metninin içinde yok. Biri doğrulanmış. Biri çekmecede. Dosya üçünü birbirine karıştırmaz.</p></div>
+    </div>
+  </div>
+  <div class="dipnot">Önceki anlatı masayı saydı. Bu anlatı kilidi sorar.</div>
+</section>
+
+<section class="sahne" id="anahtar">
+  <div class="ust"><span>02 · Birinci kapı</span><span class="rozet bos">sistem metninde boş</span></div>
+  <h2>Halkayı defter çizer. İzin kâğıdı sistem metninde yoktur.</h2>
+  <div class="govde">
+    <div>
+      <ul>
+        <li>Ali Veli’ye, Veli Ayşe’ye, Ayşe Ali’ye borçluysa üçü aynı halkadadır.</li>
+        <li>Yazılı alet: alacak el değiştirir. İki imza birden atılır.</li>
+        <li>Ortada hakem kasası yoktur. Komşu, komşuya kâğıt verir.</li>
+        <li>Çok kişinin borcu, ikili devirlerin zinciriyle iner.</li>
+      </ul>
+      <p class="halk">Buna temlik denir. Alacağın devri. Borçlar Kanunu’nun tanıdığı komşu işi. Sistemin kendi metni bu katmanı boş bırakır.</p>
+    </div>
+    <div>
+      <div class="iki">
+        <div class="kagit-k">Veli → Ayşe</div>
+        <div class="kagit-k">iki imza</div>
+      </div>
+      <p class="alt">Zincir böyle kurulur. Bir merkez kasası halkayı tek kalemde silmez.</p>
+    </div>
+  </div>
+  <div class="dipnot">Adlandıran dosya: VAYSIS incelemesi. Tek sistem metni bu katmanı yazmaz.</div>
+</section>
+
+<section class="sahne" id="dukkan">
+  <div class="ust"><span>03 · Dükkân</span><span class="rozet taslak">gönüllü üyelik</span></div>
+  <h2>Bu aleti adlandıran tek Türk kayıt, bir üyelik dükkânıdır.</h2>
+  <div class="govde">
+    <div>
+      <ul>
+        <li>Kapı gönüllüdür. Duvara asılmış yasa değildir.</li>
+        <li>Uyan iki fatura bulunursa devir sözleşmesi çıkar. İki imza şarttır.</li>
+        <li>Hacim, üye ve tutar yazılmamıştır.</li>
+        <li>Az komşu varsa halka kapanmaz. Dükkân bunu kendi cümlesiyle söyler.</li>
+      </ul>
+      <p class="halk">Dükkân mahsubu çalıştırdı denmez. Dükkân battı, mahsup çalışmaz da denmez. Seyrek avlu, kuraldan önce gelir.</p>
+    </div>
+    <div class="kart">
+      <b>Duvar boş</b>
+      <p>İzin, üyenin kendi imzasındadır. Zorunluluk yoktur. Ağ ince kalırsa eşleşme de ince kalır.</p>
+    </div>
+  </div>
+  <div class="dipnot">Faaliyet kaydı ile canlı site çelişir. Dosya bundan sonuç çıkarmaz.</div>
+</section>
+
+<section class="sahne" id="avlu">
+  <div class="ust"><span>04 · Başka avlular</span><span class="rozet var">duvara asılmış kural</span></div>
+  <h2>Kimi avluda kural duvardadır. Kimisinde komşu kendi anlaşır.</h2>
+  <div class="kartlar">
+    <div class="kart"><div class="kapi deniz"><i></i></div><b>Duvar</b><p>Slovenya, Romanya, Sırp Cumhuriyeti. Gecikmiş ve kavgasız fatura. Bütün masa değil.</p></div>
+    <div class="kart"><div class="kapi amber"><i></i></div><b>Komşu</b><p>İspanya, Portekiz, üyelik dükkânı. Gönüllü. Portekiz’de yasa var, hacim bulunamadı.</p></div>
+    <div class="kart"><div class="kapi zeytin"><i></i></div><b>Ortak resim</b><p>Silinen pay küçük kalır. Bildirilenin bir dilimi. Dosya bunu ölçüm diye yazar.</p></div>
+  </div>
+  <p class="halk">Duvara asılan da, komşu anlaşması da yalnız vadesi geçmiş, tartışmasız kâğıdı alır. Masadaki bütün borcu süpürmez.</p>
+  <div class="dipnot">Slovenya’da yaptırım vergi idaresine gider. Sırp Cumhuriyeti’nde yasa yaptırım yazar; yaptırım hiç uygulanmamıştır.</div>
+</section>
+
+<section class="sahne" id="ters">
+  <div class="ust"><span>05 · Üçüncü kapı</span><span class="rozet bos">faizin durduğu kural yok</span></div>
+  <h2>O avlular faizi durdurmaz. Kalan borç eski yolundan gider.</h2>
+  <div class="govde">
+    <div>
+      <ul>
+        <li>Ödeme planı da yoktur. Kalan, olağan yoldan ödenir.</li>
+        <li>Eski kampanyalar kalanı taze krediyle kapatmıştır.</li>
+        <li>Dosya bunu üçüncü kapının tersi diye işaretler.</li>
+        <li>En yakın kayıt, bir yerde bileşik faizin durmasıdır. Faizin kendisi değil.</li>
+      </ul>
+      <p class="halk">Üçüncü kapının hukuku boş bir askıdır. Dünya, faizi durduran bir ulusal kural bırakmamıştır. Bıraktığı, kalanı krediye çevirmektir.</p>
+    </div>
+    <div class="kart"><b>Ters yönde kova</b><p>Kasaya yeni su konur, halka onunla çözülür. Modelin istediği, suyun kesilmesidir. Dosyada bulunan, kovanın doldurulmasıdır.</p></div>
+  </div>
+  <div class="dipnot">Çin, Rusya ve eski Yugoslavya kampanyaları bu ters kovadadır. Slovenya ve Sırp Cumhuriyeti nakitsiz kalır, faizi yine durdurmaz.</div>
+</section>
+
+<section class="sahne" id="kira">
+  <div class="ust"><span>06 · Kira ipi</span><span class="rozet var">doğrulandı</span></div>
+  <h2>Doğrulanan tek ip kiradadır. Geçmiş sepete bağlıdır.</h2>
+  <div class="ip">
+    <div class="ip-cizgi"></div>
+    <div class="ip-uc"><span>Son on iki ayın fiyat sepeti</span><span>Kiranın çıkabileceği en uç</span></div>
+  </div>
+  <ul>
+    <li>Ev sahibi kirayı, sepetin şiştiğinden hızlı artıramaz. Borçlar Kanunu.</li>
+    <li>İp geçmişe bağlıdır. Onu bir gelecek hedefe bağlamak bağı keser.</li>
+    <li>Hatırlanan yüzde yirmi beş tavan, hafızadandır. Doğrulanmamıştır.</li>
+    <li>Politika kirası ayrı koldur. O satır ölçülmedi diye durur. Yasal ip onun yerine geçmez.</li>
+  </ul>
+  <p class="halk">Sepet geçen yıl ne kadar yürüdüyse, kira en çok o kadar yürür. Bu, dosyanın “doğrulandı” dediği tek hukuk cümlesidir.</p>
+  <div class="dipnot">Kaynak: kira artışı, on iki aylık ortalama fiyat. İki bin yirmi iki tavanı ayrı nesnedir ve doğrulanmamıştır.</div>
+</section>
+
+<section class="sahne" id="taslak">
+  <div class="ust"><span>07 · Boş oda</span><span class="rozet taslak">çekmece · yürürlükte değil</span></div>
+  <h2>Boş oda için bir taslak var. Mühürsüz.</h2>
+  <div class="govde">
+    <div>
+      <ul>
+        <li>Oturduğun oda muaftır. Belgen yoksa muafiyet düşer.</li>
+        <li>Boş oda: yılda, beyan değerinin yüzde biri. Lüks boş oda: yüzde beş.</li>
+        <li>Teklifi reddedebilirsin. Red, bedeli durdurmaz.</li>
+        <li>El koyma değildir. Kamulaştırma değildir. Sahip evinde kalabilir.</li>
+      </ul>
+      <p class="halk">Işık yanmıyor ve kimse oturmuyorsa oda boş sayılır. Muafiyet dilekçe değil, belgedir. Hastalık, tadilat, miras, satışa çıkmış oda sınırlı süreyle dışarıda kalır.</p>
+    </div>
+    <div>
+      <div class="damga">TASLAK</div>
+      <p class="alt">Oranlar gözlem değil, eşiktir. İrlanda’da işaretlenen evlerin küçük bir kısmı bedel ödemiştir. İstanbul için yazılan tahsilat bunun birkaç katıdır. Varsayım, yasa değildir.</p>
+    </div>
+  </div>
+  <div class="dipnot">Metin kendi üstüne “yürürlük taslağı değil” yazar. Finansal sistem ve senet bu metne girmez.</div>
+</section>
+
+<section class="sahne" id="luks">
+  <div class="ust"><span>08 · Ayrı madde</span><span class="rozet taslak">şok tek odada</span></div>
+  <h2>Lüks boş odanın bedeli ayrı bir maddedir. Kese de oradadır.</h2>
+  <div class="govde">
+    <div>
+      <ul>
+        <li>Mahkeme yalnız o maddeyi kaldırırsa genel bedel kâğıtta kalır.</li>
+        <li>Yerleştirme de kalır. Oturmuş olan çıkarılmaz.</li>
+        <li>Model, paranın büyük kısmının lüks bedelden geldiğini söyler.</li>
+        <li>Yalnız lüksün kalkması, bütün bedelin kalkmasına yakın bir yara bırakır.</li>
+      </ul>
+      <p class="halk">Ayrı madde, yangını tek odaya hapsetmek içindir. Para o odadaysa, oda düşünce evin lambası da söner. Taslak bu gerilimi saklamaz.</p>
+    </div>
+    <div class="kart"><b>İki oda</b><p>Biri genel, biri lüks. Kapıları ayrı. Cüzdan lüks odanın cebindedir. Kapı düşünce cüzdan da düşer.</p></div>
+  </div>
+  <div class="dipnot">Ayrılabilirlik, taslağın şok hükmüdür. Ölçülmüş tahsilat değildir.</div>
+</section>
+
+<section class="sahne" id="kapi">
+  <div class="ust"><span>09 · Ölçü kapısı</span><span class="rozet taslak">önce mahalle</span></div>
+  <h2>Taslak bütün şehri bir günde açmaz.</h2>
+  <div class="kartlar">
+    <div class="kart"><b>1</b><p>Önce bir mahalle. İlk yıl bedel yarıdır.</p></div>
+    <div class="kart"><b>2</b><p>Ölç. Dört mandal birden tutacak: katılım, tahsilat, oturanın ödemesi, gelirin desteği taşıması.</p></div>
+    <div class="kart"><b>3</b><p>Tutarsa avlu genişler. Tutmazsa yeni yerleştirme durur. Oturmuş olan kalır.</p></div>
+  </div>
+  <p class="halk">Bu, başarısızlığın gizlenmesi değildir. Ölçülmemiş bir tahsilatın bütün şehre yayılmamasıdır. Lüks tahsilat hiçbir yerde ölçülmedi. Pilot, o ölçümün kendisi olmak için konmuştur.</p>
+  <div class="dipnot">Kapı tutmazsa kapsam büyümez. Yerleşmiş haneler korunur. Maliyet, mevcut hane kadardır.</div>
+</section>
+
+<section class="sahne" id="kagit">
+  <div class="ust"><span>10 · Kâğıt</span><span class="rozet bos">kilitli satır duruyor</span></div>
+  <h2>Kâğıt senet bu taslağa girmez. Ayrı dosya da yürürlük metni değildir.</h2>
+  <div class="govde">
+    <div>
+      <ul>
+        <li>Taslağın ilk satırı: finansal sistem ve senet bu metne girmez.</li>
+        <li>Ayrı not: anapara fiyat sepetiyle yürür. Reel getiri sıfırdır. Hedef tutarsa küçük bir ödül vardır.</li>
+        <li>Gönüllü katılımda bu kâğıt, mevduatın cazibesiyle yarışamaz.</li>
+        <li>Katılım, kâğıdın tatlılığından değil, boş tutma bedelinin baskısından gelir.</li>
+      </ul>
+      <p class="halk">Tasarım notu, kilitli satırı açmaz. Satır hâlâ modellenmedi der. Not, o cümlenin yerine geçmez.</p>
+    </div>
+    <div class="kart"><b>Çekmece ayrı</b><p>Bir çekmecede boş oda taslağı. Ötekinde kâğıdın tasarımı. İkisi de mühürsüz. Birbirinin kilidini açmaz.</p></div>
+  </div>
+  <div class="dipnot">Senet dosyası 2026-10-05 tasarım notudur. Kilitli adım satırı ayrıca durur.</div>
+</section>
+
+<section class="sahne" id="sinav">
+  <div class="ust"><span>11 · Boş sınav</span><span class="rozet bos">doldurulmadı</span></div>
+  <h2>Mülkiyet ve vergi sınavı verilmedi.</h2>
+  <div class="govde tek">
+    <div class="kartlar">
+      <div class="kart"><b>Mülkiyet</b><p>Anayasanın otuz beşinci maddesi. Taslak, sınavın ayrı olduğunu yazar. Model kâğıdı doldurmaz.</p></div>
+      <div class="kart"><b>Vergi</b><p>Yetmiş üçüncü madde. Bedel vergi midir, harç mıdır. Adı konmamıştır.</p></div>
+      <div class="kart"><b>Oran</b><p>Yüzde beşlik lüks bedel, orantı itirazına açıktır. Etkin tahsilat modelin en zayıf girdisidir.</p></div>
+    </div>
+    <p class="halk">Pilot verisi gelmeden taslak hipotezdir. Bu cümleyi dosya kendi eliyle yazmıştır. Varsayım, hüküm değildir.</p>
+  </div>
+  <div class="dipnot">İrlanda’da işaretlenenin küçük bir payı bedele kalmıştır. İstanbul varsayımı bunun birkaç katıdır.</div>
+</section>
+
+<section class="sahne" id="son">
+  <div class="ust"><span>12 · Söylenecek cümle</span><span class="rozet">üç kilit boş</span></div>
+  <h2>Defter yeri gösterir. Hukuk, silmeye kimin izin verdiğini.</h2>
+  <ul>
+    <li>Birinci kapının anahtarı sistem metninde yoktur. Bir dükkân dosyasında, alacağın devri ve iki imza diye durur.</li>
+    <li>Duvara asılmış kurallar bütün masayı silmez. Faizi durdurmaz.</li>
+    <li>Kiradaki ip doğrulanmıştır. Geçmiş on iki ayın sepetine bağlıdır.</li>
+    <li>Boş oda metni taslaktır. Teklif reddedilebilir. El koyma değildir.</li>
+    <li>Mülkiyet ve vergi sınavı verilmemiştir. Üç kilit boşken bu bir kanun önerisi değildir.</li>
+  </ul>
+  <p class="halk">Anahtar, çekmecede duran bir iskelettir. Mühür, ölçüm kapısı dolunca konuşulur.</p>
+  <div class="dipnot">Zarar Teorisi · dosyadaki hukuk · 13 Ekim 2026. Politika reçetesi değildir.</div>
+</section>
+
+</div>
+<div class="serit">DOSYADAKİ HUKUK · YÜRÜRLÜKTEKİ KANUN DEĞİL</div>
+<script>
+const q = new URLSearchParams(location.search);
+if (q.has("kare")) {
+  document.body.classList.add("kare");
+  const el = document.getElementById(q.get("kare"));
+  if (el) el.classList.add("aktif");
+}
+</script>
+</body>
+</html>
