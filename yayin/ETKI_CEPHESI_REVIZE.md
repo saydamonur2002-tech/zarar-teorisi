@@ -1,7 +1,7 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `349a0d3a12d4e42c`, temiz kurulumda 3 geçiş),
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `684e3a601f70423b`, temiz kurulumda 3 geçiş),
 **61 test geçti** (27 mevcut + 34 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
@@ -241,6 +241,16 @@ Aynı varyantlar; AB için bölünme payı (1 − p) ile kalan pay. Sınama sır
 - **Fransa kenarda** (kayıp-dışı varyantlarda bile kazanç ×0,5 ile bant içi; k\* 0,50–0,57); **İsrail** A ve C'de dayanıklı, B'de kazanç ×0,5 ile bant içine düşer (en kötü marj −0,06).
 - **k\* (kazanç çarpanı):** ABD 0,04, Suudi Arabistan 0,09–0,12, BAE 0,15–0,17, AB 0,17–0,19: kazançları ana raporun %4–19'una inmeden bant dışı kazanan; bu **büyüklük** etkisi (ABD'nin kazancı 1,9–3,6, bandı 0,09–0,13), ölçüm güvenilirliği değil.
 - **Genel okuma:** sınıf iddiasının gücü kayıp tarafının bilinmemesiyle sınırlı. Kayıp modellendiği tek büyük kazananda (İran) iddia sağlam; kayıp bilinmeyen sekiz kazananda iddia "kayıp küçükse" koşullu.
+
+## Kaybı bilinmeyenler referans oranla modellendi
+Önceki: kaybı modelde olmayan sekiz aktör (Çin, Rusya, ABD, AB, BAE, Suudi Arabistan, Fransa, Yunanistan) `havza_kayip = 0` ile yaşıyor, yalnız sınamada kayıp varyantı uygulanıyordu. Şimdi **ana modelde** kayıp vekili var:
+- **Referans:** kaybı ve kazancı tam modellenmiş, AB bölünmesinden bağımsız İran, İsrail, Mısır'ın kayıp/kazanç oranı (`kayip_referans_orani`): A medyan 0,29 (min 0,23, maks 1,19), B 0,45 (0,29 – 1,56), C 0,22 (0,20 – 1,03). Maksimum hep Mısır.
+- **Kayıp vekili** = medyan oran × aktörün kazancı (`havza_kayip_referans`); belirsizliği = (maks − min)/2 × kazanç (`kayip_referans_belirsizlik`), bant bileşeni olarak √(kural² + belirsiz pay² + kayıp belirsizliği²). `net_birlesik_referansli = kazanç − vekil kayıp`. **`havza_kayip` alanı sıfır kalır** (modelli kayıp ile vekil karıştırılmaz; stok-akış kapanışı ve toplamlar etkilenmez). Raporlarda `≈…‡` ile işaretli, kesin değil.
+- **Kısmi kapsam proxy'si** (bant medyanı) yalnız kural + belirsiz pay bandını temsil eder; kayıp belirsizliği dahil edilmedi (aksi halde kayıp bandı kısmi kapsamlı aktörlere de bulaşırdı).
+- **Sınıf etkisi (C):** Çin net 2,63 → **2,04** (bant ±1,57), Rusya 2,53 → 1,96 (±1,54), ABD 1,92 → 1,50 (±0,81), BAE 0,85 → 0,66, Suudi Arabistan 0,70 → 0,54, AB 0,81 → 0,63, Fransa 0,35 → 0,27: hepsi hâlâ bant dışı kazanan ama marjlar küçüldü. **Yunanistan bant içine düştü** (0,13 ± 0,17).
+- **A:** Çin ve Rusya kazanan (marj ≈ 0,25, k\* ≈ 0,93: kazançlarının %7'si silinse bant içine); Fransa ve Yunanistan bant içi. **B:** kaybı modelde olmayan sekizin **hiçbiri bant dışı kazanan değil** (Çin 2,41 ± 3,25 …); B'de yalnız İran kazanan kalır, İsrail kenarda.
+- Karar skoru (56,7), karar ve E[TR net] aynı; halka-çevre koalisyonu bileşeni (İran, İsrail) etkilenmedi.
+- `BANT_SINAMA`: taban artık referans-kayıplı; varyantlar "bilinmeyen kayıp = 0 (yalnız modelli)" ve "en yüksek referans oran"; r\* (kayıp belirsizliği hariç diğer bant) korunur: Çin 0,57, Rusya 0,56, ABD 0,96 (C).
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
