@@ -30,7 +30,7 @@ Denklem: g = α + β · AOFM gecikmesi. g, çeyrek ortalaması USD/TRY'nin log f
 - Anket: yıl sonu hedefleri `bes_yil_senaryo.csv` içinden okunur. 2026-Q4 anket yılı, sonrası yıl sonuna eşit adım. Son anket yılından sonra faiz sabit kalır.
 - 2026-Q3 faizi iki yolda da ölçülmüş çeyrek ortalamasıdır. Kur çapası 2026-Q3 ölçülmüş çeyrek ortalamasıdır. İlk tahmin 2026-Q4.
 
-Beş adım bu faizi üretmez. `bes_yil_senaryo` faiz hücresi `modellenmedi` kalır: o hücre beş adımın kendi düğmesidir.
+Bu denklem beş adımın faizini üretmez. O düğme `adim_faiz_tepki.py` içindedir. `bes_yil_senaryo` faiz hücresi durur: o dosya beş adımın kendi satırını anketle doldurur.
 
 ## Ne denmez
 

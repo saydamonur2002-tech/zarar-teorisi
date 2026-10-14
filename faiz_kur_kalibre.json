@@ -153,7 +153,7 @@
     "beta": "kalibrasyon_2021Q1_2024Q4",
     "sinav": "2025Q1_2026Q2",
     "reel": "tutmadi",
-    "bes_adim_faiz": "modellenmedi",
+    "bes_adim_faiz": "adim_faiz_tepki",
     "ileri_faiz_son": "varsayim_son_ay",
     "ileri_faiz_anket": "anket"
   }

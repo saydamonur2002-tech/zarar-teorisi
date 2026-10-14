@@ -20,6 +20,7 @@ from pathlib import Path
 import pandas as pd
 
 import faiz_fatura_kalibre as fk
+import adim_faiz_tepki as tepki
 import faiz_kur_kalibre as fk_kur
 
 KOK = Path(__file__).resolve().parent
@@ -138,7 +139,8 @@ def _prim() -> dict[str, dict]:
     return out
 
 
-def _satirlar(fat: dict, kad: dict, duran: dict, prim: dict, kur_son: dict, kur_anket: dict) -> list[dict]:
+def _satirlar(fat: dict, kad: dict, duran: dict, prim: dict, kur_son: dict, kur_anket: dict,
+               kur_adim_ana: dict, kur_adim_rejim: dict) -> list[dict]:
     es = {
         "2026": {
             "acik_adim": "hicbiri",
@@ -194,6 +196,11 @@ def _satirlar(fat: dict, kad: dict, duran: dict, prim: dict, kur_son: dict, kur_
             "hazine_faiz_kur_anket": kur_anket[ys]["toplam"],
             "hazine_faiz_kur_anket_dis": kur_anket[ys]["dis"],
             "kur_faiz_anket_yil_sonu": kur_anket[ys]["kur_yil_sonu"],
+            "hazine_adim_ana": kur_adim_ana[ys]["toplam"],
+            "hazine_adim_rejim": kur_adim_rejim[ys]["toplam"],
+            "hazine_adim_rejim_dis": kur_adim_rejim[ys]["dis"],
+            "kur_adim_ana_yil_sonu": kur_adim_ana[ys]["kur_yil_sonu"],
+            "kur_adim_rejim_yil_sonu": kur_adim_rejim[ys]["kur_yil_sonu"],
             **es[ys],
             "k2_brut_ust": kad.get(ys, {}).get("k2_brut_ust", 0.0),
             "f4_fark_kumul": kad.get(ys, {}).get("f4_fark_kumul", 0.0),
@@ -204,7 +211,7 @@ def _satirlar(fat: dict, kad: dict, duran: dict, prim: dict, kur_son: dict, kur_
     return rows
 
 
-def _md(rows: list[dict], fat: dict, fk_blob: dict) -> str:
+def _md(rows: list[dict], fat: dict, fk_blob: dict, tp: dict) -> str:
     def h(y: int) -> dict:
         return next(r for r in rows if r["yil"] == y)
 
@@ -215,7 +222,7 @@ def _md(rows: list[dict], fat: dict, fk_blob: dict) -> str:
         "",
         "Beş adım kendi yılında açılır. Hazine faiz faturası o yıllarda ayrı yürür. İki sütun toplanmaz.",
         "",
-        "Fatura: r 2025 kuponu (kalibrasyon). Eğim 2024-Q4 → 2026-Q2 (ölçüm). Beş adımın faiz düğmesi `modellenmedi`. Faiz → kur bağı kalibre edildi ve dış bacağa eklendi.",
+        "Fatura: r 2025 kuponu (kalibrasyon). Eğim 2024-Q4 → 2026-Q2 (ölçüm). Faiz → kur bağı kalibre edildi. Beş adımın faiz düğmesi ayrıca kalibre edildi: ana pencerede β sıfırdan ayrı değil.",
         "",
         "## Hazine faturası, milyar TL",
         "",
@@ -253,6 +260,20 @@ def _md(rows: list[dict], fat: dict, fk_blob: dict) -> str:
         "",
         f"Anket faizi 2026 yıl sonu 35,07, 2027 yıl sonu 27,16, 2028 yıl sonu 22,43. 2029 anketi yoktur; faiz 22,43’te durur. Katsayı negatif olduğu için faiz inince çeyrek değer kaybı büyür. 2027-Q4 anket kuru 58,60’tır. Aynı çeyrekte bu denklem, anket faiziyle {a['kur_faiz_anket_yil_sonu']:.1f} üretir.",
         "",
+        "## Beş adımın faiz düğmesi",
+        "",
+        f"Ana tepki 2018-Q1 → 2024-Q4: β {tp['ana']['beta']:.3f}, se {tp['ana']['se_beta']:.3f}. Sıfırdan ayrı değil. 2029 faturası bu yolda **{c['hazine_adim_ana']:.0f}**. Faiz 37 sütunu {c['hazine_faiz_kur_son']:.0f}. Fark **{c['hazine_adim_ana'] - c['hazine_faiz_kur_son']:+.1f}**.",
+        "",
+        f"2023-Q3 → 2024-Q4 rejimi, n={tp['rejim']['n']}. Durağan hal {tp['rejim']['uzun_donem']:.2f}. K1 ve K3, 2029’da enflasyonu yıl ortalamasında {tp['yil']['2029']['enf']:.1f} puan kaydırır; AOFM **{tp['yil']['2029']['aofm_rejim']:+.2f}** puan. Kur yıl sonu {c['kur_adim_rejim_yil_sonu']:.1f}. Fatura **{c['hazine_adim_rejim']:.0f}** (dış {c['hazine_adim_rejim_dis']:.0f}).",
+        "",
+        "| Yıl | Fatura, ana β | Fatura, 2023 rejimi | Kur, 2023 rejimi |",
+        "| --- | ---: | ---: | ---: |",
+        f"| 2027 | {a['hazine_adim_ana']:.0f} | {a['hazine_adim_rejim']:.0f} | {a['kur_adim_rejim_yil_sonu']:.1f} |",
+        f"| 2028 | {b['hazine_adim_ana']:.0f} | {b['hazine_adim_rejim']:.0f} | {b['kur_adim_rejim_yil_sonu']:.1f} |",
+        f"| 2029 | {c['hazine_adim_ana']:.0f} | {c['hazine_adim_rejim']:.0f} | {c['kur_adim_rejim_yil_sonu']:.1f} |",
+        "",
+        "Rejim sınavında 2025-Q2 tahmini ölçülenin 5,6 puan altındadır. Bu sütun o rejimin durağan halidir.",
+        "",
         "## Beş adım, aynı yıllar",
         "",
         "| Yıl | Açık adım | Adımın kendi sayısı | Birim | Etiket |",
@@ -275,7 +296,7 @@ def _md(rows: list[dict], fat: dict, fk_blob: dict) -> str:
         "- Özel dış borç akışı durunca fatura değişir denmez. Üç yılda da fark 0,0.",
         "- Adım 3’ün 1.208’i 2029 Hazine faizinden düşülür denmez. Ödeyen bankadır.",
         "- Prim, duran faiz ve Hazine kuponu toplanır denmez.",
-        "- Beş adım faizi indirdi ya da kuru durdurdu denmez. Faiz düğmesi `modellenmedi`. Eklenen bağ, ölçülmüş AOFM’den kura gider.",
+        "- Beş adım faizi ölçülmüş biçimde indirdi denmez. Ana β sıfırdan ayrı değildir. 2023 rejimi n=6’dır.",
         "- Anket faizi inince kur yavaşlar denmez. Kalibre edilen katsayı negatiftir: faiz inince değer kaybı artar.",
         "- Stok yüzde 20 silindi denmez.",
         "",
@@ -289,16 +310,20 @@ def main() -> None:
     fk_blob = fk_kur.main()
     kur_son = _fatura_kur(panel, kal, fk_blob["kur_yol"]["son"])
     kur_anket = _fatura_kur(panel, kal, fk_blob["kur_yol"]["anket"])
+    tp = tepki.main()
+    kur_adim_ana = _fatura_kur(panel, kal, tp["kur_yol"]["ana"])
+    kur_adim_rejim = _fatura_kur(panel, kal, tp["kur_yol"]["rejim"])
     kad = _kademe()
     duran = _duran_faiz()
     prim = _prim()
-    rows = _satirlar(fat, kad, duran, prim, kur_son, kur_anket)
+    rows = _satirlar(fat, kad, duran, prim, kur_son, kur_anket, kur_adim_ana, kur_adim_rejim)
     pd.DataFrame(rows).to_csv(KOK / "orta_vade_senaryo.csv", index=False)
     blob = {
         "pencere": "2027-2029",
         "etiket": {
             "fatura": "kalibrasyon_2025_kimlik_olculen_egim",
-            "bes_adim_faiz": "modellenmedi",
+            "bes_adim_faiz_ana": "kalibrasyon_beta_sifirdan_ayri_degil",
+            "bes_adim_faiz_rejim": "kalibrasyon_2023_n6",
             "faiz_kur": "kalibrasyon_aofm_gecikme",
             "aktarim": "varsayim_ozel_usd_akisi_sifir",
             "adim3": "varsayim_kappa_0.25",
@@ -308,15 +333,17 @@ def main() -> None:
         "faturalar": fat,
         "fatura_faiz_kur_son": kur_son,
         "fatura_faiz_kur_anket": kur_anket,
+        "fatura_adim_ana": kur_adim_ana,
+        "fatura_adim_rejim": kur_adim_rejim,
         "kademe_yil_sonu": kad,
         "duran_faiz_kappa_025": duran,
         "prim_theta_025": prim,
         "satirlar": rows,
     }
     (KOK / "orta_vade_senaryo.json").write_text(json.dumps(blob, ensure_ascii=False, indent=2), encoding="utf-8")
-    (KOK / "ORTA_VADE_SENARYO.md").write_text(_md(rows, fat, fk_blob), encoding="utf-8")
+    (KOK / "ORTA_VADE_SENARYO.md").write_text(_md(rows, fat, fk_blob, tp), encoding="utf-8")
     for r in rows:
-        print(r["yil"], r["hazine_mevcut"], r["hazine_faiz_kur_son"], r["hazine_faiz_kur_anket"], r["kur_faiz_son_yil_sonu"], r["kur_faiz_anket_yil_sonu"])
+        print(r["yil"], r["hazine_faiz_kur_son"], r["hazine_adim_ana"], r["hazine_adim_rejim"], r["kur_adim_rejim_yil_sonu"])
 
 
 if __name__ == "__main__":

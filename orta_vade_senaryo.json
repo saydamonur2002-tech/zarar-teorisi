@@ -2,7 +2,8 @@
   "pencere": "2027-2029",
   "etiket": {
     "fatura": "kalibrasyon_2025_kimlik_olculen_egim",
-    "bes_adim_faiz": "modellenmedi",
+    "bes_adim_faiz_ana": "kalibrasyon_beta_sifirdan_ayri_degil",
+    "bes_adim_faiz_rejim": "kalibrasyon_2023_n6",
     "faiz_kur": "kalibrasyon_aofm_gecikme",
     "aktarim": "varsayim_ozel_usd_akisi_sifir",
     "adim3": "varsayim_kappa_0.25",
@@ -209,6 +210,66 @@
       "kur_yil_sonu": 139.39
     }
   },
+  "fatura_adim_ana": {
+    "2026": {
+      "ic": 2136.7,
+      "dis": 310.2,
+      "diger": 299.7,
+      "toplam": 2746.6,
+      "kur_yil_sonu": 50.77
+    },
+    "2027": {
+      "ic": 2729.9,
+      "dis": 429.6,
+      "diger": 382.9,
+      "toplam": 3542.4,
+      "kur_yil_sonu": 65.8
+    },
+    "2028": {
+      "ic": 3342.0,
+      "dis": 598.8,
+      "diger": 468.7,
+      "toplam": 4409.5,
+      "kur_yil_sonu": 85.32
+    },
+    "2029": {
+      "ic": 3954.1,
+      "dis": 830.7,
+      "diger": 554.5,
+      "toplam": 5339.3,
+      "kur_yil_sonu": 110.66
+    }
+  },
+  "fatura_adim_rejim": {
+    "2026": {
+      "ic": 2136.7,
+      "dis": 310.2,
+      "diger": 299.7,
+      "toplam": 2746.6,
+      "kur_yil_sonu": 50.77
+    },
+    "2027": {
+      "ic": 2729.9,
+      "dis": 430.6,
+      "diger": 382.9,
+      "toplam": 3543.4,
+      "kur_yil_sonu": 66.14
+    },
+    "2028": {
+      "ic": 3342.0,
+      "dis": 607.2,
+      "diger": 468.7,
+      "toplam": 4417.9,
+      "kur_yil_sonu": 86.94
+    },
+    "2029": {
+      "ic": 3954.1,
+      "dis": 855.5,
+      "diger": 554.5,
+      "toplam": 5364.1,
+      "kur_yil_sonu": 114.75
+    }
+  },
   "kademe_yil_sonu": {
     "2027": {
       "K1": 1.0,
@@ -284,6 +345,11 @@
       "hazine_faiz_kur_anket": 2746.6,
       "hazine_faiz_kur_anket_dis": 310.2,
       "kur_faiz_anket_yil_sonu": 50.77,
+      "hazine_adim_ana": 2746.6,
+      "hazine_adim_rejim": 2746.6,
+      "hazine_adim_rejim_dis": 310.2,
+      "kur_adim_ana_yil_sonu": 50.77,
+      "kur_adim_rejim_yil_sonu": 50.77,
       "acik_adim": "hicbiri",
       "adim_nesne": "olcum ve kalibrasyon yili",
       "adim_sayi": 0.0,
@@ -314,6 +380,11 @@
       "hazine_faiz_kur_anket": 3550.8,
       "hazine_faiz_kur_anket_dis": 438.0,
       "kur_faiz_anket_yil_sonu": 68.24,
+      "hazine_adim_ana": 3542.4,
+      "hazine_adim_rejim": 3543.4,
+      "hazine_adim_rejim_dis": 430.6,
+      "kur_adim_ana_yil_sonu": 65.8,
+      "kur_adim_rejim_yil_sonu": 66.14,
       "acik_adim": "1 akis + 2",
       "adim_nesne": "K1 itis freni, yil sonu tempo",
       "adim_sayi": 2058.5,
@@ -344,6 +415,11 @@
       "hazine_faiz_kur_anket": 4466.0,
       "hazine_faiz_kur_anket_dis": 655.3,
       "kur_faiz_anket_yil_sonu": 96.46,
+      "hazine_adim_ana": 4409.5,
+      "hazine_adim_rejim": 4417.9,
+      "hazine_adim_rejim_dis": 607.2,
+      "kur_adim_ana_yil_sonu": 85.32,
+      "kur_adim_rejim_yil_sonu": 86.94,
       "acik_adim": "1 stok tavani + 3",
       "adim_nesne": "adim 3 duran faiz, kappa 0.25, banka yazar",
       "adim_sayi": 754.8,
@@ -374,6 +450,11 @@
       "hazine_faiz_kur_anket": 5516.7,
       "hazine_faiz_kur_anket_dis": 1008.1,
       "kur_faiz_anket_yil_sonu": 139.39,
+      "hazine_adim_ana": 5339.3,
+      "hazine_adim_rejim": 5364.1,
+      "hazine_adim_rejim_dis": 855.5,
+      "kur_adim_ana_yil_sonu": 110.66,
+      "kur_adim_rejim_yil_sonu": 114.75,
       "acik_adim": "4",
       "adim_nesne": "adim 4 prim bandi, theta 0.25, pi 0.02-0.05",
       "adim_sayi": 90.8,

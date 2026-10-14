@@ -2,7 +2,7 @@
 
 Beş adım kendi yılında açılır. Hazine faiz faturası o yıllarda ayrı yürür. İki sütun toplanmaz.
 
-Fatura: r 2025 kuponu (kalibrasyon). Eğim 2024-Q4 → 2026-Q2 (ölçüm). Beş adımın faiz düğmesi `modellenmedi`. Faiz → kur bağı kalibre edildi ve dış bacağa eklendi.
+Fatura: r 2025 kuponu (kalibrasyon). Eğim 2024-Q4 → 2026-Q2 (ölçüm). Faiz → kur bağı kalibre edildi. Beş adımın faiz düğmesi ayrıca kalibre edildi: ana pencerede β sıfırdan ayrı değil.
 
 ## Hazine faturası, milyar TL
 
@@ -40,6 +40,20 @@ Denklem: g = 13.41 − 0.187 · AOFM gecikmesi. Pencere 2021-Q1 → 2024-Q4. Sı
 
 Anket faizi 2026 yıl sonu 35,07, 2027 yıl sonu 27,16, 2028 yıl sonu 22,43. 2029 anketi yoktur; faiz 22,43’te durur. Katsayı negatif olduğu için faiz inince çeyrek değer kaybı büyür. 2027-Q4 anket kuru 58,60’tır. Aynı çeyrekte bu denklem, anket faiziyle 68.2 üretir.
 
+## Beş adımın faiz düğmesi
+
+Ana tepki 2018-Q1 → 2024-Q4: β 0.032, se 0.054. Sıfırdan ayrı değil. 2029 faturası bu yolda **5339**. Faiz 37 sütunu 5338. Fark **+1.3**.
+
+2023-Q3 → 2024-Q4 rejimi, n=6. Durağan hal 0.63. K1 ve K3, 2029’da enflasyonu yıl ortalamasında -4.5 puan kaydırır; AOFM **-2.83** puan. Kur yıl sonu 114.8. Fatura **5364** (dış 856).
+
+| Yıl | Fatura, ana β | Fatura, 2023 rejimi | Kur, 2023 rejimi |
+| --- | ---: | ---: | ---: |
+| 2027 | 3542 | 3543 | 66.1 |
+| 2028 | 4410 | 4418 | 86.9 |
+| 2029 | 5339 | 5364 | 114.8 |
+
+Rejim sınavında 2025-Q2 tahmini ölçülenin 5,6 puan altındadır. Bu sütun o rejimin durağan halidir.
+
 ## Beş adım, aynı yıllar
 
 | Yıl | Açık adım | Adımın kendi sayısı | Birim | Etiket |
@@ -62,6 +76,6 @@ Anket faizi 2026 yıl sonu 35,07, 2027 yıl sonu 27,16, 2028 yıl sonu 22,43. 20
 - Özel dış borç akışı durunca fatura değişir denmez. Üç yılda da fark 0,0.
 - Adım 3’ün 1.208’i 2029 Hazine faizinden düşülür denmez. Ödeyen bankadır.
 - Prim, duran faiz ve Hazine kuponu toplanır denmez.
-- Beş adım faizi indirdi ya da kuru durdurdu denmez. Faiz düğmesi `modellenmedi`. Eklenen bağ, ölçülmüş AOFM’den kura gider.
+- Beş adım faizi ölçülmüş biçimde indirdi denmez. Ana β sıfırdan ayrı değildir. 2023 rejimi n=6’dır.
 - Anket faizi inince kur yavaşlar denmez. Kalibre edilen katsayı negatiftir: faiz inince değer kaybı artar.
 - Stok yüzde 20 silindi denmez.
