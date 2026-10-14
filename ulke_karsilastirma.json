@@ -1,0 +1,109 @@
+{
+  "kural": {
+    "yabanci_esik": 0.2,
+    "doviz_esik": 0.2,
+    "etiket": "karsilastirma_kurali",
+    "anlam": "Bes adim bu ulkelerde olculmedi. Test, yerli para alacaklisinin yerli olmasi ve doviz bacaginin disarida kalmasidir."
+  },
+  "grup": {
+    "yerli_para_bacagi": [
+      "Türkiye"
+    ],
+    "yazilir": [
+      "Japonya",
+      "Çin",
+      "Brezilya"
+    ],
+    "yabanci_alacakli_buyuk": [
+      "ABD"
+    ],
+    "doviz_bacagi_disarida": [
+      "Arjantin"
+    ]
+  },
+  "yazilir": [
+    "Japonya",
+    "Çin",
+    "Brezilya"
+  ],
+  "satirlar": [
+    {
+      "ulke": "Türkiye",
+      "stok": "merkezi yönetim iç borç",
+      "donem": "2025-12",
+      "yabanci_pay": 0.076,
+      "yerli_pay": 0.924,
+      "doviz_pay": 0.2141,
+      "yerli_para_pay": 0.7859,
+      "etiket": "yerli_para_bacagi",
+      "kaynak": "Hazine, Kamu Borç Yönetimi Raporu 2026, s. iç borç kompozisyonu",
+      "url": "https://ms.hmb.gov.tr/uploads/2026/08/Kamu-borc-Yonetimi-Raporu-2026-2f52a814a2d37854.pdf",
+      "not": "Yurt dışı yerleşik payı yüzde 7,6. İç borcun 1.745,8 / 8.152,8'i döviz. ROW→F 6.575 ve ROW→GY 3.131 başka stoktur, bu paydaya girmez."
+    },
+    {
+      "ulke": "Japonya",
+      "stok": "JGB + T-bill",
+      "donem": "2026-06",
+      "yabanci_pay": 0.1313,
+      "yerli_pay": 0.8687,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yazilir",
+      "kaynak": "MOF holder tablosu, BOJ flow of funds, 17 Eylül 2026 ön rakam",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/reference/Others/holdings01.pdf",
+      "not": "Yabancı 149,9 / 1.142,0 trilyon yen. T-bill hariç JGB'de yabancı yüzde 7,9 (79,9 / 1.006,5). BOJ, JGB'nin yüzde 46,7'si. Kâğıt yen cinsidir."
+    },
+    {
+      "ulke": "ABD",
+      "stok": "Treasury",
+      "donem": "2025-06",
+      "yabanci_pay": 0.34,
+      "yerli_pay": 0.66,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "ABD Hazine / Fed, yabancı portföy anketi, 30 Haziran 2025",
+      "url": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/shl2025r.pdf",
+      "not": "Rapor: yabancılar Treasury'nin yüzde 34'ü. Uzun vadeli Treasury tutma 7.665 milyar dolar. Kâğıt dolar cinsidir."
+    },
+    {
+      "ulke": "Çin",
+      "stok": "tahvil saklama, bütün piyasa",
+      "donem": "2025-12",
+      "yabanci_pay": 0.0178,
+      "yerli_pay": 0.9822,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yazilir",
+      "kaynak": "PBOC, Xinhua 18 Şubat 2026",
+      "url": "http://english.people.com.cn/n3/2026/0218/c90000-20426924.html",
+      "not": "Yurt dışı kurum saklaması 3,5 / 196,7 trilyon yuan, yüzde 1,8. Stok bütün tahvil piyasasıdır, yalnız hazine kâğıdı değildir. Kâğıt yuan cinsidir."
+    },
+    {
+      "ulke": "Arjantin",
+      "stok": "merkezi idare brüt borç",
+      "donem": "2025-12",
+      "yabanci_pay": 0.3431,
+      "yerli_pay": 0.6569,
+      "doviz_pay": 0.5783,
+      "yerli_para_pay": 0.4217,
+      "etiket": "doviz_bacagi_disarida",
+      "kaynak": "Ekonomi Bakanlığı, deuda pública 31-12-2025, A.4.5 ve A.1.4",
+      "url": "https://www.argentina.gob.ar/sites/default/files/deuda_publica_31-12-2025.xlsx",
+      "not": "Yurt dışı yerleşik 155,3 / 452,7 milyar dolar, yüzde 34,3. Döviz 261,8 / 452,7. Yerli para yüzde 42,2. Para ve yerleşim çaprazı bu iki tabloda yok."
+    },
+    {
+      "ulke": "Brezilya",
+      "stok": "federal kamu borcu",
+      "donem": "2026-08",
+      "yabanci_pay": 0.0991,
+      "yerli_pay": 0.9009,
+      "doviz_pay": 0.0375,
+      "yerli_para_pay": 0.9625,
+      "etiket": "yazilir",
+      "kaynak": "Tesouro Nacional, Federal Public Debt monthly, Ağustos 2026",
+      "url": "https://cdn.tesouro.gov.br/sistemas-internos/apex/producao/sistemas/thot/arquivos/publicacoes/55920_2565378/Texto_RMD_Ingles%20Aug26.pdf",
+      "not": "Yerleşik olmayanlar DFPD'nin yüzde 9,91'i. Dış federal borç stokun yüzde 3,75'i (348,3 milyar real, 67,2 milyar dolar). DFPD 8.944,5 milyar real."
+    }
+  ]
+}

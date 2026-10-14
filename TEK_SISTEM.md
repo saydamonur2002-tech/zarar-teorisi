@@ -46,3 +46,5 @@ Ayrıntı ve sayılar `TEK_SISTEM_KOPRU.md` içinde. Adım 4–5'in HEKİS'teki 
 ## Sınır
 
 Kart borcunu, döviz sözleşmesini ve Hazine faizini kapatmaz. Enflasyonda tavan birkaç puandır. 20 vaadi verilmez.
+
+Yerli para alacaklısının yeri: `python3 ulke_karsilastirma.py` → [ULKE_KARSILASTIRMA.md](ULKE_KARSILASTIRMA.md). Beş adım o ülkelerde ölçülmedi. Test, alacaklı payıdır.
