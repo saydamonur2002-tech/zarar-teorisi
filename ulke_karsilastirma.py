@@ -23,6 +23,9 @@ from pathlib import Path
 KOK = Path(__file__).resolve().parent
 YABANCI_ESIK = 0.20
 DOVIZ_ESIK = 0.20
+# Konulan aralık. Ölçülmüş yasa değildir. Nokta etiket 0,20'de kalır.
+ARALIK_MIN = 0.15
+ARALIK_MAX = 0.25
 # Döviz payı aynı stokun para kırılımından gelen satırlar. Kâğıt cinsinden
 # konan 0 bu kümeye girmez. Endonezya'da kırılım yok.
 DOVIZ_OLCULEN = {"Türkiye", "Arjantin", "Brezilya"}
@@ -308,6 +311,45 @@ def _olc(rows: list[dict], alan_satir: list[dict], alan: str, aralik: dict) -> d
     }
 
 
+def _fark(baz: dict[str, str], simdi: dict[str, str]) -> list[dict]:
+    return [
+        {"ulke": ulke, "baz": baz[ulke], "yeni": simdi[ulke]}
+        for ulke in baz
+        if baz[ulke] != simdi[ulke]
+    ]
+
+
+def _icinde(rows: list[dict], alan: str) -> list[dict]:
+    out = []
+    for r in rows:
+        if r[alan] == "":
+            continue
+        pay = float(r[alan])
+        if ARALIK_MIN <= pay <= ARALIK_MAX:
+            out.append({"ulke": r["ulke"], "donem": r["donem"], "pay": pay, "alan": alan})
+    return out
+
+
+def _bant(rows: list[dict], doviz_olculen: list[dict]) -> dict:
+    """0,15–0,25 aralığı. İki eşik birlikte kayar."""
+    baz = _kume(rows, YABANCI_ESIK, DOVIZ_ESIK)
+    alt = _kume(rows, ARALIK_MIN, ARALIK_MIN)
+    ust = _kume(rows, ARALIK_MAX, ARALIK_MAX)
+    yalniz_y = _kume(rows, ARALIK_MAX, DOVIZ_ESIK)
+    yalniz_d = _kume(rows, YABANCI_ESIK, ARALIK_MAX)
+    return {
+        "min": ARALIK_MIN,
+        "max": ARALIK_MAX,
+        "etiket": "karsilastirma_kurali",
+        "ic_yabanci": _icinde(rows, "yabanci_pay"),
+        "ic_doviz": _icinde(doviz_olculen, "doviz_pay"),
+        "min_degisen": _fark(baz, alt),
+        "max_degisen": _fark(baz, ust),
+        "max_yalniz_yabanci": _fark(baz, yalniz_y),
+        "max_yalniz_doviz": _fark(baz, yalniz_d),
+    }
+
+
 def _satir(r: dict) -> dict:
     y, d = r["yabanci_pay"], r["doviz_pay"]
     return {
@@ -339,6 +381,7 @@ def main() -> dict:
     doviz_aralik = _kenar(doviz_olculen, "doviz_pay", DOVIZ_ESIK)
     yabanci_aralik["olcum"] = _olc(rows, rows, "yabanci_pay", yabanci_aralik)
     doviz_aralik["olcum"] = _olc(rows, doviz_olculen, "doviz_pay", doviz_aralik)
+    bant = _bant(rows, doviz_olculen)
     esik = {
         "yabanci": yabanci_aralik,
         "doviz_olculen": doviz_aralik,
@@ -358,6 +401,7 @@ def main() -> dict:
             "etiket": "karsilastirma_kurali",
             "anlam": "Bes adim bu ulkelerde olculmedi. Test, yerli para alacaklisinin yerli olmasi ve doviz bacaginin disarida kalmasidir.",
         },
+        "aralik": bant,
         "esik_araligi": esik,
         "grup": grup,
         "yazilir": grup.get("yazilir", []),
@@ -379,8 +423,8 @@ def main() -> dict:
         "Çalıştır: `python3 ulke_karsilastirma.py`.",
         "",
         "Test, yerli para kâğıdının alacaklısının yerli olup olmadığıdır. Döviz sözleşmesi modelin dışında kalır. "
-        "Beş adım bu ülkelerde ölçülmedi. Eşik 0,20 karşılaştırma kuralıdır. "
-        "Kuralın oturduğu boşluk aşağıda ölçülmüştür.",
+        "Beş adım bu ülkelerde ölçülmedi. Nokta etiket 0,20 karşılaştırma kuralıdır. "
+        "Aralık 0,15 ile 0,25 arasında tutulur.",
         "",
         f"Yazılanlar: **{', '.join(grup.get('yazilir', []))}**.",
         "",
@@ -398,33 +442,35 @@ def main() -> dict:
     def yuzde(x: float) -> str:
         return f"{x:.1%}".replace(".", ",")
 
-    def puan(x: float) -> str:
-        return f"{x:.2f}".replace(".", ",")
+    def adli(farklar: list[dict]) -> str:
+        if not farklar:
+            return "0"
+        return str(len(farklar)) + ": " + ", ".join(
+            f"{d['ulke']} {ad[d['yeni']]}" for d in farklar
+        )
 
-    yo, do = yabanci_aralik["olcum"], doviz_aralik["olcum"]
+    def ic_yazi(satirlar: list[dict]) -> str:
+        if not satirlar:
+            return "0"
+        return "; ".join(f"{s['ulke']} {yuzde(s['pay'])} ({s['donem']})" for s in satirlar)
+
     md += [
         "",
-        "## Aralık ölçümü",
+        "## Aralık",
         "",
-        "Durum: ölçüm. Kesit (alt, üst] aralığında kaydırıldı. İçindeki satır, iki kenarın arasına düşen paydır.",
+        "Durum: kural. Alt **0,15**, üst **0,25**. Nokta etiket 0,20'dedir. İki eşik birlikte kayar.",
         "",
-        "| Aralık | Genişlik | İçindeki satır | 0,20 alttan | 0,20 üstten | Etiket değişen |",
-        "| --- | ---: | ---: | ---: | ---: | ---: |",
-        f"| Yurt dışı | {puan(yo['genislik_puan'])} puan | {yo['ic_satir']} | {puan(yo['kural_alttan_puan'])} | {puan(yo['kural_ustten_puan'])} | {yo['etiket_degisen']} |",
-        f"| Döviz | {puan(do['genislik_puan'])} puan | {do['ic_satir']} | {puan(do['kural_alttan_puan'])} | {puan(do['kural_ustten_puan'])} | {do['etiket_degisen']} |",
+        "| Kesit | 0,20'ye göre etiket değişen |",
+        "| --- | --- |",
+        f"| 0,15 | {adli(bant['min_degisen'])} |",
+        f"| 0,25 | {adli(bant['max_degisen'])} |",
         "",
-        f"Yurt dışı kenarları {yuzde(yabanci_aralik['alt'])} ({yabanci_aralik['alt_ulke']}, {yabanci_aralik['alt_donem']}) "
-        f"ve {yuzde(yabanci_aralik['ust'])} ({yabanci_aralik['ust_ulke']}, {yabanci_aralik['ust_donem']}). "
-        f"Euro alanı üst kenarı kaynağın yaklaşık yüzde 23 rakamıdır. n={yabanci_aralik['n']}.",
-        f"Döviz kenarları {yuzde(doviz_aralik['alt'])} ({doviz_aralik['alt_ulke']}, {doviz_aralik['alt_donem']}) "
-        f"ve {yuzde(doviz_aralik['ust'])} ({doviz_aralik['ust_ulke']}, {doviz_aralik['ust_donem']}). "
-        f"Para kırılımı ölçülen satır n={doviz_aralik['n']}.",
-        f"En geniş komşu boşluk, yurt dışında {puan(esik['yabanci_en_genis_komsu']['genislik_puan'])} puan "
-        f"({esik['yabanci_en_genis_komsu']['alt_ulke']}–{esik['yabanci_en_genis_komsu']['ust_ulke']}), "
-        f"dövizde {puan(esik['doviz_en_genis_komsu']['genislik_puan'])} puan "
-        f"({esik['doviz_en_genis_komsu']['alt_ulke']}–{esik['doviz_en_genis_komsu']['ust_ulke']}).",
+        f"Aralığın içinde, yurt dışı: {ic_yazi(bant['ic_yabanci'])}.",
+        f"Aralığın içinde, ölçülen döviz: {ic_yazi(bant['ic_doviz'])}.",
+        f"Üst uçta yalnız yurt dışı kesiti kayarsa: {adli(bant['max_yalniz_yabanci'])}.",
+        f"Üst uçta yalnız döviz kesiti kayarsa: {adli(bant['max_yalniz_doviz'])}.",
         "",
-        "Kâğıt cinsinden konan döviz 0 bu aralığa girmez: " + ", ".join(esik["doviz_kagit_sifir"]) + ".",
+        "Kâğıt cinsinden konan döviz 0 bu sayıma girmez: " + ", ".join(esik["doviz_kagit_sifir"]) + ".",
         "Döviz kırılımı ayrılmayan: " + ", ".join(esik["doviz_ayrilmadi"]) + ".",
         "",
         "## Satır notu",
@@ -440,24 +486,19 @@ def main() -> dict:
         "- Beş adım bu ülkelerde kuruldu denmez. Burada yalnız alacaklı payı vardır.",
         "- Paylar toplanıp tek sıra yapılmaz. Stoklar ve tarihler ayrıdır.",
         "- Eşik 0,20 ölçülmüş bir yasa denmez. Karşılaştırma kuralıdır.",
-        "- Aralık bir yasa denmez. Bu tablodaki boşluktur. Stoklar ve tarihler ayrı kalır.",
-        "- Kâğıt cinsinden konan döviz 0, döviz eşiğinin ölçümüne girmez.",
+        "- Aralık 0,15–0,25 ölçülmüş bir yasa denmez. Konulan sınırdır.",
+        "- Kâğıt cinsinden konan döviz 0, döviz sayımına girmez.",
         "",
     ]
     (KOK / "ULKE_KARSILASTIRMA.md").write_text("\n".join(md), encoding="utf-8")
     for r in rows:
         d = "—" if r["doviz_pay"] == "" else f"{float(r['doviz_pay']):.1%}"
         print(f"{r['ulke']:<12} yabancı {r['yabanci_pay']:.1%} döviz {d} {r['etiket']}")
-    print(
-        f"yurt dışı {yo['genislik_puan']:.2f} puan  iç {yo['ic_satir']}  "
-        f"alttan {yo['kural_alttan_puan']:.2f}  üstten {yo['kural_ustten_puan']:.2f}  "
-        f"etiket değişen {yo['etiket_degisen']}"
-    )
-    print(
-        f"döviz {do['genislik_puan']:.2f} puan  iç {do['ic_satir']}  "
-        f"alttan {do['kural_alttan_puan']:.2f}  üstten {do['kural_ustten_puan']:.2f}  "
-        f"etiket değişen {do['etiket_degisen']}"
-    )
+    print(f"aralık {ARALIK_MIN:.2f}–{ARALIK_MAX:.2f}")
+    print("iç yurt dışı:", ic_yazi(bant["ic_yabanci"]))
+    print("iç döviz:", ic_yazi(bant["ic_doviz"]))
+    print("0,15 değişen:", adli(bant["min_degisen"]))
+    print("0,25 değişen:", adli(bant["max_degisen"]))
     return sonuc
 
 

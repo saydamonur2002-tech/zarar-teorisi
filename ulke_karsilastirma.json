@@ -5,6 +5,54 @@
     "etiket": "karsilastirma_kurali",
     "anlam": "Bes adim bu ulkelerde olculmedi. Test, yerli para alacaklisinin yerli olmasi ve doviz bacaginin disarida kalmasidir."
   },
+  "aralik": {
+    "min": 0.15,
+    "max": 0.25,
+    "etiket": "karsilastirma_kurali",
+    "ic_yabanci": [
+      {
+        "ulke": "Euro alanı",
+        "donem": "2024-Q4",
+        "pay": 0.23,
+        "alan": "yabanci_pay"
+      }
+    ],
+    "ic_doviz": [
+      {
+        "ulke": "Türkiye",
+        "donem": "2025-12",
+        "pay": 0.2141,
+        "alan": "doviz_pay"
+      }
+    ],
+    "min_degisen": [],
+    "max_degisen": [
+      {
+        "ulke": "Türkiye",
+        "baz": "yerli_para_bacagi",
+        "yeni": "yazilir"
+      },
+      {
+        "ulke": "Euro alanı",
+        "baz": "yabanci_alacakli_buyuk",
+        "yeni": "yazilir"
+      }
+    ],
+    "max_yalniz_yabanci": [
+      {
+        "ulke": "Euro alanı",
+        "baz": "yabanci_alacakli_buyuk",
+        "yeni": "yazilir"
+      }
+    ],
+    "max_yalniz_doviz": [
+      {
+        "ulke": "Türkiye",
+        "baz": "yerli_para_bacagi",
+        "yeni": "yazilir"
+      }
+    ]
+  },
   "esik_araligi": {
     "yabanci": {
       "esik_kural": 0.2,

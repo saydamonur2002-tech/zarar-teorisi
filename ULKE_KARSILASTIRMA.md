@@ -2,7 +2,7 @@
 
 Çalıştır: `python3 ulke_karsilastirma.py`.
 
-Test, yerli para kâğıdının alacaklısının yerli olup olmadığıdır. Döviz sözleşmesi modelin dışında kalır. Beş adım bu ülkelerde ölçülmedi. Eşik 0,20 karşılaştırma kuralıdır. Kuralın oturduğu boşluk aşağıda ölçülmüştür.
+Test, yerli para kâğıdının alacaklısının yerli olup olmadığıdır. Döviz sözleşmesi modelin dışında kalır. Beş adım bu ülkelerde ölçülmedi. Nokta etiket 0,20 karşılaştırma kuralıdır. Aralık 0,15 ile 0,25 arasında tutulur.
 
 Yazılanlar: **Japonya, Çin, Brezilya, Meksika, Polonya**.
 
@@ -25,20 +25,21 @@ Yazılanlar: **Japonya, Çin, Brezilya, Meksika, Polonya**.
 | Polonya | 2025-11 | yurt içi hazine kâğıdı | 11.7% | 88.3% | 0.0% | 100.0% | yazılır |
 | Endonezya | 2025-08-11 | SBN | 14.6% | 85.4% | — | — | yerli alacaklı, döviz ayrılmadı |
 
-## Aralık ölçümü
+## Aralık
 
-Durum: ölçüm. Kesit (alt, üst] aralığında kaydırıldı. İçindeki satır, iki kenarın arasına düşen paydır.
+Durum: kural. Alt **0,15**, üst **0,25**. Nokta etiket 0,20'dedir. İki eşik birlikte kayar.
 
-| Aralık | Genişlik | İçindeki satır | 0,20 alttan | 0,20 üstten | Etiket değişen |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Yurt dışı | 8,39 puan | 0 | 5,39 | 3,00 | 0 |
-| Döviz | 17,66 puan | 0 | 16,25 | 1,41 | 0 |
+| Kesit | 0,20'ye göre etiket değişen |
+| --- | --- |
+| 0,15 | 0 |
+| 0,25 | 2: Türkiye yazılır, Euro alanı yazılır |
 
-Yurt dışı kenarları 14,6% (Endonezya, 2025-08-11) ve 23,0% (Euro alanı, 2024-Q4). Euro alanı üst kenarı kaynağın yaklaşık yüzde 23 rakamıdır. n=16.
-Döviz kenarları 3,8% (Brezilya, 2026-08) ve 21,4% (Türkiye, 2025-12). Para kırılımı ölçülen satır n=3.
-En geniş komşu boşluk, yurt dışında 12,99 puan (Arjantin–İspanya), dövizde 36,42 puan (Türkiye–Arjantin).
+Aralığın içinde, yurt dışı: Euro alanı 23,0% (2024-Q4).
+Aralığın içinde, ölçülen döviz: Türkiye 21,4% (2025-12).
+Üst uçta yalnız yurt dışı kesiti kayarsa: 1: Euro alanı yazılır.
+Üst uçta yalnız döviz kesiti kayarsa: 1: Türkiye yazılır.
 
-Kâğıt cinsinden konan döviz 0 bu aralığa girmez: Japonya, ABD, Çin, Almanya, Fransa, İtalya, İspanya, Euro alanı, İngiltere, Güney Kore, Meksika, Polonya.
+Kâğıt cinsinden konan döviz 0 bu sayıma girmez: Japonya, ABD, Çin, Almanya, Fransa, İtalya, İspanya, Euro alanı, İngiltere, Güney Kore, Meksika, Polonya.
 Döviz kırılımı ayrılmayan: Endonezya.
 
 ## Satır notu
@@ -66,5 +67,5 @@ Döviz kırılımı ayrılmayan: Endonezya.
 - Beş adım bu ülkelerde kuruldu denmez. Burada yalnız alacaklı payı vardır.
 - Paylar toplanıp tek sıra yapılmaz. Stoklar ve tarihler ayrıdır.
 - Eşik 0,20 ölçülmüş bir yasa denmez. Karşılaştırma kuralıdır.
-- Aralık bir yasa denmez. Bu tablodaki boşluktur. Stoklar ve tarihler ayrı kalır.
-- Kâğıt cinsinden konan döviz 0, döviz eşiğinin ölçümüne girmez.
+- Aralık 0,15–0,25 ölçülmüş bir yasa denmez. Konulan sınırdır.
+- Kâğıt cinsinden konan döviz 0, döviz sayımına girmez.
