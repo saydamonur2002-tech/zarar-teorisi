@@ -2,7 +2,7 @@
 
 Beş adım kendi yılında açılır. Hazine faiz faturası o yıllarda ayrı yürür. İki sütun toplanmaz.
 
-Fatura: r 2025 kuponu (kalibrasyon). Eğim 2024-Q4 → 2026-Q2 (ölçüm). Beş adımın faiz ve kur etkisi `modellenmedi`.
+Fatura: r 2025 kuponu (kalibrasyon). Eğim 2024-Q4 → 2026-Q2 (ölçüm). Beş adımın faiz düğmesi `modellenmedi`. Faiz → kur bağı kalibre edildi ve dış bacağa eklendi.
 
 ## Hazine faturası, milyar TL
 
@@ -22,6 +22,23 @@ Fatura: r 2025 kuponu (kalibrasyon). Eğim 2024-Q4 → 2026-Q2 (ölçüm). Beş 
 Kur sütunu ölçülmüş çeyrek ortalamasının bileşik eğimidir. 2026-Q4 ve sonrası gerçekleşmiş kur değildir. 2027-Q4 model düzeyi 59,7; aynı yılın anketi 58,60. 2028 ve 2029 anketi yoktur. 71,7 ve 86,1 eğimin uzamasıdır.
 
 Ağustos 2026 iç stok ölçümü 9.545. Eğimin Haziran’dan düz çizgisi Ağustos’ta 9.464 eder. Düzey çizgiye yakındır. İki aylık tempo çeyreğe çekilirse +797 milyar TL olur; senaryo eğimi +676’da kalır.
+
+## Faiz → kur, aynı fatura
+
+Denklem: g = 13.41 − 0.187 · AOFM gecikmesi. Pencere 2021-Q1 → 2024-Q4. Sınav 2026-Q2 kuru 47.06 verir; ölçülen 45.37; sapma +3.7%.
+
+İç stok ve kamu USD eğimde kalır. Değişen, dış faizin kurudur. İç kupon durur.
+
+| Yıl | Eğim kuru, fatura | Faiz 37’de kalır | Anket faizi | Kur, faiz 37 | Kur, anket |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 2026 | 2744 | 2747 | 2747 | 50.8 | 50.8 |
+| 2027 | 3513 | 3542 | 3551 | 65.8 | 68.2 |
+| 2028 | 4328 | 4409 | 4466 | 85.2 | 96.5 |
+| 2029 | 5172 | 5338 | 5517 | 110.5 | 139.4 |
+
+2029’da faiz 37’de kalırsa fatura **5338** (dış 829). Anket faiziyle **5517** (dış 1008). Eğim kurundaki fatura 5172.
+
+Anket faizi 2026 yıl sonu 35,07, 2027 yıl sonu 27,16, 2028 yıl sonu 22,43. 2029 anketi yoktur; faiz 22,43’te durur. Katsayı negatif olduğu için faiz inince çeyrek değer kaybı büyür. 2027-Q4 anket kuru 58,60’tır. Aynı çeyrekte bu denklem, anket faiziyle 68.2 üretir.
 
 ## Beş adım, aynı yıllar
 
@@ -45,5 +62,6 @@ Ağustos 2026 iç stok ölçümü 9.545. Eğimin Haziran’dan düz çizgisi Ağ
 - Özel dış borç akışı durunca fatura değişir denmez. Üç yılda da fark 0,0.
 - Adım 3’ün 1.208’i 2029 Hazine faizinden düşülür denmez. Ödeyen bankadır.
 - Prim, duran faiz ve Hazine kuponu toplanır denmez.
-- Kur durur ya da politika faizi iner denmez. İkisi `modellenmedi`.
+- Beş adım faizi indirdi ya da kuru durdurdu denmez. Faiz düğmesi `modellenmedi`. Eklenen bağ, ölçülmüş AOFM’den kura gider.
+- Anket faizi inince kur yavaşlar denmez. Kalibre edilen katsayı negatiftir: faiz inince değer kaybı artar.
 - Stok yüzde 20 silindi denmez.
