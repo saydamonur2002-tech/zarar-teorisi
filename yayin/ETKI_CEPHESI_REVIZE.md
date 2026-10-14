@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize yaması
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `a774f42b1296e1a8`, temiz kurulumda 3 geçiş),
-**69 test geçti** (27 mevcut + 42 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `e95fd8d327849ed7`, temiz kurulumda 3 geçiş),
+**70 test geçti** (27 mevcut + 43 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -334,6 +334,16 @@ Sorun: Çin, Rusya, AB, BAE... kayıpları TR'nin gelir kaybına doğrusal bağl
   - **AB, BAE, Fransa "kaybeden" sonucu s'ye duyarlı:** C'de BAE ve Fransa yalnız s ≥ 0,7'de, AB s ≥ 0,35'te bant dışı kaybeden; gözlem sınırlarına uyan s ≈ 0,25 – 0,5'te BAE ve Fransa bant içine geçer. A'da AB s ≥ 0,5'te, B'de yalnız s = 1'de kaybeden.
   - **Sistem toplamı negatif kalır** (C'de −29,8 → −10,7; A −44,9 → −16,5; B −77,9 → −30,7), yani "negatif toplamlı sistem" bulgusu TR ölçeğinden bağımsız dayanıklı; ama büyüklüğü TR ölçeğine bağlı. Toplamı AB'nin kaybı da yönetiyor (ihracat tabanı büyük).
 - **Kalan eleştiri:** (1) "gereken ölçek" gözlemlenebilir sınırları kullanıyor; TR'nin kaybının BoP dışı kısmını sınayacak bağımsız bir ölçüt bulunamadı. (2) φ her s'de yeniden kalibre edildiğinden s küçülünce φ büyüyor (3,1 → 6,2); yani TR kaybı küçüldükçe diğer aktörlerin kayıplarının "ticaret dışı" kısmı büyüyor, bu iç tutarlılık varsayımı. (3) Çin ve Rusya'nın sonucu s'ye bağımlı değil çünkü bant içi: kazanan ya da kaybeden olduğu söylenemez.
+
+## Havzalar net kaybediyorsa kim kazanıyor? Kısa vadeli parasal akış (`HAVZA_KAZANAN_KISA_VADE`, tanı raporu)
+**A. Kim kazanıyor.** Her senaryoda 30 havzanın 30'u net kaybediyor (Σ havza net A −15,25, B −25,73, C −9,90). Kayıp havuzu = TR kaybı + diğer kayıp: A 40,2, B 65,9, C 27,1. Kazançlar V ile sınırlı: 25,4 / 40,5 / 17,1. **Ölü ağırlık** (kimseye gitmeyen kısım): 14,8 / 25,4 / 10,0, yani havuzun yaklaşık %37 – 39'u.
+- **Brüt kazancı toplayan gruplar** (B'de merkez payı en yüksek): merkez (MFİN, ABD, AB, Fransa) A %45, B %56, C %38; dış rakip güçler (Çin, Rusya) %25 / %20 / %28; bölge (kalan tüm ülkeler) %30 / %25 / %33.
+- **Ama net (kayıp ve maliyet düşülünce) üç grup da kaybediyor:** merkez −5,75 / −9,62 / −4,22; Çin+Rusya −3,44 / −7,92 / −1,78; bölge −10,84 / −20,50 / −6,58. Merkezin kaybı AB'den (ihracatı büyük) geliyor.
+- **Bant dışı net kazananlar:** İran, İsrail, Suudi Arabistan her senaryoda; MFİN A ve C'de (B'de bant içi); ABD yalnız C'de. (Makedonya, Arnavutluk, Bosna da çıkıyor: bunlar AB'den bölünen payla ve kısmi-kapsam bant vekiliyle, zayıf bulgu.) Yani havzalar net kaybederken parayı toplayan çoğu aktör aslında kendi kaybıyla dengede ya da negatif; gerçek kazananlar az sayıda.
+**B. TR'nin kayıp hızı, bölgeye parasal akış, kısa vade (2027–2029).** TR kaybı (model, vekil/yıl) A 24,3 → 23,0, B 39,3 → 38,0, C 16,8 → 15,9; kayıp hızı (yıllık değişim) A −0,66, B −0,62, C −0,44 vekil/yıl (kayıp yılda %2 – 3 azalır; bu, modelin doğrusal iyileşme varsayımıdır, gözlem değil). Alıcılara ulaşan pay %96 – 98.
+- **USD akışı** (üç köprü): C 43 – 90 milyar $/yıl (GSYH'nin %3,2 – 6,6'sı), A 63 – 131, B 102 – 211 milyar $/yıl. Bunun bölgeye (merkez ve Çin+Rusya hariç ülkelere) giden kısmı C'de 14 – 29 milyar $/yıl (yıl 1), merkeze 16 – 33, Çin+Rusya'ya 12 – 25.
+- **Kısa vadede geçerli mi** (akış cari açık ortalamasını aşmıyorsa veya aşım rezervle karşılanıyorsa): kapasite = cari açık ort. 32,3 milyar $/yıl, brüt rezerv 155,5 milyar $ (WDI). **C:** BoP ve mal ticareti köprülerinde `gecerli_rezervle` (3 yıllık aşım 30,0 ve 137,5 milyar $; ikincisi brüt rezervin %88'i: sınırda), rant köprüsünde `gecersiz` (rezervin %107'si). **A:** BoP köprüsünde `gecerli_rezervle` (rezervin %56'sı, sınırda), diğer ikisinde `gecersiz`. **B:** üç köprüde `gecersiz`. Akışın cari açığa sığması için model kaybı çarpanı: C 0,36 – 0,74, A 0,25 – 0,51, B 0,15 – 0,32.
+- **Eleştirel notlar:** (1) rezerv brüt (altın dahil, swap ve kısa vadeli yükümlülükler düşülmemiş); net rezerv çok daha düşük, yani `gecerli_rezervle` kararı iyimser. (2) GSYH 2024'te sabit; büyüme ve enflasyon yok. (3) Yeni borç ve swap finansmanı modellenmedi. (4) "Bölge" grubu merkez ve Çin+Rusya dışındaki tüm aktörleri kapsar (İran, İsrail, Körfez dahil), sadece havza ülkeleri değil. (5) TR kaybı ölçeği yine gözlemlenebilir sınırın üstünde (bkz. TR_OLCEK_SINAMA); akış, ancak model kaybı o çarpanla küçülürse kısa vadede sürdürülebilir.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
@@ -1299,11 +1309,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +2026-08,23327.0,27073.0,2395.0,733.0,2659.0
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json
 --- pristine/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	2026-10-14 15:35:04.687658429 +0000
-@@ -0,0 +1,93 @@
++++ fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	2026-10-14 15:40:59.105427468 +0000
+@@ -0,0 +1,105 @@
 +{
 +  "not": "TR kaybının ölçeğini sınamak için BAĞIMSIZ gözlem: Dünya Bankası (WDI) TR ödemeler dengesi ve büyüme serileri. Modelin kendi çapalarından (EVDS yatırım geliri gideri, gerceklik_capa) ayrı kaynaktır; bu dosyayı yalnız tr_olcek_sinama.py okur.",
-+  "kaynak": "World Bank WDI API (api.worldbank.org), 14.10.2026 çekimi; göstergeler NY.GDP.MKTP.CD, NY.GDP.PCAP.KD.ZG, BN.CAB.XOKA.GD.ZS, BM.GSR.FCTY.CD, BX.GSR.FCTY.CD",
++  "kaynak": "World Bank WDI API (api.worldbank.org), 14.10.2026 çekimi; göstergeler NY.GDP.MKTP.CD, NY.GDP.PCAP.KD.ZG, BN.CAB.XOKA.GD.ZS, BM.GSR.FCTY.CD, BX.GSR.FCTY.CD, FI.RES.TOTL.CD (altın dahil brüt rezerv; net rezerv değildir, swaplar ve kısa vadeli yükümlülükler düşülmemiştir)",
 +  "yillar": [
 +    "2015",
 +    "2016",
@@ -1376,6 +1386,18 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +      "2022": 5602000000,
 +      "2023": 8014000000,
 +      "2024": 9536000000
++    },
++    "toplam_rezerv_usd": {
++      "2015": 110489628113.0,
++      "2016": 104810530764.5,
++      "2017": 107657025384.5,
++      "2018": 92997230040.6,
++      "2019": 105619672447.9,
++      "2020": 93584577917.1,
++      "2021": 111184882382.1,
++      "2022": 128735003395.9,
++      "2023": 140868480001.7,
++      "2024": 155548682878.2
 +    }
 +  },
 +  "UMC": {
@@ -3347,6 +3369,192 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +if __name__ == "__main__":
 +    calistir()
 +    print("GORECELI_KONUM ok")
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/havza_kazanan_kisa_vade.py fixed/etki_cephesi/havza_kazanan_kisa_vade.py
+--- pristine/etki_cephesi/havza_kazanan_kisa_vade.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/havza_kazanan_kisa_vade.py	2026-10-14 15:42:14.072303666 +0000
+@@ -0,0 +1,182 @@
++"""Havzalar net kaybediyorsa kim kazanıyor? ve TR'nin kayıp hızının bölgeye parasal akış sağlaması (kısa vade, 2027–2029).
++
++A) Kayıp havuzu (TR boşalması + havza kayıpları) ile kazanç kanalları (kanal/matris/ikame/merkez) karşılaştırılır; kazancın hangi grupta
++   (merkez, dış rakip güçler, bölge) toplandığı ve ölü ağırlık (havuzun kimseye gitmeyen kısmı) verilir. Net sınıf için bant dikkate alınır.
++B) TR'nin yıllık kayıp akışı (ZARAR_10Y yillik_seri, ilk 3 yıl) USD'ye üç köprüyle çevrilir; kazancı toplayanlara oranlanır. Akışın kısa vadede
++   SÜRDÜRÜLEBİLİR olup olmadığı bağımsız gözlemle (Dünya Bankası: cari açık, brüt rezerv) karşılaştırılır:
++     geçerli_cari_denge: akış gözlenen cari açık ortalamasını aşmıyor; geçerli_rezervle: 3 yıllık aşım brüt rezerv içinde; gecersiz: rezerv yetmez.
++   Sınırlar: GSYH 2024'te sabit (büyüme yok), rezerv brüt (net değil), akışın finansmanı için başka kaynak (yeni borç, swap) hesaba katılmadı.
++Tanı raporu: başka modüle girdi olmaz (döngü yok).
++"""
++from __future__ import annotations
++
++import json
++import statistics as st
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++GRUPLAR = {
++    "merkez": ("MFIN", "US", "EU", "FR"),
++    "dis_rakip_guc": ("CN", "RU"),
++}  # kalanı: bölge (İran, İsrail, Körfez, Mısır, Yunanistan, Kıbrıs, Balkan, ...)
++KOPRULER = ("bop_merkez_rant", "mal_net_ticaret", "tum_havza_rant")
++UFUK = 3
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _grup(iso: str) -> str:
++    for g, uyeler in GRUPLAR.items():
++        if iso in uyeler:
++            return g
++    return "bolge"
++
++
++def kazanan_tablosu() -> dict[str, Any]:
++    muh = {s["id"]: s for s in _load(OUT / "KAZANC_KAYIP_MUHASEBE.json")["senaryolar"]}
++    proj = {s["id"]: s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"]}
++    out: dict[str, Any] = {}
++    for sid in ("A", "B", "C"):
++        m, p = muh[sid], proj[sid]
++        bn = p["bolgesel_net"]
++        led = {r["ulke"]: r for r in _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
++        brut: dict[str, float] = {"merkez": 0.0, "dis_rakip_guc": 0.0, "bolge": 0.0}
++        net: dict[str, float] = {"merkez": 0.0, "dis_rakip_guc": 0.0, "bolge": 0.0}
++        for iso, r in led.items():
++            if iso == "TR":
++                continue
++            g = _grup(iso)
++            brut[g] += float(r["dis_toplam_vekili"])
++            net[g] += float(r.get("net_maliyetli", r.get("net_refah_entegre")) or 0.0)
++        top_defter = sum(brut.values())  # grup payları için (defter, refah rantı dahil)
++        top = float(m["kazanc"]["toplam"])  # V ile sınırlı kazanç (muhasebe); ölü ağırlık bununla ölçülür
++        kazananlar = sorted(
++            (
++                (iso, float(r.get("net_maliyetli", r.get("net_refah_entegre")) or 0.0), float(r.get("net_bandi") or 0.0))
++                for iso, r in led.items()
++                if iso != "TR"
++            ),
++            key=lambda x: -x[1],
++        )
++        kayip = m["kayip"]
++        out[sid] = {
++            "havza_sayisi": len(bn),
++            "net_kaybeden_havza": sum(1 for b in bn if b["net_endeks"] < 0),
++            "havza_net_toplam": round(sum(b["net_endeks"] for b in bn), 3),
++            "tr_boslasma": kayip["tr"],
++            "diger_kayip": kayip["diger"],
++            "kayip_havuzu": kayip["toplam"],
++            "brut_kazanc_toplam": round(top, 3),
++            "defter_brut_kazanc_toplam": round(top_defter, 3),
++            "olu_agirlik": round(kayip["toplam"] - top, 3),
++            "olu_agirlik_orani": round((kayip["toplam"] - top) / kayip["toplam"], 3),
++            "kazanc_kanallari": m["kazanc"],
++            "grup_brut_kazanc": {g: round(v, 3) for g, v in brut.items()},
++            "grup_brut_pay": {g: round(v / top_defter, 3) for g, v in brut.items()},
++            "grup_net_maliyetli": {g: round(v, 3) for g, v in net.items()},
++            "bant_disi_kazananlar": [iso for iso, n, b in kazananlar if n - b > 0],
++            "en_buyuk_brut_alicilar": [
++                (iso, round(float(r["dis_toplam_vekili"]), 3))
++                for iso, r in sorted(led.items(), key=lambda kv: -float(kv[1]["dis_toplam_vekili"]))
++                if iso != "TR"
++            ][:6],
++        }
++    return out
++
++
++def kisa_vade(tab: dict[str, Any]) -> dict[str, Any]:
++    z = {s["id"]: s for s in _load(OUT / "ZARAR_10Y_SENARYO_COKLU.json")["senaryolar"]}
++    kop = _load(DATA / "kalibre" / "gerceklik_realizasyon.json")["usd_kopruleri"]
++    w = _load(DATA / "gozlem" / "tr_bagimsiz_olcek.json")
++    y = w["yillar"]
++    gsyh = float(w["TUR"]["gsyh_usd"][y[-1]]) / 1e6
++    cari = st.mean(-float(w["TUR"]["cari_denge_gsyh"][k]) for k in y) / 100 * gsyh  # mn $/yıl
++    brut_pg = st.mean(float(w["TUR"]["birincil_gelir_odeme_usd"][k]) / float(w["TUR"]["gsyh_usd"][k]) for k in y) * gsyh
++    rezerv = float(w["TUR"]["toplam_rezerv_usd"][y[-1]]) / 1e6
++    out: dict[str, Any] = {"kapasite_mn_usd": {"cari_acik_ort": round(cari), "brut_birincil_gelir_odemesi_ort": round(brut_pg), "brut_rezerv_son": round(rezerv)}}
++    for sid in ("A", "B", "C"):
++        seri = z[sid]["yillik_seri"][:UFUK]
++        kayip = [-float(r["tr_net"]) for r in seri]
++        baslangic = -float(z[sid]["tr_c_refah"])
++        hiz = [round(kayip[0] - baslangic, 3)] + [round(kayip[i] - kayip[i - 1], 3) for i in range(1, len(kayip))]
++        t = tab[sid]
++        alinan = min(1.0, t["brut_kazanc_toplam"] / t["tr_boslasma"])  # TR kaybının kazanç olarak alıcılara ulaşan kısmı
++        satirlar = {}
++        for k in KOPRULER:
++            usd = [v * float(kop[k]["usd_per_vekil_mn"]) for v in kayip]
++            asim = [max(0.0, v - cari) for v in usd]
++            toplam_asim = sum(asim)
++            if toplam_asim == 0:
++                karar = "gecerli_cari_denge"
++            elif toplam_asim <= rezerv:
++                karar = "gecerli_rezervle"
++            else:
++                karar = "gecersiz"
++            satirlar[k] = {
++                "akis_mn_usd": [round(v) for v in usd],
++                "akis_gsyh_yuzde": [round(v / gsyh * 100, 2) for v in usd],
++                "cari_aciga_oran_ilk_yil": round(usd[0] / cari, 2),
++                "ucyil_asim_mn_usd": round(toplam_asim),
++                "rezerv_orani": round(toplam_asim / rezerv, 2),
++                "rezerv_sinirda": bool(0.5 < toplam_asim / rezerv <= 1.0),
++                "gecerli_olcek_s": round(cari / max(usd), 3),
++                "karar": karar,
++                "bolgeye_akis_mn_usd": [round(v * alinan * t["grup_brut_pay"]["bolge"]) for v in usd],
++                "merkeze_akis_mn_usd": [round(v * alinan * t["grup_brut_pay"]["merkez"]) for v in usd],
++                "dis_rakip_guce_akis_mn_usd": [round(v * alinan * t["grup_brut_pay"]["dis_rakip_guc"]) for v in usd],
++                "kimseye_ulasmayan_mn_usd": [round(v * (1 - alinan)) for v in usd],
++            }
++        out[sid] = {
++            "yillar": [r["yil"] for r in seri],
++            "tr_kayip_vekil": [round(v, 3) for v in kayip],
++            "kayip_hizi_vekil_yil": hiz,
++            "alicilara_ulasan_pay": round(alinan, 3),
++            "koprular": satirlar,
++        }
++    return out
++
++
++def calistir() -> dict[str, Any]:
++    tab = kazanan_tablosu()
++    kv = kisa_vade(tab)
++    d = {
++        "olcum": "havza_kazanan_ve_kisa_vade_akis",
++        "etiket": "tani_girdi_degil",
++        "kazanan_tablosu": tab,
++        "kisa_vade": kv,
++        "gruplar": {"merkez": list(GRUPLAR["merkez"]), "dis_rakip_guc": list(GRUPLAR["dis_rakip_guc"]), "bolge": "diğer tüm ülkeler/aktörler"},
++        "not": "GSYH 2024'te sabit (büyüme yok); rezerv brüt (altın dahil), net rezerv değil; yeni borç/swap ve akışın çok yıllı ivmesi modellenmedi.",
++    }
++    (OUT / "HAVZA_KAZANAN_KISA_VADE.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    L = ["# Havzalar net kaybediyorsa kim kazanıyor? ve kısa vadeli parasal akış", "", d["not"], "",
++         "## 1. Kayıp havuzu ve kim topluyor", "",
++         "| Senaryo | Net kaybeden havza | Σ havza net | TR kaybı | Diğer kayıp | Havuz | Kazanç (V ile sınırlı) | Ölü ağırlık | Oran |",
++         "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
++    for sid, t in tab.items():
++        L.append(f"| {sid} | {t['net_kaybeden_havza']}/{t['havza_sayisi']} | {t['havza_net_toplam']:+.2f} | {t['tr_boslasma']:.2f} | {t['diger_kayip']:.2f} | {t['kayip_havuzu']:.2f} | {t['brut_kazanc_toplam']:.2f} | {t['olu_agirlik']:.2f} | %{t['olu_agirlik_orani']*100:.0f} |")
++    L += ["", "| Senaryo | Merkez (MFİN, ABD, AB, Fransa) brüt / net | Dış rakip güçler (Çin, Rusya) brüt / net | Bölge brüt / net | Bant dışı kazananlar |", "| --- | --- | --- | --- | --- |"]
++    for sid, t in tab.items():
++        g, n, p = t["grup_brut_kazanc"], t["grup_net_maliyetli"], t["grup_brut_pay"]
++        L.append(f"| {sid} | {g['merkez']:.2f} (%{p['merkez']*100:.0f}) / {n['merkez']:+.2f} | {g['dis_rakip_guc']:.2f} (%{p['dis_rakip_guc']*100:.0f}) / {n['dis_rakip_guc']:+.2f} | {g['bolge']:.2f} (%{p['bolge']*100:.0f}) / {n['bolge']:+.2f} | {', '.join(t['bant_disi_kazananlar']) or '—'} |")
++    L += ["", "## 2. Kısa vade (2027–2029): TR kayıp hızı → bölgeye parasal akış", "",
++          f"Kapasite (mn $/yıl, 2024 GSYH sabit): cari açık ort. {kv['kapasite_mn_usd']['cari_acik_ort']:,}; brüt birincil gelir ödemesi ort. {kv['kapasite_mn_usd']['brut_birincil_gelir_odemesi_ort']:,}; brüt rezerv {kv['kapasite_mn_usd']['brut_rezerv_son']:,}.", ""]
++    for sid in ("A", "B", "C"):
++        s = kv[sid]
++        L += [f"### Senaryo {sid}: kayıp {s['tr_kayip_vekil']} vekil (hız {s['kayip_hizi_vekil_yil']}/yıl); alıcılara ulaşan pay %{s['alicilara_ulasan_pay']*100:.0f}", "",
++              "| Köprü | Akış mn $ (3 yıl) | % GSYH | Cari açığa oran (yıl 1) | 3 yıl aşım | Rezerve oran | Geçerli ölçek s | Karar | Bölgeye akış | Merkeze | Dış rakip güçlere |",
++              "| --- | --- | --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |"]
++        for k, r in s["koprular"].items():
++            L.append(f"| {k} | {r['akis_mn_usd']} | {r['akis_gsyh_yuzde']} | {r['cari_aciga_oran_ilk_yil']} | {r['ucyil_asim_mn_usd']:,} | {r['rezerv_orani']} | {r['gecerli_olcek_s']} | {r['karar']}{' (rezerv sınırda)' if r['rezerv_sinirda'] else ''} | {r['bolgeye_akis_mn_usd']} | {r['merkeze_akis_mn_usd']} | {r['dis_rakip_guce_akis_mn_usd']} |")
++        L.append("")
++    (OUT / "HAVZA_KAZANAN_KISA_VADE.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    return d
++
++
++if __name__ == "__main__":
++    calistir()
++    print("HAVZA_KAZANAN_KISA_VADE ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/kazanc_kayip_muhasebe.py fixed/etki_cephesi/kazanc_kayip_muhasebe.py
 --- pristine/etki_cephesi/kazanc_kayip_muhasebe.py	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/etki_cephesi/kazanc_kayip_muhasebe.py	2026-10-14 14:51:21.321415334 +0000
@@ -4278,7 +4486,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 15:35:30.689687348 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 15:42:27.106530681 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -4315,7 +4523,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,38 @@
+@@ -31,11 +47,39 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -4329,6 +4537,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "bant_sinama.py",
 +        "goreceli_konum.py",
 +        "tr_olcek_sinama.py",
++        "havza_kazanan_kisa_vade.py",
          ]
      )
 -    for s in steps:
@@ -5475,8 +5684,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:35:30.690448199 +0000
-@@ -0,0 +1,719 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:42:54.843186334 +0000
+@@ -0,0 +1,747 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -6196,4 +6405,32 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        # model TR kaybı gözlemlenebilir üst sınırların (brüt birincil gelir ödemesi, cari açık ortalaması) en düşük köprüde bile üstünde
 +        assert d["model_tr_kaybi"][sid]["bop_merkez_rant"]["gsyh_yuzde"] > obs["brut_birincil_gelir_odemesi_gsyh_yuzde"]["ort"]
 +        assert d["gereken_olcek"][sid]["brut_birincil_gelir_odemesi_ort"]["s_maks"] < 1.0
++
++
++def test_havza_kazanan_ve_kisa_vade_akis_tutarli():
++    d = _j(OUT / "HAVZA_KAZANAN_KISA_VADE.json")
++    muh = {s["id"]: s for s in _j(OUT / "KAZANC_KAYIP_MUHASEBE.json")["senaryolar"]}
++    w = _j(DATA / "gozlem" / "tr_bagimsiz_olcek.json")
++    y = w["yillar"]
++    gsyh = w["TUR"]["gsyh_usd"][y[-1]] / 1e6
++    cari = sum(-w["TUR"]["cari_denge_gsyh"][k] for k in y) / len(y) / 100 * gsyh
++    assert abs(d["kisa_vade"]["kapasite_mn_usd"]["cari_acik_ort"] - cari) < 1.5
++    rezerv = w["TUR"]["toplam_rezerv_usd"][y[-1]] / 1e6
++    for sid in "ABC":
++        t = d["kazanan_tablosu"][sid]
++        # ölü ağırlık = kayıp havuzu − V ile sınırlı kazanç = muhasebenin kazanç − kayıp farkı (işaret ters)
++        assert abs(t["olu_agirlik"] + muh[sid]["kazanc_eksi_kayip"]) < 5e-3
++        assert abs(sum(t["grup_brut_pay"].values()) - 1.0) < 3e-3
++        assert t["net_kaybeden_havza"] == t["havza_sayisi"]  # her senaryoda tüm havzalar net kaybeder
++        assert abs(-t["havza_net_toplam"] - muh[sid]["kayip"]["diger"]) < 0.1 * muh[sid]["kayip"]["diger"]  # havza kaybı ≈ diğer kayıp (farkı ülke paylaştırması)
++        kv = d["kisa_vade"][sid]
++        assert 0 < kv["alicilara_ulasan_pay"] <= 1.0 and len(kv["tr_kayip_vekil"]) == 3
++        for k, r in kv["koprular"].items():
++            for i, f in enumerate(r["akis_mn_usd"]):
++                parca = r["bolgeye_akis_mn_usd"][i] + r["merkeze_akis_mn_usd"][i] + r["dis_rakip_guce_akis_mn_usd"][i] + r["kimseye_ulasmayan_mn_usd"][i]
++                assert abs(parca - f) <= 4 + 2e-3 * f  # grup payları 3 hane yuvarlı
++            asim = sum(max(0.0, f - cari) for f in r["akis_mn_usd"])
++            assert abs(asim - r["ucyil_asim_mn_usd"]) < 5.0 + 3e-3 * asim
++            beklenen = "gecerli_cari_denge" if asim == 0 else ("gecerli_rezervle" if asim <= rezerv else "gecersiz")
++            assert r["karar"] == beklenen
 ```
