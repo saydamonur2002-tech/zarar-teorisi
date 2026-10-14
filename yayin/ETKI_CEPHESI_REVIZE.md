@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `5ee552d16a3710e4`, temiz kurulumda 3 geçiş),
-**49 test geçti** (27 mevcut + 22 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `792c2a2d09c15dbd`, temiz kurulumda 3 geçiş),
+**50 test geçti** (27 mevcut + 23 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -107,6 +107,13 @@ Okuma: C yolunun kendi sonucu (−17,19 → −13,10, iyileşir) değişmedi. De
 
 - **Sonuç:** tek ölçülebilir kapı en iyi ihtimalle P(C) = 0,52 verir; karar eşiği 0,56. Yani eldeki gözlenebilir kanıtla C "uygulanabilir_koşullu" yapılamaz; 3/3 açıkta bile skor 61,3.
 - δ duyarlılığı: δ = 0,20 ile 3/3 açık → 0,68; δ = 0 ile kapı hiçbir şey söylemez. Eski el ataması prior kullanılırsa sonuç prior'a yaslanır (0,35 … 0,76): tabloyu prior belirler, kapı değil.
+
+## A, B, C için eşit ayrıntı (yeni)
+Önceki durum: A ve B için ülke/aktör md'si vardı ama `AKIS_OLCUM`, `ZARAR_COZUM` md'si ve ayrıntılı bölümler yalnız referans senaryo C'dendi; `PROJEKSIYON.md` C'yi başa alıp ayrıca "Referans" bloğuyla öne çıkarıyordu.
+- `senaryo_rapor.py` → `SENARYO_RAPOR_{A,B,C}.md` (9 bölüm, aynı alanlar, aynı sıra) ve `SENARYO_KARSILASTIRMA.md` (yan yana). Bir test üç raporun alan listesinin aynı olduğunu denetler.
+- `AKIS_OLCUM_{A,B,C}.{json,md}`, `ZARAR_COZUM_{A,B,C}.md` eklendi. `AKIS_OLCUM.*` yalnız alt modüllerin tek-girdi dosyası olarak kaldı.
+- `PROJEKSIYON.md`: referans bloğu kalktı, senaryolar A, B, C sırasında, üçü için aynı özet tablo.
+- **Bulgu (rapor yazarken ortaya çıktı):** F.4 stok yolu üç senaryoda aynı (25.339,8 mr TL) çünkü beş adımın kredi itişi senaryodan bağımsız; üretim iç akışı ve finans katmanı A/B için C tabanından ölçekleniyor (sıfır yılı 2044 üç senaryoda aynı). Yani "eşit ayrıntı" eşit **bağımsız modelleme** demek değil. Bu rapor notunda yazılı.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

@@ -848,7 +848,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return vekil()[str(s["id"])]
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/akis_olcum.py fixed/etki_cephesi/akis_olcum.py
 --- pristine/etki_cephesi/akis_olcum.py	2026-10-14 06:05:45.822777055 +0000
-+++ fixed/etki_cephesi/akis_olcum.py	2026-10-14 07:45:20.545985506 +0000
++++ fixed/etki_cephesi/akis_olcum.py	2026-10-14 07:49:13.540054095 +0000
 @@ -60,14 +60,14 @@
      return round(vekil * (cicek_usd / vekil_toplam), 1)
  
@@ -867,7 +867,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      fin = _load(EMPIRIK / "tr_finans_akisi_2024.json")
      tic = _load(EMPIRIK / "tr_dis_ticaret_2024.json")
      proj = _load(OUT / "PROJEKSIYON.json")
-@@ -279,7 +279,7 @@
+@@ -279,14 +279,19 @@
  
  def main() -> None:
      OUT.mkdir(parents=True, exist_ok=True)
@@ -876,6 +876,19 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      res = olcum(sid)
      (OUT / "AKIS_OLCUM.json").write_text(
          json.dumps(res, ensure_ascii=False, indent=2),
+         encoding="utf-8",
+     )
+     (OUT / "AKIS_OLCUM.md").write_text(_md(res), encoding="utf-8")
+-    print(f"Wrote {OUT / 'AKIS_OLCUM.md'}")
++    # A, B, C için aynı ayrıntı: AKIS_OLCUM_{X}.{json,md}. AKIS_OLCUM.* yalnız alt modüllerin tek-girdi dosyasıdır.
++    for x in ("A", "B", "C"):
++        r = olcum(x)
++        (OUT / f"AKIS_OLCUM_{x}.json").write_text(json.dumps(r, ensure_ascii=False, indent=2), encoding="utf-8")
++        (OUT / f"AKIS_OLCUM_{x}.md").write_text(_md(r), encoding="utf-8")
++    print(f"Wrote {OUT / 'AKIS_OLCUM.md'} (+ A/B/C)")
+ 
+ 
+ if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bolge_stok_akis.py fixed/etki_cephesi/bolge_stok_akis.py
 --- pristine/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:05:45.822890890 +0000
 +++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 07:40:14.116677949 +0000
@@ -1564,7 +1577,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
 --- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
-+++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 07:45:20.547757671 +0000
++++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 07:49:13.541317056 +0000
 @@ -789,10 +789,10 @@
      ikame = float(akis_doc.get("yaricevre_rakip_ikame_carpan", 0.55))
  
@@ -1578,44 +1591,54 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "kalibre_2024_ticaret": kalibre_kullanildi,
          "rant_modeli": "refah" if refah_doc and refah_doc.get("aktif") else "bosluk",
          "kaynak_tez": "data/etki_cephesi/KAYNAK_TEZ.md",
-@@ -928,12 +928,12 @@
+@@ -928,31 +928,23 @@
          lines.append(f"*{payload['referans_olcum_not']}*")
          lines.append("")
  
 -    en_olasi = str(payload.get("en_olasi") or "C")
 -    ref = next((s for s in payload["senaryolar"] if s["id"] == en_olasi), None)
-+    referans = str(payload.get("referans_senaryo") or "C")
-+    ref = next((s for s in payload["senaryolar"] if s["id"] == referans), None)
-     if ref:
-         lines.extend(
-             [
+-    if ref:
+-        lines.extend(
+-            [
 -                f"## Referans — Senaryo **{en_olasi}** (en olası)",
-+                f"## Referans — Senaryo **{referans}** (referans)",
-                 "",
-                 ref["aciklama"],
-                 "",
-@@ -942,17 +942,17 @@
-                 f"**MFIN kenar:** {ref.get('merkez_mfin_kenar_toplam', '—')} | "
-                 f"**Rant Σ:** {ref['tum_havza_rant_cikis_toplam']}",
-                 "",
+-                "",
+-                ref["aciklama"],
+-                "",
+-                f"**TR boşalma:** {ref['turkiye_yaricevre_bosalma']} | "
+-                f"**Merkez+ránt Σ:** {ref['merkez_artı_rant_cikis_toplam']} | "
+-                f"**MFIN kenar:** {ref.get('merkez_mfin_kenar_toplam', '—')} | "
+-                f"**Rant Σ:** {ref['tum_havza_rant_cikis_toplam']}",
+-                "",
 -                f"Detay: `ULKE_KAYIP_{en_olasi}.md`, `DIS_AKTOR_{en_olasi}.md`, `AKIS_OLCUM.md` (senaryo {en_olasi}).",
-+                f"Detay: `ULKE_KAYIP_{referans}.md`, `DIS_AKTOR_{referans}.md`, `AKIS_OLCUM.md` (senaryo {referans}).",
-                 "",
-             ]
-         )
- 
-     sira = sorted(
-         payload["senaryolar"],
+-                "",
+-            ]
+-        )
+-
+-    sira = sorted(
+-        payload["senaryolar"],
 -        key=lambda s: (0 if s["id"] == en_olasi else 1, s["id"]),
-+        key=lambda s: (0 if s["id"] == referans else 1, s["id"]),
++    sira = sorted(payload["senaryolar"], key=lambda s: s["id"])  # A, B, C: sıra ayrıcalık değildir
++    lines.extend(
++        [
++            "## Senaryo özeti (aynı alanlar)",
++            "",
++            "| Senaryo | TR boşalma | Merkez+rant Σ | MFIN kenar | Rant Σ |",
++            "| --- | ---: | ---: | ---: | ---: |",
++        ]
      )
      for sen in sira:
 -        tag = " **(en olası)**" if sen["id"] == en_olasi else ""
-+        tag = " **(referans)**" if sen["id"] == referans else ""
++        lines.append(
++            f"| {sen['id']} | {sen['turkiye_yaricevre_bosalma']} | {sen['merkez_artı_rant_cikis_toplam']} | "
++            f"{sen.get('merkez_mfin_kenar_toplam', '—')} | {sen['tum_havza_rant_cikis_toplam']} |"
++        )
++    lines.extend(["", "Her senaryo için aynı ayrıntı: `SENARYO_RAPOR_{A,B,C}.md`, `SENARYO_KARSILASTIRMA.md`.", ""])
++    for sen in sira:
++        tag = ""
          lines.append(f"## Senaryo {sen['id']}: {sen['ad']}{tag}")
          lines.append("")
          lines.append(sen["aciklama"])
-@@ -1160,9 +1160,9 @@
+@@ -1160,9 +1152,9 @@
      sen: dict[str, Any],
      sid: str,
      ulke_gruplari: list[tuple[str, list[str]]],
@@ -1623,11 +1646,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    referans: bool,
  ) -> None:
 -    baslik_etiket = f"{sid} (en olası)" if en_olasi else sid
-+    baslik_etiket = f"{sid} (referans)" if referans else sid
++    baslik_etiket = sid
      if sen.get("ulke_kayiplari"):
          ua = [f"# Senaryo {baslik_etiket} — ülke bazlı kayıp (10 yıl vekil)", ""]
          ua.append("| Ülke | Kayıp endeks | Net | Pasif | Araçsal | Temsil |")
-@@ -1238,12 +1238,12 @@
+@@ -1238,12 +1230,12 @@
      (OUT / "PROJEKSIYON.json").write_text(json.dumps(clean, ensure_ascii=False, indent=2), encoding="utf-8")
      payload["_adlar"] = adlar
      (OUT / "PROJEKSIYON.md").write_text(_md(payload), encoding="utf-8")
@@ -1645,7 +1668,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 07:45:50.669606347 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 07:49:13.541731803 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -1682,7 +1705,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,32 @@
+@@ -31,11 +47,33 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -1690,6 +1713,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "c_dinamik_olcut.py",
 +        "olasilik_kapilar.py",
 +        "uzun_vade_esik.py",
++        "senaryo_rapor.py",
          ]
      )
 -    for s in steps:
@@ -1758,6 +1782,183 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      s_olas = sum(olas.values()) or 1.0
      olas = {k: v / s_olas for k, v in olas.items()}
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_rapor.py fixed/etki_cephesi/senaryo_rapor.py
+--- pristine/etki_cephesi/senaryo_rapor.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 07:49:56.427463968 +0000
+@@ -0,0 +1,173 @@
++"""Senaryo raporları: A, B, C için AYNI bölümler, AYNI alanlar (referans senaryo ayrıcalığı yok).
++
++Çıktı: `SENARYO_RAPOR_{A,B,C}.md` (aynı iskelet) ve `SENARYO_KARSILASTIRMA.md` (yan yana).
++Girdi: senaryo başına JSON'lar (PROJEKSIYON, AKIS_OLCUM_{s}, ZARAR_COZUM_{s}, URETIM_IC_AKIS_{s}, FINANS_KATMAN_{s},
++STOK_AKIS_SIM_{s}, GERCEKLIK_KALIBRE_{s}, DIS_RANT_PARASAL_{s}, ULUSLARARASI_STOK_AKIS_{s}) + `_olasilik.vekil()`.
++Eksik alan "—" yazılır: bilinmiyor sıfır değildir. Bu rapor başka modüle girdi olmaz (döngü yok).
++
++Yapısal asimetri notu (rapor sonunda da yazılı): üretim/finans katmanları A ve B için C tabanlı ölçeklenir
++(`politika_C_bazli`, `merkez_sizinti_C_bazli`); yani A/B bu katmanlarda bağımsız modellenmiş değildir.
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++from typing import Any
++
++import _olasilik
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++SENARYOLAR = ("A", "B", "C")
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8")) if p.is_file() else {}
++
++
++def _g(d: Any, yol: str) -> Any:
++    for k in yol.split("."):
++        if isinstance(d, dict) and k in d:
++            d = d[k]
++        else:
++            return None
++    return d
++
++
++def _f(v: Any) -> str:
++    if v is None:
++        return "—"
++    if isinstance(v, bool):
++        return "evet" if v else "hayır"
++    if isinstance(v, float):
++        return f"{v:,.3f}".rstrip("0").rstrip(".") if abs(v) < 1e4 else f"{v:,.1f}"
++    return str(v)
++
++
++def _satirlar(sid: str) -> list[tuple[str, list[tuple[str, Any]]]]:
++    sen_doc = _load(DATA / "senaryolar.json")
++    sen = next(s for s in sen_doc["senaryolar"] if s["id"] == sid)
++    proj = _load(OUT / "PROJEKSIYON.json")
++    p = next((s for s in proj.get("senaryolar", []) if s["id"] == sid), {})
++    akis = _load(OUT / f"AKIS_OLCUM_{sid}.json")
++    zc = _load(OUT / f"ZARAR_COZUM_{sid}.json")
++    ui = _load(OUT / f"URETIM_IC_AKIS_{sid}.json")
++    fk = _load(OUT / f"FINANS_KATMAN_{sid}.json")
++    ss = _load(OUT / f"STOK_AKIS_SIM_{sid}.json")
++    gk = _load(OUT / f"GERCEKLIK_KALIBRE_{sid}.json")
++    dr = _load(OUT / f"DIS_RANT_PARASAL_{sid}.json")
++    us = _load(OUT / f"ULUSLARARASI_STOK_AKIS_{sid}.json")
++    bm = sen.get("bag_modu", {})
++    ent = ss.get("entegre_puls", {})
++    sek = ent.get("sektor_etkisi_trilyonTL", {})
++    return [
++        ("1. Tanım (senaryo parametreleri)", [
++            ("Ad", sen.get("ad")),
++            ("Olasılık (kapı iskeleti, gözlem yokken tekdüze)", round(_olasilik.vekil()[sid], 4)),
++            ("Etki erozyonu çarpanı", sen.get("etki_erosyon_carpani")),
++            ("TR diplomatik esneklik", sen.get("tr_diplomatik_flex")),
++            ("Merkez sızıntı çarpanı", sen.get("merkez_sizinti_carpan")),
++            ("Bağ modu kullanım / atıl / araçsal", f"{bm.get('kullanim')} / {bm.get('atil')} / {bm.get('aracsal')}"),
++        ]),
++        ("2. Projeksiyon (10 yıl vekil)", [
++            ("TR yarıçevre boşalma", p.get("turkiye_yaricevre_bosalma")),
++            ("Merkez finans sızıntı Σ", p.get("merkez_finans_sizinti_toplam")),
++            ("MFIN kenar Σ", p.get("merkez_mfin_kenar_toplam")),
++            ("Tüm havza rant Σ", p.get("tum_havza_rant_cikis_toplam")),
++            ("Merkez + rant Σ", p.get("merkez_artı_rant_cikis_toplam")),
++            ("Pasif boşluk Σ", p.get("pasif_bosluk_toplam")),
++            ("Araçsallaşma Σ", p.get("aracsallasma_toplam")),
++            ("Temsil zedesi Σ", p.get("mesruiyet_temsil_zedesi_toplam")),
++            ("Dış mimari Σ", p.get("dis_hegemon_mimari_toplam")),
++            ("İç dinamik tıkanma", p.get("ic_dinamik_tikanma")),
++        ]),
++        ("3. Akış ölçümü (USD köprüsü, mn $)", [
++            ("MFIN kenar", _g(akis, "modelden_usd_vekili.mfin_kenar_usd_mn")),
++            ("Belirsiz merkez", _g(akis, "modelden_usd_vekili.merkez_belirsiz_usd_mn")),
++            ("Merkez toplam", _g(akis, "modelden_usd_vekili.merkez_toplam_usd_mn")),
++            ("Rant toplam", _g(akis, "modelden_usd_vekili.rant_toplam_usd_mn")),
++        ]),
++        ("4. Zarar çözümü (beş adım varsayımı)", [
++            ("TR net ham", _g(zc, "ham.tr_net_birlesik_vekil")),
++            ("TR net çözüm sonrası", _g(zc, "zarar_cozum_sonrasi.tr_net_birlesik_vekil")),
++            ("TR net farkı", _g(zc, "fark.tr_net")),
++            ("TR boşalma ham → sonrası", f"{_f(_g(zc, 'ham.turkiye_yaricevre_bosalma'))} → {_f(_g(zc, 'zarar_cozum_sonrasi.turkiye_yaricevre_bosalma'))}"),
++        ]),
++        ("5. Üretim iç akışı ve finans katmanı", [
++            ("Üretim iç akış TR net", _g(ui, "uretim_ic_akis_tam.tr_net_birlesik_vekil")),
++            ("Üretim: sıfır yılı tahmini", _g(ui, "sifir_nokta_tahmini.takvim_yil_sifir_veya_ustu")),
++            ("Finans katmanı TR net", _g(fk, "finans_katman_tam.tr_net_birlesik_vekil")),
++            ("Finans: sıfır üstü takvim yılı", _g(fk, "sifir_nokta.takvim_yil_sifir_ustu")),
++            ("Finans etiketi", fk.get("etiket")),
++        ]),
++        ("6. Stok-akış (SFC, tr TL)", [
++            ("Matris dönemi / kur", f"{_f(ss.get('matris_donem'))} / {_f(ss.get('kur_tl_usd'))}"),
++            ("H", sek.get("H")), ("F", sek.get("F")), ("B", sek.get("B")), ("K", sek.get("K")), ("D", sek.get("D")),
++            ("Kapanış (Σ=0)", _g(ent, "kapanis.kapanis_ok")),
++            ("F.4 stok 2036, baz (mr TL)", (ss.get("stok_f4_bandi_son_yil", {}).get("0.0") or {}).get("stok_f4_milyar")),
++            ("F.4 stok 2036, silme %20 varsayımı", (ss.get("stok_f4_bandi_son_yil", {}).get("0.2") or {}).get("stok_f4_milyar")),
++        ]),
++        ("7. Gerçeklik kalibrasyonu", [
++            ("TR net son (kalibre)", gk.get("tr_net_kalibre_son")),
++            ("GSYH %", gk.get("gsyh_yuzde_son")),
++            ("TR net 10. yıl yolu", gk.get("tr_net_yol_10_son")),
++            ("Gerçekleşme: zarar / üretim / finans", " / ".join(_f(_g(gk, f"gerceklesme_oranlari.{k}")) for k in ("zarar_teorisi", "uretim_ic_akis", "finans_katman"))),
++        ]),
++        ("8. Dış rant parasal akışı", [
++            ("Boşluk rantı toplam (vekil)", _g(dr, "ozet.zarar_bosluk_toplam_vekil")),
++            ("Refah dış toplam (vekil)", _g(dr, "ozet.refah_dis_toplam_vekil")),
++            ("Refah TR iç toplam (vekil)", _g(dr, "ozet.refah_tr_ic_toplam_vekil")),
++            ("Boşluk rantı (mn $)", _g(dr, "ozet.zarar_usd_mn_toplam")),
++            ("Refah dış (mn $)", _g(dr, "ozet.refah_dis_usd_mn_toplam")),
++        ]),
++        ("9. Uluslararası stok-akış", [
++            ("Kapanış tamam", _g(us, "kalibrasyon.kapanis_ok")),
++            ("Havza net stok (mn $)", _g(us, "akis_tur_toplam_usd_mn.havza_net_stok")),
++            ("Havza kayıp brüt kenar (mn $)", _g(us, "akis_tur_toplam_usd_mn.havza_kayip_brut_kenar")),
++            ("Merkez sızıntı (mn $)", _g(us, "akis_tur_toplam_usd_mn.merkez_sizinti")),
++            ("Kanal ikame (mn $)", _g(us, "akis_tur_toplam_usd_mn.kanal_ikame")),
++        ]),
++    ]
++
++
++NOT = (
++    "**Yapısal sınır (A, B, C için aynı):** üretim iç akışı ve finans katmanı A ve B için C tabanından ölçeklenir "
++    "(`politika_C_bazli`, `merkez_sizinti_C_bazli`). Bu bölümlerde A/B bağımsız modellenmemiştir; fark çarpandan gelir. "
++    "F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. "
++    "Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz."
++)
++
++
++def _md(sid: str) -> str:
++    L = [f"# Senaryo {sid} — ayrıntılı rapor", "", "Üç senaryo (A, B, C) için aynı bölümler ve alanlar. Referans etiketi ayrıcalık değildir.", ""]
++    for baslik, rows in _satirlar(sid):
++        L += [f"## {baslik}", "", "| Alan | Değer |", "| --- | ---: |"]
++        L += [f"| {a} | {_f(v)} |" for a, v in rows]
++        L.append("")
++    L += ["## Ülke ve aktör ayrıntısı", "", f"- `ULKE_KAYIP_{sid}.md`, `DIS_AKTOR_{sid}.md`, `AKIS_OLCUM_{sid}.md`, `ZARAR_COZUM_{sid}.md`", "", "## Not", "", NOT, ""]
++    return "\n".join(L)
++
++
++def _karsilastirma() -> str:
++    tum = {s: _satirlar(s) for s in SENARYOLAR}
++    L = ["# Senaryo karşılaştırması (A | B | C)", "", "Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir.", ""]
++    for i, (baslik, rows) in enumerate(tum["A"]):
++        L += [f"## {baslik}", "", "| Alan | A | B | C |", "| --- | ---: | ---: | ---: |"]
++        for j, (alan, _) in enumerate(rows):
++            L.append(f"| {alan} | " + " | ".join(_f(tum[s][i][1][j][1]) for s in SENARYOLAR) + " |")
++        L.append("")
++    L += ["## Not", "", NOT, ""]
++    return "\n".join(L)
++
++
++def main() -> None:
++    OUT.mkdir(parents=True, exist_ok=True)
++    for sid in SENARYOLAR:
++        (OUT / f"SENARYO_RAPOR_{sid}.md").write_text(_md(sid), encoding="utf-8")
++    (OUT / "SENARYO_KARSILASTIRMA.md").write_text(_karsilastirma(), encoding="utf-8")
++    print(f"Wrote SENARYO_RAPOR_{{A,B,C}}.md + SENARYO_KARSILASTIRMA.md")
++
++
++if __name__ == "__main__":
++    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_uygulanabilirlik.py fixed/etki_cephesi/senaryo_uygulanabilirlik.py
 --- pristine/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:05:45.827930514 +0000
 +++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 07:40:14.116179422 +0000
@@ -2249,6 +2450,21 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      s_olas = sum(olas.values()) or 1.0
      olas = {k: v / s_olas for k, v in olas.items()}
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/zarar_cozum_entegrasyon.py fixed/etki_cephesi/zarar_cozum_entegrasyon.py
+--- pristine/etki_cephesi/zarar_cozum_entegrasyon.py	2026-10-14 06:05:45.831403328 +0000
++++ fixed/etki_cephesi/zarar_cozum_entegrasyon.py	2026-10-14 07:49:13.539372806 +0000
+@@ -164,9 +164,8 @@
+             }
+         )
+ 
+-    if "C" in senaryolar:
+-        res_c = _load(OUT / "ZARAR_COZUM_C.json")
+-        (OUT / "ZARAR_COZUM_C.md").write_text(_md(res_c), encoding="utf-8")
++    for sid in senaryolar:  # her senaryo için aynı md (C ayrıcalığı yok)
++        (OUT / f"ZARAR_COZUM_{sid}.md").write_text(_md(_load(OUT / f"ZARAR_COZUM_{sid}.json")), encoding="utf-8")
+ 
+     coklu = {
+         "olcum": "zarar_cozum_senaryo_coklu",
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_p3.py fixed/tests/test_etki_cephesi_p3.py
 --- pristine/tests/test_etki_cephesi_p3.py	2026-10-14 06:05:45.846952283 +0000
 +++ fixed/tests/test_etki_cephesi_p3.py	2026-10-14 06:42:31.701662816 +0000
@@ -2266,8 +2482,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:46:07.714297475 +0000
-@@ -0,0 +1,259 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:49:38.224112033 +0000
+@@ -0,0 +1,275 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -2527,3 +2743,19 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert _j(OUT / "PROJEKSIYON.json")["referans_senaryo"] == "C"
 +    eski = [p.name for p in OUT.glob("*") if p.suffix in (".md", ".json") and ("en olası" in p.read_text(encoding="utf-8") or "en_olasi" in p.read_text(encoding="utf-8"))]
 +    assert eski == []  # bayat rapor kalmadı (UZUN_VADE_ESIK artık run_all içinde)
++
++
++def test_senaryo_raporlari_a_b_c_ayni_iskelet_ve_alanlar():
++    import re
++
++    iskelet = {}
++    for sid in ("A", "B", "C"):
++        t = (OUT / f"SENARYO_RAPOR_{sid}.md").read_text(encoding="utf-8")
++        iskelet[sid] = [l.split("|")[1].strip() for l in t.splitlines() if l.startswith("| ") and not l.startswith("| Alan") and not l.startswith("| ---")]
++        assert re.search(r"^## 9\. ", t, re.M)
++    assert iskelet["A"] == iskelet["B"] == iskelet["C"]  # aynı alanlar, aynı sıra
++    for sid in ("A", "B", "C"):
++        for ad in ("AKIS_OLCUM_%s.json", "AKIS_OLCUM_%s.md", "ZARAR_COZUM_%s.md", "ULKE_KAYIP_%s.md", "DIS_AKTOR_%s.md"):
++            assert (OUT / (ad % sid)).is_file(), ad % sid
++    k = (OUT / "SENARYO_KARSILASTIRMA.md").read_text(encoding="utf-8")
++    assert "F.4 stok 2036, baz" in k and "| — | — | — |" not in k.split("## 6.")[1].split("## 7.")[0]  # stok bandı üç senaryoda dolu
