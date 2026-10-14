@@ -1,0 +1,17 @@
+﻿ulke,donem,birim,etiket,stok,stok_durum,yerli_alacakli,yabanci_alacakli,yabanci_durum,doviz_stok,yerli_para_stok,doviz_ayri,kagit,yazilan,yazilan_durum,r_ic,r_dis,r_diger,fatura,fatura_durum,bes_adim,lam,fark
+Türkiye,2025-12,milyar TL,yerli_para_bacagi,8152.8,olcum,7533.2,619.6,turev,1745.8,6407.0,,,,capraz_yok,,,,,modellenmedi,modellenmedi,,
+Japonya,2026-06,trilyon yen,yazilir,1142.0,olcum,992.1,149.9,olcum,,,,yen,992.1,yazildi,,,,,modellenmedi,modellenmedi,1,0
+ABD,2025-06,,yabanci_alacakli_buyuk,,yok,,,yok,,,,,,stok_yok,,,,,modellenmedi,modellenmedi,,
+Çin,2025-12,trilyon yuan,yazilir,196.7,olcum,193.2,3.5,olcum,,,,yuan,193.2,yazildi,,,,,modellenmedi,modellenmedi,1,0
+Arjantin,2025-12,milyar dolar,doviz_bacagi_disarida,452.7,olcum,297.3,155.3,olcum,261.8,190.9,,,,capraz_yok,,,,,modellenmedi,modellenmedi,,
+Brezilya,2026-08,milyar real,yazilir,8944.5,olcum,8058.1,886.4,turev,,,348.3,,8058.1,yazildi,,,,,modellenmedi,modellenmedi,1,0
+Almanya,2025-12,,yabanci_alacakli_buyuk,,yok,,,yok,,,,,,stok_yok,,,,,modellenmedi,modellenmedi,,
+Fransa,2025-12,,yabanci_alacakli_buyuk,,yok,,,yok,,,,,,stok_yok,,,,,modellenmedi,modellenmedi,,
+İtalya,2025-12,,yabanci_alacakli_buyuk,,yok,,,yok,,,,,,stok_yok,,,,,modellenmedi,modellenmedi,,
+İspanya,2025-12,,yabanci_alacakli_buyuk,,yok,,,yok,,,,,,stok_yok,,,,,modellenmedi,modellenmedi,,
+Euro alanı,2024-Q4,milyar euro,yabanci_alacakli_buyuk,11304.3,yaklasik,8704.3,2600.0,yaklasik,,,,euro,8704.3,yazildi,,,,,modellenmedi,modellenmedi,1,0
+İngiltere,2024-09,,yabanci_alacakli_buyuk,,yok,,,yok,,,,,,stok_yok,,,,,modellenmedi,modellenmedi,,
+Güney Kore,2025-12,trilyon won,yabanci_alacakli_buyuk,1157.2,turev,859.8,297.4,olcum,,,,won,859.8,yazildi,,,,,modellenmedi,modellenmedi,1,0
+Meksika,2025-12,,yazilir,,yok,,,yok,,,,,,stok_yok,,,,,modellenmedi,modellenmedi,,
+Polonya,2025-11,milyar zloti,yazilir,1449.6,turev,1280.0,169.6,olcum,,,,zloti,1280.0,yazildi,,,,,modellenmedi,modellenmedi,1,0
+Endonezya,2025-08-11,trilyon rupiah,yerli_alacakli_doviz_ayrilmadi,6420.6,olcum,5482.3,938.3,olcum,,,,,,doviz_ayrilmadi,,,,,modellenmedi,modellenmedi,,
