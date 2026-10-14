@@ -1,7 +1,7 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `b03d44346156ac48`, temiz kurulumda 3 geçiş),
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `349a0d3a12d4e42c`, temiz kurulumda 3 geçiş),
 **61 test geçti** (27 mevcut + 34 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
@@ -227,11 +227,20 @@ Mısır `kanal` kalkınca "çevre kazananı" olmaktan çıkmıştı (ledger neti
 - **Sınıf kümeleri:** RS kaybeden ↔ bant içi (C'de üç sınıf), BG bant içi ↔ kaybeden; A'da BA/BG bant içi, B'de AL/MK bant içi.
 - BA'da net − bant marjı 0,001: yuvarlama düzeyinde (C'de ana rapor bant içi, sınama kazanan diyor).
 
-## Çin, Rusya, İran aynı sınamadan geçirildi
+## Çin, Rusya, İran aynı sınamadan geçirildi (ilk sürüm; kayıp-bilinmiyor düzeltmesi sonraki bölümde)
 Aynı varyantlar (kazanç ×0,5 / ×1,5, dağıtım kuralı alternatifi, belirsiz pay, kayıp ×0,75 / ×1,25); kural varyantı artık işaretli (alternatif kural kazancı artırabilir de azaltabilir de). Yeni ölçütler: `en_kotu_marj` (taban sınıfın yönünde, tüm varyantlar içinde bandı en az aşan değer) ve `kazanc_olcek_kirilma` k* (kazancın bu çarpanın altına inmesi aktörü bant dışı kazanan olmaktan çıkarır).
-- **Çin, Rusya, İran A, B, C'nin hepsinde dayanıklı:** her varyantta "çevre entegre kazananı". En kötü varyant her zaman kazanç ×0,5; en kötü marj: Çin 0,19 (C) – 0,49 (B), Rusya 0,14 – 0,42, İran 0,34 – 0,47.
+- **Çin, Rusya, İran A, B, C'nin hepsinde dayanıklı (YALNIZ kayıp = 0 varsayımıyla; bkz. sonraki bölüm):** her varyantta "çevre entegre kazananı". En kötü varyant her zaman kazanç ×0,5; en kötü marj: Çin 0,19 (C) – 0,49 (B), Rusya 0,14 – 0,42, İran 0,34 – 0,47.
 - **k*:** Çin 0,39 – 0,43, Rusya 0,40 – 0,45, İran 0,28 – 0,33. Yani kazançlarının %55–72'si silinse de bant dışı kazanan kalırlar. Karşılaştırma: Yunanistan k* 0,89 – 0,98, Balkanlar (AL, MK) 0,90 – 0,98: kazançta %2–10'luk kayıp yeter.
 - **Önemli uyarı:** bant taban değerinde tutuldu (kazanç ölçeklenince bant ölçeklenmedi), ve sınama aktör başına. Çin ve Rusya'nın kazançları aynı atanmış paylara (`dis_aktör_pay`) ve ikame varsayımlarına dayanır; bu paylar sistematik olarak şişkinse (hepsi birden), sıralama değişmez ama mutlak kazançlar küçülür. Dayanıklılık kazançların büyüklüğünden geliyor (Çin 2,6, Rusya 2,5 vs Yunanistan 0,17), ölçümün güvenilirliğinden değil.
+
+## ABD, İsrail, BAE, Suudi Arabistan, Fransa, AB sınandı; "kaybı bilinmiyor" düzeltmesi
+Aynı varyantlar; AB için bölünme payı (1 − p) ile kalan pay. Sınama sırasında **bir önceki bölümdeki bir eksiği buldum:** Çin ve Rusya (ve ABD, BAE, Suudi Arabistan, Fransa, AB, Yunanistan) için havza kaybı **modelde yok** (`kayip_kapsam: bilinmiyor`); önceki sınama bunu sessizce sıfır saymıştı. Bu "bilinmiyor sıfır değildir" ilkesine aykırıydı ve Çin/Rusya'yı olduğundan dayanıklı gösterdi.
+- **Düzeltme:** kaybı bilinmeyen aktörlere iki ek varyant: kayıp = referans aktörlerin kayıp/kazanç oranının **medyanı** ve **en yükseği**. Referans: kaybı ve kazancı tam modellenmiş, AB bölünmesinden bağımsız İran, İsrail, Mısır (her üç senaryoda aynı küme; A: medyan 0,26 / maks 1,08, B: 0,38 / 1,34, C: 0,21 / 0,96; maks hep Mısır). Kırılma noktası olarak **r\*** da yazılır: bilinmeyen kayıp kazancın bu oranından küçükse aktör hâlâ bant dışı kazanan.
+- **Sonuç:** kazanç, pay ve kural salınımlarına dayanıklı olanlar (kayıp-dışı varyantlarda hep kazanan): Çin, Rusya, ABD, BAE, Suudi Arabistan, AB (+ İran, kaybı modelli). **Medyan oranda** hepsi kazanan kalır. **Mısır oranında** (kayıp ≈ kazanç) hiçbiri kazanan kalmaz: bant içine, ABD için A ve B'de, BAE, Suudi Arabistan ve AB için B'de kaybedene düşer.
+- **r\*** (C): Çin 0,57, Rusya 0,56, Fransa 0,43, AB 0,82, BAE 0,84, Suudi Arabistan 0,90, ABD 0,96, Yunanistan 0,05. Yani kazanan olarak kalmak için Çin'in kaybı kazancının %57'sinden azı olmalı; ABD'nin %96'sından azı. Referans medyanı 0,21–0,38.
+- **Fransa kenarda** (kayıp-dışı varyantlarda bile kazanç ×0,5 ile bant içi; k\* 0,50–0,57); **İsrail** A ve C'de dayanıklı, B'de kazanç ×0,5 ile bant içine düşer (en kötü marj −0,06).
+- **k\* (kazanç çarpanı):** ABD 0,04, Suudi Arabistan 0,09–0,12, BAE 0,15–0,17, AB 0,17–0,19: kazançları ana raporun %4–19'una inmeden bant dışı kazanan; bu **büyüklük** etkisi (ABD'nin kazancı 1,9–3,6, bandı 0,09–0,13), ölçüm güvenilirliği değil.
+- **Genel okuma:** sınıf iddiasının gücü kayıp tarafının bilinmemesiyle sınırlı. Kayıp modellendiği tek büyük kazananda (İran) iddia sağlam; kayıp bilinmeyen sekiz kazananda iddia "kayıp küçükse" koşullu.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

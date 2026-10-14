@@ -1095,16 +1095,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bant_sinama.py fixed/etki_cephesi/bant_sinama.py
 --- pristine/etki_cephesi/bant_sinama.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/bant_sinama.py	2026-10-14 14:31:19.475084227 +0000
-@@ -0,0 +1,167 @@
-+"""Çin, Rusya, İran, Yunanistan ve Balkanları belirsizlik bandıyla SINAMA (duyarlılık/dayanıklılık raporu).
++++ fixed/etki_cephesi/bant_sinama.py	2026-10-14 14:36:02.770011395 +0000
+@@ -0,0 +1,198 @@
++"""Büyük kazananlar (Çin, Rusya, İran, ABD, İsrail, BAE, Suudi Arabistan, Fransa, AB), Yunanistan ve Balkanları belirsizlik bandıyla SINAMA (duyarlılık/dayanıklılık raporu).
 +
 +Neden bu aktörler: sınıfları (kazanan/kaybeden/bant içi) atanmış parametrelere dayanıyor.
 +  * Balkan ülkeleri (RS, BA, BG, AL, MK): kazançları AB satırının atanmış %68'lik bölünmesinden (`eu_satir_balkan_kanal_pay`)
 +    ve (kayıtlı olmayan ülkelerde) eşit refah-endeksi ağırlığından gelir; yani bu ülkeler neredeyse AYNI kazanç dilimini alır,
 +    sınıfı yalnız kendi havza kaybı belirler.
 +  * Yunanistan: kazancı dağıtım kuralına (matris ↔ kanal) çok duyarlı.
-+  * Çin, Rusya, İran: büyük kazananlar; kazançları atanmış aktör paylarına ve katsayılara dayanır, aynı sınamadan geçirilir.
++  * AB: kazancının %68'i Balkan ülkelerine bölünür (p), yani (1−p) ile kalır; p düşerse AB'nin kazancı artar.
++  * Çin, Rusya, İran ve diğer büyük kazananlar; kazançları atanmış aktör paylarına ve katsayılara dayanır, aynı sınamadan geçirilir.
 +Sınama (tek parametre, diğerleri taban): bölünme payı p, dağıtım kuralı, bilinmeyen merkez payının kazanç sayılması, kazancın tamamı ×0,5/×1,5
 +(atanmış aktör payları ve katsayılar), kayıp ölçeği.
 +Çıktı: her aktör için sınıf kümesi, dayanıklılık, kırılma noktası p*.  Bu rapor başka modüle girdi olmaz (döngü yok).
@@ -1118,7 +1119,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +REPO = Path(__file__).resolve().parents[1]
 +DATA = REPO / "data" / "etki_cephesi"
 +OUT = REPO / "reports" / "etki_cephesi"
-+AKTORLER = ("CN", "RU", "IR", "GR", "RS", "BA", "BG", "AL", "MK", "CY")
++REFERANS_ORAN = ("IR", "IL", "EG")  # kaybı bilinmeyen aktörlere uygulanacak kayıp/kazanç oranının kaynağı
++AKTORLER = ("CN", "RU", "IR", "US", "IL", "AE", "SA", "FR", "EU", "GR", "RS", "BA", "BG", "AL", "MK", "CY")
 +P_IZGARA = (0.34, 0.51, 0.68, 0.85)  # taban 0,68; −%50, −%25, taban, +%25
 +KAYIP_OLCEK = (0.75, 1.0, 1.25)
 +KAZANC_OLCEK = (0.5, 1.5)  # atanmış aktör payları ve katsayıları: kazancın tamamı ×0,5 / ×1,5
@@ -1148,6 +1150,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        led = {r["ulke"]: r for r in _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
 +        tam_b = sorted(r["net_bandi"] for r in led.values() if r.get("bant_kapsami") == "tam" and r["ulke"] not in ("TR", "MFIN") and r["net_bandi"] > 0)
 +        med = tam_b[len(tam_b) // 2] if tam_b else 0.0
++        ab = {x["aktor"]: x for x in proj[sid]["aktör_birlesik"]}
++        # Kaybı BİLİNMEYEN aktörler (ABD, Çin, Rusya, AB, BAE, Suudi, Fransa, Yunanistan): sıfır değil. Referans: kaybı VE kazancı tam
++        # modellenmiş, AB bölünmesinden bağımsız aktörler (İran, İsrail, Mısır): kayıp/kazanç oranları. Her üç senaryoda aynı küme.
++        oranlar = sorted(
++            float(led[i]["havza_kayip"]) / float(led[i]["dis_toplam_vekili"])
++            for i in REFERANS_ORAN
++            if i in led and ab.get(i, {}).get("net_kapsam") == "tam" and float(led[i]["dis_toplam_vekili"]) > 0
++        )
++        r50 = oranlar[len(oranlar) // 2] if oranlar else 0.0
++        r75 = max(oranlar) if oranlar else 0.0  # en yüksek oran
 +        eu = led["EU"]
 +        raw = {k: eu[k] / (1 - p0) for k in ("kanal_kazanc", "ikame_kazanc", "refah_rant")}
 +        raw_top = sum(raw.values())
@@ -1160,7 +1172,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            rol = str((usys.get(iso) or {}).get("rol") or "")
 +            kaybi = float(r["havza_kayip"])
 +            kazanc_ledger = float(r["kanal_kazanc"]) + float(r["ikame_kazanc"]) + float(r["merkez_sizinti"]) + float(r["refah_rant"])
-+            dilim0 = p0 * raw_top * w[iso] if iso in balkan else 0.0
++            dilim0 = (p0 * raw_top * w[iso]) if iso in balkan else (((1 - p0) * raw_top) if iso == "EU" else 0.0)
 +            sahip = kazanc_ledger - dilim0  # bölünmeden bağımsız kendi kazancı
 +            bant = float(r["net_bandi"])
 +            if r.get("bant_kapsami") == "kismi":
@@ -1173,19 +1185,31 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            matris = float(d.get("matris_kazanc") or 0.0)
 +            kural_degisim = (kanal_alt - matris) if r.get("bant_kapsami") == "tam" else 0.0  # işaretli: alternatif kuralın kazanç farkı
 +
++            def _dilim(p: float) -> float:
++                if iso in balkan:
++                    return p * raw_top * w[iso]  # AB'den gelen Balkan dilimi
++                if iso == "EU":
++                    return (1 - p) * raw_top  # AB'de kalan pay
++                return 0.0
++
 +            def net(p=p0, kural_ekle=0.0, belirsiz_ekle=0.0, olcek=1.0, kazanc_olcek=1.0) -> float:
-+                dilim = p * raw_top * w[iso] if iso in balkan else 0.0
++                dilim = _dilim(p)
 +                return (sahip + dilim + kural_ekle + belirsiz_ekle) * kazanc_olcek - kaybi * olcek
 +
 +            taban = net()
 +            varyantlar: dict[str, float] = {"taban": taban}
 +            for p in P_IZGARA:
-+                if iso in balkan:
++                if iso in balkan or iso == "EU":
 +                    varyantlar[f"p={p}"] = net(p=p)
 +            if abs(kural_degisim) > 1e-9:
 +                varyantlar["kural=kanal (alternatif)"] = net(kural_ekle=kural_degisim)
 +            if belirsiz > 0:
 +                varyantlar["belirsiz pay kazanç sayılır"] = net(belirsiz_ekle=belirsiz)
++            kayip_bilinmiyor = ab.get(iso, {}).get("kayip_kapsam") == "bilinmiyor"
++            if kayip_bilinmiyor:
++                brut = net()  # kayıp yok varsayılan taban (kayıp bilinmiyor → 0 yazılmış)
++                varyantlar["bilinmeyen kayıp=büyük-kazanan medyan oran"] = brut - r50 * brut
++                varyantlar["bilinmeyen kayıp=büyük-kazanan en yüksek oran"] = brut - r75 * brut
 +            for ko in KAZANC_OLCEK:
 +                varyantlar[f"kazanç×{ko}"] = net(kazanc_olcek=ko)
 +            for o in KAYIP_OLCEK:
@@ -1199,7 +1223,12 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +                return (v - bant) if yon > 0 else ((-v - bant) if yon < 0 else (bant - abs(v)))
 +
 +            en_kotu = min(varyantlar.items(), key=lambda kv: _marj(kv[1]))
-+            gain0 = sahip + (p0 * raw_top * w[iso] if iso in balkan else 0.0)
++            gain0 = sahip + dilim0
++            r_kir = None
++            if kayip_var_degil := (ab.get(iso, {}).get("kayip_kapsam") == "bilinmiyor"):
++                brut_g = net()
++                if brut_g > 0 and "kazanan" in siniflar["taban"]:
++                    r_kir = round(1 - bant / brut_g, 3)  # bilinmeyen kayıp bu orandan küçükse hâlâ bant dışı kazanan
 +            k_kir = None
 +            if gain0 > 0 and yon > 0:
 +                k_kir = round((bant + kaybi) / gain0, 3)  # kazancın bu çarpanın altına inmesi → artık bant dışı kazanan değil
@@ -1219,10 +1248,12 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +                    "net": round(taban, 3),
 +                    "bant": round(bant, 3),
 +                    "bant_kapsami": r.get("bant_kapsami"),
++                    "kayip_kapsam": ab.get(iso, {}).get("kayip_kapsam"),
 +                    "marj": round(abs(taban) - bant, 3),  # > 0: bant dışı (karar verilmiş); < 0: bant içi
 +                    "en_kotu_marj": round(_marj(en_kotu[1]), 3),
 +                    "en_kotu_varyant": en_kotu[0],
 +                    "kazanc_olcek_kirilma": k_kir,
++                    "bilinmeyen_kayip_orani_kirilma": r_kir,
 +                    "taban_sinif": siniflar["taban"],
 +                    "sinif_kumesi": kume,
 +                    "dayanikli": len(kume) == 1,
@@ -1230,7 +1261,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +                    "varyant_siniflari": siniflar,
 +                }
 +            )
-+        out_s.append({"id": sid, "bolunme_pay_p0": p0, "kismi_bant_medyani": round(med, 3), "aktorler": satirlar})
++        out_s.append({"id": sid, "bolunme_pay_p0": p0, "kismi_bant_medyani": round(med, 3), "kayip_kazanc_orani_medyan_maks": [round(r50, 3), round(r75, 3)], "kayip_orani_referans_aktorler": [i for i in REFERANS_ORAN if i in led], "aktorler": satirlar})
 +    return {
 +        "olcum": "bant_sinama_yunanistan_balkan",
 +        "etiket": "duyarlilik_dayaniklilik",
@@ -1244,11 +1275,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +def _md(d: dict[str, Any]) -> str:
 +    L = ["# Yunanistan ve Balkanların bantla sınanması", "", f"**Etiket:** `{d['etiket']}`. {d['not']}", ""]
 +    for s in d["senaryolar"]:
-+        L += [f"## Senaryo {s['id']} (AB→Balkan bölünme payı p = {s['bolunme_pay_p0']}, kısmi bant medyanı {s['kismi_bant_medyani']})", "", "| Ülke | Net | Bant | Marj (|net|−bant) | Taban sınıf | Sınıf kümesi (tüm varyantlar) | Dayanıklı | En kötü marj (varyant) | Kazanç çarpanı k* | p*: net=0 / kazanan başlar / kaybeden biter |", "| --- | ---: | ---: | ---: | --- | --- | --- | --- | ---: | --- |"]
++        L += [f"## Senaryo {s['id']} (AB→Balkan bölünme payı p = {s['bolunme_pay_p0']}, kısmi bant medyanı {s['kismi_bant_medyani']}; kaybı bilinmeyen aktörlere uygulanan kayıp/kazanç oranı medyan/maks (referans: {', '.join(s['kayip_orani_referans_aktorler'])}) = {s['kayip_kazanc_orani_medyan_maks']})", "", "| Ülke | Kayıp | Net | Bant | Marj (|net|−bant) | Taban sınıf | Sınıf kümesi (tüm varyantlar) | Dayanıklı | En kötü marj (varyant) | Kazanç çarpanı k* | Bilinmeyen kayıp oranı r* | p*: net=0 / kazanan başlar / kaybeden biter |", "| --- | --- | ---: | ---: | ---: | --- | --- | --- | --- | ---: | ---: | --- |"]
 +        for a in s["aktorler"]:
 +            k = a["kirilma_p"]
 +            ks = f"{k['p_net_sifir']} / {k['p_kazanan_baslar']} / {k['p_kaybeden_biter']}" if k else "—"
-+            L.append(f"| {a['ulke']} | {a['net']} | {a['bant']} | {a['marj']} | {a['taban_sinif']} | {', '.join(a['sinif_kumesi'])} | {'evet' if a['dayanikli'] else 'HAYIR'} | {a['en_kotu_marj']} ({a['en_kotu_varyant']}) | {a['kazanc_olcek_kirilma'] if a['kazanc_olcek_kirilma'] is not None else '—'} | {ks} |")
++            L.append(f"| {a['ulke']} | {'bilinmiyor' if a.get('kayip_kapsam') == 'bilinmiyor' else 'modelli'} | {a['net']} | {a['bant']} | {a['marj']} | {a['taban_sinif']} | {', '.join(a['sinif_kumesi'])} | {'evet' if a['dayanikli'] else 'HAYIR'} | {a['en_kotu_marj']} ({a['en_kotu_varyant']}) | {a['kazanc_olcek_kirilma'] if a['kazanc_olcek_kirilma'] is not None else '—'} | {a['bilinmeyen_kayip_orani_kirilma'] if a.get('bilinmeyen_kayip_orani_kirilma') is not None else '—'} | {ks} |")
 +        L.append("")
 +    L += ["## Okuma", "", "- `En kötü marj`: taban sınıfın yönünde, bütün varyantlar içinde bandı en az aşan değer; > 0 ise sınıf o varyantta da bantla destekleniyor, < 0 ise o varyantta bant içine düşüyor. `k*`: kazancın bu çarpanın altına inmesi, aktörü bant dışı kazanan olmaktan çıkarır (yalnız kazananlar).", "- `p*` (net=0): Balkan ülkesinin net'i sıfırlayan AB→Balkan bölünme payı. Taban p = 0,68; p* bunun altındaysa ülke p'nin makul aralığında kazanan, üstündeyse kaybeden. Kazanan sınıf için p'nin `kazanan başlar` değerini aşması gerekir.", "- 'Dayanıklı = HAYIR': sınıf, atanmış bir parametrenin tek başına ±%25–50 salınımıyla değişiyor; bu aktör hakkında 'kazanan/kaybeden' iddiası kurulamaz.", ""]
 +    return "\n".join(L)
@@ -3884,8 +3915,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:31:44.928537743 +0000
-@@ -0,0 +1,518 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:36:38.486460561 +0000
+@@ -0,0 +1,527 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -4390,17 +4421,26 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert cc["AL"]["kirilma_p"]["p_net_sifir"] < 0.68 < cc["BG"]["kirilma_p"]["p_net_sifir"]  # AL taban p'de kazanan tarafta, BG kaybeden tarafta
 +
 +
-+def test_cin_rusya_iran_ayni_sinamadan_gecer_buyuk_marjla():
++def test_buyuk_kazananlar_bant_sinamasi_kayip_bilinmiyor_isareti():
 +    d = _j(OUT / "BANT_SINAMA.json")
++    kaz = {"cevre_entegre_kazanan", "merkez_entegre_kazanan", "entegre_kazanan"}
 +    for s in d["senaryolar"]:
 +        by = {a["ulke"]: a for a in s["aktorler"]}
-+        for iso in ("CN", "RU", "IR"):
++        # kaybı modellenmiş İran: tüm varyantlarda dayanıklı kazanan, marj belirgin
++        assert by["IR"]["dayanikli"] and by["IR"]["en_kotu_marj"] > 0.1 and by["IR"]["kazanc_olcek_kirilma"] < 0.5
++        for iso in ("CN", "RU", "US", "AE", "SA", "EU", "FR"):
 +            a = by[iso]
-+            assert a["taban_sinif"] == "cevre_entegre_kazanan" and a["dayanikli"], (s["id"], iso)
-+            assert a["en_kotu_marj"] > 0.1, (s["id"], iso)  # en kötü varyantta da bant dışı, belirgin marjla
-+            assert a["kazanc_olcek_kirilma"] < 0.5, (s["id"], iso)  # kazancın yarısından fazlası silinse de kazanan
-+        # Yunanistan ve Balkanlar: kazançta %5–15'lik kayıp bile sınıfı değiştirir
-+        for iso in ("GR", "AL", "MK"):
-+            k = by[iso]["kazanc_olcek_kirilma"]
-+            assert k is None or k > 0.8, (s["id"], iso)
-+        assert min(by[i]["kazanc_olcek_kirilma"] for i in ("CN", "RU", "IR")) < min(by[i]["kazanc_olcek_kirilma"] or 9 for i in ("GR", "AL", "MK"))
++            assert a["kayip_kapsam"] == "bilinmiyor"  # bu aktörlerin havza kaybı modelde yok
++            assert a["dayanikli"] is False  # bilinmeyen kayıp varyantı sınıfı bant içine/kaybedene çeker
++            v = a["varyant_siniflari"]
++            kayip_disi = {x for k, x in v.items() if "kayıp" not in k}
++            medyan = next(x for k, x in v.items() if "medyan" in k)
++            maks = next(x for k, x in v.items() if "en yüksek" in k)
++            assert maks not in kaz, (s["id"], iso)  # Mısır benzeri oran (kayıp ≈ kazanç) kazananlığı yıkar
++            if iso != "FR":
++                assert kayip_disi <= kaz, (s["id"], iso)  # kazanç ve pay salınımına dayanıklı
++                assert medyan in kaz, (s["id"], iso)  # İran/İsrail benzeri oranda kazanan
++            assert 0 < a["bilinmeyen_kayip_orani_kirilma"] < 1
++        assert by["CN"]["bilinmeyen_kayip_orani_kirilma"] < by["US"]["bilinmeyen_kayip_orani_kirilma"]  # Çin kayba daha duyarlı, ABD'nin marjı büyük
++        assert by["GR"]["bilinmeyen_kayip_orani_kirilma"] < 0.15  # Yunanistan neredeyse her kayıpta kazanan değil
++        assert next(x for k, x in by["GR"]["varyant_siniflari"].items() if "medyan" in k) == "belirsiz_bant_ici"
