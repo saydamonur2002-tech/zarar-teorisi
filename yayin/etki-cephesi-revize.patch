@@ -11,8 +11,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          run: python etki_cephesi/durum_ozeti.py
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/REVIZE_NOTU.md fixed/data/etki_cephesi/REVIZE_NOTU.md
 --- pristine/data/etki_cephesi/REVIZE_NOTU.md	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/REVIZE_NOTU.md	2026-10-14 06:54:23.370347215 +0000
-@@ -0,0 +1,18 @@
++++ fixed/data/etki_cephesi/REVIZE_NOTU.md	2026-10-14 07:28:41.158762929 +0000
+@@ -0,0 +1,20 @@
 +# Revize notu (SFC köprüsü)
 +
 +Düzeltilen hatalar (hepsi kodda doğrulandı, `reports_before/after` karşılaştırması patch çıktısında):
@@ -27,10 +27,167 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +7. **Olasılık duyarlılığı (yeni rapor).** `olasilik_duyarlilik.py`: P(C) 0,30–0,80 (adım 0,05), kalan A:B taban oranla bölünür. Çıktı `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. Yeni olasılık üretmez; olasılıklar ölçülmemiştir. `degerlendir()` isteğe bağlı `olasilik` parametresi aldı (varsayılan davranış değişmedi: mevcut raporlar birebir aynı).
 +
++8. **C için dinamik ölçüt (yeni).** `c_dinamik_olcut.py` → `C_DINAMIK_OLCUT.{json,md}`: merkez sızıntı oranının (12a yatırım geliri gideri / 12a mal ihracatı, EVDS ödemeler dengesi, `data/etki_cephesi/gozlem/`) senaryo sürüklenmesine göre sıralı Bayes güncellemesi. Ölçüm baz yıldan sonra başlar (ilk güncelleme 2027-12 verisi); eksik gözlem güncellemez. Güç analizi: bu gösterge C'yi 10 yılda ayırt edemez (≥ 307 yıl). Çapa uyumsuzluğu bayrağı: kalibrasyon 2024 yatırım geliri gideri 18.841 mn $, EVDS 26.483 (×1,41); `gerceklik_capa.json` değiştirilmedi.
++
 +Düzeltilmeyen / açık:
 +- Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
 +- `bolge_stok_akis` ve `lm_rant_sektor` darbeleri de sıfır toplamlı değil: yalnız ilan edildi (`x_toplam_trilyonTL`, `kapanis_ok`), yeniden tasarlanmadı.
 +- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/KAYNAK.md fixed/data/etki_cephesi/gozlem/KAYNAK.md
+--- pristine/data/etki_cephesi/gozlem/KAYNAK.md	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/gozlem/KAYNAK.md	2026-10-14 07:27:18.973309823 +0000
+@@ -0,0 +1,6 @@
++# Gözlem verisi
++
++EVDS `bie_odeayrsunum6` (Ödemeler Dengesi - Ayrıntılı Sunum, aylık, mn USD), 14.10.2026 çekimi.
++Seriler: `TP.ODEAYRSUNUM6.Q5` (toplam mal ihracatı), `Q6` (mal ithalatı), `Q76` (1.3.2.b yatırım geliri gideri), `Q75` (1.3.2.a gelir), `Q70` (1.3 birincil gelir gideri).
++Yenilemek: `python etki_cephesi/evds_gozlem_cek.py` (ağ gerekir; `_incoming/zarar-teorisi-main/evds_cek.py` kullanır).
++İlk/son gözlem: 2015-01 / 2026-08.
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv fixed/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv
+--- pristine/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv	2026-10-14 07:27:18.973198466 +0000
+@@ -0,0 +1,141 @@
++Donem,X_mal_ihracati,M_mal_ithalati,YG_yatirim_geliri_gideri,YG_yatirim_geliri_geliri,PG_birincil_gelir_gideri
++2015-01,13159.0,16278.0,614.0,163.0,677.0
++2015-02,13069.0,16970.0,978.0,187.0,1042.0
++2015-03,13450.0,18567.0,1473.0,290.0,1539.0
++2015-04,14261.0,17866.0,1704.0,165.0,1774.0
++2015-05,12039.0,17511.0,886.0,182.0,956.0
++2015-06,13021.0,17887.0,1089.0,272.0,1161.0
++2015-07,12178.0,18179.0,727.0,294.0,800.0
++2015-08,12013.0,15677.0,645.0,178.0,718.0
++2015-09,12440.0,15179.0,1040.0,195.0,1113.0
++2015-10,14143.0,16573.0,799.0,180.0,872.0
++2015-11,12596.0,15536.0,794.0,181.0,870.0
++2015-12,12496.0,17649.0,1102.0,288.0,1179.0
++2016-01,10095.0,12847.0,589.0,178.0,677.0
++2016-02,13204.0,15335.0,838.0,158.0,926.0
++2016-03,13710.0,17381.0,1085.0,390.0,1176.0
++2016-04,12814.0,15635.0,1342.0,193.0,1433.0
++2016-05,12926.0,16850.0,957.0,555.0,1047.0
++2016-06,13754.0,18939.0,1341.0,352.0,1431.0
++2016-07,10589.0,14478.0,756.0,202.0,846.0
++2016-08,12659.0,16045.0,920.0,210.0,1012.0
++2016-09,11746.0,14944.0,1123.0,268.0,1217.0
++2016-10,13771.0,16169.0,938.0,215.0,1034.0
++2016-11,13665.0,16195.0,716.0,276.0,815.0
++2016-12,13712.0,17750.0,1270.0,377.0,1369.0
++2017-01,12101.0,15336.0,628.0,284.0,674.0
++2017-02,12984.0,15504.0,864.0,222.0,910.0
++2017-03,15554.0,18502.0,1338.0,282.0,1386.0
++2017-04,13727.0,17057.0,1411.0,250.0,1460.0
++2017-05,14574.0,20381.0,1159.0,280.0,1212.0
++2017-06,14057.0,18741.0,1494.0,429.0,1551.0
++2017-07,13573.0,20926.0,788.0,251.0,845.0
++2017-08,14359.0,18568.0,833.0,244.0,892.0
++2017-09,12762.0,19842.0,1310.0,308.0,1370.0
++2017-10,15204.0,20683.0,1229.0,255.0,1284.0
++2017-11,15343.0,19995.0,1274.0,270.0,1324.0
++2017-12,14976.0,22254.0,1585.0,435.0,1636.0
++2018-01,13302.0,21104.0,738.0,332.0,793.0
++2018-02,13998.0,18900.0,861.0,381.0,916.0
++2018-03,16467.0,21089.0,1541.0,334.0,1596.0
++2018-04,14746.0,20122.0,1678.0,243.0,1733.0
++2018-05,15423.0,22077.0,1523.0,420.0,1578.0
++2018-06,13882.0,18553.0,1347.0,388.0,1405.0
++2018-07,14843.0,19961.0,807.0,287.0,866.0
++2018-08,13077.0,14802.0,1038.0,366.0,1090.0
++2018-09,15388.0,16130.0,1317.0,472.0,1362.0
++2018-10,16664.0,15548.0,1404.0,307.0,1451.0
++2018-11,16444.0,15422.0,1587.0,429.0,1632.0
++2018-12,14671.0,15928.0,1441.0,545.0,1487.0
++2019-01,13999.0,15259.0,821.0,267.0,871.0
++2019-02,14399.0,15136.0,868.0,437.0,919.0
++2019-03,16432.0,17182.0,1414.0,335.0,1465.0
++2019-04,15452.0,16998.0,1447.0,263.0,1499.0
++2019-05,17048.0,17402.0,1783.0,440.0,1838.0
++2019-06,11916.0,14304.0,1510.0,423.0,1571.0
++2019-07,16078.0,18369.0,977.0,287.0,1040.0
++2019-08,13498.0,14902.0,1295.0,240.0,1360.0
++2019-09,15445.0,16119.0,1391.0,347.0,1454.0
++2019-10,16514.0,17268.0,1332.0,337.0,1392.0
++2019-11,16129.0,17077.0,1383.0,338.0,1437.0
++2019-12,15290.0,18966.0,1698.0,726.0,1751.0
++2020-01,14869.0,18187.0,608.0,368.0,664.0
++2020-02,14669.0,16612.0,1024.0,386.0,1080.0
++2020-03,13394.0,17749.0,1335.0,263.0,1388.0
++2020-04,8895.0,12740.0,1313.0,209.0,1351.0
++2020-05,9619.0,12364.0,1291.0,294.0,1327.0
++2020-06,13210.0,15272.0,898.0,345.0,936.0
++2020-07,14744.0,16707.0,519.0,201.0,559.0
++2020-08,12249.0,17625.0,877.0,325.0,918.0
++2020-09,15966.0,19719.0,1264.0,548.0,1306.0
++2020-10,17229.0,18520.0,855.0,198.0,897.0
++2020-11,15948.0,19808.0,1247.0,266.0,1286.0
++2020-12,17586.0,20951.0,1002.0,514.0,1042.0
++2021-01,14818.0,16724.0,1097.0,462.0,1144.0
++2021-02,15893.0,17996.0,1326.0,221.0,1376.0
++2021-03,18733.0,21722.0,1753.0,628.0,1803.0
++2021-04,18419.0,20164.0,1307.0,296.0,1355.0
++2021-05,16369.0,19425.0,1785.0,403.0,1834.0
++2021-06,19587.0,21222.0,1212.0,281.0,1263.0
++2021-07,16406.0,19554.0,950.0,245.0,1009.0
++2021-08,18865.0,21750.0,1061.0,254.0,1122.0
++2021-09,20805.0,21931.0,1336.0,360.0,1399.0
++2021-10,20693.0,20743.0,1053.0,185.0,1114.0
++2021-11,21683.0,25313.0,1288.0,329.0,1339.0
++2021-12,22402.0,27448.0,1251.0,661.0,1292.0
++2022-01,17628.0,26180.0,726.0,309.0,778.0
++2022-02,19878.0,26174.0,1050.0,333.0,1102.0
++2022-03,22653.0,29129.0,1681.0,494.0,1733.0
++2022-04,23410.0,27754.0,1216.0,257.0,1270.0
++2022-05,18964.0,27793.0,1308.0,415.0,1365.0
++2022-06,23252.0,29688.0,1228.0,297.0,1283.0
++2022-07,18495.0,27759.0,868.0,214.0,936.0
++2022-08,21081.0,30737.0,962.0,347.0,1029.0
++2022-09,22409.0,30444.0,1053.0,258.0,1121.0
++2022-10,21019.0,27468.0,1084.0,404.0,1153.0
++2022-11,21698.0,28871.0,1457.0,1103.0,1525.0
++2022-12,22865.0,30940.0,1440.0,914.0,1509.0
++2023-01,19219.0,31800.0,952.0,315.0,1023.0
++2023-02,18389.0,28902.0,1193.0,459.0,1266.0
++2023-03,23341.0,29672.0,1816.0,479.0,1892.0
++2023-04,19021.0,26079.0,1609.0,339.0,1689.0
++2023-05,21264.0,31719.0,2080.0,763.0,2167.0
++2023-06,20221.0,23991.0,1425.0,645.0,1505.0
++2023-07,19391.0,30128.0,1382.0,445.0,1472.0
++2023-08,21158.0,28299.0,1394.0,476.0,1484.0
++2023-09,21720.0,25413.0,1551.0,733.0,1641.0
++2023-10,22289.0,27273.0,1496.0,479.0,1585.0
++2023-11,22371.0,26847.0,2167.0,812.0,2250.0
++2023-12,22610.0,27150.0,1728.0,1608.0,1813.0
++2024-01,19718.0,24050.0,1581.0,455.0,1691.0
++2024-02,20781.0,25463.0,1453.0,791.0,1564.0
++2024-03,22292.0,27303.0,2346.0,803.0,2459.0
++2024-04,18719.0,26385.0,2007.0,574.0,2126.0
++2024-05,23428.0,27581.0,2466.0,730.0,2595.0
++2024-06,18650.0,22759.0,2109.0,934.0,2245.0
++2024-07,21961.0,27024.0,2015.0,645.0,2154.0
++2024-08,21722.0,24608.0,2471.0,669.0,2611.0
++2024-09,21639.0,24747.0,2164.0,817.0,2303.0
++2024-10,23396.0,26900.0,2276.0,738.0,2416.0
++2024-11,21899.0,27141.0,2793.0,818.0,2922.0
++2024-12,23248.0,29479.0,2802.0,1053.0,2931.0
++2025-01,21075.0,26575.0,2329.0,1054.0,2476.0
++2025-02,21141.0,26574.0,2549.0,643.0,2696.0
++2025-03,23417.0,28215.0,3463.0,829.0,3616.0
++2025-04,20741.0,30600.0,3171.0,912.0,3330.0
++2025-05,24294.0,29032.0,2646.0,939.0,2819.0
++2025-06,20331.0,26813.0,2666.0,1052.0,2847.0
++2025-07,24620.0,29206.0,2144.0,752.0,2328.0
++2025-08,21409.0,24209.0,2488.0,733.0,2672.0
++2025-09,22126.0,27480.0,2772.0,1033.0,2955.0
++2025-10,23490.0,29401.0,2108.0,689.0,2293.0
++2025-11,22146.0,28509.0,2777.0,966.0,2947.0
++2025-12,25850.0,33332.0,3475.0,1141.0,3646.0
++2026-01,19767.0,26661.0,2669.0,608.0,2873.0
++2026-02,20636.0,28148.0,2558.0,685.0,2764.0
++2026-03,21704.0,31190.0,3028.0,641.0,3245.0
++2026-04,24737.0,31692.0,3056.0,911.0,3286.0
++2026-05,21813.0,26309.0,2651.0,661.0,2911.0
++2026-06,24397.0,33003.0,2394.0,731.0,2655.0
++2026-07,25182.0,30825.0,2881.0,520.0,3153.0
++2026-08,23327.0,27073.0,2395.0,733.0,2659.0
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/stok_akis_kopru.json fixed/data/etki_cephesi/stok_akis_kopru.json
 --- pristine/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:05:45.818614052 +0000
 +++ fixed/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:44:11.859101458 +0000
@@ -229,6 +386,316 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "usd_per_vekil_rant_mn": usd_per,
          "senaryo_destek": destek,
          "aktorler": aktorler,
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/c_dinamik_olcut.py fixed/etki_cephesi/c_dinamik_olcut.py
+--- pristine/etki_cephesi/c_dinamik_olcut.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/c_dinamik_olcut.py	2026-10-14 07:28:17.374557135 +0000
+@@ -0,0 +1,266 @@
++"""C senaryosunun gerçekleşme durumunu ölçen DİNAMİK ölçüt (sıralı Bayes).
++
++Ne yapar: senaryo olasılıklarını (A/B/C) gözlemle her yıl günceller. Gösterge: merkez sızıntı oranı
++r_t = (12 ay yatırım geliri gideri) / (12 ay mal ihracatı), EVDS ödemeler dengesi. Modelin kendisi merkez
++sızıntıyı bu seriye bağlar (finans_katman: 'birincil_gelir_yatirim_gideri' çapası).
++
++Senaryonun ima ettiği yıllık sürüklenme (karşı-olgusal trende göre): d_s = ln(merkez_sizinti_carpan_s) / T,
++T = tam olgunluk (10 yıl). A = 1,0 → 0; B = 1,15; C = 0,9. Bu EŞLEME varsayımdır (senaryolar.json'dan türetilir).
++
++Kurallar (zarar-teorisi üslubu):
++  * Ölçüm penceresi baz yıldan sonra başlar (baz 2026 → ilk güncelleme 2027 Aralık verisiyle). Öncesi güncellemez.
++  * Eksik gözlem güncellemez: bilinmiyor sıfır değildir.
++  * Gösterge senaryoları ayırt edemiyorsa (güç hesabı) bunu söyler; olasılığı oynatmaz ya da ihtiyatlı oynatır.
++  * Olasılıklar ölçülmemiştir; bu ölçüt onları DOĞRULAMAZ, ancak ne kadar doğrulanabileceğini gösterir.
++"""
++from __future__ import annotations
++
++import csv
++import json
++import math
++from pathlib import Path
++from typing import Any
++
++import numpy as np
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++GOZLEM = DATA / "gozlem" / "evds_odeme_dengesi_aylik.csv"
++
++MC_N = 4000
++MC_SEED = 0
++SPRT_GUVEN = 0.95  # |log LR| esigi = ln(guven / (1 - guven))
++UNUTMA = 1.0  # 1,0: unutma yok
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _aylik() -> dict[str, dict[str, float]]:
++    d: dict[str, dict[str, float]] = {}
++    with GOZLEM.open(encoding="utf-8", newline="") as f:
++        for r in csv.DictReader(f):
++            try:
++                d[r["Donem"]] = {"X": float(r["X_mal_ihracati"]), "YG": float(r["YG_yatirim_geliri_gideri"])}
++            except ValueError:
++                continue  # eksik gözlem: güncelleme yok
++    return d
++
++
++def _oran12(d: dict[str, dict[str, float]]) -> dict[str, float]:
++    ps = sorted(d)
++    out: dict[str, float] = {}
++    for i in range(11, len(ps)):
++        w = ps[i - 11 : i + 1]
++        # 12 ardışık ay (boşluksuz) şartı
++        y0, m0 = int(w[0][:4]), int(w[0][5:7])
++        y1, m1 = int(w[-1][:4]), int(w[-1][5:7])
++        if (y1 - y0) * 12 + (m1 - m0) != 11:
++            continue
++        out[ps[i]] = sum(d[t]["YG"] for t in w) / sum(d[t]["X"] for t in w)
++    return out
++
++
++def _yillik_degisim(r: dict[str, float]) -> dict[int, float]:
++    """Aralık→Aralık log değişim (tam yıl, her iki Aralık gözlemi varsa)."""
++    g: dict[int, float] = {}
++    for t, v in r.items():
++        if t.endswith("-12"):
++            prev = f"{int(t[:4]) - 1}-12"
++            if prev in r:
++                g[int(t[:4])] = math.log(v / r[prev])
++    return g
++
++
++def _surukleme(sen: dict[str, Any], olgun: float) -> dict[str, float]:
++    return {s["id"]: math.log(float(s["merkez_sizinti_carpan"])) / olgun for s in sen["senaryolar"]}
++
++
++def _posterior(prior: dict[str, float], obs: list[float], mu: float, sigma: float, drift: dict[str, float], unutma: float = UNUTMA) -> dict[str, float]:
++    logp = {k: math.log(v) for k, v in prior.items()}
++    for g in obs:
++        for k in logp:
++            logp[k] = unutma * logp[k] - (g - mu - drift[k]) ** 2 / (2 * sigma * sigma)
++    m = max(logp.values())
++    w = {k: math.exp(v - m) for k, v in logp.items()}
++    s = sum(w.values())
++    return {k: w[k] / s for k in w}
++
++
++def _guc(drift: dict[str, float], sigma: float) -> dict[str, Any]:
++    esik = math.log(SPRT_GUVEN / (1 - SPRT_GUVEN))
++    out = {}
++    for a, b in (("C", "A"), ("C", "B"), ("A", "B")):
++        delta = abs(drift[a] - drift[b])
++        yil = 2 * sigma * sigma * esik / (delta * delta) if delta > 0 else float("inf")
++        out[f"{a}_vs_{b}"] = {"fark_yillik_log": round(delta, 4), "gerekli_yil": round(yil, 0) if yil != float("inf") else None}
++    return out
++
++
++def _monte_carlo(prior: dict[str, float], mu: float, sigma: float, drift: dict[str, float], yil: int) -> dict[str, Any]:
++    rng = np.random.default_rng(MC_SEED)
++    res = {}
++    for truth in ("A", "B", "C"):
++        pc = []
++        for _ in range(MC_N):
++            obs = list(mu + drift[truth] + sigma * rng.standard_normal(yil))
++            pc.append(_posterior(prior, obs, mu, sigma, drift)["C"])
++        pc = np.array(pc)
++        res[truth] = {
++            "P_C_ortalama": round(float(pc.mean()), 3),
++            "P_C_p10_p90": [round(float(np.quantile(pc, 0.1)), 3), round(float(np.quantile(pc, 0.9)), 3)],
++            "P_C_gt_0_8": round(float((pc > 0.8).mean()), 3),
++            "P_C_lt_0_4": round(float((pc < 0.4).mean()), 3),
++        }
++    return res
++
++
++def hesapla() -> dict[str, Any]:
++    sen = _load(DATA / "senaryolar.json")
++    capa = _load(DATA / "kalibre" / "gerceklik_capa.json")
++    ph = _load(DATA / "finans_katman_kopru.json")
++    olgun = float(ph["tam_olgunluk_yil"])
++    baz = int(sen["baz_yil"])
++    horizon = int(sen["horizon_yil"])
++    prior_ham = {s["id"]: float(s["olasilik_vekili"]) for s in sen["senaryolar"]}
++    z = sum(prior_ham.values())
++    prior = {k: v / z for k, v in prior_ham.items()}
++    drift = _surukleme(sen, olgun)
++
++    d = _aylik()
++    r = _oran12(d)
++    g = _yillik_degisim(r)
++    on = [v for y, v in sorted(g.items()) if y <= baz]  # baz yıl ve öncesi: tahmin (güncelleme değil)
++    mu = float(np.mean(on))
++    sigma = float(np.std(on, ddof=1))
++    uygun = {y: v for y, v in g.items() if y > baz}  # ölçüm penceresi
++    post = _posterior(prior, [uygun[y] for y in sorted(uygun)], mu, sigma, drift) if uygun else dict(prior)
++
++    son_ay = max(r)
++    yil_oran = {y: round(r[f"{y}-12"], 4) for y in sorted({int(t[:4]) for t in r}) if f"{y}-12" in r}
++    guc = _guc(drift, sigma)
++    min_yil = min(v["gerekli_yil"] for k, v in guc.items() if k.startswith("C_") and v["gerekli_yil"] is not None)
++    ayirt = bool(min_yil <= horizon)
++    mc = _monte_carlo(prior, mu, sigma, drift, horizon)
++
++    esik = None
++    dyp = OUT / "OLASILIK_DUYARLILIK.json"
++    if dyp.is_file():
++        esik = _load(dyp).get("gecisler", {}).get("karar_kosullu_skor_62")
++
++    # kalibrasyon çapası vs EVDS (aynı seri, yıllık toplam)
++    def yillik(y: int) -> float:
++        return round(sum(v["YG"] for t, v in d.items() if t.startswith(str(y))), 0)
++
++    capa_deger = float(capa["usd_mn"]["yatirim_geliri_gideri"])
++    capa_yil = int(capa["yil"])
++    evds_capa_yil = yillik(capa_yil)
++    kapilar = [
++        {"kapi": "merkez_sizinti_surukleme", "kaynak": "EVDS TP.ODEAYRSUNUM6.Q76 / Q5", "durum": "olculebilir", "ayirt_gucu": "yok" if not ayirt else "var", "not": "Bu raporun göstergesi."},
++        {"kapi": "dis_kisit (borç çevirme oranı)", "kaynak": "EVDS bie_oderoll (TP.ODEROLL.K1-K4)", "durum": "veri_var_esleme_yok", "not": "Senaryo başına beklenen değer tanımlı değil: bilinmiyor."},
++        {"kapi": "etki_erozyonu (bölge ihracat payı)", "kaynak": "TİM / bolge_havza_ticaret.json (EVDS dışı)", "durum": "kaynak_dis", "not": "Aylık seri depoda yok."},
++        {"kapi": "bag_modu_kullanim", "kaynak": "—", "durum": "olculmedi", "not": "Kullanım/atıl/araçsal payı gözlenebilir bir seriye bağlı değil."},
++    ]
++    return {
++        "olcum": "c_dinamik_olcut",
++        "etiket": "olasilik_olculmedi_dinamik_olcut",
++        "gosterge": "merkez_sizinti_orani = 12a yatırım geliri gideri / 12a mal ihracatı (EVDS ödemeler dengesi)",
++        "varsayim": "Senaryo sürüklenmesi d_s = ln(merkez_sizinti_carpan_s)/T (T=%d yıl); karşı-olgusal trend = baz yıl öncesi Ara→Ara ortalaması." % int(olgun),
++        "prior": {k: round(v, 4) for k, v in prior.items()},
++        "suruklenme_yillik_log": {k: round(v, 4) for k, v in drift.items()},
++        "karsi_olgusal": {"mu_yillik_log": round(mu, 4), "sigma_yillik_log": round(sigma, 4), "n_yil": len(on)},
++        "olcum_penceresi": {"baz_yil": baz, "ilk_guncelleme": f"{baz + 1}-12 verisi", "uygun_gozlem_sayisi": len(uygun), "son_gozlem_ayi": son_ay},
++        "guncelleme_durumu": "yok (olcum_baslamadi: bilinmiyor sifir degildir)" if not uygun else "var",
++        "posterior": {k: round(v, 4) for k, v in post.items()},
++        "oran_yil_sonu": yil_oran,
++        "guc_analizi": {"esik_log_LR": round(math.log(SPRT_GUVEN / (1 - SPRT_GUVEN)), 3), "ciftler": guc, "C_icin_min_gerekli_yil": min_yil, "horizon_yil": horizon, "ayirt_edebilir": ayirt},
++        "monte_carlo_horizon": {"n": MC_N, "seed": MC_SEED, "gercek_senaryo_basina_P_C": mc},
++        "karar_baglantisi": {
++            "karar_esigi_P_C": esik,
++            "marj_posterior_eksi_esik": round(post["C"] - esik, 3) if esik is not None else None,
++        },
++        "kapilar_adaylar": kapilar,
++        "capa_uyumsuzluk": {
++            "capa_yil": capa_yil,
++            "capa_yatirim_geliri_gideri_mn_usd": capa_deger,
++            "evds_ayni_yil_mn_usd": evds_capa_yil,
++            "evds_bir_onceki_yil_mn_usd": yillik(capa_yil - 1),
++            "oran_evds_capa": round(evds_capa_yil / capa_deger, 3),
++            "uyumsuz": abs(evds_capa_yil / capa_deger - 1) > 0.05,
++        },
++        "karsi_olgusal_trend_uyarisi": {
++            "oran_2023_sonu": yil_oran.get(2023),
++            "oran_2025_sonu": yil_oran.get(2025),
++            "artis_carpani": round(yil_oran[2025] / yil_oran[2023], 3) if 2023 in yil_oran and 2025 in yil_oran else None,
++            "senaryo_surukleme_iki_yil_maks_abs": round(2 * max(abs(v) for v in drift.values()), 3),
++        },
++    }
++
++
++def _md(d: dict[str, Any]) -> str:
++    g = d["guc_analizi"]
++    mc = d["monte_carlo_horizon"]["gercek_senaryo_basina_P_C"]
++    cu = d["capa_uyumsuzluk"]
++    ko = d["karsi_olgusal_trend_uyarisi"]
++    L = [
++        "# C senaryosu: dinamik ölçüt",
++        "",
++        f"**Etiket: {d['etiket']}.** {d['gosterge']}",
++        "",
++        f"- Varsayım: {d['varsayim']}",
++        f"- Prior (A/B/C): {d['prior']} → **posterior: {d['posterior']}**; güncelleme: {d['guncelleme_durumu']}.",
++        f"- Ölçüm penceresi: baz {d['olcum_penceresi']['baz_yil']}, ilk güncelleme {d['olcum_penceresi']['ilk_guncelleme']}; son gözlem ayı {d['olcum_penceresi']['son_gozlem_ayi']}.",
++        f"- Karşı-olgusal trend: μ = {d['karsi_olgusal']['mu_yillik_log']:+.3f}/yıl, σ = {d['karsi_olgusal']['sigma_yillik_log']:.3f} (n={d['karsi_olgusal']['n_yil']}).",
++        f"- Senaryo sürüklenmesi (yıllık log): {d['suruklenme_yillik_log']}.",
++        "",
++        "## Güç analizi: bu gösterge C'yi ayırt edebilir mi?",
++        "",
++        "| Çift | Fark (yıllık log) | SPRT %95 için gerekli yıl |",
++        "| --- | ---: | ---: |",
++    ]
++    for k, v in g["ciftler"].items():
++        L.append(f"| {k.replace('_vs_', ' vs ')} | {v['fark_yillik_log']} | {v['gerekli_yil']:,.0f} |")
++    L += [
++        "",
++        f"**Ayırt edebilir (≤ {g['horizon_yil']} yıl): {g['ayirt_edebilir']}.** C için en kısa ayrım {g['C_icin_min_gerekli_yil']:,.0f} yıl.",
++        "",
++        f"Monte Carlo ({d['monte_carlo_horizon']['n']} koşu, {g['horizon_yil']} yıl, gerçek senaryo → P(C) son):",
++        "",
++        "| Gerçek senaryo | E[P(C)] | p10–p90 | P(P(C)>0,8) | P(P(C)<0,4) |",
++        "| --- | ---: | --- | ---: | ---: |",
++    ]
++    for t, v in mc.items():
++        L.append(f"| {t} | {v['P_C_ortalama']} | {v['P_C_p10_p90'][0]}–{v['P_C_p10_p90'][1]} | {v['P_C_gt_0_8']} | {v['P_C_lt_0_4']} |")
++    kb = d["karar_baglantisi"]
++    L += [
++        "",
++        f"- Karar eşiği P(C) ≈ {kb['karar_esigi_P_C']}; posterior − eşik = {kb['marj_posterior_eksi_esik']}.",
++        "",
++        "## Model uyarıları (gözlemden)",
++        "",
++        f"- **Karşı-olgusal trend yok:** r(2023 sonu) {ko['oran_2023_sonu']} → r(2025 sonu) {ko['oran_2025_sonu']} (×{ko['artis_carpani']}); senaryoların iki yıllık sürüklenmesi en çok ±{ko['senaryo_surukleme_iki_yil_maks_abs']}. Hiçbir senaryo bu hareketi taşımıyor.",
++        f"- **Çapa uyumsuzluğu:** kalibrasyon {cu['capa_yil']} yatırım geliri gideri = {cu['capa_yatirim_geliri_gideri_mn_usd']:,.0f} mn $; EVDS aynı yıl {cu['evds_ayni_yil_mn_usd']:,.0f} (×{cu['oran_evds_capa']}), bir önceki yıl {cu['evds_bir_onceki_yil_mn_usd']:,.0f}. Uyumsuz: {cu['uyumsuz']}.",
++        "",
++        "## Diğer kapı adayları",
++        "",
++        "| Kapı | Kaynak | Durum |",
++        "| --- | --- | --- |",
++    ]
++    for k in d["kapilar_adaylar"]:
++        L.append(f"| {k['kapi']} | {k['kaynak']} | {k['durum']} |")
++    L.append("")
++    return "\n".join(L)
++
++
++def main() -> None:
++    OUT.mkdir(parents=True, exist_ok=True)
++    d = hesapla()
++    (OUT / "C_DINAMIK_OLCUT.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    (OUT / "C_DINAMIK_OLCUT.md").write_text(_md(d), encoding="utf-8")
++    print(f"Wrote {OUT / 'C_DINAMIK_OLCUT.md'}")
++
++
++if __name__ == "__main__":
++    main()
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/evds_gozlem_cek.py fixed/etki_cephesi/evds_gozlem_cek.py
+--- pristine/etki_cephesi/evds_gozlem_cek.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/evds_gozlem_cek.py	2026-10-14 07:27:18.977376190 +0000
+@@ -0,0 +1,36 @@
++"""EVDS ödemeler dengesi aylık gözlem verisini yeniler (ağ gerekir)."""
++from __future__ import annotations
++
++import csv
++import sys
++from collections import defaultdict
++from pathlib import Path
++
++REPO = Path(__file__).resolve().parents[1]
++ZARAR_DIR = REPO / "_incoming" / "zarar-teorisi-main"
++OUT = REPO / "data" / "etki_cephesi" / "gozlem" / "evds_odeme_dengesi_aylik.csv"
++SERILER = {"Q5": "X", "Q6": "M", "Q76": "YG", "Q75": "YGgelir", "Q70": "PGgider"}
++
++if str(ZARAR_DIR) not in sys.path:
++    sys.path.insert(0, str(ZARAR_DIR))
++import evds_cek  # noqa: E402
++
++
++def main() -> None:
++    rows, _ = evds_cek.fetch_group("bie_odeayrsunum6", start="01-01-2015", end="31-12-2036", freq="5")
++    d: dict[str, dict[str, float]] = defaultdict(dict)
++    for _g, t, s, _ad, _agg, v in rows:
++        k = s.replace("TP.ODEAYRSUNUM6.", "")
++        if k in SERILER:
++            d[SERILER[k]][t] = v
++    per = sorted(set(d["X"]) & set(d["YG"]))
++    with OUT.open("w", newline="", encoding="utf-8") as f:
++        w = csv.writer(f, lineterminator="\r\n")
++        w.writerow(["Donem", "X_mal_ihracati", "M_mal_ithalati", "YG_yatirim_geliri_gideri", "YG_yatirim_geliri_geliri", "PG_birincil_gelir_gideri"])
++        for t in per:
++            w.writerow([t] + [d[k].get(t, "") for k in ("X", "M", "YG", "YGgelir", "PGgider")])
++    print(f"Wrote {OUT} ({len(per)} ay, {per[0]}..{per[-1]})")
++
++
++if __name__ == "__main__":
++    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
 --- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
 +++ fixed/etki_cephesi/finans_katman.py	2026-10-14 06:05:32.656290792 +0000
@@ -433,7 +900,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 06:53:48.145160798 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 07:28:41.158126505 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -470,11 +937,12 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,29 @@
+@@ -31,11 +47,30 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
 +        "olasilik_duyarlilik.py",
++        "c_dinamik_olcut.py",
          ]
      )
 -    for s in steps:
@@ -927,8 +1395,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 06:54:10.382311403 +0000
-@@ -0,0 +1,157 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:28:59.747199074 +0000
+@@ -0,0 +1,208 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -1086,3 +1554,54 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    taban = [r for r in d["satirlar"] if abs(r["p_C"] - d["taban_olasilik"]["C"]) < 1e-9][0]
 +    assert taban["skor_0_100"] == ana["skor_0_100"]
 +    assert taban["karar"] == ana["karar"]
++
++
++def _dinamik():
++    sys.path.insert(0, str(REPO / "etki_cephesi"))
++    import c_dinamik_olcut as m  # noqa: E402
++
++    return m
++
++
++def test_c_dinamik_olcum_baslamadi_prior_degismez():
++    d = _j(OUT / "C_DINAMIK_OLCUT.json")
++    assert d["olcum_penceresi"]["uygun_gozlem_sayisi"] == 0
++    assert d["posterior"] == d["prior"]  # bilinmiyor sıfır değildir: güncelleme yok
++    assert d["guncelleme_durumu"].startswith("yok")
++
++
++def test_c_dinamik_suruklenme_senaryodan_turetilir():
++    m = _dinamik()
++    sen = _j(DATA / "senaryolar.json")
++    d = m._surukleme(sen, 10.0)
++    assert d["A"] == 0.0 and d["B"] > 0 and d["C"] < 0  # merkez_sizinti_carpan 1,0 / 1,15 / 0,9
++
++
++def test_c_dinamik_eksik_ay_12_ay_penceresini_bozar():
++    m = _dinamik()
++    ay = {f"2020-{i:02d}": {"X": 100.0, "YG": 10.0} for i in range(1, 13)}
++    assert "2020-12" in m._oran12(ay)
++    del ay["2020-06"]  # boşluk: 12 ardışık ay yok → oran yazılmaz (bilinmiyor ≠ 0)
++    assert "2020-12" not in m._oran12(ay)
++
++
++def test_c_dinamik_posterior_yonu_ve_bos_gozlem():
++    m = _dinamik()
++    prior = {"A": 0.22, "B": 0.18, "C": 0.60}
++    drift = {"A": 0.0, "B": 0.014, "C": -0.0105}
++    bos = m._posterior(prior, [], 0.0, 0.177, drift)
++    assert all(abs(bos[k] - prior[k]) <= 1e-12 for k in prior)  # gözlem yok → güncelleme yok
++    # yalnız birim mantığı için SENTETİK gözlem: C sürüklenmesi tekrar edilirse P(C) artar, B edilirse P(B) artar
++    pc = m._posterior(prior, [drift["C"]] * 200, 0.0, 0.05, drift)
++    pb = m._posterior(prior, [drift["B"]] * 200, 0.0, 0.05, drift)
++    assert pc["C"] > prior["C"] and pb["B"] > prior["B"]
++
++
++def test_c_dinamik_guc_bayragi_tutarli_ve_capa_uyumsuzlugu_ilan_edildi():
++    d = _j(OUT / "C_DINAMIK_OLCUT.json")
++    g = d["guc_analizi"]
++    assert g["ayirt_edebilir"] == (g["C_icin_min_gerekli_yil"] <= g["horizon_yil"])
++    cu = d["capa_uyumsuzluk"]
++    assert cu["uyumsuz"] is True and cu["oran_evds_capa"] > 1.05
++    capa = _j(DATA / "kalibre" / "gerceklik_capa.json")
++    assert capa["usd_mn"]["yatirim_geliri_gideri"] == cu["capa_yatirim_geliri_gideri_mn_usd"]  # çapa değiştirilmedi
