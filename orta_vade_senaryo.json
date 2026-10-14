@@ -1,0 +1,304 @@
+{
+  "pencere": "2027-2029",
+  "etiket": {
+    "fatura": "kalibrasyon_2025_kimlik_olculen_egim",
+    "adim_faiz_kur": "modellenmedi",
+    "aktarim": "varsayim_ozel_usd_akisi_sifir",
+    "adim3": "varsayim_kappa_0.25",
+    "adim4": "band_varsayim_theta_0.25",
+    "adim5": "olculmedi"
+  },
+  "faturalar": {
+    "mevcut": {
+      "2026": {
+        "ic": 2136.7,
+        "dis": 308.0,
+        "diger": 299.7,
+        "toplam": 2744.4,
+        "ic_stok_ortalama": 9435.0,
+        "ic_stok_yil_sonu": 10365.2,
+        "kamu_usd_yil_sonu": 206.0,
+        "ozel_usd_yil_sonu": 339.6,
+        "kur_yil_sonu": 49.71
+      },
+      "2027": {
+        "ic": 2729.9,
+        "dis": 400.4,
+        "diger": 382.9,
+        "toplam": 3513.1,
+        "ic_stok_ortalama": 12054.3,
+        "ic_stok_yil_sonu": 13067.8,
+        "kamu_usd_yil_sonu": 222.3,
+        "ozel_usd_yil_sonu": 382.9,
+        "kur_yil_sonu": 59.69
+      },
+      "2028": {
+        "ic": 3342.0,
+        "dis": 516.8,
+        "diger": 468.7,
+        "toplam": 4327.5,
+        "ic_stok_ortalama": 14757.0,
+        "ic_stok_yil_sonu": 15770.5,
+        "kamu_usd_yil_sonu": 238.5,
+        "ozel_usd_yil_sonu": 426.2,
+        "kur_yil_sonu": 71.67
+      },
+      "2029": {
+        "ic": 3954.1,
+        "dis": 663.9,
+        "diger": 554.5,
+        "toplam": 5172.5,
+        "ic_stok_ortalama": 17459.6,
+        "ic_stok_yil_sonu": 18473.1,
+        "kamu_usd_yil_sonu": 254.8,
+        "ozel_usd_yil_sonu": 469.5,
+        "kur_yil_sonu": 86.06
+      }
+    },
+    "aktarim": {
+      "2026": {
+        "ic": 2136.7,
+        "dis": 308.0,
+        "diger": 299.7,
+        "toplam": 2744.4,
+        "ic_stok_ortalama": 9435.0,
+        "ic_stok_yil_sonu": 10365.2,
+        "kamu_usd_yil_sonu": 206.0,
+        "ozel_usd_yil_sonu": 318.0,
+        "kur_yil_sonu": 49.71
+      },
+      "2027": {
+        "ic": 2729.9,
+        "dis": 400.4,
+        "diger": 382.9,
+        "toplam": 3513.1,
+        "ic_stok_ortalama": 12054.3,
+        "ic_stok_yil_sonu": 13067.8,
+        "kamu_usd_yil_sonu": 222.3,
+        "ozel_usd_yil_sonu": 318.0,
+        "kur_yil_sonu": 59.69
+      },
+      "2028": {
+        "ic": 3342.0,
+        "dis": 516.8,
+        "diger": 468.7,
+        "toplam": 4327.5,
+        "ic_stok_ortalama": 14757.0,
+        "ic_stok_yil_sonu": 15770.5,
+        "kamu_usd_yil_sonu": 238.5,
+        "ozel_usd_yil_sonu": 318.0,
+        "kur_yil_sonu": 71.67
+      },
+      "2029": {
+        "ic": 3954.1,
+        "dis": 663.9,
+        "diger": 554.5,
+        "toplam": 5172.5,
+        "ic_stok_ortalama": 17459.6,
+        "ic_stok_yil_sonu": 18473.1,
+        "kamu_usd_yil_sonu": 254.8,
+        "ozel_usd_yil_sonu": 318.0,
+        "kur_yil_sonu": 86.06
+      }
+    },
+    "donuk": {
+      "2026": {
+        "ic": 2022.0,
+        "dis": 292.4,
+        "diger": 283.6,
+        "toplam": 2598.0,
+        "ic_stok_ortalama": 8928.2,
+        "ic_stok_yil_sonu": 9013.9,
+        "kamu_usd_yil_sonu": 197.9,
+        "ozel_usd_yil_sonu": 318.0,
+        "kur_yil_sonu": 45.37
+      },
+      "2027": {
+        "ic": 2041.4,
+        "dis": 297.6,
+        "diger": 286.3,
+        "toplam": 2625.3,
+        "ic_stok_ortalama": 9013.9,
+        "ic_stok_yil_sonu": 9013.9,
+        "kamu_usd_yil_sonu": 197.9,
+        "ozel_usd_yil_sonu": 318.0,
+        "kur_yil_sonu": 45.37
+      },
+      "2028": {
+        "ic": 2041.4,
+        "dis": 297.6,
+        "diger": 286.3,
+        "toplam": 2625.3,
+        "ic_stok_ortalama": 9013.9,
+        "ic_stok_yil_sonu": 9013.9,
+        "kamu_usd_yil_sonu": 197.9,
+        "ozel_usd_yil_sonu": 318.0,
+        "kur_yil_sonu": 45.37
+      },
+      "2029": {
+        "ic": 2041.4,
+        "dis": 297.6,
+        "diger": 286.3,
+        "toplam": 2625.3,
+        "ic_stok_ortalama": 9013.9,
+        "ic_stok_yil_sonu": 9013.9,
+        "kamu_usd_yil_sonu": 197.9,
+        "ozel_usd_yil_sonu": 318.0,
+        "kur_yil_sonu": 45.37
+      }
+    }
+  },
+  "kademe_yil_sonu": {
+    "2027": {
+      "K1": 1.0,
+      "K2": 0.0,
+      "K3": 0.0,
+      "k1_itis_tempo_yil": 2058.5,
+      "k2_brut_ust": 0.0,
+      "k3_kredi_tempo_yil": 0.0,
+      "f4_fark_kumul": 1286.4
+    },
+    "2028": {
+      "K1": 1.0,
+      "K2": 1.0,
+      "K3": 0.0,
+      "k1_itis_tempo_yil": 2058.5,
+      "k2_brut_ust": 14622.6,
+      "k3_kredi_tempo_yil": 0.0,
+      "f4_fark_kumul": 3344.8
+    },
+    "2029": {
+      "K1": 1.0,
+      "K2": 1.0,
+      "K3": 1.0,
+      "k1_itis_tempo_yil": 2058.5,
+      "k2_brut_ust": 14622.6,
+      "k3_kredi_tempo_yil": 1549.0,
+      "f4_fark_kumul": 6371.2
+    }
+  },
+  "duran_faiz_kappa_025": {
+    "2026": 0.0,
+    "2027": 0.0,
+    "2028": 754.8,
+    "2029": 1207.6,
+    "2030": 1207.6,
+    "2031": 1207.6
+  },
+  "prim_theta_025": {
+    "2026": {
+      "alt": 0.0,
+      "ust": 0.0
+    },
+    "2027": {
+      "alt": 0.0,
+      "ust": 0.0
+    },
+    "2028": {
+      "alt": 0.0,
+      "ust": 0.0
+    },
+    "2029": {
+      "alt": 36.4,
+      "ust": 90.8
+    }
+  },
+  "satirlar": [
+    {
+      "yil": 2026,
+      "hazine_mevcut": 2744.4,
+      "hazine_ic": 2136.7,
+      "hazine_dis": 308.0,
+      "hazine_diger": 299.7,
+      "hazine_aktarim": 2744.4,
+      "hazine_fark_aktarim": 0.0,
+      "hazine_haziran_stok_donuk": 2598.0,
+      "ic_stok_yil_sonu": 10365.2,
+      "ozel_usd_yil_sonu": 339.6,
+      "ozel_usd_aktarim_yil_sonu": 318.0,
+      "kur_model_yil_sonu": 49.71,
+      "acik_adim": "hicbiri",
+      "adim_nesne": "olcum ve kalibrasyon yili",
+      "adim_sayi": 0.0,
+      "adim_birim": "—",
+      "adim_etiket": "olcum",
+      "k2_brut_ust": 0.0,
+      "f4_fark_kumul": 0.0,
+      "duran_faiz_kappa_025": 0.0,
+      "prim_alt": 0.0,
+      "prim_ust": 0.0
+    },
+    {
+      "yil": 2027,
+      "hazine_mevcut": 3513.1,
+      "hazine_ic": 2729.9,
+      "hazine_dis": 400.4,
+      "hazine_diger": 382.9,
+      "hazine_aktarim": 3513.1,
+      "hazine_fark_aktarim": 0.0,
+      "hazine_haziran_stok_donuk": 2625.3,
+      "ic_stok_yil_sonu": 13067.8,
+      "ozel_usd_yil_sonu": 382.9,
+      "ozel_usd_aktarim_yil_sonu": 318.0,
+      "kur_model_yil_sonu": 59.69,
+      "acik_adim": "1 akis + 2",
+      "adim_nesne": "K1 itis freni, yil sonu tempo",
+      "adim_sayi": 2058.5,
+      "adim_birim": "milyar TL/yil",
+      "adim_etiket": "senaryo_takvimi",
+      "k2_brut_ust": 0.0,
+      "f4_fark_kumul": 1286.4,
+      "duran_faiz_kappa_025": 0.0,
+      "prim_alt": 0.0,
+      "prim_ust": 0.0
+    },
+    {
+      "yil": 2028,
+      "hazine_mevcut": 4327.5,
+      "hazine_ic": 3342.0,
+      "hazine_dis": 516.8,
+      "hazine_diger": 468.7,
+      "hazine_aktarim": 4327.5,
+      "hazine_fark_aktarim": 0.0,
+      "hazine_haziran_stok_donuk": 2625.3,
+      "ic_stok_yil_sonu": 15770.5,
+      "ozel_usd_yil_sonu": 426.2,
+      "ozel_usd_aktarim_yil_sonu": 318.0,
+      "kur_model_yil_sonu": 71.67,
+      "acik_adim": "1 stok tavani + 3",
+      "adim_nesne": "adim 3 duran faiz, kappa 0.25, banka yazar",
+      "adim_sayi": 754.8,
+      "adim_birim": "milyar TL/yil",
+      "adim_etiket": "varsayim_kappa",
+      "k2_brut_ust": 14622.6,
+      "f4_fark_kumul": 3344.8,
+      "duran_faiz_kappa_025": 754.8,
+      "prim_alt": 0.0,
+      "prim_ust": 0.0
+    },
+    {
+      "yil": 2029,
+      "hazine_mevcut": 5172.5,
+      "hazine_ic": 3954.1,
+      "hazine_dis": 663.9,
+      "hazine_diger": 554.5,
+      "hazine_aktarim": 5172.5,
+      "hazine_fark_aktarim": 0.0,
+      "hazine_haziran_stok_donuk": 2625.3,
+      "ic_stok_yil_sonu": 18473.1,
+      "ozel_usd_yil_sonu": 469.5,
+      "ozel_usd_aktarim_yil_sonu": 318.0,
+      "kur_model_yil_sonu": 86.06,
+      "acik_adim": "4",
+      "adim_nesne": "adim 4 prim bandi, theta 0.25, pi 0.02-0.05",
+      "adim_sayi": 90.8,
+      "adim_birim": "milyar TL/yil",
+      "adim_etiket": "band_varsayim",
+      "k2_brut_ust": 14622.6,
+      "f4_fark_kumul": 6371.2,
+      "duran_faiz_kappa_025": 1207.6,
+      "prim_alt": 36.4,
+      "prim_ust": 90.8
+    }
+  ]
+}
