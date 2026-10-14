@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `59c2c071a9ada012`, temiz kurulumda 3 geçiş),
-**62 test geçti** (27 mevcut + 35 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `98146d4cf9d6f7b0`, temiz kurulumda 3 geçiş),
+**63 test geçti** (27 mevcut + 36 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -259,6 +259,14 @@ Aynı varyantlar; AB için bölünme payı (1 − p) ile kalan pay. Sınama sır
 - **Sınıf etkisi (C):** Çin net 2,04 → **1,54** (bant ±1,60), Rusya 1,96 → 1,48 (±1,57): **bant içine girdiler** (`rant_kanali_bosluk_taraftari`); Fransa de bant içi. ABD 1,13 (±0,84), BAE 0,50, Suudi Arabistan 0,41, AB 0,48, İran 0,95 (±0,23), İsrail 0,36 hâlâ bant dışı kazanan. **A:** Çin ve Rusya bant içinde; ABD, BAE, Suudi Arabistan, AB kazanan. **B:** yalnız İran kazanan.
 - **Karar etkisi:** skor 56,7 → **53,7**, karar `kisitli_uygulanabilir`; karar eşiği P(C) 0,63 → **0,75**; K2 sonuçları skoru 51,2 – 55,3'e indi. **Bu 3 puan dolaylı bir etki:** doğrudan maliyetin değil, `direnc_dusuk` bileşeninin (1,0 → 0,75) sonucu. Çin ve Rusya bant içine düşünce "rant kanalı boşluk taraftarı" etiketini aldılar ve direnç sayımına girdiler; bant dışı kazanan olarak bu sayıma girmiyorlardı. Yani direnç, aktörün boşluk rantından yararlanmasına değil sınıf etiketine bağlı: kazanan = direnç yok, bant içi + büyük rant farkı = direnç. Bu tutarsızlık maliyetten önce de vardı, maliyet onu görünür kıldı.
 - `BANT_SINAMA`: taban artık referans-kayıplı ve maliyetli; varyantlar "sürdürme maliyeti = 0" ve "κ üst".
+
+## Merkez finans (MFIN): kazanç, kayıp ve maliyet ayrı pay olarak
+MFIN (merkez finans vekili) önceden kaybı "tanımsız" ve maliyetten muaftı; yani kazancı vardı, kaybı 0 sayılıyordu. Şimdi diğer dış aktörlerle aynı çerçevede, ama ayrı pay olarak raporlanır (`KAZANC_KAYIP_MUHASEBE` "MFIN ayrı pay", `SENARYO_RAPOR` bölüm 11):
+- **Kazanç:** açık sızıntı kenarlarından ölçülür (`merkez_sizinti`, V'ye normalize): A 8,22, B 19,30, C 3,92. **V payı:** A %32, B %48, C %22; ülke aktörleri A %68, B %52, C %76 (C'de %2 dağıtılmayan).
+- **Kayıp:** modelde yok → diğer kaybı bilinmeyen aktörler gibi referans-oran vekili (İran, İsrail, Mısır medyanı × kazanç): A ≈2,41 (±3,94), B ≈8,64 (±12,2), C ≈0,87 (±1,63). `havza_kayip` alanı sıfır kalır (vekil ayrı alanda).
+- **Maliyet:** MFIN de kaybın devamlılığına katlanır (κ · pol · kazanç; yalnız TR muaf): A 1,15, B 1,58, C 0,74.
+- **Net (kayıp ve maliyet düşülmüş):** A ≈4,66 (bant ±4,0), B ≈9,07 (bant ±12,3), C ≈2,30 (bant ±1,70). C ve A'da MFIN bant dışı kazanan; **B'de net bandın içinde** (belirsizlik net'ten büyük).
+- Stok kapanışı (`kapanis_ok` A/B/C) ve MFIN tutarlılığı korundu (kenar–defter karşılaştırması `net_refah_entegre` ile, değişmedi). Karar skoru (53,7), karar ve eşik aynı.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

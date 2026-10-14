@@ -10,6 +10,16 @@
 | B | 40.462 | 15.747 | 5.419 | 19.296 | 40.462 | 1.0 | 1.451 | 0.6892 |
 | C | 17.398 | 9.746 | 3.384 | 3.918 | 17.048 | 0.98 | 0.98 | 1.0 |
 
+## Merkez finans (MFIN) ayrı pay: kazanç, kayıp, maliyet
+
+MFIN'in kazancı açık sızıntı kenarlarından ölçülür; kaybı modelde yoktur, referans oranla (İran, İsrail, Mısır) **vekil** atanır (`≈`); sürdürme maliyeti diğer dış aktörlerle aynı formüldür.
+
+| Senaryo | V payı: MFIN | V payı: ülke aktörleri | dağıtılmayan | MFIN kazanç | kayıp vekili (± belirsizlik) | sürdürme maliyeti | MFIN net |
+| --- | ---: | ---: | ---: | ---: | --- | ---: | ---: |
+| A | 0.324 | 0.676 | 0.0 | 8.218 | ≈2.41 (±3.941) | 1.151 | ≈4.657 |
+| B | 0.477 | 0.523 | 0.0 | 19.296 | ≈8.637 (±12.217) | 1.582 | ≈9.077 |
+| C | 0.225 | 0.755 | 0.02 | 3.918 | ≈0.874 (±1.634) | 0.744 | ≈2.3 |
+
 ## Kayıp tarafı ve fark
 
 | Senaryo | TR kayıp | TR dışı kayıp | Σ kayıp | Σ kazanç − Σ kayıp | Σ kazanç − V |
@@ -28,9 +38,9 @@
 
 | Senaryo | Aktör | Kazanç tam / kısmi / yok | Kayıp modellendi / bilinmiyor | Net tam / kısmi |
 | --- | ---: | --- | --- | --- |
-| A | 37 | 14 / 21 / 1 | 28 / 8 | 6 / 30 |
-| B | 37 | 14 / 21 / 1 | 28 / 8 | 6 / 30 |
-| C | 37 | 14 / 21 / 1 | 28 / 8 | 6 / 30 |
+| A | 37 | 14 / 21 / 1 | 28 / 9 | 6 / 31 |
+| B | 37 | 14 / 21 / 1 | 28 / 9 | 6 / 31 |
+| C | 37 | 14 / 21 / 1 | 28 / 9 | 6 / 31 |
 
 Evren dışı (modelde hiç yok, kazanç/kayıp **bilinmiyor**; derleme, tam liste değil): Katar, Kuveyt, Umman, Ürdün, Hindistan, Japonya, Güney Kore, Birleşik Krallık, Almanya (AB yalnız Balkan vekil), İtalya.
 
