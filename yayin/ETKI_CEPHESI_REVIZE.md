@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `8129e5332ab1d67b`, temiz kurulumda 3 geçiş),
-**60 test geçti** (27 mevcut + 33 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `b03d44346156ac48`, temiz kurulumda 3 geçiş),
+**61 test geçti** (27 mevcut + 34 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -218,7 +218,7 @@ Mısır `kanal` kalkınca "çevre kazananı" olmaktan çıkmıştı (ledger neti
 - **Hâlâ kenar:** Yunanistan net 0,167 / bant 0,158 (marj 0,009), Arnavutluk ve Kuzey Makedonya 0,18 / 0,143 (Balkan payları AB satırının atanmış %68'lik bölünmesinden geliyor). Bant içine girmeleri küçük bir bant değişiminde olur.
 - Karar skoru (56,7), karar eşiği P(C) (0,63), E[TR net 10 yıl] ve `kapanis_ok` aynı.
 
-## Yunanistan ve Balkanların bantla sınanması
+## Yunanistan ve Balkanların bantla sınanması (Çin, Rusya, İran aynı sınamadan geçirildi)
 `bant_sinama.py` → `BANT_SINAMA.{json,md}` (duyarlılık/dayanıklılık; başka modüle girdi olmaz). Tek atanmış parametre değişir: AB→Balkan bölünme payı p (taban 0,68; 0,34 / 0,51 / 0,85), dağıtım kuralı (matris ↔ kanal üst ucu), bilinmeyen merkez payının kazanç sayılması, kazancın tamamı ×0,5 / ×1,5, kayıp ×0,75 / ×1,25.
 - **Sonuç: Yunanistan ve beş Balkan ülkesinden hiçbirinin sınıfı dayanıklı değil** (A, B, C'nin hepsinde); yalnız Kıbrıs hep bant içinde.
 - **Yunanistan:** taban "çevre kazananı" (C: net 0,167, bant 0,158, marj 0,009). Dağıtım kuralı ve belirsiz pay varyantları yalnız yukarı iter; **kazanç ×0,5** ile bant içine düşer. Yani Yunanistan'ın kazananlığı atanmış aktör payına (`dis_aktör_pay`) bağlı.
@@ -226,6 +226,12 @@ Mısır `kanal` kalkınca "çevre kazananı" olmaktan çıkmıştı (ledger neti
 - **p'nin %25'lik azalması** (0,51) AL, MK ve BA'yı bant içine alıyor; %50'lik azalması (0,34) net'i sıfıra yaklaştırıyor. Balkan "kazananları" tek bir atanmış bölünme payının sonucu, ölçülmüş bir bulgu değil.
 - **Sınıf kümeleri:** RS kaybeden ↔ bant içi (C'de üç sınıf), BG bant içi ↔ kaybeden; A'da BA/BG bant içi, B'de AL/MK bant içi.
 - BA'da net − bant marjı 0,001: yuvarlama düzeyinde (C'de ana rapor bant içi, sınama kazanan diyor).
+
+## Çin, Rusya, İran aynı sınamadan geçirildi
+Aynı varyantlar (kazanç ×0,5 / ×1,5, dağıtım kuralı alternatifi, belirsiz pay, kayıp ×0,75 / ×1,25); kural varyantı artık işaretli (alternatif kural kazancı artırabilir de azaltabilir de). Yeni ölçütler: `en_kotu_marj` (taban sınıfın yönünde, tüm varyantlar içinde bandı en az aşan değer) ve `kazanc_olcek_kirilma` k* (kazancın bu çarpanın altına inmesi aktörü bant dışı kazanan olmaktan çıkarır).
+- **Çin, Rusya, İran A, B, C'nin hepsinde dayanıklı:** her varyantta "çevre entegre kazananı". En kötü varyant her zaman kazanç ×0,5; en kötü marj: Çin 0,19 (C) – 0,49 (B), Rusya 0,14 – 0,42, İran 0,34 – 0,47.
+- **k*:** Çin 0,39 – 0,43, Rusya 0,40 – 0,45, İran 0,28 – 0,33. Yani kazançlarının %55–72'si silinse de bant dışı kazanan kalırlar. Karşılaştırma: Yunanistan k* 0,89 – 0,98, Balkanlar (AL, MK) 0,90 – 0,98: kazançta %2–10'luk kayıp yeter.
+- **Önemli uyarı:** bant taban değerinde tutuldu (kazanç ölçeklenince bant ölçeklenmedi), ve sınama aktör başına. Çin ve Rusya'nın kazançları aynı atanmış paylara (`dis_aktör_pay`) ve ikame varsayımlarına dayanır; bu paylar sistematik olarak şişkinse (hepsi birden), sıralama değişmez ama mutlak kazançlar küçülür. Dayanıklılık kazançların büyüklüğünden geliyor (Çin 2,6, Rusya 2,5 vs Yunanistan 0,17), ölçümün güvenilirliğinden değil.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
