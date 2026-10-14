@@ -23,6 +23,7 @@
 | [GORECELI_KONUM.md](./GORECELI_KONUM.md) | Göreceli konum (herkes batarken en geç batan), alternatif direnç tanımı (rant kaybı − net kazanç) ve Çin/Rusya/ABD/AB için gerçek kayıp kırılma oranı; tanı raporu, ana skoru değiştirmez. Yerel iç elit katmanı modelde yok |
 | [TR_OLCEK_SINAMA.md](./TR_OLCEK_SINAMA.md) | TR kaybının ölçeği bağımsız gözlemle (Dünya Bankası: birincil gelir ödemesi, cari açık, büyüme farkı) sınanır; ölçek belirsizliğinin dış aktör sınıflarına ve sistem toplamına yayılımı |
 | [HAVZA_KAZANAN_KISA_VADE.md](./HAVZA_KAZANAN_KISA_VADE.md) | Havzalar net kaybederken kayıp havuzunu kimin topladığı (ölü ağırlık, grup payları, net kazananlar) ve TR kayıp hızının 2027–2029 parasal akışı: cari açık ve rezervle sürdürülebilirlik |
+| [OLU_AGIRLIK_AYRISMA.md](./OLU_AGIRLIK_AYRISMA.md) | Ölü ağırlığın gerçek yıkım, ölçüm boşluğu ve belirsiz (dış bağlama) kovalarına ayrılması; gelir ödemesi kapasitesiyle daraltma denemesi; kazanç sayımına duyarlılık |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 

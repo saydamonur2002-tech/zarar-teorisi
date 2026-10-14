@@ -101,6 +101,150 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +`dis_ticaret_gsyh_2023.json`, 14.10.2026 çekimi. İhracat: UN Comtrade public preview API (yıllık 2023, HS TOTAL, bölge ortakları); Çin, İran, İsrail, Mısır için raporlayanın kendi ihracatı. Rusya 2022'den beri Comtrade'e raporlamıyor: Rusya satırı, bölge ülkelerinin Rusya'dan ithalatı (ayna veri; CIF/FOB farkı; Suriye, Libya, Cezayir, Somali, Türkmenistan raporlamıyor, eksik). GSYH: World Bank NY.GDP.MKTP.CD, 2023 (Suriye 2022).
 +Kullanım: `projeksiyon.py` `_cekim` / `_dis_veri_kayip`. Ortak ülkenin kaybı, ihracatın GSYH payı kadar ihracat gelirini düşürür; φ, kaybı modelli referans aktörlerde (İran, İsrail, Mısır) model kaybının çekim tahminine oranıdır.
 +Yenilemek: Comtrade `reporterCode/partnerCode` listesiyle aynı sorgular (ağ gerekir); `dis_ticaret_gsyh_2023.json` şemasını koruyun.
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json fixed/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json
+--- pristine/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json	2026-10-14 15:49:04.620863069 +0000
+@@ -0,0 +1,140 @@
++{
++  "not": "Brüt birincil gelir ödemeleri (yurt dışına yatırım geliri ve işgücü geliri ödemeleri), bölge ülkeleri: dış bağlama zararının gelir ödemesiyle taşınabilirliğine üst sınır. Dünya Bankası WDI BM.GSR.FCTY.CD, son yıl ≥ 2020 olanlar (SY 2010, İran 2000 bayat; SO, TM yok: sınırsız sayılır). GCC = SA+AE+QA+KW+BH+OM toplamı.",
++  "kaynak": "World Bank WDI API, 14.10.2026 çekimi",
++  "ulke_odeme_mn_usd": {
++    "TR": {
++      "usd_mn": 34643.0,
++      "yil": "2025"
++    },
++    "LB": {
++      "usd_mn": 937.1,
++      "yil": "2023"
++    },
++    "IQ": {
++      "usd_mn": 3520.7,
++      "yil": "2025"
++    },
++    "LY": {
++      "usd_mn": 1848.7,
++      "yil": "2023"
++    },
++    "EG": {
++      "usd_mn": 19454.1,
++      "yil": "2025"
++    },
++    "TN": {
++      "usd_mn": 2235.8,
++      "yil": "2025"
++    },
++    "DZ": {
++      "usd_mn": 5020.6,
++      "yil": "2025"
++    },
++    "MA": {
++      "usd_mn": 4236.6,
++      "yil": "2025"
++    },
++    "SA": {
++      "usd_mn": 30516.5,
++      "yil": "2025"
++    },
++    "AE": {
++      "usd_mn": 40789.7,
++      "yil": "2025"
++    },
++    "QA": {
++      "usd_mn": 24283.8,
++      "yil": "2025"
++    },
++    "KW": {
++      "usd_mn": 6755.7,
++      "yil": "2025"
++    },
++    "BH": {
++      "usd_mn": 9450.5,
++      "yil": "2025"
++    },
++    "OM": {
++      "usd_mn": 6213.6,
++      "yil": "2025"
++    },
++    "CY": {
++      "usd_mn": 28550.6,
++      "yil": "2025"
++    },
++    "IL": {
++      "usd_mn": 34129.6,
++      "yil": "2025"
++    },
++    "GE": {
++      "usd_mn": 4182.6,
++      "yil": "2025"
++    },
++    "AZ": {
++      "usd_mn": 4888.2,
++      "yil": "2025"
++    },
++    "AM": {
++      "usd_mn": 1816.2,
++      "yil": "2025"
++    },
++    "UA": {
++      "usd_mn": 9029.0,
++      "yil": "2025"
++    },
++    "RS": {
++      "usd_mn": 7902.1,
++      "yil": "2025"
++    },
++    "BA": {
++      "usd_mn": 1667.7,
++      "yil": "2025"
++    },
++    "AL": {
++      "usd_mn": 1253.2,
++      "yil": "2025"
++    },
++    "MK": {
++      "usd_mn": 1186.1,
++      "yil": "2025"
++    },
++    "BG": {
++      "usd_mn": 11107.2,
++      "yil": "2025"
++    },
++    "KZ": {
++      "usd_mn": 27046.0,
++      "yil": "2025"
++    },
++    "UZ": {
++      "usd_mn": 6113.6,
++      "yil": "2025"
++    },
++    "KG": {
++      "usd_mn": 363.9,
++      "yil": "2024"
++    },
++    "TJ": {
++      "usd_mn": 404.9,
++      "yil": "2025"
++    },
++    "GCC": {
++      "usd_mn": 118009.8,
++      "yil": "2025",
++      "uyeler": [
++        "SA",
++        "AE",
++        "QA",
++        "KW",
++        "BH",
++        "OM"
++      ]
++    }
++  },
++  "kapsam_disi": [
++    "SY",
++    "SO",
++    "TM",
++    "IR"
++  ]
++}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json fixed/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json
 --- pristine/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json	2026-10-14 15:26:35.021886598 +0000
@@ -3576,6 +3720,155 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +if __name__ == "__main__":
 +    main()
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olu_agirlik_ayrisma.py fixed/etki_cephesi/olu_agirlik_ayrisma.py
+--- pristine/etki_cephesi/olu_agirlik_ayrisma.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/olu_agirlik_ayrisma.py	2026-10-14 15:49:04.621374779 +0000
+@@ -0,0 +1,145 @@
++"""Ölü ağırlığı gerçek yıkım ve ölçüm boşluğu diye ayır.
++
++Ölü ağırlık D = kayıp havuzu (TR kaybı + diğer kayıp) − V ile sınırlı kazanç. Üç ayrı kaynak:
++  (a) V içi dağıtılmayan: V − kazanç. Alıcısı olan ama atanmayan kısım → ÖLÇÜM BOŞLUĞU (kesin).
++  (b) TR'nin boşalma dışı kaybı (pasif boşluk, araçsallaşma, temsil zedesi, mimari): model gereği alıcısı yok → GERÇEK YIKIM.
++  (c) Havza kaybı ('diger'): gross bileşenlere (bolgesel_net) oranlanır; V'nin pasif payı (0,08 × pasif) düşülür:
++        - tampon/koridor şoku, mesruiyet temsil zedesi, kullanım telafi maliyeti: alıcısı olmayan zarar → GERÇEK YIKIM.
++        - rant kanalı çıkışı: defterde alıcısı belli (dış havuz) ama V ile sınırlı kazanca girmiyor → ÖLÇÜM BOŞLUĞU (alıcı belli).
++        - yerel dış bağlama zararı: dış bağlayıcı aktörlere gidiyor olabilir ama rota modellenmedi → BELİRSİZ (alıcı muhtemel).
++Sınıflama doğal-tür varsayımıdır (ölçülmüş değil); bu yüzden belirsiz kova ayrıca verilir ve iki uç aralık hesaplanır.
++Ek tanılar: ham kazanç V'yi aştıysa (normalizasyon) D'nin ham kazançla değeri; ikame kazancının havza girişiyle olası çift sayımı.
++Tanı raporu: başka modüle girdi olmaz (döngü yok).
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++YIKIM_TURLERI = ("tampon_koridor_sok", "mesruiyet_temsil_zedesi", "kullanim_telafi")  # alıcısız zarar
++ALICI_BELLI = ("rant_kanal_cikis_kar",)
++BELIRSIZ = ("yerel_dis_baglama_zarar",)
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def dis_baglama_tasinabilirlik(p: dict[str, Any]) -> dict[str, Any]:
++    """Dış bağlama zararı ülke bazında USD'ye çevrilir (BoP ve rant köprüsü) ve ülkenin brüt birincil gelir ödemesiyle sınırlanır:
++    ülke, gelir ödemesinden fazlasını bu kanaldan dışarı aktaramaz. Verisi olmayan ülkeler sınırlanmaz.
++    f = Σ min(zarar_c, ödeme_c) / Σ zarar_c: belirsiz kovanın gelir ödemesiyle taşınabilecek en çok payı (üst sınır, alıcı kanıtı değil)."""
++    hp = _load(DATA / "ulke_havza_pay.json")["bolge_ulke_pay"]
++    odeme = _load(DATA / "gozlem" / "bolge_birincil_gelir_odemesi.json")["ulke_odeme_mn_usd"]
++    kop = _load(DATA / "kalibre" / "gerceklik_realizasyon.json")["usd_kopruleri"]
++    dz: dict[str, float] = {}
++    for b in p["bolgesel_net"]:
++        for u in hp.get(b["bolge"], []):
++            if u["ulke"] != "TR":
++                dz[u["ulke"]] = dz.get(u["ulke"], 0.0) + float(u["pay"]) * float(b["yerel_dis_baglama_zarar"])
++    out = {}
++    for ad, k in (("bop_koprusu", "bop_merkez_rant"), ("rant_koprusu", "tum_havza_rant")):
++        usd = float(kop[k]["usd_per_vekil_mn"])
++        tasinabilir = sum(min(v * usd, odeme[c]["usd_mn"]) if c in odeme else v * usd for c, v in dz.items())
++        toplam = sum(v * usd for v in dz.values())
++        out[ad] = round(tasinabilir / toplam, 3)
++    out["sinirlanan_ulkeler"] = sorted(c for c, v in dz.items() if c in odeme and v * float(kop["tum_havza_rant"]["usd_per_vekil_mn"]) > odeme[c]["usd_mn"])
++    out["verisiz_ulkeler"] = sorted(c for c in dz if c not in odeme)
++    return out
++
++
++def ayristir(sid: str, m: dict[str, Any], p: dict[str, Any]) -> dict[str, Any]:
++    bn = p["bolgesel_net"]
++    brut = {k: sum(abs(float(b[k])) for b in bn) for k in YIKIM_TURLERI + ALICI_BELLI + BELIRSIZ}
++    top_brut = sum(brut.values())
++    kayip, kazanc = m["kayip"], m["kazanc"]
++    havuz, kaz = float(kayip["toplam"]), float(kazanc["toplam"])
++    d = havuz - kaz
++    v = float(m["bosluk_V"])
++    v_ici = v - kaz
++    tr_disi = float(kayip["tr"]) - float(m["tr_bosalma"])
++    pasif_pay = v - float(m["tr_bosalma"])
++    diger_eff = float(kayip["diger"]) - pasif_pay
++    pay = {k: v_ / top_brut for k, v_ in brut.items()}
++    yikim_diger = diger_eff * sum(pay[k] for k in YIKIM_TURLERI)
++    alici_belli = diger_eff * sum(pay[k] for k in ALICI_BELLI)
++    belirsiz = diger_eff * sum(pay[k] for k in BELIRSIZ)
++    yikim = tr_disi + yikim_diger
++    bosluk = v_ici + alici_belli
++    ham = float(m["normalizasyon"]["ham_toplam"])
++    kap = dis_baglama_tasinabilirlik(p)
++    f_max = max(kap["bop_koprusu"], kap["rant_koprusu"])
++    return {
++        "dis_baglama_gelir_odemesi_siniri": kap,
++        "gercek_yikim_aralik_kapasite_sinirli": [round(yikim + belirsiz * (1 - f_max), 3), round(yikim + belirsiz, 3)],
++        "olcum_boslugu_aralik_kapasite_sinirli": [round(bosluk, 3), round(bosluk + belirsiz * f_max, 3)],
++        "gercek_yikim_pay_aralik_kapasite_sinirli": [round((yikim + belirsiz * (1 - f_max)) / d, 3), round((yikim + belirsiz) / d, 3)],
++        "olcum_boslugu_pay_aralik_kapasite_sinirli": [round(bosluk / d, 3), round((bosluk + belirsiz * f_max) / d, 3)],
++        "olu_agirlik": round(d, 3),
++        "kayip_havuzu": round(havuz, 3),
++        "kazanc_v_sinirli": round(kaz, 3),
++        "bilesenler": {
++            "v_ici_dagitilmayan": round(v_ici, 3),
++            "tr_bosalma_disi_kayip": round(tr_disi, 3),
++            "havza_alicisiz_zarar": round(yikim_diger, 3),
++            "havza_alicisi_belli_rant_cikisi": round(alici_belli, 3),
++            "havza_dis_baglama_belirsiz": round(belirsiz, 3),
++            "v_pasif_pay_dusuldu": round(pasif_pay, 3),
++        },
++        "gercek_yikim_alt": round(yikim, 3),
++        "olcum_boslugu_alt": round(bosluk, 3),
++        "belirsiz": round(belirsiz, 3),
++        "gercek_yikim_aralik": [round(yikim, 3), round(yikim + belirsiz, 3)],
++        "olcum_boslugu_aralik": [round(bosluk, 3), round(bosluk + belirsiz, 3)],
++        "gercek_yikim_pay_aralik": [round(yikim / d, 3), round((yikim + belirsiz) / d, 3)],
++        "olcum_boslugu_pay_aralik": [round(bosluk / d, 3), round((bosluk + belirsiz) / d, 3)],
++        "ham_kazanc_toplam": round(ham, 3),
++        "olu_agirlik_ham_kazanc": round(havuz - ham, 3),
++        "normalizasyon_katsayi": m["normalizasyon"]["katsayi"],
++        "ikame_kazanci_cift_sayim_adayi": round(float(kazanc["ikame"]), 3),
++        "olu_agirlik_ikame_cift_sayimsa": round(d + float(kazanc["ikame"]), 3),
++        "brut_bilesen_paylari": {k: round(v_, 3) for k, v_ in pay.items()},
++    }
++
++
++def calistir() -> dict[str, Any]:
++    muh = {s["id"]: s for s in _load(OUT / "KAZANC_KAYIP_MUHASEBE.json")["senaryolar"]}
++    proj = {s["id"]: s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"]}
++    sen = {sid: ayristir(sid, muh[sid], proj[sid]) for sid in ("A", "B", "C")}
++    d = {
++        "olcum": "olu_agirlik_ayrisma",
++        "etiket": "tani_girdi_degil",
++        "senaryolar": sen,
++        "not": "Sınıflama bileşen türüne göre (alıcısız zarar / alıcısı belli rant / dış bağlama belirsiz); dış bağlama kovası alt ve üst uçları verir. Ölçülmüş bir ayrım değil.",
++    }
++    (OUT / "OLU_AGIRLIK_AYRISMA.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    L = ["# Ölü ağırlık: gerçek yıkım ve ölçüm boşluğu", "", d["not"], "",
++         "| Senaryo | Ölü ağırlık | Gerçek yıkım (alt) | Ölçüm boşluğu (alt) | Belirsiz (dış bağlama) | Yıkım payı aralığı | Ölçüm boşluğu payı aralığı |",
++         "| --- | ---: | ---: | ---: | ---: | --- | --- |"]
++    for sid, s in sen.items():
++        a, b = s["gercek_yikim_pay_aralik"], s["olcum_boslugu_pay_aralik"]
++        L.append(f"| {sid} | {s['olu_agirlik']:.2f} | {s['gercek_yikim_alt']:.2f} | {s['olcum_boslugu_alt']:.2f} | {s['belirsiz']:.2f} | %{a[0]*100:.0f} – %{a[1]*100:.0f} | %{b[0]*100:.0f} – %{b[1]*100:.0f} |")
++    L += ["", "## Dış bağlama kovasının gelir ödemesi kapasitesiyle daraltılması", "",
++          "Ülkenin brüt birincil gelir ödemesinden (WDI) fazlası bu kanaldan aktarılamaz; bu yalnız üst sınırdır (kanıt değil).", "",
++          "| Senaryo | Taşınabilir pay f (BoP / rant köprüsü) | Sınırlanan ülkeler | Gerçek yıkım payı | Ölçüm boşluğu payı |", "| --- | --- | --- | --- | --- |"]
++    for sid, s in sen.items():
++        k, a, b = s["dis_baglama_gelir_odemesi_siniri"], s["gercek_yikim_pay_aralik_kapasite_sinirli"], s["olcum_boslugu_pay_aralik_kapasite_sinirli"]
++        L.append(f"| {sid} | {k['bop_koprusu']} / {k['rant_koprusu']} | {', '.join(k['sinirlanan_ulkeler']) or '—'} (verisiz: {', '.join(k['verisiz_ulkeler']) or '—'}) | %{a[0]*100:.0f} – %{a[1]*100:.0f} | %{b[0]*100:.0f} – %{b[1]*100:.0f} |")
++    L += ["", "## Bileşenler", "", "| Senaryo | V içi dağıtılmayan | TR boşalma dışı kayıp | Havza alıcısız zarar | Havza rant çıkışı (alıcı belli) | Havza dış bağlama (belirsiz) |", "| --- | ---: | ---: | ---: | ---: | ---: |"]
++    for sid, s in sen.items():
++        c = s["bilesenler"]
++        L.append(f"| {sid} | {c['v_ici_dagitilmayan']:.2f} | {c['tr_bosalma_disi_kayip']:.2f} | {c['havza_alicisiz_zarar']:.2f} | {c['havza_alicisi_belli_rant_cikisi']:.2f} | {c['havza_dis_baglama_belirsiz']:.2f} |")
++    L += ["", "## Duyarlılık: kazancın nasıl sayıldığı ölü ağırlığı değiştirir", "", "| Senaryo | D (V sınırlı) | D (ham kazanç, V sınırı yok) | Normalizasyon katsayısı | D (ikame çift sayımsa) |", "| --- | ---: | ---: | ---: | ---: |"]
++    for sid, s in sen.items():
++        L.append(f"| {sid} | {s['olu_agirlik']:.2f} | {s['olu_agirlik_ham_kazanc']:.2f} | {s['normalizasyon_katsayi']} | {s['olu_agirlik_ikame_cift_sayimsa']:.2f} |")
++    (OUT / "OLU_AGIRLIK_AYRISMA.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    return d
++
++
++if __name__ == "__main__":
++    calistir()
++    print("OLU_AGIRLIK_AYRISMA ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
 --- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
 +++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 15:26:35.023338611 +0000
@@ -4104,7 +4397,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 15:42:27.106530681 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 15:49:18.108710873 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -4141,7 +4434,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,39 @@
+@@ -31,11 +47,40 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -4156,6 +4449,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "goreceli_konum.py",
 +        "tr_olcek_sinama.py",
 +        "havza_kazanan_kisa_vade.py",
++        "olu_agirlik_ayrisma.py",
          ]
      )
 -    for s in steps:
@@ -5302,8 +5596,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:42:54.843186334 +0000
-@@ -0,0 +1,747 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:49:18.109644187 +0000
+@@ -0,0 +1,772 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -6051,3 +6345,28 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            assert abs(asim - r["ucyil_asim_mn_usd"]) < 5.0 + 3e-3 * asim
 +            beklenen = "gecerli_cari_denge" if asim == 0 else ("gecerli_rezervle" if asim <= rezerv else "gecersiz")
 +            assert r["karar"] == beklenen
++
++
++def test_olu_agirlik_ayrisimi_toplamlar_ve_aralik_tutarli():
++    d = _j(OUT / "OLU_AGIRLIK_AYRISMA.json")["senaryolar"]
++    muh = {s["id"]: s for s in _j(OUT / "KAZANC_KAYIP_MUHASEBE.json")["senaryolar"]}
++    hk = {sid: v for sid, v in _j(OUT / "HAVZA_KAZANAN_KISA_VADE.json")["kazanan_tablosu"].items()}
++    for sid in "ABC":
++        s = d[sid]
++        # D, muhasebe ve önceki rapordaki ölü ağırlıkla aynı; üç kova D'yi tam kapatır
++        assert abs(s["olu_agirlik"] - hk[sid]["olu_agirlik"]) < 5e-3
++        assert abs(s["olu_agirlik"] + muh[sid]["kazanc_eksi_kayip"]) < 5e-3
++        assert abs(s["gercek_yikim_alt"] + s["olcum_boslugu_alt"] + s["belirsiz"] - s["olu_agirlik"]) < 6e-3
++        c = s["bilesenler"]
++        assert abs(c["v_ici_dagitilmayan"] + c["tr_bosalma_disi_kayip"] + c["havza_alicisiz_zarar"] + c["havza_alicisi_belli_rant_cikisi"] + c["havza_dis_baglama_belirsiz"] - s["olu_agirlik"]) < 6e-3
++        # aralıklar: alt ≤ üst, kapasite sınırı aralığı daraltır ama dışına çıkarmaz
++        for k in ("gercek_yikim_pay_aralik", "olcum_boslugu_pay_aralik"):
++            assert 0 <= s[k][0] <= s[k][1] <= 1
++        a, b = s["gercek_yikim_pay_aralik"], s["gercek_yikim_pay_aralik_kapasite_sinirli"]
++        assert a[0] <= b[0] <= b[1] <= a[1] + 1e-9
++        f = s["dis_baglama_gelir_odemesi_siniri"]
++        assert 0 < f["rant_koprusu"] <= f["bop_koprusu"] <= 1.0
++        # yıkım üst + ölçüm boşluğu alt = D (belirsiz kova iki uca da tam yazılır)
++        assert abs(s["gercek_yikim_aralik"][1] + s["olcum_boslugu_aralik"][0] - s["olu_agirlik"]) < 6e-3
++        # ham kazançla D, V sınırı yokken en çok V sınırlı D kadar; ikame çift sayımı D'yi artırır
++        assert s["olu_agirlik_ham_kazanc"] <= s["olu_agirlik"] + 1e-9 <= s["olu_agirlik_ikame_cift_sayimsa"] + 1e-9
