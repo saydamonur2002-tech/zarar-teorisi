@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `f49e2f35a58bd249`, temiz kurulumda 3 geçiş),
-**55 test geçti** (27 mevcut + 28 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `8b5c6ae4630ba80a`, temiz kurulumda 3 geçiş),
+**57 test geçti** (27 mevcut + 30 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -180,6 +180,16 @@ Senaryolar kaldı; büyüklükleri geçmişten gelir (`etki_cephesi/_gecmis.py`,
 
 - Karar değişmedi: geçmişten kurmak sonucu çok oynatmadı (skor −0,1). Merkez sızıntı çarpanı yalnız merkez sızıntı kalemini değiştiriyor; TR boşalma ve karar skorunu belirleyen kalemler değişmedi.
 - Bu bölümden önceki bölümlerdeki finans ve katman sayıları atanmış çarpanlarla hesaplanmıştı (örn. "ters çevirme", "kalibre yola bağlandı" tabloları); güncel değerler yukarıdaki tablodadır, mekanizmalar aynıdır.
+
+## Kazanç–kayıp tutarsızlığı bulundu, modellenmeyenler işaretlendi
+`kazanc_kayip_muhasebe.py` → `KAZANC_KAYIP_MUHASEBE.{json,md}` (teşhis; modeli değiştirmez).
+- **Kaynak:** `projeksiyon.py` bir korunum özdeşliği tanımlamıyordu. Dış aktör kazancı dört kanaldan geliyor ve dördü **aynı bölge kaybından** (TR boşalması V) besleniyor: `kanal` (V × aktör payı), `matris` (V × katsayı farkı), `ikame` ve `merkez` kenarları (bölge kaybı × pay × çarpan). Birbirini dışlamıyorlar.
+- **Ölçüm (V = TR boşalması + 0,08 · pasif):** kanal + matris V'nin **%128'i** (aynı boşluk iki kuralla dağıtılıyor); dört kanalın toplamı V'nin A'da **%184**, B'de %218, C'de %170'i. A'da V = 25,4; Σ kazanç = 46,7 (kanal 18,3 + matris 14,3 + ikame 4,9 + merkez 9,2).
+- **Kayıp tarafı ayrı bir nicelik:** TR kaybı 25,8 + TR dışı ülke kayıpları 14,4 = 40,2. Σ kazanç − Σ kayıp: A +6,5, B +22,1, C +2,5. Bu fark korunum ihlali değil, **özdeşliğin hiç tanımlı olmamasının** sonucu: kazanç V'den, kayıp bölge net etkisinden hesaplanıyor. "Kazanan kaybedenin kaybettiği kadar kazanır" modelde yok.
+- **Düzeltme yapılmadı:** bir dağıtım kuralı seçilmeli (kanal ya da matris) ya da payların toplamı 1'e normalize edilmeli. Hangisi kullanıcı kararı.
+- **Kapsam işaretleri** (`aktör_birlesik`: `kazanc_kapsam`, `kayip_kapsam`, `net_kapsam`): kazanç kanalı hiç modellenmemişse "yok", biri modelliyse "kısmi", ikisi modelliyse "tam". Kayıp listesinde olmayan aktör için "bilinmiyor". Raporlarda sıfır yerine `—`, kısmi için `†`, net yalnız ikisi tam modelliyse yazılır. 37 aktörden **net tam yalnız 6** (İran, İsrail, Mısır, Sırbistan, Azerbaycan, Türkiye); kazancı tam modellenenler 14 (13 aktör + MFIN); kayıp bilinmeyenler 8 (Çin, Rusya, AB, ABD, BAE, Suudi Arabistan, Fransa, Yunanistan); "Körfez (vekil)" düğümünün kazancı yok.
+- **Evren dışı** (modelde hiç yok; derleme): Katar, Kuveyt, Umman, Ürdün, Hindistan, Japonya, Güney Kore, Birleşik Krallık, Almanya, İtalya.
+- `DIS_AKTOR_*.md` birleşik tablosu eskiden ilk 30 satırı gösteriyordu (en büyük kayıp ülkeler, Irak ve Körfez, kesiliyordu); artık tüm aktörler yazılıyor.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

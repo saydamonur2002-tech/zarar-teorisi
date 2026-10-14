@@ -1861,6 +1861,138 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +if __name__ == "__main__":
 +    main()
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/kazanc_kayip_muhasebe.py fixed/etki_cephesi/kazanc_kayip_muhasebe.py
+--- pristine/etki_cephesi/kazanc_kayip_muhasebe.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/kazanc_kayip_muhasebe.py	2026-10-14 14:06:07.607693458 +0000
+@@ -0,0 +1,128 @@
++"""Kazanç–kayıp muhasebesi: dış aktör kazancı ile havza kaybı birbirini tutuyor mu? Ve kapsam (neyin modellenmediği).
++
++TEŞHİS raporudur, modeli değiştirmez. `projeksiyon.py` bir korunum özdeşliği tanımlamaz; bu rapor özdeşliği yazar ve ölçer:
++
++  Boşluk V = Σ_bölge (TR boşalması) + pasif_k · Σ_bölge (pasif boşluk)     [kazancın dağıtıldığı havuz]
++  Kazanç kanalları (aynı V'nin ayrı dağıtım kuralları):
++    kanal   = V × dış aktör payı           (dis_aktör_pay.json)
++    matris  = V × (kazanç − zarar katsayısı, yalnız > 0)   (ulkeler_bolge.json)
++    ikame   = rakip_ikame kenarları        (bölge kaybı × pay × ikame çarpanı)
++    merkez  = MFIN sızıntı kenarları       (bölge kaybı × merkez payı × merkez çarpanı)
++  Dört kanal AYNI bölge kaybından beslenir ve birbirini dışlamaz → toplam V'yi aşabilir.
++  Kayıp tarafı: TR kaybı + TR dışı ülke kayıpları (bölge net etkisi), ayrı bir nicelik.
++
++Çıktı: `KAZANC_KAYIP_MUHASEBE.{json,md}`. Başka modüle girdi olmaz (döngü yok).
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++# Evren dışı, modelde hiç bulunmayan örnek aktörler (DERLEME; tam liste değil)
++EVREN_DISI_ORNEK = ["Katar", "Kuveyt", "Umman", "Ürdün", "Hindistan", "Japonya", "Güney Kore", "Birleşik Krallık", "Almanya (AB yalnız Balkan vekil)", "İtalya"]
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _pasif_k() -> float:
++    r = _load(DATA / "refah_rant_model.json")
++    return float(r.get("kayip_pasif_ek") or 0.25) if r.get("aktif") else 0.25
++
++
++def hesapla() -> dict[str, Any]:
++    proj = _load(OUT / "PROJEKSIYON.json")
++    pk = _pasif_k()
++    out_s: list[dict[str, Any]] = []
++    for sen in proj["senaryolar"]:
++        bos = sum(float(r["bosalma"]) for r in sen["tr_bosalma_detay"])
++        pas = sum(float(b.get("pasif_bosluk_dolgu", 0.0)) for b in sen["bolgesel_net"])
++        v = bos + pk * pas
++        ak = sen["dis_aktör_kazanc"]
++        kanal = sum(d["kanal_kazanc"] for d in ak)
++        matris = sum(d["matris_kazanc"] for d in ak)
++        ikame = sum(d["ikame_kazanc"] for d in ak)
++        merkez = sum(d["merkez_sizinti"] for d in ak)
++        toplam_k = kanal + matris + ikame + merkez
++        ul = sen["ulke_kayiplari"]
++        tr = sum(u["kayip_endeks"] for u in ul if u["ulke"] == "TR")
++        diger = sum(u["kayip_endeks"] for u in ul if u["ulke"] != "TR")
++        ab = sen["aktör_birlesik"]
++        kapsam = {"aktor_sayisi": len(ab)}
++        for alan in ("kazanc_kapsam", "kayip_kapsam", "net_kapsam"):
++            sayim: dict[str, int] = {}
++            for a in ab:
++                sayim[a.get(alan, "?")] = sayim.get(a.get(alan, "?"), 0) + 1
++            kapsam[alan] = sayim
++        out_s.append(
++            {
++                "id": sen["id"],
++                "bosluk_V": round(v, 3),
++                "tr_bosalma": round(bos, 3),
++                "pasif_k": pk,
++                "kazanc": {"kanal": round(kanal, 3), "matris": round(matris, 3), "ikame": round(ikame, 3), "merkez": round(merkez, 3), "toplam": round(toplam_k, 3)},
++                "kazanc_V_orani": {
++                    "kanal": round(kanal / v, 3),
++                    "matris": round(matris / v, 3),
++                    "kanal_artı_matris": round((kanal + matris) / v, 3),
++                    "toplam": round(toplam_k / v, 3),
++                },
++                "kayip": {"tr": round(tr, 3), "diger": round(diger, 3), "toplam": round(tr + diger, 3)},
++                "kazanc_eksi_kayip": round(toplam_k - (tr + diger), 3),
++                "kazanc_eksi_V": round(toplam_k - v, 3),
++                "kapsam": kapsam,
++                "ihlaller": [
++                    ("kanal + matris V'yi aşıyor: aynı boşluk iki kuralla dağıtılıyor" if (kanal + matris) / v > 1.0 else None),
++                    ("toplam kazanç V'yi aşıyor" if toplam_k > v else None),
++                    ("toplam kazanç ≠ toplam kayıp (özdeşlik tanımsız)" if abs(toplam_k - (tr + diger)) > 0.05 else None),
++                ],
++            }
++        )
++        out_s[-1]["ihlaller"] = [x for x in out_s[-1]["ihlaller"] if x]
++    return {
++        "olcum": "kazanc_kayip_muhasebe",
++        "etiket": "teshis_model_degismedi",
++        "ozdeslik": "Bir boşluğun dağıtımı V'yi (TR boşalması + pasif katkısı) aşmamalı; kanal, matris, ikame, merkez aynı V'den beslenir ve dışlamaz.",
++        "senaryolar": out_s,
++        "evren_disi_ornek": EVREN_DISI_ORNEK,
++        "not": "Bu rapor tutarsızlığın KAYNAĞINI ölçer; düzeltmez. Düzeltme için bir dağıtım kuralı seçilmeli (kanal veya matris) ya da payların toplamı 1'e normalize edilmeli.",
++    }
++
++
++def _md(d: dict[str, Any]) -> str:
++    L = ["# Kazanç–kayıp muhasebesi", "", f"**Etiket:** `{d['etiket']}`. {d['ozdeslik']}", ""]
++    L += ["## Boşluk V ve kazanç kanalları", "", "| Senaryo | V (boşluk) | kanal | matris | ikame | merkez | Σ kazanç | Σ/V | (kanal+matris)/V |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
++    for s in d["senaryolar"]:
++        k = s["kazanc"]
++        L.append(f"| {s['id']} | {s['bosluk_V']} | {k['kanal']} | {k['matris']} | {k['ikame']} | {k['merkez']} | {k['toplam']} | {s['kazanc_V_orani']['toplam']} | {s['kazanc_V_orani']['kanal_artı_matris']} |")
++    L += ["", "## Kayıp tarafı ve fark", "", "| Senaryo | TR kayıp | TR dışı kayıp | Σ kayıp | Σ kazanç − Σ kayıp | Σ kazanç − V |", "| --- | ---: | ---: | ---: | ---: | ---: |"]
++    for s in d["senaryolar"]:
++        y = s["kayip"]
++        L.append(f"| {s['id']} | {y['tr']} | {y['diger']} | {y['toplam']} | {s['kazanc_eksi_kayip']} | {s['kazanc_eksi_V']} |")
++    L += ["", "## Bulgu", ""]
++    for s in d["senaryolar"]:
++        L.append(f"- **{s['id']}:** " + "; ".join(s["ihlaller"]) + ".")
++    L += ["", "## Kapsam (neyin modellenmediği)", "", "| Senaryo | Aktör | Kazanç tam / kısmi / yok | Kayıp modellendi / bilinmiyor | Net tam / kısmi |", "| --- | ---: | --- | --- | --- |"]
++    for s in d["senaryolar"]:
++        c = s["kapsam"]
++        kz, ky, nt = c["kazanc_kapsam"], c["kayip_kapsam"], c["net_kapsam"]
++        L.append(f"| {s['id']} | {c['aktor_sayisi']} | {kz.get('tam', 0)} / {kz.get('kismi', 0)} / {kz.get('yok', 0)} | {ky.get('modellendi', 0)} / {ky.get('bilinmiyor', 0)} | {nt.get('tam', 0)} / {nt.get('kismi', 0)} |")
++    L += ["", f"Evren dışı (modelde hiç yok, kazanç/kayıp **bilinmiyor**; derleme, tam liste değil): {', '.join(d['evren_disi_ornek'])}.", "", "## Not", "", d["not"], ""]
++    return "\n".join(L)
++
++
++def main() -> None:
++    d = hesapla()
++    OUT.mkdir(parents=True, exist_ok=True)
++    (OUT / "KAZANC_KAYIP_MUHASEBE.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    (OUT / "KAZANC_KAYIP_MUHASEBE.md").write_text(_md(d), encoding="utf-8")
++    print("KAZANC_KAYIP_MUHASEBE:", [(s["id"], s["kazanc_V_orani"]["toplam"]) for s in d["senaryolar"]])
++
++
++if __name__ == "__main__":
++    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/lm_rant_sektor.py fixed/etki_cephesi/lm_rant_sektor.py
 --- pristine/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:45.823723118 +0000
 +++ fixed/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:32.653932327 +0000
@@ -2112,7 +2244,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
 --- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
-+++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 08:24:11.536433991 +0000
++++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 14:06:44.537630473 +0000
 @@ -3,6 +3,8 @@
  
  import json
@@ -2122,7 +2254,64 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  from typing import Any
  
  REPO = Path(__file__).resolve().parents[1]
-@@ -789,10 +791,10 @@
+@@ -616,10 +618,40 @@
+     return dagitim
+ 
+ 
++def _kapsam(dis_doc: dict[str, Any], ub_doc: dict[str, Any]) -> dict[str, set[str]]:
++    """Hangi aktörün hangi kazanç kanalında MODELLENDİĞİ. Modellenmemiş ≠ sıfır kazanç (bilinmiyor)."""
++    kanal: set[str] = set()
++    for row in (dis_doc.get("bolge_pay") or {}).values():
++        kanal |= set(row)
++    matris = {r["iso"] for rows in (ub_doc.get("bolge_ulkeler") or {}).values() for r in rows}
++    return {"kanal": kanal, "matris": matris}
++
++
++def _kapsam_alanlari(iso: str, kayip_var: bool, kapsam: dict[str, set[str]] | None) -> dict[str, Any]:
++    if kapsam is None:
++        return {}
++    if iso == "MFIN":
++        return {"kayip_kapsam": "tanimsiz", "kazanc_kapsam": "tam", "net_kapsam": "tanimsiz"}
++    if iso == "TR":
++        return {"kayip_kapsam": "modellendi", "kazanc_kapsam": "ozel (TR payı rant defterinde)", "net_kapsam": "tam"}
++    k = iso in kapsam["kanal"]
++    m = iso in kapsam["matris"]
++    kazanc = "tam" if (k and m) else ("kismi" if (k or m) else "yok")
++    kayip = "modellendi" if kayip_var else "bilinmiyor"
++    net = "tam" if (kazanc == "tam" and kayip == "modellendi") else "kismi"
++    return {
++        "kayip_kapsam": kayip,
++        "kazanc_kapsam": kazanc,
++        "kazanc_kanallari": {"kanal_ikame": k, "matris": m},
++        "net_kapsam": net,
++    }
++
++
+ def _aktör_birlesik(
+     ulke_kayiplari: list[dict[str, Any]],
+     dis_kazanc: list[dict[str, Any]],
+     ulke_names: dict[str, str],
++    kapsam: dict[str, set[str]] | None = None,
+ ) -> list[dict[str, Any]]:
+     by_iso: dict[str, dict[str, Any]] = {}
+     for u in ulke_kayiplari:
+@@ -679,6 +711,7 @@
+             row["merkez_belirsiz_vekil"] = bel
+ 
+     out: list[dict[str, Any]] = []
++    kayip_var = {u["ulke"] for u in ulke_kayiplari}
+     for iso, row in by_iso.items():
+         dis_k = round(float(row["dis_kazanc_vekili"]), 3)
+         havza_k = round(float(row["havza_kayip"]), 3)
+@@ -686,6 +719,7 @@
+         out.append(
+             {
+                 **row,
++                **_kapsam_alanlari(iso, iso in kayip_var, kapsam),
+                 "dis_kazanc_vekili": dis_k,
+                 "havza_kayip": havza_k,
+                 "merkez_belirsiz_vekil": round(float(row.get("merkez_belirsiz_vekil", 0.0)), 3),
+@@ -789,10 +823,10 @@
      ikame = float(akis_doc.get("yaricevre_rakip_ikame_carpan", 0.55))
  
      kalibre_kullanildi = (KALIBRE / "bolgeler.json").is_file()
@@ -2135,7 +2324,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "kalibre_2024_ticaret": kalibre_kullanildi,
          "rant_modeli": "refah" if refah_doc and refah_doc.get("aktif") else "bosluk",
          "kaynak_tez": "data/etki_cephesi/KAYNAK_TEZ.md",
-@@ -812,7 +814,7 @@
+@@ -812,7 +846,7 @@
          sid = sen["id"]
          ero = sen["etki_erosyon_carpani"]
          flex = sen["tr_diplomatik_flex"]
@@ -2144,7 +2333,15 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          bag_modu = sen.get("bag_modu") or {"kullanim": 0.3, "atil": 0.4, "aracsal": 0.3}
          kullanim = float(bag_modu.get("kullanim", 0.3))
          enigma_l = float(sen.get("enigma_carpan_levant", 1.0))
-@@ -928,31 +930,23 @@
+@@ -903,6 +937,7 @@
+             sen_row["ulke_kayiplari"],
+             sen_row["dis_aktör_kazanc"],
+             ulke_names,
++            _kapsam(dis_doc, ub_doc),
+         )
+ 
+     sonuc["_adlar"] = adlar
+@@ -928,31 +963,23 @@
          lines.append(f"*{payload['referans_olcum_not']}*")
          lines.append("")
  
@@ -2191,7 +2388,46 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          lines.append(f"## Senaryo {sen['id']}: {sen['ad']}{tag}")
          lines.append("")
          lines.append(sen["aciklama"])
-@@ -1160,9 +1154,9 @@
+@@ -1060,14 +1087,14 @@
+         lines.append("### Aktör birleşik (havza kaybı vs dış kazanç vekili)")
+         lines.append("")
+         lines.append(
+-            "| Aktör | Dış kazanç | Havza kayıp | Belirsiz M* | Net birleşik | Durum |"
++            "| Aktör | Dış kazanç | Havza kayıp | Belirsiz M* | Net birleşik | Kapsam |"
+         )
+         lines.append("| --- | ---: | ---: | ---: | ---: | --- |")
+         for a in sen.get("aktör_birlesik", [])[:25]:
++            kaz, kay, net, kap = _gos_birlesik(a)
+             lines.append(
+-                f"| {a['ad']} | {a['dis_kazanc_vekili']} | {a['havza_kayip']} | "
+-                f"{a.get('merkez_belirsiz_vekil', 0.0)} | "
+-                f"{a['net_birlesik_vekil']} | {a['durum']} |"
++                f"| {a['ad']} | {kaz} | {kay} | "
++                f"{a.get('merkez_belirsiz_vekil', 0.0)} | {net} | {kap} |"
+             )
+         lines.append("")
+ 
+@@ -1156,13 +1183,29 @@
+     return "\n".join(lines)
+ 
+ 
++def _gos_birlesik(a: dict[str, Any]) -> tuple[str, str, str, str]:
++    """(dış kazanç, havza kayıp, net, kapsam) metni. Bilinmeyen sıfır yazılmaz: '—'; kısmi '†'."""
++    kz = a.get("kazanc_kapsam", "tam")
++    ky = a.get("kayip_kapsam", "modellendi")
++    kaz = "—" if kz == "yok" else (f"{a['dis_kazanc_vekili']}†" if kz == "kismi" else str(a["dis_kazanc_vekili"]))
++    kay = "—" if ky == "bilinmiyor" else ("n/a" if ky == "tanimsiz" else str(a["havza_kayip"]))
++    net_k = a.get("net_kapsam", "tam")
++    net = str(a["net_birlesik_vekil"]) if net_k in ("tam", "tanimsiz") else "bilinmiyor"
++    kap = []
++    if kz in ("kismi", "yok"):
++        kap.append(f"kazanç {kz}")
++    if ky == "bilinmiyor":
++        kap.append("kayıp bilinmiyor")
++    return kaz, kay, net, (", ".join(kap) or "tam")
++
++
+ def _senaryo_yan_raporlari(
      sen: dict[str, Any],
      sid: str,
      ulke_gruplari: list[tuple[str, list[str]]],
@@ -2203,7 +2439,33 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      if sen.get("ulke_kayiplari"):
          ua = [f"# Senaryo {baslik_etiket} — ülke bazlı kayıp (10 yıl vekil)", ""]
          ua.append("| Ülke | Kayıp endeks | Net | Pasif | Araçsal | Temsil |")
-@@ -1238,12 +1232,12 @@
+@@ -1213,16 +1256,19 @@
+         da.append("")
+         da.append("## Birleşik (dış kazanç − havza kaybı)")
+         da.append("")
+-        da.append("| Aktör | Dış kazanç | Havza kayıp | Belirsiz M* | Net | Durum |")
+-        da.append("| --- | ---: | ---: | ---: | ---: | --- |")
++        da.append("`—` = bilinmiyor (modellenmedi), sıfır değil. `†` = kısmi kapsam (kazancın yalnız bir kanalı modelli). Net yalnız kazanç ve kayıp ikisi de tam modelliyse yazılır.")
++        da.append("")
++        da.append("| Aktör | Dış kazanç | Havza kayıp | Belirsiz M* | Net | Kapsam | Durum |")
++        da.append("| --- | ---: | ---: | ---: | ---: | --- | --- |")
+         for a in sorted(
+             sen.get("aktör_birlesik", []),
+             key=lambda x: -x["net_birlesik_vekil"],
+-        )[:30]:
++        ):
++            kaz, kay, net, kap = _gos_birlesik(a)
+             da.append(
+-                f"| {a['ad']} | {a['dis_kazanc_vekili']} | {a['havza_kayip']} | "
+-                f"{a.get('merkez_belirsiz_vekil', 0.0)} | "
+-                f"{a['net_birlesik_vekil']} | {a['durum']} |"
++                f"| {a['ad']} | {kaz} | {kay} | "
++                f"{a.get('merkez_belirsiz_vekil', 0.0)} | {net} | {kap} | "
++                f"{a['durum'] if net != 'bilinmiyor' else 'belirsiz'} |"
+             )
+         da.append("")
+         (OUT / f"DIS_AKTOR_{sid}.md").write_text("\n".join(da), encoding="utf-8")
+@@ -1238,12 +1284,12 @@
      (OUT / "PROJEKSIYON.json").write_text(json.dumps(clean, ensure_ascii=False, indent=2), encoding="utf-8")
      payload["_adlar"] = adlar
      (OUT / "PROJEKSIYON.md").write_text(_md(payload), encoding="utf-8")
@@ -2221,7 +2483,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 08:13:43.066571587 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 14:06:07.944526937 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -2258,7 +2520,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,34 @@
+@@ -31,11 +47,35 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -2268,6 +2530,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "uzun_vade_esik.py",
 +        "senaryo_rapor.py",
 +        "gecmis_projeksiyon.py",
++        "kazanc_kayip_muhasebe.py",
          ]
      )
 -    for s in steps:
@@ -3201,8 +3464,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 08:25:44.862878582 +0000
-@@ -0,0 +1,399 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:07:08.584815048 +0000
+@@ -0,0 +1,429 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -3602,3 +3865,33 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    # projeksiyon çarpanı geçmişten kullanır: B sızıntısı / A sızıntısı = geçmiş çarpanı (boşalma kalemi hariç)
 +    proj = {s["id"]: s for s in _j(OUT / "PROJEKSIYON.json")["senaryolar"]}
 +    assert proj["C"]["merkez_finans_sizinti_toplam"] < proj["A"]["merkez_finans_sizinti_toplam"] < proj["B"]["merkez_finans_sizinti_toplam"]
++
++
++def test_kazanc_kayip_muhasebe_tutarsizligi_olcer():
++    d = _j(OUT / "KAZANC_KAYIP_MUHASEBE.json")
++    assert [s["id"] for s in d["senaryolar"]] == ["A", "B", "C"]
++    for s in d["senaryolar"]:
++        k = s["kazanc"]
++        assert abs(k["toplam"] - (k["kanal"] + k["matris"] + k["ikame"] + k["merkez"])) < 2e-3
++        assert abs(s["kazanc_V_orani"]["toplam"] - k["toplam"] / s["bosluk_V"]) < 2e-3
++        # aynı boşluk iki kuralla (kanal, matris) dağıtılıyor → V'nin %100'ünü aşar
++        assert s["kazanc_V_orani"]["kanal_artı_matris"] > 1.0 and s["kazanc_V_orani"]["toplam"] > 1.0
++        assert s["kazanc_eksi_kayip"] > 0 and s["ihlaller"]
++        assert abs(s["kayip"]["toplam"] - (s["kayip"]["tr"] + s["kayip"]["diger"])) < 2e-3
++
++
++def test_modellenmeyenler_sifir_degil_bilinmiyor_isaretli():
++    p = _j(OUT / "PROJEKSIYON.json")
++    for sen in p["senaryolar"]:
++        by = {a["aktor"]: a for a in sen["aktör_birlesik"]}
++        assert all("kazanc_kapsam" in a and "kayip_kapsam" in a for a in by.values())
++        assert by["CN"]["kayip_kapsam"] == "bilinmiyor" and by["CN"]["net_kapsam"] == "kismi"  # Çin'in havza kaybı modelde yok
++        assert by["IQ"]["kazanc_kapsam"] == "kismi"  # Irak: kazanç kanallarından yalnız biri modelli
++        assert by["IR"]["net_kapsam"] == "tam" and by["TR"]["net_kapsam"] == "tam"
++        assert by["MFIN"]["kayip_kapsam"] == "tanimsiz"
++    md = (OUT / "DIS_AKTOR_A.md").read_text(encoding="utf-8")
++    birlesik = md.split("## Birleşik")[1]
++    satir = next(l for l in birlesik.splitlines() if l.startswith("| Çin |"))
++    assert "—" in satir and "bilinmiyor" in satir  # sıfır değil
++    satirlar = [l for l in birlesik.splitlines() if l.startswith("| ") and not l.startswith("| Aktör") and not l.startswith("| ---")]
++    assert len(satirlar) == len(_j(OUT / "PROJEKSIYON.json")["senaryolar"][0]["aktör_birlesik"])  # kesilmiş tablo yok (eskiden ilk 30)
