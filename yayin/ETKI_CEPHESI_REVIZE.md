@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `c946d1a7f932300a`, temiz kurulumda 3 geçiş),
-**52 test geçti** (27 mevcut + 25 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `5a66f0878458f83e`, temiz kurulumda 3 geçiş),
+**53 test geçti** (27 mevcut + 26 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -38,30 +38,30 @@ Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla k
 | Beklenen karışımın iyileşmesi | +0,087 skor (özet "iyileşir" diyordu) | −1,00 vekil: iyileşme yok, engel olarak yazıldı |
 | Lm × rant, kur | 32,87 | 44,38; kapanış_ok = False (Σ x = +0,178) |
 
-Not: bu tablo P(C)=0,60 ile. P(C) kapılara bağlanınca skor 57,9 ve karar `kisitli_uygulanabilir` (aşağıda).
+Not: bu tablo P(C)=0,60 ile. P(C) kapılara bağlanınca skor 58,8 (finans kalibre yola da bağlıyken) ve karar `kisitli_uygulanabilir` (aşağıda).
 | 10 | C'nin gerçekleşmesini ölçen bir ölçüt yoktu | `c_dinamik_olcut.py`: sıralı Bayes, EVDS merkez sızıntı oranı; güç analizi (aşağıda) |
 
 ## C olasılığı duyarlılığı (yeni rapor)
 `olasilik_duyarlilik.py` → `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. P(C) 0,30–0,80, kalan A:B taban oranla bölünür (taban artık 1:1).
-**Yeni olasılık üretmez.** Aşağıdaki tablo kapılara bağlanmış taban (A=B) ile; kapı sonuçlarının karara çevrilmesi de aynı raporda.
+**Yeni olasılık üretmez.** Tablo kapılara bağlanmış taban (A=B) ve finans katmanı kalibre yola bağlıyken; kapı sonuçlarının karara çevrilmesi de aynı raporda.
 
 | P(C) | P(A) | P(B) | E[TR net 10y, yaşam dahil] | E[GSYH %] | E[iyileşme] | Skor | Karar |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| 0.30 | 0.350 | 0.350 | -22.644 | 6.313 | -5.45 | 57.3 | kisitli_uygulanabilir |
-| 0.35 | 0.325 | 0.325 | -21.952 | 6.122 | -4.76 | 58.2 | kisitli_uygulanabilir |
-| 0.40 | 0.300 | 0.300 | -21.261 | 5.932 | -4.07 | 59.1 | kisitli_uygulanabilir |
-| 0.45 | 0.275 | 0.275 | -20.569 | 5.741 | -3.38 | 60.0 | kisitli_uygulanabilir |
-| 0.50 | 0.250 | 0.250 | -19.878 | 5.551 | -2.69 | 60.9 | kisitli_uygulanabilir |
-| 0.55 | 0.225 | 0.225 | -19.186 | 5.36 | -2.00 | 61.8 | kisitli_uygulanabilir |
-| 0.60 | 0.200 | 0.200 | -18.495 | 5.17 | -1.30 | 62.7 | uygulanabilir_kosullu |
-| 0.65 | 0.175 | 0.175 | -17.803 | 4.979 | -0.61 | 63.6 | uygulanabilir_kosullu |
-| 0.70 | 0.150 | 0.150 | -17.112 | 4.789 | +0.08 | 64.6 | uygulanabilir_kosullu |
-| 0.75 | 0.125 | 0.125 | -16.42 | 4.598 | +0.77 | 66.8 | uygulanabilir_kosullu |
-| 0.80 | 0.100 | 0.100 | -15.729 | 4.408 | +1.46 | 68.9 | uygulanabilir_kosullu |
+| 0.30 | 0.350 | 0.350 | -23.455 | 6.524 | -6.26 | 58.2 | kisitli_uygulanabilir |
+| 0.35 | 0.325 | 0.325 | -22.687 | 6.31 | -5.50 | 59.1 | kisitli_uygulanabilir |
+| 0.40 | 0.300 | 0.300 | -21.92 | 6.096 | -4.73 | 60.0 | kisitli_uygulanabilir |
+| 0.45 | 0.275 | 0.275 | -21.152 | 5.882 | -3.96 | 60.9 | kisitli_uygulanabilir |
+| 0.50 | 0.250 | 0.250 | -20.384 | 5.668 | -3.19 | 61.8 | kisitli_uygulanabilir |
+| 0.55 | 0.225 | 0.225 | -19.616 | 5.453 | -2.43 | 62.7 | uygulanabilir_kosullu |
+| 0.60 | 0.200 | 0.200 | -18.848 | 5.239 | -1.66 | 63.6 | uygulanabilir_kosullu |
+| 0.65 | 0.175 | 0.175 | -18.081 | 5.025 | -0.89 | 64.5 | uygulanabilir_kosullu |
+| 0.70 | 0.150 | 0.150 | -17.313 | 4.811 | -0.12 | 65.4 | uygulanabilir_kosullu |
+| 0.75 | 0.125 | 0.125 | -16.545 | 4.597 | +0.65 | 67.5 | uygulanabilir_kosullu |
+| 0.80 | 0.100 | 0.100 | -15.777 | 4.383 | +1.41 | 69.7 | uygulanabilir_kosullu |
 
-- Karar eşiği (skor 62) geçişi P(C) ≈ 0,56. Kapılardan bugünkü P(C) = 0,33, yani eşiğin altında.
-- Beklenen karışımda iyileşme ancak P(C) ≳ 0,70'te başlıyor.
-- E[TR net 10 yıl] aralığı −22,64 … −15,73.
+- Karar eşiği (skor 62) geçişi P(C) ≈ **0,51** (finans kalibre yola bağlanmadan önce 0,56). Kapılardan bugünkü P(C) = 0,33, yani eşiğin altında.
+- Beklenen karışımda iyileşme ancak P(C) ≳ 0,71'de başlıyor.
+- E[TR net 10 yıl] aralığı −23,46 … −15,78.
 
 ## C için dinamik ölçüt (yeni rapor)
 `c_dinamik_olcut.py` → `C_DINAMIK_OLCUT.{json,md}`. Gösterge: merkez sızıntı oranı = 12 ay yatırım geliri gideri / 12 ay mal ihracatı (EVDS, `data/etki_cephesi/gozlem/`). Senaryo sürüklenmesi `ln(merkez_sizinti_carpan)/10` (A 0, B +1,4 %/yıl, C −1,05 %/yıl): varsayımdır.
@@ -80,16 +80,16 @@ Not: bu tablo P(C)=0,60 ile. P(C) kapılara bağlanınca skor 57,9 ve karar `kis
 
 | Çıktı | P(C)=0,60 (eski) | P(C)=1/3 (kapılar, gözlem yok) |
 |---|---|---|
-| Uygulanabilirlik skoru | 62,7 | **57,9** |
+| Uygulanabilirlik skoru | 62,7 | **58,8** |
 | Karar | uygulanabilir_kosullu | **kisitli_uygulanabilir** |
-| Skor C-senaryosu / beklenen A·B·C | 67,1 / 54,5 | 62,3 / 49,7 |
-| Senaryo skorları A / B / C | 50,1 / 49,4 / 73,0 | 52,1 / 52,1 / 68,2 |
-| E[TR net 10 yıl] (yaşam dahil) | −18,19 | **−22,18** |
-| Beklenen karışımın iyileşmesi | −1,00 | **−4,99** (iyileşme yok) |
-| C yolu TR net 10. yıl | −17,19 → −13,10 | aynı: −17,19 → −13,10 (olasılığa bağlı değil) |
-| Finans katmanı beklenen TR net | − | −3,29 |
+| Skor C-senaryosu / beklenen A·B·C | 67,1 / 54,5 | 63,7 / 49,7 |
+| Senaryo skorları A / B / C | 50,1 / 49,4 / 73,0 | 52,4 / 52,4 / 69,6 |
+| E[TR net 10 yıl] (yaşam dahil) | −18,19 | **−22,94** |
+| Beklenen karışımın iyileşmesi | −1,00 | **−5,75** (iyileşme yok) |
+| C yolu TR net 10. yıl | −17,19 → −13,10 | −17,19 → −12,67 (olasılığa bağlı değil; değişim finans bağlamasından, aşağıda) |
+| Finans katmanı beklenen TR net (ham) | − | −12,99 |
 
-Okuma: C yolunun kendi sonucu (−17,19 → −13,10, iyileşir) değişmedi. Değişen, C'ye verilen ağırlıktır. Ağırlık düşünce karışım kötüleşiyor ve karar eşiğin altına iniyor. 62,7 sonucu elle atanmış 0,60'a yaslanıyordu.
+Okuma: C yolunun kendi sonucu iyileşir; olasılık ona dokunmaz. Değişen, C'ye verilen ağırlıktır. Ağırlık düşünce karışım kötüleşiyor ve karar eşiğin altına iniyor. 62,7 sonucu elle atanmış 0,60'a yaslanıyordu.
 
 ## P(C) ölçülebilir kapılarla yeniden kuruldu (yeni rapor)
 `olasilik_kapilar.py` → `OLASILIK_KAPILAR.{json,md}` (saf hesap `_olasilik.py`). Eski 0,22 / 0,18 / 0,60 elle atanmıştı, dayanağı yoktu.
@@ -100,12 +100,12 @@ Okuma: C yolunun kendi sonucu (−17,19 → −13,10, iyileşir) değişmedi. De
 
 | Açık | P(A) | P(B) | P(C) | Skor | Karar | Eşiği geçer |
 | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| 0/3 | 0.305 | 0.547 | 0.148 | 54.6 | kisitli_uygulanabilir | hayır |
-| 1/3 | 0.341 | 0.409 | 0.25 | 56.4 | kisitli_uygulanabilir | hayır |
-| 2/3 | 0.344 | 0.276 | 0.38 | 58.8 | kisitli_uygulanabilir | hayır |
-| 3/3 | 0.312 | 0.167 | 0.521 | 61.3 | kisitli_uygulanabilir | hayır |
+| 0/3 | 0.305 | 0.547 | 0.148 | 55.4 | kisitli_uygulanabilir | hayır |
+| 1/3 | 0.341 | 0.409 | 0.25 | 57.3 | kisitli_uygulanabilir | hayır |
+| 2/3 | 0.344 | 0.276 | 0.38 | 59.6 | kisitli_uygulanabilir | hayır |
+| 3/3 | 0.312 | 0.167 | 0.521 | 62.1 | uygulanabilir_kosullu | evet |
 
-- **Sonuç:** tek ölçülebilir kapı en iyi ihtimalle P(C) = 0,52 verir; karar eşiği 0,56. Yani eldeki gözlenebilir kanıtla C "uygulanabilir_koşullu" yapılamaz; 3/3 açıkta bile skor 61,3.
+- **Sonuç:** tek ölçülebilir kapı en iyi ihtimalle P(C) = 0,52 verir. Karar eşiği finans kalibre yola bağlanmadan önce 0,56'ydı (3/3 açıkta bile skor 61,3, geçmezdi); bağlandıktan sonra 0,51: 3/3 açık **skor 62,1 ile eşiği 0,1 puan farkla geçer**. Yani sonuç kapı verisinden çok finans bağlamasının varsayımlarına duyarlı; kenar durumu.
 - δ duyarlılığı: δ = 0,20 ile 3/3 açık → 0,68; δ = 0 ile kapı hiçbir şey söylemez. Eski el ataması prior kullanılırsa sonuç prior'a yaslanır (0,35 … 0,76): tabloyu prior belirler, kapı değil.
 
 ## A, B, C için eşit ayrıntı (yeni)
@@ -128,14 +128,31 @@ Okuma: C yolunun kendi sonucu (−17,19 → −13,10, iyileşir) değişmedi. De
 | Kalibre son (gerçeklik) | −16,31 | −17,62 | −32,19 | −38,31 | −11,21 |
 
 - Katman yığını: zarar çözümü ≤ üretim; finans ≥ üretim, yalnız B'de (ters çevrilmiş) finans < üretim (test). Sıfır yılı (aynı eğimin devamı varsayımı): A 2065, B 2087 (önce 2044), C 2044.
-- **Karara etkisi küçük:** skor 57,9 ve karar aynı; E[TR net 10 yıl] −22,18 → −22,50. Çünkü kalibre yol, üretim/finans katmanlarına düşük gerçekleşme ağırlığı veriyor (0,10 / 0,09 civarı); büyük katman farkı kalibrasyonda sönüyor.
+- **Karara etkisi küçük (finans kalibre yola bağlanmadan önce):** skor 57,9 ve karar aynı; E[TR net 10 yıl] −22,18 → −22,50.
 
 ## B'nin finans katmanı araçsallaşma yönünde ters çevrildi
 - **Kural:** `bag_modu` içinde baskın mod araçsal ise (yalnız B: 0,54) finans katmanı ters çevrilir. A baskın modu atıl, C kullanım: çevrilmez. Etkin g_f = −güç · g_f, güç = 1 (B: +0,432 → **−0,432**).
 - **Ne olur:** `etkin_carpan = 1 − g(1 − çarpan)` olduğu için g < 0 iken azaltım çarpanları artırım çarpanına döner (halka ek çarpanları, MFIN kenar), iç tutma, TDS rahatı ve kredi kesintisi kazanımı kayba döner. Finans geri kazanım B'de pozitif yerine **−2,81**. Anlam: finans kanalları TR lehine kısalmaz, dış çıkar ağının aracına döner.
 - **B finans TR net:** −18,49 (çevrilmemiş) → **−31,15**; üretim katmanı −24,82'den de kötü. Boşalma 34,5, sıfır yılı yok (net yükselmiyor). B kalibre son −33,88 → −38,31; GSYH vekili %9,43 → %10,66.
 - **Duyarlılık (varsayım):** çevrilmemiş −18,49 · güç 0 (finans etkisiz) −24,82 · güç 0,5 −27,99 · güç 1 (tam ayna) −31,15. Ayna simetri ve güç = 1 **varsayım**; `finans_katman_kopru.json` `ters_cevirme` (aktif/güç) ile ayarlanır.
-- **Karara etkisi yok:** skor 57,9, E[TR net 10 yıl] −22,50 aynı. Finans katmanı "varsayım çarpanlı ham" etiketli ve 10 yıllık kalibre yola (ZARAR_10Y_GSYH) girmiyor; yalnız finans raporlarına ve `GERCEKLIK_KALIBRE` son değerine yansır. Yani bu ters çevirme karar skorunu değil, B'nin finans raporunu değiştirir.
+- **Bu aşamada karara etkisi yoktu** (skor 57,9): finans fazı kalibre yolda sıralı koşulduğu için 10. yıl satırına ulaşmıyordu. Sebep etiket değil faz takvimiydi; sonraki bölümde bağlandı.
+
+## Finans katmanı kalibre yola bağlandı
+- **Neden girmiyordu:** kalibre yol fazları sıralı koşuyordu (zarar 7 y → üretim 12 y → finans 10 y). 10 yıllık başlık 10. satıra bakar: 7 yıl zarar + 3 yıl üretim. Finans fazı yolun 20. yılından sonra başlıyordu, yani başlık sonuçlarına hiç girmiyordu. Ayrıca sıralı yolda her faz geçişinde bir yıl eksikti (2033 → 2035).
+- **Yeni mod `uretimle_es_zamanli`** (`finans_katman_kopru.json` `kalibre_yola_baglama`): zarar fazı 7 yıl aynen; ondan sonra finans, üretim ÜSTÜ bir katman olduğundan üretimle aynı anda başlar ve kendi olgunluğunda (10 y) yükselir. Yol yıllık kesintisiz. `mod: "sirali"` eski davranış. Faz takvimi **varsayımdır**.
+- **İkinci düzeltme (benim önceki adımımın hatası):** kalibre yol r_u ve r_f'yi senaryo politikasıyla (pol_s) çarpıyordu; katmanlar artık kendi g_u, g_f'lerini taşıdığı için bu ikinci kez uygulamaydı. Katmanlarda pol_s yerine C'nin pol'ü (sabit) kullanılıyor, C'nin son değerleri değişmiyor.
+- **Ters çevrilmiş finansın gerçekleşmesi:** `_gerceklesme` yalnız iyileşme için tavan koyar; negatif delta (B) için 1,0 döner, yani zarar tavansız gerçekleşir (B r_f = 0,95, A 0,21, C 0,22). Gerekçe: araçsallaşma kazanım gerçekleşmesine bağlı olmayan bir zarar; **varsayım**.
+
+| Yapılandırma | Skor | E[TR net 10y] | 10y TR net A / B / C | Son (kalibre) A / B / C |
+|---|---:|---:|---|---|
+| 1) bağlama kapalı (sıralı, pol_s) | 57,9 | −22,50 | −19,49 / −35,05 / −12,96 | −17,62 / −38,31 / −11,21 |
+| 2) yalnız pol çift sayımı düzeltildi (sıralı) | 57,9 | −22,36 | −19,36 / −34,76 / −12,96 | −16,65 / −41,94 / −11,21 |
+| 3) **varsayılan:** finans eşzamanlı | **58,8** | **−22,94** | **−18,84 / −37,29 / −12,71** | −16,65 / −41,94 / −11,21 |
+
+- Karar `kisitli_uygulanabilir` kaldı. Skor C'nin finans kazanımıyla arttı (63,7), beklenen karışım B'nin zararıyla kötüleşti (−22,94; iyileşme Δ −5,75).
+- B kalibre GSYH vekili (son değer) %11,67 (bağlamadan önce %10,66). Etki B'nin finans katmanında: 10. yılda A +0,6, C +0,25 iyileşirken B −2,2 kötüleşti.
+- **Karar eşiği P(C) 0,56 → 0,51** (yukarıdaki bölümler güncel); kapı 3/3 açıkta skor 62,1.
+- Hâlâ varsayım: faz takvimi, ayna simetri + güç=1, zarar tavansız gerçekleşme, katman çarpanları (atanmış). `FINANS_KATMAN` etiketi "varsayım çarpanlı ham"; uyarı metni "kalibre yola bağlı, ham değer kalibre değildir" diye güncellendi.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

@@ -47,8 +47,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/finans_katman_kopru.json fixed/data/etki_cephesi/finans_katman_kopru.json
 --- pristine/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 06:05:45.811750548 +0000
-+++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 08:00:24.416488002 +0000
-@@ -12,5 +12,18 @@
++++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 08:05:30.017512376 +0000
+@@ -12,5 +12,24 @@
    "kredi_ihtiyaci_sifir_merkez_kesinti": 0.11,
    "tr_finans_geri_tranchman": 0.42,
    "tam_olgunluk_yil": 10,
@@ -57,6 +57,12 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    "surucu": "politika gerçekleşme: pol = clip(1.05 − etki_erozyonu + tr_diplomatik_flex, 0.25, 1); g_f = min(1, pol_s / pol_C)",
 +    "not": "Finans halka ek çarpanları, MFIN kenar çarpanı, yatırım geliri iç tutma, TDS rahatı ve kredi kesintisi dış koşula (erozyon, diplomatik esneklik) bağlıdır. Etkin çarpan = 1 − g_f (1 − çarpan). Eski ek ölçekleme (pol_oran / merkez_oran ve boşalma·havza × merkez_oran) KALDIRILDI: merkez sızıntı çarpanı projeksiyonda zaten uygulanıyor, ikinci kez uygulamak çift saymaydı. aktif=false: g_f=1 (eski çift sayan ölçekleme geri gelmez).",
 +    "aktif": true
++  },
++  "kalibre_yola_baglama": {
++    "aktif": true,
++    "mod": "uretimle_es_zamanli",
++    "etiket": "varsayim_faz_takvimi",
++    "not": "Kalibre yol eskiden fazları SIRALI koşuyordu (zarar 7 y → üretim 12 y → finans 10 y): 10. yıl satırı finans fazına hiç ulaşmıyordu, finans katmanı 10 yıllık başlık sonuçlarına girmiyordu. Yeni mod: finans, üretimle aynı anda başlar (yıl 7'den sonra; finans üretim ÜSTÜ bir katman) ve kendi olgunluğunda (10 y) yükselir. mod='sirali' eski davranış (yol boşluğu dahil). Ayrıca üretim/finans katmanları kendi senaryo gerçekleşmesini (g_u, g_f) taşıdığından, r_u ve r_f ikinci kez senaryo politikasıyla (pol_s) çarpılmaz; C'nin pol'ü (sabit) uygulanır, C'nin sayıları değişmez."
 +  },
 +  "ters_cevirme": {
 +    "aktif": true,
@@ -1324,7 +1330,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    borc_cevirme()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
 --- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
-+++ fixed/etki_cephesi/finans_katman.py	2026-10-14 08:01:03.916436605 +0000
++++ fixed/etki_cephesi/finans_katman.py	2026-10-14 08:06:30.029424115 +0000
 @@ -69,6 +69,14 @@
      return next(s for s in sen_doc["senaryolar"] if s["id"] == sid)
  
@@ -1426,7 +1432,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      return {
          "olcum": "finans_katman_uretim_ustu",
 +        "etiket": "varsayim_carpanli_ham",
-+        "uyari": "Isaret donusu atanmis carpanlarla (finans_katman_kopru.json) uretilir; olcum degil, yayinlanan sonuc degil. Kalibre yol ve yayin metni ZARAR_10Y_GSYH / video ile okunmali.",
++        "uyari": "Carpanlar atanmis (finans_katman_kopru.json), olculmemis. Katman kalibre 10 yillik yola baglidir (kalibre_yola_baglama, GERCEKLIK_KALIBRE); bu rapordaki ham TR net kalibre degildir, kalibre deger icin GERCEKLIK_KALIBRE / ZARAR_10Y_GSYH okunmali.",
          "senaryo": sid,
          "taban": kopru.get("taban"),
          "finans_halka_oran_uretim_ustu": round(oran_fin / oran_uretim, 4) if oran_uretim else 1.0,
@@ -1460,7 +1466,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      lines = [
          "# Finans katmanı (üretim + halka üstü)",
          "",
-+        "> **Etiket: varsayım çarpanlı ham.** İşaret dönüşü atanmış çarpanlarla üretilir; ölçüm değildir, yayınlanan sonuç değildir.",
++        "> **Etiket: varsayım çarpanlı ham.** Çarpanlar atanmıştır, ölçülmemiştir. Katman kalibre 10 yıllık yola bağlıdır; bu tablodaki ham TR net kalibre değildir (kalibre: `GERCEKLIK_KALIBRE`, `ZARAR_10Y_GSYH`).",
 +        "",
 +        *(
 +            [
@@ -1950,10 +1956,106 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      s_olas = sum(olas.values()) or 1.0
      olas = {k: v / s_olas for k, v in olas.items()}
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_gerceklik_kalibre.py fixed/etki_cephesi/senaryo_gerceklik_kalibre.py
+--- pristine/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 06:05:45.827814605 +0000
++++ fixed/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 08:06:07.022380626 +0000
+@@ -145,10 +145,15 @@
+     r_z = _gerceklesme(d_z, tavan["zarar_teorisi_yatirim_geliri"] * yat, usd_v, float(taban["zarar_teorisi"]))
+     r_u = _gerceklesme(d_u, tavan["uretim_rant_net_ticaret"] * tic, usd_v, float(taban["uretim_ic_akis"]))
+     r_f = _gerceklesme(d_f, tavan["finans_yatirim_geliri"] * yat, usd_v, float(taban["finans_katman"]))
++    baglama = _load(DATA / "finans_katman_kopru.json").get("kalibre_yola_baglama") or {}
++    kopru_sen = bool(baglama.get("aktif")) and bool((fin_doc.get("senaryo_gerceklesme") or {}).get("etiket"))
+     if senaryo:
++        # Üretim/finans katmanları senaryo gerçekleşmesini (g_u, g_f) kendi içinde taşır: pol_s ikinci kez uygulanmaz.
++        pol_ref = _senaryo_kalibre_carpanlari(next(s for s in _load(DATA / "senaryolar.json")["senaryolar"] if s["id"] == "C"))[0]
++        pol_ul = pol_ref if kopru_sen else pol
+         r_z = round(min(1.0, r_z * pol), 4)
+-        r_u = round(min(1.0, r_u * pol), 4)
+-        r_f = round(min(1.0, r_f * pol), 4)
++        r_u = round(min(1.0, r_u * pol_ul), 4)
++        r_f = round(min(1.0, r_f * pol_ul), 4)
+ 
+     tr_z_k = round(tr_c + d_z * r_z, 3)
+     tr_u_k = round(tr_z_k + d_u * r_u, 3)
+@@ -185,18 +190,34 @@
+     olgunluk = {"zarar": 7.0, "uretim": 12.0, "finans": 10.0}
+     y0 = int(capa.get("yil", 2026)) + 2
+     yol: list[dict[str, Any]] = []
+-    cur = tr_c
+-    y = y0
+-    for name, hedef, yrs in [
+-        ("zarar", tr_z_k, olgunluk["zarar"]),
+-        ("uretim", tr_u_k, olgunluk["uretim"]),
+-        ("finans", tr_f_k, olgunluk["finans"]),
+-    ]:
+-        seg = _koridor(y, int(yrs), cur, hedef, yrs)
+-        for row in seg[1:]:
+-            yol.append({**row, "faz": name})
+-        y = yol[-1]["yil"] + 1 if yol else y
+-        cur = hedef
++    mod = str(baglama.get("mod")) if baglama.get("aktif") else "sirali"
++    if mod == "uretimle_es_zamanli":
++        # Finans, üretimle aynı anda (zarar fazından sonra) kendi olgunluğunda yükselir; yıllık kesintisiz seri.
++        t_zarar = olgunluk["zarar"]
++        toplam_sure = t_zarar + max(olgunluk["uretim"], olgunluk["finans"])
++        for t in range(1, int(toplam_sure) + 1):
++            if t <= t_zarar:
++                seviye = tr_c + (tr_z_k - tr_c) * t / t_zarar
++                faz = "zarar"
++            else:
++                a = (t - t_zarar)
++                seviye = tr_z_k + (tr_u_k - tr_z_k) * min(1.0, a / olgunluk["uretim"]) + (tr_f_k - tr_u_k) * min(1.0, a / olgunluk["finans"])
++                faz = "uretim+finans"
++            yol.append({"yil": y0 + t, "tr_net": round(seviye, 3), "faz": faz})
++    else:
++        cur = tr_c
++        y = y0
++        for name, hedef, yrs in [
++            ("zarar", tr_z_k, olgunluk["zarar"]),
++            ("uretim", tr_u_k, olgunluk["uretim"]),
++            ("finans", tr_f_k, olgunluk["finans"]),
++        ]:
++            seg = _koridor(y, int(yrs), cur, hedef, yrs)
++            for row in seg[1:]:
++                yol.append({**row, "faz": name})
++            y = yol[-1]["yil"] + 1 if yol else y
++            cur = hedef
++        toplam_sure = sum(olgunluk.values())
+ 
+     sifir: int | None = None
+     for row in yol:
+@@ -204,9 +225,9 @@
+             sifir = int(row["yil"])
+             break
+     if sifir is None and tr_f_k < 0 and tr_f_k > tr_c:
+-        slope = (tr_f_k - tr_c) / sum(olgunluk.values())
++        slope = (tr_f_k - tr_c) / toplam_sure
+         if slope > 0.08:
+-            sifir = int(round(y0 + sum(olgunluk.values()) + (-tr_f_k) / slope))
++            sifir = int(round(y0 + toplam_sure + (-tr_f_k) / slope))
+     if sifir is not None and sifir > y0 + 35:
+         sifir = None
+ 
+@@ -215,6 +236,7 @@
+     return {
+         "senaryo_id": sid,
+         "senaryo_pol_carpan": round(pol, 3) if senaryo else 1.0,
++        "yol_modu": mod,
+         "senaryo_delta_olcek": round(delta_scale, 3) if senaryo else 1.0,
+         "tr_c_refah": tr_c,
+         "tr_net_kalibre_son": tr_f_k,
+@@ -276,6 +298,7 @@
+         "tr_net_usd_mn_son": yigin["tr_net_usd_mn_son"],
+         "gsyh_yuzde_son": yigin["gsyh_yuzde_son"],
+         "sifir_nokta_takvim": yigin["sifir_nokta_takvim"],
++        "yol_modu": yigin["yol_modu"],
+         "yol_koridor": yigin["yol_koridor"],
+         "tr_net_yol_10_son": yigin["tr_net_yol_10_son"],
+         "dogrulama_2024": dogrulama,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_rapor.py fixed/etki_cephesi/senaryo_rapor.py
 --- pristine/etki_cephesi/senaryo_rapor.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 08:01:03.917020858 +0000
-@@ -0,0 +1,180 @@
++++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 08:06:30.030215335 +0000
+@@ -0,0 +1,183 @@
 +"""Senaryo raporları: A, B, C için AYNI bölümler, AYNI alanlar (referans senaryo ayrıcalığı yok).
 +
 +Çıktı: `SENARYO_RAPOR_{A,B,C}.md` (aynı iskelet) ve `SENARYO_KARSILASTIRMA.md` (yan yana).
@@ -2072,6 +2174,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            ("TR net son (kalibre)", gk.get("tr_net_kalibre_son")),
 +            ("GSYH %", gk.get("gsyh_yuzde_son")),
 +            ("TR net 10. yıl yolu", gk.get("tr_net_yol_10_son")),
++            ("Yol modu (finans üretimle eşzamanlı mı)", gk.get("yol_modu")),
++            ("Finans kalibre gerçekleşme r_f (tersse harm: tavan yok)", _g(gk, "gerceklesme_oranlari.finans_katman")),
 +            ("Gerçekleşme: zarar / üretim / finans", " / ".join(_f(_g(gk, f"gerceklesme_oranlari.{k}")) for k in ("zarar_teorisi", "uretim_ic_akis", "finans_katman"))),
 +        ]),
 +        ("8. Dış rant parasal akışı", [
@@ -2098,6 +2202,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    "g türetilmiştir ama doğrusal ölçekleme varsayımdır. "
 +    "Baskın modu araçsal olan senaryoda (B) finans katmanı ters çevrilir (g_f < 0, ayna simetri, güç 1: varsayım; duyarlılık finans raporunda). "
 +    "F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. "
++    "Finans katmanı kalibre yola bağlıdır (üretimle eşzamanlı yükselir); çarpanları atanmıştır. "
 +    "Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz."
 +)
 +
@@ -2714,8 +2819,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 08:01:03.917616775 +0000
-@@ -0,0 +1,322 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 08:06:00.581644836 +0000
+@@ -0,0 +1,347 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -3038,3 +3143,28 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert abs(b["guc_0.0_etkisiz"] - u["tr_net_birlesik_vekil"]) < 1e-9  # güç 0 = finans katmanı yok
 +    assert abs(b["guc_1.0_tam_ayna"] - f["tr_net_birlesik_vekil"]) < 1e-9
 +    assert d["A"]["ters_cevirme_bandi"] is None and d["C"]["ters_cevirme_bandi"] is None
++
++
++def test_finans_katmani_kalibre_yola_bagli():
++    cfg = _j(DATA / "finans_katman_kopru.json")["kalibre_yola_baglama"]
++    assert cfg["aktif"] and cfg["mod"] == "uretimle_es_zamanli"
++    for sid in "ABC":
++        g = _j(OUT / f"GERCEKLIK_KALIBRE_{sid}.json")
++        assert g["yol_modu"] == "uretimle_es_zamanli"
++        yol = g["yol_koridor"]
++        yillar = [r["yil"] for r in yol]
++        assert yillar == list(range(yillar[0], yillar[0] + len(yillar)))  # eski sıralı yoldaki yıl boşluğu yok
++        k = {r["katman"]: r["tr_net"] for r in g["katman_yigini_kalibre"]}
++        z, u, f = k["zarar_teorisi"], k["uretim_ic_akis"], k["finans_katman"]
++        assert abs(yol[-1]["tr_net"] - f) < 2e-3  # yol sonunda üç katman da tamam
++        assert yol[7]["faz"] == "uretim+finans"
++        # 10. yıl: finans, üretimle birlikte 3 yıl yükseldi (eski sıralı yolda finans hiç yoktu)
++        beklenen = z + (u - z) * 3 / 12 + (f - u) * 3 / 10
++        assert abs(g["tr_net_yol_10_son"] - beklenen) < 2e-3
++    # B'de ters çevrilmiş finans 10 yıllık yola girer: çevrilmemiş bir finansla karşılaştır
++    b = _j(OUT / "GERCEKLIK_KALIBRE_B.json")
++    assert b["gerceklesme_oranlari"]["finans_katman"] > 0.9  # zarar (ters çevirme) gerçekleşme tavanına tabi değil
++    k = {r["katman"]: r["tr_net"] for r in b["katman_yigini_kalibre"]}
++    assert k["finans_katman"] < k["uretim_ic_akis"]
++    # C'nin son değeri bağlamadan etkilenmez (C'de g = 1, pol_C sabit)
++    assert abs(_j(OUT / "GERCEKLIK_KALIBRE_C.json")["tr_net_kalibre_son"] - (-11.211)) < 5e-3

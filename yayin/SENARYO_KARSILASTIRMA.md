@@ -78,10 +78,12 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
-| TR net son (kalibre) | -17.615 | -38.312 | -11.211 |
-| GSYH % | 4.902 | 10.661 | 3.12 |
-| TR net 10. yıl yolu | -19.975 | -35.337 | -13.623 |
-| Gerçekleşme: zarar / üretim / finans | 0.49 / 0.175 / 0.154 | 0.287 / 0.102 / 0.41 | 0.665 / 0.237 / 0.22 |
+| TR net son (kalibre) | -16.645 | -41.939 | -11.211 |
+| GSYH % | 4.632 | 11.671 | 3.12 |
+| TR net 10. yıl yolu | -19.322 | -37.574 | -13.366 |
+| Yol modu (finans üretimle eşzamanlı mı) | uretimle_es_zamanli | uretimle_es_zamanli | uretimle_es_zamanli |
+| Finans kalibre gerçekleşme r_f (tersse harm: tavan yok) | 0.209 | 0.95 | 0.22 |
+| Gerçekleşme: zarar / üretim / finans | 0.49 / 0.237 / 0.209 | 0.287 / 0.237 / 0.95 | 0.665 / 0.237 / 0.22 |
 
 ## 8. Dış rant parasal akışı
 
@@ -105,4 +107,4 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 
 ## Not
 
-**Yapısal sınır (A, B, C için aynı):** üretim ve finans katmanları senaryoya özgü gerçekleşmeyle kurulur: g_u = bağ kullanımı / C'ninki (üretime bağlama kanalı), g_f = politika gerçekleşmesi / C'ninki (dış koşul: erozyon, diplomatik esneklik). Etkin çarpan = 1 − g (1 − çarpan); C'de g = 1. Çarpanların kendisi (halka düzeltmesi, MFIN, TDS, iç tutma) tüm senaryolarda ortak ve atanmıştır; g türetilmiştir ama doğrusal ölçekleme varsayımdır. Baskın modu araçsal olan senaryoda (B) finans katmanı ters çevrilir (g_f < 0, ayna simetri, güç 1: varsayım; duyarlılık finans raporunda). F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz.
+**Yapısal sınır (A, B, C için aynı):** üretim ve finans katmanları senaryoya özgü gerçekleşmeyle kurulur: g_u = bağ kullanımı / C'ninki (üretime bağlama kanalı), g_f = politika gerçekleşmesi / C'ninki (dış koşul: erozyon, diplomatik esneklik). Etkin çarpan = 1 − g (1 − çarpan); C'de g = 1. Çarpanların kendisi (halka düzeltmesi, MFIN, TDS, iç tutma) tüm senaryolarda ortak ve atanmıştır; g türetilmiştir ama doğrusal ölçekleme varsayımdır. Baskın modu araçsal olan senaryoda (B) finans katmanı ters çevrilir (g_f < 0, ayna simetri, güç 1: varsayım; duyarlılık finans raporunda). F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. Finans katmanı kalibre yola bağlıdır (üretimle eşzamanlı yükselir); çarpanları atanmıştır. Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz.
