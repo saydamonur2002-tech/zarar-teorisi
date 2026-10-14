@@ -1,25 +1,15 @@
-# Rakip ikame akışı çift sayımı: doğrulama
+# Rakip ikame çift sayımı: K1 sonrası doğrulama
 
-Ana model değiştirilmedi. Aynı v hem havza girişine hem aktör ikame kazancına yazılıyor; korunum (V) aşılıyor. Hangi tarafın düşüleceği karar gerektirir.
+K1 uygulandı: ikame aktör kazancından düşüldü, havza girişi korundu. Aktör kazancı + havza girişi V'ye sığmalı (korunum aşımı ≈ 0).
 
-| Senaryo | Kenar toplamı | Havza girişi (ig) | Aktör ikame kazancı | V | Aktör kazancı | Aktör + ig | V aşımı |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| A | 5.418 | 5.412 | 4.414 | 25.397 | 25.396 | 30.808 | **5.411** |
-| B | 8.61 | 8.621 | 5.419 | 40.462 | 40.462 | 49.083 | **8.621** |
-| C | 3.717 | 3.711 | 3.384 | 17.398 | 17.048 | 20.759 | **3.361** |
+| Senaryo | Kenar toplamı | Havza girişi (ig) | Aktör ikame kazancı | Ham ikame dağılımı (tanı) | V | Aktör kazancı | Aktör + ig | V aşımı | V boşluğu | Katsayı |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| A | 5.418 | 5.412 | 0.0 | 4.939 | 25.397 | 19.981 | 25.393 | **0.0** | 0.004 | 0.8513 |
+| B | 8.61 | 8.621 | 0.0 | 7.863 | 40.462 | 31.851 | 40.472 | **0.01** | -0.01 | 0.6265 |
+| C | 3.717 | 3.711 | 0.0 | 3.384 | 17.398 | 13.664 | 17.375 | **0.0** | 0.023 | 1.0 |
 
-## Düzeltme varyantlarının etkisi
-
-| Senaryo | Ölü ağırlık | K1: aktör ikame düşülürse | K2: havza girişi düşülürse | Σ net (mevcut / K1 / K2) |
-| --- | ---: | ---: | ---: | --- |
-| A | 14.802 | 19.216 | 20.214 | -44.94 / -49.355 / -50.086 |
-| B | 25.43 | 30.849 | 34.051 | -77.937 / -83.358 / -86.128 |
-| C | 10.022 | 13.406 | 13.733 | -29.773 / -33.158 / -33.303 |
-
-## Sınıf değişimi (mevcut → K1 → K2)
-
-- **A:** CY: bant_ici → bant_ici → kaybeden; EG: bant_ici → kaybeden → kaybeden; SA: kazanan → bant_ici → kazanan
-- **B:** EG: bant_ici → kaybeden → kaybeden; SA: kazanan → bant_ici → kazanan
-- **C:** CY: bant_ici → bant_ici → kaybeden; EG: bant_ici → kaybeden → kaybeden; GR: bant_ici → kaybeden → bant_ici; US: kazanan → bant_ici → kazanan
-
-Aynı ülkenin hem havza girişi hem aktör ikame kazancı olduğu durumlar: A: AL, BA, BG, EG, IL, IR, MK, RS; B: AL, BA, BG, EG, IL, IR, MK, RS; C: AL, BA, BG, EG, IL, IR, MK, RS
+| Senaryo | Ölü ağırlık | Σ net (tüm aktörler) |
+| --- | ---: | ---: |
+| A | 20.217 | -50.694 |
+| B | 34.041 | -89.283 |
+| C | 13.406 | -32.964 |

@@ -101,30 +101,30 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
 | Kapanış tamam | evet | evet | evet |
-| Havza net stok (mn $) | 59,935.9 | 112,206.2 | 40,831.1 |
+| Havza net stok (mn $) | 89,101.7 | 158,571.2 | 59,053.0 |
 | Havza kayıp brüt kenar (mn $) | 216,391.5 | 354,705.8 | 145,721.8 |
-| Merkez sızıntı (mn $) | 51,935.9 | 111,361.1 | 25,430.5 |
-| Kanal ikame (mn $) | 92,477.1 | 113,950.3 | 70,696.7 |
+| Merkez sızıntı (mn $) | 49,820.4 | 101,902.9 | 25,430.5 |
+| Kanal ikame (mn $) | 65,426.7 | 77,043.3 | 52,474.9 |
 
 ## 10. Dış aktörlerin kaybın devamlılığı için maliyeti (varsayım)
 
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
 | Maliyet katsayısı κ × TR karşı-hamle gücü pol | 0.2 × 0.7 | 0.2 × 0.41 | 0.2 × 0.95 |
-| Σ sürdürme maliyeti (TR, MFIN hariç) | 2.36 | 1.824 | 2.375 |
-| Σ dış kazanç (TR, MFIN hariç) | 19.165 | 25.249 | 14.248 |
-| Maliyet / kazanç | 0.123 | 0.072 | 0.167 |
-| Kazançtan maliyet düşülünce Σ dış net | 16.805 | 23.425 | 11.873 |
+| Σ sürdürme maliyeti (TR, MFIN hariç) | 1.716 | 1.315 | 1.782 |
+| Σ dış kazanç (TR, MFIN hariç) | 14.14 | 18.394 | 10.867 |
+| Maliyet / kazanç | 0.121 | 0.071 | 0.164 |
+| Kazançtan maliyet düşülünce Σ dış net | 12.424 | 17.079 | 9.085 |
 
 ## 11. Merkez finans (MFIN) ayrı pay (kayıp = referans vekil)
 
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
-| MFIN kazancı (sızıntı kenarları, normalize) | 8.218 | 19.296 | 3.918 |
-| MFIN kaybı (referans-oran vekil, ±belirsizlik) | ≈2.41 (±3.941) | ≈8.637 (±12.217) | ≈0.874 (±1.634) |
-| MFIN sürdürme maliyeti | 1.151 | 1.582 | 0.744 |
-| MFIN net (kayıp ve maliyet düşülmüş) | 4.657 | 9.077 | 2.3 |
-| MFIN payı / boşluk V | 0.324 | 0.477 | 0.225 |
+| MFIN kazancı (sızıntı kenarları, normalize) | 7.825 | 17.539 | 3.918 |
+| MFIN kaybı (referans-oran vekil, ±belirsizlik) | ≈3.445 (±6.156) | ≈12.03 (±18.688) | ≈1.279 (±2.603) |
+| MFIN sürdürme maliyeti | 1.096 | 1.438 | 0.744 |
+| MFIN net (kayıp ve maliyet düşülmüş) | 3.284 | 4.071 | 1.895 |
+| MFIN payı / boşluk V | 0.308 | 0.433 | 0.225 |
 
 ## Not
 

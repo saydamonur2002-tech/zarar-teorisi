@@ -1,9 +1,11 @@
 # Etki cephesi modeli: revize yaması
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `a5d655f8b5e1685a`, temiz kurulumda 3 geçiş),
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `6c673a7d64d30310`, temiz kurulumda 3 geçiş),
 **72 test geçti** (27 mevcut + 45 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
+
+> **K1 notu:** Bu belgenin "Rakip ikame çift sayımı" bölümünden ÖNCE yazılan bölümlerdeki MFİN, Çin, Rusya, AB, ABD vb. sayıları, ölü ağırlık, sistem toplamı ve kısa vade grup payları K1 düzeltmesinden önceki değerlerdir. Güncel değerler "K1 uygulandı: güncel değerler" bölümündedir.
 
 ## Düzeltilen hatalar
 
@@ -362,7 +364,7 @@ Sorun: Çin, Rusya, AB, BAE... kayıpları TR'nin gelir kaybına doğrusal bağl
 - **Kazancın sayımı ölü ağırlığı çok oynatıyor:** ham kazanç V'yi aşıyordu (A'da 1,12 katı, B'de 1,45 katı); V sınırı kaldırılırsa D A'da 11,79, **B'de 7,19** (25,43 yerine), C'de 10,02. İkame kazancı havza girişiyle çift sayılıyorsa D A'da 19,22, B'de 30,85, C'de 13,41'e çıkar. Yani B'nin ölü ağırlığı büyük ölçüde kazanç normalizasyonunun bir sonucu (ölçüm tarafı).
 - **Eleştirel notlar:** (1) Sınıflama bileşen türüne göre varsayımdır, ölçülmüş bir ayrım değil. (2) Gross havza bileşenleri 'diğer kayıp'a oranla dağıtıldı (iç kazanç kalemleri, rakip ikame girişi ve TR iç payı, bileşenlere orantılı düşüldü); farklı bir dağıtım kovaları kaydırır. (3) V'nin pasif payı (0,08 × pasif) 'diğer kayıp'tan düşüldü. (4) Rakip ikame girişinin çift sayımı sonradan doğrulandı (aşağıdaki "Rakip ikame çift sayımı" bölümü); ölü ağırlık düzeltmeyle büyür. (5) Gelir ödemesi sınırı yalnız birincil gelir kanalını sınar; ticaret ya da fiyat kanalıyla aktarım bu testle dışlanamaz.
 
-## Rakip ikame çift sayımı: doğrulandı (`IKAME_CIFT_SAYIM`, tanı raporu; ana model değiştirilmedi)
+## Rakip ikame çift sayımı: doğrulandı ve K1 ile düzeltildi (`IKAME_CIFT_SAYIM`)
 **Kod yolu:** `projeksiyon` her kaynak havza için v = kayip_eff × pay × ikame_carpan hesaplar; AYNI v (1) hedef havzanın girişine yazılır (`rakip_ikame_gelen`, havza net'ine +) ve (2) aynı kenar listesinden aktörlere `ikame_kazanc` olarak dağıtılır. İkisi de TR boşalmasından (V) beslenir.
 **Sayısal özdeşlik:** kenar listesindeki ikame toplamı havza girişlerinin toplamına eşit (A 5,418 / 5,412, B 8,610 / 8,621, C 3,717 / 3,711). Aktörlere giden kısım kenarların altında (4,41 / 5,42 / 3,38; TR payı, atlanan ortaklar ve normalizasyon).
 **Korunum testi (modelin kendi kuralı: kazançlar V'yi aşamaz):** aktör kazancı + havza girişi V'yi aşıyor.
@@ -374,9 +376,19 @@ Sorun: Çin, Rusya, AB, BAE... kayıpları TR'nin gelir kaybına doğrusal bağl
 | C | 17,40 | 17,05 | 3,71 | 20,76 | **3,36** |
 
 Aşım A ve B'de ig'nin tamamı: normalizasyon aktör kazancını V'ye indirmişti ama havza girişini hiç kısmadı. Yani modelin kazançları kısan kuralı, aynı V'yi ikinci kez kredilendiren havza girişi tarafına uygulanmıyor.
-- **Düzeltme varyantları** (hangi tarafın temizleneceği karar gerektirir, uygulanmadı): **K1** aktör ikame kazancını düş; **K2** havza girişini havza net'inden düş. Ölü ağırlık: A 14,80 → 19,22 / 20,21; B 25,43 → 30,85 / 34,05; C 10,02 → 13,41 / 13,73. Σ net: A −44,9 → −49,4 / −50,1; B −77,9 → −83,4 / −86,1; C −29,8 → −33,2 / −33,3.
+- **Düzeltme varyantları** (K1 seçildi ve uygulandı; aşağıdaki bölüm; aşağıdakiler düzeltme ÖNCESİ tahminlerdi): **K1** aktör ikame kazancını düş; **K2** havza girişini havza net'inden düş. Ölü ağırlık: A 14,80 → 19,22 / 20,21; B 25,43 → 30,85 / 34,05; C 10,02 → 13,41 / 13,73. Σ net: A −44,9 → −49,4 / −50,1; B −77,9 → −83,4 / −86,1; C −29,8 → −33,2 / −33,3.
 - **Sınıf değişimi:** MFİN ve İran hiçbirinde değişmez (kararlı kazanan). K1'de Suudi Arabistan (A, B) ve ABD (C) bant dışı kazanandan bant içine; Mısır (A, B, C) bant içinden kaybedene; Yunanistan (C) bant içinden kaybedene. K2'de Kıbrıs (A, C) ve Mısır kaybedene geçer. Aynı ülkenin hem havza girişi hem aktör ikame kazancı olduğu durum: Arnavutluk, Bosna, Bulgaristan, Mısır, İsrail, İran, Makedonya, Sırbistan.
 - **Eleştirel:** (1) Çift sayım koddan ve korunum testiyle kesin; ama hangisinin yanlış sayıldığı kavramsal bir seçim: ig "havzaya yerleşen rakip faaliyeti", ikame kazancı "rakip aktörün kâr payı" olarak okunabilir; bu iki ayrı etki gibi okunursa ikisinin de V'den ayrı bir kaynağı olması gerekir, modelde yok. (2) Düzeltme "negatif toplamlı sistem" bulgusunu güçlendirir (ölü ağırlık büyür), zayıflatmaz. (3) K1/K2 yalnız tanı; ana skor ve sınıflar değişmedi (47,7).
+
+## K1 uygulandı: güncel değerler
+**Değişiklik (`projeksiyon._dis_aktör_kazanc`):** ikame, aktör kazancından düşüldü (ham dağılım yalnız tanı: `ikame_hesap_ham_havza_girisinde_sayildi`); kazanç normalizasyonu V'den havza girişini (rakip ikame) düştükten sonra kalana sığdırır: katsayı = min(1, (V − ig) / ham). Katsayı A 0,894 → 0,851, B 0,689 → 0,627, C 1,0 → 1,0. Korunum sağlandı: aktör kazancı + havza girişi A 19,98 + 5,41 = 25,39, B 31,85 + 8,62 = 40,47, C 13,66 + 3,71 = 17,38 (V: 25,40 / 40,46 / 17,40; fark yuvarlama).
+- **Ölü ağırlık** (düzeltme sonrası): A 20,22, B 34,04, C 13,41 (önce 14,80 / 25,43 / 10,02). Σ net: A −50,7, B −89,3, C −33,0 (önce −44,9 / −77,9 / −29,8). Skor 47,7 ve karar değişmedi.
+- **Ölü ağırlık ayrımı:** gerçek yıkım (alt) 6,72 / 9,38 / 5,44 (%33 / %28 / %41), ölçüm boşluğu (alt) 1,78 / 3,65 / 1,04 (%9 / %11 / %8), belirsiz (dış bağlama) 11,72 / 21,01 / 6,93 (%58 / %62 / %52). Aralıklar: yıkım %33 – 91, %28 – 89, %41 – 92; ölçüm boşluğu %9 – 67, %11 – 72, %8 – 59. Gelir ödemesi kapasitesiyle daraltınca yıkım alt sınırı %36 / %36 / %41. V içinde dağıtılmayan artık ≈ 0 (kalan V, havza girişine gidiyor).
+- **Sınıflar** (net ±bant): **C:** kazanan İran (+0,74 ±0,21), İsrail (+0,22 ±0,13), Suudi Arabistan (+0,21 ±0,14); kaybeden AB (−6,66 ±3,59), BAE (−1,28 ±0,94), Fransa (−0,63 ±0,47), Yunanistan (−0,25 ±0,23); bant içi Çin (−1,64 ±1,94), Rusya (−1,45 ±1,79), ABD (+0,28 ±0,51), Mısır, **MFİN** (+1,90 ±2,65). **A:** kazanan İran, İsrail; kaybeden AB, BAE, Fransa, Mısır; bant içi Çin, Rusya, ABD, Suudi Arabistan, Yunanistan, MFİN (+3,29 ±6,19). **B:** kazanan İran, İsrail; kaybeden AB, Mısır; diğerleri bant içi (MFİN +4,07 ±18,7).
+- **Önceki "kararlı kazanan" yargısı düzeltildi:** MFİN artık hiçbir senaryoda bant dışı kazanan değil, çünkü referans kayıp oranı (İran, İsrail, Mısır kayıp/kazanç) kazançları düşünce yükseldi ve MFİN'in kayıp vekili de büyüdü (A 2,41 → 3,44, B 8,64 → 12,03, C 0,87 → 1,28). Bu, K1'in yan etkisidir: referans oran, ikame kazancı olmadan hesaplanan paydaya bağlı. Suudi Arabistan yalnız C'de kazanan; ABD hiçbirinde.
+- **Havzalar net kaybederken kim kazanıyor (güncel):** brüt kazanç payı merkez %51 / %61 / %43, Çin+Rusya %21 / %16 / %24, bölge %29 / %23 / %33; net: merkez −7,9 / −15,8 / −5,1, Çin+Rusya −5,4 / −10,6 / −3,1, bölge −12,5 / −22,9 / −7,6. Bant dışı net kazananlar: A İran, İsrail, Makedonya, Arnavutluk, Bosna; B İran, İsrail, Makedonya, Arnavutluk; C İran, İsrail, Suudi Arabistan, Makedonya, Arnavutluk, Bosna.
+- **Sistem tanısı (güncel):** C'de en iyi olanlar TR, Çin, Rusya, ABD, AB, BAE, Fransa, Yunanistan, Mısır; B'de MFİN, İran, İsrail; A'da yalnız Suudi Arabistan. Ortak en iyi senaryo yok. TR kaybı ölçeği s'ye göre (TR_OLCEK_SINAMA): Çin, Rusya, ABD her s'de bant içi; Suudi Arabistan C'de her s'de kazanan; AB C'de s ≥ 0,25'te, BAE s ≥ 0,5'te kaybeden; Σ net C'de −33,0 → −13,9 (s = 0,1), yani negatif kalır.
+- **Eleştirel:** K1, çift sayımı korunum açısından giderdi ama kazanç tarafını daha dar tutar (merkez ve MFİN payı ham dağılımın tamamını almaz). Referans oran bağımlılığı yan etkisi için MFİN kayıp vekili ayrıca gözden geçirilmeli (paydayı K1 öncesi kazançla sabitlemek bir alternatif).
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
@@ -3734,17 +3746,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print("HAVZA_KAZANAN_KISA_VADE ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/ikame_cift_sayim.py fixed/etki_cephesi/ikame_cift_sayim.py
 --- pristine/etki_cephesi/ikame_cift_sayim.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/ikame_cift_sayim.py	2026-10-14 15:54:23.348449425 +0000
-@@ -0,0 +1,102 @@
-+"""Rakip ikame akışı çift sayılıyor mu? Doğrulama (tanı raporu).
++++ fixed/etki_cephesi/ikame_cift_sayim.py	2026-10-14 15:59:35.003535875 +0000
+@@ -0,0 +1,70 @@
++"""Rakip ikame akışının çift sayımı: düzeltme sonrası doğrulama (K1 uygulandı).
 +
-+Koddan: `projeksiyon._akislar` her kaynak havza için v = kayip_eff × pay × ikame_carpan hesaplar; AYNI v
-+  (1) hedef havzanın girişine yazılır (ikame_g[hedef] → bolgesel_net.rakip_ikame_gelen, havza net'ine +),
-+  (2) aynı kenar listesinden aktörlere dağıtılır (`ikame_kazanc`, kazanç kanalı).
-+Her ikisi de TR boşalmasından (V) beslenir. Korunum testi: aktör kazançları (V ile sınırlı) + havza girişleri ≤ V olmalıdır.
-+Bu modül: (a) kenar–giriş–kazanç özdeşliğini, (b) V korunumu aşımını, (c) çift sayımı bir yandan temizleyen iki düzeltme varyantını
-+(K1: ikame aktör kazancından düş; K2: havza girişini havza net'inden düş) ve etkilerini (sistem toplamı, ölü ağırlık, sınıf değişimi) verir.
-+Ana modeli DEĞİŞTİRMEZ; hangi tarafın temizleneceği kullanıcı kararıdır.
++Sorun (düzeltme öncesi): `projeksiyon` her kaynak havza için v = kayip_eff × pay × ikame_carpan hesaplar; AYNI v hem hedef havzanın girişine
++(`rakip_ikame_gelen`, havza net'ine +) hem aktörlere `ikame_kazanc` olarak yazılıyordu. Aktör kazancı + havza girişi V'yi aşıyordu
++(A 5,41, B 8,62, C 3,36; bkz. REVIZE_SONUC).
++K1 (uygulandı): ikame aktör kazancından düşüldü; kazanç normalizasyonu V'den havza girişini düştükten sonra kalana sığdırılır.
++Bu modül düzeltmenin tutarlılığını doğrular: (a) kenar–giriş özdeşliği, (b) aktör kazancı + havza girişi ≤ V, (c) ham ikame dağılımı yalnız tanı,
++(d) ölü ağırlık ve sistem toplamı. Tanı raporu: başka modüle girdi olmaz.
 +"""
 +from __future__ import annotations
 +
@@ -3753,7 +3764,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +from typing import Any
 +
 +REPO = Path(__file__).resolve().parents[1]
-+DATA = REPO / "data" / "etki_cephesi"
 +OUT = REPO / "reports" / "etki_cephesi"
 +
 +
@@ -3761,76 +3771,46 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return json.loads(p.read_text(encoding="utf-8"))
 +
 +
-+def _sinif(net: float, bant: float) -> str:
-+    return "kazanan" if net - bant > 0 else ("kaybeden" if net + bant < 0 else "bant_ici")
-+
-+
 +def dogrula(sid: str, p: dict[str, Any], m: dict[str, Any]) -> dict[str, Any]:
-+    led = {r["ulke"]: r for r in _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
-+    hp = _load(DATA / "ulke_havza_pay.json")["bolge_ulke_pay"]
++    led = _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]
 +    kenar = sum(float(e["akis_endeks"]) for e in p["akis_kenarlari"] if e["tur"] == "rakip_ikame")
-+    ig_havza = {b["bolge"]: float(b["rakip_ikame_gelen"]) for b in p["bolgesel_net"]}
-+    ig = sum(ig_havza.values())
++    ig = sum(float(b["rakip_ikame_gelen"]) for b in p["bolgesel_net"])
 +    ikame_aktor = sum(float(d["ikame_kazanc"]) for d in p["dis_aktör_kazanc"])
++    ham_ikame = sum(float(d.get("ikame_hesap_ham_havza_girisinde_sayildi", 0.0)) for d in p["dis_aktör_kazanc"])
 +    v, kaz = float(m["bosluk_V"]), float(m["kazanc"]["toplam"])
-+    ig_ulke: dict[str, float] = {}
-+    for b, g in ig_havza.items():
-+        for u in hp.get(b, []):
-+            if u["ulke"] != "TR":
-+                ig_ulke[u["ulke"]] = ig_ulke.get(u["ulke"], 0.0) + float(u["pay"]) * g
-+    ortak = sorted(c for c in ig_ulke if float(led.get(c, {}).get("ikame_kazanc", 0.0)) > 0)
-+    net0 = {c: float(r.get("net_maliyetli", r.get("net_refah_entegre")) or 0.0) for c, r in led.items() if c != "TR"}
-+    bant = {c: float(r.get("net_bandi") or 0.0) for c, r in led.items() if c != "TR"}
-+    k1 = {c: net0[c] - float(led[c].get("ikame_kazanc", 0.0)) for c in net0}
-+    k2 = {c: net0[c] - ig_ulke.get(c, 0.0) for c in net0}
-+    siniflar = {c: (_sinif(net0[c], bant[c]), _sinif(k1[c], bant[c]), _sinif(k2[c], bant[c])) for c in net0}
-+    degisen = {c: s for c, s in siniflar.items() if len(set(s)) > 1}
 +    havuz = float(m["kayip"]["toplam"])
-+    d0 = havuz - kaz
++    net_toplam = sum(float(r.get("net_maliyetli", r.get("net_refah_entegre")) or 0.0) for r in led)
 +    return {
 +        "kenar_ikame_toplam": round(kenar, 3),
 +        "havza_girisi_ig_toplam": round(ig, 3),
 +        "aktor_ikame_kazanci_toplam": round(ikame_aktor, 3),
++        "ham_ikame_dagilimi_tani": round(ham_ikame, 3),
 +        "v": round(v, 3),
 +        "aktor_kazanci_v_sinirli": round(kaz, 3),
 +        "kredi_toplam_aktor_arti_havza_girisi": round(kaz + ig, 3),
 +        "korunum_asimi": round(max(0.0, kaz + ig - v), 3),
-+        "ayni_ulke_hem_havza_hem_aktor": ortak,
-+        "ulke_ig": {c: round(v_, 3) for c, v_ in sorted(ig_ulke.items(), key=lambda kv: -kv[1])[:8]},
-+        "olu_agirlik": round(d0, 3),
-+        "olu_agirlik_k1_aktor_ikame_dusulurse": round(d0 + ikame_aktor, 3),
-+        "olu_agirlik_k2_havza_girisi_dusulurse": round(d0 + ig, 3),
-+        "sistem_net_toplam": {"mevcut": round(sum(net0.values()) + _tr(led), 3), "k1": round(sum(k1.values()) + _tr(led), 3), "k2": round(sum(k2.values()) + _tr(led), 3)},
-+        "sinif_degisimi_mevcut_k1_k2": {c: list(s) for c, s in sorted(degisen.items())},
++        "korunum_boslugu": round(v - kaz - ig, 3),
++        "normalizasyon_katsayi": m["normalizasyon"]["katsayi"],
++        "olu_agirlik": round(havuz - kaz, 3),
++        "sistem_net_toplam": round(net_toplam, 3),
 +    }
-+
-+
-+def _tr(led: dict[str, Any]) -> float:
-+    r = led["TR"]
-+    return float(r.get("net_maliyetli", r.get("net_refah_entegre")) or 0.0)
 +
 +
 +def calistir() -> dict[str, Any]:
 +    muh = {s["id"]: s for s in _load(OUT / "KAZANC_KAYIP_MUHASEBE.json")["senaryolar"]}
 +    proj = {s["id"]: s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"]}
 +    sen = {sid: dogrula(sid, proj[sid], muh[sid]) for sid in ("A", "B", "C")}
-+    d = {"olcum": "ikame_cift_sayim_dogrulama", "etiket": "tani_girdi_degil", "senaryolar": sen,
-+         "not": "Ana model değiştirilmedi. Aynı v hem havza girişine hem aktör ikame kazancına yazılıyor; korunum (V) aşılıyor. Hangi tarafın düşüleceği karar gerektirir."}
++    d = {"olcum": "ikame_cift_sayim_dogrulama_k1", "etiket": "tani_girdi_degil", "senaryolar": sen,
++         "not": "K1 uygulandı: ikame aktör kazancından düşüldü, havza girişi korundu. Aktör kazancı + havza girişi V'ye sığmalı (korunum aşımı ≈ 0)."}
 +    (OUT / "IKAME_CIFT_SAYIM.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
-+    L = ["# Rakip ikame akışı çift sayımı: doğrulama", "", d["not"], "",
-+         "| Senaryo | Kenar toplamı | Havza girişi (ig) | Aktör ikame kazancı | V | Aktör kazancı | Aktör + ig | V aşımı |",
-+         "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
++    L = ["# Rakip ikame çift sayımı: K1 sonrası doğrulama", "", d["not"], "",
++         "| Senaryo | Kenar toplamı | Havza girişi (ig) | Aktör ikame kazancı | Ham ikame dağılımı (tanı) | V | Aktör kazancı | Aktör + ig | V aşımı | V boşluğu | Katsayı |",
++         "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
 +    for sid, s in sen.items():
-+        L.append(f"| {sid} | {s['kenar_ikame_toplam']} | {s['havza_girisi_ig_toplam']} | {s['aktor_ikame_kazanci_toplam']} | {s['v']} | {s['aktor_kazanci_v_sinirli']} | {s['kredi_toplam_aktor_arti_havza_girisi']} | **{s['korunum_asimi']}** |")
-+    L += ["", "## Düzeltme varyantlarının etkisi", "", "| Senaryo | Ölü ağırlık | K1: aktör ikame düşülürse | K2: havza girişi düşülürse | Σ net (mevcut / K1 / K2) |", "| --- | ---: | ---: | ---: | --- |"]
++        L.append(f"| {sid} | {s['kenar_ikame_toplam']} | {s['havza_girisi_ig_toplam']} | {s['aktor_ikame_kazanci_toplam']} | {s['ham_ikame_dagilimi_tani']} | {s['v']} | {s['aktor_kazanci_v_sinirli']} | {s['kredi_toplam_aktor_arti_havza_girisi']} | **{s['korunum_asimi']}** | {s['korunum_boslugu']} | {s['normalizasyon_katsayi']} |")
++    L += ["", "| Senaryo | Ölü ağırlık | Σ net (tüm aktörler) |", "| --- | ---: | ---: |"]
 +    for sid, s in sen.items():
-+        t = s["sistem_net_toplam"]
-+        L.append(f"| {sid} | {s['olu_agirlik']} | {s['olu_agirlik_k1_aktor_ikame_dusulurse']} | {s['olu_agirlik_k2_havza_girisi_dusulurse']} | {t['mevcut']} / {t['k1']} / {t['k2']} |")
-+    L += ["", "## Sınıf değişimi (mevcut → K1 → K2)", ""]
-+    for sid, s in sen.items():
-+        ch = s["sinif_degisimi_mevcut_k1_k2"]
-+        L.append(f"- **{sid}:** " + ("; ".join(f"{c}: {' → '.join(v)}" for c, v in ch.items()) if ch else "değişen yok"))
-+    L += ["", "Aynı ülkenin hem havza girişi hem aktör ikame kazancı olduğu durumlar: " + "; ".join(f"{sid}: {', '.join(s['ayni_ulke_hem_havza_hem_aktor'])}" for sid, s in sen.items())]
++        L.append(f"| {sid} | {s['olu_agirlik']} | {s['sistem_net_toplam']} |")
 +    (OUT / "IKAME_CIFT_SAYIM.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 +    return d
 +
@@ -3840,7 +3820,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print("IKAME_CIFT_SAYIM ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/kazanc_kayip_muhasebe.py fixed/etki_cephesi/kazanc_kayip_muhasebe.py
 --- pristine/etki_cephesi/kazanc_kayip_muhasebe.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/kazanc_kayip_muhasebe.py	2026-10-14 14:51:21.321415334 +0000
++++ fixed/etki_cephesi/kazanc_kayip_muhasebe.py	2026-10-14 15:58:52.096394871 +0000
 @@ -0,0 +1,150 @@
 +"""Kazanç–kayıp muhasebesi: dış aktör kazancı boşluğu (V) aşıyor mu? Ve kapsam (neyin modellenmediği).
 +
@@ -3926,7 +3906,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +                "tr_bosalma": round(bos, 3),
 +                "pasif_k": pk,
 +                "kazanc": {"kanal": round(kanal, 3), "matris": round(matris, 3), "ikame": round(ikame, 3), "merkez": round(merkez, 3), "toplam": round(toplam_k, 3)},
-+                "normalizasyon": {"ham_toplam": nz["ham_toplam"], "ham_V_orani": round(nz["ham_toplam"] / v, 3), "katsayi": nz["katsayi"], "kanal_kaldirildi": True},
++                "normalizasyon": {"ham_toplam": nz["ham_toplam"], "ham_V_orani": round(nz["ham_toplam"] / v, 3), "havza_girisi_dusuldu": nz.get("havza_girisi_dusuldu", 0.0), "katsayi": nz["katsayi"], "kanal_kaldirildi": True, "ikame_aktor_kazancindan_dusuldu": bool(nz.get("ikame_aktor_kazancindan_dusuldu"))},
 +                "kazanc_V_orani": {
 +                    "matris": round(matris / v, 3),
 +                    "ikame": round(ikame / v, 3),
@@ -4243,19 +4223,19 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olu_agirlik_ayrisma.py fixed/etki_cephesi/olu_agirlik_ayrisma.py
 --- pristine/etki_cephesi/olu_agirlik_ayrisma.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/olu_agirlik_ayrisma.py	2026-10-14 15:49:04.621374779 +0000
-@@ -0,0 +1,145 @@
++++ fixed/etki_cephesi/olu_agirlik_ayrisma.py	2026-10-14 16:00:42.349552041 +0000
+@@ -0,0 +1,147 @@
 +"""Ölü ağırlığı gerçek yıkım ve ölçüm boşluğu diye ayır.
 +
 +Ölü ağırlık D = kayıp havuzu (TR kaybı + diğer kayıp) − V ile sınırlı kazanç. Üç ayrı kaynak:
-+  (a) V içi dağıtılmayan: V − kazanç. Alıcısı olan ama atanmayan kısım → ÖLÇÜM BOŞLUĞU (kesin).
++  (a) V içi dağıtılmayan: V − kazanç − havza girişi (K1 sonrası ≈ 0). Alıcısı olan ama atanmayan kısım → ÖLÇÜM BOŞLUĞU (kesin).
 +  (b) TR'nin boşalma dışı kaybı (pasif boşluk, araçsallaşma, temsil zedesi, mimari): model gereği alıcısı yok → GERÇEK YIKIM.
 +  (c) Havza kaybı ('diger'): gross bileşenlere (bolgesel_net) oranlanır; V'nin pasif payı (0,08 × pasif) düşülür:
 +        - tampon/koridor şoku, mesruiyet temsil zedesi, kullanım telafi maliyeti: alıcısı olmayan zarar → GERÇEK YIKIM.
 +        - rant kanalı çıkışı: defterde alıcısı belli (dış havuz) ama V ile sınırlı kazanca girmiyor → ÖLÇÜM BOŞLUĞU (alıcı belli).
 +        - yerel dış bağlama zararı: dış bağlayıcı aktörlere gidiyor olabilir ama rota modellenmedi → BELİRSİZ (alıcı muhtemel).
 +Sınıflama doğal-tür varsayımıdır (ölçülmüş değil); bu yüzden belirsiz kova ayrıca verilir ve iki uç aralık hesaplanır.
-+Ek tanılar: ham kazanç V'yi aştıysa (normalizasyon) D'nin ham kazançla değeri; ikame kazancının havza girişiyle olası çift sayımı.
++Ek tanı: ham kazanç V'yi aştıysa (normalizasyon) D'nin ham kazançla değeri. (Rakip ikame çift sayımı K1 ile giderildi: bkz. ikame_cift_sayim.py.)
 +Tanı raporu: başka modüle girdi olmaz (döngü yok).
 +"""
 +from __future__ import annotations
@@ -4307,10 +4287,13 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    havuz, kaz = float(kayip["toplam"]), float(kazanc["toplam"])
 +    d = havuz - kaz
 +    v = float(m["bosluk_V"])
-+    v_ici = v - kaz
++    # K1 sonrası V; aktör kazancı + havza girişi (rakip ikame, havza net'inde iç kazanç olarak düşülmüş) arasında paylaşılır.
++    # Dağıtılmayan = V − kazanç − havza girişi (≈ 0). 'diger' havza girişi düşülmüş net olduğundan, ölü ağırlıkta geri eklenir (D = havuz − kazanç).
++    ig = sum(float(b["rakip_ikame_gelen"]) for b in bn)
++    v_ici = v - kaz - ig
 +    tr_disi = float(kayip["tr"]) - float(m["tr_bosalma"])
 +    pasif_pay = v - float(m["tr_bosalma"])
-+    diger_eff = float(kayip["diger"]) - pasif_pay
++    diger_eff = float(kayip["diger"]) - pasif_pay + ig
 +    pay = {k: v_ / top_brut for k, v_ in brut.items()}
 +    yikim_diger = diger_eff * sum(pay[k] for k in YIKIM_TURLERI)
 +    alici_belli = diger_eff * sum(pay[k] for k in ALICI_BELLI)
@@ -4336,6 +4319,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            "havza_alicisi_belli_rant_cikisi": round(alici_belli, 3),
 +            "havza_dis_baglama_belirsiz": round(belirsiz, 3),
 +            "v_pasif_pay_dusuldu": round(pasif_pay, 3),
++            "havza_girisi_geri_eklendi": round(ig, 3),
 +        },
 +        "gercek_yikim_alt": round(yikim, 3),
 +        "olcum_boslugu_alt": round(bosluk, 3),
@@ -4347,8 +4331,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "ham_kazanc_toplam": round(ham, 3),
 +        "olu_agirlik_ham_kazanc": round(havuz - ham, 3),
 +        "normalizasyon_katsayi": m["normalizasyon"]["katsayi"],
-+        "ikame_kazanci_cift_sayim_adayi": round(float(kazanc["ikame"]), 3),
-+        "olu_agirlik_ikame_cift_sayimsa": round(d + float(kazanc["ikame"]), 3),
 +        "brut_bilesen_paylari": {k: round(v_, 3) for k, v_ in pay.items()},
 +    }
 +
@@ -4380,9 +4362,9 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    for sid, s in sen.items():
 +        c = s["bilesenler"]
 +        L.append(f"| {sid} | {c['v_ici_dagitilmayan']:.2f} | {c['tr_bosalma_disi_kayip']:.2f} | {c['havza_alicisiz_zarar']:.2f} | {c['havza_alicisi_belli_rant_cikisi']:.2f} | {c['havza_dis_baglama_belirsiz']:.2f} |")
-+    L += ["", "## Duyarlılık: kazancın nasıl sayıldığı ölü ağırlığı değiştirir", "", "| Senaryo | D (V sınırlı) | D (ham kazanç, V sınırı yok) | Normalizasyon katsayısı | D (ikame çift sayımsa) |", "| --- | ---: | ---: | ---: | ---: |"]
++    L += ["", "## Duyarlılık: kazancın nasıl sayıldığı ölü ağırlığı değiştirir", "", "| Senaryo | D (V sınırlı) | D (ham kazanç, V sınırı yok) | Normalizasyon katsayısı |", "| --- | ---: | ---: | ---: |"]
 +    for sid, s in sen.items():
-+        L.append(f"| {sid} | {s['olu_agirlik']:.2f} | {s['olu_agirlik_ham_kazanc']:.2f} | {s['normalizasyon_katsayi']} | {s['olu_agirlik_ikame_cift_sayimsa']:.2f} |")
++        L.append(f"| {sid} | {s['olu_agirlik']:.2f} | {s['olu_agirlik_ham_kazanc']:.2f} | {s['normalizasyon_katsayi']} |")
 +    (OUT / "OLU_AGIRLIK_AYRISMA.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 +    return d
 +
@@ -4392,7 +4374,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print("OLU_AGIRLIK_AYRISMA ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
 --- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
-+++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 15:26:35.023338611 +0000
++++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 15:57:35.678331465 +0000
 @@ -3,6 +3,8 @@
  
  import json
@@ -4402,15 +4384,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  from typing import Any
  
  REPO = Path(__file__).resolve().parents[1]
-@@ -485,6 +487,7 @@
+@@ -484,7 +486,9 @@
+                 "kanal_kazanc": 0.0,
                  "matris_kazanc": 0.0,
                  "ikame_kazanc": 0.0,
++                "ikame_hesap_ham": 0.0,
                  "merkez_sizinti": 0.0,
 +                "kanal_alt": 0.0,
              },
          )
  
-@@ -500,14 +503,18 @@
+@@ -500,14 +504,18 @@
          return False
  
      pasif_k = float((refah_doc or {}).get("kayip_pasif_ek") or 0.25) if refah_doc and refah_doc.get("aktif") else 0.25
@@ -4430,13 +4414,24 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          ukey = _bolge_veri_anahtar(bid, ub_rows)
          for row in ub_rows.get(ukey) or []:
              iso = row["iso"]
-@@ -537,12 +544,15 @@
+@@ -531,18 +539,25 @@
+         for actor, pay in pay_row.items():
+             if actor == "TR" or _skip_kanal(dest, actor):
+                 continue
+-            _touch(actor)["ikame_kazanc"] += flow * (float(pay) / non_tr)
++            # K1 (çift sayım düzeltmesi): rakip ikame akışı havza net'inde (rakip_ikame_gelen) zaten kredilendi; aynı v'yi aktör kazancına
++            # ayrıca yazmak V'yi iki kez dağıtırdı (bkz. IKAME_CIFT_SAYIM). Ham dağılım yalnız tanı için tutulur, kazanca girmez.
++            _touch(actor)["ikame_hesap_ham"] += flow * (float(pay) / non_tr)
+ 
+     for e in kenarlar:
          if e.get("tur") == "sizinti":
              _touch("MFIN")["merkez_sizinti"] += float(e["akis_endeks"])
  
 +    # Normalizasyon: kalan üç kanalın (matris, ikame, merkez) toplamı boşluk V'yi aşamaz. Aşıyorsa orantılı küçültülür; V altındaysa dokunulmaz.
 +    ham_toplam = sum(v["matris_kazanc"] + v["ikame_kazanc"] + v["merkez_sizinti"] for v in acc.values())
-+    katsayi = min(1.0, bosluk_v / ham_toplam) if ham_toplam > 0 else 1.0
++    # Korunum: aktör kazançları + havza girişleri (rakip ikame) birlikte V'yi aşamaz; kazançlar V'den havza girişi düşüldükten sonra kalana sığdırılır.
++    havza_girisi = sum(float(e["akis_endeks"]) for e in kenarlar if e.get("tur") == "rakip_ikame")
++    katsayi = min(1.0, max(0.0, bosluk_v - havza_girisi) / ham_toplam) if ham_toplam > 0 else 1.0
      out: list[dict[str, Any]] = []
      for iso, v in acc.items():
 -        kanal = round(v["kanal_kazanc"], 3)
@@ -4450,16 +4445,19 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          toplam = round(kanal + matris + ikame + merkez, 3)
          if toplam < 0.02 and iso != "MFIN":
              continue
-@@ -555,6 +565,8 @@
+@@ -553,8 +568,11 @@
+                 "kanal_kazanc": kanal,
+                 "matris_kazanc": matris,
                  "ikame_kazanc": ikame,
++                "ikame_hesap_ham_havza_girisinde_sayildi": round(v["ikame_hesap_ham"], 3),
                  "merkez_sizinti": merkez,
                  "fayda_endeks": toplam,
 +                "kanal_alternatif_kazanc": round(v["kanal_alt"] * katsayi, 3),
-+                "normalizasyon": {"bosluk_V": round(bosluk_v, 3), "ham_toplam": round(ham_toplam, 3), "katsayi": round(katsayi, 4), "kanal_kaldirildi": True},
++                "normalizasyon": {"bosluk_V": round(bosluk_v, 3), "ham_toplam": round(ham_toplam, 3), "havza_girisi_dusuldu": round(havza_girisi, 3), "katsayi": round(katsayi, 4), "kanal_kaldirildi": True, "ikame_aktor_kazancindan_dusuldu": True},
              }
          )
      out.sort(key=lambda x: -x["fayda_endeks"])
-@@ -616,10 +628,104 @@
+@@ -616,10 +634,104 @@
      return dagitim
  
  
@@ -4564,7 +4562,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  ) -> list[dict[str, Any]]:
      by_iso: dict[str, dict[str, Any]] = {}
      for u in ulke_kayiplari:
-@@ -679,13 +785,51 @@
+@@ -679,13 +791,51 @@
              row["merkez_belirsiz_vekil"] = bel
  
      out: list[dict[str, Any]] = []
@@ -4616,7 +4614,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "dis_kazanc_vekili": dis_k,
                  "havza_kayip": havza_k,
                  "merkez_belirsiz_vekil": round(float(row.get("merkez_belirsiz_vekil", 0.0)), 3),
-@@ -697,6 +841,10 @@
+@@ -697,6 +847,10 @@
                  ),
              }
          )
@@ -4627,7 +4625,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      out.sort(key=lambda x: -x["dis_kazanc_vekili"])
      return out
  
-@@ -789,10 +937,10 @@
+@@ -789,10 +943,10 @@
      ikame = float(akis_doc.get("yaricevre_rakip_ikame_carpan", 0.55))
  
      kalibre_kullanildi = (KALIBRE / "bolgeler.json").is_file()
@@ -4640,7 +4638,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "kalibre_2024_ticaret": kalibre_kullanildi,
          "rant_modeli": "refah" if refah_doc and refah_doc.get("aktif") else "bosluk",
          "kaynak_tez": "data/etki_cephesi/KAYNAK_TEZ.md",
-@@ -812,7 +960,7 @@
+@@ -812,7 +966,7 @@
          sid = sen["id"]
          ero = sen["etki_erosyon_carpani"]
          flex = sen["tr_diplomatik_flex"]
@@ -4649,7 +4647,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          bag_modu = sen.get("bag_modu") or {"kullanim": 0.3, "atil": 0.4, "aracsal": 0.3}
          kullanim = float(bag_modu.get("kullanim", 0.3))
          enigma_l = float(sen.get("enigma_carpan_levant", 1.0))
-@@ -903,6 +1051,8 @@
+@@ -903,6 +1057,8 @@
              sen_row["ulke_kayiplari"],
              sen_row["dis_aktör_kazanc"],
              ulke_names,
@@ -4658,7 +4656,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          )
  
      sonuc["_adlar"] = adlar
-@@ -928,31 +1078,23 @@
+@@ -928,31 +1084,23 @@
          lines.append(f"*{payload['referans_olcum_not']}*")
          lines.append("")
  
@@ -4705,7 +4703,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          lines.append(f"## Senaryo {sen['id']}: {sen['ad']}{tag}")
          lines.append("")
          lines.append(sen["aciklama"])
-@@ -1060,14 +1202,14 @@
+@@ -1060,14 +1208,14 @@
          lines.append("### Aktör birleşik (havza kaybı vs dış kazanç vekili)")
          lines.append("")
          lines.append(
@@ -4724,7 +4722,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
              )
          lines.append("")
  
-@@ -1156,13 +1298,32 @@
+@@ -1156,13 +1304,32 @@
      return "\n".join(lines)
  
  
@@ -4759,7 +4757,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      if sen.get("ulke_kayiplari"):
          ua = [f"# Senaryo {baslik_etiket} — ülke bazlı kayıp (10 yıl vekil)", ""]
          ua.append("| Ülke | Kayıp endeks | Net | Pasif | Araçsal | Temsil |")
-@@ -1213,16 +1374,19 @@
+@@ -1213,16 +1380,19 @@
          da.append("")
          da.append("## Birleşik (dış kazanç − havza kaybı)")
          da.append("")
@@ -4785,7 +4783,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
              )
          da.append("")
          (OUT / f"DIS_AKTOR_{sid}.md").write_text("\n".join(da), encoding="utf-8")
-@@ -1238,12 +1402,12 @@
+@@ -1238,12 +1408,12 @@
      (OUT / "PROJEKSIYON.json").write_text(json.dumps(clean, ensure_ascii=False, indent=2), encoding="utf-8")
      payload["_adlar"] = adlar
      (OUT / "PROJEKSIYON.md").write_text(_md(payload), encoding="utf-8")
@@ -6118,7 +6116,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:54:39.289162073 +0000
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:02:13.556015858 +0000
 @@ -0,0 +1,798 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
@@ -6531,7 +6529,9 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        assert abs(k["toplam"] - (k["matris"] + k["ikame"] + k["merkez"])) < 2e-3
 +        assert k["toplam"] <= s["bosluk_V"] + 5e-3  # özdeşlik: Σ kazanç ≤ V
 +        n = s["normalizasyon"]
-+        assert abs(n["katsayi"] - min(1.0, s["bosluk_V"] / n["ham_toplam"])) < 5e-3
++        # korunum: aktör kazancı + havza girişi (rakip ikame) birlikte V'ye sığar; katsayı bu ikisini hesaba katar
++        assert abs(n["katsayi"] - min(1.0, max(0.0, s["bosluk_V"] - n["havza_girisi_dusuldu"]) / n["ham_toplam"])) < 5e-3
++        assert k["toplam"] + n["havza_girisi_dusuldu"] <= s["bosluk_V"] + 5e-3 and k["ikame"] == 0.0 and n["ikame_aktor_kazancindan_dusuldu"]
 +        assert abs(s["kayip"]["toplam"] - (s["kayip"]["tr"] + s["kayip"]["diger"])) < 2e-3
 +    kat = {s["id"]: s["normalizasyon"]["katsayi"] for s in d["senaryolar"]}
 +    assert kat["C"] == 1.0 and kat["B"] < kat["A"] < 1.0  # C V'yi aşmıyordu; B en çok aşıyordu
@@ -6619,7 +6619,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        assert not by["GR"]["dayanikli"]  # kazanç×0,5 ile bant içine düşer
 +        assert "belirsiz_bant_ici" in by["GR"]["sinif_kumesi"]
 +        for iso in ("RS", "BA", "BG", "AL", "MK"):
-+            assert not by[iso]["dayanikli"], (s["id"], iso)  # hiçbir Balkan ülkesinin sınıfı atanmış parametre salınımına dayanıklı değil
++            if s["id"] == "B" and iso in ("RS", "BG"):
++                # B'de (en büyük kayıp ölçeği) Sırbistan ve Bulgaristan salınıma dayanıklı KAYBEDEN; kazanan hiçbir Balkan ülkesi dayanıklı değil
++                assert by[iso]["dayanikli"] and "kaybeden" in by[iso]["taban_sinif"], iso
++            else:
++                assert not by[iso]["dayanikli"], (s["id"], iso)  # diğerlerinin sınıfı atanmış parametre salınımına dayanıklı değil
 +        # Balkan kırılma noktaları: p* hesaplanmış ve sıralı (net=0, kazanan başlar, kaybeden biter)
 +        for iso in ("RS", "BA", "BG", "AL", "MK"):
 +            k = by[iso]["kirilma_p"]
@@ -6658,23 +6662,24 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    kaz = {"cevre_entegre_kazanan", "merkez_entegre_kazanan", "entegre_kazanan"}
 +    for s in d["senaryolar"]:
 +        by = {a["ulke"]: a for a in s["aktorler"]}
-+        assert by["IR"]["dayanikli"] and by["IR"]["en_kotu_marj"] > 0.1
++        assert by["IR"]["dayanikli"] and by["IR"]["en_kotu_marj"] > 0.02  # ikame kazancı düşülünce marj daraldı (C: 0,026)
 +        for iso in ("CN", "RU", "US", "AE", "SA", "EU"):
 +            assert by[iso]["kayip_kapsam"] == "bilinmiyor" and by[iso]["dayanikli"] is False
 +            v = by[iso]["varyant_siniflari"]
 +            assert next(x for k, x in v.items() if "en yüksek" in k) not in kaz or iso == "SA"  # en yüksek kayıp oranı kazananlığı yıkar (SA: ticaret kaybı çok küçük)
 +    c = {a["ulke"]: a for a in next(s for s in d["senaryolar"] if s["id"] == "C")["aktorler"]}
-+    # dış ticaret verisiyle (mutlak kayıp) C'de Suudi Arabistan ve ABD bant dışı kazanan; AB, BAE, Fransa bant dışı kaybeden
-+    for iso in ("SA", "US"):
-+        assert c[iso]["taban_sinif"] in kaz, iso
++    # dış ticaret verisi (mutlak kayıp) + ikame çift sayımı düzeltmesi (K1): C'de yalnız Suudi Arabistan bant dışı kazanan;
++    # AB, BAE, Fransa, Yunanistan bant dışı kaybeden; ABD, Çin, Rusya bant içi
++    assert c["SA"]["taban_sinif"] in kaz
 +    for iso in ("AE", "EU", "FR"):
 +        assert c[iso]["taban_sinif"] == "entegre_kaybeden", iso
-+    for iso in ("CN", "RU", "GR"):
++    assert "kaybeden" in c["GR"]["taban_sinif"]
++    for iso in ("CN", "RU", "US"):
 +        assert c[iso]["taban_sinif"] == "belirsiz_bant_ici", iso
 +    b = {a["ulke"]: a for a in next(s for s in d["senaryolar"] if s["id"] == "B")["aktorler"]}
-+    for iso in ("CN", "RU", "US", "AE", "FR", "GR"):
++    for iso in ("CN", "RU", "US", "AE", "SA", "FR", "GR"):
 +        assert b[iso]["taban_sinif"] == "belirsiz_bant_ici", iso  # B'de bantlar çok geniş
-+    assert b["SA"]["taban_sinif"] in kaz and b["EU"]["taban_sinif"] == "entegre_kaybeden"
++    assert b["EU"]["taban_sinif"] == "entegre_kaybeden"
 +
 +
 +def test_dis_aktor_surdurme_maliyeti():
@@ -6891,31 +6896,24 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        # yıkım üst + ölçüm boşluğu alt = D (belirsiz kova iki uca da tam yazılır)
 +        assert abs(s["gercek_yikim_aralik"][1] + s["olcum_boslugu_aralik"][0] - s["olu_agirlik"]) < 6e-3
 +        # ham kazançla D, V sınırı yokken en çok V sınırlı D kadar; ikame çift sayımı D'yi artırır
-+        assert s["olu_agirlik_ham_kazanc"] <= s["olu_agirlik"] + 1e-9 <= s["olu_agirlik_ikame_cift_sayimsa"] + 1e-9
++        assert s["olu_agirlik_ham_kazanc"] <= s["olu_agirlik"] + 1e-9
 +
 +
-+def test_ikame_cift_sayim_dogrulama_ozdeslik_ve_korunum():
++def test_ikame_cift_sayim_k1_sonrasi_ozdeslik_ve_korunum():
 +    d = _j(OUT / "IKAME_CIFT_SAYIM.json")["senaryolar"]
 +    proj = {s["id"]: s for s in _j(OUT / "PROJEKSIYON.json")["senaryolar"]}
 +    muh = {s["id"]: s for s in _j(OUT / "KAZANC_KAYIP_MUHASEBE.json")["senaryolar"]}
 +    ob = _j(OUT / "OLU_AGIRLIK_AYRISMA.json")["senaryolar"]
 +    for sid in "ABC":
 +        s, p = d[sid], proj[sid]
-+        # kenar listesindeki ikame akışı = havzaların ikame girişi (aynı v iki yerde)
++        # kenar listesindeki ikame akışı = havzaların ikame girişi; aktöre yazılmıyor (K1)
 +        kenar = sum(e["akis_endeks"] for e in p["akis_kenarlari"] if e["tur"] == "rakip_ikame")
 +        ig = sum(b["rakip_ikame_gelen"] for b in p["bolgesel_net"])
 +        assert abs(kenar - ig) < 0.02 and abs(s["kenar_ikame_toplam"] - kenar) < 2e-3
-+        # aktör ikame kazancı aynı kenarlardan; kenarın tamamı aktöre gitmez (TR payı, atlanan ortaklar, normalizasyon)
-+        assert 0 < s["aktor_ikame_kazanci_toplam"] <= s["kenar_ikame_toplam"] + 1e-9
-+        # korunum: aktör kazancı + havza girişi V'yi aşıyor; aşım formül gereği
-+        assert abs(s["korunum_asimi"] - max(0.0, muh[sid]["kazanc"]["toplam"] + ig - muh[sid]["bosluk_V"])) < 5e-3
-+        assert s["korunum_asimi"] > 0
-+        # varyantlarda ölü ağırlık yalnız artar; K1 aktör ikamesi, K2 havza girişi kadar
-+        assert abs(s["olu_agirlik_k1_aktor_ikame_dusulurse"] - s["olu_agirlik"] - s["aktor_ikame_kazanci_toplam"]) < 5e-3
-+        assert abs(s["olu_agirlik_k2_havza_girisi_dusulurse"] - s["olu_agirlik"] - s["havza_girisi_ig_toplam"]) < 5e-3
++        assert s["aktor_ikame_kazanci_toplam"] == 0.0 and all(a["ikame_kazanc"] == 0.0 for a in p["dis_aktör_kazanc"])
++        assert 0 < s["ham_ikame_dagilimi_tani"] <= s["kenar_ikame_toplam"] + 1e-9  # ham dağılım yalnız tanı
++        # korunum: aktör kazancı + havza girişi V'yi aşmaz
++        assert s["korunum_asimi"] < 0.02 and s["korunum_boslugu"] > -0.02  # kenar ve havza girişi 3 hane yuvarlı
++        assert abs(s["kredi_toplam_aktor_arti_havza_girisi"] - (muh[sid]["kazanc"]["toplam"] + ig)) < 5e-3
 +        assert abs(s["olu_agirlik"] - ob[sid]["olu_agirlik"]) < 5e-3
-+        t = s["sistem_net_toplam"]
-+        assert t["k1"] < t["mevcut"] and t["k2"] < t["mevcut"]
-+        # tutarlılık: MFIN ve İran kararlı kazanan (ikame küçük payı), değişen sınıf listesinde değil
-+        assert "MFIN" not in s["sinif_degisimi_mevcut_k1_k2"] and "IR" not in s["sinif_degisimi_mevcut_k1_k2"]
 ```

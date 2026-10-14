@@ -6,68 +6,68 @@ Yerel iç elit katmanı modelde yok; ülke düzeyi. Elit sorusu ölçülmez, anc
 
 ### Senaryo A
 - Net kaybeden aktör: 28 · kaybeden medyan net -0.444
-- Σ kaybeden net -28.40 · Σ diğer kazanan net +3.72 · MFIN net +4.66 (kaybedenlerin |toplamının| 0.164 katı)
-- Mutlak olarak bant dışı kaybeden: RS, TN, TJ, KG, AM, TM, AZ, GE, DZ, UZ, KZ, UA, LY, MA, SO, SY, LB, FR, GCC, AE, IQ, EU
-- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY, EG, BG, RS
+- Σ kaybeden net -31.18 · Σ diğer kazanan net +2.12 · MFIN net +3.29 (kaybedenlerin |toplamının| 0.105 katı)
+- Mutlak olarak bant dışı kaybeden: BG, RS, EG, TN, TJ, KG, AM, TM, AZ, GE, DZ, UZ, KZ, UA, LY, MA, SO, SY, LB, FR, GCC, IQ, AE, EU
+- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY, RS
 
 | En geç batan | Net | Medyana göre | Ortak bant | Ayırt edilebilir | Mutlak sınıf |
 | --- | ---: | ---: | ---: | --- | --- |
-| CY | -0.099 | +0.345 | 0.284 | evet | bant_ici |
-| EG | -0.103 | +0.341 | 0.299 | evet | bant_ici |
-| BG | -0.121 | +0.323 | 0.284 | evet | bant_ici |
-| RS | -0.148 | +0.296 | 0.212 | evet | kaybeden |
-| TN | -0.238 | +0.206 | 0.284 | hayır | kaybeden |
-- En çok batan: EU -10.29, IQ -2.04, CN -2.02
+| CY | -0.104 | +0.340 | 0.274 | evet | bant_ici |
+| BG | -0.209 | +0.235 | 0.274 | hayır | kaybeden |
+| RS | -0.228 | +0.216 | 0.204 | evet | kaybeden |
+| EG | -0.236 | +0.208 | 0.287 | hayır | kaybeden |
+| TN | -0.238 | +0.206 | 0.274 | hayır | kaybeden |
+- En çok batan: EU -10.46, CN -2.91, RU -2.48
 
 ### Senaryo B
-- Net kaybeden aktör: 28 · kaybeden medyan net -0.750
-- Σ kaybeden net -51.43 · Σ diğer kazanan net +4.32 · MFIN net +9.07 (kaybedenlerin |toplamının| 0.176 katı)
-- Mutlak olarak bant dışı kaybeden: CY, BG, RS, TN, TJ, KG, AM, TM, AZ, GE, DZ, UZ, KZ, UA, MA, LY, SO, SY, LB, GCC, IQ, EU
-- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY, EG, BG, RS, TN
+- Net kaybeden aktör: 30 · kaybeden medyan net -0.742
+- Σ kaybeden net -55.42 · Σ diğer kazanan net +1.97 · MFIN net +4.07 (kaybedenlerin |toplamının| 0.073 katı)
+- Mutlak olarak bant dışı kaybeden: CY, TN, TJ, BG, KG, RS, EG, AM, TM, AZ, GE, DZ, UZ, KZ, UA, MA, LY, SO, SY, LB, GCC, IQ, EU
+- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): BA, CY, TN, TJ, RS
 
 | En geç batan | Net | Medyana göre | Ortak bant | Ayırt edilebilir | Mutlak sınıf |
 | --- | ---: | ---: | ---: | --- | --- |
-| CY | -0.258 | +0.492 | 0.322 | evet | kaybeden |
-| EG | -0.279 | +0.471 | 0.370 | evet | bant_ici |
-| BG | -0.323 | +0.427 | 0.322 | evet | kaybeden |
-| RS | -0.358 | +0.392 | 0.242 | evet | kaybeden |
-| TN | -0.404 | +0.346 | 0.322 | evet | kaybeden |
-- En çok batan: EU -17.83, CN -4.56, AE -3.73
+| US | -0.013 | +0.729 | 2.139 | hayır | bant_ici |
+| BA | -0.023 | +0.719 | 0.300 | evet | bant_ici |
+| CY | -0.272 | +0.470 | 0.300 | evet | kaybeden |
+| TN | -0.404 | +0.338 | 0.300 | evet | kaybeden |
+| TJ | -0.433 | +0.309 | 0.300 | evet | kaybeden |
+- En çok batan: EU -18.09, CN -5.81, RU -4.82
 
 ### Senaryo C
 - Net kaybeden aktör: 28 · kaybeden medyan net -0.290
-- Σ kaybeden net -17.66 · Σ diğer kazanan net +2.78 · MFIN net +2.30 (kaybedenlerin |toplamının| 0.13 katı)
-- Mutlak olarak bant dışı kaybeden: RS, TN, TJ, KG, AM, TM, AZ, GE, DZ, UZ, KZ, UA, LY, MA, SO, LB, SY, FR, GCC, AE, IQ, EU
-- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY, EG, BG, RS
+- Σ kaybeden net -19.47 · Σ diğer kazanan net +1.80 · MFIN net +1.90 (kaybedenlerin |toplamının| 0.097 katı)
+- Mutlak olarak bant dışı kaybeden: RS, TN, TJ, KG, AM, TM, AZ, GE, GR, DZ, UZ, KZ, UA, LY, MA, SO, LB, SY, FR, GCC, AE, IQ, EU
+- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY, RS
 
 | En geç batan | Net | Medyana göre | Ortak bant | Ayırt edilebilir | Mutlak sınıf |
 | --- | ---: | ---: | ---: | --- | --- |
 | CY | -0.046 | +0.244 | 0.202 | evet | bant_ici |
-| EG | -0.050 | +0.240 | 0.206 | evet | bant_ici |
-| BG | -0.051 | +0.239 | 0.202 | evet | bant_ici |
-| RS | -0.065 | +0.225 | 0.153 | evet | kaybeden |
+| BG | -0.105 | +0.185 | 0.202 | hayır | bant_ici |
+| RS | -0.115 | +0.175 | 0.153 | evet | kaybeden |
+| EG | -0.135 | +0.155 | 0.204 | hayır | bant_ici |
 | TN | -0.155 | +0.135 | 0.202 | hayır | kaybeden |
-- En çok batan: EU -6.56, IQ -1.36, AE -1.17
+- En çok batan: EU -6.66, CN -1.64, RU -1.45
 
 ## 2. Seçenek 1: alternatif direnç (rant kaybı − net kazanç)
 
-Ana tanım 6 aktör (bileşen 0.25), alternatif 4 aktör (bileşen 0.5). Skor 47.7 → 50.7 (yalnız tanı).
+Ana tanım 6 aktör (bileşen 0.25), alternatif 5 aktör (bileşen 0.375). Skor 47.7 → 49.2 (yalnız tanı).
 
 | Aktör | Rant kaybı mn $ | Net kazanç mn $ | Ana | Alternatif |
 | --- | ---: | ---: | --- | --- |
-| EU | 3,114 | -35,319 | evet | evet |
-| US | 2,778 | 3,278 | evet | — |
-| CN | 2,629 | -5,620 | evet | evet |
-| RU | 2,324 | -3,946 | evet | evet |
-| IR | 1,400 | 5,125 | evet | — |
-| AE | 1,105 | -6,293 | evet | evet |
-| IL | 979 | 1,949 | — | — |
-| SA | 657 | 1,884 | — | — |
-| EG | 506 | -269 | — | — |
-| FR | 389 | -3,084 | — | — |
-| GR | 379 | -1,098 | — | — |
+| EU | 3,114 | -35,868 | evet | evet |
+| US | 2,778 | 1,513 | evet | evet |
+| CN | 2,629 | -8,834 | evet | evet |
+| RU | 2,324 | -7,816 | evet | evet |
+| IR | 1,400 | 4,005 | evet | — |
+| AE | 1,105 | -6,874 | evet | evet |
+| IL | 979 | 1,179 | — | — |
+| SA | 657 | 1,141 | — | — |
+| EG | 506 | -727 | — | — |
+| FR | 389 | -3,364 | — | — |
+| GR | 379 | -1,324 | — | — |
 | AZ | 217 | -1,233 | — | — |
-| RS | 43 | -350 | — | — |
+| RS | 43 | -619 | — | — |
 
 ## 3. Seçenek 2: gerçek kayıp için kırılma oranı
 
@@ -75,44 +75,44 @@ Kayıp/kazanç oranı r. r_net_sıfır: net 0'a ininceye kadar katlanılabilir o
 
 | Senaryo | Aktör | Kazanç | Maliyet | r_net_sıfır | r_bant | Uygulanan oran |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| A | CN | 3.44 | 0.48 | 0.86 | -0.16 | 1.45 |
-| A | RU | 3.35 | 0.47 | 0.86 | -0.08 | 1.28 |
-| A | US | 2.65 | 0.37 | 0.86 | 0.49 | 0.56 |
-| A | EU | 1.07 | 0.15 | 0.86 | -5.89 | 10.48 |
-| B | CN | 4.37 | 0.36 | 0.92 | -0.77 | 1.96 |
-| B | RU | 4.29 | 0.35 | 0.92 | -0.56 | 1.70 |
-| B | US | 3.62 | 0.30 | 0.92 | 0.33 | 0.70 |
-| B | EU | 1.37 | 0.11 | 0.92 | -10.75 | 13.95 |
-| C | CN | 2.63 | 0.50 | 0.81 | 0.07 | 1.21 |
-| C | RU | 2.53 | 0.48 | 0.81 | 0.10 | 1.10 |
-| C | US | 1.92 | 0.37 | 0.81 | 0.53 | 0.49 |
-| C | EU | 0.81 | 0.15 | 0.81 | -3.60 | 8.87 |
+| A | CN | 2.40 | 0.34 | 0.86 | -0.60 | 2.08 |
+| A | RU | 2.11 | 0.30 | 0.86 | -0.61 | 2.04 |
+| A | US | 2.03 | 0.28 | 0.86 | 0.38 | 0.73 |
+| A | EU | 0.87 | 0.12 | 0.86 | -7.46 | 12.92 |
+| B | CN | 3.01 | 0.25 | 0.92 | -1.52 | 2.85 |
+| B | US | 2.75 | 0.23 | 0.92 | 0.14 | 0.92 |
+| B | RU | 2.71 | 0.22 | 0.92 | -1.41 | 2.70 |
+| B | EU | 1.08 | 0.09 | 0.92 | -13.85 | 17.65 |
+| C | CN | 1.89 | 0.36 | 0.81 | -0.22 | 1.68 |
+| C | RU | 1.64 | 0.31 | 0.81 | -0.28 | 1.70 |
+| C | US | 1.52 | 0.29 | 0.81 | 0.47 | 0.62 |
+| C | EU | 0.69 | 0.13 | 0.81 | -4.40 | 10.49 |
 
 ## 4. Kayıplar doğruysa: sistem kilidi mi, aktör becerisizliği mi?
 
 | Senaryo | Σ net (tüm aktörler) | Σ pozitif | Σ negatif |
 | --- | ---: | ---: | ---: |
-| A | -44.94 | +8.38 | -53.32 |
-| B | -77.94 | +13.39 | -91.32 |
-| C | -29.77 | +5.08 | -34.85 |
+| A | -50.69 | +5.41 | -56.10 |
+| B | -89.28 | +6.04 | -95.32 |
+| C | -32.96 | +3.69 | -36.66 |
 
 Büyük aktörlerin net'i (maliyetli, kayıp vekilli):
 
 | Aktör | A | B | C | En iyi |
 | --- | ---: | ---: | ---: | --- |
 | TR | -24.92 | -39.90 | -17.19 | C |
-| MFIN | +4.66 | +9.07 | +2.30 | B |
-| CN | -2.02 | -4.56 | -1.04 | C |
-| RU | -1.42 | -3.36 | -0.73 | C |
-| US | +0.80 | +0.79 | +0.61 | A |
-| EU | -10.29 | -17.83 | -6.56 | C |
-| AE | -1.96 | -3.73 | -1.17 | C |
-| SA | +0.47 | +0.54 | +0.35 | B |
-| FR | -0.91 | -1.66 | -0.57 | C |
-| GR | -0.34 | -0.66 | -0.20 | C |
-| IR | +1.35 | +1.83 | +0.95 | B |
-| IL | +0.52 | +0.70 | +0.36 | B |
-| EG | -0.10 | -0.28 | -0.05 | C |
+| MFIN | +3.29 | +4.07 | +1.90 | B |
+| CN | -2.91 | -5.81 | -1.64 | C |
+| RU | -2.48 | -4.82 | -1.45 | C |
+| US | +0.27 | -0.01 | +0.28 | C |
+| EU | -10.46 | -18.09 | -6.66 | C |
+| AE | -2.15 | -4.02 | -1.28 | C |
+| SA | +0.24 | +0.20 | +0.21 | A |
+| FR | -1.00 | -1.80 | -0.62 | C |
+| GR | -0.41 | -0.76 | -0.25 | C |
+| IR | +1.00 | +1.31 | +0.74 | B |
+| IL | +0.30 | +0.35 | +0.22 | B |
+| EG | -0.24 | -0.48 | -0.14 | C |
 
 Tüm büyük aktörlerin birlikte en iyi olduğu senaryo: yok.
 %2 olasılıklı, tanımsız bir olayın TR net'i üzerindeki etkisi en fazla ≈ +0.45 (olay en kötü senaryoya çevirse bile).
