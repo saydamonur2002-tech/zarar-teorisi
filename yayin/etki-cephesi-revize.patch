@@ -925,6 +925,103 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +2026-06,24397.0,33003.0,2394.0,731.0,2655.0
 +2026-07,25182.0,30825.0,2881.0,520.0,3153.0
 +2026-08,23327.0,27073.0,2395.0,733.0,2659.0
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json
+--- pristine/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	2026-10-14 15:35:04.687658429 +0000
+@@ -0,0 +1,93 @@
++{
++  "not": "TR kaybının ölçeğini sınamak için BAĞIMSIZ gözlem: Dünya Bankası (WDI) TR ödemeler dengesi ve büyüme serileri. Modelin kendi çapalarından (EVDS yatırım geliri gideri, gerceklik_capa) ayrı kaynaktır; bu dosyayı yalnız tr_olcek_sinama.py okur.",
++  "kaynak": "World Bank WDI API (api.worldbank.org), 14.10.2026 çekimi; göstergeler NY.GDP.MKTP.CD, NY.GDP.PCAP.KD.ZG, BN.CAB.XOKA.GD.ZS, BM.GSR.FCTY.CD, BX.GSR.FCTY.CD",
++  "yillar": [
++    "2015",
++    "2016",
++    "2017",
++    "2018",
++    "2019",
++    "2020",
++    "2021",
++    "2022",
++    "2023",
++    "2024"
++  ],
++  "TUR": {
++    "gsyh_usd": {
++      "2015": 865460050683.656,
++      "2016": 870818016909.84,
++      "2017": 863874522365.276,
++      "2018": 788356985773.667,
++      "2019": 775853144222.613,
++      "2020": 733628247119.077,
++      "2021": 839938668172.134,
++      "2022": 926097476913.818,
++      "2023": 1141242864657.45,
++      "2024": 1359123768774.12
++    },
++    "gsyh_kisibasi_buyume": {
++      "2015": 4.4034,
++      "2016": 1.9428,
++      "2017": 6.4366,
++      "2018": 2.077,
++      "2019": -0.1364,
++      "2020": 0.82,
++      "2021": 10.7977,
++      "2022": 4.4082,
++      "2023": 4.6191,
++      "2024": 3.0948
++    },
++    "cari_denge_gsyh": {
++      "2015": -2.4671,
++      "2016": -2.5453,
++      "2017": -4.0678,
++      "2018": -1.853,
++      "2019": 1.935,
++      "2020": -4.2288,
++      "2021": -0.8415,
++      "2022": -5.0392,
++      "2023": -3.6645,
++      "2024": -0.9585
++    },
++    "birincil_gelir_odeme_usd": {
++      "2015": 12701000000,
++      "2016": 12983000000,
++      "2017": 14544000000,
++      "2018": 15909000000,
++      "2019": 16597000000,
++      "2020": 12754000000,
++      "2021": 16050000000,
++      "2022": 14804000000,
++      "2023": 19787000000,
++      "2024": 28017000000
++    },
++    "birincil_gelir_tahsilat_usd": {
++      "2015": 3018000000,
++      "2016": 3803000000,
++      "2017": 3814000000,
++      "2018": 4835000000,
++      "2019": 4754000000,
++      "2020": 4108000000,
++      "2021": 4513000000,
++      "2022": 5602000000,
++      "2023": 8014000000,
++      "2024": 9536000000
++    }
++  },
++  "UMC": {
++    "gsyh_kisibasi_buyume": {
++      "2015": 3.6332,
++      "2016": 3.7438,
++      "2017": 4.5229,
++      "2018": 4.1345,
++      "2019": 3.5185,
++      "2020": -1.0747,
++      "2021": 7.1129,
++      "2022": 3.2335,
++      "2023": 4.3135,
++      "2024": 3.8774
++    }
++  },
++  "umc_not": "UMC = Dünya Bankası üst-orta gelir grubu toplamı (TR'nin karşılaştırma grubu)"
++}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/senaryolar.json fixed/data/etki_cephesi/senaryolar.json
 --- pristine/data/etki_cephesi/senaryolar.json	2026-10-14 06:05:45.818537428 +0000
 +++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 08:24:11.535150189 +0000
@@ -3694,7 +3791,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/refah_dis_entegrasyon.py fixed/etki_cephesi/refah_dis_entegrasyon.py
 --- pristine/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 06:05:45.827256705 +0000
-+++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 14:50:45.535140233 +0000
++++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 15:33:04.848250161 +0000
 @@ -2,6 +2,7 @@
  from __future__ import annotations
  
@@ -3759,7 +3856,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          havza_k = round(max(0.0, -v["havza_net"]), 3)
          net = round(dis_k - havza_k + max(0.0, v["havza_net"]), 3)
          if iso == "TR":
-@@ -173,12 +181,40 @@
+@@ -173,12 +181,46 @@
              net = round(dis_k - havza_k, 3)
          if abs(net) < 0.02 and ref < 0.02 and iso not in ("TR", "CN", "RU", "US", "MFIN"):
              continue
@@ -3770,8 +3867,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        kural = abs(v["kanal_alt"] - v["kanal_kazanc"]) if kapsam == "tam" else 0.0
 +        # Kaybı modelde olmayan aktör: referans orandan kayıp VEKİLİ (medyan oran × kazanç) ve onun belirsizliği (yarı aralık × kazanç)
 +        ref_o = ab_row.get("kayip_referans_orani")
-+        kayip_ref = round(ref_o["medyan"] * dis_k, 3) if ref_o and iso != "TR" else 0.0
-+        kayip_bel = round((ref_o["maks"] - ref_o["min"]) / 2 * dis_k, 3) if ref_o and iso != "TR" else 0.0
++        if ab_row.get("kayip_yontemi") == "dis_veri_cekim" and iso != "TR":
++            # Dış ticaret verisinden kayıp MUTLAK büyüklüktür (çekim × φ); kazancın defterde kalan payıyla (ör. AB'nin Balkan'a bölünen payı
++            # düşülmüş kazancı) ölçeklenmez. Oran × defter kazancı kullanmak AB'nin kaybını 3,5 kat eksik gösterirdi.
++            kayip_ref = round(float(ab_row["havza_kayip_referans"]), 3)
++            kayip_bel = round(float(ab_row["kayip_referans_belirsizlik"]), 3)
++        else:
++            kayip_ref = round(ref_o["medyan"] * dis_k, 3) if ref_o and iso != "TR" else 0.0
++            kayip_bel = round((ref_o["maks"] - ref_o["min"]) / 2 * dis_k, 3) if ref_o and iso != "TR" else 0.0
 +        # Kaybın devamlılığı için dış aktörün katlandığı maliyet (surdurme_maliyeti.json): oran × kazanç; belirsizliği kappa bandının yarı aralığı
 +        sm_oran = ab_row.get("surdurme_maliyet_orani")
 +        if sm_oran and iso != "TR":
@@ -3803,7 +3906,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 15:05:59.381675178 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 15:35:30.689687348 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -3840,7 +3943,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,37 @@
+@@ -31,11 +47,38 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -3853,6 +3956,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "kazanc_kayip_muhasebe.py",
 +        "bant_sinama.py",
 +        "goreceli_konum.py",
++        "tr_olcek_sinama.py",
          ]
      )
 -    for s in steps:
@@ -4661,6 +4765,185 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      lines.append("")
      return "\n".join(lines)
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/tr_olcek_sinama.py fixed/etki_cephesi/tr_olcek_sinama.py
+--- pristine/etki_cephesi/tr_olcek_sinama.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/tr_olcek_sinama.py	2026-10-14 15:35:30.689265287 +0000
+@@ -0,0 +1,175 @@
++"""TR kaybının ölçeğini bağımsız gözlemle sına ve ölçek belirsizliğinin dış aktör sınıflarına yayılımını ölç.
++
++Neden: Çin/Rusya/AB/BAE... kayıpları (ticaret çekimi) TR'nin gelir kaybına (L_TR) doğrusal bağlı; L_TR'nin USD ölçeği modelde üç farklı köprüyle
++(BoP 2.589, rant 5.383, mal ticareti 4.785 mn $/vekil) 2 katı aşan farkla çevriliyor ve bağımsız bir gözlemle hiç karşılaştırılmamıştı.
++Bağımsız gözlem (Dünya Bankası WDI, `gozlem/tr_bagimsiz_olcek.json`): brüt/net birincil gelir ödemesi, cari açık (kaynak aktarımı), kişi başı büyümenin
++üst-orta gelir grubuna göre farkı. Bunlar GÖZLENEBİLİR sınırlardır; karşı-olgusal (refah rejimi) kaybın gözlenemeyen kısmını sınamazlar.
++Yayılım: L_TR × s için (s ızgarası) φ yeniden kalibre edilir ve dış-veri aktörlerinin sınıfı yeniden hesaplanır. Tanı raporu: başka modüle girdi olmaz.
++"""
++from __future__ import annotations
++
++import json
++import math
++import statistics as st
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++OLCEK_IZGARA = (1.0, 0.7, 0.5, 0.35, 0.25, 0.1)
++KOPRULER = ("bop_merkez_rant", "mal_net_ticaret", "tum_havza_rant")
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def gozlem() -> dict[str, Any]:
++    d = _load(DATA / "gozlem" / "tr_bagimsiz_olcek.json")
++    y = d["yillar"]
++    T, U = d["TUR"], d["UMC"]
++    gsyh = {k: T["gsyh_usd"][k] / 1e6 for k in y}  # mn $
++    odeme = {k: T["birincil_gelir_odeme_usd"][k] / 1e6 for k in y}
++    tahsil = {k: T["birincil_gelir_tahsilat_usd"][k] / 1e6 for k in y}
++    brut = [odeme[k] / gsyh[k] * 100 for k in y]
++    net = [(odeme[k] - tahsil[k]) / gsyh[k] * 100 for k in y]
++    cari = [-T["cari_denge_gsyh"][k] for k in y]
++    fark = [T["gsyh_kisibasi_buyume"][k] - U["gsyh_kisibasi_buyume"][k] for k in y]
++    son = y[-1]
++    return {
++        "yillar": [y[0], son],
++        "gsyh_son_mn_usd": round(gsyh[son], 1),
++        "brut_birincil_gelir_odemesi_gsyh_yuzde": {"ort": round(st.mean(brut), 2), "maks": round(max(brut), 2), "son": round(brut[-1], 2)},
++        "net_birincil_gelir_odemesi_gsyh_yuzde": {"ort": round(st.mean(net), 2), "maks": round(max(net), 2), "son": round(net[-1], 2)},
++        "cari_acik_gsyh_yuzde": {"ort": round(st.mean(cari), 2), "maks": round(max(cari), 2), "son": round(cari[-1], 2)},
++        "kisi_basi_buyume_farki_tr_eksi_umc_pp": {"ort": round(st.mean(fark), 2), "min": round(min(fark), 2), "maks": round(max(fark), 2)},
++    }
++
++
++def model_kayip(gs: float) -> dict[str, Any]:
++    proj = {s["id"]: s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"]}
++    kop = _load(DATA / "kalibre" / "gerceklik_realizasyon.json")["usd_kopruleri"]
++    out = {}
++    for sid in ("A", "B", "C"):
++        tr = next(a for a in proj[sid]["aktör_birlesik"] if a["aktor"] == "TR")
++        L = float(tr["havza_kayip"])
++        row = {"vekil": L}
++        for k in KOPRULER:
++            usd = L * float(kop[k]["usd_per_vekil_mn"])
++            row[k] = {"usd_mn": round(usd), "gsyh_yuzde": round(usd / gs * 100, 2)}
++        out[sid] = row
++    return out
++
++
++def olcek_araliklari(model: dict[str, Any], gz: dict[str, Any]) -> dict[str, Any]:
++    """Her gözlemlenebilir sınır için, model TR kaybı o sınıra eşit olsun diye gereken ölçek s = sınır / model (köprüler arası min–maks)."""
++    sinirlar = {
++        "brut_birincil_gelir_odemesi_ort": gz["brut_birincil_gelir_odemesi_gsyh_yuzde"]["ort"],
++        "net_birincil_gelir_odemesi_ort": gz["net_birincil_gelir_odemesi_gsyh_yuzde"]["ort"],
++        "cari_acik_ort": gz["cari_acik_gsyh_yuzde"]["ort"],
++    }
++    out: dict[str, Any] = {}
++    for sid, row in model.items():
++        out[sid] = {}
++        for ad, sinir in sinirlar.items():
++            degerler = [sinir / row[k]["gsyh_yuzde"] for k in KOPRULER]
++            out[sid][ad] = {"s_min": round(min(degerler), 3), "s_maks": round(max(degerler), 3)}
++    return out
++
++
++def _sinif(net: float, bant: float) -> str:
++    return "kazanan" if net - bant > 0 else ("kaybeden" if net + bant < 0 else "bant_ici")
++
++
++def yayilim() -> dict[str, Any]:
++    dv = _load(DATA / "gozlem" / "dis_ticaret_gsyh_2023.json")
++    G, X = dv["gsyh_mn_usd"], dv["ihracat_mn_usd"]
++    esik = dv["hub_kurali"]["esik_ihracat_gsyh"]
++
++    def cekim(i: str, L: dict[str, float]) -> float:
++        return sum(x / G[j] * L.get(j, 0.0) for j, x in X[i].items() if j != i and G.get(j) and not (esik and x / G[j] > esik))
++
++    out: dict[str, Any] = {}
++    for sid in ("A", "B", "C"):
++        proj = {s["id"]: s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"]}[sid]
++        ab = {a["aktor"]: a for a in proj["aktör_birlesik"]}
++        led = {r["ulke"]: r for r in _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
++        L0 = {k: float(a["havza_kayip"]) for k, a in ab.items() if a.get("kayip_kapsam") == "modellendi"}
++        satirlar = []
++        for s in OLCEK_IZGARA:
++            L = dict(L0)
++            L["TR"] = L0["TR"] * s
++            phi = sorted(L[i] / g for i in dv["kalibrasyon_aktorleri"] if i in L and L[i] > 0 and (g := cekim(i, L)) > 0)
++            akt = {}
++            for i in dv["dis_veri_aktorleri"]:
++                r = led[i]
++                g = cekim(i, L)
++                kay, kb = g * phi[len(phi) // 2], g * (phi[-1] - phi[0]) / 2
++                net = float(r["dis_toplam_vekili"]) - kay - float(r["surdurme_maliyeti"])
++                bant = math.sqrt(float(r["net_bandi_kayip_haric"]) ** 2 + kb**2 + float(r["maliyet_belirsizligi"]) ** 2)
++                akt[i] = {"net": round(net, 3), "bant": round(bant, 3), "sinif": _sinif(net, bant)}
++            # sistem toplamı: dış-veri aktörleri ve TR yeniden hesaplanır, diğerleri (MFIN, Balkan, bölge) defterden aynen
++            def _net(r: dict[str, Any]) -> float:
++                return float(r.get("net_maliyetli", r.get("net_refah_entegre")) or 0.0)
++
++            diger = sum(_net(r) for k, r in led.items() if k != "TR" and k not in akt)
++            tr_net = _net(led["TR"]) + (1.0 - s) * L0["TR"]
++            sistem = diger + tr_net + sum(a["net"] for a in akt.values())
++            satirlar.append({"s": s, "phi": [round(p, 3) for p in phi], "aktorler": akt, "tr_net": round(tr_net, 3), "sistem_net_toplam": round(sistem, 3)})
++        # TR hariç sistem etkisi: s=1'de ledger ile birebir olmalı (iç tutarlılık)
++        out[sid] = satirlar
++    return out
++
++
++def calistir() -> dict[str, Any]:
++    gz = gozlem()
++    model = model_kayip(gz["gsyh_son_mn_usd"])
++    ar = olcek_araliklari(model, gz)
++    yy = yayilim()
++    # sınıf kararlılığı: s ızgarasının tamamında aynı sınıfı koruyan aktörler
++    kararli: dict[str, dict[str, bool]] = {}
++    for sid, satirlar in yy.items():
++        kararli[sid] = {i: len({r["aktorler"][i]["sinif"] for r in satirlar}) == 1 for i in satirlar[0]["aktorler"]}
++    d = {
++        "olcum": "tr_kayip_olcek_sinamasi",
++        "etiket": "tani_girdi_degil",
++        "gozlem": gz,
++        "model_tr_kaybi": model,
++        "gereken_olcek": ar,
++        "yayilim": yy,
++        "sinif_kararli_tum_olceklerde": kararli,
++        "olcek_izgara": list(OLCEK_IZGARA),
++        "not": "Gözlemlenebilir sınırlar karşı-olgusal kaybın gözlenemeyen kısmını sınamaz; yalnız ölçeğin üst sınırını verir.",
++    }
++    (OUT / "TR_OLCEK_SINAMA.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    L = ["# TR kaybının ölçek sınaması (bağımsız gözlem)", "", d["not"], "",
++         "## 1. Bağımsız gözlem (WDI, %d–%s)" % (int(gz["yillar"][0]), gz["yillar"][1]), "",
++         "| Gösterge | Ort | Maks | Son |", "| --- | ---: | ---: | ---: |"]
++    for k, ad in (("brut_birincil_gelir_odemesi_gsyh_yuzde", "Brüt birincil gelir ödemesi (% GSYH)"), ("net_birincil_gelir_odemesi_gsyh_yuzde", "Net birincil gelir ödemesi (% GSYH)"), ("cari_acik_gsyh_yuzde", "Cari açık (% GSYH)")):
++        L.append(f"| {ad} | {gz[k]['ort']} | {gz[k]['maks']} | {gz[k]['son']} |")
++    f = gz["kisi_basi_buyume_farki_tr_eksi_umc_pp"]
++    L += [f"| Kişi başı büyüme, TR − üst-orta gelir grubu (pp/yıl) | {f['ort']} | {f['maks']} | min {f['min']} |", "",
++          "## 2. Model TR kaybı (yıllık, % GSYH) ve üç USD köprüsü", "",
++          "| Senaryo | Vekil | BoP köprüsü | Mal ticareti köprüsü | Rant köprüsü |", "| --- | ---: | ---: | ---: | ---: |"]
++    for sid, r in model.items():
++        L.append(f"| {sid} | {r['vekil']} | {r['bop_merkez_rant']['usd_mn']:,} mn $ (%{r['bop_merkez_rant']['gsyh_yuzde']}) | {r['mal_net_ticaret']['usd_mn']:,} (%{r['mal_net_ticaret']['gsyh_yuzde']}) | {r['tum_havza_rant']['usd_mn']:,} (%{r['tum_havza_rant']['gsyh_yuzde']}) |")
++    L += ["", "## 3. Gözlemlenebilir sınıra inmek için gereken ölçek s (model TR kaybı × s = sınır; üç köprü arası aralık)", "",
++          "| Senaryo | Brüt birincil gelir ödemesi | Net birincil gelir ödemesi | Cari açık |", "| --- | --- | --- | --- |"]
++    for sid, r in ar.items():
++        L.append(f"| {sid} | {r['brut_birincil_gelir_odemesi_ort']['s_min']} – {r['brut_birincil_gelir_odemesi_ort']['s_maks']} | {r['net_birincil_gelir_odemesi_ort']['s_min']} – {r['net_birincil_gelir_odemesi_ort']['s_maks']} | {r['cari_acik_ort']['s_min']} – {r['cari_acik_ort']['s_maks']} |")
++    L += ["", "## 4. TR kaybı ölçeği s ile dış aktör sınıfları (φ her s'de yeniden kalibre)", ""]
++    for sid, satirlar in yy.items():
++        aktler = list(satirlar[0]["aktorler"])
++        L += [f"### Senaryo {sid}", "", "| s | φ (min/med/maks) | TR net | Σ sistem | " + " | ".join(aktler) + " |", "| ---: | --- | ---: | ---: | " + " | ".join("---" for _ in aktler) + " |"]
++        for r in satirlar:
++            L.append(f"| {r['s']} | {r['phi'][0]}/{r['phi'][len(r['phi'])//2]}/{r['phi'][-1]} | {r['tr_net']:+.2f} | {r['sistem_net_toplam']:+.2f} | " + " | ".join(f"{r['aktorler'][i]['net']:+.2f} ({r['aktorler'][i]['sinif']})" for i in aktler) + " |")
++        L.append("- Tüm ölçeklerde sınıfı değişmeyenler: " + ", ".join(i for i, v in kararli[sid].items() if v))
++        L.append("")
++    (OUT / "TR_OLCEK_SINAMA.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    return d
++
++
++if __name__ == "__main__":
++    calistir()
++    print("TR_OLCEK_SINAMA ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/ulke_kanal_dokum_10y.py fixed/etki_cephesi/ulke_kanal_dokum_10y.py
 --- pristine/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 06:05:45.830273100 +0000
 +++ fixed/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 07:40:14.114667866 +0000
@@ -4820,8 +5103,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:28:05.101056327 +0000
-@@ -0,0 +1,683 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:35:30.690448199 +0000
+@@ -0,0 +1,719 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -5366,15 +5649,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            v = by[iso]["varyant_siniflari"]
 +            assert next(x for k, x in v.items() if "en yüksek" in k) not in kaz or iso == "SA"  # en yüksek kayıp oranı kazananlığı yıkar (SA: ticaret kaybı çok küçük)
 +    c = {a["ulke"]: a for a in next(s for s in d["senaryolar"] if s["id"] == "C")["aktorler"]}
-+    # dış ticaret verisiyle kayıp modellenince C'de yalnız Suudi Arabistan bant dışı kazanan; AB, BAE, Fransa bant dışı kaybeden
-+    assert c["SA"]["taban_sinif"] in kaz
++    # dış ticaret verisiyle (mutlak kayıp) C'de Suudi Arabistan ve ABD bant dışı kazanan; AB, BAE, Fransa bant dışı kaybeden
++    for iso in ("SA", "US"):
++        assert c[iso]["taban_sinif"] in kaz, iso
 +    for iso in ("AE", "EU", "FR"):
 +        assert c[iso]["taban_sinif"] == "entegre_kaybeden", iso
-+    for iso in ("CN", "RU", "US", "GR"):
++    for iso in ("CN", "RU", "GR"):
 +        assert c[iso]["taban_sinif"] == "belirsiz_bant_ici", iso
 +    b = {a["ulke"]: a for a in next(s for s in d["senaryolar"] if s["id"] == "B")["aktorler"]}
-+    for iso in ("CN", "RU", "US", "AE", "SA", "EU", "FR", "GR"):
-+        assert b[iso]["taban_sinif"] == "belirsiz_bant_ici", iso  # B'de kaybı bilinmeyenlerin hiçbiri bant dışı kazanan değil
++    for iso in ("CN", "RU", "US", "AE", "FR", "GR"):
++        assert b[iso]["taban_sinif"] == "belirsiz_bant_ici", iso  # B'de bantlar çok geniş
++    assert b["SA"]["taban_sinif"] in kaz and b["EU"]["taban_sinif"] == "entegre_kaybeden"
 +
 +
 +def test_dis_aktor_surdurme_maliyeti():
@@ -5505,3 +5790,37 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        for a in sen["aktör_birlesik"]:
 +            if "kayip_dis_veri" in a:
 +                assert a["kayip_dis_veri"]["cekim_tahmini"] <= a["kayip_dis_veri"]["cekim_hub_kuralsiz"] + 1e-9
++
++
++def test_defter_dis_veri_kaybi_projeksiyonla_ayni_mutlak_deger():
++    """Defter, dış-veri kaybını 'oran × defter kazancı' ile yeniden ölçeklememeli (AB'nin Balkan'a bölünen payı düşük defter kazancı kaybı 3,5 kat eksik gösterirdi)."""
++    for sen in _j(OUT / "PROJEKSIYON.json")["senaryolar"]:
++        led = {r["ulke"]: r for r in _j(OUT / f"DIS_ULKE_REFAH_{sen['id']}.json")["ulke_defteri"]}
++        for a in sen["aktör_birlesik"]:
++            if a.get("kayip_yontemi") == "dis_veri_cekim":
++                assert abs(led[a["aktor"]]["havza_kayip_referans"] - a["havza_kayip_referans"]) < 2e-3, a["aktor"]
++                assert abs(led[a["aktor"]]["kayip_belirsizligi"] - a["kayip_referans_belirsizlik"]) < 2e-3, a["aktor"]
++
++
++def test_tr_olcek_sinamasi_ledger_ile_tutarli_ve_gozlem_sinirlari():
++    d = _j(OUT / "TR_OLCEK_SINAMA.json")
++    g = _j(OUT / "GORECELI_KONUM.json")["sistem_tani"]
++    obs = d["gozlem"]
++    # gözlem: WDI serilerinden bağımsız yeniden hesap
++    w = _j(DATA / "gozlem" / "tr_bagimsiz_olcek.json")
++    yy = w["yillar"]
++    brut = [w["TUR"]["birincil_gelir_odeme_usd"][y] / w["TUR"]["gsyh_usd"][y] * 100 for y in yy]
++    assert abs(obs["brut_birincil_gelir_odemesi_gsyh_yuzde"]["ort"] - sum(brut) / len(brut)) < 6e-3
++    for sid in "ABC":
++        satirlar = {r["s"]: r for r in d["yayilim"][sid]}
++        led = {r["ulke"]: r for r in _j(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
++        # s=1: ledger ile birebir (dış-veri aktörleri ve sistem toplamı)
++        for i, a in satirlar[1.0]["aktorler"].items():
++            assert abs(a["net"] - led[i]["net_maliyetli"]) < 2e-3, (sid, i)
++        assert abs(satirlar[1.0]["sistem_net_toplam"] - g["sistem_net_toplam"][sid]) < 5e-3
++        # s küçüldükçe TR net'i iyileşir, φ aralığı genişler
++        assert satirlar[0.1]["tr_net"] > satirlar[1.0]["tr_net"]
++        assert satirlar[0.1]["phi"][1] > satirlar[1.0]["phi"][1]
++        # model TR kaybı gözlemlenebilir üst sınırların (brüt birincil gelir ödemesi, cari açık ortalaması) en düşük köprüde bile üstünde
++        assert d["model_tr_kaybi"][sid]["bop_merkez_rant"]["gsyh_yuzde"] > obs["brut_birincil_gelir_odemesi_gsyh_yuzde"]["ort"]
++        assert d["gereken_olcek"][sid]["brut_birincil_gelir_odemesi_ort"]["s_maks"] < 1.0

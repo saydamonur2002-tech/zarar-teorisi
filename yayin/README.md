@@ -21,6 +21,7 @@
 | [KAZANC_KAYIP_MUHASEBE.md](./KAZANC_KAYIP_MUHASEBE.md) | Kazanç–boşluk muhasebesi: `kanal` dağıtım kuralı kaldırıldı, kalan kanallar V'ye normalize (Σ kazanç ≤ V); modellenmeyen aktörler sıfır değil `—` (bilinmiyor) işaretli |
 | [BANT_SINAMA.md](./BANT_SINAMA.md) | Büyük kazananlar (Çin, Rusya, İran, ABD, İsrail, BAE, Suudi Arabistan, Fransa, AB), Yunanistan ve Balkanların bantla sınanması: sınıflar kazanç/pay salınımlarına dayanıklı mı; kaybı modelde olmayan aktörler için bilinmeyen kayıp oranı kırılması r* |
 | [GORECELI_KONUM.md](./GORECELI_KONUM.md) | Göreceli konum (herkes batarken en geç batan), alternatif direnç tanımı (rant kaybı − net kazanç) ve Çin/Rusya/ABD/AB için gerçek kayıp kırılma oranı; tanı raporu, ana skoru değiştirmez. Yerel iç elit katmanı modelde yok |
+| [TR_OLCEK_SINAMA.md](./TR_OLCEK_SINAMA.md) | TR kaybının ölçeği bağımsız gözlemle (Dünya Bankası: birincil gelir ödemesi, cari açık, büyüme farkı) sınanır; ölçek belirsizliğinin dış aktör sınıflarına ve sistem toplamına yayılımı |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 

@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize yaması
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `886d67ce21c05011`, temiz kurulumda 3 geçiş),
-**67 test geçti** (27 mevcut + 40 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `a774f42b1296e1a8`, temiz kurulumda 3 geçiş),
+**69 test geçti** (27 mevcut + 42 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -277,11 +277,11 @@ MFIN (merkez finans vekili) önceden kaybı "tanımsız" ve maliyetten muaftı; 
 ## Göreceli konum, direnç alternatifi ve kırılma oranı (`GORECELI_KONUM`, tanı raporu)
 Soru: herkes batarken en geç batan, göreceli olarak kazanan sayılabilir mi? Ve MFİN'in kaybının karşı tarafı yerel iç elit olabilir mi?
 - **Elit katmanı modelde yok.** Aktörler ülke düzeyinde; "yerel iç elit" ayrı bir aktör, kanal veya sektör değil. MFİN'in kaybının kime aktığı da modellenmiyor: kayıp referans oran vekili, karşı taraf tanımsız. Bu yüzden elit sorusu **ölçülmedi**; yalnız ülke düzeyi sınırı verildi. Elit için ayrı veri ve ayrı aktör gerekir.
-- **Ülke düzeyinde cevap: kısmen evet, ama zayıf.** Net kaybeden 22 aktör var (her senaryoda). Medyandan, ortak bantla ayırt edilebilir derecede iyi olanlar (göreceli kazanan): A'da Kıbrıs ve Sırbistan; B ve C'de Kıbrıs, Mısır, Bulgaristan, Sırbistan. En geç batanlar Kıbrıs, Mısır, Bulgaristan, Sırbistan, Tunus; en çok batanlar Irak, GCC, Lübnan/Suriye. Kıbrıs ve Mısır mutlak olarak bant içi (kaybeden denemez), Sırbistan mutlak bant dışı kaybeden: yani "göreceli kazanan" ile "mutlak kaybeden" aynı aktörde birlikte durabilir.
+- **Ülke düzeyinde cevap: kısmen evet, ama zayıf.** Net kaybeden 28 aktör var (her senaryoda; AB, BAE, Fransa, Yunanistan, Çin, Rusya da dahil). Medyandan, ortak bantla ayırt edilebilir derecede iyi olanlar (göreceli kazanan): A ve C'de Kıbrıs, Mısır, Bulgaristan, Sırbistan; B'de ayrıca Tunus. En geç batanlar Kıbrıs, Mısır, Bulgaristan, Sırbistan, Tunus; en çok batanlar Irak, GCC, Lübnan/Suriye. Kıbrıs ve Mısır mutlak olarak bant içi (kaybeden denemez), Sırbistan mutlak bant dışı kaybeden: yani "göreceli kazanan" ile "mutlak kaybeden" aynı aktörde birlikte durabilir.
 - **Eleştirel not:** kısmi kapsamlı aktörlerde bant ölçülmüş değil, tam kapsamlıların medyanı vekil; bu yüzden "ayırt edilebilir" ayrımı sınırda (CY: +0,293 fark, 0,284 bant). Göreceli sıralama mutlak net'ten daha güvenilir değil, yalnız farklı bir soruyu yanıtlıyor.
-- **MFİN ölçeği:** MFİN net'i, 22 kaybedenin |toplam| net'inin A'da 0,41, B'de 0,46, C'de 0,31 katı. Yani "MFİN'in kazancı kaybedenlerin kaybını tek başına karşılamaz"; ama kaybedenlerin toplamı da vekil kayıplara dayanıyor.
-- **Seçenek 1 (alternatif direnç = rant kaybı − net kazanç > 1000 mn $):** 6 aktörden **hiçbiri** kalmaz (AB'nin rant kaybı 3.114, net kazancı 2.568: fark 546). Bileşen 0,25 → 1,0, skor 47,7 → **56,7** (yalnız tanı; ana skor 47,7 kalır). Bu, sonucun tanım seçimine ne kadar duyarlı olduğunu gösteriyor: aynı veriyle 9 puan. Ana skorda sınıf-bağımsız basit tanımı korudum çünkü alternatif, rant kaybını net kazançla telafi edilebilir sayıyor (kazanç kaybı gerçekten kapatıyor mu? kapatmayabilir: kazanç farklı kanaldan, kayıp farklı aktör grubundan).
-- **Seçenek 2 (Çin, Rusya, ABD, AB gerçek kaybı):** veri yok, bu yüzden kayıp modellenmedi; onun yerine kırılma oranı verildi. Net'i sıfırlamak için kayıp/kazanç oranı A 0,86, B 0,92, C 0,81 olmalı; kazanan sınıfını (bant dışı) korumak için Çin/Rusya'da yalnız ≈0,17 – 0,22, ABD/AB'de ≈0,26 – 0,37. Uygulanan referans oran 0,22 – 0,45; Mısır'ın maksimum oranı (1,03 – 1,56) bunları aşar. Yani Çin ve Rusya'nın kazanan olması, kayıplarının Mısır benzeri bir oranda olmamasına bağlı; bu ölçülmedi.
+- **MFİN ölçeği:** MFİN net'i, 28 kaybedenin |toplam| net'inin A'da 0,16, B'de 0,18, C'de 0,13 katı. Yani "MFİN'in kazancı kaybedenlerin kaybını tek başına karşılamaz"; ama kaybedenlerin toplamı da vekil kayıplara dayanıyor.
+- **Seçenek 1 (alternatif direnç = rant kaybı − net kazanç > 1000 mn $; son haliyle):** ana tanımdaki 6 aktörden 4'ü kalır (AB, Çin, Rusya, BAE: ticaret tabanlı kayıp sonrası net kazançları negatif, rant kaybını telafi eden bir kazanç yok), ABD ve İran düşer. Bileşen 0,25 → 0,5, skor 47,7 → **50,7** (yalnız tanı; ana skor 47,7). Önceki ilk hesapta 56,7'ydi (o zaman tüm net'ler pozitif görünüyordu); yani alternatif tanımın etkisi, kayıpların modellenmesine bağlı. Ana skorda sınıf-bağımsız basit tanımı korudum.
+- **Seçenek 2 (Çin, Rusya, ABD, AB gerçek kaybı):** bu adımda kayıp modellenmedi, yalnız kırılma oranı verildi; ardından Çin, Rusya ve diğer büyük aktörler için kayıp dış ticaret verisiyle modellendi (aşağıdaki bölümlere bak). `GORECELI_KONUM` bölüm 3'teki "uygulanan oran" şimdi o modelden gelir.
 
 ## Çin ve Rusya'nın kaybı dış ticaret verisiyle modellendi
 Önceden Çin ve Rusya'nın kaybı, İran/İsrail/Mısır'ın kayıp/kazanç oranından (kazancın %22–45'i) tahmin ediliyordu; yani kayıp, kendi kazançlarına endeksliydi. Şimdi ölçülmüş ticaret verisinden geliyor (`data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json`, kaynak notu `KAYNAK.md`).
@@ -292,14 +292,14 @@ Soru: herkes batarken en geç batan, göreceli olarak kazanan sayılabilir mi? V
 
 | Senaryo | Aktör | Kazanç | Kayıp (dış veri) | Maliyet | Net | Bant | Sınıf |
 |---|---|---:|---:|---:|---:|---:|---|
-| A | Çin | 3,44 | 6,80 (±4,38) | 0,48 | −3,84 | 4,62 | bant içi |
-| A | Rusya | 3,35 | 4,75 (±3,06) | 0,47 | −1,87 | 3,40 | bant içi |
-| B | Çin | 4,37 | 12,55 (±10,50) | 0,36 | −8,54 | 10,64 | bant içi |
-| B | Rusya | 4,30 | 8,58 (±7,17) | 0,35 | −4,63 | 7,38 | bant içi |
-| C | Çin | 2,63 | 4,21 (±2,09) | 0,50 | −2,08 | 2,39 | bant içi |
-| C | Rusya | 2,53 | 3,00 (±1,49) | 0,48 | −0,95 | 1,89 | bant içi |
+| A | Çin | 3,44 | 4,97 (±3,20) | 0,48 | −2,02 | 3,52 | bant içi |
+| A | Rusya | 3,35 | 4,30 (±2,77) | 0,47 | −1,42 | 3,14 | bant içi |
+| B | Çin | 4,37 | 8,58 (±7,17) | 0,36 | −4,56 | 7,38 | bant içi |
+| B | Rusya | 4,30 | 7,30 (±6,11) | 0,35 | −3,36 | 6,35 | bant içi |
+| C | Çin | 2,63 | 3,17 (±1,57) | 0,50 | −1,04 | 1,96 | bant içi |
+| C | Rusya | 2,53 | 2,78 (±1,38) | 0,48 | −0,73 | 1,81 | bant içi |
 
-  Önceki hâl (referans oran): C'de Çin net +1,54, Rusya +1,48. **Çin ve Rusya artık kazanan sayılamaz**: net tahmini negatif, ama bant sıfırı kapsıyor, yani kaybeden de sayılamaz. Kayıp/kazanç oranı 1'i aşıyor (C: Çin 1,60, Rusya 1,19; eskiden 0,22). φ'nin en düşük değeriyle bile kayıp/kazanç C'de Çin 0,75, Rusya 0,55.
+  Önceki hâl (referans oran): C'de Çin net +1,54, Rusya +1,48. **Çin ve Rusya artık kazanan sayılamaz**: net tahmini negatif, ama bant sıfırı kapsıyor, yani kaybeden de sayılamaz. Kayıp/kazanç oranı 1'i aşıyor (C: Çin 1,21, Rusya 1,10; eskiden 0,22). (Tablo, sonradan düzeltilen defter hesabıyla güncel; ilk sürümdeki değerler çok az büyüktü, aşağıdaki "Düzeltme" notuna bak.)
 - **Ne sürüyor:** çekimin büyük kısmı **TR'ye ihracattan**: Çin'de %45 – 48, Rusya'da %77 – 79 (Rusya'nın TR'ye ihracatı TR GSYH'sinin %4'ü, enerji ağırlıklı). Yani sonuç, modeldeki TR kaybının (A 139, B 225, C 95 milyar $; TR 2023 GSYH'sinin yaklaşık %8 – 20'si) Çin ve Rusya'ya yansımasıdır. TR net kaybı büyük olduğu sürece bu kanal büyük kalır.
 - **Skor ve karar değişmedi:** 47,7, `kisitli_uygulanabilir`. Çin ve Rusya zaten "rant kanalı boşluk taraftarı" (bant içi) etiketliydi; direnç bileşeni etiketten bağımsız (rant farkı) olduğu için de oynamadı.
 - **Eleştirel notlar:**
@@ -311,16 +311,29 @@ Soru: herkes batarken en geç batan, göreceli olarak kazanan sayılabilir mi? V
 
 ## Aynı yöntem diğer büyük aktörlere yayıldı, yeniden ihracat kuralı ve sistem tanısı
 **Adım 1: yöntemi AB, ABD, BAE, Suudi Arabistan, Fransa, Yunanistan'a da uygula.** Aynı çekim × φ (ihracat verisi UN Comtrade 2023; AB = 25 üye devletin toplamı, Fransa ve Yunanistan ayrı aktör olduğu için hariç, AB içi ortaklar BG ve CY ihracat sayılmadı). Önceki referans oranlı kayıp bu sekiz aktörde dış veriyle değişti; kayıpları referans oranlı tek aktör MFIN kaldı.
-- **C (bant sınıfı):** Suudi Arabistan **bant dışı kazanan** (+0,34 ±0,16); ABD bant içi (+0,51 ±0,57); AB (−1,85 ±1,26), BAE (−1,33 ±1,02), Fransa (−0,65 ±0,50) **bant dışı kaybeden**; Yunanistan (−0,24 ±0,24), Çin (−2,08 ±2,39), Rusya (−0,95 ±1,89) bant içi.
-- **A:** aynı dağılım (SA kazanan; AB, BAE, Fransa kaybeden; ABD, Çin, Rusya, Yunanistan bant içi). **B:** hepsi bant içi (bant çok geniş).
-- **Önceki bulgunun tersi:** önce AB, BAE ve ABD bant dışı kazanan sayılıyordu (referans oran kazancın %22–45'ini kayıp sayıyordu). Ticaret verisiyle C'de kayıp/kazanç oranı Suudi Arabistan 0,33, ABD 0,54, Fransa 2,7, BAE 2,4, AB 3,1.
-**Adım 2: benzer yeniden ihracat/transit durumları.** Kural: tek bir kaynağın ortağa ihracatı ortağın GSYH'sinin %50'sini aşıyorsa ortak o kaynak için transit merkezi sayılır, çekime katkısı sıfırlanır (eşik atanmış). Taramada yalnız **Çin → Kırgızistan** (%130) tetiklendi; sonraki en büyük pay AB → Kuzey Makedonya %34 (gerçek entegrasyon, AB → Bosna %32, Sırbistan %30, Ukrayna %22, Çin → Tacikistan %30, Rusya → Ermenistan %18). Yani eşik 0,34 – 1,30 arasında her değerde aynı sonucu verir. Etki: Çin çekimi A 1,89 → 1,53, B 3,14 → 2,54, C 1,26 → 1,03; Çin net C −2,08 → −1,30 (bant 2,06), A −3,84 → −2,56, B −8,54 → −6,14: **hâlâ bant içi**. Skor 47,7 ve karar değişmedi.
+- **C (bant sınıfı):** Suudi Arabistan (+0,35 ±0,15) ve ABD (+0,61 ±0,53) **bant dışı kazanan**; AB (−6,56 ±3,59), BAE (−1,17 ±0,94), Fransa (−0,57 ±0,47) **bant dışı kaybeden**; Yunanistan (−0,20 ±0,23), Çin (−1,04 ±1,96), Rusya (−0,73 ±1,81) bant içi.
+- **A:** Suudi Arabistan kazanan; AB (−10,29 ±7,22), BAE, Fransa kaybeden; ABD, Çin, Rusya, Yunanistan bant içi. **B:** Suudi Arabistan kazanan, AB kaybeden (−17,83 ±15,96); diğerleri bant içi (bant çok geniş).
+- **Önceki bulgunun tersi:** önce AB, BAE ve ABD (ve C'de Çin, Rusya) bant dışı kazanan sayılıyordu (referans oran kazancın %22–45'ini kayıp sayıyordu). AB'nin kaybı dış veriyle kazancının çok katı: ihracat tabanı büyük (≈400 milyar $) ve ortakları (Balkanlar, Ukrayna, Mağrip) modelde ağır kayıplı.
+- **Düzeltme (aynı turda yakalandı):** defter bu kaybı önce "oran × defter kazancı" ile hesaplıyordu. AB'nin kazancının Balkan'a bölünen payı defterde düşüldüğü için AB'nin kaybı 3,5 kat eksik çıkmıştı (C'de 2,5 yerine 7,2); diğerlerinde ≈%9 fark vardı. Defter artık projeksiyondaki mutlak değeri kullanıyor; testle (`test_defter_dis_veri_kaybi_projeksiyonla_ayni_mutlak_deger`) kilitli. Bu yüzden önceki yayımda geçen "AB −1,85" ve "Σ net −39,5 / −71,3 / −25,9" sayıları hatalıydı; güncel değerler buradadır.
+**Adım 2: benzer yeniden ihracat/transit durumları.** Kural: tek bir kaynağın ortağa ihracatı ortağın GSYH'sinin %50'sini aşıyorsa ortak o kaynak için transit merkezi sayılır, çekime katkısı sıfırlanır (eşik atanmış). Taramada yalnız **Çin → Kırgızistan** (%130) tetiklendi; sonraki en büyük pay AB → Kuzey Makedonya %34 (gerçek entegrasyon, AB → Bosna %32, Sırbistan %30, Ukrayna %22, Çin → Tacikistan %30, Rusya → Ermenistan %18). Yani eşik 0,34 – 1,30 arasında her değerde aynı sonucu verir. Etki: Çin çekimi A 1,89 → 1,53, B 3,14 → 2,54, C 1,26 → 1,03 (yalnız Çin etkilenir); Çin **bant içi** kalır. Skor 47,7 ve karar değişmedi.
 - **Çözülmeyen benzer durum:** BAE kendisi bir yeniden ihracat merkezi; BAE'nin ihracat tabanı yeniden ihracat içeriyor, ayrıştırılamadı. Bu BAE çekimini (ve BAE'nin bölgeye ihracatını) şişirebilir: BAE sonucu "kaybeden"in alt sınırı belirsiz.
 **Sistem tanısı** (`GORECELI_KONUM` bölüm 4). Kayıplar doğruysa iki açıklama: yönetim beceriksizliği veya sistemin kilitlenmesi.
-- **Sistem toplamı negatif:** Σ net A −39,5, B −71,3, C −25,9 (pozitif toplam yalnız +8,2 / +12,7 / +5,0). TR payı büyük (−24,9 / −39,9 / −17,2).
-- **Çıkar ayrışması:** C'de en iyi durumda olanlar kaybedenler: TR, Çin, Rusya, AB, BAE, Fransa, Yunanistan, Mısır. B'de en iyi olanlar kazananlar: MFIN, İran, İsrail, Suudi Arabistan (ABD A'da, farkla +0,60 vs +0,51). **Tüm büyük aktörlerin birlikte en iyi olduğu senaryo yok.**
-- **Yorum:** beceriksizlik varsayımı, aktörün daha iyi bir seçeneği olup kullanmadığını gerektirir; modelde aktör seçimi yok, ölçülemez. Ölçülen: C birçok kaybeden için daha az kötü ama MFIN/İran/İsrail/SA için daha kötü: bu bir **çıkar çatışması + kilit** görünümü (azınlık kazanan, çoğunluk kaybeden, geçiş kazananı daha da kötüleştirir), beceriksizlikten çok yapısal. Eleştirel: toplamlar vekil kayıplara ve atanmış φ'ye dayanıyor; TR'nin kaybı toplamı yönetiyor.
+- **Sistem toplamı negatif:** Σ net A −44,9, B −77,9, C −29,8 (pozitif toplam yalnız +8,4 / +13,4 / +5,1). TR payı büyük (−24,9 / −39,9 / −17,2); AB ikinci (−10,3 / −17,8 / −6,6).
+- **Çıkar ayrışması:** C'de en iyi durumda olanlar kaybedenler: TR, Çin, Rusya, AB, BAE, Fransa, Yunanistan, Mısır. B'de en iyi olanlar kazananlar: MFIN, İran, İsrail, Suudi Arabistan (ABD A'da, farkla +0,80 vs +0,61). **Tüm büyük aktörlerin birlikte en iyi olduğu senaryo yok.**
+- **Yorum:** beceriksizlik varsayımı, aktörün daha iyi bir seçeneği olup kullanmadığını gerektirir; modelde aktör seçimi yok, ölçülemez. Ölçülen: C birçok kaybeden için daha az kötü ama MFIN/İran/İsrail/SA için daha kötü: bu bir **çıkar çatışması + kilit** görünümü (azınlık kazanan, çoğunluk kaybeden, geçiş kazananı daha da kötüleştirir), beceriksizlikten çok yapısal. Eleştirel: toplamlar vekil kayıplara ve atanmış φ'ye dayanıyor; TR'nin kaybı toplamı yönetiyor. Bağımsız ölçek sınaması (aşağıda) TR kaybını 0,25 – 0,5 katına indirince toplam yine negatif kalıyor (C'de −14,2 … −19,7).
 - **%2 olay:** olay tanımsız olduğundan modellenmedi. Üst sınır: TR net'i üzerindeki etkisi ≤ 0,02 × (senaryolar arası aralık) ≈ 0,45. Marjinal ağırlık yapıyı değiştirmez; yapıyı değiştiren bir kırılma ise bu ağırlıkla değil, ayrı bir senaryo olarak tanımlanmalı.
+
+## TR kaybının ölçeği bağımsız gözlemle sınandı (`TR_OLCEK_SINAMA`)
+Sorun: Çin, Rusya, AB, BAE... kayıpları TR'nin gelir kaybına doğrusal bağlı; TR kaybının USD ölçeği ise modelde üç farklı köprüyle (BoP 2.589, mal ticareti 4.785, rant 5.383 mn $/vekil, 2 kattan fazla fark) çevriliyordu ve bağımsız bir gözlemle hiç karşılaştırılmamıştı.
+- **Bağımsız gözlem:** Dünya Bankası WDI (2015–2024; `gozlem/tr_bagimsiz_olcek.json`). Brüt birincil gelir ödemesi GSYH'nin %1,78'i (maks %2,14; 2024: 28,0 milyar $), net %1,23; cari açık ort. %2,37 (maks %5,04); kişi başı büyüme TR − üst-orta gelir grubu ort. **+0,14 pp/yıl** (yani gözlenen kalıcı bir büyüme kaybı yok).
+- **Model TR kaybı (yıllık, % GSYH 2024):** C %3,4 – 7,0, A %4,9 – 10,2, B %8,0 – 16,5 (köprüye göre). **En düşük köprüde bile** brüt birincil gelir ödemesinin 1,9 katı (C) ile 4,5 katı (B) arasında.
+- **Gereken ölçek s** (model kaybı × s = gözlemlenebilir sınır): brüt birincil gelir ödemesine göre C 0,25 – 0,53, A 0,17 – 0,36, B 0,11 – 0,22; cari açığa göre C 0,34 – 0,70, A 0,23 – 0,48, B 0,14 – 0,30. Yani TR kaybı gözlemlenebilir sınıra inecekse modelin 1/2 – 1/9'u olmalı.
+- **Bu bir çürütme değil, üst sınır:** model kaybı karşı-olgusal (refah rejimine göre); BoP'de görünmeyen ticaret/fiyat/üretim kanallarını da içeriyor. Büyüme farkının sıfıra yakın çıkması da karşı-olgusal kaybı yok saymaz. Gözlem yalnız, kaybın BoP'de ya da büyümede ÖLÇÜLEBİLİR kısmının modelden küçük olduğunu söylüyor.
+- **Yayılım (s ızgarası 1,0 → 0,1; φ her s'de yeniden kalibre):**
+  - **Çin, Rusya, Yunanistan bant içi; ABD (C'de) ve Suudi Arabistan (A ve C'de) kazanan: tüm s değerlerinde aynı** (Rusya'nın net işareti s küçüldükçe pozitife dönebilir ama bant içinde). Suudi Arabistan B'de s ≤ 0,35'te bant içine geçer.
+  - **AB, BAE, Fransa "kaybeden" sonucu s'ye duyarlı:** C'de BAE ve Fransa yalnız s ≥ 0,7'de, AB s ≥ 0,35'te bant dışı kaybeden; gözlem sınırlarına uyan s ≈ 0,25 – 0,5'te BAE ve Fransa bant içine geçer. A'da AB s ≥ 0,5'te, B'de yalnız s = 1'de kaybeden.
+  - **Sistem toplamı negatif kalır** (C'de −29,8 → −10,7; A −44,9 → −16,5; B −77,9 → −30,7), yani "negatif toplamlı sistem" bulgusu TR ölçeğinden bağımsız dayanıklı; ama büyüklüğü TR ölçeğine bağlı. Toplamı AB'nin kaybı da yönetiyor (ihracat tabanı büyük).
+- **Kalan eleştiri:** (1) "gereken ölçek" gözlemlenebilir sınırları kullanıyor; TR'nin kaybının BoP dışı kısmını sınayacak bağımsız bir ölçüt bulunamadı. (2) φ her s'de yeniden kalibre edildiğinden s küçülünce φ büyüyor (3,1 → 6,2); yani TR kaybı küçüldükçe diğer aktörlerin kayıplarının "ticaret dışı" kısmı büyüyor, bu iç tutarlılık varsayımı. (3) Çin ve Rusya'nın sonucu s'ye bağımlı değil çünkü bant içi: kazanan ya da kaybeden olduğu söylenemez.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
@@ -1284,6 +1297,103 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +2026-06,24397.0,33003.0,2394.0,731.0,2655.0
 +2026-07,25182.0,30825.0,2881.0,520.0,3153.0
 +2026-08,23327.0,27073.0,2395.0,733.0,2659.0
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json
+--- pristine/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	2026-10-14 15:35:04.687658429 +0000
+@@ -0,0 +1,93 @@
++{
++  "not": "TR kaybının ölçeğini sınamak için BAĞIMSIZ gözlem: Dünya Bankası (WDI) TR ödemeler dengesi ve büyüme serileri. Modelin kendi çapalarından (EVDS yatırım geliri gideri, gerceklik_capa) ayrı kaynaktır; bu dosyayı yalnız tr_olcek_sinama.py okur.",
++  "kaynak": "World Bank WDI API (api.worldbank.org), 14.10.2026 çekimi; göstergeler NY.GDP.MKTP.CD, NY.GDP.PCAP.KD.ZG, BN.CAB.XOKA.GD.ZS, BM.GSR.FCTY.CD, BX.GSR.FCTY.CD",
++  "yillar": [
++    "2015",
++    "2016",
++    "2017",
++    "2018",
++    "2019",
++    "2020",
++    "2021",
++    "2022",
++    "2023",
++    "2024"
++  ],
++  "TUR": {
++    "gsyh_usd": {
++      "2015": 865460050683.656,
++      "2016": 870818016909.84,
++      "2017": 863874522365.276,
++      "2018": 788356985773.667,
++      "2019": 775853144222.613,
++      "2020": 733628247119.077,
++      "2021": 839938668172.134,
++      "2022": 926097476913.818,
++      "2023": 1141242864657.45,
++      "2024": 1359123768774.12
++    },
++    "gsyh_kisibasi_buyume": {
++      "2015": 4.4034,
++      "2016": 1.9428,
++      "2017": 6.4366,
++      "2018": 2.077,
++      "2019": -0.1364,
++      "2020": 0.82,
++      "2021": 10.7977,
++      "2022": 4.4082,
++      "2023": 4.6191,
++      "2024": 3.0948
++    },
++    "cari_denge_gsyh": {
++      "2015": -2.4671,
++      "2016": -2.5453,
++      "2017": -4.0678,
++      "2018": -1.853,
++      "2019": 1.935,
++      "2020": -4.2288,
++      "2021": -0.8415,
++      "2022": -5.0392,
++      "2023": -3.6645,
++      "2024": -0.9585
++    },
++    "birincil_gelir_odeme_usd": {
++      "2015": 12701000000,
++      "2016": 12983000000,
++      "2017": 14544000000,
++      "2018": 15909000000,
++      "2019": 16597000000,
++      "2020": 12754000000,
++      "2021": 16050000000,
++      "2022": 14804000000,
++      "2023": 19787000000,
++      "2024": 28017000000
++    },
++    "birincil_gelir_tahsilat_usd": {
++      "2015": 3018000000,
++      "2016": 3803000000,
++      "2017": 3814000000,
++      "2018": 4835000000,
++      "2019": 4754000000,
++      "2020": 4108000000,
++      "2021": 4513000000,
++      "2022": 5602000000,
++      "2023": 8014000000,
++      "2024": 9536000000
++    }
++  },
++  "UMC": {
++    "gsyh_kisibasi_buyume": {
++      "2015": 3.6332,
++      "2016": 3.7438,
++      "2017": 4.5229,
++      "2018": 4.1345,
++      "2019": 3.5185,
++      "2020": -1.0747,
++      "2021": 7.1129,
++      "2022": 3.2335,
++      "2023": 4.3135,
++      "2024": 3.8774
++    }
++  },
++  "umc_not": "UMC = Dünya Bankası üst-orta gelir grubu toplamı (TR'nin karşılaştırma grubu)"
++}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/senaryolar.json fixed/data/etki_cephesi/senaryolar.json
 --- pristine/data/etki_cephesi/senaryolar.json	2026-10-14 06:05:45.818537428 +0000
 +++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 08:24:11.535150189 +0000
@@ -4053,7 +4163,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/refah_dis_entegrasyon.py fixed/etki_cephesi/refah_dis_entegrasyon.py
 --- pristine/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 06:05:45.827256705 +0000
-+++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 14:50:45.535140233 +0000
++++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 15:33:04.848250161 +0000
 @@ -2,6 +2,7 @@
  from __future__ import annotations
  
@@ -4118,7 +4228,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          havza_k = round(max(0.0, -v["havza_net"]), 3)
          net = round(dis_k - havza_k + max(0.0, v["havza_net"]), 3)
          if iso == "TR":
-@@ -173,12 +181,40 @@
+@@ -173,12 +181,46 @@
              net = round(dis_k - havza_k, 3)
          if abs(net) < 0.02 and ref < 0.02 and iso not in ("TR", "CN", "RU", "US", "MFIN"):
              continue
@@ -4129,8 +4239,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        kural = abs(v["kanal_alt"] - v["kanal_kazanc"]) if kapsam == "tam" else 0.0
 +        # Kaybı modelde olmayan aktör: referans orandan kayıp VEKİLİ (medyan oran × kazanç) ve onun belirsizliği (yarı aralık × kazanç)
 +        ref_o = ab_row.get("kayip_referans_orani")
-+        kayip_ref = round(ref_o["medyan"] * dis_k, 3) if ref_o and iso != "TR" else 0.0
-+        kayip_bel = round((ref_o["maks"] - ref_o["min"]) / 2 * dis_k, 3) if ref_o and iso != "TR" else 0.0
++        if ab_row.get("kayip_yontemi") == "dis_veri_cekim" and iso != "TR":
++            # Dış ticaret verisinden kayıp MUTLAK büyüklüktür (çekim × φ); kazancın defterde kalan payıyla (ör. AB'nin Balkan'a bölünen payı
++            # düşülmüş kazancı) ölçeklenmez. Oran × defter kazancı kullanmak AB'nin kaybını 3,5 kat eksik gösterirdi.
++            kayip_ref = round(float(ab_row["havza_kayip_referans"]), 3)
++            kayip_bel = round(float(ab_row["kayip_referans_belirsizlik"]), 3)
++        else:
++            kayip_ref = round(ref_o["medyan"] * dis_k, 3) if ref_o and iso != "TR" else 0.0
++            kayip_bel = round((ref_o["maks"] - ref_o["min"]) / 2 * dis_k, 3) if ref_o and iso != "TR" else 0.0
 +        # Kaybın devamlılığı için dış aktörün katlandığı maliyet (surdurme_maliyeti.json): oran × kazanç; belirsizliği kappa bandının yarı aralığı
 +        sm_oran = ab_row.get("surdurme_maliyet_orani")
 +        if sm_oran and iso != "TR":
@@ -4162,7 +4278,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 15:05:59.381675178 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 15:35:30.689687348 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -4199,7 +4315,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,37 @@
+@@ -31,11 +47,38 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -4212,6 +4328,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "kazanc_kayip_muhasebe.py",
 +        "bant_sinama.py",
 +        "goreceli_konum.py",
++        "tr_olcek_sinama.py",
          ]
      )
 -    for s in steps:
@@ -5020,6 +5137,185 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      lines.append("")
      return "\n".join(lines)
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/tr_olcek_sinama.py fixed/etki_cephesi/tr_olcek_sinama.py
+--- pristine/etki_cephesi/tr_olcek_sinama.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/tr_olcek_sinama.py	2026-10-14 15:35:30.689265287 +0000
+@@ -0,0 +1,175 @@
++"""TR kaybının ölçeğini bağımsız gözlemle sına ve ölçek belirsizliğinin dış aktör sınıflarına yayılımını ölç.
++
++Neden: Çin/Rusya/AB/BAE... kayıpları (ticaret çekimi) TR'nin gelir kaybına (L_TR) doğrusal bağlı; L_TR'nin USD ölçeği modelde üç farklı köprüyle
++(BoP 2.589, rant 5.383, mal ticareti 4.785 mn $/vekil) 2 katı aşan farkla çevriliyor ve bağımsız bir gözlemle hiç karşılaştırılmamıştı.
++Bağımsız gözlem (Dünya Bankası WDI, `gozlem/tr_bagimsiz_olcek.json`): brüt/net birincil gelir ödemesi, cari açık (kaynak aktarımı), kişi başı büyümenin
++üst-orta gelir grubuna göre farkı. Bunlar GÖZLENEBİLİR sınırlardır; karşı-olgusal (refah rejimi) kaybın gözlenemeyen kısmını sınamazlar.
++Yayılım: L_TR × s için (s ızgarası) φ yeniden kalibre edilir ve dış-veri aktörlerinin sınıfı yeniden hesaplanır. Tanı raporu: başka modüle girdi olmaz.
++"""
++from __future__ import annotations
++
++import json
++import math
++import statistics as st
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++OLCEK_IZGARA = (1.0, 0.7, 0.5, 0.35, 0.25, 0.1)
++KOPRULER = ("bop_merkez_rant", "mal_net_ticaret", "tum_havza_rant")
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def gozlem() -> dict[str, Any]:
++    d = _load(DATA / "gozlem" / "tr_bagimsiz_olcek.json")
++    y = d["yillar"]
++    T, U = d["TUR"], d["UMC"]
++    gsyh = {k: T["gsyh_usd"][k] / 1e6 for k in y}  # mn $
++    odeme = {k: T["birincil_gelir_odeme_usd"][k] / 1e6 for k in y}
++    tahsil = {k: T["birincil_gelir_tahsilat_usd"][k] / 1e6 for k in y}
++    brut = [odeme[k] / gsyh[k] * 100 for k in y]
++    net = [(odeme[k] - tahsil[k]) / gsyh[k] * 100 for k in y]
++    cari = [-T["cari_denge_gsyh"][k] for k in y]
++    fark = [T["gsyh_kisibasi_buyume"][k] - U["gsyh_kisibasi_buyume"][k] for k in y]
++    son = y[-1]
++    return {
++        "yillar": [y[0], son],
++        "gsyh_son_mn_usd": round(gsyh[son], 1),
++        "brut_birincil_gelir_odemesi_gsyh_yuzde": {"ort": round(st.mean(brut), 2), "maks": round(max(brut), 2), "son": round(brut[-1], 2)},
++        "net_birincil_gelir_odemesi_gsyh_yuzde": {"ort": round(st.mean(net), 2), "maks": round(max(net), 2), "son": round(net[-1], 2)},
++        "cari_acik_gsyh_yuzde": {"ort": round(st.mean(cari), 2), "maks": round(max(cari), 2), "son": round(cari[-1], 2)},
++        "kisi_basi_buyume_farki_tr_eksi_umc_pp": {"ort": round(st.mean(fark), 2), "min": round(min(fark), 2), "maks": round(max(fark), 2)},
++    }
++
++
++def model_kayip(gs: float) -> dict[str, Any]:
++    proj = {s["id"]: s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"]}
++    kop = _load(DATA / "kalibre" / "gerceklik_realizasyon.json")["usd_kopruleri"]
++    out = {}
++    for sid in ("A", "B", "C"):
++        tr = next(a for a in proj[sid]["aktör_birlesik"] if a["aktor"] == "TR")
++        L = float(tr["havza_kayip"])
++        row = {"vekil": L}
++        for k in KOPRULER:
++            usd = L * float(kop[k]["usd_per_vekil_mn"])
++            row[k] = {"usd_mn": round(usd), "gsyh_yuzde": round(usd / gs * 100, 2)}
++        out[sid] = row
++    return out
++
++
++def olcek_araliklari(model: dict[str, Any], gz: dict[str, Any]) -> dict[str, Any]:
++    """Her gözlemlenebilir sınır için, model TR kaybı o sınıra eşit olsun diye gereken ölçek s = sınır / model (köprüler arası min–maks)."""
++    sinirlar = {
++        "brut_birincil_gelir_odemesi_ort": gz["brut_birincil_gelir_odemesi_gsyh_yuzde"]["ort"],
++        "net_birincil_gelir_odemesi_ort": gz["net_birincil_gelir_odemesi_gsyh_yuzde"]["ort"],
++        "cari_acik_ort": gz["cari_acik_gsyh_yuzde"]["ort"],
++    }
++    out: dict[str, Any] = {}
++    for sid, row in model.items():
++        out[sid] = {}
++        for ad, sinir in sinirlar.items():
++            degerler = [sinir / row[k]["gsyh_yuzde"] for k in KOPRULER]
++            out[sid][ad] = {"s_min": round(min(degerler), 3), "s_maks": round(max(degerler), 3)}
++    return out
++
++
++def _sinif(net: float, bant: float) -> str:
++    return "kazanan" if net - bant > 0 else ("kaybeden" if net + bant < 0 else "bant_ici")
++
++
++def yayilim() -> dict[str, Any]:
++    dv = _load(DATA / "gozlem" / "dis_ticaret_gsyh_2023.json")
++    G, X = dv["gsyh_mn_usd"], dv["ihracat_mn_usd"]
++    esik = dv["hub_kurali"]["esik_ihracat_gsyh"]
++
++    def cekim(i: str, L: dict[str, float]) -> float:
++        return sum(x / G[j] * L.get(j, 0.0) for j, x in X[i].items() if j != i and G.get(j) and not (esik and x / G[j] > esik))
++
++    out: dict[str, Any] = {}
++    for sid in ("A", "B", "C"):
++        proj = {s["id"]: s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"]}[sid]
++        ab = {a["aktor"]: a for a in proj["aktör_birlesik"]}
++        led = {r["ulke"]: r for r in _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
++        L0 = {k: float(a["havza_kayip"]) for k, a in ab.items() if a.get("kayip_kapsam") == "modellendi"}
++        satirlar = []
++        for s in OLCEK_IZGARA:
++            L = dict(L0)
++            L["TR"] = L0["TR"] * s
++            phi = sorted(L[i] / g for i in dv["kalibrasyon_aktorleri"] if i in L and L[i] > 0 and (g := cekim(i, L)) > 0)
++            akt = {}
++            for i in dv["dis_veri_aktorleri"]:
++                r = led[i]
++                g = cekim(i, L)
++                kay, kb = g * phi[len(phi) // 2], g * (phi[-1] - phi[0]) / 2
++                net = float(r["dis_toplam_vekili"]) - kay - float(r["surdurme_maliyeti"])
++                bant = math.sqrt(float(r["net_bandi_kayip_haric"]) ** 2 + kb**2 + float(r["maliyet_belirsizligi"]) ** 2)
++                akt[i] = {"net": round(net, 3), "bant": round(bant, 3), "sinif": _sinif(net, bant)}
++            # sistem toplamı: dış-veri aktörleri ve TR yeniden hesaplanır, diğerleri (MFIN, Balkan, bölge) defterden aynen
++            def _net(r: dict[str, Any]) -> float:
++                return float(r.get("net_maliyetli", r.get("net_refah_entegre")) or 0.0)
++
++            diger = sum(_net(r) for k, r in led.items() if k != "TR" and k not in akt)
++            tr_net = _net(led["TR"]) + (1.0 - s) * L0["TR"]
++            sistem = diger + tr_net + sum(a["net"] for a in akt.values())
++            satirlar.append({"s": s, "phi": [round(p, 3) for p in phi], "aktorler": akt, "tr_net": round(tr_net, 3), "sistem_net_toplam": round(sistem, 3)})
++        # TR hariç sistem etkisi: s=1'de ledger ile birebir olmalı (iç tutarlılık)
++        out[sid] = satirlar
++    return out
++
++
++def calistir() -> dict[str, Any]:
++    gz = gozlem()
++    model = model_kayip(gz["gsyh_son_mn_usd"])
++    ar = olcek_araliklari(model, gz)
++    yy = yayilim()
++    # sınıf kararlılığı: s ızgarasının tamamında aynı sınıfı koruyan aktörler
++    kararli: dict[str, dict[str, bool]] = {}
++    for sid, satirlar in yy.items():
++        kararli[sid] = {i: len({r["aktorler"][i]["sinif"] for r in satirlar}) == 1 for i in satirlar[0]["aktorler"]}
++    d = {
++        "olcum": "tr_kayip_olcek_sinamasi",
++        "etiket": "tani_girdi_degil",
++        "gozlem": gz,
++        "model_tr_kaybi": model,
++        "gereken_olcek": ar,
++        "yayilim": yy,
++        "sinif_kararli_tum_olceklerde": kararli,
++        "olcek_izgara": list(OLCEK_IZGARA),
++        "not": "Gözlemlenebilir sınırlar karşı-olgusal kaybın gözlenemeyen kısmını sınamaz; yalnız ölçeğin üst sınırını verir.",
++    }
++    (OUT / "TR_OLCEK_SINAMA.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    L = ["# TR kaybının ölçek sınaması (bağımsız gözlem)", "", d["not"], "",
++         "## 1. Bağımsız gözlem (WDI, %d–%s)" % (int(gz["yillar"][0]), gz["yillar"][1]), "",
++         "| Gösterge | Ort | Maks | Son |", "| --- | ---: | ---: | ---: |"]
++    for k, ad in (("brut_birincil_gelir_odemesi_gsyh_yuzde", "Brüt birincil gelir ödemesi (% GSYH)"), ("net_birincil_gelir_odemesi_gsyh_yuzde", "Net birincil gelir ödemesi (% GSYH)"), ("cari_acik_gsyh_yuzde", "Cari açık (% GSYH)")):
++        L.append(f"| {ad} | {gz[k]['ort']} | {gz[k]['maks']} | {gz[k]['son']} |")
++    f = gz["kisi_basi_buyume_farki_tr_eksi_umc_pp"]
++    L += [f"| Kişi başı büyüme, TR − üst-orta gelir grubu (pp/yıl) | {f['ort']} | {f['maks']} | min {f['min']} |", "",
++          "## 2. Model TR kaybı (yıllık, % GSYH) ve üç USD köprüsü", "",
++          "| Senaryo | Vekil | BoP köprüsü | Mal ticareti köprüsü | Rant köprüsü |", "| --- | ---: | ---: | ---: | ---: |"]
++    for sid, r in model.items():
++        L.append(f"| {sid} | {r['vekil']} | {r['bop_merkez_rant']['usd_mn']:,} mn $ (%{r['bop_merkez_rant']['gsyh_yuzde']}) | {r['mal_net_ticaret']['usd_mn']:,} (%{r['mal_net_ticaret']['gsyh_yuzde']}) | {r['tum_havza_rant']['usd_mn']:,} (%{r['tum_havza_rant']['gsyh_yuzde']}) |")
++    L += ["", "## 3. Gözlemlenebilir sınıra inmek için gereken ölçek s (model TR kaybı × s = sınır; üç köprü arası aralık)", "",
++          "| Senaryo | Brüt birincil gelir ödemesi | Net birincil gelir ödemesi | Cari açık |", "| --- | --- | --- | --- |"]
++    for sid, r in ar.items():
++        L.append(f"| {sid} | {r['brut_birincil_gelir_odemesi_ort']['s_min']} – {r['brut_birincil_gelir_odemesi_ort']['s_maks']} | {r['net_birincil_gelir_odemesi_ort']['s_min']} – {r['net_birincil_gelir_odemesi_ort']['s_maks']} | {r['cari_acik_ort']['s_min']} – {r['cari_acik_ort']['s_maks']} |")
++    L += ["", "## 4. TR kaybı ölçeği s ile dış aktör sınıfları (φ her s'de yeniden kalibre)", ""]
++    for sid, satirlar in yy.items():
++        aktler = list(satirlar[0]["aktorler"])
++        L += [f"### Senaryo {sid}", "", "| s | φ (min/med/maks) | TR net | Σ sistem | " + " | ".join(aktler) + " |", "| ---: | --- | ---: | ---: | " + " | ".join("---" for _ in aktler) + " |"]
++        for r in satirlar:
++            L.append(f"| {r['s']} | {r['phi'][0]}/{r['phi'][len(r['phi'])//2]}/{r['phi'][-1]} | {r['tr_net']:+.2f} | {r['sistem_net_toplam']:+.2f} | " + " | ".join(f"{r['aktorler'][i]['net']:+.2f} ({r['aktorler'][i]['sinif']})" for i in aktler) + " |")
++        L.append("- Tüm ölçeklerde sınıfı değişmeyenler: " + ", ".join(i for i, v in kararli[sid].items() if v))
++        L.append("")
++    (OUT / "TR_OLCEK_SINAMA.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    return d
++
++
++if __name__ == "__main__":
++    calistir()
++    print("TR_OLCEK_SINAMA ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/ulke_kanal_dokum_10y.py fixed/etki_cephesi/ulke_kanal_dokum_10y.py
 --- pristine/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 06:05:45.830273100 +0000
 +++ fixed/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 07:40:14.114667866 +0000
@@ -5179,8 +5475,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:28:05.101056327 +0000
-@@ -0,0 +1,683 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:35:30.690448199 +0000
+@@ -0,0 +1,719 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -5725,15 +6021,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            v = by[iso]["varyant_siniflari"]
 +            assert next(x for k, x in v.items() if "en yüksek" in k) not in kaz or iso == "SA"  # en yüksek kayıp oranı kazananlığı yıkar (SA: ticaret kaybı çok küçük)
 +    c = {a["ulke"]: a for a in next(s for s in d["senaryolar"] if s["id"] == "C")["aktorler"]}
-+    # dış ticaret verisiyle kayıp modellenince C'de yalnız Suudi Arabistan bant dışı kazanan; AB, BAE, Fransa bant dışı kaybeden
-+    assert c["SA"]["taban_sinif"] in kaz
++    # dış ticaret verisiyle (mutlak kayıp) C'de Suudi Arabistan ve ABD bant dışı kazanan; AB, BAE, Fransa bant dışı kaybeden
++    for iso in ("SA", "US"):
++        assert c[iso]["taban_sinif"] in kaz, iso
 +    for iso in ("AE", "EU", "FR"):
 +        assert c[iso]["taban_sinif"] == "entegre_kaybeden", iso
-+    for iso in ("CN", "RU", "US", "GR"):
++    for iso in ("CN", "RU", "GR"):
 +        assert c[iso]["taban_sinif"] == "belirsiz_bant_ici", iso
 +    b = {a["ulke"]: a for a in next(s for s in d["senaryolar"] if s["id"] == "B")["aktorler"]}
-+    for iso in ("CN", "RU", "US", "AE", "SA", "EU", "FR", "GR"):
-+        assert b[iso]["taban_sinif"] == "belirsiz_bant_ici", iso  # B'de kaybı bilinmeyenlerin hiçbiri bant dışı kazanan değil
++    for iso in ("CN", "RU", "US", "AE", "FR", "GR"):
++        assert b[iso]["taban_sinif"] == "belirsiz_bant_ici", iso  # B'de bantlar çok geniş
++    assert b["SA"]["taban_sinif"] in kaz and b["EU"]["taban_sinif"] == "entegre_kaybeden"
 +
 +
 +def test_dis_aktor_surdurme_maliyeti():
@@ -5864,4 +6162,38 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        for a in sen["aktör_birlesik"]:
 +            if "kayip_dis_veri" in a:
 +                assert a["kayip_dis_veri"]["cekim_tahmini"] <= a["kayip_dis_veri"]["cekim_hub_kuralsiz"] + 1e-9
++
++
++def test_defter_dis_veri_kaybi_projeksiyonla_ayni_mutlak_deger():
++    """Defter, dış-veri kaybını 'oran × defter kazancı' ile yeniden ölçeklememeli (AB'nin Balkan'a bölünen payı düşük defter kazancı kaybı 3,5 kat eksik gösterirdi)."""
++    for sen in _j(OUT / "PROJEKSIYON.json")["senaryolar"]:
++        led = {r["ulke"]: r for r in _j(OUT / f"DIS_ULKE_REFAH_{sen['id']}.json")["ulke_defteri"]}
++        for a in sen["aktör_birlesik"]:
++            if a.get("kayip_yontemi") == "dis_veri_cekim":
++                assert abs(led[a["aktor"]]["havza_kayip_referans"] - a["havza_kayip_referans"]) < 2e-3, a["aktor"]
++                assert abs(led[a["aktor"]]["kayip_belirsizligi"] - a["kayip_referans_belirsizlik"]) < 2e-3, a["aktor"]
++
++
++def test_tr_olcek_sinamasi_ledger_ile_tutarli_ve_gozlem_sinirlari():
++    d = _j(OUT / "TR_OLCEK_SINAMA.json")
++    g = _j(OUT / "GORECELI_KONUM.json")["sistem_tani"]
++    obs = d["gozlem"]
++    # gözlem: WDI serilerinden bağımsız yeniden hesap
++    w = _j(DATA / "gozlem" / "tr_bagimsiz_olcek.json")
++    yy = w["yillar"]
++    brut = [w["TUR"]["birincil_gelir_odeme_usd"][y] / w["TUR"]["gsyh_usd"][y] * 100 for y in yy]
++    assert abs(obs["brut_birincil_gelir_odemesi_gsyh_yuzde"]["ort"] - sum(brut) / len(brut)) < 6e-3
++    for sid in "ABC":
++        satirlar = {r["s"]: r for r in d["yayilim"][sid]}
++        led = {r["ulke"]: r for r in _j(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
++        # s=1: ledger ile birebir (dış-veri aktörleri ve sistem toplamı)
++        for i, a in satirlar[1.0]["aktorler"].items():
++            assert abs(a["net"] - led[i]["net_maliyetli"]) < 2e-3, (sid, i)
++        assert abs(satirlar[1.0]["sistem_net_toplam"] - g["sistem_net_toplam"][sid]) < 5e-3
++        # s küçüldükçe TR net'i iyileşir, φ aralığı genişler
++        assert satirlar[0.1]["tr_net"] > satirlar[1.0]["tr_net"]
++        assert satirlar[0.1]["phi"][1] > satirlar[1.0]["phi"][1]
++        # model TR kaybı gözlemlenebilir üst sınırların (brüt birincil gelir ödemesi, cari açık ortalaması) en düşük köprüde bile üstünde
++        assert d["model_tr_kaybi"][sid]["bop_merkez_rant"]["gsyh_yuzde"] > obs["brut_birincil_gelir_odemesi_gsyh_yuzde"]["ort"]
++        assert d["gereken_olcek"][sid]["brut_birincil_gelir_odemesi_ort"]["s_maks"] < 1.0
 ```
