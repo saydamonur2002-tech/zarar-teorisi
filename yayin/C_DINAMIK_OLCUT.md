@@ -26,7 +26,7 @@ Monte Carlo (4000 koşu, 10 yıl, gerçek senaryo → P(C) son):
 | B | 0.137 | 0.009–0.352 | 0.0 | 0.929 |
 | C | 0.526 | 0.213–0.806 | 0.108 | 0.299 |
 
-- Karar eşiği P(C) ≈ 0.517; posterior − eşik = -0.184.
+- Karar eşiği P(C) ≈ None; posterior − eşik = None.
 
 ## Model uyarıları (gözlemden)
 

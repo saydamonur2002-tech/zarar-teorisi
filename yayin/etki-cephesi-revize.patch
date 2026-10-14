@@ -3496,7 +3496,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_uygulanabilirlik.py fixed/etki_cephesi/senaryo_uygulanabilirlik.py
 --- pristine/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:05:45.827930514 +0000
-+++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 07:40:14.116179422 +0000
++++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 14:55:58.986328946 +0000
 @@ -3,6 +3,7 @@
  
  import json
@@ -3545,7 +3545,19 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      g = ger.get("gerceklesme_oranlari") or {}
      g_mean = sum(float(v) for v in g.values()) / max(len(g), 1)
  
-@@ -121,9 +144,11 @@
+@@ -71,7 +94,10 @@
+     gsyh_bek = float((bek or {}).get("beklenti", {}).get("beklenen_gsyh_yuzde_orta_10y") or gsyh_son)
+     bek_bil, bek_partial = _skor_bilesen(tr_bek, tr_bas, gsyh_bek, gsyh_bas, g_mean, bop_skor, kapanis)
+ 
+-    direnc = bolge.get("rant_kanali_bosluk_taraftari") or []
++    # Direnç sınıf etiketinden BAĞIMSIZ: boşluk→refah geçişinde rant kanalı kaybı (fark) > 1000 mn $ olan her dış aktör (TR hariç).
++    # Eski hesap yalnız "rant_kanali_bosluk_taraftari" etiketlilere bakıyordu; etiket net/banda bağlı olduğundan
++    # net kazanan çıkan ABD/AB/İran/BAE direnç sayılmıyor, bant içine düşen CN/RU sayılıyordu (etiket artefaktı).
++    direnc = [a for a in (bolge.get("aktorler") or []) if a.get("ulke") != "TR"]
+     direnc_agir = len([a for a in direnc if (a.get("rant_kanal_bosluk_fark_usd_mn") or 0) > 1000])
+     direnc_skor = max(0.0, 1.0 - direnc_agir / 8.0)
+ 
+@@ -121,9 +147,11 @@
      if zcok:
          olas_norm: dict[str, float] = {}
          for s in sen_doc.get("senaryolar") or []:
@@ -3558,7 +3570,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          by_z = {x["id"]: x for x in zcok.get("senaryolar") or []}
          for sid in ("A", "B", "C"):
              row = by_z.get(sid)
-@@ -145,15 +170,28 @@
+@@ -145,15 +173,28 @@
              )
              skor_senaryo[sid] = skor_s
  
@@ -3590,7 +3602,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      engeller = []
      if g_mean < 0.35:
-@@ -164,6 +202,10 @@
+@@ -164,6 +205,10 @@
          engeller.append("Uluslararası stok net toplamı kapanmıyor — vekil ölçeği abartılı olabilir.")
      if tr_10 > -8:
          engeller.append("TR net hâlâ derin negatif; hedef ‘sıfıra yakın’ değil.")
@@ -3601,7 +3613,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      kolaylastirici = []
      if halka:
-@@ -180,6 +222,8 @@
+@@ -180,6 +225,8 @@
          "skor_senaryo_ab_c": skor_senaryo or None,
          "karar": karar,
          "ozet": ozet,
@@ -4074,8 +4086,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:52:29.987394125 +0000
-@@ -0,0 +1,592 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:56:42.201623824 +0000
+@@ -0,0 +1,602 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -4311,7 +4323,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    esik = ds["gecisler"]["karar_kosullu_skor_62"]
 +    for r in ds["kapi_sonuclari"]:
 +        assert r["esigi_gecer"] == (r["skor_0_100"] >= 62.0)
-+        assert r["esigi_gecer"] == (r["P"]["C"] >= esik - 5e-3)  # enterpolasyon yuvarlaması payı
++        # eşik bantta hiç geçilmiyorsa (None) hiçbir kapı sonucu da geçmemeli
++        assert r["esigi_gecer"] == (esik is not None and r["P"]["C"] >= esik - 5e-3)  # enterpolasyon yuvarlaması payı
 +    assert d["en_iyi_tek_kapi_P_C"] == max(pc)
 +    # λ=1 → kapı bilgi taşımaz (tüm senaryolara taban oran)
 +    z = next(x for x in d["k2_duyarlilik"] if x["lambda"] == 1.0)
@@ -4668,3 +4681,12 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    # defter: MFIN kapanışı etkilenmedi
 +    assert _j(OUT / "MFIN_TUTARLILIK.json")["uyum_ok"] is True
 +    assert all(_j(OUT / f"ULUSLARARASI_STOK_AKIS_{x}.json")["kalibrasyon"]["kapanis_ok"] for x in "ABC")
++
++
++def test_direnc_sinif_etiketinden_bagimsiz():
++    """Direnç = rant-kanal farkı > 1000 mn $ olan tüm dış aktörler; net kazanan etiketli ABD/AB de sayılır."""
++    b = _j(OUT / "BOLGE_STOK_AKIS.json")
++    u = _j(OUT / "SENARYO_UYGULANABILIRLIK.json")
++    agir = [a["ulke"] for a in b["aktorler"] if a["ulke"] != "TR" and (a.get("rant_kanal_bosluk_fark_usd_mn") or 0) > 1000]
++    assert {"CN", "RU", "US", "EU"} <= set(agir)
++    assert u["bilesenler"]["direnc_dusuk"] == round(max(0.0, 1.0 - len(agir) / 8.0), 3)
