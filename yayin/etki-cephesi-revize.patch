@@ -1500,6 +1500,179 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      s_olas = sum(olas.values()) or 1.0
      olas = {k: v / s_olas for k, v in olas.items()}
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/gecmis_projeksiyon.py fixed/etki_cephesi/gecmis_projeksiyon.py
+--- pristine/etki_cephesi/gecmis_projeksiyon.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/gecmis_projeksiyon.py	2026-10-14 08:13:43.066009130 +0000
+@@ -0,0 +1,169 @@
++"""Salt geçmiş projeksiyonu: yalnız gözlenmiş seriden ileri uzatma.
++
++Girdi YALNIZ `data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv` (EVDS ödemeler dengesi, aylık, mn USD).
++Hiçbir senaryo parametresi, olasılık, katman çarpanı, λ/κ, faz takvimi, kalibrasyon ağırlığı KULLANILMAZ.
++Projeksiyon = geçmişin devamı; belirsizlik = geçmiş artıklarının yayılımı. Pipeline raporu okumaz (döngü yok).
++
++Yöntemler (hepsi yalnız geçmiş):
++  duz    : son 12 ay sabit.
++  trend5 : son 5 tam yılda log-doğrusal OLS.
++  trendT : tüm tam yıllarda log-doğrusal OLS.
++Geriye test: 2022 başlangıç, 2023–2025 yıllarını tahmin; hata raporlanır. Yöntem SEÇİLMEZ; üçü yan yana verilir.
++Seriler: (1) merkez sızıntı oranı r = yatırım geliri gideri / mal ihracatı, (2) net yatırım geliri gideri (gider − gelir), mn USD.
++"""
++from __future__ import annotations
++
++import csv
++import json
++import math
++from pathlib import Path
++from typing import Any
++
++import numpy as np
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++GOZLEM = DATA / "gozlem" / "evds_odeme_dengesi_aylik.csv"
++HORIZON = range(2026, 2037)
++T975 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 6: 2.447, 7: 2.365, 8: 2.306, 9: 2.262, 10: 2.228, 11: 2.201, 12: 2.179}
++
++
++def _aylik() -> dict[str, dict[str, float]]:
++    d: dict[str, dict[str, float]] = {}
++    with GOZLEM.open(encoding="utf-8", newline="") as f:
++        for r in csv.DictReader(f):
++            try:
++                d[r["Donem"]] = {"X": float(r["X_mal_ihracati"]), "YG": float(r["YG_yatirim_geliri_gideri"]), "YGg": float(r["YG_yatirim_geliri_geliri"])}
++            except ValueError:
++                continue
++    return d
++
++
++def _yillik(d: dict[str, dict[str, float]]) -> dict[int, dict[str, float]]:
++    out: dict[int, dict[str, float]] = {}
++    for y in sorted({int(t[:4]) for t in d}):
++        ay = [f"{y}-{m:02d}" for m in range(1, 13)]
++        if all(a in d for a in ay):  # yalnız tam yıl
++            x = sum(d[a]["X"] for a in ay)
++            yg = sum(d[a]["YG"] for a in ay)
++            ygg = sum(d[a]["YGg"] for a in ay)
++            out[y] = {"X": x, "YG": yg, "net": yg - ygg, "r": yg / x}
++    return out
++
++
++def _son12(d: dict[str, dict[str, float]]) -> dict[str, Any]:
++    ps = sorted(d)
++    w = ps[-12:]
++    x = sum(d[t]["X"] for t in w)
++    yg = sum(d[t]["YG"] for t in w)
++    ygg = sum(d[t]["YGg"] for t in w)
++    return {"pencere": f"{w[0]}..{w[-1]}", "r": yg / x, "net": yg - ygg}
++
++
++def _ols(yil: list[int], val: list[float], hedef: list[int]) -> dict[int, tuple[float, float, float]]:
++    """log-doğrusal OLS; (nokta, alt95, üst95)."""
++    t = np.array(yil, dtype=float)
++    y = np.log(np.array(val))
++    n = len(t)
++    b, a = np.polyfit(t, y, 1)
++    res = y - (a + b * t)
++    s = math.sqrt(float(res @ res) / (n - 2)) if n > 2 else float("nan")
++    tm = float(t.mean())
++    sxx = float(((t - tm) ** 2).sum())
++    q = T975.get(n - 2, 1.96)
++    out = {}
++    for h in hedef:
++        mu = a + b * h
++        se = s * math.sqrt(1 + 1 / n + (h - tm) ** 2 / sxx)
++        out[h] = (math.exp(mu), math.exp(mu - q * se), math.exp(mu + q * se))
++    return out
++
++
++def _yontemler(yy: dict[int, dict[str, float]], son: dict[str, Any], alan: str, hedef: list[int], bitis: int) -> dict[str, dict[int, tuple[float, float, float]]]:
++    yl = [y for y in sorted(yy) if y <= bitis]
++    y5 = yl[-5:]
++    duz = {h: (son[alan], float("nan"), float("nan")) for h in hedef} if bitis == max(yy) else {h: (yy[bitis][alan], float("nan"), float("nan")) for h in hedef}
++    return {
++        "duz": duz,
++        "trend5": _ols(y5, [yy[y][alan] for y in y5], hedef),
++        "trendT": _ols(yl, [yy[y][alan] for y in yl], hedef),
++    }
++
++
++def hesapla() -> dict[str, Any]:
++    d = _aylik()
++    yy = _yillik(d)
++    son = _son12(d)
++    son_yil = max(yy)
++    hedef = [h for h in HORIZON]
++    seriler = {"r": "Merkez sızıntı oranı (yatırım geliri gideri / mal ihracatı)", "net": "Net yatırım geliri gideri (mn USD)"}
++    proj: dict[str, Any] = {}
++    gt: dict[str, Any] = {}
++    for alan, ad in seriler.items():
++        m = _yontemler(yy, son, alan, hedef, son_yil)
++        nd = 4 if alan == "r" else 0
++        proj[alan] = {
++            "ad": ad,
++            "yontemler": {
++                k: {str(h): {"nokta": round(v[0], nd), "alt95": None if math.isnan(v[1]) else round(v[1], nd), "ust95": None if math.isnan(v[2]) else round(v[2], nd)} for h, v in vv.items() if h in (2026, 2028, 2031, 2036)}
++                for k, vv in m.items()
++            },
++        }
++        # geriye test: başlangıç 2022 → 2023–2025
++        bt = _yontemler(yy, son, alan, [2023, 2024, 2025], 2022)
++        gt[alan] = {
++            k: {str(h): {"tahmin": round(v[0], 4), "gercek": round(yy[h][alan], 4), "hata_yuzde": round((v[0] / yy[h][alan] - 1) * 100, 1), "icinde_95": (None if math.isnan(v[1]) else bool(v[1] <= yy[h][alan] <= v[2]))} for h, v in vv.items()}
++            for k, vv in bt.items()
++        }
++    ort_hata = {alan: {k: round(float(np.mean([abs(x["hata_yuzde"]) for x in v.values()])), 1) for k, v in gt[alan].items()} for alan in gt}
++    return {
++        "olcum": "gecmis_projeksiyon",
++        "etiket": "yalniz_gecmis_ileri_uzatma",
++        "girdi": "gozlem/evds_odeme_dengesi_aylik.csv (EVDS, aylık, mn USD)",
++        "kullanilmayan": "senaryo parametreleri, olasılık, katman çarpanı, λ/κ, faz takvimi, kalibrasyon ağırlıkları, kapı iskeleti",
++        "tam_yillar": [min(yy), son_yil],
++        "yillik_gozlem": {str(y): {"r": round(v["r"], 4), "net_mn_usd": round(v["net"], 0)} for y, v in yy.items()},
++        "son12ay": {"pencere": son["pencere"], "r": round(son["r"], 4), "net_mn_usd": round(son["net"], 0)},
++        "projeksiyon": proj,
++        "geriye_test_2022_baslangic": gt,
++        "geriye_test_ort_mutlak_hata_yuzde": ort_hata,
++        "not": "Yöntem seçilmedi. Geriye test 3 gözlemlik: istatistiksel güç düşük; yalnız yönü gösterir.",
++    }
++
++
++def _md(d: dict[str, Any]) -> str:
++    L = ["# Salt geçmiş projeksiyonu", "", f"**Etiket:** `{d['etiket']}`. Girdi yalnız {d['girdi']}.", f"Kullanılmayan: {d['kullanilmayan']}.", ""]
++    L += ["## Gözlenen yıllar", "", "| Yıl | r (YG gideri / ihracat) | Net YG gideri (mn $) |", "| ---: | ---: | ---: |"]
++    for y, v in d["yillik_gozlem"].items():
++        L.append(f"| {y} | {v['r']} | {v['net_mn_usd']:,.0f} |")
++    s = d["son12ay"]
++    L += ["", f"Son 12 ay ({s['pencere']}): r = **{s['r']}**, net = **{s['net_mn_usd']:,.0f}** mn $.", ""]
++    for alan, p in d["projeksiyon"].items():
++        L += [f"## {p['ad']}", "", "| Yöntem | 2026 | 2028 | 2031 | 2036 |", "| --- | ---: | ---: | ---: | ---: |"]
++        for k, v in p["yontemler"].items():
++            cells = []
++            for h in ("2026", "2028", "2031", "2036"):
++                x = v[h]
++                f = (lambda z: f"{z:,.4f}") if alan == "r" else (lambda z: f"{z:,.0f}")
++                cells.append(f(x["nokta"]) + (f" [{f(x['alt95'])}; {f(x['ust95'])}]" if x["alt95"] is not None else ""))
++            L.append(f"| {k} | " + " | ".join(cells) + " |")
++        L.append("")
++    L += ["## Geriye test (2022'ye kadar fit, 2023–2025 tahmin)", "", "| Seri | Yöntem | Ort. mutlak hata % | 2023 | 2024 | 2025 |", "| --- | --- | ---: | ---: | ---: | ---: |"]
++    for alan, v in d["geriye_test_2022_baslangic"].items():
++        for k, rows in v.items():
++            L.append(f"| {alan} | {k} | {d['geriye_test_ort_mutlak_hata_yuzde'][alan][k]} | " + " | ".join(f"{rows[h]['hata_yuzde']:+.1f}%" for h in ("2023", "2024", "2025")) + " |")
++    L += ["", "## Ne denmez", "", "- Bu bir tahmin değil, geçmişin devamıdır. Rejim değişimi (2023'ten sonra r'nin ×1,6 artışı) geçmişten öngörülemez; geriye test bunu gösterir (üç yöntem de 2023–2025'te %36–50 ort. hata, hepsi eksik tahmin).", f"- {d['not']} Hangisinin 'doğru' olduğu veriyle ayırt edilemiyor.", ""]
++    return "\n".join(L)
++
++
++def main() -> None:
++    d = hesapla()
++    OUT.mkdir(parents=True, exist_ok=True)
++    (OUT / "GECMIS_PROJEKSIYON.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    (OUT / "GECMIS_PROJEKSIYON.md").write_text(_md(d), encoding="utf-8")
++    print("GECMIS_PROJEKSIYON:", d["geriye_test_ort_mutlak_hata_yuzde"])
++
++
++if __name__ == "__main__":
++    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/lm_rant_sektor.py fixed/etki_cephesi/lm_rant_sektor.py
 --- pristine/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:45.823723118 +0000
 +++ fixed/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:32.653932327 +0000
@@ -1842,7 +2015,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 07:49:13.541731803 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 08:13:43.066571587 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -1879,7 +2052,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,33 @@
+@@ -31,11 +47,34 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -1888,6 +2061,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "olasilik_kapilar.py",
 +        "uzun_vade_esik.py",
 +        "senaryo_rapor.py",
++        "gecmis_projeksiyon.py",
          ]
      )
 -    for s in steps:
@@ -2819,8 +2993,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 08:06:00.581644836 +0000
-@@ -0,0 +1,347 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 08:14:02.641088642 +0000
+@@ -0,0 +1,370 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -3168,3 +3342,26 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert k["finans_katman"] < k["uretim_ic_akis"]
 +    # C'nin son değeri bağlamadan etkilenmez (C'de g = 1, pol_C sabit)
 +    assert abs(_j(OUT / "GERCEKLIK_KALIBRE_C.json")["tr_net_kalibre_son"] - (-11.211)) < 5e-3
++
++
++def test_gecmis_projeksiyon_yalniz_gecmis_kullanir():
++    import ast
++
++    src = (REPO / "etki_cephesi" / "gecmis_projeksiyon.py").read_text(encoding="utf-8")
++    tree = ast.parse(src)
++    ice = {n.module for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)} | {a.name for n in ast.walk(tree) if isinstance(n, ast.Import) for a in n.names}
++    assert ice <= {"__future__", "csv", "json", "math", "pathlib", "typing", "numpy"}  # başka proje modülü yok
++    kod = "\n".join(l for l in src.splitlines() if not l.lstrip().startswith("#"))
++    govde = kod.split("def hesapla")[1].split("def _md")[0]
++    assert "senaryolar" not in govde and "_load(" not in govde and "json.loads" not in govde  # girdi yalnız gözlem CSV'si
++    d = _j(OUT / "GECMIS_PROJEKSIYON.json")
++    assert d["etiket"] == "yalniz_gecmis_ileri_uzatma" and d["tam_yillar"] == [2015, 2025]
++    assert set(d["projeksiyon"]) == {"r", "net"} and set(d["projeksiyon"]["r"]["yontemler"]) == {"duz", "trend5", "trendT"}
++    # düz yöntem son 12 ayı sabit tutar; PI trend yöntemlerinde var, düzde yok
++    p = d["projeksiyon"]["r"]["yontemler"]
++    assert p["duz"]["2036"]["nokta"] == d["son12ay"]["r"] and p["duz"]["2036"]["alt95"] is None
++    assert p["trend5"]["2036"]["alt95"] < p["trend5"]["2036"]["nokta"] < p["trend5"]["2036"]["ust95"]
++    # geriye test 2023–2025: üç yöntem de eksik tahmin etti (rejim değişimi geçmişten görülmez)
++    for alan in ("r", "net"):
++        for yon, rows in d["geriye_test_2022_baslangic"][alan].items():
++            assert all(rows[h]["hata_yuzde"] < 0 for h in ("2023", "2024", "2025")), (alan, yon)

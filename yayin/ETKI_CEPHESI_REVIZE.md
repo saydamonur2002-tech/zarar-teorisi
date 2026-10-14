@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `5a66f0878458f83e`, temiz kurulumda 3 geçiş),
-**53 test geçti** (27 mevcut + 26 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `1da628d789a28343`, temiz kurulumda 3 geçiş),
+**54 test geçti** (27 mevcut + 27 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -153,6 +153,14 @@ Okuma: C yolunun kendi sonucu iyileşir; olasılık ona dokunmaz. Değişen, C'y
 - B kalibre GSYH vekili (son değer) %11,67 (bağlamadan önce %10,66). Etki B'nin finans katmanında: 10. yılda A +0,6, C +0,25 iyileşirken B −2,2 kötüleşti.
 - **Karar eşiği P(C) 0,56 → 0,51** (yukarıdaki bölümler güncel); kapı 3/3 açıkta skor 62,1.
 - Hâlâ varsayım: faz takvimi, ayna simetri + güç=1, zarar tavansız gerçekleşme, katman çarpanları (atanmış). `FINANS_KATMAN` etiketi "varsayım çarpanlı ham"; uyarı metni "kalibre yola bağlı, ham değer kalibre değildir" diye güncellendi.
+
+## Salt geçmiş projeksiyonu (yeni rapor)
+`gecmis_projeksiyon.py` → `GECMIS_PROJEKSIYON.{json,md}`. **Girdi yalnız EVDS gözlem CSV'si.** Senaryo parametresi, olasılık, katman çarpanı, λ/κ, faz takvimi, kalibrasyon ağırlığı, kapı iskeleti **kullanılmaz**; pipeline raporu okunmaz (test, importları ve girdi okumalarını denetler).
+- Seriler: merkez sızıntı oranı r = yatırım geliri gideri / mal ihracatı ve net yatırım geliri gideri (mn $). Tam yıllar 2015–2025.
+- Üç yöntem, hiçbiri seçilmedi: `duz` (son 12 ay sabit: r = 0,1191; net = 23.445 mn $), `trend5` (son 5 yıl log-doğrusal), `trendT` (tüm yıllar log-doğrusal), 95% tahmin aralığıyla.
+- **Gözlem:** r 2015–2019'da 0,077 → 0,087, 2022'de 0,056'ya düştü, 2025'te **0,120**. Net: 9,3 → 21,8 mlr $.
+- **Geriye test (2022'ye kadar fit, 2023–2025 tahmin):** üç yöntem de eksik tahmin etti; ortalama mutlak hata r için %36–50, net için %36–46 (`trendT` en iyi, `trend5` en kötü). 2025'te hata %−51 … −65. Rejim değişimi (2023'ten sonra r ×1,6) geçmişten öngörülemedi. 3 gözlemlik test: güç düşük, yalnız yön.
+- **Ne diyor:** son 12 ay sabit tutulursa r 0,119'da kalır; `trendT` 2036'da 0,108 [0,046; 0,255]; `trend5` 2036'da 0,78 [0,08; 7,9] (anlamsız genişlikte: son 5 yıl rejim değişimini içeriyor). Geçmiş tek başına ne C'yi ne B'yi ne A'yı ayırt eder.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
