@@ -25,6 +25,7 @@
 | [HAVZA_KAZANAN_KISA_VADE.md](./HAVZA_KAZANAN_KISA_VADE.md) | Havzalar net kaybederken kayıp havuzunu kimin topladığı (ölü ağırlık, grup payları, net kazananlar) ve TR kayıp hızının 2027–2029 parasal akışı: cari açık ve rezervle sürdürülebilirlik |
 | [OLU_AGIRLIK_AYRISMA.md](./OLU_AGIRLIK_AYRISMA.md) | Ölü ağırlığın gerçek yıkım, ölçüm boşluğu ve belirsiz (dış bağlama) kovalarına ayrılması; gelir ödemesi kapasitesiyle daraltma denemesi; kazanç sayımına duyarlılık |
 | [IKAME_CIFT_SAYIM.md](./IKAME_CIFT_SAYIM.md) | Rakip ikame akışının hem havza girişine hem aktör kazancına yazılması (çift sayım) doğrulaması: V korunum aşımı, iki düzeltme varyantının etkisi (tanı, ana model değişmedi) |
+| [ZARAR_DURDURMA_SENARYOSU.md](./ZARAR_DURDURMA_SENARYOSU.md) | Zararı durdurma (d) + refah rantına bağlama politika senaryosu (D): C'den türeyen kaldıraç taraması, TR/dış aktör net'leri, durdurmaya karşı çıkanlar, kısa vade finansman |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 

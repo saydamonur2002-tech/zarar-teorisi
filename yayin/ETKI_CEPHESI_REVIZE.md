@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize yaması
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `6c673a7d64d30310`, temiz kurulumda 3 geçiş),
-**72 test geçti** (27 mevcut + 45 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `3e63909af7b0ca12`, temiz kurulumda 3 geçiş),
+**73 test geçti** (27 mevcut + 46 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 > **K1 notu:** Bu belgenin "Rakip ikame çift sayımı" bölümünden ÖNCE yazılan bölümlerdeki MFİN, Çin, Rusya, AB, ABD vb. sayıları, ölü ağırlık, sistem toplamı ve kısa vade grup payları K1 düzeltmesinden önceki değerlerdir. Güncel değerler "K1 uygulandı: güncel değerler" bölümündedir.
@@ -389,6 +389,24 @@ Aşım A ve B'de ig'nin tamamı: normalizasyon aktör kazancını V'ye indirmiş
 - **Havzalar net kaybederken kim kazanıyor (güncel):** brüt kazanç payı merkez %51 / %61 / %43, Çin+Rusya %21 / %16 / %24, bölge %29 / %23 / %33; net: merkez −7,9 / −15,8 / −5,1, Çin+Rusya −5,4 / −10,6 / −3,1, bölge −12,5 / −22,9 / −7,6. Bant dışı net kazananlar: A İran, İsrail, Makedonya, Arnavutluk, Bosna; B İran, İsrail, Makedonya, Arnavutluk; C İran, İsrail, Suudi Arabistan, Makedonya, Arnavutluk, Bosna.
 - **Sistem tanısı (güncel):** C'de en iyi olanlar TR, Çin, Rusya, ABD, AB, BAE, Fransa, Yunanistan, Mısır; B'de MFİN, İran, İsrail; A'da yalnız Suudi Arabistan. Ortak en iyi senaryo yok. TR kaybı ölçeği s'ye göre (TR_OLCEK_SINAMA): Çin, Rusya, ABD her s'de bant içi; Suudi Arabistan C'de her s'de kazanan; AB C'de s ≥ 0,25'te, BAE s ≥ 0,5'te kaybeden; Σ net C'de −33,0 → −13,9 (s = 0,1), yani negatif kalır.
 - **Eleştirel:** K1, çift sayımı korunum açısından giderdi ama kazanç tarafını daha dar tutar (merkez ve MFİN payı ham dağılımın tamamını almaz). Referans oran bağımlılığı yan etkisi için MFİN kayıp vekili ayrıca gözden geçirilmeli (paydayı K1 öncesi kazançla sabitlemek bir alternatif).
+
+## Zararı durdurma + refah rantına bağlama senaryosu (D) (`ZARAR_DURDURMA_SENARYOSU`, tanı raporu)
+**Kurulum:** D, C'nin kopyasıdır ve A/B/C ile AYNI kod yolundan geçer (`projeksiyon.hesapla_senaryo`, run() bu fonksiyona taşındı; A/B/C çıktıları birebir aynı, digest değişmedi). Boşalma etki erozyonu ile doğrusaldır (boşalma ∝ erozyon × (1+flex)), bu yüzden **durdurma oranı d**: erozyon = erozyon_C × (1 − d). **Refah bağlama** iki kaldıraç: bağ modu kullanıma çevrilir (kullanım 0,80) ve TR'nin refah rantındaki iç payı ×1,5. φ (ticaret dışı kanal çarpanı) yapısal sayıldığından C'nin değerinde sabit tutuldu (yeniden kalibre etmek TR kaybı küçülürken φ'yi şişirip Çin/Rusya/AB kaybını yapay yüksek tutuyordu). Parametreler ATANMIŞTIR (`data/etki_cephesi/zarar_durdurma.json`): tahmin değil, politika kaldıracı taramasıdır. d = 0 + mevcut bağ = C'ye eşit (testle kilitli).
+
+| d | TR net (mevcut / bağlı) | Σ net (mevcut / bağlı) | Havza net Σ (mevcut / bağlı) | Akış / cari açık (BoP / mal / rant) |
+|---:|---|---|---|---|
+| 0 (=C) | −17,19 / −16,86 | −34,2 / −31,7 | −9,90 / −8,56 | 1,42 / 2,63 / 2,95 |
+| 0,25 | −12,96 / −12,70 | −27,9 / −25,6 | −8,68 / −7,41 | 1,07 / 1,98 / 2,23 |
+| 0,50 | −8,74 / −8,54 | −21,5 / −19,3 | −7,47 / −6,26 | 0,72 / 1,33 / 1,50 |
+| 0,75 | −4,51 / −4,39 | −15,2 / −13,2 | −6,26 / −5,12 | 0,37 / 0,69 / 0,78 |
+| 0,90 | −1,98 / −1,89 | −11,3 / −9,4 | −5,53 / −4,42 | 0,16 / 0,30 / 0,34 |
+
+- **Asıl kaldıraç durdurma, refah bağı ikincil.** d = 0,9'da TR net'i +15,2 iyileşir; refah bağlama ek olarak yalnız +0,1 – 0,3 (TR'nin refah iç rantı 0,51 → 0,77 (d=0) ve durdurunca kaybolur, çünkü refah rantı da boşalmanın bir kısmı). Yani refah rantı, durdurulan boşalmanın ≈ %2 – 5'ini geri getirir, kaybı kapatmaz.
+- **Durdurmak çoğunluk için iyi, azınlığı kötüleştirir:** Çin (−1,64 → −0,60), Rusya (−1,52 → −0,39), AB (−5,32 → −1,41), BAE, Fransa, Yunanistan kazanır (TR'ye ihracat gelirleri toparlanır). **Karşı çıkacaklar (net'i düşenler)**, bağlı varyantta d=0,9 − d=0: MFİN −2,50, İran −0,85, ABD −0,23, İsrail −0,23, Suudi Arabistan −0,19, Mısır −0,12; d=0'da net kazanan her aktör durdurunca kaybeder (test). Bu, "kilit" okumasıyla uyumlu: geçişi bloke edecek koalisyon (MFİN, İran, İsrail, SA) küçük ve mevcut net kazananlar.
+- **Hâlâ negatif toplamlı:** d = 0,9'da bile Σ net −9 … −11, çünkü havza yapısal kayıpları (pasif boşluk, temsil zedesi, dış bağlama vb.) boşalmaya bağlı değil (havza net −4,4 … −5,5 kalır).
+- **Kısa vade finansman:** akış cari açık ortalamasına BoP köprüsüyle d ≥ 0,5'te, mal ticareti ve rant köprüleriyle d ≥ 0,75'te sığar.
+- **Gerçekleşme karşılaştırması (eleştirel):** modelin kalibre 10 yıllık yolu TR net'ini −17,19'dan −13,42'ye (yaşam maliyeti politikasıyla −12,72) çıkarıyor: yani kalibre gerçekleşme ≈ d = 0,22 – 0,26. D'nin d ≥ 0,5 satırları, modelin kendi gerçekleşme tavanının 2 – 4 katı; yani "durdurmanın mümkün olup olmadığı" bu taramanın dışında, yalnız "durdurulursa ne olur" sorusunu yanıtlar.
+- **Diğer sınırlar:** (1) statik; yol (yıl yıl) modellenmedi. (2) Projeksiyon düzeyi: defterdeki refah dış havuzu kazancı ve bant hariç (C ile aynı ölçüde karşılaştırılır). (3) Durdurma TR'nin karşı-hamle gücünü (pol) yükseltir; sürdürme maliyeti kazançla orantılı olduğundan bu modelde dış aktörlerin tepkisi yalnız kazançlarının kaybı olarak girer, silah/yaptırım gibi tepki ayrıca modellenmedi. (4) MFİN'in neti referans orana bağlı (belirsiz).
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
@@ -1784,6 +1802,39 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  },
    "gsyh_not": "gsyh_ic_talep_uretim_kopukluk_duzeltme = sahte/ithal talep büyümesinin vekili; üretime bağlanan akışla kapanır (teshis/gsyh_etki_vekili ayrı çapa)."
  }
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/zarar_durdurma.json fixed/data/etki_cephesi/zarar_durdurma.json
+--- pristine/data/etki_cephesi/zarar_durdurma.json	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/zarar_durdurma.json	2026-10-14 16:14:49.764117446 +0000
+@@ -0,0 +1,29 @@
++{
++  "not": "Zararı durdurma + refah rantına bağlama politikası senaryosu (D). Parametreler ATANMIŞTIR (geçmişten türetilmedi): politika kaldıraçlarının tarama aralığıdır, tahmin değildir. D, C senaryosunun kopyasıdır; yalnız aşağıdaki kaldıraçlar değişir.",
++  "referans_senaryo": "C",
++  "durdurma_izgara": [
++    0.0,
++    0.25,
++    0.5,
++    0.75,
++    0.9
++  ],
++  "durdurma_tanimi": "TR boşalması etki erozyonu çarpanıyla doğrusaldır (boşalma ∝ erozyon × (1+flex)); durdurma oranı d: erozyon = erozyon_C × (1 − d). d=1 boşalmayı sıfırlar. d=1 dejenere: boşalma sıfırlanınca referans aktörlerin kaybı küçülür, φ kalibrasyonu kararsızlaşır; ızgara 0,9'da biter.",
++  "baglama_varyantlari": {
++    "mevcut": {
++      "aciklama": "C'deki refah bağı aynen",
++      "bag_modu": null,
++      "tr_ic_refah_pay_carpan": 1.0
++    },
++    "bagli": {
++      "aciklama": "Bağ kullanıma çevrilir (kullanım 0,80), TR'nin refah rantındaki iç payı ×1,5 (üst sınır 0,95)",
++      "bag_modu": {
++        "kullanim": 0.8,
++        "atil": 0.1,
++        "aracsal": 0.1
++      },
++      "tr_ic_refah_pay_carpan": 1.5
++    }
++  },
++  "tr_ic_pay_ust_sinir": 0.95
++}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/zarar_teorisi_kopru.json fixed/data/etki_cephesi/zarar_teorisi_kopru.json
 --- pristine/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 06:05:45.819023385 +0000
 +++ fixed/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 07:45:20.550536409 +0000
@@ -4374,7 +4425,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print("OLU_AGIRLIK_AYRISMA ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
 --- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
-+++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 15:57:35.678331465 +0000
++++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 16:15:13.585888717 +0000
 @@ -3,6 +3,8 @@
  
  import json
@@ -4457,7 +4508,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
              }
          )
      out.sort(key=lambda x: -x["fayda_endeks"])
-@@ -616,10 +634,104 @@
+@@ -616,10 +634,109 @@
      return dagitim
  
  
@@ -4530,6 +4581,9 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return sum(x / gsyh[j] * kayip.get(j, 0.0) for j, x in dv["ihracat_mn_usd"].get(iso, {}).items() if j != iso and j not in hub and gsyh.get(j))
 +
 +
++_PHI_SABIT: list[float] | None = None  # politika senaryolarında (zarar_durdurma_senaryosu) C'nin φ'si sabitlenir; A/B/C hesabında None
++
++
 +def _dis_veri_kayip(by_iso: dict[str, dict[str, Any]], kayip_var: set[str]) -> dict[str, dict[str, float]]:
 +    """Çin/Rusya kaybı dış ticaret verisinden: çekim tahmini × φ. φ, kaybı modelli referans aktörlerde (İran, İsrail, Mısır)
 +    modelin kaybının çekim tahminine oranı (ticaret dışı kanallar dahil); min/medyan/maks aralığı kayıp belirsizliğini verir."""
@@ -4540,6 +4594,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        for i in dv["kalibrasyon_aktorleri"]
 +        if i in kayip and kayip[i] > 0 and (g := _cekim(i, kayip, dv)) > 0
 +    )
++    if _PHI_SABIT:
++        phi = sorted(_PHI_SABIT)
 +    if not phi:
 +        return {}
 +    out: dict[str, dict[str, float]] = {}
@@ -4562,7 +4618,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  ) -> list[dict[str, Any]]:
      by_iso: dict[str, dict[str, Any]] = {}
      for u in ulke_kayiplari:
-@@ -679,13 +791,51 @@
+@@ -679,13 +796,51 @@
              row["merkez_belirsiz_vekil"] = bel
  
      out: list[dict[str, Any]] = []
@@ -4614,7 +4670,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "dis_kazanc_vekili": dis_k,
                  "havza_kayip": havza_k,
                  "merkez_belirsiz_vekil": round(float(row.get("merkez_belirsiz_vekil", 0.0)), 3),
-@@ -697,6 +847,10 @@
+@@ -697,6 +852,10 @@
                  ),
              }
          )
@@ -4625,8 +4681,144 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      out.sort(key=lambda x: -x["dis_kazanc_vekili"])
      return out
  
-@@ -789,10 +943,10 @@
+@@ -763,36 +922,126 @@
+     return out
+ 
+ 
+-def run() -> dict[str, Any]:
++def _baglam() -> dict[str, Any]:
++    """Senaryo hesabı için gereken tüm girdi belgeleri (run ve zarar_durdurma_senaryosu ortak kullanır)."""
++    refah_path = DATA / "refah_rant_model.json"
+     bolgeler_doc = _load("bolgeler.json")
+     kanallar_doc = _load("kanallar.json")
+-    senaryolar_doc = _load("senaryolar.json")
+-    akis_doc = _load("bolge_akis.json")
+-    yerel_doc = _load("yerel_rant_kanal.json")
+-    dominion_doc = _load("dominion_bag.json")
+-    ulke_doc = _load("ulke_havza_pay.json")
+-    dis_doc = _load("dis_aktör_pay.json")
+-    ub_doc = _load("ulkeler_bolge.json")
+-    belirsiz_doc = _load("merkez_belirsiz.json")
+-    refah_path = DATA / "refah_rant_model.json"
+-    refah_doc = json.loads(refah_path.read_text(encoding="utf-8")) if refah_path.is_file() else None
+-    makro_doc = _load("makro_kapsam.json")
+-    makro_sira_pairs = _makro_sirasi(makro_doc)
+-    makro_sira_ids = [m[0] for m in makro_sira_pairs]
+-
+-    kanallar = kanallar_doc["kanallar"]
+-    rol_carpan = kanallar_doc["rol_kanal_carpan"]
+-    ozel = kanallar_doc.get("bolge_ozel_carpan") or {}
+-    bolgeler = bolgeler_doc["bolgeler"]
+-    adlar = {b["id"]: b["ad"] for b in bolgeler}
++    return {
++        "bolgeler_doc": bolgeler_doc,
++        "kanallar_doc": kanallar_doc,
++        "senaryolar_doc": _load("senaryolar.json"),
++        "akis_doc": _load("bolge_akis.json"),
++        "yerel_doc": _load("yerel_rant_kanal.json"),
++        "dominion_doc": _load("dominion_bag.json"),
++        "ulke_doc": _load("ulke_havza_pay.json"),
++        "dis_doc": _load("dis_aktör_pay.json"),
++        "ub_doc": _load("ulkeler_bolge.json"),
++        "belirsiz_doc": _load("merkez_belirsiz.json"),
++        "refah_doc": json.loads(refah_path.read_text(encoding="utf-8")) if refah_path.is_file() else None,
++        "makro_doc": _load("makro_kapsam.json"),
++    }
++
++
++def hesapla_senaryo(sen: dict[str, Any], B: dict[str, Any], merkez_c: float, refah_doc: dict[str, Any] | None) -> dict[str, Any]:
++    """Tek senaryo satırı (A/B/C ya da ilke dışı politika senaryosu). refah_doc verilirse B["refah_doc"] yerine kullanılır."""
++    bolgeler = B["bolgeler_doc"]["bolgeler"]
++    kanallar = B["kanallar_doc"]["kanallar"]
++    rol_carpan = B["kanallar_doc"]["rol_kanal_carpan"]
++    ozel = B["kanallar_doc"].get("bolge_ozel_carpan") or {}
++    akis_doc, yerel_doc, dominion_doc = B["akis_doc"], B["yerel_doc"], B["dominion_doc"]
++    ulke_doc, dis_doc, ub_doc, belirsiz_doc = B["ulke_doc"], B["dis_doc"], B["ub_doc"], B["belirsiz_doc"]
+     ulke_by_bolge = {b["id"]: b.get("ulke", "") for b in bolgeler}
      ikame = float(akis_doc.get("yaricevre_rakip_ikame_carpan", 0.55))
++    makro_sira_ids = [m[0] for m in _makro_sirasi(B["makro_doc"])]
++
++    sid = sen["id"]
++    ero = sen["etki_erosyon_carpani"]
++    flex = sen["tr_diplomatik_flex"]
++    bag_modu = sen.get("bag_modu") or {"kullanim": 0.3, "atil": 0.4, "aracsal": 0.3}
++    kullanim = float(bag_modu.get("kullanim", 0.3))
++    enigma_l = float(sen.get("enigma_carpan_levant", 1.0))
++    bags = dominion_doc.get("bolge_bag") or {}
++    cevher_pot, cevher_acik = _ceper_govde_acigi(bolgeler, dominion_doc, kullanim)
++    kayiplar: dict[str, float] = {}
++    bag_etki_by_id: dict[str, dict[str, float]] = {}
++    tr_bosalma_satir = []
++
++    for b in bolgeler:
++        bid = b["id"]
++        kayip, detay = _bolge_bosalma(b, kanallar, rol_carpan, ozel, ero, flex)
++        kayip = round(kayip * _enigma_carp(b, enigma_l), 3)
++        kayiplar[bid] = kayip
++        bag_etki_by_id[bid] = _bag_modu_etkiler(b, bags.get(bid, {}), bag_modu, enigma_l, dominion_doc)
++        tr_bosalma_satir.append({"bolge": bid, "ad": b["ad"], "makro": b.get("makro"), "bosalma": kayip, "bes_halka": detay})
++
++    toplam = round(sum(kayiplar.values()), 3)
++    (bolge_net, merkez, od_rant, od_dis, pasif_top, arac_top, mimari_top, temsil_top, kenarlar) = _bolgesel_dagilim(
++        kayiplar, bag_etki_by_id, bolgeler, akis_doc, yerel_doc, ikame, merkez_c, sid, refah_doc
++    )
++    tum_rant = round(sum(b["rant_kanal_cikis_kar"] for b in bolge_net), 3)
++    tum_dis = round(sum(b["yerel_dis_baglama_zarar"] for b in bolge_net), 3)
++    merkez_toplam_rant_dahil = round(merkez + tum_rant, 3)
++    tie_n = len(bolgeler)
++    esz_ceza = float(dominion_doc.get("eszamanli_bag_ceza", 0.08))
++    ic_tikanma = round(cevher_acik * tie_n * esz_ceza * (temsil_top / max(tie_n, 1)), 3)
++    dis_acmaz = round(mimari_top + merkez * 0.35, 3)
++
++    sen_row: dict[str, Any] = {
++        "id": sid,
++        "ad": sen["ad"],
++        "aciklama": sen.get("aciklama", ""),
++        "bag_modu": bag_modu,
++        "ceper_potansiyel": cevher_pot,
++        "ceper_govde_acigi": cevher_acik,
++        "pasif_bosluk_toplam": pasif_top,
++        "aracsallasma_toplam": arac_top,
++        "dis_hegemon_mimari_toplam": mimari_top,
++        "mesruiyet_temsil_zedesi_toplam": temsil_top,
++        "ic_dinamik_tikanma": ic_tikanma,
++        "dis_hegemon_acmaz_vekili": dis_acmaz,
++        "turkiye_yaricevre_bosalma": toplam,
++        "turkiye_net_zarar_endeks": -toplam,
++        "merkez_finans_sizinti_toplam": merkez,
++        "orta_dogu_rant_kanal_cikis_kar": od_rant,
++        "orta_dogu_yerel_dis_baglama_zarar": od_dis,
++        "tum_havza_rant_cikis_toplam": tum_rant,
++        "tum_havza_dis_baglama_toplam": tum_dis,
++        "merkez_artı_rant_cikis_toplam": merkez_toplam_rant_dahil,
++        "tr_bosalma_detay": tr_bosalma_satir,
++        "bolgesel_net": bolge_net,
++        "makro_ozet": _makro_ozet(bolge_net, makro_sira_ids),
++        "ulke_kayiplari": _ulke_kayiplari(bolge_net, ulke_doc, -toplam, ulke_by_bolge),
++        "akis_kenarlari": kenarlar,
++    }
++    dis_k = _dis_aktör_kazanc(kayiplar, bag_etki_by_id, kenarlar, dis_doc, ub_doc, ulke_by_bolge, refah_doc)
++    sen_row["dis_aktör_kazanc"] = dis_k
++    ulke_names = {**(ulke_doc.get("ulkeler") or {}), **(ub_doc.get("ulkeler") or {})}
++    _merkez_belirsiz_dagit(sen_row, belirsiz_doc, ulke_names, list(dis_doc.get("aktörler") or []))
++    sen_row["aktör_birlesik"] = _aktör_birlesik(
++        sen_row["ulke_kayiplari"],
++        sen_row["dis_aktör_kazanc"],
++        ulke_names,
++        _kapsam(dis_doc, ub_doc),
++        max(0.25, min(1.0, 1.05 - float(ero) + float(flex))),  # TR karşı-hamle gücü (pol_s)
++    )
++    return sen_row
++
++
++def run() -> dict[str, Any]:
++    B = _baglam()
++    bolgeler = B["bolgeler_doc"]["bolgeler"]
++    adlar = {b["id"]: b["ad"] for b in bolgeler}
++    ulke_doc = B["ulke_doc"]
++    refah_doc = B["refah_doc"]
++    senaryolar_doc = B["senaryolar_doc"]
++    makro_sira_pairs = _makro_sirasi(B["makro_doc"])
  
      kalibre_kullanildi = (KALIBRE / "bolgeler.json").is_file()
 -    en_olasi = str(senaryolar_doc.get("en_olasi") or "C")
@@ -4638,25 +4830,113 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "kalibre_2024_ticaret": kalibre_kullanildi,
          "rant_modeli": "refah" if refah_doc and refah_doc.get("aktif") else "bosluk",
          "kaynak_tez": "data/etki_cephesi/KAYNAK_TEZ.md",
-@@ -812,7 +966,7 @@
-         sid = sen["id"]
-         ero = sen["etki_erosyon_carpani"]
-         flex = sen["tr_diplomatik_flex"]
+@@ -807,103 +1056,9 @@
+         "makro_kapsam": makro_sira_pairs,
+         "senaryolar": [],
+     }
+-
+     for sen in senaryolar_doc["senaryolar"]:
+-        sid = sen["id"]
+-        ero = sen["etki_erosyon_carpani"]
+-        flex = sen["tr_diplomatik_flex"]
 -        merkez_c = float(sen.get("merkez_sizinti_carpan", 1.0))
-+        merkez_c = float(_gecmis.merkez_carpan()[sid])  # geçmişten türetilmiş (A=1)
-         bag_modu = sen.get("bag_modu") or {"kullanim": 0.3, "atil": 0.4, "aracsal": 0.3}
-         kullanim = float(bag_modu.get("kullanim", 0.3))
-         enigma_l = float(sen.get("enigma_carpan_levant", 1.0))
-@@ -903,6 +1057,8 @@
-             sen_row["ulke_kayiplari"],
-             sen_row["dis_aktör_kazanc"],
-             ulke_names,
-+            _kapsam(dis_doc, ub_doc),
-+            max(0.25, min(1.0, 1.05 - float(ero) + float(flex))),  # TR karşı-hamle gücü (pol_s)
-         )
+-        bag_modu = sen.get("bag_modu") or {"kullanim": 0.3, "atil": 0.4, "aracsal": 0.3}
+-        kullanim = float(bag_modu.get("kullanim", 0.3))
+-        enigma_l = float(sen.get("enigma_carpan_levant", 1.0))
+-        bags = dominion_doc.get("bolge_bag") or {}
+-        cevher_pot, cevher_acik = _ceper_govde_acigi(bolgeler, dominion_doc, kullanim)
+-        kayiplar: dict[str, float] = {}
+-        bag_etki_by_id: dict[str, dict[str, float]] = {}
+-        tr_bosalma_satir = []
+-
+-        for b in bolgeler:
+-            bid = b["id"]
+-            kayip, detay = _bolge_bosalma(b, kanallar, rol_carpan, ozel, ero, flex)
+-            kayip = round(kayip * _enigma_carp(b, enigma_l), 3)
+-            kayiplar[bid] = kayip
+-            bag_etki_by_id[bid] = _bag_modu_etkiler(
+-                b, bags.get(bid, {}), bag_modu, enigma_l, dominion_doc
+-            )
+-            tr_bosalma_satir.append(
+-                {"bolge": bid, "ad": b["ad"], "makro": b.get("makro"), "bosalma": kayip, "bes_halka": detay}
+-            )
+-
+-        toplam = round(sum(kayiplar.values()), 3)
+-        (
+-            bolge_net,
+-            merkez,
+-            od_rant,
+-            od_dis,
+-            pasif_top,
+-            arac_top,
+-            mimari_top,
+-            temsil_top,
+-            kenarlar,
+-        ) = _bolgesel_dagilim(
+-            kayiplar, bag_etki_by_id, bolgeler, akis_doc, yerel_doc, ikame, merkez_c, sid, refah_doc
+-        )
+-        tum_rant = round(sum(b["rant_kanal_cikis_kar"] for b in bolge_net), 3)
+-        tum_dis = round(sum(b["yerel_dis_baglama_zarar"] for b in bolge_net), 3)
+-        merkez_toplam_rant_dahil = round(merkez + tum_rant, 3)
+-        tie_n = len(bolgeler)
+-        esz_ceza = float(dominion_doc.get("eszamanli_bag_ceza", 0.08))
+-        ic_tikanma = round(cevher_acik * tie_n * esz_ceza * (temsil_top / max(tie_n, 1)), 3)
+-        dis_acmaz = round(mimari_top + merkez * 0.35, 3)
+-
+-        sonuc["senaryolar"].append(
+-            {
+-                "id": sid,
+-                "ad": sen["ad"],
+-                "aciklama": sen["aciklama"],
+-                "bag_modu": bag_modu,
+-                "ceper_potansiyel": cevher_pot,
+-                "ceper_govde_acigi": cevher_acik,
+-                "pasif_bosluk_toplam": pasif_top,
+-                "aracsallasma_toplam": arac_top,
+-                "dis_hegemon_mimari_toplam": mimari_top,
+-                "mesruiyet_temsil_zedesi_toplam": temsil_top,
+-                "ic_dinamik_tikanma": ic_tikanma,
+-                "dis_hegemon_acmaz_vekili": dis_acmaz,
+-                "turkiye_yaricevre_bosalma": toplam,
+-                "turkiye_net_zarar_endeks": -toplam,
+-                "merkez_finans_sizinti_toplam": merkez,
+-                "orta_dogu_rant_kanal_cikis_kar": od_rant,
+-                "orta_dogu_yerel_dis_baglama_zarar": od_dis,
+-                "tum_havza_rant_cikis_toplam": tum_rant,
+-                "tum_havza_dis_baglama_toplam": tum_dis,
+-                "merkez_artı_rant_cikis_toplam": merkez_toplam_rant_dahil,
+-                "tr_bosalma_detay": tr_bosalma_satir,
+-                "bolgesel_net": bolge_net,
+-                "makro_ozet": _makro_ozet(bolge_net, makro_sira_ids),
+-                "ulke_kayiplari": _ulke_kayiplari(
+-                    bolge_net, ulke_doc, -toplam, ulke_by_bolge
+-                ),
+-                "akis_kenarlari": kenarlar,
+-            }
+-        )
+-        dis_k = _dis_aktör_kazanc(
+-            kayiplar, bag_etki_by_id, kenarlar, dis_doc, ub_doc, ulke_by_bolge, refah_doc
+-        )
+-        sen_row = sonuc["senaryolar"][-1]
+-        sen_row["dis_aktör_kazanc"] = dis_k
+-        ulke_names = {**(ulke_doc.get("ulkeler") or {}), **(ub_doc.get("ulkeler") or {})}
+-        _merkez_belirsiz_dagit(
+-            sen_row,
+-            belirsiz_doc,
+-            ulke_names,
+-            list(dis_doc.get("aktörler") or []),
+-        )
+-        sen_row["aktör_birlesik"] = _aktör_birlesik(
+-            sen_row["ulke_kayiplari"],
+-            sen_row["dis_aktör_kazanc"],
+-            ulke_names,
+-        )
++        merkez_c = float(_gecmis.merkez_carpan()[sen["id"]])  # geçmişten türetilmiş (A=1)
++        sonuc["senaryolar"].append(hesapla_senaryo(sen, B, merkez_c, refah_doc))
  
      sonuc["_adlar"] = adlar
-@@ -928,31 +1084,23 @@
+     sonuc["_makro_sira"] = makro_sira_pairs
+@@ -928,31 +1083,23 @@
          lines.append(f"*{payload['referans_olcum_not']}*")
          lines.append("")
  
@@ -4703,7 +4983,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          lines.append(f"## Senaryo {sen['id']}: {sen['ad']}{tag}")
          lines.append("")
          lines.append(sen["aciklama"])
-@@ -1060,14 +1208,14 @@
+@@ -1060,14 +1207,14 @@
          lines.append("### Aktör birleşik (havza kaybı vs dış kazanç vekili)")
          lines.append("")
          lines.append(
@@ -4722,7 +5002,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
              )
          lines.append("")
  
-@@ -1156,13 +1304,32 @@
+@@ -1156,13 +1303,32 @@
      return "\n".join(lines)
  
  
@@ -4757,7 +5037,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      if sen.get("ulke_kayiplari"):
          ua = [f"# Senaryo {baslik_etiket} — ülke bazlı kayıp (10 yıl vekil)", ""]
          ua.append("| Ülke | Kayıp endeks | Net | Pasif | Araçsal | Temsil |")
-@@ -1213,16 +1380,19 @@
+@@ -1213,16 +1379,19 @@
          da.append("")
          da.append("## Birleşik (dış kazanç − havza kaybı)")
          da.append("")
@@ -4783,7 +5063,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
              )
          da.append("")
          (OUT / f"DIS_AKTOR_{sid}.md").write_text("\n".join(da), encoding="utf-8")
-@@ -1238,12 +1408,12 @@
+@@ -1238,12 +1407,12 @@
      (OUT / "PROJEKSIYON.json").write_text(json.dumps(clean, ensure_ascii=False, indent=2), encoding="utf-8")
      payload["_adlar"] = adlar
      (OUT / "PROJEKSIYON.md").write_text(_md(payload), encoding="utf-8")
@@ -4916,7 +5196,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 15:54:39.288324310 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 16:15:37.810212781 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -4953,7 +5233,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,41 @@
+@@ -31,11 +47,42 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -4970,6 +5250,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "havza_kazanan_kisa_vade.py",
 +        "olu_agirlik_ayrisma.py",
 +        "ikame_cift_sayim.py",
++        "zarar_durdurma_senaryosu.py",
          ]
      )
 -    for s in steps:
@@ -6099,6 +6380,154 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      coklu = {
          "olcum": "zarar_cozum_senaryo_coklu",
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/zarar_durdurma_senaryosu.py fixed/etki_cephesi/zarar_durdurma_senaryosu.py
+--- pristine/etki_cephesi/zarar_durdurma_senaryosu.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/zarar_durdurma_senaryosu.py	2026-10-14 16:15:13.586592174 +0000
+@@ -0,0 +1,144 @@
++"""Zararı durdurma + refah rantına bağlama senaryosu (D): C'den türeyen politika kaldıraçları taraması.
++
++`projeksiyon.hesapla_senaryo` aynı kod yoluyla çalışır (A/B/C ile birebir aynı hesap); yalnız C'nin erozyon çarpanı (1−d) ile küçültülür
++(boşalma erozyonla doğrusal), bağ modu ve TR'nin refah iç payı varyantlarla değiştirilir. Parametreler atanmıştır (data/etki_cephesi/zarar_durdurma.json).
++Ölçülenler (projeksiyon düzeyi; defterdeki refah dış havuzu kazancı ve bant hariç, bu yüzden mutlak değerleri defterle birebir değil, C ile aynı ölçüde karşılaştırılır):
++  TR net = refah iç rant − TR kaybı; havza net toplamı; dış aktörlerin net'i (kazanç − kayıp vekili − sürdürme maliyeti); sistem toplamı;
++  durdurmaya karşı çıkacak aktörler (net'i d arttıkça düşenler); kısa vade finansman (TR kayıp akışı / cari açık).
++Tanı raporu: başka modüle girdi olmaz.
++"""
++from __future__ import annotations
++
++import copy
++import json
++import sys
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++sys.path.insert(0, str(Path(__file__).resolve().parent))
++
++import _gecmis  # noqa: E402
++import projeksiyon as P  # noqa: E402
++
++AKTORLER = ("MFIN", "CN", "RU", "US", "EU", "AE", "SA", "FR", "GR", "IR", "IL", "EG")
++KOPRULER = ("bop_merkez_rant", "mal_net_ticaret", "tum_havza_rant")
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _refah_varyant(refah: dict[str, Any], carpan: float, ust: float) -> dict[str, Any]:
++    r = copy.deepcopy(refah)
++    vh = r.get("varsayilan_havza") or {}
++    if "tr_ic_refah_pay" in vh:
++        vh["tr_ic_refah_pay"] = round(min(ust, float(vh["tr_ic_refah_pay"]) * carpan), 4)
++    for h in (r.get("havza") or {}).values():
++        if "tr_ic_refah_pay" in h:
++            h["tr_ic_refah_pay"] = round(min(ust, float(h["tr_ic_refah_pay"]) * carpan), 4)
++    return r
++
++
++def _senaryo(d: float, varyant: dict[str, Any], B: dict[str, Any], cfg: dict[str, Any]) -> dict[str, Any]:
++    c = next(s for s in B["senaryolar_doc"]["senaryolar"] if s["id"] == cfg["referans_senaryo"])
++    sen = copy.deepcopy(c)
++    # id "C" kalır: senaryo çarpanları (yerel_rant_kanal: dış bağlama/rant çıkışı) id ile aranır; d=0 + mevcut bağ = C birebir olmalı
++    sen["ad"] = f"Zararı durdur (d={d}) + refah bağı ({varyant['ad']})"
++    sen["etki_erosyon_carpani"] = float(c["etki_erosyon_carpani"]) * (1.0 - d)
++    if varyant["bag_modu"]:
++        sen["bag_modu"] = varyant["bag_modu"]
++    refah = _refah_varyant(B["refah_doc"], float(varyant["tr_ic_refah_pay_carpan"]), float(cfg["tr_ic_pay_ust_sinir"]))
++    merkez_c = float(_gecmis.merkez_carpan()[cfg["referans_senaryo"]])
++    # φ (ticaret dışı kanal çarpanı) yapısal parametre: politika senaryosunda yeniden kalibre edilmez, C'nin değeri sabit kalır.
++    # (Yeniden kalibrasyon, TR kaybı küçülürken φ'yi şişirip Çin/Rusya/AB'nin ticaret kaybını yapay biçimde yüksek tutardı.)
++    c_row = next(s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"] if s["id"] == cfg["referans_senaryo"])
++    phi = next(a["kayip_dis_veri"]["phi"] for a in c_row["aktör_birlesik"] if a.get("kayip_dis_veri"))
++    P._PHI_SABIT = [phi["min"], phi["medyan"], phi["maks"]]
++    try:
++        row = P.hesapla_senaryo(sen, B, merkez_c, refah)
++    finally:
++        P._PHI_SABIT = None
++    row["id"] = "D"
++    return row
++
++
++def _olc(row: dict[str, Any], cari: float, kop: dict[str, Any]) -> dict[str, Any]:
++    ab = {a["aktor"]: a for a in row["aktör_birlesik"]}
++    bn = row["bolgesel_net"]
++    tr_kayip = float(ab["TR"]["havza_kayip"])
++    refah_ic = sum(float(b["refah_rant_tr_ic"]) for b in bn)
++    net = {}
++    for i in AKTORLER:
++        a = ab.get(i)  # boşalma sıfırlanınca kazancı/kaybı kalmayan aktör satırı düşer: net 0
++        net[i] = float(a.get("net_birlesik_maliyetli", a["net_birlesik_vekil"])) if a else 0.0
++    sistem = refah_ic - tr_kayip + sum(float(a.get("net_birlesik_maliyetli", a["net_birlesik_vekil"])) for k, a in ab.items() if k != "TR")
++    akis = {k: tr_kayip * float(kop[k]["usd_per_vekil_mn"]) for k in KOPRULER}
++    return {
++        "bosalma": float(row["turkiye_yaricevre_bosalma"]),
++        "tr_kayip": round(tr_kayip, 3),
++        "tr_refah_ic_rant": round(refah_ic, 3),
++        "tr_net": round(refah_ic - tr_kayip, 3),
++        "havza_net_toplam": round(sum(float(b["net_endeks"]) for b in bn), 3),
++        "sistem_net_toplam": round(sistem, 3),
++        "dis_aktor_net": {k: round(v, 3) for k, v in net.items()},
++        "akis_cari_aciga_oran": {k: round(v / cari, 2) for k, v in akis.items()},
++        "gecerli_olcek_s": {k: round(min(1.0, cari / v), 3) if v > 0 else 1.0 for k, v in akis.items()},
++    }
++
++
++def calistir() -> dict[str, Any]:
++    cfg = _load(DATA / "zarar_durdurma.json")
++    B = P._baglam()
++    kop = _load(DATA / "kalibre" / "gerceklik_realizasyon.json")["usd_kopruleri"]
++    w = _load(DATA / "gozlem" / "tr_bagimsiz_olcek.json")
++    y = w["yillar"]
++    gsyh = float(w["TUR"]["gsyh_usd"][y[-1]]) / 1e6
++    cari = sum(-float(w["TUR"]["cari_denge_gsyh"][k]) for k in y) / len(y) / 100 * gsyh
++    sonuc: dict[str, Any] = {}
++    for ad, v in cfg["baglama_varyantlari"].items():
++        v = {**v, "ad": ad}
++        sonuc[ad] = {}
++        for d in cfg["durdurma_izgara"]:
++            sonuc[ad][str(d)] = _olc(_senaryo(d, v, B, cfg), cari, kop)
++    # tutarlılık: d=0 + mevcut = C (projeksiyon çıktısı)
++    c_row = next(s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"] if s["id"] == cfg["referans_senaryo"])
++    c_olc = _olc(c_row, cari, kop)
++    # durdurmaya karşı çıkanlar: d=1'de net'i d=0'a göre düşen aktörler (bağlı varyant)
++    son = str(cfg["durdurma_izgara"][-1])
++    bagli0, bagli1 = sonuc["bagli"]["0.0"], sonuc["bagli"][son]
++    karsi = {k: round(bagli1["dis_aktor_net"][k] - bagli0["dis_aktor_net"][k], 3) for k in bagli0["dis_aktor_net"] if bagli1["dis_aktor_net"][k] < bagli0["dis_aktor_net"][k] - 1e-9}
++    d = {
++        "olcum": "zarar_durdurma_refah_baglama_senaryosu",
++        "etiket": "tani_girdi_degil",
++        "parametreler": cfg,
++        "c_referans": c_olc,
++        "varyantlar": sonuc,
++        "durdurmaya_karsi_cikanlar_bagli_dson_eksi_d0": karsi,
++        "cari_acik_mn_usd": round(cari),
++        "not": "Atanmış kaldıraçlar taraması (tahmin değil). Projeksiyon düzeyi; defter refah dış havuzu ve bant hariç. Kısa vade: tek yıl TR kayıp akışı (yol modellenmedi).",
++    }
++    (OUT / "ZARAR_DURDURMA_SENARYOSU.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    L = ["# Zararı durdurma + refah rantına bağlama (senaryo D)", "", d["not"], "",
++         "Referans C (projeksiyon düzeyi): TR net " + f"{c_olc['tr_net']:+.2f}" + ", Σ net " + f"{c_olc['sistem_net_toplam']:+.2f}" + ", havza net " + f"{c_olc['havza_net_toplam']:+.2f}" + ".", ""]
++    for ad, tab in sonuc.items():
++        L += [f"## Bağlama: {ad}", "",
++              "| Durdurma d | TR kaybı | TR refah iç rant | TR net | Havza net Σ | Σ net (sistem) | Akış / cari açık (BoP / mal / rant) | Geçerli ölçek s (BoP / mal / rant) |",
++              "| ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |"]
++        for dd, r in tab.items():
++            a, g = r["akis_cari_aciga_oran"], r["gecerli_olcek_s"]
++            L.append(f"| {dd} | {r['tr_kayip']:.2f} | {r['tr_refah_ic_rant']:.2f} | {r['tr_net']:+.2f} | {r['havza_net_toplam']:+.2f} | {r['sistem_net_toplam']:+.2f} | {a['bop_merkez_rant']} / {a['mal_net_ticaret']} / {a['tum_havza_rant']} | {g['bop_merkez_rant']} / {g['mal_net_ticaret']} / {g['tum_havza_rant']} |")
++        L += ["", "Dış aktör net'i (kazanç − kayıp vekili − maliyet):", "", "| d | " + " | ".join(AKTORLER) + " |", "| ---: | " + " | ".join("---:" for _ in AKTORLER) + " |"]
++        for dd, r in tab.items():
++            L.append(f"| {dd} | " + " | ".join(f"{r['dis_aktor_net'].get(i, float('nan')):+.2f}" for i in AKTORLER) + " |")
++        L.append("")
++    L += ["## Durdurmaya karşı çıkacaklar (bağlı varyant, d=0,9 − d=0 net farkı)", "", ", ".join(f"{k} {v:+.2f}" for k, v in karsi.items()) or "—"]
++    (OUT / "ZARAR_DURDURMA_SENARYOSU.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    return d
++
++
++if __name__ == "__main__":
++    calistir()
++    print("ZARAR_DURDURMA_SENARYOSU ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_p3.py fixed/tests/test_etki_cephesi_p3.py
 --- pristine/tests/test_etki_cephesi_p3.py	2026-10-14 06:05:45.846952283 +0000
 +++ fixed/tests/test_etki_cephesi_p3.py	2026-10-14 06:42:31.701662816 +0000
@@ -6116,8 +6545,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:02:13.556015858 +0000
-@@ -0,0 +1,798 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:15:37.811223490 +0000
+@@ -0,0 +1,829 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -6916,4 +7345,35 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        assert s["korunum_asimi"] < 0.02 and s["korunum_boslugu"] > -0.02  # kenar ve havza girişi 3 hane yuvarlı
 +        assert abs(s["kredi_toplam_aktor_arti_havza_girisi"] - (muh[sid]["kazanc"]["toplam"] + ig)) < 5e-3
 +        assert abs(s["olu_agirlik"] - ob[sid]["olu_agirlik"]) < 5e-3
++
++
++def test_zarar_durdurma_senaryosu_c_ile_tutarli_ve_dogrusal():
++    d = _j(OUT / "ZARAR_DURDURMA_SENARYOSU.json")
++    cfg = _j(DATA / "zarar_durdurma.json")
++    c = d["c_referans"]
++    izgara = [str(x) for x in cfg["durdurma_izgara"]]
++    # d=0 + mevcut bağ = C (aynı kod yolu): TR net, sistem ve dış aktör net'leri eşit
++    r0 = d["varyantlar"]["mevcut"][izgara[0]]
++    assert abs(r0["tr_net"] - c["tr_net"]) < 5e-3 and abs(r0["sistem_net_toplam"] - c["sistem_net_toplam"]) < 0.02
++    for k, v in c["dis_aktor_net"].items():
++        assert abs(r0["dis_aktor_net"][k] - v) < 0.02, k
++    for ad, tab in d["varyantlar"].items():
++        bos = [tab[x]["bosalma"] for x in izgara]
++        # boşalma erozyonla doğrusal: d arttıkça (1−d) ile orantılı azalır
++        for x, b in zip(izgara, bos):
++            assert abs(b - bos[0] * (1.0 - float(x))) < 0.01 * bos[0] + 0.01, (ad, x)
++        trn = [tab[x]["tr_net"] for x in izgara]
++        assert trn == sorted(trn)  # durdurdukça TR net'i yalnız iyileşir
++        sis = [tab[x]["sistem_net_toplam"] for x in izgara]
++        assert sis == sorted(sis)
++        # durdurma, ticaret ortaklarının kaybını azaltır (φ sabit): Çin, Rusya, AB net'i iyileşir
++        for k in ("CN", "RU", "EU"):
++            assert tab[izgara[-1]]["dis_aktor_net"][k] > tab[izgara[0]]["dis_aktor_net"][k], (ad, k)
++    # refah bağlama (bağlı) TR'nin refah iç rantını artırır ve her d'de TR net'ini iyileştirir
++    for x in izgara[:-1]:
++        assert d["varyantlar"]["bagli"][x]["tr_refah_ic_rant"] > d["varyantlar"]["mevcut"][x]["tr_refah_ic_rant"]
++        assert d["varyantlar"]["bagli"][x]["tr_net"] >= d["varyantlar"]["mevcut"][x]["tr_net"]
++    # durdurmaya karşı çıkanlar: d=0'da net kazanan her aktör durdurunca kaybeder
++    pozitif = [k for k, v in d["varyantlar"]["bagli"][izgara[0]]["dis_aktor_net"].items() if v > 0]
++    assert pozitif and all(k in d["durdurmaya_karsi_cikanlar_bagli_dson_eksi_d0"] for k in pozitif)
 ```
