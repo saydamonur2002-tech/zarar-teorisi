@@ -23,6 +23,9 @@ from pathlib import Path
 KOK = Path(__file__).resolve().parent
 YABANCI_ESIK = 0.20
 DOVIZ_ESIK = 0.20
+# Döviz payı aynı stokun para kırılımından gelen satırlar. Kâğıt cinsinden
+# konan 0 bu kümeye girmez. Endonezya'da kırılım yok.
+DOVIZ_OLCULEN = {"Türkiye", "Arjantin", "Brezilya"}
 
 # Paylar resmi tablolardan. Birim, satırın kendi stokudur.
 SATIRLAR = [
@@ -221,6 +224,48 @@ def _yuvarla(x: float | None) -> float | str:
     return "" if x is None else round(x, 4)
 
 
+def _kenar(rows: list[dict], alan: str, esik: float) -> dict:
+    """Kuralın oturduğu boşluk: eşiğin altındaki en yüksek pay ve üstündeki en düşük pay."""
+    alti = [r for r in rows if r[alan] < esik]
+    ustu = [r for r in rows if r[alan] >= esik]
+    alt = max(alti, key=lambda r: r[alan])
+    ust = min(ustu, key=lambda r: r[alan])
+    return {
+        "esik_kural": esik,
+        "alt_ulke": alt["ulke"],
+        "alt_donem": alt["donem"],
+        "alt": alt[alan],
+        "ust_ulke": ust["ulke"],
+        "ust_donem": ust["donem"],
+        "ust": ust[alan],
+        "genislik": round(ust[alan] - alt[alan], 4),
+        "n": len(rows),
+        "etiket": "olcum",
+    }
+
+
+def _en_genis(rows: list[dict], alan: str) -> dict:
+    sirali = sorted(rows, key=lambda r: r[alan])
+    bosluk = max(
+        (
+            {
+                "alt_ulke": a["ulke"],
+                "alt_donem": a["donem"],
+                "alt": a[alan],
+                "ust_ulke": b["ulke"],
+                "ust_donem": b["donem"],
+                "ust": b[alan],
+                "genislik": round(b[alan] - a[alan], 4),
+            }
+            for a, b in zip(sirali, sirali[1:])
+        ),
+        key=lambda g: g["genislik"],
+    )
+    bosluk["n"] = len(rows)
+    bosluk["etiket"] = "olcum"
+    return bosluk
+
+
 def _satir(r: dict) -> dict:
     y, d = r["yabanci_pay"], r["doviz_pay"]
     return {
@@ -247,6 +292,21 @@ def main() -> dict:
     grup: dict[str, list[str]] = {}
     for r in rows:
         grup.setdefault(r["etiket"], []).append(r["ulke"])
+    yabanci_aralik = _kenar(rows, "yabanci_pay", YABANCI_ESIK)
+    doviz_olculen = [r for r in rows if r["ulke"] in DOVIZ_OLCULEN]
+    doviz_aralik = _kenar(doviz_olculen, "doviz_pay", DOVIZ_ESIK)
+    esik = {
+        "yabanci": yabanci_aralik,
+        "doviz_olculen": doviz_aralik,
+        "yabanci_en_genis_komsu": _en_genis(rows, "yabanci_pay"),
+        "doviz_en_genis_komsu": _en_genis(doviz_olculen, "doviz_pay"),
+        "doviz_kagit_sifir": [r["ulke"] for r in rows if r["doviz_pay"] == 0.0],
+        "doviz_ayrilmadi": [r["ulke"] for r in rows if r["doviz_pay"] == ""],
+        "anlam": (
+            "0,20 kurali bu bosluklarin icindedir. Araligin icindeki her kesit bu tabloda ayni etiketi verir. "
+            "Aralik bir yasa degildir. Kagit cinsinden konan doviz 0, doviz araligina girmez."
+        ),
+    }
     sonuc = {
         "kural": {
             "yabanci_esik": YABANCI_ESIK,
@@ -254,6 +314,7 @@ def main() -> dict:
             "etiket": "karsilastirma_kurali",
             "anlam": "Bes adim bu ulkelerde olculmedi. Test, yerli para alacaklisinin yerli olmasi ve doviz bacaginin disarida kalmasidir.",
         },
+        "esik_araligi": esik,
         "grup": grup,
         "yazilir": grup.get("yazilir", []),
         "satirlar": rows,
@@ -274,7 +335,8 @@ def main() -> dict:
         "Çalıştır: `python3 ulke_karsilastirma.py`.",
         "",
         "Test, yerli para kâğıdının alacaklısının yerli olup olmadığıdır. Döviz sözleşmesi modelin dışında kalır. "
-        "Beş adım bu ülkelerde ölçülmedi. Eşik 0,20 karşılaştırma kuralıdır.",
+        "Beş adım bu ülkelerde ölçülmedi. Eşik 0,20 karşılaştırma kuralıdır. "
+        "Kuralın oturduğu boşluk aşağıda ölçülmüştür.",
         "",
         f"Yazılanlar: **{', '.join(grup.get('yazilir', []))}**.",
         "",
@@ -289,7 +351,34 @@ def main() -> dict:
             f"| {r['ulke']} | {r['donem']} | {r['stok']} | {yuz(r['yabanci_pay'])} | {yuz(r['yerli_pay'])} | "
             f"{yuz(r['doviz_pay'])} | {yuz(r['yerli_para_pay'])} | {ad[r['etiket']]} |"
         )
-    md += ["", "## Satır notu", ""]
+    def yuzde(x: float) -> str:
+        return f"{x:.1%}".replace(".", ",")
+
+    md += [
+        "",
+        "## Eşik aralığı",
+        "",
+        "Durum: ölçüm. 0,20 kuralı bu boşlukların içindedir. Aralığın içindeki her kesit bu tabloda aynı etiketi verir.",
+        "",
+        f"- Yurt dışı: **{yuzde(yabanci_aralik['alt'])}** ({yabanci_aralik['alt_ulke']}, {yabanci_aralik['alt_donem']}) "
+        f"ile **{yuzde(yabanci_aralik['ust'])}** ({yabanci_aralik['ust_ulke']}, {yabanci_aralik['ust_donem']}). "
+        f"Genişlik {yuzde(yabanci_aralik['genislik'])}. n={yabanci_aralik['n']}.",
+        f"- Döviz, para kırılımı ölçülen satırlar: **{yuzde(doviz_aralik['alt'])}** ({doviz_aralik['alt_ulke']}, {doviz_aralik['alt_donem']}) "
+        f"ile **{yuzde(doviz_aralik['ust'])}** ({doviz_aralik['ust_ulke']}, {doviz_aralik['ust_donem']}). "
+        f"Genişlik {yuzde(doviz_aralik['genislik'])}. n={doviz_aralik['n']}.",
+        f"- Yurt dışında en geniş komşu boşluk: {yuzde(esik['yabanci_en_genis_komsu']['alt'])} "
+        f"({esik['yabanci_en_genis_komsu']['alt_ulke']}) ile {yuzde(esik['yabanci_en_genis_komsu']['ust'])} "
+        f"({esik['yabanci_en_genis_komsu']['ust_ulke']}).",
+        f"- Dövizde en geniş komşu boşluk, ölçülen üç satırda: {yuzde(esik['doviz_en_genis_komsu']['alt'])} "
+        f"({esik['doviz_en_genis_komsu']['alt_ulke']}) ile {yuzde(esik['doviz_en_genis_komsu']['ust'])} "
+        f"({esik['doviz_en_genis_komsu']['ust_ulke']}).",
+        "",
+        "Kâğıt cinsinden konan döviz 0 bu aralığa girmez: " + ", ".join(esik["doviz_kagit_sifir"]) + ".",
+        "Döviz kırılımı ayrılmayan: " + ", ".join(esik["doviz_ayrilmadi"]) + ".",
+        "",
+        "## Satır notu",
+        "",
+    ]
     for r in rows:
         md.append(f"- **{r['ulke']}** ({r['donem']}): {r['not']} Kaynak: {r['url']}")
     md += [
@@ -300,12 +389,22 @@ def main() -> dict:
         "- Beş adım bu ülkelerde kuruldu denmez. Burada yalnız alacaklı payı vardır.",
         "- Paylar toplanıp tek sıra yapılmaz. Stoklar ve tarihler ayrıdır.",
         "- Eşik 0,20 ölçülmüş bir yasa denmez. Karşılaştırma kuralıdır.",
+        "- Aralık bir yasa denmez. Bu tablodaki boşluktur. Stoklar ve tarihler ayrı kalır.",
+        "- Kâğıt cinsinden konan döviz 0, döviz eşiğinin ölçümüne girmez.",
         "",
     ]
     (KOK / "ULKE_KARSILASTIRMA.md").write_text("\n".join(md), encoding="utf-8")
     for r in rows:
         d = "—" if r["doviz_pay"] == "" else f"{float(r['doviz_pay']):.1%}"
         print(f"{r['ulke']:<12} yabancı {r['yabanci_pay']:.1%} döviz {d} {r['etiket']}")
+    print(
+        f"yurt dışı aralık {yabanci_aralik['alt']:.1%}–{yabanci_aralik['ust']:.1%} "
+        f"({yabanci_aralik['alt_ulke']}–{yabanci_aralik['ust_ulke']})"
+    )
+    print(
+        f"döviz aralık {doviz_aralik['alt']:.1%}–{doviz_aralik['ust']:.1%} "
+        f"({doviz_aralik['alt_ulke']}–{doviz_aralik['ust_ulke']}, n={doviz_aralik['n']})"
+    )
     return sonuc
 
 

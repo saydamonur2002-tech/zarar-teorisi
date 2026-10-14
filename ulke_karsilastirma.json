@@ -5,6 +5,72 @@
     "etiket": "karsilastirma_kurali",
     "anlam": "Bes adim bu ulkelerde olculmedi. Test, yerli para alacaklisinin yerli olmasi ve doviz bacaginin disarida kalmasidir."
   },
+  "esik_araligi": {
+    "yabanci": {
+      "esik_kural": 0.2,
+      "alt_ulke": "Endonezya",
+      "alt_donem": "2025-08-11",
+      "alt": 0.1461,
+      "ust_ulke": "Euro alanı",
+      "ust_donem": "2024-Q4",
+      "ust": 0.23,
+      "genislik": 0.0839,
+      "n": 16,
+      "etiket": "olcum"
+    },
+    "doviz_olculen": {
+      "esik_kural": 0.2,
+      "alt_ulke": "Brezilya",
+      "alt_donem": "2026-08",
+      "alt": 0.0375,
+      "ust_ulke": "Türkiye",
+      "ust_donem": "2025-12",
+      "ust": 0.2141,
+      "genislik": 0.1766,
+      "n": 3,
+      "etiket": "olcum"
+    },
+    "yabanci_en_genis_komsu": {
+      "alt_ulke": "Arjantin",
+      "alt_donem": "2025-12",
+      "alt": 0.3431,
+      "ust_ulke": "İspanya",
+      "ust_donem": "2025-12",
+      "ust": 0.473,
+      "genislik": 0.1299,
+      "n": 16,
+      "etiket": "olcum"
+    },
+    "doviz_en_genis_komsu": {
+      "alt_ulke": "Türkiye",
+      "alt_donem": "2025-12",
+      "alt": 0.2141,
+      "ust_ulke": "Arjantin",
+      "ust_donem": "2025-12",
+      "ust": 0.5783,
+      "genislik": 0.3642,
+      "n": 3,
+      "etiket": "olcum"
+    },
+    "doviz_kagit_sifir": [
+      "Japonya",
+      "ABD",
+      "Çin",
+      "Almanya",
+      "Fransa",
+      "İtalya",
+      "İspanya",
+      "Euro alanı",
+      "İngiltere",
+      "Güney Kore",
+      "Meksika",
+      "Polonya"
+    ],
+    "doviz_ayrilmadi": [
+      "Endonezya"
+    ],
+    "anlam": "0,20 kurali bu bosluklarin icindedir. Araligin icindeki her kesit bu tabloda ayni etiketi verir. Aralik bir yasa degildir. Kagit cinsinden konan doviz 0, doviz araligina girmez."
+  },
   "grup": {
     "yerli_para_bacagi": [
       "Türkiye"

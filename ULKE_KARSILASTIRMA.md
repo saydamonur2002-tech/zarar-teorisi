@@ -2,7 +2,7 @@
 
 Çalıştır: `python3 ulke_karsilastirma.py`.
 
-Test, yerli para kâğıdının alacaklısının yerli olup olmadığıdır. Döviz sözleşmesi modelin dışında kalır. Beş adım bu ülkelerde ölçülmedi. Eşik 0,20 karşılaştırma kuralıdır.
+Test, yerli para kâğıdının alacaklısının yerli olup olmadığıdır. Döviz sözleşmesi modelin dışında kalır. Beş adım bu ülkelerde ölçülmedi. Eşik 0,20 karşılaştırma kuralıdır. Kuralın oturduğu boşluk aşağıda ölçülmüştür.
 
 Yazılanlar: **Japonya, Çin, Brezilya, Meksika, Polonya**.
 
@@ -24,6 +24,18 @@ Yazılanlar: **Japonya, Çin, Brezilya, Meksika, Polonya**.
 | Meksika | 2025-12 | devlet iç kâğıdı | 11.4% | 88.6% | 0.0% | 100.0% | yazılır |
 | Polonya | 2025-11 | yurt içi hazine kâğıdı | 11.7% | 88.3% | 0.0% | 100.0% | yazılır |
 | Endonezya | 2025-08-11 | SBN | 14.6% | 85.4% | — | — | yerli alacaklı, döviz ayrılmadı |
+
+## Eşik aralığı
+
+Durum: ölçüm. 0,20 kuralı bu boşlukların içindedir. Aralığın içindeki her kesit bu tabloda aynı etiketi verir.
+
+- Yurt dışı: **14,6%** (Endonezya, 2025-08-11) ile **23,0%** (Euro alanı, 2024-Q4). Genişlik 8,4%. n=16.
+- Döviz, para kırılımı ölçülen satırlar: **3,8%** (Brezilya, 2026-08) ile **21,4%** (Türkiye, 2025-12). Genişlik 17,7%. n=3.
+- Yurt dışında en geniş komşu boşluk: 34,3% (Arjantin) ile 47,3% (İspanya).
+- Dövizde en geniş komşu boşluk, ölçülen üç satırda: 21,4% (Türkiye) ile 57,8% (Arjantin).
+
+Kâğıt cinsinden konan döviz 0 bu aralığa girmez: Japonya, ABD, Çin, Almanya, Fransa, İtalya, İspanya, Euro alanı, İngiltere, Güney Kore, Meksika, Polonya.
+Döviz kırılımı ayrılmayan: Endonezya.
 
 ## Satır notu
 
@@ -50,3 +62,5 @@ Yazılanlar: **Japonya, Çin, Brezilya, Meksika, Polonya**.
 - Beş adım bu ülkelerde kuruldu denmez. Burada yalnız alacaklı payı vardır.
 - Paylar toplanıp tek sıra yapılmaz. Stoklar ve tarihler ayrıdır.
 - Eşik 0,20 ölçülmüş bir yasa denmez. Karşılaştırma kuralıdır.
+- Aralık bir yasa denmez. Bu tablodaki boşluktur. Stoklar ve tarihler ayrı kalır.
+- Kâğıt cinsinden konan döviz 0, döviz eşiğinin ölçümüne girmez.
