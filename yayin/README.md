@@ -28,6 +28,7 @@
 | [ZARAR_DURDURMA_SENARYOSU.md](./ZARAR_DURDURMA_SENARYOSU.md) | Zararı durdurma (d) + refah rantına bağlama politika senaryosu (D): C'den türeyen kaldıraç taraması, TR/dış aktör net'leri, durdurmaya karşı çıkanlar, kısa vade finansman |
 | [DURDURMA_YOLU_KURAL.md](./DURDURMA_YOLU_KURAL.md) | Durdurmanın gerçekleşme yolu, kural bazlı (halka/katman/kapı, aktör değil): kalibre C yoluna uydurulmuş hız sabiti, hız çarpanı ve sıra kuralı varyantları, kısa vade finansman ve rezerv tükenme yılı |
 | [URETIM_KATMAN_MODEL.md](./URETIM_KATMAN_MODEL.md) | Drive'daki üretim katmanı modeli (81 il sızıntı) sisteme bağlandı: belge sayılarının yeniden üretimi, ε duyarlılığı, halka çarpanı 0,68→0,773, üretim tavanı 2054→4264 mn $, atanmış taban 0,25'in bağlayıcı kaldığı bulgusu |
+| [TABAN_DUYARLILIK.md](./TABAN_DUYARLILIK.md) | Gerçekleşme tabanlarının (zarar 0,70 / üretim 0,25 / finans 0,22) tüm zincir yeniden koşularak duyarlılığı: kararı zarar tabanı belirliyor, üretim ve finans tabanı belirlemiyor |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 
