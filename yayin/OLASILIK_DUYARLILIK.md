@@ -4,32 +4,32 @@
 
 | P(C) | P(A) | P(B) | E[TR net 10y, yaşam dahil] | E[GSYH %] | E[iyileşme] | Skor | Karar |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| 0.30 | 0.350 | 0.350 | -23.455 | 6.524 | -6.26 | 58.2 | kisitli_uygulanabilir |
-| 0.35 | 0.325 | 0.325 | -22.687 | 6.31 | -5.50 | 59.1 | kisitli_uygulanabilir |
-| 0.40 | 0.300 | 0.300 | -21.92 | 6.096 | -4.73 | 60.0 | kisitli_uygulanabilir |
-| 0.45 | 0.275 | 0.275 | -21.152 | 5.882 | -3.96 | 60.9 | kisitli_uygulanabilir |
-| 0.50 | 0.250 | 0.250 | -20.384 | 5.668 | -3.19 | 61.8 | kisitli_uygulanabilir |
-| 0.55 | 0.225 | 0.225 | -19.616 | 5.453 | -2.43 | 62.7 | uygulanabilir_kosullu |
-| 0.60 | 0.200 | 0.200 | -18.848 | 5.239 | -1.66 | 63.6 | uygulanabilir_kosullu |
-| 0.65 | 0.175 | 0.175 | -18.081 | 5.025 | -0.89 | 64.5 | uygulanabilir_kosullu |
-| 0.70 | 0.150 | 0.150 | -17.313 | 4.811 | -0.12 | 65.4 | uygulanabilir_kosullu |
-| 0.75 | 0.125 | 0.125 | -16.545 | 4.597 | +0.65 | 67.5 | uygulanabilir_kosullu |
-| 0.80 | 0.100 | 0.100 | -15.777 | 4.383 | +1.41 | 69.7 | uygulanabilir_kosullu |
+| 0.30 | 0.350 | 0.350 | -23.622 | 7.059 | -6.43 | 58.1 | kisitli_uygulanabilir |
+| 0.35 | 0.325 | 0.325 | -22.846 | 6.826 | -5.66 | 59.0 | kisitli_uygulanabilir |
+| 0.40 | 0.300 | 0.300 | -22.07 | 6.594 | -4.88 | 59.9 | kisitli_uygulanabilir |
+| 0.45 | 0.275 | 0.275 | -21.293 | 6.361 | -4.10 | 60.8 | kisitli_uygulanabilir |
+| 0.50 | 0.250 | 0.250 | -20.517 | 6.129 | -3.33 | 61.7 | kisitli_uygulanabilir |
+| 0.55 | 0.225 | 0.225 | -19.741 | 5.896 | -2.55 | 62.6 | uygulanabilir_kosullu |
+| 0.60 | 0.200 | 0.200 | -18.965 | 5.664 | -1.77 | 63.5 | uygulanabilir_kosullu |
+| 0.65 | 0.175 | 0.175 | -18.189 | 5.431 | -1.00 | 64.4 | uygulanabilir_kosullu |
+| 0.70 | 0.150 | 0.150 | -17.412 | 5.198 | -0.22 | 65.3 | uygulanabilir_kosullu |
+| 0.75 | 0.125 | 0.125 | -16.636 | 4.966 | +0.55 | 67.2 | uygulanabilir_kosullu |
+| 0.80 | 0.100 | 0.100 | -15.86 | 4.733 | +1.33 | 69.5 | uygulanabilir_kosullu |
 
 ## Kapı sonuçları (K2: 3 kontrol noktasından kaçı açık)
 
 | Açık | P(A) | P(B) | P(C) | Skor | Karar | Eşiği geçer |
 | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| 0/3 | 0.305 | 0.547 | 0.148 | 55.4 | kisitli_uygulanabilir | hayır |
-| 1/3 | 0.341 | 0.409 | 0.25 | 57.3 | kisitli_uygulanabilir | hayır |
-| 2/3 | 0.344 | 0.276 | 0.38 | 59.6 | kisitli_uygulanabilir | hayır |
-| 3/3 | 0.312 | 0.167 | 0.521 | 62.1 | uygulanabilir_kosullu | evet |
+| 0/3 | 0.785 | 0.024 | 0.192 | 56.2 | kisitli_uygulanabilir | hayır |
+| 1/3 | 0.427 | 0.156 | 0.417 | 60.2 | kisitli_uygulanabilir | hayır |
+| 2/3 | 0.108 | 0.472 | 0.42 | 60.3 | kisitli_uygulanabilir | hayır |
+| 3/3 | 0.014 | 0.76 | 0.225 | 56.8 | kisitli_uygulanabilir | hayır |
 
-Taban (kapı iskeleti, gözlem yok): P(C) = 0.333 → skor 58.8 · kisitli_uygulanabilir (bandın dışında, ızgarada değil).
+Taban (kapı iskeleti, gözlem yok): P(C) = 0.333 → skor 58.7 · kisitli_uygulanabilir (bandın dışında, ızgarada değil).
 
 
-- E[TR net 10y] aralığı: **-23.455 … -15.777** (P(C) 0,30 → 0,80).
-- Skor aralığı: **58.2 … 69.7**.
-- Karar eşiği (skor 62) geçişi: P(C) ≈ **0.511**
-- Beklenen karışımda iyileşme (Δ > 0,05) başlangıcı: P(C) ≈ **0.711**
+- E[TR net 10y] aralığı: **-23.622 … -15.86** (P(C) 0,30 → 0,80).
+- Skor aralığı: **58.1 … 69.5**.
+- Karar eşiği (skor 62) geçişi: P(C) ≈ **0.517**
+- Beklenen karışımda iyileşme (Δ > 0,05) başlangıcı: P(C) ≈ **0.718**
 - Taban satır ana raporla tutarlı: True.

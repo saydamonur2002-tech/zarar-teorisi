@@ -47,8 +47,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/finans_katman_kopru.json fixed/data/etki_cephesi/finans_katman_kopru.json
 --- pristine/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 06:05:45.811750548 +0000
-+++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 08:05:30.017512376 +0000
-@@ -12,5 +12,24 @@
++++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 08:24:45.037502739 +0000
+@@ -7,10 +7,33 @@
+     "zarar_aktarimi": 0.68
+   },
+   "mfin_kenar_sizinti_carpan": 0.52,
++  "gecmisten_turet": {
++    "mfin_kenar_sizinti_carpan": true,
++    "not": "true: MFIN kenar sızıntı çarpanı = geçmişten C rejiminin A'ya göre merkez sızıntı çarpanı (_gecmis.merkez_carpan()['C']; kayan 5 yıllık eğim alt çeyreği − medyan, T yıl). Atanmış 0,52 yalnız karşılaştırma. Halka ek çarpanları, iç tutma, TDS rahatı, kredi kesintisi ve olgunluk süreleri geçmişte gözlenebilir karşılığı olmayan kavramlara bağlı: atanmış kalır."
++  },
+   "bop_yatirim_geliri_icde_tutma": 0.14,
+   "dis_borc_servisi_rahati_vekili": 0.07,
    "kredi_ihtiyaci_sifir_merkez_kesinti": 0.11,
    "tr_finans_geri_tranchman": 0.42,
    "tam_olgunluk_yil": 10,
@@ -482,13 +491,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +2026-08,23327.0,27073.0,2395.0,733.0,2659.0
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/senaryolar.json fixed/data/etki_cephesi/senaryolar.json
 --- pristine/data/etki_cephesi/senaryolar.json	2026-10-14 06:05:45.818537428 +0000
-+++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 07:45:20.550008747 +0000
-@@ -1,12 +1,13 @@
++++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 08:24:11.535150189 +0000
+@@ -1,39 +1,41 @@
  {
    "horizon_yil": 10,
    "baz_yil": 2026,
 -  "en_olasi": "C",
 +  "referans_senaryo": "C",
++  "merkez_sizinti_carpan_not": "Merkez sızıntı çarpanı geçmişten türetilir: etki_cephesi/_gecmis.py merkez_carpan() (kayan 5 yıllık log-eğim çeyrekleri). Buradaki *_eski_atanmis değerler yalnız karşılaştırma içindir.",
 +  "referans_senaryo_not": "Referans rapor senaryosu (etiket). Olasılık sıralaması DEĞİL: olasılıklar _olasilik.py kapılarından gelir, gözlem yokken tekdüze.",
    "referans_olcum_not": "Bağ modu: kullanım / atıl / araçsallaşma (maks-min değil). Dış aktörler TR'yi merkez sanmaz — göreceli fayda/zarar.",
    "senaryolar": [
@@ -499,7 +509,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
        "ad": "Atıl bağ — pasif tutum",
        "aciklama": "Bağ duruyor, iktisadi-sosyopolitik ağırlık işletilmiyor; boşluk dolduruluyor.",
        "etki_erosyon_carpani": 0.35,
-@@ -17,7 +18,7 @@
+       "tr_diplomatik_flex": 0.0,
+-      "merkez_sizinti_carpan": 1.0,
++      "merkez_sizinti_carpan_eski_atanmis": 1.0,
+       "enigma_carpan_levant": 1.08,
+       "bag_modu": {"kullanim": 0.22, "atil": 0.5, "aracsal": 0.28}
      },
      {
        "id": "B",
@@ -508,7 +522,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
        "ad": "Araçsallaşma + donmuş enigma",
        "aciklama": "Bağ dar çıkar ağına dönüşür; dış hegemon mimarisi; Suriye tipi donukluk.",
        "etki_erosyon_carpani": 0.58,
-@@ -28,7 +29,7 @@
+       "tr_diplomatik_flex": -0.06,
+-      "merkez_sizinti_carpan": 1.15,
++      "merkez_sizinti_carpan_eski_atanmis": 1.15,
+       "enigma_carpan_levant": 1.35,
+       "bag_modu": {"kullanim": 0.14, "atil": 0.32, "aracsal": 0.54}
      },
      {
        "id": "C",
@@ -517,6 +535,12 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
        "ad": "Katmanlı oyun inşası — kısmi kullanım",
        "aciklama": "Oyun sahibi dış koşulu içeren yeniden kurulum; enigma çözümleme vekil.",
        "etki_erosyon_carpani": 0.22,
+       "tr_diplomatik_flex": 0.12,
+-      "merkez_sizinti_carpan": 0.9,
++      "merkez_sizinti_carpan_eski_atanmis": 0.9,
+       "enigma_carpan_levant": 0.9,
+       "bag_modu": {"kullanim": 0.52, "atil": 0.26, "aracsal": 0.22}
+     }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/stok_akis_kopru.json fixed/data/etki_cephesi/stok_akis_kopru.json
 --- pristine/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:05:45.818614052 +0000
 +++ fixed/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:44:11.859101458 +0000
@@ -660,6 +684,135 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  "hedef_senaryo_etki_cephesi": "C",
 +  "revize_notu": "Bkz. data/etki_cephesi/REVIZE_NOTU.md"
  }
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_gecmis.py fixed/etki_cephesi/_gecmis.py
+--- pristine/etki_cephesi/_gecmis.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/_gecmis.py	2026-10-14 08:24:11.534589892 +0000
+@@ -0,0 +1,125 @@
++"""Geçmişten türetilen senaryo büyüklükleri (SAF: yalnız gözlem CSV'leri + tam_olgunluk_yil).
++
++Fikir: senaryolar geçmişin rejimleridir. Merkez sızıntı oranı r = yatırım geliri gideri / mal ihracatı'nın
++kayan 5 yıllık log-eğimleri (2015–2025) geçmişin kalıcı sürüklenme dağılımını verir:
++  A (pasif, bağ atıl)          = medyan eğim   (tipik geçmiş devam eder)
++  B (araçsallaşma)             = üst çeyrek eğim (q75, sızıntı artar)
++  C (katmanlı oyun, kullanım)  = alt çeyrek eğim (q25, sızıntı azalır)
++`merkez_sizinti_carpan_s = exp((d_s − d_A) · T)` (A = 1, `tam_olgunluk_yil` T). Atanmış 1,0 / 1,15 / 0,9 yerine.
++
++Sınır: n = 7 kayan pencere, örtüşüyor (etkin bağımsız gözlem ~2). Çeyrekler gürültülüdür; sonuç geçmişin
++dalgalanmasını yansıtır, öngörü değildir. Senaryo anlatısının geçmişte karşılığı olmayan parametreleri
++(etki erozyonu, diplomatik esneklik, bağ modu, halka çarpanları) buradan türetilemez; atanmış kalır.
++"""
++from __future__ import annotations
++
++import csv
++import json
++import math
++from functools import lru_cache
++from pathlib import Path
++from typing import Any
++
++import numpy as np
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++GOZLEM = DATA / "gozlem" / "evds_odeme_dengesi_aylik.csv"
++CEVIRME = DATA / "gozlem" / "evds_borc_cevirme_aylik.csv"
++PENCERE = 5
++ESIK_ACIK = 100.0
++
++
++def _csv(p: Path) -> list[dict[str, str]]:
++    with p.open(encoding="utf-8", newline="") as f:
++        return list(csv.DictReader(f))
++
++
++@lru_cache(maxsize=1)
++def yillik_r() -> dict[int, float]:
++    d: dict[str, tuple[float, float]] = {}
++    for r in _csv(GOZLEM):
++        try:
++            d[r["Donem"]] = (float(r["X_mal_ihracati"]), float(r["YG_yatirim_geliri_gideri"]))
++        except ValueError:
++            continue
++    out: dict[int, float] = {}
++    for y in sorted({int(t[:4]) for t in d}):
++        ay = [f"{y}-{m:02d}" for m in range(1, 13)]
++        if all(a in d for a in ay):
++            out[y] = sum(d[a][1] for a in ay) / sum(d[a][0] for a in ay)
++    return out
++
++
++@lru_cache(maxsize=1)
++def egimler() -> dict[int, float]:
++    """Kayan 5 yıllık log-eğim; anahtar = pencerenin son yılı."""
++    r = yillik_r()
++    ys = sorted(r)
++    lr = [math.log(r[y]) for y in ys]
++    return {ys[i + PENCERE - 1]: float(np.polyfit(np.arange(PENCERE), lr[i : i + PENCERE], 1)[0]) for i in range(len(ys) - PENCERE + 1)}
++
++
++def ceyrekler() -> tuple[float, float, float]:
++    v = np.array(list(egimler().values()))
++    q = np.quantile(v, [0.25, 0.5, 0.75])
++    return float(q[0]), float(q[1]), float(q[2])
++
++
++def suruklenme() -> dict[str, float]:
++    """Senaryo yıllık log sürüklenmesi (mutlak): A medyan, B q75, C q25."""
++    q25, q50, q75 = ceyrekler()
++    return {"A": q50, "B": q75, "C": q25}
++
++
++def sigma_yillik() -> float:
++    r = yillik_r()
++    ys = sorted(r)
++    ch = np.diff([math.log(r[y]) for y in ys])
++    return float(np.std(ch, ddof=1))
++
++
++def tam_olgunluk() -> float:
++    return float(json.loads((DATA / "finans_katman_kopru.json").read_text(encoding="utf-8"))["tam_olgunluk_yil"])
++
++
++def merkez_carpan() -> dict[str, float]:
++    d = suruklenme()
++    t = tam_olgunluk()
++    return {s: float(math.exp((d[s] - d["A"]) * t)) for s in ("A", "B", "C")}
++
++
++def rejim(egim: float) -> str:
++    q25, _, q75 = ceyrekler()
++    return "C" if egim <= q25 else ("B" if egim >= q75 else "A")
++
++
++@lru_cache(maxsize=1)
++def acik_yil() -> dict[int, bool]:
++    """Takvim yılı ortalaması: borç çevirme K1 ve K2 ≥ %100 mü?"""
++    d: dict[str, tuple[float, float]] = {}
++    for r in _csv(CEVIRME):
++        try:
++            d[r["Donem"]] = (float(r["K1_bankalar"]), float(r["K2_diger_sektorler"]))
++        except ValueError:
++            continue
++    out: dict[int, bool] = {}
++    for y in sorted({int(t[:4]) for t in d}):
++        ay = [f"{y}-{m:02d}" for m in range(1, 13)]
++        if all(a in d for a in ay):
++            out[y] = bool(np.mean([d[a][0] for a in ay]) >= ESIK_ACIK and np.mean([d[a][1] for a in ay]) >= ESIK_ACIK)
++    return out
++
++
++def k2_olabilirlik() -> dict[str, Any]:
++    """P(dış finansman açık | rejim) geçmişteki koşullu sıklıktan (Laplace). Kayan pencere sonu yılı etiketlenir."""
++    ay = acik_yil()
++    sayim = {s: [0, 0] for s in ("A", "B", "C")}
++    for y, e in egimler().items():
++        if y in ay:
++            s = rejim(e)
++            sayim[s][1] += 1
++            sayim[s][0] += int(ay[y])
++    p = {s: (a + 1) / (n + 2) for s, (a, n) in sayim.items()}
++    taban = sum(ay.values()) / len(ay)
++    return {"p": p, "sayim_acik_toplam": sayim, "taban_oran": taban}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_kur.py fixed/etki_cephesi/_kur.py
 --- pristine/etki_cephesi/_kur.py	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/etki_cephesi/_kur.py	2026-10-14 06:05:32.664714943 +0000
@@ -685,8 +838,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        return float(yedek), "yedek:gerceklik_capa(2024 ortalama) — matris dönemiyle uyumsuz"
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_olasilik.py fixed/etki_cephesi/_olasilik.py
 --- pristine/etki_cephesi/_olasilik.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/_olasilik.py	2026-10-14 07:40:33.235357912 +0000
-@@ -0,0 +1,202 @@
++++ fixed/etki_cephesi/_olasilik.py	2026-10-14 08:24:33.456042504 +0000
+@@ -0,0 +1,210 @@
 +"""Senaryo olasılıkları: ölçülebilir kapılardan, SAF hesap (rapor okumaz → döngü yok).
 +
 +Bu modül pipeline raporlarını OKUMAZ; yalnız `senaryolar.json`, `finans_katman_kopru.json` ve EVDS gözlem CSV'lerini okur.
@@ -704,8 +857,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  * Kapı verisi yoksa kapı kapalı sayılır (olasılığa girmez), uydurma değer yazılmaz.
 +
 +Kapılar:
-+  K1 merkez sızıntı sürüklenmesi (EVDS, ödemeler dengesi)  — turetilmis (merkez_sizinti_carpan); ayırt gücü yok.
-+  K2 dış kısıt: borç çevirme oranı (EVDS bie_oderoll)       — varsayim (δ); kontrol noktaları 2027-12, 2029-12, 2031-12.
++  K1 merkez sızıntı sürüklenmesi (EVDS, ödemeler dengesi)  — GEÇMİŞTEN: A medyan, B q75, C q25 kayan 5 yıllık log-eğim (_gecmis.py).
++  K2 dış kısıt: borç çevirme oranı (EVDS bie_oderoll)       — GEÇMİŞTEN: P(açık | rejim) koşullu sıklık (_gecmis.py); kontrol noktaları 2027-12, 2029-12, 2031-12.
 +  K3 etki erozyonu (bölge ihracat payı)                       — kaynak EVDS dışı; veri yok → kapalı.
 +  K4 bağ kullanımı                                            — gözlenebilir seri yok → kapalı.
 +"""
@@ -719,14 +872,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +from functools import lru_cache
 +
++import _gecmis
++
 +REPO = Path(__file__).resolve().parents[1]
 +DATA = REPO / "data" / "etki_cephesi"
 +CEVIRME = DATA / "gozlem" / "evds_borc_cevirme_aylik.csv"
 +SENARYOLAR = ("A", "B", "C")
 +KONTROL = ("2027-12", "2029-12", "2031-12")
 +ESIK_ACIK = 100.0  # %: çevirme >= 100 = dış finansman açık
-+DELTA = 0.10  # K2 varsayımı: p_C = p0 + δ, p_B = p0 − δ, p_A = p0
-+DELTA_BANT = (0.0, 0.05, 0.10, 0.15, 0.20)
++LAMBDA = 0.0  # K2: p_s = (1−λ) p_tarihsel_s + λ p0; λ=0 saf geçmiş, λ=1 kapı bilgi taşımaz
++LAMBDA_BANT = (0.0, 0.25, 0.5, 0.75, 1.0)
 +UNIFORM = {s: 1 / 3 for s in SENARYOLAR}
 +
 +
@@ -766,9 +921,10 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return {k: v / s for k, v in w.items()}
 +
 +
-+def _k2_p(p0: float, delta: float) -> dict[str, float]:
++def _k2_p(gecmis: dict[str, Any], lam: float) -> dict[str, float]:
 +    c = lambda x: min(0.95, max(0.05, x))  # noqa: E731
-+    return {"A": c(p0), "B": c(p0 - delta), "C": c(p0 + delta)}
++    p0 = gecmis["taban_oran"]
++    return {s: c((1 - lam) * gecmis["p"][s] + lam * p0) for s in SENARYOLAR}
 +
 +
 +def _binom_lik(p: dict[str, float], k: int, n: int) -> dict[str, float]:
@@ -798,13 +954,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    import numpy as np  # noqa: E402
 +
 +    on = [v for y, v in sorted(g.items()) if y <= baz]
-+    mu, sigma = float(np.mean(on)), float(np.std(on, ddof=1))
++    mu, sigma = 0.0, float(np.std(on, ddof=1))  # sürüklenmeler mutlak (geçmiş eğim çeyrekleri)
 +    drift = _surukleme(sen, float(ph["tam_olgunluk_yil"]))
 +    uygun = [g[y] for y in sorted(g) if y > baz]
 +    l1 = _posterior(UNIFORM, uygun, mu, sigma, drift) if uygun else dict(UNIFORM)
 +
 +    # K2 olabilirlik (gözlem varsa)
-+    pk2 = _k2_p(p0, DELTA)
++    kg = _gecmis.k2_olabilirlik()
++    pk2 = _k2_p(kg, LAMBDA)
 +    n_g = len(gozlenen)
 +    k_g = sum(gozlenen.values())
 +    l2 = _binom_lik(pk2, k_g, n_g) if n_g else {s: 1.0 for s in SENARYOLAR}
@@ -824,34 +981,38 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        satir["olasilik_tam"] = {s: post[s] for s in SENARYOLAR}  # duyarlılık raporu karar bağlantısı için
 +        tablo.append(satir)
 +
-+    # duyarlılık: δ ve prior seçimi (k=n: en lehte, k=0: en aleyhte)
++    # duyarlılık: λ (geçmişe ağırlık) ve prior seçimi (k=n: en lehte, k=0: en aleyhte)
 +    duy = []
-+    for dl in DELTA_BANT:
-+        p = _k2_p(p0, dl)
++    for lm in LAMBDA_BANT:
++        p = _k2_p(kg, lm)
 +        e = {}
 +        for ad, pr in (("tekduze", UNIFORM), ("eski_el_atamasi", _norm(eski))):
 +            e[ad] = {
 +                "k=0": round(birlestir(pr, dict(UNIFORM), _binom_lik(p, 0, n))["C"], 3),
 +                "k=n": round(birlestir(pr, dict(UNIFORM), _binom_lik(p, n, n))["C"], 3),
 +            }
-+        duy.append({"delta": dl, "p_acik": {k: round(v, 3) for k, v in p.items()}, **e})
++        duy.append({"lambda": lm, "p_acik": {k: round(v, 3) for k, v in p.items()}, **e})
 +
++    from c_dinamik_olcut import _guc  # noqa: E402
++
++    _g = _guc(drift, sigma)
++    k1_min_yil = min(v["gerekli_yil"] for k, v in _g.items() if k.startswith("C_") and v["gerekli_yil"] is not None)
 +    en_iyi = max(t["P"]["C"] for t in tablo)
 +    kapilar = [
 +        {
 +            "kapi": "K1 merkez sızıntı sürüklenmesi",
 +            "kaynak": "EVDS TP.ODEAYRSUNUM6.Q76/Q5",
-+            "olabilirlik": "turetilmis",
-+            "esleme": "d_s = ln(merkez_sizinti_carpan_s)/T",
++            "olabilirlik": "gecmisten (kayan 5 yillik log-egim ceyrekleri)",
++            "esleme": "d_A = medyan, d_B = q75, d_C = q25; gozlem ~ N(d_s, sigma_gecmis)",
 +            "durum": "olcum_bekliyor" if not uygun else "olculdu",
-+            "ayirt_gucu": "yok (C vs B ≥ 307 yıl)",
++            "ayirt_gucu": f"C icin en kisa ayrim {k1_min_yil:,.0f} yil (SPRT %95)",
 +            "P_C_etkisi": round(l1["C"], 3),
 +        },
 +        {
 +            "kapi": "K2 dış kısıt (borç çevirme ≥ %100: bankalar ve diğer sektörler)",
 +            "kaynak": "EVDS bie_oderoll TP.ODEROLL.K1, K2 (12 ay ort.)",
-+            "olabilirlik": "varsayim",
-+            "esleme": f"p_A = taban oran p0 = {p0:.3f} (tarihçede 'açık' pay); p_B = p0 − δ; p_C = p0 + δ; δ = {DELTA}",
++            "olabilirlik": "gecmisten (n kucuk, ortusen pencereler)",
++            "esleme": f"P(acik | rejim) = {kg['p']} (sayim acik/toplam: {kg['sayim_acik_toplam']}); taban oran p0 = {kg['taban_oran']:.3f}; lambda = {LAMBDA}",
 +            "kontrol_noktalari": list(KONTROL),
 +            "durum": "olcum_bekliyor" if not n_g else f"olculdu ({k_g}/{n_g} acik)",
 +            "bugunku_deger_bilgi": k2_son,
@@ -870,7 +1031,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "bugunku_P_tam": {s: bugun[s] for s in SENARYOLAR},
 +        "bugunku_durum": "ölçüm başlamadı: P(C) = prior (1/3). 0,60 hiçbir ölçüme dayanmıyordu." if not (uygun or n_g) else "gözlem var",
 +        "kapilar": kapilar,
-+        "k2_tarihce": {"taban_acik_pay": round(p0, 3), "n_pencere": len(ort), "son": k2_son},
++        "k2_tarihce": {"taban_acik_pay": round(p0, 3), "n_pencere": len(ort), "son": k2_son, "rejim_kosullu": {"p": {k: round(v, 3) for k, v in kg["p"].items()}, "sayim_acik_toplam": kg["sayim_acik_toplam"], "taban_oran_yillik": round(kg["taban_oran"], 3)}},
 +        "k2_sonuc_tablosu": tablo,
 +        "k2_duyarlilik": duy,
 +        "en_iyi_tek_kapi_P_C": en_iyi,
@@ -1005,8 +1166,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "aktorler": aktorler,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/c_dinamik_olcut.py fixed/etki_cephesi/c_dinamik_olcut.py
 --- pristine/etki_cephesi/c_dinamik_olcut.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/c_dinamik_olcut.py	2026-10-14 07:40:14.117185468 +0000
-@@ -0,0 +1,266 @@
++++ fixed/etki_cephesi/c_dinamik_olcut.py	2026-10-14 08:24:11.537059066 +0000
+@@ -0,0 +1,270 @@
 +"""C senaryosunun gerçekleşme durumunu ölçen DİNAMİK ölçüt (sıralı Bayes).
 +
 +Ne yapar: senaryo olasılıklarını (A/B/C) gözlemle her yıl günceller. Gösterge: merkez sızıntı oranı
@@ -1031,6 +1192,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +from typing import Any
 +
 +import numpy as np
++
++import _gecmis
 +
 +REPO = Path(__file__).resolve().parents[1]
 +DATA = REPO / "data" / "etki_cephesi"
@@ -1084,7 +1247,9 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +
 +def _surukleme(sen: dict[str, Any], olgun: float) -> dict[str, float]:
-+    return {s["id"]: math.log(float(s["merkez_sizinti_carpan"])) / olgun for s in sen["senaryolar"]}
++    """Geçmişten: A medyan, B q75, C q25 (kayan 5 yıllık log-eğim). `sen`, `olgun` yalnız imza uyumu için."""
++    _ = (sen, olgun)
++    return _gecmis.suruklenme()
 +
 +
 +def _posterior(prior: dict[str, float], obs: list[float], mu: float, sigma: float, drift: dict[str, float], unutma: float = UNUTMA) -> dict[str, float]:
@@ -1142,7 +1307,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    r = _oran12(d)
 +    g = _yillik_degisim(r)
 +    on = [v for y, v in sorted(g.items()) if y <= baz]  # baz yıl ve öncesi: tahmin (güncelleme değil)
-+    mu = float(np.mean(on))
++    mu = 0.0  # sürüklenmeler mutlak (geçmiş eğim çeyrekleri); karşı-olgusal ortalama çıkarılmaz
 +    sigma = float(np.std(on, ddof=1))
 +    uygun = {y: v for y, v in g.items() if y > baz}  # ölçüm penceresi
 +    post = _posterior(prior, [uygun[y] for y in sorted(uygun)], mu, sigma, drift) if uygun else dict(prior)
@@ -1176,7 +1341,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "olcum": "c_dinamik_olcut",
 +        "etiket": "olasilik_olculmedi_dinamik_olcut",
 +        "gosterge": "merkez_sizinti_orani = 12a yatırım geliri gideri / 12a mal ihracatı (EVDS ödemeler dengesi)",
-+        "varsayim": "Senaryo sürüklenmesi d_s = ln(merkez_sizinti_carpan_s)/T (T=%d yıl); karşı-olgusal trend = baz yıl öncesi Ara→Ara ortalaması." % int(olgun),
++        "varsayim": "Senaryo sürüklenmesi geçmişten: A = medyan, B = q75, C = q25 (r'nin kayan 5 yıllık log-eğimleri, 2015–2025); gözlem g ~ N(d_s, σ), σ = yıllık log değişimin geçmiş std'si. Senaryo = geçmiş rejimleri varsayımı.",
 +        "prior": {k: round(v, 4) for k, v in prior.items()},
 +        "suruklenme_yillik_log": {k: round(v, 4) for k, v in drift.items()},
 +        "karsi_olgusal": {"mu_yillik_log": round(mu, 4), "sigma_yillik_log": round(sigma, 4), "n_yil": len(on)},
@@ -1330,8 +1495,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    borc_cevirme()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
 --- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
-+++ fixed/etki_cephesi/finans_katman.py	2026-10-14 08:06:30.029424115 +0000
-@@ -69,6 +69,14 @@
++++ fixed/etki_cephesi/finans_katman.py	2026-10-14 08:24:45.038067306 +0000
+@@ -8,6 +8,8 @@
+ from pathlib import Path
+ from typing import Any
+ 
++import _gecmis
++
+ REPO = Path(__file__).resolve().parents[1]
+ DATA = REPO / "data" / "etki_cephesi"
+ EMPIRIK = DATA / "empirik"
+@@ -69,6 +71,14 @@
      return next(s for s in sen_doc["senaryolar"] if s["id"] == sid)
  
  
@@ -1346,7 +1520,18 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def _senaryo_finans_carpanlari(proj: dict[str, Any], sid: str) -> tuple[float, float]:
      """Politika gerçekleşme (C=1) ve merkez sızıntı göreli (C merkez çarpanı=0.9)."""
      _ = proj
-@@ -115,7 +123,20 @@
+@@ -81,8 +91,8 @@
+     flex_c = float(sen_c.get("tr_diplomatik_flex") or 0.0)
+     pol_c = max(0.25, min(1.0, 1.05 - er_c + flex_c))
+     pol_oran = pol / pol_c if pol_c > 0 else 1.0
+-    mer = float(sen.get("merkez_sizinti_carpan") or 1.0)
+-    mer_c = float(sen_c.get("merkez_sizinti_carpan") or 0.9)
++    mer = float(_gecmis.merkez_carpan()[sid])
++    mer_c = float(_gecmis.merkez_carpan()["C"])
+     mer_oran = mer / mer_c if mer_c > 0 else 1.0
+     return round(pol_oran, 4), round(mer_oran, 4)
+ 
+@@ -115,7 +125,20 @@
      subprocess.check_call([sys.executable, str(REPO / "etki_cephesi" / "uretim_ic_akis.py")])
  
  
@@ -1368,7 +1553,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      sid = senaryo_id
      _ensure_uretim_sid(sid)
      proj = _load(PROJ)
-@@ -134,10 +155,17 @@
+@@ -134,10 +157,17 @@
      ic_u = float(u["tr_ic_geri_kazanim_vekili"])
      rant_arti_u = float(u["rant_tr_arti_deger_vekili"])
  
@@ -1389,12 +1574,15 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          carpan_fin[k] = float(carpan_fin.get(k, 1.0)) * float(v)
      oran_fin = _bos_oran(halka, carpan_fin)
      bos_fin = round(bos_u * (oran_fin / oran_uretim) if oran_uretim > 0 else bos_u, 3)
-@@ -145,10 +173,10 @@
+@@ -145,10 +175,13 @@
      mfin_z = float(z.get("merkez_mfin_kenar") or _mfin_kenar(proj, sid))
      merkez_z = float(z.get("merkez_finans_sizinti_toplam") or 1.0)
      mfin_u = round(mfin_z * (merkez_u / merkez_z) if merkez_z > 0 else mfin_z, 3)
 -    mfin_carp = float(kopru["mfin_kenar_sizinti_carpan"])
-+    mfin_carp = 1.0 - g_f * (1.0 - float(kopru["mfin_kenar_sizinti_carpan"]))
++    mfin_taban = float(kopru["mfin_kenar_sizinti_carpan"])
++    if (kopru.get("gecmisten_turet") or {}).get("mfin_kenar_sizinti_carpan"):
++        mfin_taban = float(_gecmis.merkez_carpan()["C"])  # geçmişten: C rejimi / A rejimi sızıntı oranı
++    mfin_carp = 1.0 - g_f * (1.0 - mfin_taban)
      mfin_fin = round(mfin_u * mfin_carp, 3)
      merkez_fin = round(merkez_u - (mfin_u - mfin_fin), 3)
 -    kredi_kes = round(merkez_u * float(kopru["kredi_ihtiyaci_sifir_merkez_kesinti"]), 3)
@@ -1402,7 +1590,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      merkez_fin = round(max(0.0, merkez_fin - kredi_kes), 3)
  
      sen_c = next(s for s in proj["senaryolar"] if s["id"] == sid)
-@@ -158,8 +186,8 @@
+@@ -158,8 +191,8 @@
      cicek = float(satir.get("usd_mn") or 0.0)
      tds = float(((fin.get("akis_satirlari") or {}).get("dis_borc_servisi_tds") or {}).get("usd_mn") or 0.0)
  
@@ -1413,7 +1601,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      usd_bop_tut = cicek * bop_pay
      usd_tds_rah = tds * tds_rah * 0.002
      vekil_bop = _vekil_from_usd(usd_bop_tut, cicek, merkez_rant_c)
-@@ -169,12 +197,9 @@
+@@ -169,12 +202,9 @@
      mfin_tr = round((mfin_u - mfin_fin) * tranch, 3)
      merkez_tr = round((merkez_u - merkez_fin) * tranch * 0.85, 3)
      finans_geri_ham = mfin_tr + merkez_tr + (vekil_bop + vekil_tds) * tranch
@@ -1427,7 +1615,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      tr_net_fin = round(-havza_fin + ic_u + rant_arti_u * 0.92 + finans_geri, 3)
  
      tam = float(kopru.get("tam_olgunluk_yil") or 10)
-@@ -199,10 +224,20 @@
+@@ -199,10 +229,20 @@
  
      return {
          "olcum": "finans_katman_uretim_ustu",
@@ -1449,7 +1637,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "usd_vekili": {
              "yatirim_geliri_gideri_mn": cicek,
              "icde_tutulan_mn": round(usd_bop_tut, 1),
-@@ -250,6 +285,12 @@
+@@ -250,6 +290,12 @@
      }
  
  
@@ -1462,7 +1650,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def _md(d: dict[str, Any]) -> str:
      t = d["uretim_ic_akis_taban"]
      f = d["finans_katman_tam"]
-@@ -258,6 +299,17 @@
+@@ -258,6 +304,17 @@
      lines = [
          "# Finans katmanı (üretim + halka üstü)",
          "",
@@ -1875,7 +2063,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olasilik_kapilar.py fixed/etki_cephesi/olasilik_kapilar.py
 --- pristine/etki_cephesi/olasilik_kapilar.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/olasilik_kapilar.py	2026-10-14 07:40:47.028349744 +0000
++++ fixed/etki_cephesi/olasilik_kapilar.py	2026-10-14 08:24:33.456539329 +0000
 @@ -0,0 +1,45 @@
 +"""P(C) kapı raporu: `_olasilik.hesapla_P()` çıktısını yazar. Saf hesap `_olasilik.py`'dedir (rapor okumaz).
 +
@@ -1902,13 +2090,13 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    for k in d["kapilar"]:
 +        L.append(f"| {k['kapi']} | {k['kaynak']} | {k['olabilirlik']} | {k['durum']} |")
 +    t = d["k2_tarihce"]
-+    L += ["", "## K2 dış kısıt", "", f"- Tarihçe: 12 aylık ort. çevirme ≥ %100 olan pencerelerin payı **{t['taban_acik_pay']}** ({t['n_pencere']} pencere). Bu A için taban oran p0.", f"- Son: {t['son']}", f"- Varsayım (tek parametre): p_C = p0 + δ, p_B = p0 − δ, δ = {_olasilik.DELTA}.", "", "| Açık sayısı (3 kontrol noktasından) | P(A) | P(B) | P(C) |", "| ---: | ---: | ---: | ---: |"]
++    L += ["", "## K2 dış kısıt", "", f"- Tarihçe: 12 aylık ort. çevirme ≥ %100 olan pencerelerin payı **{t['taban_acik_pay']}** ({t['n_pencere']} pencere). Bu A için taban oran p0.", f"- Son: {t['son']}", f"- Olabilirlik **geçmişten**: P(açık | rejim) = {t['rejim_kosullu']['p']}, geçmiş sayım (açık, toplam) = {t['rejim_kosullu']['sayim_acik_toplam']}. Rejim = kayan 5 yıllık eğimin çeyreği (C ≤ q25, B ≥ q75, A arası). n = 7 örtüşen pencere (etkin ~2 bağımsız): çok zayıf. λ = {_olasilik.LAMBDA} (λ=1: kapı bilgi taşımaz).", "", "| Açık sayısı (3 kontrol noktasından) | P(A) | P(B) | P(C) |", "| ---: | ---: | ---: | ---: |"]
 +    for r in d["k2_sonuc_tablosu"]:
 +        L.append(f"| {r['k_acik']}/{r['n']} | {r['P']['A']} | {r['P']['B']} | {r['P']['C']} |")
-+    L += ["", "### δ duyarlılığı (P(C): hiç açık yok → hepsi açık)", "", "| δ | tekdüze prior | eski el ataması prior |", "| ---: | --- | --- |"]
++    L += ["", "### λ duyarlılığı (geçmişe ağırlık; P(C): hiç açık yok → hepsi açık)", "", "| λ | tekdüze prior | eski el ataması prior |", "| ---: | --- | --- |"]
 +    for r in d["k2_duyarlilik"]:
-+        L.append(f"| {r['delta']} | {r['tekduze']['k=0']} → {r['tekduze']['k=n']} | {r['eski_el_atamasi']['k=0']} → {r['eski_el_atamasi']['k=n']} |")
-+    L += ["", "## Karar bağlantısı", "", "Kapı sonuçlarının uygulanabilirlik kararına çevrilmesi `OLASILIK_DUYARLILIK.md` içinde ('Kapı sonuçları').", "", "## Ne denmez", "", "- 'P(C) = 1/3' bir ölçüm değildir; bilgi yokluğudur. Ölçüm 2027-12'den itibaren başlar.", "- K2 olabilirliği varsayımdır (δ). Tablo bunun ne kadar oynattığını gösterir, doğrulamaz.", "- K3 ve K4 veri gelene kadar olasılığa girmez; sıfır değil, bilinmiyor.", ""]
++        L.append(f"| {r['lambda']} | {r['tekduze']['k=0']} → {r['tekduze']['k=n']} | {r['eski_el_atamasi']['k=0']} → {r['eski_el_atamasi']['k=n']} |")
++    L += ["", "## Karar bağlantısı", "", "Kapı sonuçlarının uygulanabilirlik kararına çevrilmesi `OLASILIK_DUYARLILIK.md` içinde ('Kapı sonuçları').", "", "## Ne denmez", "", "- 'P(C) = 1/3' bir ölçüm değildir; bilgi yokluğudur. Ölçüm 2027-12'den itibaren başlar.", "- K2 olabilirliği 7 örtüşen geçmiş pencereden gelir; çok gürültülü. λ tablosu geçmişe verilen ağırlığın etkisini gösterir.", "- K3 ve K4 veri gelene kadar olasılığa girmez; sıfır değil, bilinmiyor.", ""]
 +    return "\n".join(L)
 +
 +
@@ -1924,8 +2112,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
 --- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
-+++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 07:49:13.541317056 +0000
-@@ -789,10 +789,10 @@
++++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 08:24:11.536433991 +0000
+@@ -3,6 +3,8 @@
+ 
+ import json
+ from pathlib import Path
++
++import _gecmis
+ from typing import Any
+ 
+ REPO = Path(__file__).resolve().parents[1]
+@@ -789,10 +791,10 @@
      ikame = float(akis_doc.get("yaricevre_rakip_ikame_carpan", 0.55))
  
      kalibre_kullanildi = (KALIBRE / "bolgeler.json").is_file()
@@ -1938,7 +2135,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "kalibre_2024_ticaret": kalibre_kullanildi,
          "rant_modeli": "refah" if refah_doc and refah_doc.get("aktif") else "bosluk",
          "kaynak_tez": "data/etki_cephesi/KAYNAK_TEZ.md",
-@@ -928,31 +928,23 @@
+@@ -812,7 +814,7 @@
+         sid = sen["id"]
+         ero = sen["etki_erosyon_carpani"]
+         flex = sen["tr_diplomatik_flex"]
+-        merkez_c = float(sen.get("merkez_sizinti_carpan", 1.0))
++        merkez_c = float(_gecmis.merkez_carpan()[sid])  # geçmişten türetilmiş (A=1)
+         bag_modu = sen.get("bag_modu") or {"kullanim": 0.3, "atil": 0.4, "aracsal": 0.3}
+         kullanim = float(bag_modu.get("kullanim", 0.3))
+         enigma_l = float(sen.get("enigma_carpan_levant", 1.0))
+@@ -928,31 +930,23 @@
          lines.append(f"*{payload['referans_olcum_not']}*")
          lines.append("")
  
@@ -1985,7 +2191,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          lines.append(f"## Senaryo {sen['id']}: {sen['ad']}{tag}")
          lines.append("")
          lines.append(sen["aciklama"])
-@@ -1160,9 +1152,9 @@
+@@ -1160,9 +1154,9 @@
      sen: dict[str, Any],
      sid: str,
      ulke_gruplari: list[tuple[str, list[str]]],
@@ -1997,7 +2203,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      if sen.get("ulke_kayiplari"):
          ua = [f"# Senaryo {baslik_etiket} — ülke bazlı kayıp (10 yıl vekil)", ""]
          ua.append("| Ülke | Kayıp endeks | Net | Pasif | Araçsal | Temsil |")
-@@ -1238,12 +1230,12 @@
+@@ -1238,12 +1232,12 @@
      (OUT / "PROJEKSIYON.json").write_text(json.dumps(clean, ensure_ascii=False, indent=2), encoding="utf-8")
      payload["_adlar"] = adlar
      (OUT / "PROJEKSIYON.md").write_text(_md(payload), encoding="utf-8")
@@ -2228,8 +2434,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "dogrulama_2024": dogrulama,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_rapor.py fixed/etki_cephesi/senaryo_rapor.py
 --- pristine/etki_cephesi/senaryo_rapor.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 08:06:30.030215335 +0000
-@@ -0,0 +1,183 @@
++++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 08:24:45.038515450 +0000
+@@ -0,0 +1,185 @@
 +"""Senaryo raporları: A, B, C için AYNI bölümler, AYNI alanlar (referans senaryo ayrıcalığı yok).
 +
 +Çıktı: `SENARYO_RAPOR_{A,B,C}.md` (aynı iskelet) ve `SENARYO_KARSILASTIRMA.md` (yan yana).
@@ -2246,6 +2452,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +from pathlib import Path
 +from typing import Any
 +
++import _gecmis
 +import _olasilik
 +
 +REPO = Path(__file__).resolve().parents[1]
@@ -2299,7 +2506,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            ("Olasılık (kapı iskeleti, gözlem yokken tekdüze)", round(_olasilik.vekil()[sid], 4)),
 +            ("Etki erozyonu çarpanı", sen.get("etki_erosyon_carpani")),
 +            ("TR diplomatik esneklik", sen.get("tr_diplomatik_flex")),
-+            ("Merkez sızıntı çarpanı", sen.get("merkez_sizinti_carpan")),
++            ("Merkez sızıntı çarpanı (geçmişten, A=1)", round(_gecmis.merkez_carpan()[sid], 3)),
++            ("Merkez sızıntı çarpanı (eski, atanmış)", sen.get("merkez_sizinti_carpan_eski_atanmis")),
 +            ("Bağ modu kullanım / atıl / araçsal", f"{bm.get('kullanim')} / {bm.get('atil')} / {bm.get('aracsal')}"),
 +        ]),
 +        ("2. Projeksiyon (10 yıl vekil)", [
@@ -2993,8 +3201,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 08:14:02.641088642 +0000
-@@ -0,0 +1,370 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 08:25:44.862878582 +0000
+@@ -0,0 +1,399 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -3172,7 +3380,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    m = _dinamik()
 +    sen = _j(DATA / "senaryolar.json")
 +    d = m._surukleme(sen, 10.0)
-+    assert d["A"] == 0.0 and d["B"] > 0 and d["C"] < 0  # merkez_sizinti_carpan 1,0 / 1,15 / 0,9
++    sys.path.insert(0, str(REPO / "etki_cephesi"))
++    import _gecmis  # noqa: E402
++
++    assert d == _gecmis.suruklenme()  # geçmişten: A medyan, B q75, C q25
++    assert d["C"] < d["A"] < d["B"]
 +
 +
 +def test_c_dinamik_eksik_ay_12_ay_penceresini_bozar():
@@ -3218,7 +3430,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    d = _j(OUT / "OLASILIK_KAPILAR.json")
 +    t = d["k2_sonuc_tablosu"]
 +    pc = [r["P"]["C"] for r in t]
-+    assert pc == sorted(pc)  # daha çok 'açık' → C artar
++    # geçmişte açık dış finansman B-benzeri rejimde (2023–25) görüldü: P(C) açık sayısıyla monoton DEĞİL
++    assert pc != sorted(pc) and t[-1]["P"]["B"] == max(t[-1]["P"].values())
 +    for r in t:
 +        assert abs(sum(r["P"].values()) - 1) < 2e-3
 +    ds = _j(OUT / "OLASILIK_DUYARLILIK.json")
@@ -3227,8 +3440,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        assert r["esigi_gecer"] == (r["skor_0_100"] >= 62.0)
 +        assert r["esigi_gecer"] == (r["P"]["C"] >= esik - 5e-3)  # enterpolasyon yuvarlaması payı
 +    assert d["en_iyi_tek_kapi_P_C"] == max(pc)
-+    # δ=0 → kapı bilgi taşımaz
-+    z = next(x for x in d["k2_duyarlilik"] if x["delta"] == 0.0)
++    # λ=1 → kapı bilgi taşımaz (tüm senaryolara taban oran)
++    z = next(x for x in d["k2_duyarlilik"] if x["lambda"] == 1.0)
 +    assert z["tekduze"]["k=0"] == z["tekduze"]["k=n"] == 0.333
 +
 +
@@ -3340,8 +3553,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert b["gerceklesme_oranlari"]["finans_katman"] > 0.9  # zarar (ters çevirme) gerçekleşme tavanına tabi değil
 +    k = {r["katman"]: r["tr_net"] for r in b["katman_yigini_kalibre"]}
 +    assert k["finans_katman"] < k["uretim_ic_akis"]
-+    # C'nin son değeri bağlamadan etkilenmez (C'de g = 1, pol_C sabit)
-+    assert abs(_j(OUT / "GERCEKLIK_KALIBRE_C.json")["tr_net_kalibre_son"] - (-11.211)) < 5e-3
 +
 +
 +def test_gecmis_projeksiyon_yalniz_gecmis_kullanir():
@@ -3365,3 +3576,29 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    for alan in ("r", "net"):
 +        for yon, rows in d["geriye_test_2022_baslangic"][alan].items():
 +            assert all(rows[h]["hata_yuzde"] < 0 for h in ("2023", "2024", "2025")), (alan, yon)
++
++
++def test_gecmisten_turetilen_senaryo_buyuklukleri():
++    sys.path.insert(0, str(REPO / "etki_cephesi"))
++    import ast
++    import math
++
++    import _gecmis  # noqa: E402
++
++    src = (REPO / "etki_cephesi" / "_gecmis.py").read_text(encoding="utf-8")
++    ice = {n.module for n in ast.walk(ast.parse(src)) if isinstance(n, ast.ImportFrom)} | {a.name for n in ast.walk(ast.parse(src)) if isinstance(n, ast.Import) for a in n.names}
++    assert ice <= {"__future__", "csv", "json", "math", "functools", "pathlib", "typing", "numpy"}
++    assert "senaryolar.json" not in src.split("def tam_olgunluk")[0]  # senaryo parametresi okunmaz; yalnız gözlem ve T
++    q25, q50, q75 = _gecmis.ceyrekler()
++    assert q25 < q50 < q75
++    c = _gecmis.merkez_carpan()
++    t = _gecmis.tam_olgunluk()
++    assert c["A"] == 1.0 and c["C"] < 1.0 < c["B"]
++    assert abs(c["B"] - math.exp((q75 - q50) * t)) < 1e-12 and abs(c["C"] - math.exp((q25 - q50) * t)) < 1e-12
++    sen = _j(DATA / "senaryolar.json")
++    assert all("merkez_sizinti_carpan" not in s for s in sen["senaryolar"])  # atanmış değer yeniden adlandırıldı
++    k2 = _gecmis.k2_olabilirlik()
++    assert all(0 < v < 1 for v in k2["p"].values())
++    # projeksiyon çarpanı geçmişten kullanır: B sızıntısı / A sızıntısı = geçmiş çarpanı (boşalma kalemi hariç)
++    proj = {s["id"]: s for s in _j(OUT / "PROJEKSIYON.json")["senaryolar"]}
++    assert proj["C"]["merkez_finans_sizinti_toplam"] < proj["A"]["merkez_finans_sizinti_toplam"] < proj["B"]["merkez_finans_sizinti_toplam"]

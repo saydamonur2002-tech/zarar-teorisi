@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `1da628d789a28343`, temiz kurulumda 3 geçiş),
-**54 test geçti** (27 mevcut + 27 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `f49e2f35a58bd249`, temiz kurulumda 3 geçiş),
+**55 test geçti** (27 mevcut + 28 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -38,37 +38,37 @@ Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla k
 | Beklenen karışımın iyileşmesi | +0,087 skor (özet "iyileşir" diyordu) | −1,00 vekil: iyileşme yok, engel olarak yazıldı |
 | Lm × rant, kur | 32,87 | 44,38; kapanış_ok = False (Σ x = +0,178) |
 
-Not: bu tablo P(C)=0,60 ile. P(C) kapılara bağlanınca skor 58,8 (finans kalibre yola da bağlıyken) ve karar `kisitli_uygulanabilir` (aşağıda).
+Not: bu tablo P(C)=0,60 ile. P(C) kapılara, kapılar ve katmanlar geçmişe bağlanınca skor 58,7 ve karar `kisitli_uygulanabilir` (aşağıda).
 | 10 | C'nin gerçekleşmesini ölçen bir ölçüt yoktu | `c_dinamik_olcut.py`: sıralı Bayes, EVDS merkez sızıntı oranı; güç analizi (aşağıda) |
 
 ## C olasılığı duyarlılığı (yeni rapor)
-`olasilik_duyarlilik.py` → `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. P(C) 0,30–0,80, kalan A:B taban oranla bölünür (taban artık 1:1).
-**Yeni olasılık üretmez.** Tablo kapılara bağlanmış taban (A=B) ve finans katmanı kalibre yola bağlıyken; kapı sonuçlarının karara çevrilmesi de aynı raporda.
+`olasilik_duyarlilik.py` → `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. P(C) 0,30–0,80, kalan A:B taban oranla bölünür (taban 1:1). **Yeni olasılık üretmez.** Tablo, kapı ve katmanlar geçmişten kurulduktan sonraki güncel durum:
 
 | P(C) | P(A) | P(B) | E[TR net 10y, yaşam dahil] | E[GSYH %] | E[iyileşme] | Skor | Karar |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| 0.30 | 0.350 | 0.350 | -23.455 | 6.524 | -6.26 | 58.2 | kisitli_uygulanabilir |
-| 0.35 | 0.325 | 0.325 | -22.687 | 6.31 | -5.50 | 59.1 | kisitli_uygulanabilir |
-| 0.40 | 0.300 | 0.300 | -21.92 | 6.096 | -4.73 | 60.0 | kisitli_uygulanabilir |
-| 0.45 | 0.275 | 0.275 | -21.152 | 5.882 | -3.96 | 60.9 | kisitli_uygulanabilir |
-| 0.50 | 0.250 | 0.250 | -20.384 | 5.668 | -3.19 | 61.8 | kisitli_uygulanabilir |
-| 0.55 | 0.225 | 0.225 | -19.616 | 5.453 | -2.43 | 62.7 | uygulanabilir_kosullu |
-| 0.60 | 0.200 | 0.200 | -18.848 | 5.239 | -1.66 | 63.6 | uygulanabilir_kosullu |
-| 0.65 | 0.175 | 0.175 | -18.081 | 5.025 | -0.89 | 64.5 | uygulanabilir_kosullu |
-| 0.70 | 0.150 | 0.150 | -17.313 | 4.811 | -0.12 | 65.4 | uygulanabilir_kosullu |
-| 0.75 | 0.125 | 0.125 | -16.545 | 4.597 | +0.65 | 67.5 | uygulanabilir_kosullu |
-| 0.80 | 0.100 | 0.100 | -15.777 | 4.383 | +1.41 | 69.7 | uygulanabilir_kosullu |
+| 0.30 | 0.350 | 0.350 | -23.622 | 7.059 | -6.43 | 58.1 | kisitli_uygulanabilir |
+| 0.35 | 0.325 | 0.325 | -22.846 | 6.826 | -5.66 | 59.0 | kisitli_uygulanabilir |
+| 0.40 | 0.300 | 0.300 | -22.07 | 6.594 | -4.88 | 59.9 | kisitli_uygulanabilir |
+| 0.45 | 0.275 | 0.275 | -21.293 | 6.361 | -4.10 | 60.8 | kisitli_uygulanabilir |
+| 0.50 | 0.250 | 0.250 | -20.517 | 6.129 | -3.33 | 61.7 | kisitli_uygulanabilir |
+| 0.55 | 0.225 | 0.225 | -19.741 | 5.896 | -2.55 | 62.6 | uygulanabilir_kosullu |
+| 0.60 | 0.200 | 0.200 | -18.965 | 5.664 | -1.77 | 63.5 | uygulanabilir_kosullu |
+| 0.65 | 0.175 | 0.175 | -18.189 | 5.431 | -1.00 | 64.4 | uygulanabilir_kosullu |
+| 0.70 | 0.150 | 0.150 | -17.412 | 5.198 | -0.22 | 65.3 | uygulanabilir_kosullu |
+| 0.75 | 0.125 | 0.125 | -16.636 | 4.966 | +0.55 | 67.2 | uygulanabilir_kosullu |
+| 0.80 | 0.100 | 0.100 | -15.86 | 4.733 | +1.33 | 69.5 | uygulanabilir_kosullu |
 
-- Karar eşiği (skor 62) geçişi P(C) ≈ **0,51** (finans kalibre yola bağlanmadan önce 0,56). Kapılardan bugünkü P(C) = 0,33, yani eşiğin altında.
-- Beklenen karışımda iyileşme ancak P(C) ≳ 0,71'de başlıyor.
-- E[TR net 10 yıl] aralığı −23,46 … −15,78.
+- Karar eşiği (skor 62) geçişi P(C) ≈ **0,52**. Kapılardan bugünkü P(C) = 0,33, yani eşiğin altında.
+- Beklenen karışımda iyileşme ancak P(C) ≳ 0,72'de başlıyor.
+- E[TR net 10 yıl] aralığı −23,62 … −15,86.
 
-## C için dinamik ölçüt (yeni rapor)
-`c_dinamik_olcut.py` → `C_DINAMIK_OLCUT.{json,md}`. Gösterge: merkez sızıntı oranı = 12 ay yatırım geliri gideri / 12 ay mal ihracatı (EVDS, `data/etki_cephesi/gozlem/`). Senaryo sürüklenmesi `ln(merkez_sizinti_carpan)/10` (A 0, B +1,4 %/yıl, C −1,05 %/yıl): varsayımdır.
-- Ölçüm baz yıldan sonra başlar (ilk güncelleme 2027-12 verisi): **şimdi güncelleme yok, posterior = prior**. Eksik ay güncellemez.
-- **Güç analizi:** yıllık σ = 0,177, C ile A/B arasındaki sürüklenme farkı 0,0105–0,0245. SPRT %95 için **307 (C vs B) ve 1.660 (C vs A) yıl** gerekir; 4000 koşulu Monte Carlo'da 10 yıl sonra gerçek senaryo C de olsa B de olsa E[P(C)] ≈ 0,58–0,61. Gösterge P(C)'yi **doğrulayamaz**.
+## C için dinamik ölçüt (yeni rapor; geçmişten kurulmuş sürüklenme)
+`c_dinamik_olcut.py` → `C_DINAMIK_OLCUT.{json,md}`. Gösterge: merkez sızıntı oranı r = 12 ay yatırım geliri gideri / 12 ay mal ihracatı (EVDS). **Senaryo sürüklenmesi geçmişten:** r'nin kayan 5 yıllık log-eğimleri (2015–2025, 7 pencere): A = medyan (−0,008/yıl), B = q75 (+0,057), C = q25 (−0,055). Eski: ln(atanmış çarpan)/10 ile A 0, B +0,014, C −0,0105.
+- Ölçüm baz yıldan sonra başlar: şimdi güncelleme yok, posterior = prior (1/3). Eksik ay güncellemez.
+- **Güç analizi (geçmiş sürüklenmeyle):** yıllık σ = 0,177 (geçmiş log değişim std'si). SPRT %95 için **C vs B 15 yıl, C vs A 82 yıl, A vs B 44 yıl** (eski atanmış sürüklenmeyle 307 / 1.660 yıl). Monte Carlo (10 yıl): gerçek C ise E[P(C)] = 0,53, gerçek A ise 0,34, gerçek B ise 0,14. C'yi B'den **ayırır**, A'dan ayıramaz.
+- **Neden iyileşti:** senaryolar geçmiş rejimlerin çeyreği olarak tanımlandı; atanmış ±%10–15 geçmiş dalgalanmanın çok altındaydı. Bu bir bulgu değil, tanım sonucu: gösterge "gelecek geçmiş rejimlerden birine benzer" varsayımı altında ayırt ediyor.
+- **Hâlâ geçmişin dışı:** r 2023 sonu 0,075 → 2025 sonu 0,120 (×1,61): 2025 penceresinin eğimi +0,174, B'nin q75'inin (0,057) üç katı; yani yakın dönem B rejiminin bile dışında. Hiçbir senaryo bu hareketi taşımıyor.
 - **Çapa uyumsuzluğu:** kalibrasyonda 2024 yatırım geliri gideri 18.841 mn $; EVDS 26.483 (×1,41; 2023 = 18.793). `gerceklik_capa.json` değiştirilmedi.
-- **Karşı-olgusal trend yok:** oran 2023 sonu 0,075 → 2025 sonu 0,120 (×1,61); senaryoların iki yıllık sürüklenmesi en çok ±0,028.
 
 ## Ana pipeline P(C)'ye bağlandı, döngü kırıldı
 Önceki durum: ana pipeline `senaryolar.json` içindeki elle atanmış 0,22 / 0,18 / 0,60'ı kullanıyordu. Şimdi `etki_cephesi/_olasilik.py` olasılığı verir.
@@ -80,33 +80,33 @@ Not: bu tablo P(C)=0,60 ile. P(C) kapılara bağlanınca skor 58,8 (finans kalib
 
 | Çıktı | P(C)=0,60 (eski) | P(C)=1/3 (kapılar, gözlem yok) |
 |---|---|---|
-| Uygulanabilirlik skoru | 62,7 | **58,8** |
+| Uygulanabilirlik skoru | 62,7 | **58,7** |
 | Karar | uygulanabilir_kosullu | **kisitli_uygulanabilir** |
-| Skor C-senaryosu / beklenen A·B·C | 67,1 / 54,5 | 63,7 / 49,7 |
-| Senaryo skorları A / B / C | 50,1 / 49,4 / 73,0 | 52,4 / 52,4 / 69,6 |
-| E[TR net 10 yıl] (yaşam dahil) | −18,19 | **−22,94** |
-| Beklenen karışımın iyileşmesi | −1,00 | **−5,75** (iyileşme yok) |
-| C yolu TR net 10. yıl | −17,19 → −13,10 | −17,19 → −12,67 (olasılığa bağlı değil; değişim finans bağlamasından, aşağıda) |
-| Finans katmanı beklenen TR net (ham) | − | −12,99 |
+| Skor C-senaryosu / beklenen A·B·C | 67,1 / 54,5 | 63,5 / 49,7 |
+| Senaryo skorları A / B / C | 50,1 / 49,4 / 73,0 | 52,3 / 52,3 / 69,3 |
+| E[TR net 10 yıl] (yaşam dahil) | −18,19 | **−23,10** |
+| Beklenen karışımın iyileşmesi | −1,00 | **−5,91** (iyileşme yok) |
+| C yolu TR net 10. yıl | −17,19 → −13,10 | −17,19 → −12,72 (olasılığa bağlı değil; finans bağlaması ve geçmiş çarpanından) |
+| Finans katmanı beklenen TR net (ham) | − | −13,70 |
 
 Okuma: C yolunun kendi sonucu iyileşir; olasılık ona dokunmaz. Değişen, C'ye verilen ağırlıktır. Ağırlık düşünce karışım kötüleşiyor ve karar eşiğin altına iniyor. 62,7 sonucu elle atanmış 0,60'a yaslanıyordu.
 
 ## P(C) ölçülebilir kapılarla yeniden kuruldu (yeni rapor)
 `olasilik_kapilar.py` → `OLASILIK_KAPILAR.{json,md}` (saf hesap `_olasilik.py`). Eski 0,22 / 0,18 / 0,60 elle atanmıştı, dayanağı yoktu.
 - **Prior tekdüze (1/3).** Ölçüm baz yıldan (2026) sonra başlar; şimdi güncelleme yok → **bugünkü P(C) = 0,333**. Bu ölçüm değil, bilgi yokluğudur.
-- **K1 merkez sızıntı sürüklenmesi:** olabilirlik `senaryolar.json`'dan türetilir; ayırt gücü yok (307 yıl).
-- **K2 dış kısıt (EVDS `bie_oderoll`, bankalar ve diğer sektörler 12 ay ort. çevirme ≥ %100):** kontrol noktaları 2027-12, 2029-12, 2031-12. Taban oran p0 = tarihçede "açık" pencere payı = **0,534** (232 pencere; bugün açık: K1 109,8, K2 175,0). Olabilirlik **varsayım**: p_A = p0, p_B = p0 − δ, p_C = p0 + δ, δ = 0,10 (tek parametre, duyarlılığı raporda).
-- **K3 etki erozyonu** (bölge ihracat payı): EVDS'de seri yok, TİM verisi depoda yok → kapalı. **K4 bağ kullanımı:** gözlenebilir seri yok → kapalı. İkisi de olasılığa girmez: bilinmiyor sıfır değildir.
+- **K1 merkez sızıntı sürüklenmesi:** olabilirlik **geçmişten** (A medyan, B q75, C q25 kayan 5 yıllık log-eğim); ayırt gücü: C için en kısa ayrım 15 yıl (SPRT %95).
+- **K2 dış kısıt (EVDS `bie_oderoll`, bankalar ve diğer sektörler çevirme ≥ %100):** kontrol noktaları 2027-12, 2029-12, 2031-12. Olabilirlik **geçmişten**: P(açık | rejim); rejim = kayan 5 yıllık eğimin çeyreği. Geçmiş sayım (açık/toplam): A 0/3, B 2/2, C 1/2 → Laplace ile A 0,20, B 0,75, C 0,50. **n = 7 örtüşen pencere (etkin ~2 bağımsız): çok zayıf.** Önceki δ varsayımının işareti de tersti: geçmişte dış finansman en çok sızıntı artarken (2023–25, B benzeri rejim) açıktı.
+- **K3 etki erozyonu** (bölge ihracat payı): EVDS'de seri yok → kapalı. **K4 bağ kullanımı:** gözlenebilir seri yok → kapalı. İkisi de olasılığa girmez: bilinmiyor sıfır değildir.
 
 | Açık | P(A) | P(B) | P(C) | Skor | Karar | Eşiği geçer |
 | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| 0/3 | 0.305 | 0.547 | 0.148 | 55.4 | kisitli_uygulanabilir | hayır |
-| 1/3 | 0.341 | 0.409 | 0.25 | 57.3 | kisitli_uygulanabilir | hayır |
-| 2/3 | 0.344 | 0.276 | 0.38 | 59.6 | kisitli_uygulanabilir | hayır |
-| 3/3 | 0.312 | 0.167 | 0.521 | 62.1 | uygulanabilir_kosullu | evet |
+| 0/3 | 0.785 | 0.024 | 0.192 | 56.2 | kisitli_uygulanabilir | hayır |
+| 1/3 | 0.427 | 0.156 | 0.417 | 60.2 | kisitli_uygulanabilir | hayır |
+| 2/3 | 0.108 | 0.472 | 0.42 | 60.3 | kisitli_uygulanabilir | hayır |
+| 3/3 | 0.014 | 0.76 | 0.225 | 56.8 | kisitli_uygulanabilir | hayır |
 
-- **Sonuç:** tek ölçülebilir kapı en iyi ihtimalle P(C) = 0,52 verir. Karar eşiği finans kalibre yola bağlanmadan önce 0,56'ydı (3/3 açıkta bile skor 61,3, geçmezdi); bağlandıktan sonra 0,51: 3/3 açık **skor 62,1 ile eşiği 0,1 puan farkla geçer**. Yani sonuç kapı verisinden çok finans bağlamasının varsayımlarına duyarlı; kenar durumu.
-- δ duyarlılığı: δ = 0,20 ile 3/3 açık → 0,68; δ = 0 ile kapı hiçbir şey söylemez. Eski el ataması prior kullanılırsa sonuç prior'a yaslanır (0,35 … 0,76): tabloyu prior belirler, kapı değil.
+- **Sonuç:** K2 P(C)'yi monoton artırmıyor: 3/3 açıkta B öne çıkıyor (0,76), C en çok 1–2 açıkta (0,42). En iyi tek kapı P(C) = 0,42; karar eşiği 0,52; **hiçbir K2 sonucu eşiği geçirmez** (skorlar 56,2 … 60,3). Önceki sürümün "3/3 açıkta eşiği 0,1 puan farkla geçer" bulgusu (atanmış δ ile) geçmişten kurulunca ortadan kalktı: o geçiş varsayımın ürünüymüş.
+- λ duyarlılığı (geçmişe ağırlık): λ = 0 saf geçmiş, λ = 1 kapı bilgi taşımaz (0,333). Eski el ataması prior kullanılırsa sonuç prior'a yaslanır: tabloyu prior belirler, kapı değil.
 
 ## A, B, C için eşit ayrıntı (yeni)
 Önceki durum: A ve B için ülke/aktör md'si vardı ama `AKIS_OLCUM`, `ZARAR_COZUM` md'si ve ayrıntılı bölümler yalnız referans senaryo C'dendi; `PROJEKSIYON.md` C'yi başa alıp ayrıca "Referans" bloğuyla öne çıkarıyordu.
@@ -161,6 +161,25 @@ Okuma: C yolunun kendi sonucu iyileşir; olasılık ona dokunmaz. Değişen, C'y
 - **Gözlem:** r 2015–2019'da 0,077 → 0,087, 2022'de 0,056'ya düştü, 2025'te **0,120**. Net: 9,3 → 21,8 mlr $.
 - **Geriye test (2022'ye kadar fit, 2023–2025 tahmin):** üç yöntem de eksik tahmin etti; ortalama mutlak hata r için %36–50, net için %36–46 (`trendT` en iyi, `trend5` en kötü). 2025'te hata %−51 … −65. Rejim değişimi (2023'ten sonra r ×1,6) geçmişten öngörülemedi. 3 gözlemlik test: güç düşük, yalnız yön.
 - **Ne diyor:** son 12 ay sabit tutulursa r 0,119'da kalır; `trendT` 2036'da 0,108 [0,046; 0,255]; `trend5` 2036'da 0,78 [0,08; 7,9] (anlamsız genişlikte: son 5 yıl rejim değişimini içeriyor). Geçmiş tek başına ne C'yi ne B'yi ne A'yı ayırt eder.
+
+## Kapılar ve katmanlar geçmişten kuruldu (b seçeneği)
+Senaryolar kaldı; büyüklükleri geçmişten gelir (`etki_cephesi/_gecmis.py`, saf: yalnız gözlem CSV'leri ve tam olgunluk yılı).
+- **Senaryo = geçmiş rejimi:** A = medyan, B = üst çeyrek, C = alt çeyrek eğim (kayan 5 yıllık log-eğim). `merkez_sizinti_carpan = exp((d_s − d_A) · 10)`: **A 1,00, B 1,91, C 0,62** (atanmış 1,00 / 1,15 / 0,90 yerine). `senaryolar.json`: değerler `merkez_sizinti_carpan_eski_atanmis`.
+- **Kapılar:** K1 ve K2 olabilirliği yukarıdaki gibi geçmişten (δ varsayımı kalktı, λ eklendi).
+- **Finans katmanı:** MFIN kenar sızıntı çarpanı = geçmişten C çarpanı (0,62; atanmış 0,52 yerine). `finans_katman_kopru.json` `gecmisten_turet`.
+- **Geçmişten TÜRETİLEMEYEN, atanmış kalanlar** (geçmişte gözlenebilir karşılığı olmayan kavramlar): etki erozyonu, diplomatik esneklik, bağ modu payları, halka çarpanları (zarar/üretim/finans), yatırım geliri iç tutma, TDS rahatı, kredi kesintisi, olgunluk süreleri, ters çevirme gücü, faz takvimi. Katmanların büyük kısmı bu yüzden hâlâ atanmış: **"katmanları geçmişten kur" kısmen yapıldı.**
+
+| TR net (vekil) | Önce | Sonra |
+|---|---|---|
+| Merkez sızıntı Σ A / B / C (PROJEKSIYON) | 13,13 / 20,73 / 7,90 | 13,13 / **31,86** / **6,16** |
+| Finans katmanı A / B / C | −7,33 / −31,15 / −0,49 | −7,71 / −32,16 / −1,23 |
+| Kalibre son A / B / C | −16,65 / −41,94 / −11,21 | −16,76 / −43,28 / −11,38 |
+| Skor / karar | 58,8 / kısıtlı | **58,7 / kısıtlı** |
+| E[TR net 10 yıl] | −22,94 | **−23,10** |
+| Karar eşiği P(C) | 0,51 | **0,52** |
+
+- Karar değişmedi: geçmişten kurmak sonucu çok oynatmadı (skor −0,1). Merkez sızıntı çarpanı yalnız merkez sızıntı kalemini değiştiriyor; TR boşalma ve karar skorunu belirleyen kalemler değişmedi.
+- Bu bölümden önceki bölümlerdeki finans ve katman sayıları atanmış çarpanlarla hesaplanmıştı (örn. "ters çevirme", "kalibre yola bağlandı" tabloları); güncel değerler yukarıdaki tablodadır, mekanizmalar aynıdır.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

@@ -10,7 +10,8 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | Olasılık (kapı iskeleti, gözlem yokken tekdüze) | 0.333 | 0.333 | 0.333 |
 | Etki erozyonu çarpanı | 0.35 | 0.58 | 0.22 |
 | TR diplomatik esneklik | 0 | -0.06 | 0.12 |
-| Merkez sızıntı çarpanı | 1 | 1.15 | 0.9 |
+| Merkez sızıntı çarpanı (geçmişten, A=1) | 1 | 1.909 | 0.622 |
+| Merkez sızıntı çarpanı (eski, atanmış) | 1 | 1.15 | 0.9 |
 | Bağ modu kullanım / atıl / araçsal | 0.22 / 0.5 / 0.28 | 0.14 / 0.32 / 0.54 | 0.52 / 0.26 / 0.22 |
 
 ## 2. Projeksiyon (10 yıl vekil)
@@ -18,10 +19,10 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
 | TR yarıçevre boşalma | 24.952 | 40.166 | 17.172 |
-| Merkez finans sızıntı Σ | 13.133 | 20.729 | 7.904 |
-| MFIN kenar Σ | 9.192 | 16.867 | 5.662 |
+| Merkez finans sızıntı Σ | 13.133 | 31.862 | 6.157 |
+| MFIN kenar Σ | 9.192 | 27.997 | 3.918 |
 | Tüm havza rant Σ | 1.984 | 4.083 | 1.12 |
-| Merkez + rant Σ | 15.117 | 24.812 | 9.024 |
+| Merkez + rant Σ | 15.117 | 35.945 | 7.277 |
 | Pasif boşluk Σ | 5.566 | 3.695 | 2.823 |
 | Araçsallaşma Σ | 1.946 | 3.891 | 1.491 |
 | Temsil zedesi Σ | 2.688 | 3.186 | 1.626 |
@@ -32,10 +33,10 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
-| MFIN kenar | 11,456.4 | 12,808.0 | 11,821.6 |
-| Belirsiz merkez | 4,911.8 | 2,932.6 | 4,681 |
-| Merkez toplam | 16,368.3 | 15,740.6 | 16,502.6 |
-| Rant toplam | 2,472.7 | 3,100.4 | 2,338.4 |
+| MFIN kenar | 11,456.4 | 14,675.0 | 10,144.2 |
+| Belirsiz merkez | 4,911.8 | 2,025.9 | 5,797 |
+| Merkez toplam | 16,368.3 | 16,700.8 | 15,941.2 |
+| Rant toplam | 2,472.7 | 2,140.2 | 2,899.8 |
 
 ## 4. Zarar çözümü (beş adım varsayımı)
 
@@ -52,12 +53,12 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | --- | ---: | ---: | ---: |
 | Üretim iç akış TR net | -13.32 | -24.82 | -4.383 |
 | Üretim: sıfır yılı tahmini | 2065 | 2087 | 2044 |
-| Finans katmanı TR net | -7.334 | -31.154 | -0.489 |
-| Finans: sıfır üstü takvim yılı | 2048 | — | 2037 |
+| Finans katmanı TR net | -7.707 | -32.16 | -1.23 |
+| Finans: sıfır üstü takvim yılı | 2050 | — | 2040 |
 | Üretime bağlanma gerçekleşmesi g_u (bağ kullanımı / C) | 0.423 | 0.269 | 1 |
 | Finans dış koşul gerçekleşmesi g_f (politika / C; < 0: ters çevrilmiş) | 0.737 | -0.432 | 1 |
 | Finans ters çevrildi (araçsallaşma) | hayır | evet | hayır |
-| Finans TR net: çevrilmemiş olsaydı (varsayım bandı üstü) | — | -18.486 | — |
+| Finans TR net: çevrilmemiş olsaydı (varsayım bandı üstü) | — | -17.48 | — |
 | Finans etiketi | varsayim_carpanli_ham | varsayim_carpanli_ham | varsayim_carpanli_ham |
 
 ## 6. Stok-akış (SFC, tr TL)
@@ -78,12 +79,12 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
-| TR net son (kalibre) | -16.645 | -41.939 | -11.211 |
-| GSYH % | 4.632 | 11.671 | 3.12 |
-| TR net 10. yıl yolu | -19.322 | -37.574 | -13.366 |
+| TR net son (kalibre) | -16.755 | -43.277 | -11.377 |
+| GSYH % | 5.009 | 12.938 | 3.401 |
+| TR net 10. yıl yolu | -19.355 | -37.975 | -13.415 |
 | Yol modu (finans üretimle eşzamanlı mı) | uretimle_es_zamanli | uretimle_es_zamanli | uretimle_es_zamanli |
-| Finans kalibre gerçekleşme r_f (tersse harm: tavan yok) | 0.209 | 0.95 | 0.22 |
-| Gerçekleşme: zarar / üretim / finans | 0.49 / 0.237 / 0.209 | 0.287 / 0.237 / 0.95 | 0.665 / 0.237 / 0.22 |
+| Finans kalibre gerçekleşme r_f (tersse harm: tavan yok) | 0.209 | 0.95 | 0.219 |
+| Gerçekleşme: zarar / üretim / finans | 0.49 / 0.237 / 0.209 | 0.287 / 0.237 / 0.95 | 0.665 / 0.237 / 0.219 |
 
 ## 8. Dış rant parasal akışı
 
@@ -100,9 +101,9 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
 | Kapanış tamam | evet | evet | evet |
-| Havza net stok (mn $) | 21,947.1 | 39,049.3 | 16,520.9 |
+| Havza net stok (mn $) | 21,947.1 | -20,865.1 | 25,909.1 |
 | Havza kayıp brüt kenar (mn $) | 216,391.5 | 354,705.8 | 145,721.8 |
-| Merkez sızıntı (mn $) | 57,179.1 | 98,285.4 | 34,818.7 |
+| Merkez sızıntı (mn $) | 57,179.1 | 158,199.8 | 25,430.5 |
 | Kanal ikame (mn $) | 125,222.6 | 200,182.8 | 85,619.1 |
 
 ## Not
