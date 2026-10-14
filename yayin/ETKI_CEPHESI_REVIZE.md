@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `9a97b1331fac8996`),
-**47 test geçti** (27 mevcut + 20 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `4222eed6c88107d3`, temiz kurulumda 3 geçiş),
+**48 test geçti** (27 mevcut + 21 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -38,31 +38,30 @@ Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla k
 | Beklenen karışımın iyileşmesi | +0,087 skor (özet "iyileşir" diyordu) | −1,00 vekil: iyileşme yok, engel olarak yazıldı |
 | Lm × rant, kur | 32,87 | 44,38; kapanış_ok = False (Σ x = +0,178) |
 
-Not: karar hâlâ `uygulanabilir_kosullu`, ama skor eşiğin (62) yalnız 0,7 üstünde.
+Not: bu tablo P(C)=0,60 ile. P(C) kapılara bağlanınca skor 57,9 ve karar `kisitli_uygulanabilir` (aşağıda).
 | 10 | C'nin gerçekleşmesini ölçen bir ölçüt yoktu | `c_dinamik_olcut.py`: sıralı Bayes, EVDS merkez sızıntı oranı; güç analizi (aşağıda) |
 
 ## C olasılığı duyarlılığı (yeni rapor)
-`olasilik_duyarlilik.py` → `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. P(C) 0,30–0,80, kalan A:B taban oranla (0,22:0,18) bölünür.
-**Yeni olasılık üretmez**; olasılıklar (A 0,22 / B 0,18 / C 0,60) elle atanmış vekildir.
+`olasilik_duyarlilik.py` → `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. P(C) 0,30–0,80, kalan A:B taban oranla bölünür (taban artık 1:1).
+**Yeni olasılık üretmez.** Aşağıdaki tablo kapılara bağlanmış taban (A=B) ile; kapı sonuçlarının karara çevrilmesi de aynı raporda.
 
 | P(C) | P(A) | P(B) | E[TR net 10y, yaşam dahil] | E[GSYH %] | E[iyileşme] | Skor | Karar |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| 0.30 | 0.385 | 0.315 | -22.102 | 6.162 | -4.91 | 57.3 | kisitli_uygulanabilir |
-| 0.35 | 0.357 | 0.292 | -21.45 | 5.982 | -4.26 | 58.2 | kisitli_uygulanabilir |
-| 0.40 | 0.330 | 0.270 | -20.797 | 5.803 | -3.61 | 59.1 | kisitli_uygulanabilir |
-| 0.45 | 0.302 | 0.247 | -20.144 | 5.623 | -2.95 | 60.0 | kisitli_uygulanabilir |
-| 0.50 | 0.275 | 0.225 | -19.491 | 5.443 | -2.30 | 60.9 | kisitli_uygulanabilir |
-| 0.55 | 0.247 | 0.203 | -18.838 | 5.263 | -1.65 | 61.8 | kisitli_uygulanabilir |
-| 0.60 **(taban)** | 0.220 | 0.180 | -18.186 | 5.084 | -1.00 | 62.7 | uygulanabilir_kosullu |
-| 0.65 | 0.193 | 0.158 | -17.533 | 4.904 | -0.34 | 63.6 | uygulanabilir_kosullu |
-| 0.70 | 0.165 | 0.135 | -16.88 | 4.724 | +0.31 | 65.0 | uygulanabilir_kosullu |
-| 0.75 | 0.138 | 0.113 | -16.227 | 4.545 | +0.96 | 67.1 | uygulanabilir_kosullu |
-| 0.80 | 0.110 | 0.090 | -15.574 | 4.365 | +1.62 | 69.2 | uygulanabilir_kosullu |
+| 0.30 | 0.350 | 0.350 | -22.644 | 6.313 | -5.45 | 57.3 | kisitli_uygulanabilir |
+| 0.35 | 0.325 | 0.325 | -21.952 | 6.122 | -4.76 | 58.2 | kisitli_uygulanabilir |
+| 0.40 | 0.300 | 0.300 | -21.261 | 5.932 | -4.07 | 59.1 | kisitli_uygulanabilir |
+| 0.45 | 0.275 | 0.275 | -20.569 | 5.741 | -3.38 | 60.0 | kisitli_uygulanabilir |
+| 0.50 | 0.250 | 0.250 | -19.878 | 5.551 | -2.69 | 60.9 | kisitli_uygulanabilir |
+| 0.55 | 0.225 | 0.225 | -19.186 | 5.36 | -2.00 | 61.8 | kisitli_uygulanabilir |
+| 0.60 | 0.200 | 0.200 | -18.495 | 5.17 | -1.30 | 62.7 | uygulanabilir_kosullu |
+| 0.65 | 0.175 | 0.175 | -17.803 | 4.979 | -0.61 | 63.6 | uygulanabilir_kosullu |
+| 0.70 | 0.150 | 0.150 | -17.112 | 4.789 | +0.08 | 64.6 | uygulanabilir_kosullu |
+| 0.75 | 0.125 | 0.125 | -16.42 | 4.598 | +0.77 | 66.8 | uygulanabilir_kosullu |
+| 0.80 | 0.100 | 0.100 | -15.729 | 4.408 | +1.46 | 68.9 | uygulanabilir_kosullu |
 
-- Karar eşiği (skor 62) geçişi P(C) ≈ 0,56; taban 0,60, yani eşiğe yakın.
-- Beklenen karışımda iyileşme ancak P(C) ≳ 0,68'de başlıyor; tabanda yok (Δ −1,00).
-- E[TR net 10 yıl] aralığı −22,10 … −15,57.
-- Taban satır ana raporla birebir tutuyor; mevcut raporlar yeni parametreden etkilenmedi.
+- Karar eşiği (skor 62) geçişi P(C) ≈ 0,56. Kapılardan bugünkü P(C) = 0,33, yani eşiğin altında.
+- Beklenen karışımda iyileşme ancak P(C) ≳ 0,70'te başlıyor.
+- E[TR net 10 yıl] aralığı −22,64 … −15,73.
 
 ## C için dinamik ölçüt (yeni rapor)
 `c_dinamik_olcut.py` → `C_DINAMIK_OLCUT.{json,md}`. Gösterge: merkez sızıntı oranı = 12 ay yatırım geliri gideri / 12 ay mal ihracatı (EVDS, `data/etki_cephesi/gozlem/`). Senaryo sürüklenmesi `ln(merkez_sizinti_carpan)/10` (A 0, B +1,4 %/yıl, C −1,05 %/yıl): varsayımdır.
@@ -71,23 +70,42 @@ Not: karar hâlâ `uygulanabilir_kosullu`, ama skor eşiğin (62) yalnız 0,7 ü
 - **Çapa uyumsuzluğu:** kalibrasyonda 2024 yatırım geliri gideri 18.841 mn $; EVDS 26.483 (×1,41; 2023 = 18.793). `gerceklik_capa.json` değiştirilmedi.
 - **Karşı-olgusal trend yok:** oran 2023 sonu 0,075 → 2025 sonu 0,120 (×1,61); senaryoların iki yıllık sürüklenmesi en çok ±0,028.
 
+## Ana pipeline P(C)'ye bağlandı, döngü kırıldı
+Önceki durum: ana pipeline `senaryolar.json` içindeki elle atanmış 0,22 / 0,18 / 0,60'ı kullanıyordu. Şimdi `etki_cephesi/_olasilik.py` olasılığı verir.
+- **Döngü neden yok:** `_olasilik.py` saf hesaptır; pipeline raporu (`reports/`) okumaz. Yalnız `senaryolar.json` (senaryo parametreleri), `finans_katman_kopru.json` ve EVDS gözlem CSV'lerini okur. Karar eşiği ve skor bağlantısı (rapor okumak gerektirir) ayrı yerde: `olasilik_duyarlilik.py`, tek yönlü. Test: `_olasilik.py` kaynağında `reports` geçmiyor.
+- `senaryolar.json`: `olasilik_vekili` → `olasilik_vekili_eski_el_atamasi` (eski değer yalnız karşılaştırma). 9 modül `_olasilik.vekil()` okur. `c_dinamik_olcut` prior'u tekdüze.
+- `en_olasi: "C"` etiketi korundu ama artık **referans rapor senaryosu**dur, olasılık sıralaması değil (`en_olasi_not`).
+- Gözlem gelince (2027-12'den itibaren) `vekil()` kendiliğinden hareket eder; el ile bir şey yazılmaz.
+
+| Çıktı | P(C)=0,60 (eski) | P(C)=1/3 (kapılar, gözlem yok) |
+|---|---|---|
+| Uygulanabilirlik skoru | 62,7 | **57,9** |
+| Karar | uygulanabilir_kosullu | **kisitli_uygulanabilir** |
+| Skor C-senaryosu / beklenen A·B·C | 67,1 / 54,5 | 62,3 / 49,7 |
+| Senaryo skorları A / B / C | 50,1 / 49,4 / 73,0 | 52,1 / 52,1 / 68,2 |
+| E[TR net 10 yıl] (yaşam dahil) | −18,19 | **−22,18** |
+| Beklenen karışımın iyileşmesi | −1,00 | **−4,99** (iyileşme yok) |
+| C yolu TR net 10. yıl | −17,19 → −13,10 | aynı: −17,19 → −13,10 (olasılığa bağlı değil) |
+| Finans katmanı beklenen TR net | − | −3,29 |
+
+Okuma: C yolunun kendi sonucu (−17,19 → −13,10, iyileşir) değişmedi. Değişen, C'ye verilen ağırlıktır. Ağırlık düşünce karışım kötüleşiyor ve karar eşiğin altına iniyor. 62,7 sonucu elle atanmış 0,60'a yaslanıyordu.
+
 ## P(C) ölçülebilir kapılarla yeniden kuruldu (yeni rapor)
-`olasilik_kapilar.py` → `OLASILIK_KAPILAR.{json,md}`. Eski 0,22 / 0,18 / 0,60 elle atanmıştı, dayanağı yoktu. Yeni kurulum:
-- **Prior tekdüze (1/3).** Bilgi yoksa ağırlık yok. Ölçüm baz yıldan (2026) sonra başlar; şimdi güncelleme yok → **bugünkü P(C) = 0,333**. Bu ölçüm değil, bilgi yokluğudur.
+`olasilik_kapilar.py` → `OLASILIK_KAPILAR.{json,md}` (saf hesap `_olasilik.py`). Eski 0,22 / 0,18 / 0,60 elle atanmıştı, dayanağı yoktu.
+- **Prior tekdüze (1/3).** Ölçüm baz yıldan (2026) sonra başlar; şimdi güncelleme yok → **bugünkü P(C) = 0,333**. Bu ölçüm değil, bilgi yokluğudur.
 - **K1 merkez sızıntı sürüklenmesi:** olabilirlik `senaryolar.json`'dan türetilir; ayırt gücü yok (307 yıl).
 - **K2 dış kısıt (EVDS `bie_oderoll`, bankalar ve diğer sektörler 12 ay ort. çevirme ≥ %100):** kontrol noktaları 2027-12, 2029-12, 2031-12. Taban oran p0 = tarihçede "açık" pencere payı = **0,534** (232 pencere; bugün açık: K1 109,8, K2 175,0). Olabilirlik **varsayım**: p_A = p0, p_B = p0 − δ, p_C = p0 + δ, δ = 0,10 (tek parametre, duyarlılığı raporda).
 - **K3 etki erozyonu** (bölge ihracat payı): EVDS'de seri yok, TİM verisi depoda yok → kapalı. **K4 bağ kullanımı:** gözlenebilir seri yok → kapalı. İkisi de olasılığa girmez: bilinmiyor sıfır değildir.
 
-| K2'de 3 kontrol noktasından açık sayısı | P(A) | P(B) | P(C) | Eşiği (0,561) geçer |
-| ---: | ---: | ---: | ---: | --- |
-| 0 | 0,305 | 0,547 | 0,148 | hayır |
-| 1 | 0,341 | 0,409 | 0,250 | hayır |
-| 2 | 0,344 | 0,276 | 0,380 | hayır |
-| 3 | 0,312 | 0,167 | 0,521 | hayır |
+| Açık | P(A) | P(B) | P(C) | Skor | Karar | Eşiği geçer |
+| ---: | ---: | ---: | ---: | ---: | --- | --- |
+| 0/3 | 0.305 | 0.547 | 0.148 | 54.6 | kisitli_uygulanabilir | hayır |
+| 1/3 | 0.341 | 0.409 | 0.25 | 56.4 | kisitli_uygulanabilir | hayır |
+| 2/3 | 0.344 | 0.276 | 0.38 | 58.8 | kisitli_uygulanabilir | hayır |
+| 3/3 | 0.312 | 0.167 | 0.521 | 61.3 | kisitli_uygulanabilir | hayır |
 
-- **Sonuç:** tek ölçülebilir kapı en iyi ihtimalle P(C) = 0,52 verir; karar eşiği 0,56. Yani bugün eldeki gözlenebilir kanıtla C "uygulanabilir_koşullu" yapılamaz. P(C)=1/3 noktasında duyarlılık bandı `kisitli_uygulanabilir` der (skor ≈ 57–58); ana rapor hâlâ eski 0,60 ile 62,7 / `uygulanabilir_kosullu` gösteriyor.
+- **Sonuç:** tek ölçülebilir kapı en iyi ihtimalle P(C) = 0,52 verir; karar eşiği 0,56. Yani eldeki gözlenebilir kanıtla C "uygulanabilir_koşullu" yapılamaz; 3/3 açıkta bile skor 61,3.
 - δ duyarlılığı: δ = 0,20 ile 3/3 açık → 0,68; δ = 0 ile kapı hiçbir şey söylemez. Eski el ataması prior kullanılırsa sonuç prior'a yaslanır (0,35 … 0,76): tabloyu prior belirler, kapı değil.
-- Ana pipeline'ın `olasilik_vekili` değeri **değiştirilmedi** (başlık sayıları kayardı); yeni P(C)'ye bağlamak ayrı karardır.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

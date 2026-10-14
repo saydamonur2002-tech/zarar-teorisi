@@ -4,7 +4,6 @@
 
 - Prior: tekdüze {'A': 0.3333, 'B': 0.3333, 'C': 0.3333} (eski el ataması {'A': 0.22, 'B': 0.18, 'C': 0.6} dayanaksızdı).
 - Bugünkü P: **{'A': 0.333, 'B': 0.333, 'C': 0.333}**. ölçüm başlamadı: P(C) = prior (1/3). 0,60 hiçbir ölçüme dayanmıyordu.
-- Karar eşiği (skor 62): P(C) ≥ **0.561**.
 
 ## Kapılar
 
@@ -21,12 +20,12 @@
 - Son: {'donem': '2026-08', 'K1_bankalar': 109.8, 'K2_diger': 175.0, 'acik': True}
 - Varsayım (tek parametre): p_C = p0 + δ, p_B = p0 − δ, δ = 0.1.
 
-| Açık sayısı (3 kontrol noktasından) | P(A) | P(B) | P(C) | Eşiği geçer | Karar bandı |
-| ---: | ---: | ---: | ---: | --- | --- |
-| 0/3 | 0.305 | 0.547 | 0.148 | hayır | kisitli_uygulanabilir (skor 57.3, bant dışı kırpıldı) |
-| 1/3 | 0.341 | 0.409 | 0.25 | hayır | kisitli_uygulanabilir (skor 57.3, bant dışı kırpıldı) |
-| 2/3 | 0.344 | 0.276 | 0.38 | hayır | kisitli_uygulanabilir (skor 59.1) |
-| 3/3 | 0.312 | 0.167 | 0.521 | hayır | kisitli_uygulanabilir (skor 60.9) |
+| Açık sayısı (3 kontrol noktasından) | P(A) | P(B) | P(C) |
+| ---: | ---: | ---: | ---: |
+| 0/3 | 0.305 | 0.547 | 0.148 |
+| 1/3 | 0.341 | 0.409 | 0.25 |
+| 2/3 | 0.344 | 0.276 | 0.38 |
+| 3/3 | 0.312 | 0.167 | 0.521 |
 
 ### δ duyarlılığı (P(C): hiç açık yok → hepsi açık)
 
@@ -38,9 +37,9 @@
 | 0.15 | 0.086 → 0.605 | 0.227 → 0.815 |
 | 0.2 | 0.045 → 0.676 | 0.13 → 0.855 |
 
-## Sonuç
+## Karar bağlantısı
 
-K2 üç kontrol noktasında da açık çıksa P(C) = 0.521; karar eşiği 0.561. Tek kapı eşiği geçirmez: C'yi 'uygulanabilir' yapacak kanıt yok; karar P(C) varsayımıyla değil, kapı kümesiyle verilmeli.
+Kapı sonuçlarının uygulanabilirlik kararına çevrilmesi `OLASILIK_DUYARLILIK.md` içinde ('Kapı sonuçları').
 
 ## Ne denmez
 

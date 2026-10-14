@@ -440,6 +440,41 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +2026-06,24397.0,33003.0,2394.0,731.0,2655.0
 +2026-07,25182.0,30825.0,2881.0,520.0,3153.0
 +2026-08,23327.0,27073.0,2395.0,733.0,2659.0
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/senaryolar.json fixed/data/etki_cephesi/senaryolar.json
+--- pristine/data/etki_cephesi/senaryolar.json	2026-10-14 06:05:45.818537428 +0000
++++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 07:40:14.113723991 +0000
+@@ -2,11 +2,12 @@
+   "horizon_yil": 10,
+   "baz_yil": 2026,
+   "en_olasi": "C",
++  "en_olasi_not": "Referans rapor senaryosu (etiket). Olasılık sıralaması DEĞİL: olasılıklar _olasilik.py kapılarından gelir, gözlem yokken tekdüze.",
+   "referans_olcum_not": "Bağ modu: kullanım / atıl / araçsallaşma (maks-min değil). Dış aktörler TR'yi merkez sanmaz — göreceli fayda/zarar.",
+   "senaryolar": [
+     {
+       "id": "A",
+-      "olasilik_vekili": 0.22,
++      "olasilik_vekili_eski_el_atamasi": 0.22,
+       "ad": "Atıl bağ — pasif tutum",
+       "aciklama": "Bağ duruyor, iktisadi-sosyopolitik ağırlık işletilmiyor; boşluk dolduruluyor.",
+       "etki_erosyon_carpani": 0.35,
+@@ -17,7 +18,7 @@
+     },
+     {
+       "id": "B",
+-      "olasilik_vekili": 0.18,
++      "olasilik_vekili_eski_el_atamasi": 0.18,
+       "ad": "Araçsallaşma + donmuş enigma",
+       "aciklama": "Bağ dar çıkar ağına dönüşür; dış hegemon mimarisi; Suriye tipi donukluk.",
+       "etki_erosyon_carpani": 0.58,
+@@ -28,7 +29,7 @@
+     },
+     {
+       "id": "C",
+-      "olasilik_vekili": 0.6,
++      "olasilik_vekili_eski_el_atamasi": 0.6,
+       "ad": "Katmanlı oyun inşası — kısmi kullanım",
+       "aciklama": "Oyun sahibi dış koşulu içeren yeniden kurulum; enigma çözümleme vekil.",
+       "etki_erosyon_carpani": 0.22,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/stok_akis_kopru.json fixed/data/etki_cephesi/stok_akis_kopru.json
 --- pristine/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:05:45.818614052 +0000
 +++ fixed/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:44:11.859101458 +0000
@@ -584,10 +619,224 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        return v, f"akis_model_ozeti.dis_borc_artisi.{donem}.USDTRY"
 +    except (OSError, KeyError, TypeError, ValueError):
 +        return float(yedek), "yedek:gerceklik_capa(2024 ortalama) — matris dönemiyle uyumsuz"
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_olasilik.py fixed/etki_cephesi/_olasilik.py
+--- pristine/etki_cephesi/_olasilik.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/_olasilik.py	2026-10-14 07:40:33.235357912 +0000
+@@ -0,0 +1,202 @@
++"""Senaryo olasılıkları: ölçülebilir kapılardan, SAF hesap (rapor okumaz → döngü yok).
++
++Bu modül pipeline raporlarını OKUMAZ; yalnız `senaryolar.json`, `finans_katman_kopru.json` ve EVDS gözlem CSV'lerini okur.
++Pipeline modülleri olasılığı `vekil()` ile buradan alır. Karar eşiği/duyarlılık bağlantısı `olasilik_duyarlilik.py`'dedir.
++
++P(C) yeniden kurulumu: ölçülebilir kapılarla (el ataması yok).
++
++Eski: `senaryolar.json` olasilik_vekili A 0,22 / B 0,18 / C 0,60 (elle atanmış, dayanak yok).
++Yeni:
++  * prior = tekdüze (1/3 her senaryo): bilgi yoksa ağırlık yok.
++  * P(C) yalnız KAPI gözlemleriyle hareket eder. Her kapı: gözlenebilir seri, önceden yazılmış kontrol noktaları,
++    senaryo başına olabilirlik. Olabilirliğin kaynağı yazılır: `turetilmis` (senaryolar.json parametresinden)
++    ya da `varsayim` (tek parametreli, duyarlılığı raporlanır).
++  * Gözlem yoksa güncelleme yok: bilinmiyor sıfır değildir. Ölçüm penceresi baz yıldan sonra başlar.
++  * Kapı verisi yoksa kapı kapalı sayılır (olasılığa girmez), uydurma değer yazılmaz.
++
++Kapılar:
++  K1 merkez sızıntı sürüklenmesi (EVDS, ödemeler dengesi)  — turetilmis (merkez_sizinti_carpan); ayırt gücü yok.
++  K2 dış kısıt: borç çevirme oranı (EVDS bie_oderoll)       — varsayim (δ); kontrol noktaları 2027-12, 2029-12, 2031-12.
++  K3 etki erozyonu (bölge ihracat payı)                       — kaynak EVDS dışı; veri yok → kapalı.
++  K4 bağ kullanımı                                            — gözlenebilir seri yok → kapalı.
++"""
++from __future__ import annotations
++
++import csv
++import json
++import math
++from pathlib import Path
++from typing import Any
++
++from functools import lru_cache
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++CEVIRME = DATA / "gozlem" / "evds_borc_cevirme_aylik.csv"
++SENARYOLAR = ("A", "B", "C")
++KONTROL = ("2027-12", "2029-12", "2031-12")
++ESIK_ACIK = 100.0  # %: çevirme >= 100 = dış finansman açık
++DELTA = 0.10  # K2 varsayımı: p_C = p0 + δ, p_B = p0 − δ, p_A = p0
++DELTA_BANT = (0.0, 0.05, 0.10, 0.15, 0.20)
++UNIFORM = {s: 1 / 3 for s in SENARYOLAR}
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _cevirme() -> dict[str, dict[str, float]]:
++    d: dict[str, dict[str, float]] = {}
++    with CEVIRME.open(encoding="utf-8", newline="") as f:
++        for r in csv.DictReader(f):
++            try:
++                d[r["Donem"]] = {"K1": float(r["K1_bankalar"]), "K2": float(r["K2_diger_sektorler"])}
++            except ValueError:
++                continue
++    return d
++
++
++def _ort12(d: dict[str, dict[str, float]]) -> dict[str, tuple[float, float]]:
++    ps = sorted(d)
++    out = {}
++    for i in range(11, len(ps)):
++        w = ps[i - 11 : i + 1]
++        y0, m0, y1, m1 = int(w[0][:4]), int(w[0][5:7]), int(w[-1][:4]), int(w[-1][5:7])
++        if (y1 - y0) * 12 + (m1 - m0) != 11:
++            continue
++        out[ps[i]] = (sum(d[t]["K1"] for t in w) / 12, sum(d[t]["K2"] for t in w) / 12)
++    return out
++
++
++def _acik(k1: float, k2: float) -> bool:
++    return k1 >= ESIK_ACIK and k2 >= ESIK_ACIK
++
++
++def _norm(w: dict[str, float]) -> dict[str, float]:
++    s = sum(w.values())
++    return {k: v / s for k, v in w.items()}
++
++
++def _k2_p(p0: float, delta: float) -> dict[str, float]:
++    c = lambda x: min(0.95, max(0.05, x))  # noqa: E731
++    return {"A": c(p0), "B": c(p0 - delta), "C": c(p0 + delta)}
++
++
++def _binom_lik(p: dict[str, float], k: int, n: int) -> dict[str, float]:
++    return {s: p[s] ** k * (1 - p[s]) ** (n - k) for s in SENARYOLAR}  # binom katsayısı senaryolar arası sabit
++
++
++def hesapla_P() -> dict[str, Any]:
++    from c_dinamik_olcut import _aylik, _oran12, _yillik_degisim, _surukleme, _posterior  # noqa: E402  (lazy: döngüsel import yok)
++
++    sen = _load(DATA / "senaryolar.json")
++    ph = _load(DATA / "finans_katman_kopru.json")
++    baz = int(sen["baz_yil"])
++    eski = {s["id"]: float(s["olasilik_vekili_eski_el_atamasi"]) for s in sen["senaryolar"]}
++
++    # K2 tarihçe: 12 aylık ortalama çevirme; "açık" payı = senaryodan bağımsız taban oran p0
++    ort = _ort12(_cevirme())
++    acik_pay = sum(_acik(*v) for v in ort.values()) / len(ort)
++    p0 = acik_pay
++    son = max(ort)
++    k2_son = {"donem": son, "K1_bankalar": round(ort[son][0], 1), "K2_diger": round(ort[son][1], 1), "acik": _acik(*ort[son])}
++    gozlenen = {t: _acik(*ort[t]) for t in KONTROL if t in ort and int(t[:4]) > baz}
++
++    # K1: baz yıl sonrası yıllık sürüklenme gözlemi (şimdilik yok)
++    d = _aylik()
++    r = _oran12(d)
++    g = _yillik_degisim(r)
++    import numpy as np  # noqa: E402
++
++    on = [v for y, v in sorted(g.items()) if y <= baz]
++    mu, sigma = float(np.mean(on)), float(np.std(on, ddof=1))
++    drift = _surukleme(sen, float(ph["tam_olgunluk_yil"]))
++    uygun = [g[y] for y in sorted(g) if y > baz]
++    l1 = _posterior(UNIFORM, uygun, mu, sigma, drift) if uygun else dict(UNIFORM)
++
++    # K2 olabilirlik (gözlem varsa)
++    pk2 = _k2_p(p0, DELTA)
++    n_g = len(gozlenen)
++    k_g = sum(gozlenen.values())
++    l2 = _binom_lik(pk2, k_g, n_g) if n_g else {s: 1.0 for s in SENARYOLAR}
++
++    def birlestir(prior, lik1_post, lik2):
++        w = {s: prior[s] * (lik1_post[s] / UNIFORM[s]) * lik2[s] for s in SENARYOLAR}
++        return _norm(w)
++
++    bugun = birlestir(UNIFORM, l1, l2)
++
++    # Kapı sonuç tablosu: K2 kontrol noktalarında k/3 açık → P(C)
++    tablo = []
++    n = len(KONTROL)
++    for k in range(n + 1):
++        post = birlestir(UNIFORM, dict(UNIFORM), _binom_lik(pk2, k, n))
++        satir = {"k_acik": k, "n": n, "P": {s: round(post[s], 3) for s in SENARYOLAR}}
++        satir["olasilik_tam"] = {s: post[s] for s in SENARYOLAR}  # duyarlılık raporu karar bağlantısı için
++        tablo.append(satir)
++
++    # duyarlılık: δ ve prior seçimi (k=n: en lehte, k=0: en aleyhte)
++    duy = []
++    for dl in DELTA_BANT:
++        p = _k2_p(p0, dl)
++        e = {}
++        for ad, pr in (("tekduze", UNIFORM), ("eski_el_atamasi", _norm(eski))):
++            e[ad] = {
++                "k=0": round(birlestir(pr, dict(UNIFORM), _binom_lik(p, 0, n))["C"], 3),
++                "k=n": round(birlestir(pr, dict(UNIFORM), _binom_lik(p, n, n))["C"], 3),
++            }
++        duy.append({"delta": dl, "p_acik": {k: round(v, 3) for k, v in p.items()}, **e})
++
++    en_iyi = max(t["P"]["C"] for t in tablo)
++    kapilar = [
++        {
++            "kapi": "K1 merkez sızıntı sürüklenmesi",
++            "kaynak": "EVDS TP.ODEAYRSUNUM6.Q76/Q5",
++            "olabilirlik": "turetilmis",
++            "esleme": "d_s = ln(merkez_sizinti_carpan_s)/T",
++            "durum": "olcum_bekliyor" if not uygun else "olculdu",
++            "ayirt_gucu": "yok (C vs B ≥ 307 yıl)",
++            "P_C_etkisi": round(l1["C"], 3),
++        },
++        {
++            "kapi": "K2 dış kısıt (borç çevirme ≥ %100: bankalar ve diğer sektörler)",
++            "kaynak": "EVDS bie_oderoll TP.ODEROLL.K1, K2 (12 ay ort.)",
++            "olabilirlik": "varsayim",
++            "esleme": f"p_A = taban oran p0 = {p0:.3f} (tarihçede 'açık' pay); p_B = p0 − δ; p_C = p0 + δ; δ = {DELTA}",
++            "kontrol_noktalari": list(KONTROL),
++            "durum": "olcum_bekliyor" if not n_g else f"olculdu ({k_g}/{n_g} acik)",
++            "bugunku_deger_bilgi": k2_son,
++            "ayirt_gucu": f"zayıf: tek kapıdan en iyi P(C) = {en_iyi:.3f}",
++        },
++        {"kapi": "K3 etki erozyonu (bölge ihracat payı)", "kaynak": "TİM; EVDS ülke grubu serisi katalogda yok", "olabilirlik": "turetilmis (etki_erosyon_carpani) ama σ ölçülemez", "durum": "veri_yok", "P_C_etkisi": None},
++        {"kapi": "K4 bağ kullanımı", "kaynak": "—", "olabilirlik": "tanımsız", "durum": "olculmedi", "P_C_etkisi": None},
++    ]
++    return {
++        "olcum": "olasilik_kapilar",
++        "etiket": "olasilik_olculmedi_kapi_iskeleti",
++        "prior": {s: round(UNIFORM[s], 4) for s in SENARYOLAR},
++        "eski_el_atamasi": eski,
++        "baz_yil": baz,
++        "bugunku_P": {s: round(bugun[s], 3) for s in SENARYOLAR},
++        "bugunku_P_tam": {s: bugun[s] for s in SENARYOLAR},
++        "bugunku_durum": "ölçüm başlamadı: P(C) = prior (1/3). 0,60 hiçbir ölçüme dayanmıyordu." if not (uygun or n_g) else "gözlem var",
++        "kapilar": kapilar,
++        "k2_tarihce": {"taban_acik_pay": round(p0, 3), "n_pencere": len(ort), "son": k2_son},
++        "k2_sonuc_tablosu": tablo,
++        "k2_duyarlilik": duy,
++        "en_iyi_tek_kapi_P_C": en_iyi,
++    }
++
++
++@lru_cache(maxsize=1)
++def _bugun() -> dict[str, float]:
++    return dict(hesapla_P()["bugunku_P_tam"])
++
++
++def vekil() -> dict[str, float]:
++    """Pipeline'ın kullandığı senaryo olasılıkları: kapı gözlemlerinden (gözlem yokken tekdüze)."""
++    return dict(_bugun())
++
++
++def vekil_s(s: dict[str, Any]) -> float:
++    return vekil()[str(s["id"])]
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bolge_stok_akis.py fixed/etki_cephesi/bolge_stok_akis.py
 --- pristine/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:05:45.822890890 +0000
-+++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:41:40.065930691 +0000
-@@ -25,6 +25,7 @@
++++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 07:40:14.116677949 +0000
+@@ -4,6 +4,7 @@
+ import json
+ import sys
+ from pathlib import Path
++import _olasilik
+ from typing import Any
+ 
+ import numpy as np
+@@ -25,6 +26,7 @@
  from akis_model import simulate  # noqa: E402
  
  from stok_akis_sim import _matrices, _shock_vec, _load  # noqa: E402
@@ -595,7 +844,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
  
  def _nfp_aktör(base: np.ndarray, iso: str, ulke_sys: dict[str, Any]) -> np.ndarray:
-@@ -75,8 +76,8 @@
+@@ -75,8 +77,8 @@
      zt = _load(DATA / "zarar_teorisi_kopru.json")
      ulke_sys = _load(DATA / "dis_ulke_sistemi.json")
      sen_doc = _load(DATA / "senaryolar.json")
@@ -606,7 +855,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      kappa = 0.1
  
      rant = _load(OUT / "DIS_RANT_PARASAL.json")
-@@ -119,9 +120,9 @@
+@@ -119,9 +121,9 @@
  
          if iso == "TR":
              tr_sfc = (stok_tr.get("entegre_puls") or {}).get("sektor_etkisi_trilyonTL") or {}
@@ -619,7 +868,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
          sinif = _sinif_etiket(iso, rol, net_v, fark_usd)
          aktorler.append(
-@@ -137,6 +138,7 @@
+@@ -137,6 +139,7 @@
                  "rant_kanal_refah_dis_usd_mn": ref_dis_usd,
                  "rant_kanal_bosluk_fark_usd_mn": fark_usd,
                  "sfc_net_trilyonTL": sfc_net,
@@ -627,7 +876,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "sinif": sinif,
              }
          )
-@@ -182,6 +184,10 @@
+@@ -166,7 +169,7 @@
+     c_sen = next(s for s in sen_doc["senaryolar"] if s["id"] == "C")
+     destek = {
+         "senaryo": "C",
+-        "olasilik_vekili": c_sen.get("olasilik_vekili"),
++        "olasilik_vekili": _olasilik.vekil_s(c_sen),
+         "iki_katman_not": (
+             "1) Rant kanalı: boşluk→refah geçişinde hayalet rant kaybedenler (EU, US, CN…). "
+             "2) Entegre defter: havza+ikame+kanal+refah — çevrede IR, EG, GR vb. net pozitif."
+@@ -182,6 +185,10 @@
          "olcum": "bolge_stok_akis_kazanan_kaybeden",
          "rant_modeli": rant.get("rant_modeli"),
          "lambda": lam,
@@ -640,7 +898,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "aktorler": aktorler,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/c_dinamik_olcut.py fixed/etki_cephesi/c_dinamik_olcut.py
 --- pristine/etki_cephesi/c_dinamik_olcut.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/c_dinamik_olcut.py	2026-10-14 07:28:17.374557135 +0000
++++ fixed/etki_cephesi/c_dinamik_olcut.py	2026-10-14 07:40:14.117185468 +0000
 @@ -0,0 +1,266 @@
 +"""C senaryosunun gerçekleşme durumunu ölçen DİNAMİK ölçüt (sıralı Bayes).
 +
@@ -768,7 +1026,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    olgun = float(ph["tam_olgunluk_yil"])
 +    baz = int(sen["baz_yil"])
 +    horizon = int(sen["horizon_yil"])
-+    prior_ham = {s["id"]: float(s["olasilik_vekili"]) for s in sen["senaryolar"]}
++    prior_ham = {s["id"]: 1.0 for s in sen["senaryolar"]}  # tekdüze prior (kapı iskeleti ile aynı; el ataması yok)
 +    z = sum(prior_ham.values())
 +    prior = {k: v / z for k, v in prior_ham.items()}
 +    drift = _surukleme(sen, olgun)
@@ -984,6 +1242,26 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "MFIN kenar, merkez sızıntı, finans halkaları (3)(4)(5), "
          f"**{u['olcek_satir']}** ({u['yatirim_geliri_gideri_mn']:,} mn USD) ve TDS vekili.",
          "",
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman_senaryo_coklu.py fixed/etki_cephesi/finans_katman_senaryo_coklu.py
+--- pristine/etki_cephesi/finans_katman_senaryo_coklu.py	2026-10-14 06:05:45.823419607 +0000
++++ fixed/etki_cephesi/finans_katman_senaryo_coklu.py	2026-10-14 07:40:14.115650613 +0000
+@@ -4,6 +4,7 @@
+ import json
+ import sys
+ from pathlib import Path
++import _olasilik
+ from typing import Any
+ 
+ REPO = Path(__file__).resolve().parents[1]
+@@ -24,7 +25,7 @@
+     sen_doc = _load(DATA / "senaryolar.json")
+     olas: dict[str, float] = {}
+     for s in sen_doc.get("senaryolar") or []:
+-        olas[str(s["id"])] = float(s.get("olasilik_vekili") or 0.0)
++        olas[str(s["id"])] = _olasilik.vekil_s(s)
+     s_olas = sum(olas.values()) or 1.0
+     olas = {k: v / s_olas for k, v in olas.items()}
+ 
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/lm_rant_sektor.py fixed/etki_cephesi/lm_rant_sektor.py
 --- pristine/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:45.823723118 +0000
 +++ fixed/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:32.653932327 +0000
@@ -1024,11 +1302,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olasilik_duyarlilik.py fixed/etki_cephesi/olasilik_duyarlilik.py
 --- pristine/etki_cephesi/olasilik_duyarlilik.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/olasilik_duyarlilik.py	2026-10-14 06:53:48.144695081 +0000
-@@ -0,0 +1,139 @@
++++ fixed/etki_cephesi/olasilik_duyarlilik.py	2026-10-14 07:43:04.148460047 +0000
+@@ -0,0 +1,158 @@
 +"""C senaryosu olasılığı duyarlılık bandı (0,30–0,80).
 +
-+Olasılıklar ÖLÇÜLMÜŞ değildir (`senaryolar.json` olasilik_vekili: A 0,22 / B 0,18 / C 0,60, elle atanmış).
++Pipeline olasılıkları `_olasilik.vekil()` (kapı gözlemleri; gözlem yokken tekdüze 1/3). Eski el ataması 0,22/0,18/0,60 kaldırıldı.
 +Bu modül yeni bir olasılık üretmez; sonucun C'nin ağırlığına ne kadar bağlı olduğunu gösterir.
 +C = c; kalan (1 − c) A:B arasında taban oranla (0,22:0,18) bölünür.
 +"""
@@ -1036,6 +1314,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +import json
 +from pathlib import Path
++import _olasilik
 +from typing import Any
 +
 +from senaryo_uygulanabilirlik import degerlendir
@@ -1087,14 +1366,25 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return None
 +
 +
++def _kapi_sonuclari() -> list[dict[str, Any]]:
++    """K2 kapısı sonuçlarının (açık sayısı) uygulanabilirlik kararına bağlanması. Tam olasılık, bant kırpması yok."""
++    g = _olasilik.hesapla_P()
++    out = []
++    for r in g["k2_sonuc_tablosu"]:
++        o = r["olasilik_tam"]
++        d = degerlendir(o)
++        out.append({"k_acik": r["k_acik"], "n": r["n"], "P": {k: round(v, 3) for k, v in o.items()}, "skor_0_100": d["skor_0_100"], "karar": d["karar"], "esigi_gecer": d["skor_0_100"] >= ESIK_KOSULLU})
++    return out
++
++
 +def hesapla() -> dict[str, Any]:
-+    sen = {s["id"]: float(s["olasilik_vekili"]) for s in _load(DATA / "senaryolar.json")["senaryolar"]}
++    sen = _olasilik.vekil()
 +    bek = _load(OUT / "SENARYO_BEKLENEN_KALIBRE.json")
 +    rows = {r["id"]: r for r in bek["senaryolar"]}
 +    n = int(round((C_MAX - C_MIN) / ADIM))
 +    cs = [round(C_MIN + i * ADIM, 3) for i in range(n + 1)]
 +    satirlar = [_satir(c, sen, rows) for c in cs]
-+    taban_c = round(sen["C"], 3)
++    taban_c = sen["C"]
 +    taban = _satir(taban_c, sen, rows)
 +    ana = _load(OUT / "SENARYO_UYGULANABILIRLIK.json")
 +    aralik = lambda k: (min(r[k] for r in satirlar), max(r[k] for r in satirlar))  # noqa: E731
@@ -1102,15 +1392,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "olcum": "olasilik_duyarlilik_C",
 +        "etiket": "olasilik_olculmedi_duyarlilik_bandi",
 +        "not": (
-+            "Olasılıklar elle atanmış vekildir; bu rapor yeni olasılık üretmez. C = p, kalan A:B taban oranla "
-+            f"({sen['A']}:{sen['B']}) bölünür."
++            "Taban olasılık kapı iskeletinden (`_olasilik.py`); bu rapor yeni olasılık üretmez. C = p, kalan A:B taban oranla "
++            f"({sen['A']:.3f}:{sen['B']:.3f}) bölünür."
 +        ),
 +        "taban_olasilik": sen,
 +        "taban_satir_ana_rapor_ile_tutarli": (
 +            taban["skor_0_100"] == ana["skor_0_100"]
-+            and taban["beklenen_tr_net_10y_yasam"] == ana["referans_beklenen"]["beklenen_tr_net_10y_yasam"]
++            and abs(taban["beklenen_tr_net_10y_yasam"] - ana["referans_beklenen"]["beklenen_tr_net_10y_yasam"]) < 0.01  # ana rapor 2 hane yuvarlar
 +        ),
++        "taban_satir": taban,
 +        "satirlar": satirlar,
++        "kapi_sonuclari": _kapi_sonuclari(),
 +        "aralik": {
 +            "beklenen_tr_net_10y_yasam": aralik("beklenen_tr_net_10y_yasam"),
 +            "skor_0_100": aralik("skor_0_100"),
@@ -1134,11 +1426,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "| ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
 +    ]
 +    for r in d["satirlar"]:
-+        mark = " **(taban)**" if abs(r["p_C"] - d["taban_olasilik"]["C"]) < 1e-9 else ""
++        mark = ""
 +        L.append(
 +            f"| {r['p_C']:.2f}{mark} | {r['p_A']:.3f} | {r['p_B']:.3f} | {r['beklenen_tr_net_10y_yasam']} | "
 +            f"{r['beklenen_gsyh_yuzde_10y']} | {r['iyilesme_beklenen_vekil']:+.2f} | {r['skor_0_100']} | {r['karar']} |"
 +        )
++    L += ["", "## Kapı sonuçları (K2: 3 kontrol noktasından kaçı açık)", "", "| Açık | P(A) | P(B) | P(C) | Skor | Karar | Eşiği geçer |", "| ---: | ---: | ---: | ---: | ---: | --- | --- |"]
++    for r in d["kapi_sonuclari"]:
++        L.append(f"| {r['k_acik']}/{r['n']} | {r['P']['A']} | {r['P']['B']} | {r['P']['C']} | {r['skor_0_100']} | {r['karar']} | {'evet' if r['esigi_gecer'] else 'hayır'} |")
++    tb = d["taban_satir"]
++    L += ["", f"Taban (kapı iskeleti, gözlem yok): P(C) = {tb['p_C']:.3f} → skor {tb['skor_0_100']} · {tb['karar']} (bandın dışında, ızgarada değil).", ""]
 +    lo, hi = d["aralik"]["beklenen_tr_net_10y_yasam"]
 +    slo, shi = d["aralik"]["skor_0_100"]
 +    L += [
@@ -1167,229 +1464,45 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olasilik_kapilar.py fixed/etki_cephesi/olasilik_kapilar.py
 --- pristine/etki_cephesi/olasilik_kapilar.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/olasilik_kapilar.py	2026-10-14 07:36:30.087214038 +0000
-@@ -0,0 +1,229 @@
-+"""P(C) yeniden kurulumu: ölçülebilir kapılarla (el ataması yok).
++++ fixed/etki_cephesi/olasilik_kapilar.py	2026-10-14 07:40:47.028349744 +0000
+@@ -0,0 +1,45 @@
++"""P(C) kapı raporu: `_olasilik.hesapla_P()` çıktısını yazar. Saf hesap `_olasilik.py`'dedir (rapor okumaz).
 +
-+Eski: `senaryolar.json` olasilik_vekili A 0,22 / B 0,18 / C 0,60 (elle atanmış, dayanak yok).
-+Yeni:
-+  * prior = tekdüze (1/3 her senaryo): bilgi yoksa ağırlık yok.
-+  * P(C) yalnız KAPI gözlemleriyle hareket eder. Her kapı: gözlenebilir seri, önceden yazılmış kontrol noktaları,
-+    senaryo başına olabilirlik. Olabilirliğin kaynağı yazılır: `turetilmis` (senaryolar.json parametresinden)
-+    ya da `varsayim` (tek parametreli, duyarlılığı raporlanır).
-+  * Gözlem yoksa güncelleme yok: bilinmiyor sıfır değildir. Ölçüm penceresi baz yıldan sonra başlar.
-+  * Kapı verisi yoksa kapı kapalı sayılır (olasılığa girmez), uydurma değer yazılmaz.
-+
-+Kapılar:
-+  K1 merkez sızıntı sürüklenmesi (EVDS, ödemeler dengesi)  — turetilmis (merkez_sizinti_carpan); ayırt gücü yok.
-+  K2 dış kısıt: borç çevirme oranı (EVDS bie_oderoll)       — varsayim (δ); kontrol noktaları 2027-12, 2029-12, 2031-12.
-+  K3 etki erozyonu (bölge ihracat payı)                       — kaynak EVDS dışı; veri yok → kapalı.
-+  K4 bağ kullanımı                                            — gözlenebilir seri yok → kapalı.
++Karar eşiğiyle bağlantı (skor 62, P(C) ≈ 0,56) `olasilik_duyarlilik.py` raporunda: kapı sonuçlarının her biri için
++uygulanabilirlik kararı orada hesaplanır.
 +"""
 +from __future__ import annotations
 +
-+import csv
 +import json
-+import math
 +from pathlib import Path
 +from typing import Any
 +
-+from c_dinamik_olcut import _aylik, _oran12, _yillik_degisim, _surukleme, _posterior  # type: ignore
++import _olasilik
 +
 +REPO = Path(__file__).resolve().parents[1]
-+DATA = REPO / "data" / "etki_cephesi"
 +OUT = REPO / "reports" / "etki_cephesi"
-+CEVIRME = DATA / "gozlem" / "evds_borc_cevirme_aylik.csv"
-+SENARYOLAR = ("A", "B", "C")
-+KONTROL = ("2027-12", "2029-12", "2031-12")
-+ESIK_ACIK = 100.0  # %: çevirme >= 100 = dış finansman açık
-+DELTA = 0.10  # K2 varsayımı: p_C = p0 + δ, p_B = p0 − δ, p_A = p0
-+DELTA_BANT = (0.0, 0.05, 0.10, 0.15, 0.20)
-+UNIFORM = {s: 1 / 3 for s in SENARYOLAR}
-+
-+
-+def _load(p: Path) -> dict[str, Any]:
-+    return json.loads(p.read_text(encoding="utf-8"))
-+
-+
-+def _cevirme() -> dict[str, dict[str, float]]:
-+    d: dict[str, dict[str, float]] = {}
-+    with CEVIRME.open(encoding="utf-8", newline="") as f:
-+        for r in csv.DictReader(f):
-+            try:
-+                d[r["Donem"]] = {"K1": float(r["K1_bankalar"]), "K2": float(r["K2_diger_sektorler"])}
-+            except ValueError:
-+                continue
-+    return d
-+
-+
-+def _ort12(d: dict[str, dict[str, float]]) -> dict[str, tuple[float, float]]:
-+    ps = sorted(d)
-+    out = {}
-+    for i in range(11, len(ps)):
-+        w = ps[i - 11 : i + 1]
-+        y0, m0, y1, m1 = int(w[0][:4]), int(w[0][5:7]), int(w[-1][:4]), int(w[-1][5:7])
-+        if (y1 - y0) * 12 + (m1 - m0) != 11:
-+            continue
-+        out[ps[i]] = (sum(d[t]["K1"] for t in w) / 12, sum(d[t]["K2"] for t in w) / 12)
-+    return out
-+
-+
-+def _acik(k1: float, k2: float) -> bool:
-+    return k1 >= ESIK_ACIK and k2 >= ESIK_ACIK
-+
-+
-+def _norm(w: dict[str, float]) -> dict[str, float]:
-+    s = sum(w.values())
-+    return {k: v / s for k, v in w.items()}
-+
-+
-+def _k2_p(p0: float, delta: float) -> dict[str, float]:
-+    c = lambda x: min(0.95, max(0.05, x))  # noqa: E731
-+    return {"A": c(p0), "B": c(p0 - delta), "C": c(p0 + delta)}
-+
-+
-+def _binom_lik(p: dict[str, float], k: int, n: int) -> dict[str, float]:
-+    return {s: p[s] ** k * (1 - p[s]) ** (n - k) for s in SENARYOLAR}  # binom katsayısı senaryolar arası sabit
-+
-+
-+def _pc_satir(pc: float, satirlar: list[dict[str, Any]]) -> dict[str, Any]:
-+    """P(C) bandın (0,30–0,80) en yakın satırına eşlenir; bant dışı kenara kırpılır."""
-+    r = min(satirlar, key=lambda x: abs(x["p_C"] - pc))
-+    return {"p_C_satir": r["p_C"], "skor": r["skor_0_100"], "karar": r["karar"], "kirpildi": bool(pc < 0.3 or pc > 0.8)}
-+
-+
-+def hesapla() -> dict[str, Any]:
-+    sen = _load(DATA / "senaryolar.json")
-+    ph = _load(DATA / "finans_katman_kopru.json")
-+    baz = int(sen["baz_yil"])
-+    dup = _load(OUT / "OLASILIK_DUYARLILIK.json") if (OUT / "OLASILIK_DUYARLILIK.json").is_file() else {}
-+    satirlar = dup.get("satirlar", [])
-+    esik_pc = float(dup.get("gecisler", {}).get("karar_kosullu_skor_62", 0.561))
-+    eski = {s["id"]: float(s["olasilik_vekili"]) for s in sen["senaryolar"]}
-+
-+    # K2 tarihçe: 12 aylık ortalama çevirme; "açık" payı = senaryodan bağımsız taban oran p0
-+    ort = _ort12(_cevirme())
-+    acik_pay = sum(_acik(*v) for v in ort.values()) / len(ort)
-+    p0 = acik_pay
-+    son = max(ort)
-+    k2_son = {"donem": son, "K1_bankalar": round(ort[son][0], 1), "K2_diger": round(ort[son][1], 1), "acik": _acik(*ort[son])}
-+    gozlenen = {t: _acik(*ort[t]) for t in KONTROL if t in ort and int(t[:4]) > baz}
-+
-+    # K1: baz yıl sonrası yıllık sürüklenme gözlemi (şimdilik yok)
-+    d = _aylik()
-+    r = _oran12(d)
-+    g = _yillik_degisim(r)
-+    import numpy as np  # noqa: E402
-+
-+    on = [v for y, v in sorted(g.items()) if y <= baz]
-+    mu, sigma = float(np.mean(on)), float(np.std(on, ddof=1))
-+    drift = _surukleme(sen, float(ph["tam_olgunluk_yil"]))
-+    uygun = [g[y] for y in sorted(g) if y > baz]
-+    l1 = _posterior(UNIFORM, uygun, mu, sigma, drift) if uygun else dict(UNIFORM)
-+
-+    # K2 olabilirlik (gözlem varsa)
-+    pk2 = _k2_p(p0, DELTA)
-+    n_g = len(gozlenen)
-+    k_g = sum(gozlenen.values())
-+    l2 = _binom_lik(pk2, k_g, n_g) if n_g else {s: 1.0 for s in SENARYOLAR}
-+
-+    def birlestir(prior, lik1_post, lik2):
-+        w = {s: prior[s] * (lik1_post[s] / UNIFORM[s]) * lik2[s] for s in SENARYOLAR}
-+        return _norm(w)
-+
-+    bugun = birlestir(UNIFORM, l1, l2)
-+
-+    # Kapı sonuç tablosu: K2 kontrol noktalarında k/3 açık → P(C)
-+    tablo = []
-+    n = len(KONTROL)
-+    for k in range(n + 1):
-+        post = birlestir(UNIFORM, dict(UNIFORM), _binom_lik(pk2, k, n))
-+        satir = {"k_acik": k, "n": n, "P": {s: round(post[s], 3) for s in SENARYOLAR}}
-+        if satirlar:
-+            satir["karar_baglantisi"] = _pc_satir(post["C"], satirlar)
-+        satir["esigi_gecer"] = bool(post["C"] >= esik_pc)
-+        tablo.append(satir)
-+
-+    # duyarlılık: δ ve prior seçimi (k=n: en lehte, k=0: en aleyhte)
-+    duy = []
-+    for dl in DELTA_BANT:
-+        p = _k2_p(p0, dl)
-+        e = {}
-+        for ad, pr in (("tekduze", UNIFORM), ("eski_el_atamasi", _norm(eski))):
-+            e[ad] = {
-+                "k=0": round(birlestir(pr, dict(UNIFORM), _binom_lik(p, 0, n))["C"], 3),
-+                "k=n": round(birlestir(pr, dict(UNIFORM), _binom_lik(p, n, n))["C"], 3),
-+            }
-+        duy.append({"delta": dl, "p_acik": {k: round(v, 3) for k, v in p.items()}, **e})
-+
-+    en_iyi = max(t["P"]["C"] for t in tablo)
-+    kapilar = [
-+        {
-+            "kapi": "K1 merkez sızıntı sürüklenmesi",
-+            "kaynak": "EVDS TP.ODEAYRSUNUM6.Q76/Q5",
-+            "olabilirlik": "turetilmis",
-+            "esleme": "d_s = ln(merkez_sizinti_carpan_s)/T",
-+            "durum": "olcum_bekliyor" if not uygun else "olculdu",
-+            "ayirt_gucu": "yok (C vs B ≥ 307 yıl)",
-+            "P_C_etkisi": round(l1["C"], 3),
-+        },
-+        {
-+            "kapi": "K2 dış kısıt (borç çevirme ≥ %100: bankalar ve diğer sektörler)",
-+            "kaynak": "EVDS bie_oderoll TP.ODEROLL.K1, K2 (12 ay ort.)",
-+            "olabilirlik": "varsayim",
-+            "esleme": f"p_A = taban oran p0 = {p0:.3f} (tarihçede 'açık' pay); p_B = p0 − δ; p_C = p0 + δ; δ = {DELTA}",
-+            "kontrol_noktalari": list(KONTROL),
-+            "durum": "olcum_bekliyor" if not n_g else f"olculdu ({k_g}/{n_g} acik)",
-+            "bugunku_deger_bilgi": k2_son,
-+            "ayirt_gucu": f"zayıf: tek kapıdan en iyi P(C) = {en_iyi:.3f}",
-+        },
-+        {"kapi": "K3 etki erozyonu (bölge ihracat payı)", "kaynak": "TİM; EVDS ülke grubu serisi katalogda yok", "olabilirlik": "turetilmis (etki_erosyon_carpani) ama σ ölçülemez", "durum": "veri_yok", "P_C_etkisi": None},
-+        {"kapi": "K4 bağ kullanımı", "kaynak": "—", "olabilirlik": "tanımsız", "durum": "olculmedi", "P_C_etkisi": None},
-+    ]
-+    return {
-+        "olcum": "olasilik_kapilar",
-+        "etiket": "olasilik_olculmedi_kapi_iskeleti",
-+        "prior": {s: round(UNIFORM[s], 4) for s in SENARYOLAR},
-+        "eski_el_atamasi": eski,
-+        "baz_yil": baz,
-+        "bugunku_P": {s: round(bugun[s], 3) for s in SENARYOLAR},
-+        "bugunku_durum": "ölçüm başlamadı: P(C) = prior (1/3). 0,60 hiçbir ölçüme dayanmıyordu." if not (uygun or n_g) else "gözlem var",
-+        "karar_esigi_P_C": esik_pc,
-+        "kapilar": kapilar,
-+        "k2_tarihce": {"taban_acik_pay": round(p0, 3), "n_pencere": len(ort), "son": k2_son},
-+        "k2_sonuc_tablosu": tablo,
-+        "k2_duyarlilik": duy,
-+        "en_iyi_tek_kapi_P_C": en_iyi,
-+        "sonuc": (
-+            f"K2 üç kontrol noktasında da açık çıksa P(C) = {tablo[-1]['P']['C']:.3f}; karar eşiği {esik_pc:.3f}. "
-+            + ("Tek kapı eşiği geçirir." if en_iyi >= esik_pc else "Tek kapı eşiği geçirmez: C'yi 'uygulanabilir' yapacak kanıt yok; karar P(C) varsayımıyla değil, kapı kümesiyle verilmeli.")
-+        ),
-+    }
 +
 +
 +def _md(d: dict[str, Any]) -> str:
 +    L = ["# P(C) — kapılarla yeniden kurulum", "", f"**Etiket:** `{d['etiket']}`", ""]
 +    L.append(f"- Prior: tekdüze {d['prior']} (eski el ataması {d['eski_el_atamasi']} dayanaksızdı).")
 +    L.append(f"- Bugünkü P: **{d['bugunku_P']}**. {d['bugunku_durum']}")
-+    L.append(f"- Karar eşiği (skor 62): P(C) ≥ **{d['karar_esigi_P_C']}**.")
 +    L += ["", "## Kapılar", "", "| Kapı | Kaynak | Olabilirlik | Durum |", "| --- | --- | --- | --- |"]
 +    for k in d["kapilar"]:
 +        L.append(f"| {k['kapi']} | {k['kaynak']} | {k['olabilirlik']} | {k['durum']} |")
 +    t = d["k2_tarihce"]
-+    L += ["", "## K2 dış kısıt", "", f"- Tarihçe: 12 aylık ort. çevirme ≥ %100 olan pencerelerin payı **{t['taban_acik_pay']}** ({t['n_pencere']} pencere). Bu A için taban oran p0.", f"- Son: {t['son']}", f"- Varsayım (tek parametre): p_C = p0 + δ, p_B = p0 − δ, δ = {DELTA}.", "", "| Açık sayısı (3 kontrol noktasından) | P(A) | P(B) | P(C) | Eşiği geçer | Karar bandı |", "| ---: | ---: | ---: | ---: | --- | --- |"]
++    L += ["", "## K2 dış kısıt", "", f"- Tarihçe: 12 aylık ort. çevirme ≥ %100 olan pencerelerin payı **{t['taban_acik_pay']}** ({t['n_pencere']} pencere). Bu A için taban oran p0.", f"- Son: {t['son']}", f"- Varsayım (tek parametre): p_C = p0 + δ, p_B = p0 − δ, δ = {_olasilik.DELTA}.", "", "| Açık sayısı (3 kontrol noktasından) | P(A) | P(B) | P(C) |", "| ---: | ---: | ---: | ---: |"]
 +    for r in d["k2_sonuc_tablosu"]:
-+        kb = r.get("karar_baglantisi", {})
-+        L.append(f"| {r['k_acik']}/{r['n']} | {r['P']['A']} | {r['P']['B']} | {r['P']['C']} | {'evet' if r['esigi_gecer'] else 'hayır'} | {kb.get('karar', '—')} (skor {kb.get('skor', '—')}{', bant dışı kırpıldı' if kb.get('kirpildi') else ''}) |")
++        L.append(f"| {r['k_acik']}/{r['n']} | {r['P']['A']} | {r['P']['B']} | {r['P']['C']} |")
 +    L += ["", "### δ duyarlılığı (P(C): hiç açık yok → hepsi açık)", "", "| δ | tekdüze prior | eski el ataması prior |", "| ---: | --- | --- |"]
 +    for r in d["k2_duyarlilik"]:
 +        L.append(f"| {r['delta']} | {r['tekduze']['k=0']} → {r['tekduze']['k=n']} | {r['eski_el_atamasi']['k=0']} → {r['eski_el_atamasi']['k=n']} |")
-+    L += ["", "## Sonuç", "", d["sonuc"], "", "## Ne denmez", "", "- 'P(C) = 1/3' bir ölçüm değildir; bilgi yokluğudur. Ölçüm 2027-12'den itibaren başlar.", "- K2 olabilirliği varsayımdır (δ). Tablo bunun ne kadar oynattığını gösterir, doğrulamaz.", "- K3 ve K4 veri gelene kadar olasılığa girmez; sıfır değil, bilinmiyor.", ""]
++    L += ["", "## Karar bağlantısı", "", "Kapı sonuçlarının uygulanabilirlik kararına çevrilmesi `OLASILIK_DUYARLILIK.md` içinde ('Kapı sonuçları').", "", "## Ne denmez", "", "- 'P(C) = 1/3' bir ölçüm değildir; bilgi yokluğudur. Ölçüm 2027-12'den itibaren başlar.", "- K2 olabilirliği varsayımdır (δ). Tablo bunun ne kadar oynattığını gösterir, doğrulamaz.", "- K3 ve K4 veri gelene kadar olasılığa girmez; sıfır değil, bilinmiyor.", ""]
 +    return "\n".join(L)
 +
 +
 +def main() -> None:
-+    d = hesapla()
++    d = _olasilik.hesapla_P()
 +    OUT.mkdir(parents=True, exist_ok=True)
 +    (OUT / "OLASILIK_KAPILAR.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
 +    (OUT / "OLASILIK_KAPILAR.md").write_text(_md(d), encoding="utf-8")
@@ -1472,10 +1585,58 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
  
  if __name__ == "__main__":
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_beklenen_kalibre.py fixed/etki_cephesi/senaryo_beklenen_kalibre.py
+--- pristine/etki_cephesi/senaryo_beklenen_kalibre.py	2026-10-14 06:05:45.827591865 +0000
++++ fixed/etki_cephesi/senaryo_beklenen_kalibre.py	2026-10-14 07:40:14.115093913 +0000
+@@ -4,6 +4,7 @@
+ import json
+ import sys
+ from pathlib import Path
++import _olasilik
+ from typing import Any
+ 
+ REPO = Path(__file__).resolve().parents[1]
+@@ -44,7 +45,7 @@
+     satirlar: list[dict[str, Any]] = []
+     olas: dict[str, float] = {}
+     for s in sen_doc.get("senaryolar") or []:
+-        olas[str(s["id"])] = float(s.get("olasilik_vekili") or 0.0)
++        olas[str(s["id"])] = _olasilik.vekil_s(s)
+     s_olas = sum(olas.values()) or 1.0
+     olas = {k: v / s_olas for k, v in olas.items()}
+ 
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_coklu_p2.py fixed/etki_cephesi/senaryo_coklu_p2.py
+--- pristine/etki_cephesi/senaryo_coklu_p2.py	2026-10-14 06:05:45.827683425 +0000
++++ fixed/etki_cephesi/senaryo_coklu_p2.py	2026-10-14 07:40:14.115376190 +0000
+@@ -4,6 +4,7 @@
+ import json
+ import sys
+ from pathlib import Path
++import _olasilik
+ from typing import Any
+ 
+ REPO = Path(__file__).resolve().parents[1]
+@@ -54,7 +55,7 @@
+ def olasilik_beklenti(satirlar: list[dict[str, Any]], sen_doc: dict[str, Any]) -> dict[str, Any]:
+     olas: dict[str, float] = {}
+     for s in sen_doc.get("senaryolar") or []:
+-        olas[str(s["id"])] = float(s.get("olasilik_vekili") or 0.0)
++        olas[str(s["id"])] = _olasilik.vekil_s(s)
+     s_olas = sum(olas.values()) or 1.0
+     olas = {k: v / s_olas for k, v in olas.items()}
+ 
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_uygulanabilirlik.py fixed/etki_cephesi/senaryo_uygulanabilirlik.py
 --- pristine/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:05:45.827930514 +0000
-+++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:53:48.144343389 +0000
-@@ -37,7 +37,11 @@
++++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 07:40:14.116179422 +0000
+@@ -3,6 +3,7 @@
+ 
+ import json
+ from pathlib import Path
++import _olasilik
+ from typing import Any
+ 
+ REPO = Path(__file__).resolve().parents[1]
+@@ -37,7 +38,11 @@
      return bilesenler, partial
  
  
@@ -1483,15 +1644,17 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +def degerlendir(olasilik: dict[str, float] | None = None) -> dict[str, Any]:
 +    """`olasilik` verilirse senaryo olasılıkları (A/B/C) bu ağırlıklarla yeniden hesaplanır (duyarlılık).
 +
-+    Varsayılan (None): senaryolar.json `olasilik_vekili`, eski davranışla aynı.
++    Varsayılan (None): `_olasilik.vekil()` (kapı gözlemleri; gözlem yokken tekdüze).
 +    """
      sen_doc = _load(DATA / "senaryolar.json")
      mat = _load(OUT / "ULUSLARARASI_STOK_AKIS.json")
      bek_path = OUT / "SENARYO_BEKLENEN_KALIBRE.json"
-@@ -49,6 +53,24 @@
+@@ -48,7 +53,25 @@
+     z10 = _load(OUT / "ZARAR_10Y_GSYH.json")
  
      c = next(s for s in sen_doc["senaryolar"] if s["id"] == "C")
-     p_c = float(c.get("olasilik_vekili") or 0.6)
+-    p_c = float(c.get("olasilik_vekili") or 0.6)
++    p_c = _olasilik.vekil_s(c)
 +    olas_ovr: dict[str, float] | None = None
 +    if olasilik:
 +        s_o = sum(float(v) for v in olasilik.values()) or 1.0
@@ -1513,8 +1676,12 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      g = ger.get("gerceklesme_oranlari") or {}
      g_mean = sum(float(v) for v in g.values()) / max(len(g), 1)
  
-@@ -124,6 +146,8 @@
-             olas_norm[str(s["id"])] = float(s.get("olasilik_vekili") or 0.0)
+@@ -121,9 +144,11 @@
+     if zcok:
+         olas_norm: dict[str, float] = {}
+         for s in sen_doc.get("senaryolar") or []:
+-            olas_norm[str(s["id"])] = float(s.get("olasilik_vekili") or 0.0)
++            olas_norm[str(s["id"])] = _olasilik.vekil_s(s)
          s_olas = sum(olas_norm.values()) or 1.0
          olas_norm = {k: v / s_olas for k, v in olas_norm.items()}
 +        if olas_ovr:
@@ -1522,7 +1689,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          by_z = {x["id"]: x for x in zcok.get("senaryolar") or []}
          for sid in ("A", "B", "C"):
              row = by_z.get(sid)
-@@ -145,15 +169,28 @@
+@@ -145,15 +170,28 @@
              )
              skor_senaryo[sid] = skor_s
  
@@ -1554,7 +1721,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      engeller = []
      if g_mean < 0.35:
-@@ -164,6 +201,10 @@
+@@ -164,6 +202,10 @@
          engeller.append("Uluslararası stok net toplamı kapanmıyor — vekil ölçeği abartılı olabilir.")
      if tr_10 > -8:
          engeller.append("TR net hâlâ derin negatif; hedef ‘sıfıra yakın’ değil.")
@@ -1565,7 +1732,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      kolaylastirici = []
      if halka:
-@@ -180,6 +221,8 @@
+@@ -180,6 +222,8 @@
          "skor_senaryo_ab_c": skor_senaryo or None,
          "karar": karar,
          "ozet": ozet,
@@ -1879,6 +2046,46 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      lines.append("")
      return "\n".join(lines)
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/ulke_kanal_dokum_10y.py fixed/etki_cephesi/ulke_kanal_dokum_10y.py
+--- pristine/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 06:05:45.830273100 +0000
++++ fixed/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 07:40:14.114667866 +0000
+@@ -4,6 +4,7 @@
+ import json
+ from collections import defaultdict
+ from pathlib import Path
++import _olasilik
+ from typing import Any
+ 
+ REPO = Path(__file__).resolve().parents[1]
+@@ -104,7 +105,7 @@
+     zdoc = _load(REPO / "data" / "etki_cephesi" / "senaryolar.json")
+     ow: dict[str, float] = {}
+     for s in zdoc.get("senaryolar") or []:
+-        ow[str(s["id"])] = float(s.get("olasilik_vekili") or 0.0)
++        ow[str(s["id"])] = _olasilik.vekil_s(s)
+     s_ = sum(ow.values()) or 1.0
+     ow = {k: v / s_ for k, v in ow.items()}
+ 
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/zarar_10y_senaryo_coklu.py fixed/etki_cephesi/zarar_10y_senaryo_coklu.py
+--- pristine/etki_cephesi/zarar_10y_senaryo_coklu.py	2026-10-14 06:05:45.831318454 +0000
++++ fixed/etki_cephesi/zarar_10y_senaryo_coklu.py	2026-10-14 07:40:14.114272401 +0000
+@@ -4,6 +4,7 @@
+ import json
+ import sys
+ from pathlib import Path
++import _olasilik
+ from typing import Any
+ 
+ REPO = Path(__file__).resolve().parents[1]
+@@ -32,7 +33,7 @@
+ 
+     olas: dict[str, float] = {}
+     for s in sen_doc.get("senaryolar") or []:
+-        olas[str(s["id"])] = float(s.get("olasilik_vekili") or 0.0)
++        olas[str(s["id"])] = _olasilik.vekil_s(s)
+     s_olas = sum(olas.values()) or 1.0
+     olas = {k: v / s_olas for k, v in olas.items()}
+ 
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_p3.py fixed/tests/test_etki_cephesi_p3.py
 --- pristine/tests/test_etki_cephesi_p3.py	2026-10-14 06:05:45.846952283 +0000
 +++ fixed/tests/test_etki_cephesi_p3.py	2026-10-14 06:42:31.701662816 +0000
@@ -1896,8 +2103,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:36:53.598083315 +0000
-@@ -0,0 +1,231 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:42:06.465673182 +0000
+@@ -0,0 +1,251 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -2052,7 +2259,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    d = _j(OUT / "OLASILIK_DUYARLILIK.json")
 +    ana = _j(OUT / "SENARYO_UYGULANABILIRLIK.json")
 +    assert d["taban_satir_ana_rapor_ile_tutarli"] is True
-+    taban = [r for r in d["satirlar"] if abs(r["p_C"] - d["taban_olasilik"]["C"]) < 1e-9][0]
++    taban = d["taban_satir"]
 +    assert taban["skor_0_100"] == ana["skor_0_100"]
 +    assert taban["karar"] == ana["karar"]
 +
@@ -2124,8 +2331,28 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert pc == sorted(pc)  # daha çok 'açık' → C artar
 +    for r in t:
 +        assert abs(sum(r["P"].values()) - 1) < 2e-3
-+        assert r["esigi_gecer"] == (r["P"]["C"] >= d["karar_esigi_P_C"])
++    ds = _j(OUT / "OLASILIK_DUYARLILIK.json")
++    esik = ds["gecisler"]["karar_kosullu_skor_62"]
++    for r in ds["kapi_sonuclari"]:
++        assert r["esigi_gecer"] == (r["skor_0_100"] >= 62.0)
++        assert r["esigi_gecer"] == (r["P"]["C"] >= esik - 5e-3)  # enterpolasyon yuvarlaması payı
 +    assert d["en_iyi_tek_kapi_P_C"] == max(pc)
 +    # δ=0 → kapı bilgi taşımaz
 +    z = next(x for x in d["k2_duyarlilik"] if x["delta"] == 0.0)
 +    assert z["tekduze"]["k=0"] == z["tekduze"]["k=n"] == 0.333
++
++
++def test_olasilik_baglandi_ve_dongu_yok():
++    src = (REPO / "etki_cephesi" / "_olasilik.py").read_text(encoding="utf-8")
++    assert "reports" not in src and "OUT" not in src  # saf hesap: pipeline raporu okumaz → döngü yok
++    sen = _j(DATA / "senaryolar.json")
++    assert all("olasilik_vekili" not in s for s in sen["senaryolar"])  # eski el ataması yeniden adlandırıldı
++    sys.path.insert(0, str(REPO / "etki_cephesi"))
++    import _olasilik  # noqa: E402
++
++    v = _olasilik.vekil()
++    assert abs(sum(v.values()) - 1) < 1e-12
++    k = _j(OUT / "OLASILIK_KAPILAR.json")
++    assert all(abs(v[s] - k["bugunku_P"][s]) < 1e-3 for s in v)
++    ana = _j(OUT / "SENARYO_UYGULANABILIRLIK.json")
++    assert abs(ana["bilesenler"]["olasilik_senaryo_c"] - v["C"]) < 1e-3
