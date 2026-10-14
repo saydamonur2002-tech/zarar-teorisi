@@ -2534,7 +2534,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/refah_dis_entegrasyon.py fixed/etki_cephesi/refah_dis_entegrasyon.py
 --- pristine/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 06:05:45.827256705 +0000
-+++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 14:11:15.816258083 +0000
++++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 14:16:11.022415266 +0000
 @@ -128,7 +128,8 @@
  
      for d in sen.get("dis_aktör_kazanc") or []:
@@ -2545,6 +2545,18 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          acc[iso]["ikame_kazanc"] += float(d.get("ikame_kazanc") or 0.0)
          acc[iso]["merkez_sizinti"] += float(d.get("merkez_sizinti") or 0.0)
          acc[iso]["merkez_belirsiz"] += float(d.get("merkez_belirsiz_vekil") or 0.0)
+@@ -164,7 +165,10 @@
+     ledger: list[dict[str, Any]] = []
+     for iso, v in acc.items():
+         ref = round(v["refah_rant"], 3)
+-        dis_k = round(v["kanal_kazanc"] + v["ikame_kazanc"] + v["merkez_sizinti"] + v["merkez_belirsiz"] + ref, 3)
++        # `merkez_belirsiz` (kimliği bilinmeyen merkez sızıntısı, 36 ülkeye EŞİT pay) kazanç sayılmaz: bilinmiyor ≠ kazanç.
++        # PROJEKSIYON da bunu "fayda Σ'ye eklenmez" diye hariç tutar; defterde eklenmesi aynı aktör için iki farklı net üretiyordu.
++        # Alan satırda ayrı durur ve stok-akış kenarlarında (akış kapanışı) kullanılmaya devam eder.
++        dis_k = round(v["kanal_kazanc"] + v["ikame_kazanc"] + v["merkez_sizinti"] + ref, 3)
+         havza_k = round(max(0.0, -v["havza_net"]), 3)
+         net = round(dis_k - havza_k + max(0.0, v["havza_net"]), 3)
+         if iso == "TR":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
 +++ fixed/etki_cephesi/run_all.py	2026-10-14 14:06:07.944526937 +0000
@@ -3528,8 +3540,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:11:53.160062083 +0000
-@@ -0,0 +1,434 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:16:40.196069852 +0000
+@@ -0,0 +1,449 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -3964,3 +3976,18 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert "—" in satir and "bilinmiyor" in satir  # sıfır değil
 +    satirlar = [l for l in birlesik.splitlines() if l.startswith("| ") and not l.startswith("| Aktör") and not l.startswith("| ---")]
 +    assert len(satirlar) == len(_j(OUT / "PROJEKSIYON.json")["senaryolar"][0]["aktör_birlesik"])  # kesilmiş tablo yok (eskiden ilk 30)
++
++
++def test_defter_ve_projeksiyon_ayni_neti_verir_misir_kirilgan_degil():
++    proj = {s["id"]: s for s in _j(OUT / "PROJEKSIYON.json")["senaryolar"]}
++    for sid in "ABC":
++        led = {r["ulke"]: r for r in _j(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
++        ab = {a["aktor"]: a for a in proj[sid]["aktör_birlesik"]}
++        for iso in ("EG", "IR", "IL", "SA", "AE", "CN", "RU", "US"):
++            if iso not in led or iso not in ab:
++                continue
++            # defter neti = projeksiyon neti + refah rant payı (belirsiz merkez payı kazanç sayılmaz)
++            assert abs(led[iso]["net_refah_entegre"] - (ab[iso]["net_birlesik_vekil"] + led[iso]["refah_rant"])) < 0.01, (sid, iso)
++            assert led[iso]["dis_toplam_vekili"] == round(led[iso]["kanal_kazanc"] + led[iso]["ikame_kazanc"] + led[iso]["merkez_sizinti"] + led[iso]["refah_rant"], 3)
++    b = {a["ulke"]: a for a in _j(OUT / "BOLGE_STOK_AKIS.json")["aktorler"]}
++    assert b["EG"]["sinif"] == "rant_kanali_bosluk_taraftari" and abs(b["EG"]["net_refah_entegre_vekil"]) < 0.08 / 2  # eşiğin (0,08) belirgin altında: bıçak sırtı değil

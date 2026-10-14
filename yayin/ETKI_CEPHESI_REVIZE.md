@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `7500618977dc1497`, temiz kurulumda 3 geçiş),
-**57 test geçti** (27 mevcut + 30 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `ad55076df4c8cfb1`, temiz kurulumda 3 geçiş),
+**58 test geçti** (27 mevcut + 31 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -199,6 +199,14 @@ Senaryolar kaldı; büyüklükleri geçmişten gelir (`etki_cephesi/_gecmis.py`,
 - **Σ kazanç = Σ kayıp hedeflenmedi:** kayıp bölge net etkisi (A: TR 25,8 + diğer 14,4 = 40,2), kazanç ise TR boşalmasının dağıtımı (V). Aralarındaki fark artık negatif (A −14,8, B −25,4, C −10,0): kazanç kayıptan az.
 - **Karara etkisi (dikkat):** skor 58,7 → **56,7**, karar `kisitli_uygulanabilir`; karar eşiği P(C) 0,52 → **0,63**; C senaryosunun kendi skoru 63,5 → 61,5. Sebep tek bir aktör: **Mısır** çevre kazananı olmaktan çıktı (net birleşik +0,50 → eşik 0,05'in altı); "halka-çevre koalisyonu" bileşeni 0,75 → 0,50. Yani karar skoru bir aktörün çift sayılmış kazancından 2 puan alıyormuş. E[TR net 10 yıl] değişmedi (−23,10).
 - Kapsam işaretleri (yukarıdaki bölüm) geçerli: kazanç tam modellenenler 14, net tam 6 aktör.
+
+## Mısır: bıçak sırtı düzeltildi, sebep ledger–projeksiyon net farkıydı
+Mısır `kanal` kalkınca "çevre kazananı" olmaktan çıkmıştı (ledger neti +0,202 → +0,074; eşik 0,08). Araştırma:
+- **Mısır'ın iki farklı neti vardı.** `PROJEKSIYON` (C): −0,010 (nötr). `DIS_ULKE_REFAH` defteri (C): +0,074. Fark: defter, kimliği bilinmeyen merkez sızıntısının **36 ülkeye eşit payını** (`merkez_belirsiz`, Mısır'da 0,062) kazanç olarak ekliyordu. `PROJEKSIYON` aynı payı "fayda Σ'ye eklenmez" diye hariç tutuyordu. Bilinmeyen payı herkese eşit kazanç yazmak, "bilinmiyor sıfır değildir" ilkesine de aykırı.
+- **Düzeltme:** defterde `merkez_belirsiz` kazanca eklenmez; alan satırda ayrı durur ve stok-akış kenarlarında (akış kapanışı) kullanılmaya devam eder. Artık defter neti = projeksiyon neti + refah rant payı (test: EG, IR, IL, SA, AE, CN, RU, US).
+- **Mısır'ın durumu:** C'de defter neti +0,012 (projeksiyon −0,010), A'da −0,037 (−0,079), B'de −0,224 (−0,320). Sınıf `rant_kanali_bosluk_taraftari`: boşluk rant kanalından 505,9 mn $ fark, ama net ≈ 0. Eşiğin (0,08) belirgin altında: artık bıçak sırtı değil, ve kazanan değil.
+- **Mısır kazanan olarak "düzelmedi" ve düzelmemeli:** önceki +0,50 yalnız `kanal` çift sayımından ve eşit dağıtılan belirsiz paydan geliyordu. Hiçbir muhasebede güvenilir biçimde pozitif değil.
+- Diğer aktörler: tüm kazanç satırları 0,06 azaldı (belirsiz pay), hiçbir sınıf değişmedi. Karar skoru (56,7), karar eşiği ve E[TR net] aynı; `kapanis_ok` A/B/C ve MFIN tutarlılığı korundu.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
