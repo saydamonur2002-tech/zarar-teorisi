@@ -1,7 +1,7 @@
 """Orta vade: beş adım takvimi ile Hazine faiz faturası, aynı yıllar, ayrı sütunlar.
 
 Pencere 2027–2029. 2027 K1 (adım 1 akış ve adım 2), 2028 K2 (adım 1 stok tavanı ve adım 3),
-2029 K3 (adım 4). Adım 5'in penceresi yok.
+2029 K3 (adım 4). Adım 4.5 birim geçişi 2030'dadır; fatura sütununa eklenmez. Adım 5'in penceresi yok.
 
 Fatura kimliği faiz_fatura_kalibre ile aynı: r 2025'ten, eğim 2024-Q4→2026-Q2.
 Özel USD akışının sıfırlanması faturaya girmez. Beş adımın faiz düğmesi yoktur.
@@ -19,6 +19,7 @@ from pathlib import Path
 
 import pandas as pd
 
+import adim45_birim as birim
 import faiz_fatura_kalibre as fk
 import adim_faiz_tepki as tepki
 import faiz_kur_kalibre as fk_kur
@@ -211,7 +212,7 @@ def _satirlar(fat: dict, kad: dict, duran: dict, prim: dict, kur_son: dict, kur_
     return rows
 
 
-def _md(rows: list[dict], fat: dict, fk_blob: dict, tp: dict) -> str:
+def _md(rows: list[dict], fat: dict, fk_blob: dict, tp: dict, b45: dict) -> str:
     def h(y: int) -> dict:
         return next(r for r in rows if r["yil"] == y)
 
@@ -290,6 +291,16 @@ def _md(rows: list[dict], fat: dict, fk_blob: dict, tp: dict) -> str:
         "",
         f"2029 prim bandı {c['prim_alt']:.0f}–{c['prim_ust']:.0f}. Aynı yıl adım 3 tam yıldır: duran faiz {c['duran_faiz_kappa_025']:.0f}. Prim ile duran faiz toplanmaz. İhraççı varsayımı K′. Senet satırı `modellenmedi` kalır. Adım 5’in orta vadede penceresi yoktur. Ho→Ha bandı (yüzde 20 kapsama, 52–160) bu tabloya yazılmaz.",
         "",
+        "## Adım 4.5, 2030",
+        "",
+        f"K3 2029 sonunda tamdır. Birim geçişi {b45['pencere'][0]} .. {b45['pencere'][-1]}. Stok {b45['olcum_donem']} ölçümüdür, 2030'a taşınmaz.",
+        "",
+        f"TCMB nakit yükümlülüğü {b45['stok_milyar']['tcmb_nakit']:,.1f}. Yurt içi TL mevduat {b45['stok_milyar']['yurtici_tl_mevduat']:,.1f}. Toplam **{b45['stok_milyar']['tl_para_toplam']:,.1f}** milyar TL. λ=1. Yeni toplam {b45['stok_milyar']['tl_para_yeni_lam1']:,.1f}. Fark **{b45['stok_milyar']['fark_lam1']:.1f}**.",
+        "",
+        f"Yurt içi YP {b45['stok_milyar']['yurtici_yp_tl_karsilik']:,.1f} TL karşılığı birime girmez. Gerçek kişi YP {b45['stok_milyar']['gercek_kisi_yp']:,.1f} durur. Kâğıt stoku θ=0,25, {b45['stok_milyar']['kagit_theta_025']:,.1f}, ayrı kattır. Toplama eklenmez.",
+        "",
+        f"λ=1 olduğu için 2029 faiz-37 faturası {c['hazine_faiz_kur_son']:.0f} durur. Kur aynı çarpanla gider; λ=1'de kur da durur. r durur. `silinen` boş kalır.",
+        "",
         "## Ne denmez",
         "",
         "- Beş adım Hazine faturasını 2029’da sabitledi denmez. Mevcut tempo faturası yürür.",
@@ -299,6 +310,8 @@ def _md(rows: list[dict], fat: dict, fk_blob: dict, tp: dict) -> str:
         "- Beş adım faizi ölçülmüş biçimde indirdi denmez. Ana β sıfırdan ayrı değildir. 2023 rejimi n=6’dır.",
         "- Anket faizi inince kur yavaşlar denmez. Kalibre edilen katsayı negatiftir: faiz inince değer kaybı artar.",
         "- Stok yüzde 20 silindi denmez.",
+        "- Adım 4.5 altı sıfır attı denmez. λ=1 paritedir. Fark 0.",
+        "- YP mevduat yeni TL'ye çevrildi denmez.",
         "",
     ])
 
@@ -316,6 +329,7 @@ def main() -> None:
     kad = _kademe()
     duran = _duran_faiz()
     prim = _prim()
+    b45 = birim.main()
     rows = _satirlar(fat, kad, duran, prim, kur_son, kur_anket, kur_adim_ana, kur_adim_rejim)
     pd.DataFrame(rows).to_csv(KOK / "orta_vade_senaryo.csv", index=False)
     blob = {
@@ -328,6 +342,7 @@ def main() -> None:
             "aktarim": "varsayim_ozel_usd_akisi_sifir",
             "adim3": "varsayim_kappa_0.25",
             "adim4": "band_varsayim_theta_0.25",
+            "adim45": "varsayim_parite_lam_1",
             "adim5": "olculmedi",
         },
         "faturalar": fat,
@@ -338,10 +353,16 @@ def main() -> None:
         "kademe_yil_sonu": kad,
         "duran_faiz_kappa_025": duran,
         "prim_theta_025": prim,
+        "adim45": {
+            "lam": b45["lam"],
+            "fark_lam1": b45["stok_milyar"]["fark_lam1"],
+            "tl_para_toplam": b45["stok_milyar"]["tl_para_toplam"],
+            "pencere": b45["pencere"],
+        },
         "satirlar": rows,
     }
     (KOK / "orta_vade_senaryo.json").write_text(json.dumps(blob, ensure_ascii=False, indent=2), encoding="utf-8")
-    (KOK / "ORTA_VADE_SENARYO.md").write_text(_md(rows, fat, fk_blob, tp), encoding="utf-8")
+    (KOK / "ORTA_VADE_SENARYO.md").write_text(_md(rows, fat, fk_blob, tp, b45), encoding="utf-8")
     for r in rows:
         print(r["yil"], r["hazine_faiz_kur_son"], r["hazine_adim_ana"], r["hazine_adim_rejim"], r["kur_adim_rejim_yil_sonu"])
 

@@ -27,6 +27,7 @@ Bu depodaki parçaları:
 2. Kalan net borç silinmez. Üstten alta akış planıyla ödenir. Alta inen pay ücret olarak yazılır.
 3. Bu akış yeni banka kredisiyle çevrilmez. Eski stokun faizi, stok ödenene kadar durur.
 4. Tasarruf dolar ve arsa yerine hedef primli endeksli senede gider. Çıkış, senedi başkasına satmaktır.
+4.5. Mevcut TL, yeni fiat TL'ye geçer. Yeni lira altın ya da döviz üzerinde alacak değildir; dolara çevrilerek ödenmez. λ=1 paritede sayılar durur. λ varsayımdır.
 5. Konut topluma açılırsa kira, aynı akışın ikinci koludur. Bu kol ölçülmedi.
 
 ## Bu depoda hangi adım nerede
@@ -37,6 +38,7 @@ Bu depodaki parçaları:
 | 2 | `odeme_mahsup.py` (şart kaldıracı, ücret geçişi) | modellendi, sentetik ağ |
 | 3 | `odeme_mahsup.py` (kredi ihtiyacı); EVDS F.4 firma kredi stoku | modellendi / olculdu |
 | 4 | EVDS hane-firma vadeli, HPB gerçek kişi YP (senedin adres stokları) | olculdu; senet modellenmedi |
+| 4.5 | `adim45_birim.py` (TL birim kimliği, 2030 takvimi) | kimlik; λ=1 varsayım |
 | 5 | — | olculmedi |
 
 Ayrıntı ve sayılar `TEK_SISTEM_KOPRU.md` içinde. Adım 4–5'in HEKİS'teki modeli (hekis-model 6c34a63, `hekis_model/`) `DIGER_REPO_KOPRU.md` içinde; tek-sistem etiketleri orada değişmez. Katman sonuçları birbirine taşınmaz; tek-sistem BDDK kredi sayıları ile EVDS finansal hesap stokları aynı tanım değildir, fark açıklanır, kapatılmaz.

@@ -70,6 +70,16 @@ Rejim sınavında 2025-Q2 tahmini ölçülenin 5,6 puan altındadır. Bu sütun 
 
 2029 prim bandı 36–91. Aynı yıl adım 3 tam yıldır: duran faiz 1208. Prim ile duran faiz toplanmaz. İhraççı varsayımı K′. Senet satırı `modellenmedi` kalır. Adım 5’in orta vadede penceresi yoktur. Ho→Ha bandı (yüzde 20 kapsama, 52–160) bu tabloya yazılmaz.
 
+## Adım 4.5, 2030
+
+K3 2029 sonunda tamdır. Birim geçişi 2030-Q1 .. 2030-Q4. Stok 2026-Q1 ölçümüdür, 2030'a taşınmaz.
+
+TCMB nakit yükümlülüğü 898.3. Yurt içi TL mevduat 15,574.5. Toplam **16,472.8** milyar TL. λ=1. Yeni toplam 16,472.8. Fark **0.0**.
+
+Yurt içi YP 10,026.3 TL karşılığı birime girmez. Gerçek kişi YP 6,639.4 durur. Kâğıt stoku θ=0,25, 4,840.5, ayrı kattır. Toplama eklenmez.
+
+λ=1 olduğu için 2029 faiz-37 faturası 5338 durur. Kur aynı çarpanla gider; λ=1'de kur da durur. r durur. `silinen` boş kalır.
+
 ## Ne denmez
 
 - Beş adım Hazine faturasını 2029’da sabitledi denmez. Mevcut tempo faturası yürür.
@@ -79,3 +89,5 @@ Rejim sınavında 2025-Q2 tahmini ölçülenin 5,6 puan altındadır. Bu sütun 
 - Beş adım faizi ölçülmüş biçimde indirdi denmez. Ana β sıfırdan ayrı değildir. 2023 rejimi n=6’dır.
 - Anket faizi inince kur yavaşlar denmez. Kalibre edilen katsayı negatiftir: faiz inince değer kaybı artar.
 - Stok yüzde 20 silindi denmez.
+- Adım 4.5 altı sıfır attı denmez. λ=1 paritedir. Fark 0.
+- YP mevduat yeni TL'ye çevrildi denmez.

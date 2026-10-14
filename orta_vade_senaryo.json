@@ -8,6 +8,7 @@
     "aktarim": "varsayim_ozel_usd_akisi_sifir",
     "adim3": "varsayim_kappa_0.25",
     "adim4": "band_varsayim_theta_0.25",
+    "adim45": "varsayim_parite_lam_1",
     "adim5": "olculmedi"
   },
   "faturalar": {
@@ -324,6 +325,17 @@
       "alt": 36.4,
       "ust": 90.8
     }
+  },
+  "adim45": {
+    "lam": 1.0,
+    "fark_lam1": 0.0,
+    "tl_para_toplam": 16472.8,
+    "pencere": [
+      "2030-Q1",
+      "2030-Q2",
+      "2030-Q3",
+      "2030-Q4"
+    ]
   },
   "satirlar": [
     {
