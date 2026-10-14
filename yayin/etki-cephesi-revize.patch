@@ -45,6 +45,21 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +- Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
 +- `bolge_stok_akis` ve `lm_rant_sektor` darbeleri de sıfır toplamlı değil: yalnız ilan edildi (`x_toplam_trilyonTL`, `kapanis_ok`), yeniden tasarlanmadı.
 +- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/finans_katman_kopru.json fixed/data/etki_cephesi/finans_katman_kopru.json
+--- pristine/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 06:05:45.811750548 +0000
++++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 07:55:43.681477523 +0000
+@@ -12,5 +12,11 @@
+   "kredi_ihtiyaci_sifir_merkez_kesinti": 0.11,
+   "tr_finans_geri_tranchman": 0.42,
+   "tam_olgunluk_yil": 10,
++  "senaryo_gerceklesme": {
++    "etiket": "varsayim_senaryo_turetilmis",
++    "surucu": "politika gerçekleşme: pol = clip(1.05 − etki_erozyonu + tr_diplomatik_flex, 0.25, 1); g_f = min(1, pol_s / pol_C)",
++    "not": "Finans halka ek çarpanları, MFIN kenar çarpanı, yatırım geliri iç tutma, TDS rahatı ve kredi kesintisi dış koşula (erozyon, diplomatik esneklik) bağlıdır. Etkin çarpan = 1 − g_f (1 − çarpan). Eski ek ölçekleme (pol_oran / merkez_oran ve boşalma·havza × merkez_oran) KALDIRILDI: merkez sızıntı çarpanı projeksiyonda zaten uygulanıyor, ikinci kez uygulamak çift saymaydı. aktif=false: g_f=1 (eski çift sayan ölçekleme geri gelmez).",
++    "aktif": true
++  },
+   "empirik_olcek_satir": "birincil_gelir_yatirim_gideri"
+ }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/KAYNAK.md fixed/data/etki_cephesi/gozlem/KAYNAK.md
 --- pristine/data/etki_cephesi/gozlem/KAYNAK.md	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/data/etki_cephesi/gozlem/KAYNAK.md	2026-10-14 07:36:30.082106643 +0000
@@ -580,6 +595,21 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +      0.2
 +    ]
    }
+ }
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/uretim_ic_akis_kopru.json fixed/data/etki_cephesi/uretim_ic_akis_kopru.json
+--- pristine/data/etki_cephesi/uretim_ic_akis_kopru.json	2026-10-14 06:05:45.818841604 +0000
++++ fixed/data/etki_cephesi/uretim_ic_akis_kopru.json	2026-10-14 07:55:43.680672112 +0000
+@@ -12,5 +12,11 @@
+   "gsyh_ic_talep_uretim_kopukluk_duzeltme": 0.2,
+   "uretim_akis_eslesme": 0.38,
+   "tam_olgunluk_yil": 12,
++  "senaryo_gerceklesme": {
++    "etiket": "varsayim_senaryo_turetilmis",
++    "surucu": "bag_modu.kullanim (senaryo / C)",
++    "not": "Halka düzeltmesi, rant artı değer payı ve iç akış kazanımları üretime bağlanma ister; bağ atıl ya da araçsal ise bu kanal daralır. g_u = min(1, kullanim_s / kullanim_C); C = 1 (C'nin sayıları değişmez). Etkin çarpan = 1 − g_u (1 − çarpan). Doğrusal ölçekleme varsayımdır; aktif=false: tüm senaryolarda g=1 (tam gerçekleşme).",
++    "aktif": true
++  },
+   "gsyh_not": "gsyh_ic_talep_uretim_kopukluk_duzeltme = sahte/ithal talep büyümesinin vekili; üretime bağlanan akışla kapanır (teshis/gsyh_etki_vekili ayrı çapa)."
  }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/zarar_teorisi_kopru.json fixed/data/etki_cephesi/zarar_teorisi_kopru.json
 --- pristine/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 06:05:45.819023385 +0000
@@ -1287,8 +1317,80 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    borc_cevirme()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
 --- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
-+++ fixed/etki_cephesi/finans_katman.py	2026-10-14 06:05:32.656290792 +0000
-@@ -199,6 +199,8 @@
++++ fixed/etki_cephesi/finans_katman.py	2026-10-14 07:54:43.582243680 +0000
+@@ -69,6 +69,14 @@
+     return next(s for s in sen_doc["senaryolar"] if s["id"] == sid)
+ 
+ 
++def _gerceklesme_f(sid: str, kopru: dict[str, Any]) -> float:
++    """Finans katmanı dış koşul gerçekleşmesi g_f = min(1, pol_s / pol_C). C = 1. aktif=false → 1."""
++    if not (kopru.get("senaryo_gerceklesme") or {}).get("aktif"):
++        return 1.0
++    pol_oran, _ = _senaryo_finans_carpanlari({}, sid)
++    return max(0.0, min(1.0, pol_oran))
++
++
+ def _senaryo_finans_carpanlari(proj: dict[str, Any], sid: str) -> tuple[float, float]:
+     """Politika gerçekleşme (C=1) ve merkez sızıntı göreli (C merkez çarpanı=0.9)."""
+     _ = proj
+@@ -134,10 +142,15 @@
+     ic_u = float(u["tr_ic_geri_kazanim_vekili"])
+     rant_arti_u = float(u["rant_tr_arti_deger_vekili"])
+ 
++    from uretim_ic_akis import _gerceklesme, etkin_carpan  # noqa: E402
++
++    g_u = _gerceklesme(sid, u_kopru)
++    g_f = _gerceklesme_f(sid, kopru)
+     halka = _halka_toplam(proj, sid)
+-    oran_uretim = _bos_oran(halka, u_kopru["halka_duzeltme_carpan"])
+-    carpan_fin = dict(u_kopru["halka_duzeltme_carpan"])
+-    for k, v in (kopru.get("finans_halka_ek_carpan") or {}).items():
++    carpan_u = etkin_carpan(u_kopru["halka_duzeltme_carpan"], g_u)
++    oran_uretim = _bos_oran(halka, carpan_u)
++    carpan_fin = dict(carpan_u)
++    for k, v in etkin_carpan(kopru.get("finans_halka_ek_carpan") or {}, g_f).items():
+         carpan_fin[k] = float(carpan_fin.get(k, 1.0)) * float(v)
+     oran_fin = _bos_oran(halka, carpan_fin)
+     bos_fin = round(bos_u * (oran_fin / oran_uretim) if oran_uretim > 0 else bos_u, 3)
+@@ -145,10 +158,10 @@
+     mfin_z = float(z.get("merkez_mfin_kenar") or _mfin_kenar(proj, sid))
+     merkez_z = float(z.get("merkez_finans_sizinti_toplam") or 1.0)
+     mfin_u = round(mfin_z * (merkez_u / merkez_z) if merkez_z > 0 else mfin_z, 3)
+-    mfin_carp = float(kopru["mfin_kenar_sizinti_carpan"])
++    mfin_carp = 1.0 - g_f * (1.0 - float(kopru["mfin_kenar_sizinti_carpan"]))
+     mfin_fin = round(mfin_u * mfin_carp, 3)
+     merkez_fin = round(merkez_u - (mfin_u - mfin_fin), 3)
+-    kredi_kes = round(merkez_u * float(kopru["kredi_ihtiyaci_sifir_merkez_kesinti"]), 3)
++    kredi_kes = round(merkez_u * float(kopru["kredi_ihtiyaci_sifir_merkez_kesinti"]) * g_f, 3)
+     merkez_fin = round(max(0.0, merkez_fin - kredi_kes), 3)
+ 
+     sen_c = next(s for s in proj["senaryolar"] if s["id"] == sid)
+@@ -158,8 +171,8 @@
+     cicek = float(satir.get("usd_mn") or 0.0)
+     tds = float(((fin.get("akis_satirlari") or {}).get("dis_borc_servisi_tds") or {}).get("usd_mn") or 0.0)
+ 
+-    bop_pay = float(kopru["bop_yatirim_geliri_icde_tutma"])
+-    tds_rah = float(kopru["dis_borc_servisi_rahati_vekili"])
++    bop_pay = float(kopru["bop_yatirim_geliri_icde_tutma"]) * g_f
++    tds_rah = float(kopru["dis_borc_servisi_rahati_vekili"]) * g_f
+     usd_bop_tut = cicek * bop_pay
+     usd_tds_rah = tds * tds_rah * 0.002
+     vekil_bop = _vekil_from_usd(usd_bop_tut, cicek, merkez_rant_c)
+@@ -169,12 +182,9 @@
+     mfin_tr = round((mfin_u - mfin_fin) * tranch, 3)
+     merkez_tr = round((merkez_u - merkez_fin) * tranch * 0.85, 3)
+     finans_geri_ham = mfin_tr + merkez_tr + (vekil_bop + vekil_tds) * tranch
+-    pol_oran, mer_oran = _senaryo_finans_carpanlari(proj, sid)
+-    finans_geri = round(finans_geri_ham * pol_oran / max(mer_oran, 0.5), 3)
++    finans_geri = round(finans_geri_ham, 3)  # gerçekleşme g_f yukarıda çarpanlara girdi; merkez çarpanı projeksiyonda zaten var
+ 
+     havza_fin = round(havza_u * (bos_fin / bos_u) if bos_u > 0 else havza_u, 3)
+-    havza_fin = round(havza_fin * mer_oran, 3)
+-    bos_fin = round(bos_fin * mer_oran, 3)
+     tr_net_fin = round(-havza_fin + ic_u + rant_arti_u * 0.92 + finans_geri, 3)
+ 
+     tam = float(kopru.get("tam_olgunluk_yil") or 10)
+@@ -199,10 +209,12 @@
  
      return {
          "olcum": "finans_katman_uretim_ustu",
@@ -1297,7 +1399,12 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "senaryo": sid,
          "taban": kopru.get("taban"),
          "finans_halka_oran_uretim_ustu": round(oran_fin / oran_uretim, 4) if oran_uretim else 1.0,
-@@ -258,6 +260,8 @@
+-        "senaryo_finans_carpanlari": {"politika_C_bazli": pol_oran, "merkez_sizinti_C_bazli": mer_oran},
++        "senaryo_gerceklesme": {"g_uretim": round(g_u, 4), "g_finans": round(g_f, 4), "etiket": (kopru.get("senaryo_gerceklesme") or {}).get("etiket")},
+         "usd_vekili": {
+             "yatirim_geliri_gideri_mn": cicek,
+             "icde_tutulan_mn": round(usd_bop_tut, 1),
+@@ -258,6 +270,8 @@
      lines = [
          "# Finans katmanı (üretim + halka üstü)",
          "",
@@ -1784,8 +1891,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_rapor.py fixed/etki_cephesi/senaryo_rapor.py
 --- pristine/etki_cephesi/senaryo_rapor.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 07:49:56.427463968 +0000
-@@ -0,0 +1,173 @@
++++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 07:55:24.225351628 +0000
+@@ -0,0 +1,177 @@
 +"""Senaryo raporları: A, B, C için AYNI bölümler, AYNI alanlar (referans senaryo ayrıcalığı yok).
 +
 +Çıktı: `SENARYO_RAPOR_{A,B,C}.md` (aynı iskelet) ve `SENARYO_KARSILASTIRMA.md` (yan yana).
@@ -1793,8 +1900,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +STOK_AKIS_SIM_{s}, GERCEKLIK_KALIBRE_{s}, DIS_RANT_PARASAL_{s}, ULUSLARARASI_STOK_AKIS_{s}) + `_olasilik.vekil()`.
 +Eksik alan "—" yazılır: bilinmiyor sıfır değildir. Bu rapor başka modüle girdi olmaz (döngü yok).
 +
-+Yapısal asimetri notu (rapor sonunda da yazılı): üretim/finans katmanları A ve B için C tabanlı ölçeklenir
-+(`politika_C_bazli`, `merkez_sizinti_C_bazli`); yani A/B bu katmanlarda bağımsız modellenmiş değildir.
++Yapısal not (rapor sonunda da yazılı): üretim ve finans katmanları senaryoya özgü gerçekleşmeyle kurulur
++(g_u = bağ kullanımı / C, g_f = dış koşul gerçekleşmesi / C); çarpanların kendisi ortak ve atanmıştır.
 +"""
 +from __future__ import annotations
 +
@@ -1887,6 +1994,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            ("Üretim: sıfır yılı tahmini", _g(ui, "sifir_nokta_tahmini.takvim_yil_sifir_veya_ustu")),
 +            ("Finans katmanı TR net", _g(fk, "finans_katman_tam.tr_net_birlesik_vekil")),
 +            ("Finans: sıfır üstü takvim yılı", _g(fk, "sifir_nokta.takvim_yil_sifir_ustu")),
++            ("Üretime bağlanma gerçekleşmesi g_u (bağ kullanımı / C)", _g(ui, "senaryo_gerceklesme.g_uretim")),
++            ("Finans dış koşul gerçekleşmesi g_f (politika / C)", _g(fk, "senaryo_gerceklesme.g_finans")),
 +            ("Finans etiketi", fk.get("etiket")),
 +        ]),
 +        ("6. Stok-akış (SFC, tr TL)", [
@@ -1920,8 +2029,10 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +
 +NOT = (
-+    "**Yapısal sınır (A, B, C için aynı):** üretim iç akışı ve finans katmanı A ve B için C tabanından ölçeklenir "
-+    "(`politika_C_bazli`, `merkez_sizinti_C_bazli`). Bu bölümlerde A/B bağımsız modellenmemiştir; fark çarpandan gelir. "
++    "**Yapısal sınır (A, B, C için aynı):** üretim ve finans katmanları senaryoya özgü gerçekleşmeyle kurulur: "
++    "g_u = bağ kullanımı / C'ninki (üretime bağlama kanalı), g_f = politika gerçekleşmesi / C'ninki (dış koşul: erozyon, diplomatik esneklik). "
++    "Etkin çarpan = 1 − g (1 − çarpan); C'de g = 1. Çarpanların kendisi (halka düzeltmesi, MFIN, TDS, iç tutma) tüm senaryolarda ortak ve atanmıştır; "
++    "g türetilmiştir ama doğrusal ölçekleme varsayımdır. "
 +    "F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. "
 +    "Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz."
 +)
@@ -2400,6 +2511,63 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      s_ = sum(ow.values()) or 1.0
      ow = {k: v / s_ for k, v in ow.items()}
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uretim_ic_akis.py fixed/etki_cephesi/uretim_ic_akis.py
+--- pristine/etki_cephesi/uretim_ic_akis.py	2026-10-14 06:05:45.830864248 +0000
++++ fixed/etki_cephesi/uretim_ic_akis.py	2026-10-14 07:54:43.581654327 +0000
+@@ -55,6 +55,21 @@
+     return int(round(y0 + tam_yil + (-tr_net1) / slope))
+ 
+ 
++def _gerceklesme(sid: str, kopru: dict[str, Any]) -> float:
++    """Üretime bağlanma gerçekleşmesi g_u = min(1, kullanim_s / kullanim_C). C = 1."""
++    cfg = kopru.get("senaryo_gerceklesme") or {}
++    if not cfg.get("aktif"):
++        return 1.0
++    sen = {s["id"]: s for s in _load(DATA / "senaryolar.json")["senaryolar"]}
++    k = float(sen[sid]["bag_modu"]["kullanim"])
++    k_c = float(sen["C"]["bag_modu"]["kullanim"])
++    return max(0.0, min(1.0, k / k_c)) if k_c > 0 else 1.0
++
++
++def etkin_carpan(carpan: dict[str, float], g: float) -> dict[str, float]:
++    return {k: 1.0 - g * (1.0 - float(v)) for k, v in carpan.items()}
++
++
+ def hesapla(senaryo_id: str = "C") -> dict[str, Any]:
+     proj = _load(PROJ)
+     sid = senaryo_id
+@@ -72,18 +87,19 @@
+     tr_net0 = float(z.get("tr_net_birlesik_vekil") or 0.0)
+     ic_geri0 = float(z.get("tr_ic_geri_kazanim_vekili") or 0.0)
+ 
+-    carpan = kopru["halka_duzeltme_carpan"]
++    g_u = _gerceklesme(sid, kopru)
++    carpan = etkin_carpan(kopru["halka_duzeltme_carpan"], g_u)
+     oran = _bosalma_oran(proj, sid, carpan)
+     halka_raw = _halka_toplam(proj, sid)
+ 
+     bos1 = round(bos0 * oran, 3)
+-    rant_pay = float(kopru["rant_tr_arti_deger_payi"])
++    rant_pay = float(kopru["rant_tr_arti_deger_payi"]) * g_u
+     rant_cikis1 = round(rant0 * (1.0 - rant_pay * 0.85), 3)
+     rant_tr_arti = round(rant0 * rant_pay, 3)
+     merkez1 = round(merkez0 * (0.55 + 0.45 * oran), 3)
+ 
+-    u_es = float(kopru["uretim_akis_eslesme"])
+-    gsyh_d = float(kopru["gsyh_ic_talep_uretim_kopukluk_duzeltme"])
++    u_es = float(kopru["uretim_akis_eslesme"]) * g_u
++    gsyh_d = float(kopru["gsyh_ic_talep_uretim_kopukluk_duzeltme"]) * g_u
+     havza1 = round(havza0 * oran * (1.0 - u_es * 0.55), 3)
+     ic_uretim = round(bos0 * u_es * 0.16, 3)
+     ic_gsyh = round(bos0 * gsyh_d * 0.12, 3)
+@@ -103,6 +119,7 @@
+         "halka_toplam_ham": {k: round(v, 3) for k, v in halka_raw.items()},
+         "halka_toplam_ham_C": {k: round(v, 3) for k, v in halka_raw.items()},
+         "bosalma_oran_halka_duzeltme": round(oran, 4),
++        "senaryo_gerceklesme": {"g_uretim": round(g_u, 4), "etiket": (kopru.get("senaryo_gerceklesme") or {}).get("etiket"), "surucu": (kopru.get("senaryo_gerceklesme") or {}).get("surucu")},
+         "C_zarar_cozum": {
+             "turkiye_yaricevre_bosalma": bos0,
+             "tr_net_birlesik_vekil": tr_net0,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uzun_vade_esik.py fixed/etki_cephesi/uzun_vade_esik.py
 --- pristine/etki_cephesi/uzun_vade_esik.py	2026-10-14 06:05:45.831021724 +0000
 +++ fixed/etki_cephesi/uzun_vade_esik.py	2026-10-14 07:45:20.546962890 +0000
@@ -2482,8 +2650,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:49:38.224112033 +0000
-@@ -0,0 +1,275 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:55:24.288630088 +0000
+@@ -0,0 +1,301 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -2759,3 +2927,29 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            assert (OUT / (ad % sid)).is_file(), ad % sid
 +    k = (OUT / "SENARYO_KARSILASTIRMA.md").read_text(encoding="utf-8")
 +    assert "F.4 stok 2036, baz" in k and "| — | — | — |" not in k.split("## 6.")[1].split("## 7.")[0]  # stok bandı üç senaryoda dolu
++
++
++def test_uretim_finans_katmani_senaryoya_ozgu_gerceklesme():
++    sys.path.insert(0, str(REPO / "etki_cephesi"))
++    import uretim_ic_akis as u  # noqa: E402
++
++    sen = {s["id"]: s for s in _j(DATA / "senaryolar.json")["senaryolar"]}
++    uk = _j(DATA / "uretim_ic_akis_kopru.json")
++    fk = _j(DATA / "finans_katman_kopru.json")
++    g = {}
++    for sid in "ABC":
++        ur = _j(OUT / f"URETIM_IC_AKIS_{sid}.json")
++        fi = _j(OUT / f"FINANS_KATMAN_{sid}.json")
++        zc = _j(OUT / f"ZARAR_COZUM_{sid}.json")
++        g[sid] = (ur["senaryo_gerceklesme"]["g_uretim"], fi["senaryo_gerceklesme"]["g_finans"])
++        # katmanlar yalnız iyileştirir: zarar çözümü ≤ üretim ≤ finans (TR net)
++        z = zc["zarar_cozum_sonrasi"]["tr_net_birlesik_vekil"]
++        a = ur["uretim_ic_akis_tam"]["tr_net_birlesik_vekil"]
++        b = fi["finans_katman_tam"]["tr_net_birlesik_vekil"]
++        assert z <= a <= b
++        assert "senaryo_finans_carpanlari" not in fi  # çift sayan C-göreli ölçekleme kalktı
++    assert g["C"] == (1.0, 1.0)  # C'nin sayıları değişmez
++    assert g["C"][0] > g["A"][0] > g["B"][0] and g["C"][1] > g["A"][1] > g["B"][1]
++    assert abs(g["A"][0] - sen["A"]["bag_modu"]["kullanim"] / sen["C"]["bag_modu"]["kullanim"]) < 1e-3
++    assert u.etkin_carpan({"x": 0.5}, 1.0) == {"x": 0.5} and u.etkin_carpan({"x": 0.5}, 0.0) == {"x": 1.0}
++    assert uk["senaryo_gerceklesme"]["aktif"] and fk["senaryo_gerceklesme"]["aktif"]

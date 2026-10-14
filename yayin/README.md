@@ -16,7 +16,7 @@
 | [OLASILIK_DUYARLILIK.md](./OLASILIK_DUYARLILIK.md) | C senaryosu olasılığı 0,30–0,80 duyarlılık bandı (olasılık ölçülmedi; yeni olasılık üretmez) |
 | [C_DINAMIK_OLCUT.md](./C_DINAMIK_OLCUT.md) | C'nin gerçekleşmesini ölçen dinamik ölçüt (sıralı Bayes, EVDS merkez sızıntı oranı); güç analizi: bu gösterge C'yi ayırt edemez |
 | [OLASILIK_KAPILAR.md](./OLASILIK_KAPILAR.md) | P(C) ölçülebilir kapılarla yeniden kuruldu: tekdüze prior, EVDS borç çevirme kapısı, kapı sonuç tablosu; tek kapı karar eşiğini geçirmez; ana pipeline artık bu olasılığı kullanır (`_olasilik.py`, döngü yok) |
-| [SENARYO_KARSILASTIRMA.md](./SENARYO_KARSILASTIRMA.md) | A, B, C yan yana: aynı 9 bölüm, aynı alanlar (zip içinde `SENARYO_RAPOR_{A,B,C}.md`); F.4 stok yolunun ve üretim/finans katmanının senaryodan bağımsız/C tabanlı olduğu notuyla |
+| [SENARYO_KARSILASTIRMA.md](./SENARYO_KARSILASTIRMA.md) | A, B, C yan yana: aynı 9 bölüm, aynı alanlar (zip içinde `SENARYO_RAPOR_{A,B,C}.md`); üretim/finans katmanlarının senaryoya özgü gerçekleşmesi (g_u, g_f) ve F.4 stok yolunun senaryodan bağımsızlığı notuyla |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 

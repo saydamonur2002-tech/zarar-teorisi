@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `792c2a2d09c15dbd`, temiz kurulumda 3 geçiş),
-**50 test geçti** (27 mevcut + 23 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `0f88ed164036edd2`, temiz kurulumda 3 geçiş),
+**51 test geçti** (27 mevcut + 24 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -113,7 +113,22 @@ Okuma: C yolunun kendi sonucu (−17,19 → −13,10, iyileşir) değişmedi. De
 - `senaryo_rapor.py` → `SENARYO_RAPOR_{A,B,C}.md` (9 bölüm, aynı alanlar, aynı sıra) ve `SENARYO_KARSILASTIRMA.md` (yan yana). Bir test üç raporun alan listesinin aynı olduğunu denetler.
 - `AKIS_OLCUM_{A,B,C}.{json,md}`, `ZARAR_COZUM_{A,B,C}.md` eklendi. `AKIS_OLCUM.*` yalnız alt modüllerin tek-girdi dosyası olarak kaldı.
 - `PROJEKSIYON.md`: referans bloğu kalktı, senaryolar A, B, C sırasında, üçü için aynı özet tablo.
-- **Bulgu (rapor yazarken ortaya çıktı):** F.4 stok yolu üç senaryoda aynı (25.339,8 mr TL) çünkü beş adımın kredi itişi senaryodan bağımsız; üretim iç akışı ve finans katmanı A/B için C tabanından ölçekleniyor (sıfır yılı 2044 üç senaryoda aynı). Yani "eşit ayrıntı" eşit **bağımsız modelleme** demek değil. Bu rapor notunda yazılı.
+- **Düzeltme:** bu bölümün ilk sürümü "üretim iç akışı ve finans katmanı A/B için C tabanından ölçekleniyor" diyordu. Kodu okuyunca doğrusu şuydu: üretim katmanı her senaryonun **kendi** zarar-çözüm tabanını kullanıyordu ama **aynı** çarpanları uyguluyordu (A, B de C ile aynı oranda iyileşiyordu). C'ye göre ek ölçekleme yalnız finans katmanındaydı ve merkez sızıntı çarpanını ikinci kez uyguluyordu (projeksiyonda zaten uygulanmıştı: çift sayım). F.4 stok yolu ise gerçekten senaryodan bağımsız.
+
+## A ve B için üretim ve finans katmanı ayrı kuruldu
+- **Üretim katmanı:** g_u = bağ kullanımı(senaryo) / bağ kullanımı(C): A 0,423, B 0,269, C 1. Üretime bağlama, bağ kullanılmıyorsa daralır. Etkin çarpan = 1 − g_u (1 − çarpan); rant artı değer payı ve iç akış kazanımları da g_u ile ölçeklenir.
+- **Finans katmanı:** g_f = politika gerçekleşmesi(senaryo) / (C), politika = clip(1,05 − etki erozyonu + diplomatik esneklik, 0,25, 1): A 0,737, B 0,432, C 1. Finans halka ek çarpanları, MFIN kenar çarpanı, yatırım geliri iç tutma, TDS rahatı ve kredi kesintisi g_f ile ölçeklenir. Çift sayan eski C-göreli ölçekleme kaldırıldı.
+- Farklı sürücüler: üretim katmanı bağ kullanımına, finans katmanı dış koşula bağlı. İkisi de `senaryolar.json` parametrelerinden türetildi; çarpanların kendisi ortak ve atanmış, doğrusal ölçekleme **varsayım**. Kapatma: kopru dosyalarında `senaryo_gerceklesme.aktif=false` (g=1).
+- **C'nin sayıları bayt bayt aynı** (g_C = 1).
+
+| TR net (vekil) | Önce A | Sonra A | Önce B | Sonra B | C |
+|---|---:|---:|---:|---:|---:|
+| Üretim iç akışı | −6,34 | **−13,32** | −10,10 | **−24,82** | −4,38 |
+| Finans katmanı | −2,25 | **−7,33** | −7,12 | **−18,49** | −0,49 |
+| Kalibre son (gerçeklik) | −16,31 | −17,62 | −32,19 | −33,88 | −11,21 |
+
+- Katman yığını tutarlı: zarar çözümü ≤ üretim ≤ finans (test). Sıfır yılı (aynı eğimin devamı varsayımı): A 2065, B 2087 (önce 2044), C 2044.
+- **Karara etkisi küçük:** skor 57,9 ve karar aynı; E[TR net 10 yıl] −22,18 → −22,50. Çünkü kalibre yol, üretim/finans katmanlarına düşük gerçekleşme ağırlığı veriyor (0,10 / 0,09 civarı); büyük katman farkı kalibrasyonda sönüyor.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
