@@ -26,6 +26,7 @@
 | [OLU_AGIRLIK_AYRISMA.md](./OLU_AGIRLIK_AYRISMA.md) | Ölü ağırlığın gerçek yıkım, ölçüm boşluğu ve belirsiz (dış bağlama) kovalarına ayrılması; gelir ödemesi kapasitesiyle daraltma denemesi; kazanç sayımına duyarlılık |
 | [IKAME_CIFT_SAYIM.md](./IKAME_CIFT_SAYIM.md) | Rakip ikame akışının hem havza girişine hem aktör kazancına yazılması (çift sayım) doğrulaması: V korunum aşımı, iki düzeltme varyantının etkisi (tanı, ana model değişmedi) |
 | [ZARAR_DURDURMA_SENARYOSU.md](./ZARAR_DURDURMA_SENARYOSU.md) | Zararı durdurma (d) + refah rantına bağlama politika senaryosu (D): C'den türeyen kaldıraç taraması, TR/dış aktör net'leri, durdurmaya karşı çıkanlar, kısa vade finansman |
+| [DURDURMA_YOLU_KURAL.md](./DURDURMA_YOLU_KURAL.md) | Durdurmanın gerçekleşme yolu, kural bazlı (halka/katman/kapı, aktör değil): kalibre C yoluna uydurulmuş hız sabiti, hız çarpanı ve sıra kuralı varyantları, kısa vade finansman ve rezerv tükenme yılı |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 

@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize yaması
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `3e63909af7b0ca12`, temiz kurulumda 3 geçiş),
-**73 test geçti** (27 mevcut + 46 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `d30e721eda7075fb`, temiz kurulumda 3 geçiş),
+**74 test geçti** (27 mevcut + 47 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 > **K1 notu:** Bu belgenin "Rakip ikame çift sayımı" bölümünden ÖNCE yazılan bölümlerdeki MFİN, Çin, Rusya, AB, ABD vb. sayıları, ölü ağırlık, sistem toplamı ve kısa vade grup payları K1 düzeltmesinden önceki değerlerdir. Güncel değerler "K1 uygulandı: güncel değerler" bölümündedir.
@@ -408,6 +408,30 @@ Aşım A ve B'de ig'nin tamamı: normalizasyon aktör kazancını V'ye indirmiş
 - **Gerçekleşme karşılaştırması (eleştirel):** modelin kalibre 10 yıllık yolu TR net'ini −17,19'dan −13,42'ye (yaşam maliyeti politikasıyla −12,72) çıkarıyor: yani kalibre gerçekleşme ≈ d = 0,22 – 0,26. D'nin d ≥ 0,5 satırları, modelin kendi gerçekleşme tavanının 2 – 4 katı; yani "durdurmanın mümkün olup olmadığı" bu taramanın dışında, yalnız "durdurulursa ne olur" sorusunu yanıtlar.
 - **Diğer sınırlar:** (1) statik; yol (yıl yıl) modellenmedi. (2) Projeksiyon düzeyi: defterdeki refah dış havuzu kazancı ve bant hariç (C ile aynı ölçüde karşılaştırılır). (3) Durdurma TR'nin karşı-hamle gücünü (pol) yükseltir; sürdürme maliyeti kazançla orantılı olduğundan bu modelde dış aktörlerin tepkisi yalnız kazançlarının kaybı olarak girer, silah/yaptırım gibi tepki ayrıca modellenmedi. (4) MFİN'in neti referans orana bağlı (belirsiz).
 
+## Durdurmanın gerçekleşme yolu: kural bazlı (`DURDURMA_YOLU_KURAL`, tanı raporu)
+Aktör değil **mekanizma** düzeyinde kurallar (halka, katman, kapı). `data/etki_cephesi/durdurma_kurallari.json`:
+- **R1 Ayrışma:** TR boşalması beş halkaya bölünür (C'deki ağırlıklar): dış kısıt 0,315, üretim bağımlılığı 0,226, para sızıntısı 0,187, zarar aktarımı 0,170, koordinasyon kopuşu 0,102.
+- **R2 Hız:** halka durma oranı s_h(t+1) = s_h(t) + min(1, a·m·g_h)·(1 − s_h)·kapı_h. g_h ilgili katmanın kalibre gerçekleşme oranı: zarar aktarımı ← zarar teorisi 0,665; üretim ← üretim iç akışı 0,2375; para sızıntısı ← finans katmanı 0,2193; koordinasyon ve dış kısıt için üç katmanın ortalaması 0,374 (atanmış). a: hız sabiti; m: politika hız çarpanı.
+- **R3 Sıra kapısı:** üretim ve finans halkaları, zarar-aktarım halkası eşik θ_z = 0,58'e ulaşınca açılır (eşik, kalibre yolun 'zarar' fazının bittiği 2034 sınırından türetildi).
+- **R4 Dış kısıt kapısı:** kendi katmanı olmayan ekzojen halka (döviz, itibar, kefalet), diğer halkaların ağırlıklı durma ortalaması 0,5'e ulaşınca açılır (atanmış). Açılmadıkça d ≤ 1 − 0,315 = 0,685.
+- **R5 Finansman:** yıllık kayıp akışı üç USD köprüsüyle cari açık (32,3 milyar $) ve brüt rezerv (155,5 milyar $) ile karşılaştırılır; kümülatif aşım rezervi aşarsa rezerv tükenir.
+**Kalibrasyon:** a = 0,176, kalibre C yolunun 10. yıl durdurma oranına (d = 0,22) uydurulur: m = 1 modelin mevcut yolunu yeniden üretir (yol şekli RMSE 0,019; kalibre yol 'zarar' fazında doğrusal, kural geometrik).
+
+| Varyant | d(2036) | d ≥ 0,25 / 0,5 / 0,75 yılı | Rezerv tükenme yılı (BoP / mal / rant köprüsü) |
+|---|---:|---|---|
+| kalibre (m = 1) | 0,22 | — / — / — | — / **2030** / **2029** (rezerv oranı 0,53 / 2,74 / 3,34) |
+| m = 2 | 0,44 | 2032 / — / — | — / 2030 / 2029 |
+| m = 3 | 0,69 | 2031 / 2034 / — | — / 2030 / 2030 |
+| m = 5 | 0,92 | 2028 / 2030 / 2032 | — / — / — (rezerv oranı 0,06 / 0,64 / 0,82) |
+| sıra kuralsız (m = 1) | 0,31 | 2034 / — / — | — / 2030 / 2029 |
+| sıra kuralsız, m = 3 | 0,79 | 2029 / 2032 / 2036 | — / — / 2030 |
+
+- **Kalibre yol finansal olarak kırılgan:** akış cari açığın yıl 1'de 1,4 – 2,9 katı, 10. yılda hâlâ 1,1 – 2,3 katı; mal ticareti ve rant köprülerinde brüt rezerv 2029 – 2030'da tükenir, BoP köprüsünde rezervin yarısı gider. Dış kısıt halkası hiç açılmaz; üretim ve finans halkaları 2034'te açılır.
+- **Rezervi koruyan kural hızı (m\*):** BoP köprüsünde 1,0 (zaten tükenmez), mal ticareti köprüsünde **3,83**, rant köprüsünde **4,97**. Yani modelin kalibre gerçekleşme hızı finansal olarak yetmez; 4 – 5 kat hız gerekir.
+- **Sıra kuralının bedeli:** kapı kaldırılırsa (m = 1) 10. yıl d 0,22 → 0,31. Sırayla açma 10 yılda yaklaşık 9 puan durdurma yavaşlatır.
+- **TR net yolu:** kalibre −16,75 → −13,53; m = 3: −15,86 → −5,71; m = 5: −14,97 → −1,78.
+- **Eleştirel:** (1) halka–katman eşleştirmesi ve dış kısıt kapısı eşiği atanmış; koordinasyon ve dış kısıt hızları kendi katmanı olmadığı için ortalama alındı. (2) m\* = 3,8 – 5, finans katmanında g = 0,22 × 3,8 ≈ 0,84 demek; bu gözlenen en yüksek gerçekleşme oranının (0,665 – 0,7) üstünde: yani rezerv koruyan hız, modelin kendi gerçekleşme tavanlarıyla uyumsuz görünüyor. (3) Akış yıl sonu d ile hesaplanır (durdurma yıl içinde tamamlanmış gibi): iyimser. (4) Cari açık ve rezerv 2024'te sabit, brüt (net değil), yeni borç yok. (5) Kalibre yoldan şekil sapması (RMSE 0,019): kural ilk yıllarda doğrusaldan fazla, orta yıllarda az durdurur. (6) m'nin hangi politikayla elde edileceği modellenmedi: m yalnız ölçek.
+
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
 - `bolge_stok_akis`, `lm_rant_sektor` darbeleri sıfır toplamlı değil: yalnız ilan edildi.
@@ -490,6 +514,63 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +- Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
 +- `bolge_stok_akis` ve `lm_rant_sektor` darbeleri de sıfır toplamlı değil: yalnız ilan edildi (`x_toplam_trilyonTL`, `kapanis_ok`), yeniden tasarlanmadı.
 +- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/durdurma_kurallari.json fixed/data/etki_cephesi/durdurma_kurallari.json
+--- pristine/data/etki_cephesi/durdurma_kurallari.json	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/durdurma_kurallari.json	2026-10-14 16:23:27.552226234 +0000
+@@ -0,0 +1,53 @@
++{
++  "not": "Durdurmanın nasıl gerçekleşeceği: KURAL BAZLI (aktör bazlı değil). Boşalma beş halkaya ayrışır (C'deki ağırlıklar PROJEKSIYON'dan); her halkanın durma hızı, ilgili katmanın kalibre gerçekleşme oranına bağlıdır; halkalar kapı kurallarıyla açılır. Hız sabiti a, modelin kalibre C yoluna (ZARAR_10Y yillik_seri) bire bir uydurulur: böylece m=1 çözümü modelin mevcut yolunu yeniden üretir. Eşleştirmeler ve kapı eşikleri atanmıştır.",
++  "referans_senaryo": "C",
++  "halka_katman": {
++    "zarar_aktarimi": "zarar_teorisi",
++    "uretim_bagimlilik": "uretim_ic_akis",
++    "para_sizintisi": "finans_katman",
++    "koordinasyon_kopuk": "ortalama_uc_katman",
++    "dis_kisit": null
++  },
++  "kapi_kurallari": {
++    "sira_kurali": {
++      "aciklama": "Üretim ve finans halkaları, zarar-aktarım halkası eşiğe ulaşınca açılır (mevcut yolda 'zarar' fazı bittikten sonra 'uretim+finans' fazı). Eşik, kalibre yolun faz sınırındaki s_z değeri.",
++      "acilan": [
++        "uretim_bagimlilik",
++        "para_sizintisi"
++      ],
++      "tetikleyen": "zarar_aktarimi"
++    },
++    "dis_kisit_kurali": {
++      "aciklama": "Dış kısıt halkası (döviz/itibar/kefalet), kendi katmanı olmayan ekzojen kısıt: diğer halkaların ağırlıklı durma ortalaması bu eşiğe ulaşınca açılır (atanmış).",
++      "esik": 0.5,
++      "hiz_katmani": "ortalama_uc_katman"
++    }
++  },
++  "varyantlar": {
++    "kalibre": {
++      "hiz_carpani": 1.0,
++      "sira_kurali": true
++    },
++    "hiz_x2": {
++      "hiz_carpani": 2.0,
++      "sira_kurali": true
++    },
++    "hiz_x3": {
++      "hiz_carpani": 3.0,
++      "sira_kurali": true
++    },
++    "hiz_x5": {
++      "hiz_carpani": 5.0,
++      "sira_kurali": true
++    },
++    "sirasiz": {
++      "hiz_carpani": 1.0,
++      "sira_kurali": false
++    },
++    "sirasiz_x3": {
++      "hiz_carpani": 3.0,
++      "sira_kurali": false
++    }
++  },
++  "m_arama_ust": 50.0
++}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/finans_katman_kopru.json fixed/data/etki_cephesi/finans_katman_kopru.json
 --- pristine/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 06:05:45.811750548 +0000
 +++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 08:24:45.037502739 +0000
@@ -2945,6 +3026,219 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +if __name__ == "__main__":
 +    main()
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/durdurma_yolu_kural.py fixed/etki_cephesi/durdurma_yolu_kural.py
+--- pristine/etki_cephesi/durdurma_yolu_kural.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/durdurma_yolu_kural.py	2026-10-14 16:23:46.110123334 +0000
+@@ -0,0 +1,209 @@
++"""Durdurmanın nasıl gerçekleşeceği: kural bazlı yol (aktör bazlı değil).
++
++Kurallar (data/etki_cephesi/durdurma_kurallari.json):
++  R1 Ayrışma: TR boşalması beş halkaya bölünür (C'deki halka ağırlıkları w_h).
++  R2 Hız: halka h için s_h(t+1) = s_h(t) + min(1, a · m · g_h) · (1 − s_h(t)) · kapı_h(t); g_h ilgili katmanın kalibre gerçekleşme oranı
++          (zarar_teorisi 0,665; uretim_ic_akis 0,2375; finans_katman 0,2193; koordinasyon ve dış kısıt için üç katmanın ortalaması, atanmış).
++  R3 Sıra kapısı: üretim ve finans halkaları, zarar-aktarım halkası eşik θ_z'ye ulaşınca açılır (θ_z kalibre yolun faz sınırından türetilir).
++  R4 Dış kısıt kapısı: kendi katmanı olmayan ekzojen halka, diğer halkaların ağırlıklı durma ortalaması 0,5'e ulaşınca açılır (atanmış).
++  R5 Finansman: yıllık TR kayıp akışı (boşalma dışı sabit kayıp + boşalma × (1 − d_t)) üç USD köprüsüyle cari açık ve brüt rezervle karşılaştırılır;
++          kümülatif aşım rezervi aşarsa rezerv tükenir (yıl raporlanır). Cari açık ve rezerv 2024 düzeyinde sabit (büyüme, yeni borç yok).
++a: hız sabiti, kalibre C yolunun 10. yıl durdurma oranına uydurulur (m = 1 modelin mevcut yolunu yeniden üretir). m: politika hız çarpanı.
++Tanı raporu: başka modüle girdi olmaz.
++"""
++from __future__ import annotations
++
++import json
++import statistics as st
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++KOPRULER = ("bop_merkez_rant", "mal_net_ticaret", "tum_havza_rant")
++HALKALAR = ("zarar_aktarimi", "uretim_bagimlilik", "para_sizintisi", "koordinasyon_kopuk", "dis_kisit")
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _girdiler() -> dict[str, Any]:
++    cfg = _load(DATA / "durdurma_kurallari.json")
++    ref = cfg["referans_senaryo"]
++    proj = next(s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"] if s["id"] == ref)
++    toplam: dict[str, float] = {h: 0.0 for h in HALKALAR}
++    for b in proj["tr_bosalma_detay"]:
++        for h in b["bes_halka"]:
++            toplam[h["halka"]] += float(h["delta_endeks"])
++    top = sum(toplam.values())
++    w = {h: toplam[h] / top for h in HALKALAR}
++    real = _load(DATA / "kalibre" / "gerceklik_realizasyon.json")["gerceklesme_oranlari"]
++    g_ort = st.mean(float(real[k]) for k in ("zarar_teorisi", "uretim_ic_akis", "finans_katman"))
++    g = {}
++    for h, kat in cfg["halka_katman"].items():
++        g[h] = g_ort if kat in (None, "ortalama_uc_katman") else float(real[kat])
++    z = next(s for s in _load(OUT / "ZARAR_10Y_SENARYO_COKLU.json")["senaryolar"] if s["id"] == ref)
++    seri = z["yillik_seri"]
++    baslangic = float(z["tr_c_refah"])
++    d_cal = [1.0 - float(r["tr_net"]) / baslangic for r in seri]
++    faz_siniri = next(i for i, r in enumerate(seri) if r["faz"] != "zarar")  # ilk 'uretim+finans' yılının indeksi
++    tr = next(a for a in proj["aktör_birlesik"] if a["aktor"] == "TR")
++    bosalma = float(proj["turkiye_yaricevre_bosalma"])
++    kop = _load(DATA / "kalibre" / "gerceklik_realizasyon.json")["usd_kopruleri"]
++    wb = _load(DATA / "gozlem" / "tr_bagimsiz_olcek.json")
++    y = wb["yillar"]
++    gsyh = float(wb["TUR"]["gsyh_usd"][y[-1]]) / 1e6
++    cari = sum(-float(wb["TUR"]["cari_denge_gsyh"][k]) for k in y) / len(y) / 100 * gsyh
++    rezerv = float(wb["TUR"]["toplam_rezerv_usd"][y[-1]]) / 1e6
++    refah_ic = sum(float(b["refah_rant_tr_ic"]) for b in proj["bolgesel_net"])
++    return {
++        "cfg": cfg, "w": w, "g": g, "yillar": [r["yil"] for r in seri], "d_cal": d_cal, "faz_siniri": faz_siniri,
++        "bosalma": bosalma, "sabit_kayip": float(tr["havza_kayip"]) - bosalma, "refah_ic": refah_ic,
++        "kop": {k: float(kop[k]["usd_per_vekil_mn"]) for k in KOPRULER}, "cari": cari, "rezerv": rezerv,
++    }
++
++
++def simule(G: dict[str, Any], a: float, m: float, sira: bool, n: int, theta_z: float | None, time_gate: int | None = None) -> dict[str, Any]:
++    w, g = G["w"], G["g"]
++    esik_x = float(G["cfg"]["kapi_kurallari"]["dis_kisit_kurali"]["esik"])
++    s = {h: 0.0 for h in HALKALAR}
++    d_yol, s_yol = [], []
++    acilis: dict[str, int | None] = {"uretim_bagimlilik": None, "para_sizintisi": None, "dis_kisit": None}
++    for t in range(1, n + 1):
++        onceki = dict(s)
++        for h in HALKALAR:
++            kapi = 1.0
++            if h in ("uretim_bagimlilik", "para_sizintisi") and sira:
++                kapi = 1.0 if ((t - 1 >= time_gate) if time_gate is not None else onceki["zarar_aktarimi"] >= (theta_z or 0.0)) else 0.0
++            if h == "dis_kisit":
++                diger = sum(w[k] * onceki[k] for k in HALKALAR if k != "dis_kisit") / (1.0 - w["dis_kisit"])
++                kapi = 1.0 if diger >= esik_x else 0.0
++            if kapi and h in acilis and acilis[h] is None:
++                acilis[h] = t
++            s[h] = onceki[h] + min(1.0, a * m * g[h]) * (1.0 - onceki[h]) * kapi  # adım en çok 1: halka bir yılda tümüyle durabilir, aşmaz
++        d_yol.append(sum(w[h] * s[h] for h in HALKALAR))
++        s_yol.append(dict(s))
++    return {"d": d_yol, "s": s_yol, "acilis_yili": acilis}
++
++
++def kalibre(G: dict[str, Any]) -> dict[str, Any]:
++    n = len(G["d_cal"])
++    hedef = G["d_cal"][-1]
++    ts = G["faz_siniri"]
++    lo, hi = 1e-6, 5.0
++    for _ in range(80):
++        mid = (lo + hi) / 2
++        if simule(G, mid, 1.0, True, n, None, time_gate=ts)["d"][-1] < hedef:
++            lo = mid
++        else:
++            hi = mid
++    a = (lo + hi) / 2
++    ref = simule(G, a, 1.0, True, n, None, time_gate=ts)
++    theta = ref["s"][ts - 1]["zarar_aktarimi"]  # faz sınırında (ts. yıl başında) zarar-aktarım halkası durma oranı
++    rmse = (sum((x - y) ** 2 for x, y in zip(ref["d"], G["d_cal"])) / n) ** 0.5
++    return {"a": a, "theta_z": theta, "rmse": rmse, "ref_d": ref["d"]}
++
++
++def akis(G: dict[str, Any], d_yol: list[float]) -> dict[str, Any]:
++    out = {}
++    for k in KOPRULER:
++        usd = [(G["sabit_kayip"] + G["bosalma"] * (1.0 - d)) * G["kop"][k] for d in d_yol]
++        kum, tukenme = 0.0, None
++        for i, v in enumerate(usd):
++            kum += max(0.0, v - G["cari"])
++            if tukenme is None and kum > G["rezerv"]:
++                tukenme = G["yillar"][i]
++        ilk_sigar = next((G["yillar"][i] for i, v in enumerate(usd) if v <= G["cari"]), None)
++        out[k] = {
++            "akis_mn_usd": [round(v) for v in usd],
++            "cari_aciga_oran": [round(v / G["cari"], 2) for v in usd],
++            "kumulatif_asim_mn_usd": round(kum),
++            "rezerv_orani": round(kum / G["rezerv"], 2),
++            "rezerv_tukenme_yili": tukenme,
++            "akis_cariye_siger_ilk_yil": ilk_sigar,
++        }
++    return out
++
++
++def hiz_carpani_ara(G: dict[str, Any], kal: dict[str, Any], n: int, sira: bool, ust: float) -> dict[str, float | None]:
++    """Rezerv 10 yıl boyunca tükenmesin diye gereken en küçük hız çarpanı m* (köprü başına, ikili arama)."""
++    sonuc: dict[str, float | None] = {}
++    for k in KOPRULER:
++        def tukenir(m: float) -> bool:
++            d = simule(G, kal["a"], m, sira, n, kal["theta_z"])["d"]
++            return akis(G, d)[k]["rezerv_tukenme_yili"] is not None
++
++        if not tukenir(1.0):
++            sonuc[k] = 1.0
++            continue
++        if tukenir(ust):
++            sonuc[k] = None
++            continue
++        lo, hi = 1.0, ust
++        for _ in range(40):
++            mid = (lo + hi) / 2
++            lo, hi = (mid, hi) if tukenir(mid) else (lo, mid)
++        sonuc[k] = round(hi, 2)
++    return sonuc
++
++
++def calistir() -> dict[str, Any]:
++    G = _girdiler()
++    n = len(G["d_cal"])
++    kal = kalibre(G)
++    cfg = G["cfg"]
++    varyantlar = {}
++    for ad, v in cfg["varyantlar"].items():
++        r = simule(G, kal["a"], float(v["hiz_carpani"]), bool(v["sira_kurali"]), n, kal["theta_z"])
++        d = r["d"]
++        eşik_yil = {str(e): next((G["yillar"][i] for i, x in enumerate(d) if x >= e), None) for e in (0.25, 0.5, 0.75)}
++        tr_net = [round(G["refah_ic"] * (1.0 - x) - (G["sabit_kayip"] + G["bosalma"] * (1.0 - x)), 3) for x in d]
++        varyantlar[ad] = {
++            "parametre": v,
++            "d_yol": [round(x, 4) for x in d],
++            "halka_durma_son_yil": {h: round(r["s"][-1][h], 3) for h in HALKALAR},
++            "halka_acilis_yili": {h: (G["yillar"][y - 1] if y else None) for h, y in r["acilis_yili"].items()},
++            "esik_yili": eşik_yil,
++            "tr_net_yol": tr_net,
++            "finansman": akis(G, d),
++        }
++    mstar = hiz_carpani_ara(G, kal, n, True, float(cfg["m_arama_ust"]))
++    d = {
++        "olcum": "durdurma_yolu_kural_bazli",
++        "etiket": "tani_girdi_degil",
++        "kurallar": cfg,
++        "halka_agirliklari": {h: round(G["w"][h], 3) for h in HALKALAR},
++        "halka_hizlari_g": {h: round(G["g"][h], 4) for h in HALKALAR},
++        "kalibrasyon": {"a": round(kal["a"], 5), "theta_z": round(kal["theta_z"], 4), "rmse_d": round(kal["rmse"], 5), "d_kalibre_yol": [round(x, 4) for x in G["d_cal"]], "d_kural_yolu": [round(x, 4) for x in kal["ref_d"]], "yillar": G["yillar"], "faz_siniri_yili": G["yillar"][G["faz_siniri"]]},
++        "varyantlar": varyantlar,
++        "gereken_hiz_carpani_rezerv_tukenmesin": mstar,
++        "kapasite_mn_usd": {"cari_acik_ort": round(G["cari"]), "brut_rezerv": round(G["rezerv"])},
++        "not": "Kurallar mekanizma düzeyinde (halka/katman/kapı), aktör düzeyinde değil. Eşleştirmeler ve kapı eşikleri atanmış; hız sabiti kalibre C yoluna uydurulmuş. Cari açık ve rezerv sabit (büyüme, yeni borç yok); rezerv brüt.",
++    }
++    (OUT / "DURDURMA_YOLU_KURAL.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    L = ["# Durdurmanın gerçekleşme yolu (kural bazlı)", "", d["not"], "",
++         f"Kalibrasyon: a = {d['kalibrasyon']['a']}, θ_z = {d['kalibrasyon']['theta_z']}, kalibre yola RMSE (d) = {d['kalibrasyon']['rmse_d']}. Faz sınırı: {d['kalibrasyon']['faz_siniri_yili']}.", "",
++         "Halka ağırlıkları (C): " + ", ".join(f"{h} {v}" for h, v in d["halka_agirliklari"].items()) + ".",
++         "Halka hızları g: " + ", ".join(f"{h} {v}" for h, v in d["halka_hizlari_g"].items()) + ".", "",
++         "| Yıl | " + " | ".join(str(y) for y in G["yillar"]) + " |", "| --- | " + " | ".join("---:" for _ in G["yillar"]) + " |",
++         "| d (kalibre C yolu) | " + " | ".join(f"{x:.3f}" for x in G["d_cal"]) + " |",
++         "| d (kural, m=1) | " + " | ".join(f"{x:.3f}" for x in kal["ref_d"]) + " |", ""]
++    for ad, v in varyantlar.items():
++        L += [f"## {ad} (m = {v['parametre']['hiz_carpani']}, sıra kuralı: {v['parametre']['sira_kurali']})", "",
++              "d yolu: " + ", ".join(f"{x:.3f}" for x in v["d_yol"]),
++              f"d ≥ 0,25 / 0,5 / 0,75 yılı: {v['esik_yili']['0.25']} / {v['esik_yili']['0.5']} / {v['esik_yili']['0.75']}; halka açılış yılları: {v['halka_acilis_yili']}; son yıl halka durma oranları: {v['halka_durma_son_yil']}",
++              f"TR net yolu: " + ", ".join(f"{x:+.2f}" for x in v["tr_net_yol"]), "",
++              "| Köprü | Akış / cari açık (yıl 1 → 10) | Akış cariye sığar (ilk yıl) | 10 yıl aşım | Rezerv oranı | Rezerv tükenme yılı |", "| --- | --- | --- | ---: | ---: | --- |"]
++        for k, f in v["finansman"].items():
++            L.append(f"| {k} | {f['cari_aciga_oran'][0]} → {f['cari_aciga_oran'][-1]} | {f['akis_cariye_siger_ilk_yil'] or '—'} | {f['kumulatif_asim_mn_usd']:,} | {f['rezerv_orani']} | {f['rezerv_tukenme_yili'] or '—'} |")
++        L.append("")
++    L += ["## Rezerv 10 yıl boyunca tükenmesin diye gereken hız çarpanı m* (kalibre sıra kuralıyla)", "", ", ".join(f"{k}: {v if v is not None else 'ulaşılamaz'}" for k, v in mstar.items())]
++    (OUT / "DURDURMA_YOLU_KURAL.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    return d
++
++
++if __name__ == "__main__":
++    calistir()
++    print("DURDURMA_YOLU_KURAL ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/evds_gozlem_cek.py fixed/etki_cephesi/evds_gozlem_cek.py
 --- pristine/etki_cephesi/evds_gozlem_cek.py	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/etki_cephesi/evds_gozlem_cek.py	2026-10-14 07:35:44.951868363 +0000
@@ -5196,7 +5490,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 16:15:37.810212781 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 16:24:16.448117605 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -5233,7 +5527,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,42 @@
+@@ -31,11 +47,43 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -5251,6 +5545,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "olu_agirlik_ayrisma.py",
 +        "ikame_cift_sayim.py",
 +        "zarar_durdurma_senaryosu.py",
++        "durdurma_yolu_kural.py",
          ]
      )
 -    for s in steps:
@@ -6545,8 +6840,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:15:37.811223490 +0000
-@@ -0,0 +1,829 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:24:16.449320688 +0000
+@@ -0,0 +1,865 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -7376,4 +7671,40 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    # durdurmaya karşı çıkanlar: d=0'da net kazanan her aktör durdurunca kaybeder
 +    pozitif = [k for k, v in d["varyantlar"]["bagli"][izgara[0]]["dis_aktor_net"].items() if v > 0]
 +    assert pozitif and all(k in d["durdurmaya_karsi_cikanlar_bagli_dson_eksi_d0"] for k in pozitif)
++
++
++def test_durdurma_yolu_kural_bazli_tutarli():
++    d = _j(OUT / "DURDURMA_YOLU_KURAL.json")
++    z = next(s for s in _j(OUT / "ZARAR_10Y_SENARYO_COKLU.json")["senaryolar"] if s["id"] == "C")
++    assert abs(sum(d["halka_agirliklari"].values()) - 1.0) < 3e-3
++    # kalibrasyon: kural yolunun 10. yıl d'si kalibre yolun 10. yıl d'sine eşit; kalibre yolu bağımsız yeniden hesapla
++    base = float(z["tr_c_refah"])
++    d_cal = [1.0 - float(r["tr_net"]) / base for r in z["yillik_seri"]]
++    assert abs(d["kalibrasyon"]["d_kalibre_yol"][-1] - d_cal[-1]) < 2e-4
++    assert abs(d["kalibrasyon"]["d_kural_yolu"][-1] - d_cal[-1]) < 2e-3
++    assert d["kalibrasyon"]["rmse_d"] < 0.03  # kural yolu kalibre yolun şeklini kabaca izler (geometrik ↔ doğrusal fark)
++    v = d["varyantlar"]
++    for ad, r in v.items():
++        yol = r["d_yol"]
++        assert all(0.0 <= x <= 1.0 + 1e-9 for x in yol) and yol == sorted(yol), ad  # tekdüze, [0,1]
++    # hız çarpanı ve sıra kuralının kaldırılması yolu yalnız hızlandırır
++    assert all(b >= a - 1e-9 for a, b in zip(v["kalibre"]["d_yol"], v["hiz_x2"]["d_yol"]))
++    assert all(b >= a - 1e-9 for a, b in zip(v["hiz_x2"]["d_yol"], v["hiz_x3"]["d_yol"]))
++    assert all(b >= a - 1e-9 for a, b in zip(v["kalibre"]["d_yol"], v["sirasiz"]["d_yol"]))
++    # dış kısıt halkası kendi katmanı olmadığından kalibre yolda hiç açılmaz; d üst sınırı 1 − w_dış_kısıt
++    assert v["kalibre"]["halka_acilis_yili"]["dis_kisit"] is None
++    assert v["kalibre"]["d_yol"][-1] <= 1 - d["halka_agirliklari"]["dis_kisit"] + 1e-9
++    # finansman: kümülatif aşım ve tükenme yılı akıştan bağımsız yeniden hesaplanır
++    cari, rezerv = d["kapasite_mn_usd"]["cari_acik_ort"], d["kapasite_mn_usd"]["brut_rezerv"]
++    for ad, r in v.items():
++        for k, f in r["finansman"].items():
++            kum, tuk = 0.0, None
++            for yil, akis in zip(d["kalibrasyon"]["yillar"], f["akis_mn_usd"]):
++                kum += max(0.0, akis - cari)
++                if tuk is None and kum > rezerv:
++                    tuk = yil
++            assert abs(kum - f["kumulatif_asim_mn_usd"]) < 6.0 + 1e-3 * kum, (ad, k)
++            assert tuk == f["rezerv_tukenme_yili"], (ad, k)
++    ms = d["gereken_hiz_carpani_rezerv_tukenmesin"]
++    assert ms["bop_merkez_rant"] <= ms["mal_net_ticaret"] <= ms["tum_havza_rant"]  # daha büyük köprü daha hızlı kural ister
 ```
