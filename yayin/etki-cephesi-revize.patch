@@ -1416,10 +1416,10 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/uretim_katman_model.json fixed/data/etki_cephesi/uretim_katman_model.json
 --- pristine/data/etki_cephesi/uretim_katman_model.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/uretim_katman_model.json	2026-10-14 19:55:12.782128477 +0000
++++ fixed/data/etki_cephesi/uretim_katman_model.json	2026-10-14 19:57:45.818208510 +0000
 @@ -0,0 +1,161 @@
 +{
-+  "not": "Kullanıcının üretim katmanı modeli (Google Drive): 3↔2↔1 çözüm mimarisinin sayısal ayağı, '81 İl Sızıntı Matrisi' ve 5_REVIZYON sayfası. Tüm değerler kaynak belgeden aynen alındı; statü etiketleri belgedeki gibidir. Bu dosya yalnız _uretim_katman.py ve uretim_katman_rapor.py tarafından okunur.",
++  "not": "Kullanıcının üretim katmanı modeli (Google Drive): '81 İl Sızıntı Matrisi' ve 5_REVIZYON sayfası. Tüm değerler kaynak belgeden aynen alındı; statü etiketleri belgedeki gibidir. Bu dosya yalnız _uretim_katman.py ve uretim_katman_rapor.py tarafından okunur.",
 +  "kaynak": [
 +    {
 +      "baslik": "81 İl Sızıntı Matrisi Analizi",
@@ -1431,7 +1431,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +      "baslik": "Zarar_Teorisi_Tek_Cekirdek_Dort_Dugum_Tam_Rapor",
 +      "drive_id": "1kyycqD5RedYe3UT8wJDTQInyGE8Wul71BXZMA1vxa84",
 +      "tarih": "2026-08-31",
-+      "kullanim": "81 il simülasyonundaki ithalat gereği senaryoları (286,1 / 231,0 / 193,1 mn TL); düğüm numaralaması ve 3↔2↔1 mimarisi sisteme bağlanmadı"
++      "kullanim": "81 il simülasyonundaki ithalat gereği senaryoları (286,1 / 231,0 / 193,1 mn TL)"
 +    },
 +    {
 +      "baslik": "Görsellerdeki Üretim Borç Harcama Modelinin Teknik İncelemesi",
@@ -2016,9 +2016,9 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return vekil()[str(s["id"])]
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_uretim_katman.py fixed/etki_cephesi/_uretim_katman.py
 --- pristine/etki_cephesi/_uretim_katman.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/_uretim_katman.py	2026-10-14 19:53:01.825447972 +0000
++++ fixed/etki_cephesi/_uretim_katman.py	2026-10-14 19:57:45.816679789 +0000
 @@ -0,0 +1,84 @@
-+"""Kullanıcının üretim katmanı modeli (Drive: 81 İl Sızıntı Matrisi, Zarar Teorisi 3↔2↔1) — saf hesap.
++"""Kullanıcının üretim katmanı modeli (Drive: 81 İl Sızıntı Matrisi) — saf hesap.
 +
 +Belgedeki cari açık stres testi ve revizyon (adreslenebilir taban, ihracat esnekliği ε) aynen yeniden kurulur; sonuçları iki yere bağlanır:
 +  (1) Üretim katmanının iyileşme TAVANI (mn $/yıl): uretim_rant_net_ticaret × net ticaret yerine modelin net cari denge iyileşmesi.
@@ -6811,7 +6811,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 19:53:09.620064298 +0000
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 19:57:45.817719804 +0000
 @@ -0,0 +1,899 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
@@ -7691,7 +7691,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        assert abs(yr["revize_net_iyilesme_mrd_usd"][s] - v) < 2e-3, s
 +    for s, v in dog["revize_cari_acik_kapanma_orani"].items():
 +        assert abs(yr["revize_cari_acik_kapanma_orani"][s] - v) < 1.5e-3, s
-+    # 3↔2↔1 değişmezleri: koordinasyon tek başına cari dengeyi iyileştirmez (kötüleştirir); ε ≥ 0,75'te orta/güçlü reform nötr ya da negatif
++    # Model değişmezleri: koordinasyon tek başına cari dengeyi iyileştirmez (kötüleştirir); ε ≥ 0,75'te orta/güçlü reform nötr ya da negatif
 +    assert yr["revize_net_iyilesme_mrd_usd"]["koordinasyon"] < 0 < yr["revize_net_iyilesme_mrd_usd"]["orta_reform"] < yr["revize_net_iyilesme_mrd_usd"]["guclu_reform"]
 +    e = d["ihracat_esnekligi_duyarlilik_net_iyilesme_mrd_usd"]
 +    assert e["0.75"]["orta_reform"] < 0.01 and e["0.75"]["guclu_reform"] < 0.1 and e["1.0"]["orta_reform"] < 0

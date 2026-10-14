@@ -5,7 +5,7 @@ Tipoloji katsayıları ölçülmemiştir (belgede VARSAYIM). İhracat kaybı pen
 ## Kaynak belgeler
 
 - **81 İl Sızıntı Matrisi Analizi** (2026-08-31, `1WSI8f3jqplxSQ6TGOklvA46FN4lVXMyPAa4qE_68GlY`): tipoloji katsayıları, cari açık stres testi, revizyon (adreslenebilir taban, ihracat esnekliği)
-- **Zarar_Teorisi_Tek_Cekirdek_Dort_Dugum_Tam_Rapor** (2026-08-31, `1kyycqD5RedYe3UT8wJDTQInyGE8Wul71BXZMA1vxa84`): 81 il simülasyonundaki ithalat gereği senaryoları (286,1 / 231,0 / 193,1 mn TL); düğüm numaralaması ve 3↔2↔1 mimarisi sisteme bağlanmadı
+- **Zarar_Teorisi_Tek_Cekirdek_Dort_Dugum_Tam_Rapor** (2026-08-31, `1kyycqD5RedYe3UT8wJDTQInyGE8Wul71BXZMA1vxa84`): 81 il simülasyonundaki ithalat gereği senaryoları (286,1 / 231,0 / 193,1 mn TL)
 - **Görsellerdeki Üretim Borç Harcama Modelinin Teknik İncelemesi** (2026-07-02, `1UfxS1v5YWw3LuWrC1R6KvvH7qVExYnBx`): HC ≤ Y* + FX − DS kısıtı, iç/dış borç servisi ayrımı (sayısal parametre yok; kavramsal)
 - **Türkiye Ekonomisi Model Analizi Raporu** (2026-07-05, `1LPVm6thF8tliPvYUMmj0D6d3trNxVIcFFMMPEVDRgdU`): Y*, D, HC stok-akış çerçevesi (sayısal katman parametresi yok; senaryo anlatısı)
 
