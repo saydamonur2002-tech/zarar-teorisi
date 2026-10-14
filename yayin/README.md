@@ -10,6 +10,7 @@
 | [anlatim/hukuk_anlatim.mp4](./anlatim/hukuk_anlatim.mp4) | Aynı hukukun analojik videosu, kadın ses, yaklaşık 12 dakika |
 | [anlatim/etki.html](./anlatim/etki.html) | Etki cephesi: fabrika, beş halka, uluslararası defter, üç yolun kaydırıcısı |
 | [anlatim/etki_anlatim.mp4](./anlatim/etki_anlatim.mp4) | Aynı anlatımın videosu, 19,5 dakika |
+| [etki-cephesi-model.zip](./etki-cephesi-model.zip) | Etki cephesi model paketi. Video bu paketi anlatır |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 
