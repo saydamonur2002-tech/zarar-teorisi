@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `f00bd56ca4523e83`),
-**38 test geçti** (27 mevcut + 11 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `c04ba2dd508d90ea`),
+**40 test geçti** (27 mevcut + 13 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -17,6 +17,7 @@ Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla k
 | 6 | Uygulanabilirlik özeti sabit metindi ("10 yılda TR net iyileşir") | Özet sayıdan türetilir; beklenen karışımda iyileşme yoksa engel olarak yazılır |
 | 7 | Pipeline kendi çıktısını girdi okuyor: yamalı sürümde tek koşu ara durum bırakıyordu | `run_all.py` kararlı duruma kadar geçer (en çok 5), `RUN_ALL_KARARLILIK.json` yazar |
 | 8 | **D'nin çift muamelesi:** dış rant F'ye "zarar" yazılıp L ile D'ye kayıp yayılıyordu (D −0,223) ve ayrıca "D kârı" G ile yerli sektörlere dağıtılıyordu (D'de kalmıyordu) | Rant **F→D transferi**: F −A, D +A, doğrudan NFP, toplam sıfır. Ödeyen F, transfer payı %100 (kullanıcı kararı): 22.550 mn $ × 44,38 = 1,001 tr TL; kapsam dışı rant yok. `bolge_stok_akis` TR net = H+F+B+K (eski formül D'yi 0,45 ile ayrıca düşüyordu) |
+| 9 | Olasılık atamasının sonuca bağımlılığı görünmüyordu | `OLASILIK_DUYARLILIK` raporu (aşağıda); `degerlendir()` isteğe bağlı `olasilik` parametresi aldı, varsayılan davranış aynı |
 
 ## Önce / sonra (kararlı durum)
 
@@ -38,6 +39,29 @@ Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla k
 | Lm × rant, kur | 32,87 | 44,38; kapanış_ok = False (Σ x = +0,178) |
 
 Not: karar hâlâ `uygulanabilir_kosullu`, ama skor eşiğin (62) yalnız 0,7 üstünde.
+
+## C olasılığı duyarlılığı (yeni rapor)
+`olasilik_duyarlilik.py` → `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. P(C) 0,30–0,80, kalan A:B taban oranla (0,22:0,18) bölünür.
+**Yeni olasılık üretmez**; olasılıklar (A 0,22 / B 0,18 / C 0,60) elle atanmış vekildir.
+
+| P(C) | P(A) | P(B) | E[TR net 10y, yaşam dahil] | E[GSYH %] | E[iyileşme] | Skor | Karar |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 0.30 | 0.385 | 0.315 | -22.102 | 6.162 | -4.91 | 57.3 | kisitli_uygulanabilir |
+| 0.35 | 0.357 | 0.292 | -21.45 | 5.982 | -4.26 | 58.2 | kisitli_uygulanabilir |
+| 0.40 | 0.330 | 0.270 | -20.797 | 5.803 | -3.61 | 59.1 | kisitli_uygulanabilir |
+| 0.45 | 0.302 | 0.247 | -20.144 | 5.623 | -2.95 | 60.0 | kisitli_uygulanabilir |
+| 0.50 | 0.275 | 0.225 | -19.491 | 5.443 | -2.30 | 60.9 | kisitli_uygulanabilir |
+| 0.55 | 0.247 | 0.203 | -18.838 | 5.263 | -1.65 | 61.8 | kisitli_uygulanabilir |
+| 0.60 **(taban)** | 0.220 | 0.180 | -18.186 | 5.084 | -1.00 | 62.7 | uygulanabilir_kosullu |
+| 0.65 | 0.193 | 0.158 | -17.533 | 4.904 | -0.34 | 63.6 | uygulanabilir_kosullu |
+| 0.70 | 0.165 | 0.135 | -16.88 | 4.724 | +0.31 | 65.0 | uygulanabilir_kosullu |
+| 0.75 | 0.138 | 0.113 | -16.227 | 4.545 | +0.96 | 67.1 | uygulanabilir_kosullu |
+| 0.80 | 0.110 | 0.090 | -15.574 | 4.365 | +1.62 | 69.2 | uygulanabilir_kosullu |
+
+- Karar eşiği (skor 62) geçişi P(C) ≈ 0,56; taban 0,60, yani eşiğe yakın.
+- Beklenen karışımda iyileşme ancak P(C) ≳ 0,68'de başlıyor; tabanda yok (Δ −1,00).
+- E[TR net 10 yıl] aralığı −22,10 … −15,57.
+- Taban satır ana raporla birebir tutuyor; mevcut raporlar yeni parametreden etkilenmedi.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

@@ -11,8 +11,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          run: python etki_cephesi/durum_ozeti.py
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/REVIZE_NOTU.md fixed/data/etki_cephesi/REVIZE_NOTU.md
 --- pristine/data/etki_cephesi/REVIZE_NOTU.md	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/REVIZE_NOTU.md	2026-10-14 06:44:34.191861624 +0000
-@@ -0,0 +1,16 @@
++++ fixed/data/etki_cephesi/REVIZE_NOTU.md	2026-10-14 06:54:23.370347215 +0000
+@@ -0,0 +1,18 @@
 +# Revize notu (SFC köprüsü)
 +
 +Düzeltilen hatalar (hepsi kodda doğrulandı, `reports_before/after` karşılaştırması patch çıktısında):
@@ -24,6 +24,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +5. **Finans katmanı etiketi.** İşaret dönüşü (−3,237 → +0,241) atanmış çarpanlarla üretilir; rapor "varsayım çarpanlı ham" etiketi taşır.
 +
 +6. **D'nin çift muamelesi.** Dış rant F'ye "zarar" yazılıp L ile D'ye kayıp olarak yayılıyordu (D −0,218) ve ayrıca "D kârı" G ile yerli sektörlere dağıtılıyordu (D'de kalmıyordu). Rant bir transferdir: artık F −A, D +A, doğrudan NFP'ye, toplam sıfır. Ödeyen F, transfer payı %100 (kullanıcı kararı): 22.550 mn $ × 44,38 = 1,001 tr TL, kapsam dışı rant yok. `bolge_stok_akis` TR net tanımı yerli sektörler toplamı (H+F+B+K) oldu: eski formül D'yi 0,45 ağırlıkla ayrıca düşüyordu (ikinci çift sayım). `test_stok_akis_senaryo_coklu` işareti buna göre güncellendi (C ≤ A ≤ B: C en az rant kaçırır).
++
++7. **Olasılık duyarlılığı (yeni rapor).** `olasilik_duyarlilik.py`: P(C) 0,30–0,80 (adım 0,05), kalan A:B taban oranla bölünür. Çıktı `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. Yeni olasılık üretmez; olasılıklar ölçülmemiştir. `degerlendir()` isteğe bağlı `olasilik` parametresi aldı (varsayılan davranış değişmedi: mevcut raporlar birebir aynı).
 +
 +Düzeltilmeyen / açık:
 +- Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
@@ -286,9 +288,152 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          },
          "kaynak": ["DIS_RANT_PARASAL.json", "kalibre/lm_rant_kopru.json", f"L_v2_{donem}.csv"],
      }
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olasilik_duyarlilik.py fixed/etki_cephesi/olasilik_duyarlilik.py
+--- pristine/etki_cephesi/olasilik_duyarlilik.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/olasilik_duyarlilik.py	2026-10-14 06:53:48.144695081 +0000
+@@ -0,0 +1,139 @@
++"""C senaryosu olasılığı duyarlılık bandı (0,30–0,80).
++
++Olasılıklar ÖLÇÜLMÜŞ değildir (`senaryolar.json` olasilik_vekili: A 0,22 / B 0,18 / C 0,60, elle atanmış).
++Bu modül yeni bir olasılık üretmez; sonucun C'nin ağırlığına ne kadar bağlı olduğunu gösterir.
++C = c; kalan (1 − c) A:B arasında taban oranla (0,22:0,18) bölünür.
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++from typing import Any
++
++from senaryo_uygulanabilirlik import degerlendir
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++
++C_MIN, C_MAX, ADIM = 0.30, 0.80, 0.05
++ESIK_KOSULLU = 62.0  # senaryo_uygulanabilirlik.py: skor >= 62 → uygulanabilir_kosullu
++ESIK_IYILESME = 0.05  # beklenen karışımda TR net iyileşme eşiği (vekil)
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _olas(c: float, taban: dict[str, float]) -> dict[str, float]:
++    ab = taban["A"] + taban["B"]
++    return {"A": (1 - c) * taban["A"] / ab, "B": (1 - c) * taban["B"] / ab, "C": c}
++
++
++def _satir(c: float, taban: dict[str, float], rows: dict[str, Any]) -> dict[str, Any]:
++    o = _olas(c, taban)
++    d = degerlendir(o)
++    rb = d["referans_beklenen"] or {}
++    return {
++        "p_C": round(c, 3),
++        "p_A": round(o["A"], 4),
++        "p_B": round(o["B"], 4),
++        "beklenen_tr_net_10y_yasam": rb.get("beklenen_tr_net_10y_yasam"),
++        "beklenen_tr_net_katman_10y": round(sum(o[k] * float(rows[k]["tr_net_katman_10y"]) for k in o), 3),
++        "beklenen_gsyh_yuzde_10y": rb.get("beklenen_gsyh_yuzde_orta_10y"),
++        "iyilesme_beklenen_vekil": d["iyilesme_beklenen_vekil"],
++        "skor_0_100": d["skor_0_100"],
++        "skor_beklenen": d["skor_beklenen_ab_c"],
++        "skor_senaryo_c": d["skor_senaryo_c"],
++        "karar": d["karar"],
++    }
++
++
++def _gecis(satirlar: list[dict[str, Any]], alan: str, esik: float) -> float | None:
++    """İlk (artan c) eşik geçişi: değer eşiğin altından üstüne çıkıyorsa doğrusal enterpolasyonla c."""
++    for a, b in zip(satirlar, satirlar[1:]):
++        va, vb = float(a[alan]), float(b[alan])
++        if (va < esik <= vb) or (va >= esik > vb):
++            t = (esik - va) / (vb - va)
++            return round(float(a["p_C"]) + t * (float(b["p_C"]) - float(a["p_C"])), 3)
++    return None
++
++
++def hesapla() -> dict[str, Any]:
++    sen = {s["id"]: float(s["olasilik_vekili"]) for s in _load(DATA / "senaryolar.json")["senaryolar"]}
++    bek = _load(OUT / "SENARYO_BEKLENEN_KALIBRE.json")
++    rows = {r["id"]: r for r in bek["senaryolar"]}
++    n = int(round((C_MAX - C_MIN) / ADIM))
++    cs = [round(C_MIN + i * ADIM, 3) for i in range(n + 1)]
++    satirlar = [_satir(c, sen, rows) for c in cs]
++    taban_c = round(sen["C"], 3)
++    taban = _satir(taban_c, sen, rows)
++    ana = _load(OUT / "SENARYO_UYGULANABILIRLIK.json")
++    aralik = lambda k: (min(r[k] for r in satirlar), max(r[k] for r in satirlar))  # noqa: E731
++    return {
++        "olcum": "olasilik_duyarlilik_C",
++        "etiket": "olasilik_olculmedi_duyarlilik_bandi",
++        "not": (
++            "Olasılıklar elle atanmış vekildir; bu rapor yeni olasılık üretmez. C = p, kalan A:B taban oranla "
++            f"({sen['A']}:{sen['B']}) bölünür."
++        ),
++        "taban_olasilik": sen,
++        "taban_satir_ana_rapor_ile_tutarli": (
++            taban["skor_0_100"] == ana["skor_0_100"]
++            and taban["beklenen_tr_net_10y_yasam"] == ana["referans_beklenen"]["beklenen_tr_net_10y_yasam"]
++        ),
++        "satirlar": satirlar,
++        "aralik": {
++            "beklenen_tr_net_10y_yasam": aralik("beklenen_tr_net_10y_yasam"),
++            "skor_0_100": aralik("skor_0_100"),
++        },
++        "gecisler": {
++            "karar_kosullu_skor_62": _gecis(satirlar, "skor_0_100", ESIK_KOSULLU),
++            "beklenen_iyilesme_sifir_ustu": _gecis(satirlar, "iyilesme_beklenen_vekil", ESIK_IYILESME),
++        },
++        "esikler": {"skor_kosullu": ESIK_KOSULLU, "iyilesme": ESIK_IYILESME},
++    }
++
++
++def _md(d: dict[str, Any]) -> str:
++    g = d["gecisler"]
++    L = [
++        "# C senaryosu olasılığı — duyarlılık bandı",
++        "",
++        f"**Etiket: {d['etiket']}.** {d['not']}",
++        "",
++        "| P(C) | P(A) | P(B) | E[TR net 10y, yaşam dahil] | E[GSYH %] | E[iyileşme] | Skor | Karar |",
++        "| ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
++    ]
++    for r in d["satirlar"]:
++        mark = " **(taban)**" if abs(r["p_C"] - d["taban_olasilik"]["C"]) < 1e-9 else ""
++        L.append(
++            f"| {r['p_C']:.2f}{mark} | {r['p_A']:.3f} | {r['p_B']:.3f} | {r['beklenen_tr_net_10y_yasam']} | "
++            f"{r['beklenen_gsyh_yuzde_10y']} | {r['iyilesme_beklenen_vekil']:+.2f} | {r['skor_0_100']} | {r['karar']} |"
++        )
++    lo, hi = d["aralik"]["beklenen_tr_net_10y_yasam"]
++    slo, shi = d["aralik"]["skor_0_100"]
++    L += [
++        "",
++        f"- E[TR net 10y] aralığı: **{lo} … {hi}** (P(C) 0,30 → 0,80).",
++        f"- Skor aralığı: **{slo} … {shi}**.",
++        "- Karar eşiği (skor 62) geçişi: "
++        + (f"P(C) ≈ **{g['karar_kosullu_skor_62']}**" if g["karar_kosullu_skor_62"] is not None else "bantta geçiş yok"),
++        "- Beklenen karışımda iyileşme (Δ > 0,05) başlangıcı: "
++        + (f"P(C) ≈ **{g['beklenen_iyilesme_sifir_ustu']}**" if g["beklenen_iyilesme_sifir_ustu"] is not None else "bantta geçiş yok"),
++        f"- Taban satır ana raporla tutarlı: {d['taban_satir_ana_rapor_ile_tutarli']}.",
++        "",
++    ]
++    return "\n".join(L)
++
++
++def main() -> None:
++    OUT.mkdir(parents=True, exist_ok=True)
++    d = hesapla()
++    (OUT / "OLASILIK_DUYARLILIK.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    (OUT / "OLASILIK_DUYARLILIK.md").write_text(_md(d), encoding="utf-8")
++    print(f"Wrote {OUT / 'OLASILIK_DUYARLILIK.md'}")
++
++
++if __name__ == "__main__":
++    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 06:17:54.276667410 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 06:53:48.145160798 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -325,8 +470,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -33,9 +49,26 @@
+@@ -31,11 +47,29 @@
+         "senaryo_gerceklik_kalibre.py --skip-pipeline",
+         "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
++        "olasilik_duyarlilik.py",
          ]
      )
 -    for s in steps:
@@ -357,8 +505,55 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_uygulanabilirlik.py fixed/etki_cephesi/senaryo_uygulanabilirlik.py
 --- pristine/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:05:45.827930514 +0000
-+++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:16:41.935921582 +0000
-@@ -145,15 +145,28 @@
++++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:53:48.144343389 +0000
+@@ -37,7 +37,11 @@
+     return bilesenler, partial
+ 
+ 
+-def degerlendir() -> dict[str, Any]:
++def degerlendir(olasilik: dict[str, float] | None = None) -> dict[str, Any]:
++    """`olasilik` verilirse senaryo olasılıkları (A/B/C) bu ağırlıklarla yeniden hesaplanır (duyarlılık).
++
++    Varsayılan (None): senaryolar.json `olasilik_vekili`, eski davranışla aynı.
++    """
+     sen_doc = _load(DATA / "senaryolar.json")
+     mat = _load(OUT / "ULUSLARARASI_STOK_AKIS.json")
+     bek_path = OUT / "SENARYO_BEKLENEN_KALIBRE.json"
+@@ -49,6 +53,24 @@
+ 
+     c = next(s for s in sen_doc["senaryolar"] if s["id"] == "C")
+     p_c = float(c.get("olasilik_vekili") or 0.6)
++    olas_ovr: dict[str, float] | None = None
++    if olasilik:
++        s_o = sum(float(v) for v in olasilik.values()) or 1.0
++        olas_ovr = {str(k): float(v) / s_o for k, v in olasilik.items()}
++        p_c = olas_ovr["C"]
++        if bek:
++            rows = bek.get("senaryolar") or []
++            tr_e = round(sum(olas_ovr.get(r["id"], 0.0) * float(r["tr_net_10y_yasam_dahil"]) for r in rows), 3)
++            gs_e = round(sum(olas_ovr.get(r["id"], 0.0) * float(r["gsyh_yuzde_orta_10y"]) for r in rows), 3)
++            bek = {
++                **bek,
++                "beklenti": {
++                    **(bek.get("beklenti") or {}),
++                    "olasilik": {k: round(v, 4) for k, v in olas_ovr.items()},
++                    "beklenen_tr_net_10y_yasam": tr_e,
++                    "beklenen_gsyh_yuzde_orta_10y": gs_e,
++                },
++            }
+     g = ger.get("gerceklesme_oranlari") or {}
+     g_mean = sum(float(v) for v in g.values()) / max(len(g), 1)
+ 
+@@ -124,6 +146,8 @@
+             olas_norm[str(s["id"])] = float(s.get("olasilik_vekili") or 0.0)
+         s_olas = sum(olas_norm.values()) or 1.0
+         olas_norm = {k: v / s_olas for k, v in olas_norm.items()}
++        if olas_ovr:
++            olas_norm = dict(olas_ovr)
+         by_z = {x["id"]: x for x in zcok.get("senaryolar") or []}
+         for sid in ("A", "B", "C"):
+             row = by_z.get(sid)
+@@ -145,15 +169,28 @@
              )
              skor_senaryo[sid] = skor_s
  
@@ -390,7 +585,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      engeller = []
      if g_mean < 0.35:
-@@ -164,6 +177,10 @@
+@@ -164,6 +201,10 @@
          engeller.append("Uluslararası stok net toplamı kapanmıyor — vekil ölçeği abartılı olabilir.")
      if tr_10 > -8:
          engeller.append("TR net hâlâ derin negatif; hedef ‘sıfıra yakın’ değil.")
@@ -401,7 +596,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      kolaylastirici = []
      if halka:
-@@ -180,6 +197,8 @@
+@@ -180,6 +221,8 @@
          "skor_senaryo_ab_c": skor_senaryo or None,
          "karar": karar,
          "ozet": ozet,
@@ -732,8 +927,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 06:44:11.860004244 +0000
-@@ -0,0 +1,132 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 06:54:10.382311403 +0000
+@@ -0,0 +1,157 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -866,3 +1061,28 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    s = _j(OUT / "STOK_AKIS_SIM.json")["entegre_puls"]["sektor_etkisi_trilyonTL"]
 +    tr = [a for a in d["aktorler"] if a["ulke"] == "TR"][0]
 +    assert abs(tr["sfc_net_trilyonTL"] - round(s["H"] + s["F"] + s["B"] + s["K"], 3)) <= 1e-3
++
++
++def test_olasilik_duyarlilik_bandi():
++    d = _j(OUT / "OLASILIK_DUYARLILIK.json")
++    assert d["etiket"] == "olasilik_olculmedi_duyarlilik_bandi"
++    ps = [r["p_C"] for r in d["satirlar"]]
++    assert ps[0] == 0.30 and ps[-1] == 0.80 and len(ps) == 11
++    for r in d["satirlar"]:
++        assert abs(r["p_A"] + r["p_B"] + r["p_C"] - 1.0) <= 1e-3
++    # A:B oranı tabanla aynı
++    taban = d["taban_olasilik"]
++    r0 = d["satirlar"][0]
++    assert abs(r0["p_A"] / r0["p_B"] - taban["A"] / taban["B"]) <= 1e-2
++    # C'nin ağırlığı arttıkça beklenen TR net iyileşir (C en iyi senaryo)
++    es = [r["beklenen_tr_net_10y_yasam"] for r in d["satirlar"]]
++    assert all(b >= a for a, b in zip(es, es[1:]))
++
++
++def test_olasilik_duyarlilik_taban_ana_rapor_ile_tutarli():
++    d = _j(OUT / "OLASILIK_DUYARLILIK.json")
++    ana = _j(OUT / "SENARYO_UYGULANABILIRLIK.json")
++    assert d["taban_satir_ana_rapor_ile_tutarli"] is True
++    taban = [r for r in d["satirlar"] if abs(r["p_C"] - d["taban_olasilik"]["C"]) < 1e-9][0]
++    assert taban["skor_0_100"] == ana["skor_0_100"]
++    assert taban["karar"] == ana["karar"]

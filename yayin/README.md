@@ -13,6 +13,7 @@
 | [etki-cephesi-model.zip](./etki-cephesi-model.zip) | Etki cephesi model paketi (revize: SFC köprüsü hataları düzeltildi). Video eski sürümü anlatır |
 | [etki-cephesi-revize.patch](./etki-cephesi-revize.patch) | Revize yaması (CRLF; `patch -p1`). Zip bu yamayla yeniden üretildi |
 | [ETKI_CEPHESI_REVIZE.md](./ETKI_CEPHESI_REVIZE.md) | Düzeltilen hatalar, önce/sonra sayıları, açıkta kalanlar |
+| [OLASILIK_DUYARLILIK.md](./OLASILIK_DUYARLILIK.md) | C senaryosu olasılığı 0,30–0,80 duyarlılık bandı (olasılık ölçülmedi; yeni olasılık üretmez) |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 
