@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `4222eed6c88107d3`, temiz kurulumda 3 geçiş),
-**48 test geçti** (27 mevcut + 21 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `5ee552d16a3710e4`, temiz kurulumda 3 geçiş),
+**49 test geçti** (27 mevcut + 22 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -74,7 +74,8 @@ Not: bu tablo P(C)=0,60 ile. P(C) kapılara bağlanınca skor 57,9 ve karar `kis
 Önceki durum: ana pipeline `senaryolar.json` içindeki elle atanmış 0,22 / 0,18 / 0,60'ı kullanıyordu. Şimdi `etki_cephesi/_olasilik.py` olasılığı verir.
 - **Döngü neden yok:** `_olasilik.py` saf hesaptır; pipeline raporu (`reports/`) okumaz. Yalnız `senaryolar.json` (senaryo parametreleri), `finans_katman_kopru.json` ve EVDS gözlem CSV'lerini okur. Karar eşiği ve skor bağlantısı (rapor okumak gerektirir) ayrı yerde: `olasilik_duyarlilik.py`, tek yönlü. Test: `_olasilik.py` kaynağında `reports` geçmiyor.
 - `senaryolar.json`: `olasilik_vekili` → `olasilik_vekili_eski_el_atamasi` (eski değer yalnız karşılaştırma). 9 modül `_olasilik.vekil()` okur. `c_dinamik_olcut` prior'u tekdüze.
-- `en_olasi: "C"` etiketi korundu ama artık **referans rapor senaryosu**dur, olasılık sıralaması değil (`en_olasi_not`).
+- **`en_olasi` → `referans_senaryo`** (`senaryolar.json`, `PROJEKSIYON.json`, `akis_olcum`, `projeksiyon`, `uzun_vade_esik`, README): "en olası" bir olasılık iddiasıydı; C yalnız referans rapor senaryosu. Raporlardaki "(en olası)" etiketleri "(referans)" oldu. Eski anahtar yok; bir test hiçbir raporda "en olası" kalmadığını denetler.
+- **Bayat rapor bulundu:** `UZUN_VADE_ESIK` `run_all` dışında kalmıştı, zip'teki eski sayıları taşıyordu (C 2026: −18,015; 2036 orta yol: −11,341). Revize sayılarla (−17,70; −13,11) yenilendi ve `run_all` adımlarına eklendi.
 - Gözlem gelince (2027-12'den itibaren) `vekil()` kendiliğinden hareket eder; el ile bir şey yazılmaz.
 
 | Çıktı | P(C)=0,60 (eski) | P(C)=1/3 (kapılar, gözlem yok) |

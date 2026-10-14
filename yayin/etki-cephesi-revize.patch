@@ -9,6 +9,18 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        run: pytest tests/test_etki_cephesi_p4.py tests/test_etki_cephesi_p3.py tests/test_etki_cephesi_p2.py tests/test_etki_cephesi_stok_kapanis.py tests/test_etki_cephesi_kurum.py tests/test_etki_cephesi_sfc_revize.py -q
        - name: Durum ozeti (rapor butunlugu)
          run: python etki_cephesi/durum_ozeti.py
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/README.md fixed/data/etki_cephesi/README.md
+--- pristine/data/etki_cephesi/README.md	2026-10-14 06:05:45.812344840 +0000
++++ fixed/data/etki_cephesi/README.md	2026-10-14 07:45:20.551037038 +0000
+@@ -17,7 +17,7 @@
+ | `bolge_akis.json` | Alt havza akış payları |
+ | `yerel_rant_kanal.json` | Dış bağlanma zararı + rant kanalı çıkışı |
+ | `dominion_bag.json` | Bağ vekili, pasif boşluk, donmuş enigma |
+-| `senaryolar.json` | A pasif, B araçsallaşma, **C en olası** (kısmi kullanım) |
++| `senaryolar.json` | A pasif, B araçsallaşma, **C referans senaryo** (kısmi kullanım) |
+ 
+ ```bash
+ .\.venv\Scripts\python.exe etki_cephesi/kalibrasyon.py
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/REVIZE_NOTU.md fixed/data/etki_cephesi/REVIZE_NOTU.md
 --- pristine/data/etki_cephesi/REVIZE_NOTU.md	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/data/etki_cephesi/REVIZE_NOTU.md	2026-10-14 07:28:41.158762929 +0000
@@ -442,12 +454,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +2026-08,23327.0,27073.0,2395.0,733.0,2659.0
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/senaryolar.json fixed/data/etki_cephesi/senaryolar.json
 --- pristine/data/etki_cephesi/senaryolar.json	2026-10-14 06:05:45.818537428 +0000
-+++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 07:40:14.113723991 +0000
-@@ -2,11 +2,12 @@
++++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 07:45:20.550008747 +0000
+@@ -1,12 +1,13 @@
+ {
    "horizon_yil": 10,
    "baz_yil": 2026,
-   "en_olasi": "C",
-+  "en_olasi_not": "Referans rapor senaryosu (etiket). Olasılık sıralaması DEĞİL: olasılıklar _olasilik.py kapılarından gelir, gözlem yokken tekdüze.",
+-  "en_olasi": "C",
++  "referans_senaryo": "C",
++  "referans_senaryo_not": "Referans rapor senaryosu (etiket). Olasılık sıralaması DEĞİL: olasılıklar _olasilik.py kapılarından gelir, gözlem yokken tekdüze.",
    "referans_olcum_not": "Bağ modu: kullanım / atıl / araçsallaşma (maks-min değil). Dış aktörler TR'yi merkez sanmaz — göreceli fayda/zarar.",
    "senaryolar": [
      {
@@ -569,7 +583,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/zarar_teorisi_kopru.json fixed/data/etki_cephesi/zarar_teorisi_kopru.json
 --- pristine/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 06:05:45.819023385 +0000
-+++ fixed/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 06:05:32.659254227 +0000
++++ fixed/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 07:45:20.550536409 +0000
+@@ -1,5 +1,5 @@
+ {
+-  "not": "GitHub zarar-teorisi beş adım çözümünün işlediği varsayımı → etki cephesi (en olası C) üstüne köprü. Sayılar bes_adim_sonuc.json (koşu bitti, H-A* temiz).",
++  "not": "GitHub zarar-teorisi beş adım çözümünün işlediği varsayımı → etki cephesi (referans senaryo C) üstüne köprü. Sayılar bes_adim_sonuc.json (koşu bitti, H-A* temiz).",
+   "github": {
+     "repo": "https://github.com/saydamonur2002-tech/zarar-teorisi",
+     "branch": "main",
 @@ -17,12 +17,22 @@
    },
    "etki_cephesi_carpanlari": {
@@ -825,6 +846,36 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +def vekil_s(s: dict[str, Any]) -> float:
 +    return vekil()[str(s["id"])]
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/akis_olcum.py fixed/etki_cephesi/akis_olcum.py
+--- pristine/etki_cephesi/akis_olcum.py	2026-10-14 06:05:45.822777055 +0000
++++ fixed/etki_cephesi/akis_olcum.py	2026-10-14 07:45:20.545985506 +0000
+@@ -60,14 +60,14 @@
+     return round(vekil * (cicek_usd / vekil_toplam), 1)
+ 
+ 
+-def _en_olasi_senaryo() -> str:
++def _referans_senaryo() -> str:
+     doc = _load(DATA / "senaryolar.json")
+-    return str(doc.get("en_olasi") or "C")
++    return str(doc.get("referans_senaryo") or "C")
+ 
+ 
+ def olcum(senaryo_id: str | None = None) -> dict[str, Any]:
+     if senaryo_id is None:
+-        senaryo_id = _en_olasi_senaryo()
++        senaryo_id = _referans_senaryo()
+     fin = _load(EMPIRIK / "tr_finans_akisi_2024.json")
+     tic = _load(EMPIRIK / "tr_dis_ticaret_2024.json")
+     proj = _load(OUT / "PROJEKSIYON.json")
+@@ -279,7 +279,7 @@
+ 
+ def main() -> None:
+     OUT.mkdir(parents=True, exist_ok=True)
+-    sid = _en_olasi_senaryo()
++    sid = _referans_senaryo()
+     res = olcum(sid)
+     (OUT / "AKIS_OLCUM.json").write_text(
+         json.dumps(res, ensure_ascii=False, indent=2),
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bolge_stok_akis.py fixed/etki_cephesi/bolge_stok_akis.py
 --- pristine/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:05:45.822890890 +0000
 +++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 07:40:14.116677949 +0000
@@ -1511,9 +1562,90 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +if __name__ == "__main__":
 +    main()
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
+--- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
++++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 07:45:20.547757671 +0000
+@@ -789,10 +789,10 @@
+     ikame = float(akis_doc.get("yaricevre_rakip_ikame_carpan", 0.55))
+ 
+     kalibre_kullanildi = (KALIBRE / "bolgeler.json").is_file()
+-    en_olasi = str(senaryolar_doc.get("en_olasi") or "C")
++    referans = str(senaryolar_doc.get("referans_senaryo") or "C")
+     sonuc: dict[str, Any] = {
+         "olcum": "arti_deger_havza_dominion_10y",
+-        "en_olasi": en_olasi,
++        "referans_senaryo": referans,
+         "kalibre_2024_ticaret": kalibre_kullanildi,
+         "rant_modeli": "refah" if refah_doc and refah_doc.get("aktif") else "bosluk",
+         "kaynak_tez": "data/etki_cephesi/KAYNAK_TEZ.md",
+@@ -928,12 +928,12 @@
+         lines.append(f"*{payload['referans_olcum_not']}*")
+         lines.append("")
+ 
+-    en_olasi = str(payload.get("en_olasi") or "C")
+-    ref = next((s for s in payload["senaryolar"] if s["id"] == en_olasi), None)
++    referans = str(payload.get("referans_senaryo") or "C")
++    ref = next((s for s in payload["senaryolar"] if s["id"] == referans), None)
+     if ref:
+         lines.extend(
+             [
+-                f"## Referans — Senaryo **{en_olasi}** (en olası)",
++                f"## Referans — Senaryo **{referans}** (referans)",
+                 "",
+                 ref["aciklama"],
+                 "",
+@@ -942,17 +942,17 @@
+                 f"**MFIN kenar:** {ref.get('merkez_mfin_kenar_toplam', '—')} | "
+                 f"**Rant Σ:** {ref['tum_havza_rant_cikis_toplam']}",
+                 "",
+-                f"Detay: `ULKE_KAYIP_{en_olasi}.md`, `DIS_AKTOR_{en_olasi}.md`, `AKIS_OLCUM.md` (senaryo {en_olasi}).",
++                f"Detay: `ULKE_KAYIP_{referans}.md`, `DIS_AKTOR_{referans}.md`, `AKIS_OLCUM.md` (senaryo {referans}).",
+                 "",
+             ]
+         )
+ 
+     sira = sorted(
+         payload["senaryolar"],
+-        key=lambda s: (0 if s["id"] == en_olasi else 1, s["id"]),
++        key=lambda s: (0 if s["id"] == referans else 1, s["id"]),
+     )
+     for sen in sira:
+-        tag = " **(en olası)**" if sen["id"] == en_olasi else ""
++        tag = " **(referans)**" if sen["id"] == referans else ""
+         lines.append(f"## Senaryo {sen['id']}: {sen['ad']}{tag}")
+         lines.append("")
+         lines.append(sen["aciklama"])
+@@ -1160,9 +1160,9 @@
+     sen: dict[str, Any],
+     sid: str,
+     ulke_gruplari: list[tuple[str, list[str]]],
+-    en_olasi: bool,
++    referans: bool,
+ ) -> None:
+-    baslik_etiket = f"{sid} (en olası)" if en_olasi else sid
++    baslik_etiket = f"{sid} (referans)" if referans else sid
+     if sen.get("ulke_kayiplari"):
+         ua = [f"# Senaryo {baslik_etiket} — ülke bazlı kayıp (10 yıl vekil)", ""]
+         ua.append("| Ülke | Kayıp endeks | Net | Pasif | Araçsal | Temsil |")
+@@ -1238,12 +1238,12 @@
+     (OUT / "PROJEKSIYON.json").write_text(json.dumps(clean, ensure_ascii=False, indent=2), encoding="utf-8")
+     payload["_adlar"] = adlar
+     (OUT / "PROJEKSIYON.md").write_text(_md(payload), encoding="utf-8")
+-    en_olasi = str(clean.get("en_olasi") or "C")
++    referans = str(clean.get("referans_senaryo") or "C")
+     for sid in ("A", "B", "C"):
+         sen = next((s for s in clean.get("senaryolar", []) if s["id"] == sid), None)
+         if sen:
+-            _senaryo_yan_raporlari(sen, sid, ulke_gruplari, en_olasi=(sid == en_olasi))
+-    print(f"Wrote {OUT / 'PROJEKSIYON.md'} (en olası: {en_olasi})")
++            _senaryo_yan_raporlari(sen, sid, ulke_gruplari, referans=(sid == referans))
++    print(f"Wrote {OUT / 'PROJEKSIYON.md'} (referans: {referans})")
+ 
+ 
+ if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 07:36:34.706125795 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 07:45:50.669606347 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -1550,13 +1682,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,31 @@
+@@ -31,11 +47,32 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
 +        "olasilik_duyarlilik.py",
 +        "c_dinamik_olcut.py",
 +        "olasilik_kapilar.py",
++        "uzun_vade_esik.py",
          ]
      )
 -    for s in steps:
@@ -2066,6 +2199,36 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      s_ = sum(ow.values()) or 1.0
      ow = {k: v / s_ for k, v in ow.items()}
  
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uzun_vade_esik.py fixed/etki_cephesi/uzun_vade_esik.py
+--- pristine/etki_cephesi/uzun_vade_esik.py	2026-10-14 06:05:45.831021724 +0000
++++ fixed/etki_cephesi/uzun_vade_esik.py	2026-10-14 07:45:20.546962890 +0000
+@@ -82,7 +82,7 @@
+         "tr_net_birlesik_vekil": {
+             "B_ust_kotu": round(b_net, 3),
+             "A_pasif": round(a_net, 3),
+-            "C_en_olasi": round(c_net, 3),
++            "C_referans": round(c_net, 3),
+             "C_zarar_cozum_aninda": round(cz_net, 3),
+             "not": "Negatif = TR kaybı. Üst eşik = B (araçsallaşma); alt hedef = C+zarar teorisi.",
+         },
+@@ -108,7 +108,7 @@
+     return {
+         "olcum": "uzun_vade_esik_ve_duzeltme_koridoru",
+         "horizon_yil": y1 - y0,
+-        "en_olasi_senaryo": proj.get("en_olasi", "C"),
++        "referans_senaryo": proj.get("referans_senaryo", "C"),
+         "zarar_teorisi_cozum": zcoz.get("cozum_varsayimi", True),
+         "esikler": esikler,
+         "duzelme_ozeti": duzeltme,
+@@ -133,7 +133,7 @@
+         "| --- | ---: | ---: |",
+         f"| B — üst kötü (araçsallaşma) | {e['B_ust_kotu']} | {b['B']} |",
+         f"| A — pasif bağ | {e['A_pasif']} | {b['A']} |",
+-        f"| C — en olası (2026) | {e['C_en_olasi']} | {b['C']} |",
++        f"| C — referans (2026) | {e['C_referans']} | {b['C']} |",
+         f"| C + zarar çözümü (anlık tam) | {e['C_zarar_cozum_aninda']} | {b['C_zarar_cozum']} |",
+         "",
+         "## Tahmini düzelme aralığı",
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/zarar_10y_senaryo_coklu.py fixed/etki_cephesi/zarar_10y_senaryo_coklu.py
 --- pristine/etki_cephesi/zarar_10y_senaryo_coklu.py	2026-10-14 06:05:45.831318454 +0000
 +++ fixed/etki_cephesi/zarar_10y_senaryo_coklu.py	2026-10-14 07:40:14.114272401 +0000
@@ -2103,8 +2266,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:42:06.465673182 +0000
-@@ -0,0 +1,251 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:46:07.714297475 +0000
+@@ -0,0 +1,259 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -2356,3 +2519,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert all(abs(v[s] - k["bugunku_P"][s]) < 1e-3 for s in v)
 +    ana = _j(OUT / "SENARYO_UYGULANABILIRLIK.json")
 +    assert abs(ana["bilesenler"]["olasilik_senaryo_c"] - v["C"]) < 1e-3
++
++
++def test_referans_senaryo_etiketi_olasilik_iddiasi_tasimiyor():
++    sen = _j(DATA / "senaryolar.json")
++    assert sen["referans_senaryo"] == "C" and "en_olasi" not in sen
++    assert _j(OUT / "PROJEKSIYON.json")["referans_senaryo"] == "C"
++    eski = [p.name for p in OUT.glob("*") if p.suffix in (".md", ".json") and ("en olası" in p.read_text(encoding="utf-8") or "en_olasi" in p.read_text(encoding="utf-8"))]
++    assert eski == []  # bayat rapor kalmadı (UZUN_VADE_ESIK artık run_all içinde)
