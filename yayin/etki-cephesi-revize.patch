@@ -35,14 +35,266 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/KAYNAK.md fixed/data/etki_cephesi/gozlem/KAYNAK.md
 --- pristine/data/etki_cephesi/gozlem/KAYNAK.md	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/KAYNAK.md	2026-10-14 07:27:18.973309823 +0000
-@@ -0,0 +1,6 @@
++++ fixed/data/etki_cephesi/gozlem/KAYNAK.md	2026-10-14 07:36:30.082106643 +0000
+@@ -0,0 +1,10 @@
 +# Gözlem verisi
 +
 +EVDS `bie_odeayrsunum6` (Ödemeler Dengesi - Ayrıntılı Sunum, aylık, mn USD), 14.10.2026 çekimi.
 +Seriler: `TP.ODEAYRSUNUM6.Q5` (toplam mal ihracatı), `Q6` (mal ithalatı), `Q76` (1.3.2.b yatırım geliri gideri), `Q75` (1.3.2.a gelir), `Q70` (1.3 birincil gelir gideri).
 +Yenilemek: `python etki_cephesi/evds_gozlem_cek.py` (ağ gerekir; `_incoming/zarar-teorisi-main/evds_cek.py` kullanır).
 +İlk/son gözlem: 2015-01 / 2026-08.
++
++## Borç çevirme oranları
++EVDS `bie_oderoll` (aylık, %), 14.10.2026 çekimi. `K1` bankalar, `K2` diğer sektörler (kısa+uzun vade); `K3`/`K4` tahvil dahil. İlk/son gözlem: 2006-06 / 2026-08.
++Yenilemek: `python etki_cephesi/evds_gozlem_cek.py` (ağ gerekir).
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv fixed/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv
+--- pristine/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv	2026-10-14 07:35:44.925931058 +0000
+@@ -0,0 +1,244 @@
++Donem,K1_bankalar,K2_diger_sektorler,K3_bankalar_tahvil_dahil,K4_diger_tahvil_dahil
++2006-06,108.46,254.3,108.46,254.3
++2006-07,108.59,203.91,108.59,203.91
++2006-08,104.4,175.42,104.4,175.42
++2006-09,104.58,181.32,104.58,181.32
++2006-10,101.96,181.11,101.96,181.11
++2006-11,99.84,170.38,99.84,170.38
++2006-12,100.69,180.62,100.69,180.62
++2007-01,100.7,163.19,100.7,163.19
++2007-02,103.81,154.3,103.81,154.3
++2007-03,101.92,189.15,101.92,189.15
++2007-04,104.88,185.03,104.88,185.03
++2007-05,112.74,185.3,112.74,185.3
++2007-06,112.79,172.03,112.79,172.03
++2007-07,113.5,172.88,113.5,172.88
++2007-08,118.11,168.2,118.11,168.2
++2007-09,115.84,146.46,115.84,146.46
++2007-10,114.35,151.05,114.35,151.05
++2007-11,105.94,151.12,105.94,151.12
++2007-12,104.25,156.84,104.25,156.84
++2008-01,105.46,164.57,105.46,164.57
++2008-02,106.55,166.56,106.55,166.56
++2008-03,107.11,179.64,107.11,179.64
++2008-04,109.7,179.44,109.7,179.44
++2008-05,110.08,187.18,110.08,187.18
++2008-06,109.46,200.89,109.46,200.89
++2008-07,116.19,200.2,116.19,200.2
++2008-08,115.63,214.34,115.63,214.34
++2008-09,114.32,209.82,114.32,209.82
++2008-10,113.38,200.72,113.38,200.72
++2008-11,105.57,177.94,105.57,177.94
++2008-12,99.86,141.29,99.86,141.29
++2009-01,94.76,125.59,94.76,125.59
++2009-02,87.7,109.46,87.7,109.46
++2009-03,82.69,89.73,82.69,89.73
++2009-04,75.85,81.94,75.85,81.94
++2009-05,76.88,77.19,76.88,77.19
++2009-06,80.8,75.35,80.8,75.35
++2009-07,80.83,75.98,80.83,75.98
++2009-08,82.42,69.46,82.42,69.46
++2009-09,84.41,69.74,84.41,69.74
++2009-10,88.76,69.59,88.76,69.59
++2009-11,95.71,67.85,95.71,67.85
++2009-12,101.92,71.42,101.92,71.42
++2010-01,99.55,71.53,99.55,71.53
++2010-02,100.84,78.14,100.84,78.14
++2010-03,103.49,78.6,103.49,78.6
++2010-04,105.08,80.17,105.08,80.17
++2010-05,105.6,86.15,105.6,86.15
++2010-06,103.9,79.81,103.9,79.81
++2010-07,104.23,81.93,105.38,81.93
++2010-08,105.44,84.16,106.62,84.16
++2010-09,106.21,87.37,107.41,87.37
++2010-10,109.39,91.1,110.8,91.1
++2010-11,111.16,94.71,112.87,95.84
++2010-12,114.44,102.59,115.96,103.74
++2011-01,117.99,104.4,117.99,105.53
++2011-02,115.39,104.91,116.13,106.0
++2011-03,118.34,119.25,119.77,120.32
++2011-04,111.63,121.52,113.97,122.59
++2011-05,111.95,122.97,114.53,122.97
++2011-06,110.27,127.28,113.0,127.32
++2011-07,108.71,127.58,111.32,127.62
++2011-08,109.43,129.17,111.59,129.21
++2011-09,107.24,116.18,108.91,116.22
++2011-10,111.14,114.99,111.85,115.03
++2011-11,109.79,118.53,110.64,118.57
++2011-12,107.18,112.34,108.11,112.34
++2012-01,109.07,111.18,110.08,111.18
++2012-02,108.89,110.14,110.83,110.14
++2012-03,102.92,118.9,104.62,118.9
++2012-04,103.31,120.97,106.52,120.97
++2012-05,104.75,117.49,107.03,117.49
++2012-06,106.05,122.87,108.25,122.87
++2012-07,104.87,111.82,108.1,111.82
++2012-08,104.36,116.82,106.75,116.82
++2012-09,105.33,113.86,109.58,113.86
++2012-10,102.61,109.98,108.82,112.21
++2012-11,102.03,108.5,110.76,113.84
++2012-12,102.86,109.36,114.28,114.5
++2013-01,103.8,121.21,115.04,126.69
++2013-02,107.37,117.01,121.72,122.48
++2013-03,115.9,106.76,127.96,112.09
++2013-04,115.43,113.28,124.34,123.27
++2013-05,112.52,101.2,119.32,111.15
++2013-06,112.27,94.79,117.49,104.43
++2013-07,110.91,93.32,115.05,102.85
++2013-08,110.12,93.97,113.1,105.06
++2013-09,107.2,96.22,109.91,107.25
++2013-10,106.62,93.23,109.32,100.45
++2013-11,109.07,102.73,111.46,106.65
++2013-12,110.47,106.66,113.24,110.75
++2014-01,108.9,106.76,112.37,110.97
++2014-02,108.33,108.25,111.19,110.55
++2014-03,108.41,113.07,111.34,115.38
++2014-04,108.39,116.25,111.99,118.62
++2014-05,107.4,118.55,111.8,120.95
++2014-06,103.76,112.76,109.36,123.21
++2014-07,105.67,117.32,112.23,128.02
++2014-08,105.24,115.07,111.43,125.43
++2014-09,106.53,109.28,113.1,121.59
++2014-10,106.86,104.44,113.68,114.1
++2014-11,106.17,106.73,111.68,119.24
++2014-12,106.98,112.16,110.73,116.66
++2015-01,107.8,109.85,110.25,114.63
++2015-02,105.64,108.0,109.01,113.07
++2015-03,104.37,110.05,107.18,113.55
++2015-04,103.91,110.73,105.0,116.29
++2015-05,103.55,110.17,104.9,113.56
++2015-06,102.1,117.04,103.68,120.87
++2015-07,102.09,115.15,102.89,118.31
++2015-08,104.43,118.25,103.75,121.27
++2015-09,102.59,126.87,100.65,129.7
++2015-10,102.98,131.55,100.41,134.82
++2015-11,100.81,130.0,98.43,132.85
++2015-12,101.63,124.99,98.59,127.81
++2016-01,100.26,129.0,97.88,132.24
++2016-02,100.94,128.38,99.06,131.4
++2016-03,99.5,130.88,98.3,137.81
++2016-04,98.65,130.73,99.41,135.41
++2016-05,99.04,133.18,99.96,137.74
++2016-06,100.03,141.86,101.56,146.35
++2016-07,99.86,137.86,101.91,141.96
++2016-08,98.11,136.25,99.86,140.53
++2016-09,98.53,129.9,100.23,129.59
++2016-10,99.02,131.77,100.6,131.2
++2016-11,98.69,125.24,99.62,127.71
++2016-12,95.44,105.37,95.95,107.86
++2017-01,95.32,105.81,95.7,108.26
++2017-02,96.19,104.78,97.16,107.35
++2017-03,96.88,95.43,99.36,98.12
++2017-04,96.21,94.45,97.46,96.86
++2017-05,95.98,93.76,100.23,93.9
++2017-06,98.75,99.44,104.24,99.57
++2017-07,97.41,102.96,102.07,103.39
++2017-08,97.79,103.21,101.9,103.63
++2017-09,99.0,106.59,102.09,110.11
++2017-10,100.84,107.21,103.97,115.12
++2017-11,101.44,110.63,102.38,117.48
++2017-12,102.1,116.61,102.28,123.43
++2018-01,102.78,118.14,104.02,128.04
++2018-02,103.25,128.66,104.61,138.64
++2018-03,101.35,130.27,102.3,136.73
++2018-04,100.84,130.76,101.18,126.88
++2018-05,100.76,136.48,101.92,131.97
++2018-06,99.4,131.27,100.17,127.46
++2018-07,98.87,132.52,98.81,126.17
++2018-08,96.31,119.72,95.95,111.65
++2018-09,93.26,123.5,93.06,113.59
++2018-10,90.4,118.42,89.54,114.14
++2018-11,87.53,110.53,86.14,106.97
++2018-12,84.91,112.19,83.49,108.09
++2019-01,83.51,101.61,83.31,97.45
++2019-02,86.2,96.9,86.08,100.49
++2019-03,91.6,100.67,92.96,113.46
++2019-04,92.1,102.13,95.78,111.08
++2019-05,93.68,98.54,97.31,107.45
++2019-06,94.51,86.51,97.03,87.99
++2019-07,95.3,90.36,94.94,91.26
++2019-08,93.67,94.01,93.38,91.15
++2019-09,92.99,94.44,91.18,84.55
++2019-10,91.72,88.44,87.74,81.67
++2019-11,92.54,88.68,88.54,85.36
++2019-12,93.86,78.62,91.24,82.09
++2020-01,92.87,74.85,91.83,78.49
++2020-02,94.26,73.14,92.49,76.6
++2020-03,93.93,65.29,92.16,68.81
++2020-04,96.45,67.06,95.21,67.16
++2020-05,96.2,61.46,94.86,56.49
++2020-06,96.3,72.7,94.51,65.33
++2020-07,99.2,70.55,97.73,63.33
++2020-08,99.28,68.65,98.96,61.85
++2020-09,101.12,62.73,100.87,56.56
++2020-10,98.83,69.2,99.93,72.11
++2020-11,98.31,75.05,99.48,81.46
++2020-12,100.83,88.34,102.89,94.75
++2021-01,100.2,96.61,102.59,103.1
++2021-02,99.5,105.96,101.09,112.84
++2021-03,99.85,111.87,101.0,117.63
++2021-04,101.71,106.33,101.54,109.18
++2021-05,101.94,133.13,100.88,140.85
++2021-06,99.04,126.49,98.05,140.49
++2021-07,98.7,121.71,96.19,136.2
++2021-08,98.55,124.63,96.52,143.76
++2021-09,96.64,130.98,94.93,148.45
++2021-10,96.12,131.33,94.11,146.88
++2021-11,96.4,99.84,95.26,108.97
++2021-12,96.07,132.97,94.17,129.49
++2022-01,95.94,143.51,94.43,140.16
++2022-02,95.82,145.32,93.66,131.75
++2022-03,96.87,152.29,93.83,145.35
++2022-04,98.32,150.41,96.03,143.57
++2022-05,98.45,146.35,94.02,148.59
++2022-06,97.67,124.71,93.39,127.72
++2022-07,97.03,169.21,93.04,168.58
++2022-08,97.84,194.63,94.45,193.95
++2022-09,97.6,183.85,93.87,183.22
++2022-10,96.49,184.44,91.94,184.8
++2022-11,95.1,184.13,91.92,180.15
++2022-12,95.8,164.48,91.85,161.28
++2023-01,95.88,126.26,91.44,117.54
++2023-02,97.41,103.99,94.03,96.95
++2023-03,97.72,96.48,94.58,85.05
++2023-04,98.68,96.26,96.58,79.5
++2023-05,101.36,96.81,99.77,80.71
++2023-06,101.13,97.07,100.5,80.62
++2023-07,101.48,106.95,102.1,92.89
++2023-08,101.78,96.59,101.16,84.76
++2023-09,103.96,103.88,106.08,98.3
++2023-10,104.27,101.71,107.26,103.33
++2023-11,108.5,100.16,113.11,107.87
++2023-12,108.74,110.67,112.66,121.23
++2024-01,111.45,87.68,116.63,99.38
++2024-02,110.73,95.87,119.67,115.03
++2024-03,110.21,94.64,120.11,111.29
++2024-04,109.89,100.54,119.99,121.9
++2024-05,108.09,107.35,116.76,125.7
++2024-06,115.29,96.57,124.89,106.33
++2024-07,116.14,109.86,125.1,131.33
++2024-08,114.72,113.37,121.69,130.98
++2024-09,116.95,123.51,123.6,138.32
++2024-10,121.55,119.71,129.82,138.49
++2024-11,118.53,114.91,127.78,136.13
++2024-12,117.5,126.78,128.92,152.0
++2025-01,125.86,132.84,133.93,156.77
++2025-02,127.6,137.14,133.46,161.37
++2025-03,129.04,141.81,133.72,156.58
++2025-04,114.88,151.32,119.77,157.76
++2025-05,116.42,160.84,123.48,165.74
++2025-06,113.3,150.79,120.58,155.52
++2025-07,106.1,157.44,118.93,154.8
++2025-08,109.81,156.69,123.21,152.01
++2025-09,103.0,154.67,116.38,163.96
++2025-10,110.33,171.02,124.59,182.19
++2025-11,109.55,175.8,122.17,184.26
++2025-12,108.39,197.05,120.11,197.91
++2026-01,108.08,193.79,116.57,197.83
++2026-02,104.69,192.4,111.19,196.23
++2026-03,107.69,182.74,111.48,186.7
++2026-04,109.0,183.02,110.79,186.0
++2026-05,110.82,172.08,111.5,176.54
++2026-06,114.3,161.75,111.78,175.46
++2026-07,114.43,160.75,112.35,165.71
++2026-08,117.22,154.74,114.2,159.4
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv fixed/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv
 --- pristine/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv	2026-10-14 07:27:18.973198466 +0000
@@ -658,8 +910,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/evds_gozlem_cek.py fixed/etki_cephesi/evds_gozlem_cek.py
 --- pristine/etki_cephesi/evds_gozlem_cek.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/evds_gozlem_cek.py	2026-10-14 07:30:26.973339125 +0000
-@@ -0,0 +1,36 @@
++++ fixed/etki_cephesi/evds_gozlem_cek.py	2026-10-14 07:35:44.951868363 +0000
+@@ -0,0 +1,51 @@
 +"""EVDS ödemeler dengesi aylık gözlem verisini yeniler (ağ gerekir)."""
 +from __future__ import annotations
 +
@@ -694,8 +946,23 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print(f"Wrote {OUT} ({len(per)} ay, {per[0]}..{per[-1]})")
 +
 +
++def borc_cevirme() -> None:
++    rows, _ = evds_cek.fetch_group("bie_oderoll", start="01-01-2005", end="31-12-2036", freq="5")
++    d: dict[str, dict[str, float]] = defaultdict(dict)
++    for _g, t, s, _ad, _agg, v in rows:
++        d[t][s.split(".")[-1]] = v
++    out = OUT.with_name("evds_borc_cevirme_aylik.csv")
++    with out.open("w", newline="", encoding="utf-8") as f:
++        w = csv.writer(f, lineterminator="\r\n")
++        w.writerow(["Donem", "K1_bankalar", "K2_diger_sektorler", "K3_bankalar_tahvil_dahil", "K4_diger_tahvil_dahil"])
++        for t in sorted(d):
++            w.writerow([t] + [d[t].get(k, "") for k in ("K1", "K2", "K3", "K4")])
++    print(f"Wrote {out} ({len(d)} ay)")
++
++
 +if __name__ == "__main__":
 +    main()
++    borc_cevirme()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
 --- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
 +++ fixed/etki_cephesi/finans_katman.py	2026-10-14 06:05:32.656290792 +0000
@@ -898,9 +1165,242 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +if __name__ == "__main__":
 +    main()
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olasilik_kapilar.py fixed/etki_cephesi/olasilik_kapilar.py
+--- pristine/etki_cephesi/olasilik_kapilar.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/olasilik_kapilar.py	2026-10-14 07:36:30.087214038 +0000
+@@ -0,0 +1,229 @@
++"""P(C) yeniden kurulumu: ölçülebilir kapılarla (el ataması yok).
++
++Eski: `senaryolar.json` olasilik_vekili A 0,22 / B 0,18 / C 0,60 (elle atanmış, dayanak yok).
++Yeni:
++  * prior = tekdüze (1/3 her senaryo): bilgi yoksa ağırlık yok.
++  * P(C) yalnız KAPI gözlemleriyle hareket eder. Her kapı: gözlenebilir seri, önceden yazılmış kontrol noktaları,
++    senaryo başına olabilirlik. Olabilirliğin kaynağı yazılır: `turetilmis` (senaryolar.json parametresinden)
++    ya da `varsayim` (tek parametreli, duyarlılığı raporlanır).
++  * Gözlem yoksa güncelleme yok: bilinmiyor sıfır değildir. Ölçüm penceresi baz yıldan sonra başlar.
++  * Kapı verisi yoksa kapı kapalı sayılır (olasılığa girmez), uydurma değer yazılmaz.
++
++Kapılar:
++  K1 merkez sızıntı sürüklenmesi (EVDS, ödemeler dengesi)  — turetilmis (merkez_sizinti_carpan); ayırt gücü yok.
++  K2 dış kısıt: borç çevirme oranı (EVDS bie_oderoll)       — varsayim (δ); kontrol noktaları 2027-12, 2029-12, 2031-12.
++  K3 etki erozyonu (bölge ihracat payı)                       — kaynak EVDS dışı; veri yok → kapalı.
++  K4 bağ kullanımı                                            — gözlenebilir seri yok → kapalı.
++"""
++from __future__ import annotations
++
++import csv
++import json
++import math
++from pathlib import Path
++from typing import Any
++
++from c_dinamik_olcut import _aylik, _oran12, _yillik_degisim, _surukleme, _posterior  # type: ignore
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++CEVIRME = DATA / "gozlem" / "evds_borc_cevirme_aylik.csv"
++SENARYOLAR = ("A", "B", "C")
++KONTROL = ("2027-12", "2029-12", "2031-12")
++ESIK_ACIK = 100.0  # %: çevirme >= 100 = dış finansman açık
++DELTA = 0.10  # K2 varsayımı: p_C = p0 + δ, p_B = p0 − δ, p_A = p0
++DELTA_BANT = (0.0, 0.05, 0.10, 0.15, 0.20)
++UNIFORM = {s: 1 / 3 for s in SENARYOLAR}
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _cevirme() -> dict[str, dict[str, float]]:
++    d: dict[str, dict[str, float]] = {}
++    with CEVIRME.open(encoding="utf-8", newline="") as f:
++        for r in csv.DictReader(f):
++            try:
++                d[r["Donem"]] = {"K1": float(r["K1_bankalar"]), "K2": float(r["K2_diger_sektorler"])}
++            except ValueError:
++                continue
++    return d
++
++
++def _ort12(d: dict[str, dict[str, float]]) -> dict[str, tuple[float, float]]:
++    ps = sorted(d)
++    out = {}
++    for i in range(11, len(ps)):
++        w = ps[i - 11 : i + 1]
++        y0, m0, y1, m1 = int(w[0][:4]), int(w[0][5:7]), int(w[-1][:4]), int(w[-1][5:7])
++        if (y1 - y0) * 12 + (m1 - m0) != 11:
++            continue
++        out[ps[i]] = (sum(d[t]["K1"] for t in w) / 12, sum(d[t]["K2"] for t in w) / 12)
++    return out
++
++
++def _acik(k1: float, k2: float) -> bool:
++    return k1 >= ESIK_ACIK and k2 >= ESIK_ACIK
++
++
++def _norm(w: dict[str, float]) -> dict[str, float]:
++    s = sum(w.values())
++    return {k: v / s for k, v in w.items()}
++
++
++def _k2_p(p0: float, delta: float) -> dict[str, float]:
++    c = lambda x: min(0.95, max(0.05, x))  # noqa: E731
++    return {"A": c(p0), "B": c(p0 - delta), "C": c(p0 + delta)}
++
++
++def _binom_lik(p: dict[str, float], k: int, n: int) -> dict[str, float]:
++    return {s: p[s] ** k * (1 - p[s]) ** (n - k) for s in SENARYOLAR}  # binom katsayısı senaryolar arası sabit
++
++
++def _pc_satir(pc: float, satirlar: list[dict[str, Any]]) -> dict[str, Any]:
++    """P(C) bandın (0,30–0,80) en yakın satırına eşlenir; bant dışı kenara kırpılır."""
++    r = min(satirlar, key=lambda x: abs(x["p_C"] - pc))
++    return {"p_C_satir": r["p_C"], "skor": r["skor_0_100"], "karar": r["karar"], "kirpildi": bool(pc < 0.3 or pc > 0.8)}
++
++
++def hesapla() -> dict[str, Any]:
++    sen = _load(DATA / "senaryolar.json")
++    ph = _load(DATA / "finans_katman_kopru.json")
++    baz = int(sen["baz_yil"])
++    dup = _load(OUT / "OLASILIK_DUYARLILIK.json") if (OUT / "OLASILIK_DUYARLILIK.json").is_file() else {}
++    satirlar = dup.get("satirlar", [])
++    esik_pc = float(dup.get("gecisler", {}).get("karar_kosullu_skor_62", 0.561))
++    eski = {s["id"]: float(s["olasilik_vekili"]) for s in sen["senaryolar"]}
++
++    # K2 tarihçe: 12 aylık ortalama çevirme; "açık" payı = senaryodan bağımsız taban oran p0
++    ort = _ort12(_cevirme())
++    acik_pay = sum(_acik(*v) for v in ort.values()) / len(ort)
++    p0 = acik_pay
++    son = max(ort)
++    k2_son = {"donem": son, "K1_bankalar": round(ort[son][0], 1), "K2_diger": round(ort[son][1], 1), "acik": _acik(*ort[son])}
++    gozlenen = {t: _acik(*ort[t]) for t in KONTROL if t in ort and int(t[:4]) > baz}
++
++    # K1: baz yıl sonrası yıllık sürüklenme gözlemi (şimdilik yok)
++    d = _aylik()
++    r = _oran12(d)
++    g = _yillik_degisim(r)
++    import numpy as np  # noqa: E402
++
++    on = [v for y, v in sorted(g.items()) if y <= baz]
++    mu, sigma = float(np.mean(on)), float(np.std(on, ddof=1))
++    drift = _surukleme(sen, float(ph["tam_olgunluk_yil"]))
++    uygun = [g[y] for y in sorted(g) if y > baz]
++    l1 = _posterior(UNIFORM, uygun, mu, sigma, drift) if uygun else dict(UNIFORM)
++
++    # K2 olabilirlik (gözlem varsa)
++    pk2 = _k2_p(p0, DELTA)
++    n_g = len(gozlenen)
++    k_g = sum(gozlenen.values())
++    l2 = _binom_lik(pk2, k_g, n_g) if n_g else {s: 1.0 for s in SENARYOLAR}
++
++    def birlestir(prior, lik1_post, lik2):
++        w = {s: prior[s] * (lik1_post[s] / UNIFORM[s]) * lik2[s] for s in SENARYOLAR}
++        return _norm(w)
++
++    bugun = birlestir(UNIFORM, l1, l2)
++
++    # Kapı sonuç tablosu: K2 kontrol noktalarında k/3 açık → P(C)
++    tablo = []
++    n = len(KONTROL)
++    for k in range(n + 1):
++        post = birlestir(UNIFORM, dict(UNIFORM), _binom_lik(pk2, k, n))
++        satir = {"k_acik": k, "n": n, "P": {s: round(post[s], 3) for s in SENARYOLAR}}
++        if satirlar:
++            satir["karar_baglantisi"] = _pc_satir(post["C"], satirlar)
++        satir["esigi_gecer"] = bool(post["C"] >= esik_pc)
++        tablo.append(satir)
++
++    # duyarlılık: δ ve prior seçimi (k=n: en lehte, k=0: en aleyhte)
++    duy = []
++    for dl in DELTA_BANT:
++        p = _k2_p(p0, dl)
++        e = {}
++        for ad, pr in (("tekduze", UNIFORM), ("eski_el_atamasi", _norm(eski))):
++            e[ad] = {
++                "k=0": round(birlestir(pr, dict(UNIFORM), _binom_lik(p, 0, n))["C"], 3),
++                "k=n": round(birlestir(pr, dict(UNIFORM), _binom_lik(p, n, n))["C"], 3),
++            }
++        duy.append({"delta": dl, "p_acik": {k: round(v, 3) for k, v in p.items()}, **e})
++
++    en_iyi = max(t["P"]["C"] for t in tablo)
++    kapilar = [
++        {
++            "kapi": "K1 merkez sızıntı sürüklenmesi",
++            "kaynak": "EVDS TP.ODEAYRSUNUM6.Q76/Q5",
++            "olabilirlik": "turetilmis",
++            "esleme": "d_s = ln(merkez_sizinti_carpan_s)/T",
++            "durum": "olcum_bekliyor" if not uygun else "olculdu",
++            "ayirt_gucu": "yok (C vs B ≥ 307 yıl)",
++            "P_C_etkisi": round(l1["C"], 3),
++        },
++        {
++            "kapi": "K2 dış kısıt (borç çevirme ≥ %100: bankalar ve diğer sektörler)",
++            "kaynak": "EVDS bie_oderoll TP.ODEROLL.K1, K2 (12 ay ort.)",
++            "olabilirlik": "varsayim",
++            "esleme": f"p_A = taban oran p0 = {p0:.3f} (tarihçede 'açık' pay); p_B = p0 − δ; p_C = p0 + δ; δ = {DELTA}",
++            "kontrol_noktalari": list(KONTROL),
++            "durum": "olcum_bekliyor" if not n_g else f"olculdu ({k_g}/{n_g} acik)",
++            "bugunku_deger_bilgi": k2_son,
++            "ayirt_gucu": f"zayıf: tek kapıdan en iyi P(C) = {en_iyi:.3f}",
++        },
++        {"kapi": "K3 etki erozyonu (bölge ihracat payı)", "kaynak": "TİM; EVDS ülke grubu serisi katalogda yok", "olabilirlik": "turetilmis (etki_erosyon_carpani) ama σ ölçülemez", "durum": "veri_yok", "P_C_etkisi": None},
++        {"kapi": "K4 bağ kullanımı", "kaynak": "—", "olabilirlik": "tanımsız", "durum": "olculmedi", "P_C_etkisi": None},
++    ]
++    return {
++        "olcum": "olasilik_kapilar",
++        "etiket": "olasilik_olculmedi_kapi_iskeleti",
++        "prior": {s: round(UNIFORM[s], 4) for s in SENARYOLAR},
++        "eski_el_atamasi": eski,
++        "baz_yil": baz,
++        "bugunku_P": {s: round(bugun[s], 3) for s in SENARYOLAR},
++        "bugunku_durum": "ölçüm başlamadı: P(C) = prior (1/3). 0,60 hiçbir ölçüme dayanmıyordu." if not (uygun or n_g) else "gözlem var",
++        "karar_esigi_P_C": esik_pc,
++        "kapilar": kapilar,
++        "k2_tarihce": {"taban_acik_pay": round(p0, 3), "n_pencere": len(ort), "son": k2_son},
++        "k2_sonuc_tablosu": tablo,
++        "k2_duyarlilik": duy,
++        "en_iyi_tek_kapi_P_C": en_iyi,
++        "sonuc": (
++            f"K2 üç kontrol noktasında da açık çıksa P(C) = {tablo[-1]['P']['C']:.3f}; karar eşiği {esik_pc:.3f}. "
++            + ("Tek kapı eşiği geçirir." if en_iyi >= esik_pc else "Tek kapı eşiği geçirmez: C'yi 'uygulanabilir' yapacak kanıt yok; karar P(C) varsayımıyla değil, kapı kümesiyle verilmeli.")
++        ),
++    }
++
++
++def _md(d: dict[str, Any]) -> str:
++    L = ["# P(C) — kapılarla yeniden kurulum", "", f"**Etiket:** `{d['etiket']}`", ""]
++    L.append(f"- Prior: tekdüze {d['prior']} (eski el ataması {d['eski_el_atamasi']} dayanaksızdı).")
++    L.append(f"- Bugünkü P: **{d['bugunku_P']}**. {d['bugunku_durum']}")
++    L.append(f"- Karar eşiği (skor 62): P(C) ≥ **{d['karar_esigi_P_C']}**.")
++    L += ["", "## Kapılar", "", "| Kapı | Kaynak | Olabilirlik | Durum |", "| --- | --- | --- | --- |"]
++    for k in d["kapilar"]:
++        L.append(f"| {k['kapi']} | {k['kaynak']} | {k['olabilirlik']} | {k['durum']} |")
++    t = d["k2_tarihce"]
++    L += ["", "## K2 dış kısıt", "", f"- Tarihçe: 12 aylık ort. çevirme ≥ %100 olan pencerelerin payı **{t['taban_acik_pay']}** ({t['n_pencere']} pencere). Bu A için taban oran p0.", f"- Son: {t['son']}", f"- Varsayım (tek parametre): p_C = p0 + δ, p_B = p0 − δ, δ = {DELTA}.", "", "| Açık sayısı (3 kontrol noktasından) | P(A) | P(B) | P(C) | Eşiği geçer | Karar bandı |", "| ---: | ---: | ---: | ---: | --- | --- |"]
++    for r in d["k2_sonuc_tablosu"]:
++        kb = r.get("karar_baglantisi", {})
++        L.append(f"| {r['k_acik']}/{r['n']} | {r['P']['A']} | {r['P']['B']} | {r['P']['C']} | {'evet' if r['esigi_gecer'] else 'hayır'} | {kb.get('karar', '—')} (skor {kb.get('skor', '—')}{', bant dışı kırpıldı' if kb.get('kirpildi') else ''}) |")
++    L += ["", "### δ duyarlılığı (P(C): hiç açık yok → hepsi açık)", "", "| δ | tekdüze prior | eski el ataması prior |", "| ---: | --- | --- |"]
++    for r in d["k2_duyarlilik"]:
++        L.append(f"| {r['delta']} | {r['tekduze']['k=0']} → {r['tekduze']['k=n']} | {r['eski_el_atamasi']['k=0']} → {r['eski_el_atamasi']['k=n']} |")
++    L += ["", "## Sonuç", "", d["sonuc"], "", "## Ne denmez", "", "- 'P(C) = 1/3' bir ölçüm değildir; bilgi yokluğudur. Ölçüm 2027-12'den itibaren başlar.", "- K2 olabilirliği varsayımdır (δ). Tablo bunun ne kadar oynattığını gösterir, doğrulamaz.", "- K3 ve K4 veri gelene kadar olasılığa girmez; sıfır değil, bilinmiyor.", ""]
++    return "\n".join(L)
++
++
++def main() -> None:
++    d = hesapla()
++    OUT.mkdir(parents=True, exist_ok=True)
++    (OUT / "OLASILIK_KAPILAR.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    (OUT / "OLASILIK_KAPILAR.md").write_text(_md(d), encoding="utf-8")
++    print("OLASILIK_KAPILAR:", d["bugunku_P"], "| en iyi tek kapi P(C) =", d["en_iyi_tek_kapi_P_C"])
++
++
++if __name__ == "__main__":
++    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 07:28:41.158126505 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 07:36:34.706125795 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -937,12 +1437,13 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,30 @@
+@@ -31,11 +47,31 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
 +        "olasilik_duyarlilik.py",
 +        "c_dinamik_olcut.py",
++        "olasilik_kapilar.py",
          ]
      )
 -    for s in steps:
@@ -1395,8 +1896,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:28:59.747199074 +0000
-@@ -0,0 +1,208 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:36:53.598083315 +0000
+@@ -0,0 +1,231 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -1605,3 +2106,26 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert cu["uyumsuz"] is True and cu["oran_evds_capa"] > 1.05
 +    capa = _j(DATA / "kalibre" / "gerceklik_capa.json")
 +    assert capa["usd_mn"]["yatirim_geliri_gideri"] == cu["capa_yatirim_geliri_gideri_mn_usd"]  # çapa değiştirilmedi
++
++
++def test_kapilar_prior_tekduze_ve_gozlem_yokken_guncelleme_yok():
++    d = _j(OUT / "OLASILIK_KAPILAR.json")
++    assert all(abs(v - 1 / 3) < 1e-3 for v in d["prior"].values())
++    assert d["bugunku_P"] == {"A": 0.333, "B": 0.333, "C": 0.333}  # baz 2026: kontrol noktaları gelecekte
++    assert d["eski_el_atamasi"]["C"] == 0.6  # eski değer yalnız karşılaştırma için
++    durum = {k["kapi"][:2]: k["durum"] for k in d["kapilar"]}
++    assert durum["K3"] == "veri_yok" and durum["K4"] == "olculmedi"  # veri yok → olasılığa girmez
++
++
++def test_kapilar_k2_sonuc_tablosu_monoton_ve_esik_tutarli():
++    d = _j(OUT / "OLASILIK_KAPILAR.json")
++    t = d["k2_sonuc_tablosu"]
++    pc = [r["P"]["C"] for r in t]
++    assert pc == sorted(pc)  # daha çok 'açık' → C artar
++    for r in t:
++        assert abs(sum(r["P"].values()) - 1) < 2e-3
++        assert r["esigi_gecer"] == (r["P"]["C"] >= d["karar_esigi_P_C"])
++    assert d["en_iyi_tek_kapi_P_C"] == max(pc)
++    # δ=0 → kapı bilgi taşımaz
++    z = next(x for x in d["k2_duyarlilik"] if x["delta"] == 0.0)
++    assert z["tekduze"]["k=0"] == z["tekduze"]["k=n"] == 0.333

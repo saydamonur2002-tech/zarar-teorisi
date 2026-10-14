@@ -2,7 +2,7 @@
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
 Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `9a97b1331fac8996`),
-**45 test geçti** (27 mevcut + 18 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+**47 test geçti** (27 mevcut + 20 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -70,6 +70,24 @@ Not: karar hâlâ `uygulanabilir_kosullu`, ama skor eşiğin (62) yalnız 0,7 ü
 - **Güç analizi:** yıllık σ = 0,177, C ile A/B arasındaki sürüklenme farkı 0,0105–0,0245. SPRT %95 için **307 (C vs B) ve 1.660 (C vs A) yıl** gerekir; 4000 koşulu Monte Carlo'da 10 yıl sonra gerçek senaryo C de olsa B de olsa E[P(C)] ≈ 0,58–0,61. Gösterge P(C)'yi **doğrulayamaz**.
 - **Çapa uyumsuzluğu:** kalibrasyonda 2024 yatırım geliri gideri 18.841 mn $; EVDS 26.483 (×1,41; 2023 = 18.793). `gerceklik_capa.json` değiştirilmedi.
 - **Karşı-olgusal trend yok:** oran 2023 sonu 0,075 → 2025 sonu 0,120 (×1,61); senaryoların iki yıllık sürüklenmesi en çok ±0,028.
+
+## P(C) ölçülebilir kapılarla yeniden kuruldu (yeni rapor)
+`olasilik_kapilar.py` → `OLASILIK_KAPILAR.{json,md}`. Eski 0,22 / 0,18 / 0,60 elle atanmıştı, dayanağı yoktu. Yeni kurulum:
+- **Prior tekdüze (1/3).** Bilgi yoksa ağırlık yok. Ölçüm baz yıldan (2026) sonra başlar; şimdi güncelleme yok → **bugünkü P(C) = 0,333**. Bu ölçüm değil, bilgi yokluğudur.
+- **K1 merkez sızıntı sürüklenmesi:** olabilirlik `senaryolar.json`'dan türetilir; ayırt gücü yok (307 yıl).
+- **K2 dış kısıt (EVDS `bie_oderoll`, bankalar ve diğer sektörler 12 ay ort. çevirme ≥ %100):** kontrol noktaları 2027-12, 2029-12, 2031-12. Taban oran p0 = tarihçede "açık" pencere payı = **0,534** (232 pencere; bugün açık: K1 109,8, K2 175,0). Olabilirlik **varsayım**: p_A = p0, p_B = p0 − δ, p_C = p0 + δ, δ = 0,10 (tek parametre, duyarlılığı raporda).
+- **K3 etki erozyonu** (bölge ihracat payı): EVDS'de seri yok, TİM verisi depoda yok → kapalı. **K4 bağ kullanımı:** gözlenebilir seri yok → kapalı. İkisi de olasılığa girmez: bilinmiyor sıfır değildir.
+
+| K2'de 3 kontrol noktasından açık sayısı | P(A) | P(B) | P(C) | Eşiği (0,561) geçer |
+| ---: | ---: | ---: | ---: | --- |
+| 0 | 0,305 | 0,547 | 0,148 | hayır |
+| 1 | 0,341 | 0,409 | 0,250 | hayır |
+| 2 | 0,344 | 0,276 | 0,380 | hayır |
+| 3 | 0,312 | 0,167 | 0,521 | hayır |
+
+- **Sonuç:** tek ölçülebilir kapı en iyi ihtimalle P(C) = 0,52 verir; karar eşiği 0,56. Yani bugün eldeki gözlenebilir kanıtla C "uygulanabilir_koşullu" yapılamaz. P(C)=1/3 noktasında duyarlılık bandı `kisitli_uygulanabilir` der (skor ≈ 57–58); ana rapor hâlâ eski 0,60 ile 62,7 / `uygulanabilir_kosullu` gösteriyor.
+- δ duyarlılığı: δ = 0,20 ile 3/3 açık → 0,68; δ = 0 ile kapı hiçbir şey söylemez. Eski el ataması prior kullanılırsa sonuç prior'a yaslanır (0,35 … 0,76): tabloyu prior belirler, kapı değil.
+- Ana pipeline'ın `olasilik_vekili` değeri **değiştirilmedi** (başlık sayıları kayardı); yeni P(C)'ye bağlamak ayrı karardır.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

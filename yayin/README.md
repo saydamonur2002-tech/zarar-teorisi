@@ -15,6 +15,7 @@
 | [ETKI_CEPHESI_REVIZE.md](./ETKI_CEPHESI_REVIZE.md) | Düzeltilen hatalar, önce/sonra sayıları, açıkta kalanlar |
 | [OLASILIK_DUYARLILIK.md](./OLASILIK_DUYARLILIK.md) | C senaryosu olasılığı 0,30–0,80 duyarlılık bandı (olasılık ölçülmedi; yeni olasılık üretmez) |
 | [C_DINAMIK_OLCUT.md](./C_DINAMIK_OLCUT.md) | C'nin gerçekleşmesini ölçen dinamik ölçüt (sıralı Bayes, EVDS merkez sızıntı oranı); güç analizi: bu gösterge C'yi ayırt edemez |
+| [OLASILIK_KAPILAR.md](./OLASILIK_KAPILAR.md) | P(C) ölçülebilir kapılarla yeniden kuruldu: tekdüze prior, EVDS borç çevirme kapısı, kapı sonuç tablosu; tek kapı karar eşiğini geçirmez |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 
