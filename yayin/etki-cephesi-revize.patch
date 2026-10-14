@@ -1,6 +1,6 @@
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/.github/workflows/etki-cephesi.yml fixed/.github/workflows/etki-cephesi.yml
---- pristine/.github/workflows/etki-cephesi.yml	2026-10-14 06:05:45.810940119 +0000
-+++ fixed/.github/workflows/etki-cephesi.yml	2026-10-14 06:04:49.033075737 +0000
+--- pristine/.github/workflows/etki-cephesi.yml	2026-10-14 19:53:01.586858533 +0000
++++ fixed/.github/workflows/etki-cephesi.yml	2026-10-14 19:53:01.815599107 +0000
 @@ -27,6 +27,6 @@
        - name: Install dependencies
          run: pip install -r requirements.txt
@@ -10,8 +10,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
        - name: Durum ozeti (rapor butunlugu)
          run: python etki_cephesi/durum_ozeti.py
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/README.md fixed/data/etki_cephesi/README.md
---- pristine/data/etki_cephesi/README.md	2026-10-14 06:05:45.812344840 +0000
-+++ fixed/data/etki_cephesi/README.md	2026-10-14 07:45:20.551037038 +0000
+--- pristine/data/etki_cephesi/README.md	2026-10-14 19:53:01.591526222 +0000
++++ fixed/data/etki_cephesi/README.md	2026-10-14 19:53:01.815758738 +0000
 @@ -17,7 +17,7 @@
  | `bolge_akis.json` | Alt havza akış payları |
  | `yerel_rant_kanal.json` | Dış bağlanma zararı + rant kanalı çıkışı |
@@ -23,7 +23,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  .\.venv\Scripts\python.exe etki_cephesi/kalibrasyon.py
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/REVIZE_NOTU.md fixed/data/etki_cephesi/REVIZE_NOTU.md
 --- pristine/data/etki_cephesi/REVIZE_NOTU.md	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/REVIZE_NOTU.md	2026-10-14 07:28:41.158762929 +0000
++++ fixed/data/etki_cephesi/REVIZE_NOTU.md	2026-10-14 19:53:01.815855768 +0000
 @@ -0,0 +1,20 @@
 +# Revize notu (SFC köprüsü)
 +
@@ -47,7 +47,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/durdurma_kurallari.json fixed/data/etki_cephesi/durdurma_kurallari.json
 --- pristine/data/etki_cephesi/durdurma_kurallari.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/durdurma_kurallari.json	2026-10-14 16:23:27.552226234 +0000
++++ fixed/data/etki_cephesi/durdurma_kurallari.json	2026-10-14 19:53:01.815918372 +0000
 @@ -0,0 +1,53 @@
 +{
 +  "not": "Durdurmanın nasıl gerçekleşeceği: KURAL BAZLI (aktör bazlı değil). Boşalma beş halkaya ayrışır (C'deki ağırlıklar PROJEKSIYON'dan); her halkanın durma hızı, ilgili katmanın kalibre gerçekleşme oranına bağlıdır; halkalar kapı kurallarıyla açılır. Hız sabiti a, modelin kalibre C yoluna (ZARAR_10Y yillik_seri) bire bir uydurulur: böylece m=1 çözümü modelin mevcut yolunu yeniden üretir. Eşleştirmeler ve kapı eşikleri atanmıştır.",
@@ -103,8 +103,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  "m_arama_ust": 50.0
 +}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/finans_katman_kopru.json fixed/data/etki_cephesi/finans_katman_kopru.json
---- pristine/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 06:05:45.811750548 +0000
-+++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 08:24:45.037502739 +0000
+--- pristine/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 19:53:01.590993746 +0000
++++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 19:53:01.815988656 +0000
 @@ -7,10 +7,33 @@
      "zarar_aktarimi": 0.68
    },
@@ -141,7 +141,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/KAYNAK.md fixed/data/etki_cephesi/gozlem/KAYNAK.md
 --- pristine/data/etki_cephesi/gozlem/KAYNAK.md	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/KAYNAK.md	2026-10-14 15:19:27.098227757 +0000
++++ fixed/data/etki_cephesi/gozlem/KAYNAK.md	2026-10-14 19:53:01.816154151 +0000
 @@ -0,0 +1,15 @@
 +# Gözlem verisi
 +
@@ -160,7 +160,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +Yenilemek: Comtrade `reporterCode/partnerCode` listesiyle aynı sorgular (ağ gerekir); `dis_ticaret_gsyh_2023.json` şemasını koruyun.
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json fixed/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json
 --- pristine/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json	2026-10-14 15:49:04.620863069 +0000
++++ fixed/data/etki_cephesi/gozlem/bolge_birincil_gelir_odemesi.json	2026-10-14 19:53:01.816190118 +0000
 @@ -0,0 +1,140 @@
 +{
 +  "not": "Brüt birincil gelir ödemeleri (yurt dışına yatırım geliri ve işgücü geliri ödemeleri), bölge ülkeleri: dış bağlama zararının gelir ödemesiyle taşınabilirliğine üst sınır. Dünya Bankası WDI BM.GSR.FCTY.CD, son yıl ≥ 2020 olanlar (SY 2010, İran 2000 bayat; SO, TM yok: sınırsız sayılır). GCC = SA+AE+QA+KW+BH+OM toplamı.",
@@ -304,7 +304,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json fixed/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json
 --- pristine/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json	2026-10-14 15:26:35.021886598 +0000
++++ fixed/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json	2026-10-14 19:53:01.816252111 +0000
 @@ -0,0 +1,427 @@
 +{
 +  "not": "Dış veriden kayıp modelleme girdisi (çekim/gravity): ihracat gelirinin ortak ülkenin gelir kaybına duyarlılığı. Ölçülmüş veri: UN Comtrade (2023, HS TOTAL) ve Dünya Bankası GSYH (2023, cari USD). Kaybı hesaplayan model burada değil (projeksiyon.py).",
@@ -735,7 +735,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv fixed/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv
 --- pristine/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv	2026-10-14 07:35:44.925931058 +0000
++++ fixed/data/etki_cephesi/gozlem/evds_borc_cevirme_aylik.csv	2026-10-14 19:53:01.816413522 +0000
 @@ -0,0 +1,244 @@
 +Donem,K1_bankalar,K2_diger_sektorler,K3_bankalar_tahvil_dahil,K4_diger_tahvil_dahil
 +2006-06,108.46,254.3,108.46,254.3
@@ -983,7 +983,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +2026-08,117.22,154.74,114.2,159.4
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv fixed/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv
 --- pristine/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv	2026-10-14 07:27:18.973198466 +0000
++++ fixed/data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv	2026-10-14 19:53:01.816498055 +0000
 @@ -0,0 +1,141 @@
 +Donem,X_mal_ihracati,M_mal_ithalati,YG_yatirim_geliri_gideri,YG_yatirim_geliri_geliri,PG_birincil_gelir_gideri
 +2015-01,13159.0,16278.0,614.0,163.0,677.0
@@ -1128,7 +1128,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +2026-08,23327.0,27073.0,2395.0,733.0,2659.0
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json
 --- pristine/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	2026-10-14 15:40:59.105427468 +0000
++++ fixed/data/etki_cephesi/gozlem/tr_bagimsiz_olcek.json	2026-10-14 19:53:01.816602180 +0000
 @@ -0,0 +1,105 @@
 +{
 +  "not": "TR kaybının ölçeğini sınamak için BAĞIMSIZ gözlem: Dünya Bankası (WDI) TR ödemeler dengesi ve büyüme serileri. Modelin kendi çapalarından (EVDS yatırım geliri gideri, gerceklik_capa) ayrı kaynaktır; bu dosyayı yalnız tr_olcek_sinama.py okur.",
@@ -1236,8 +1236,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  "umc_not": "UMC = Dünya Bankası üst-orta gelir grubu toplamı (TR'nin karşılaştırma grubu)"
 +}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/senaryolar.json fixed/data/etki_cephesi/senaryolar.json
---- pristine/data/etki_cephesi/senaryolar.json	2026-10-14 06:05:45.818537428 +0000
-+++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 08:24:11.535150189 +0000
+--- pristine/data/etki_cephesi/senaryolar.json	2026-10-14 19:53:01.591778237 +0000
++++ fixed/data/etki_cephesi/senaryolar.json	2026-10-14 19:53:01.816688570 +0000
 @@ -1,39 +1,41 @@
  {
    "horizon_yil": 10,
@@ -1288,8 +1288,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
        "bag_modu": {"kullanim": 0.52, "atil": 0.26, "aracsal": 0.22}
      }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/stok_akis_kopru.json fixed/data/etki_cephesi/stok_akis_kopru.json
---- pristine/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:05:45.818614052 +0000
-+++ fixed/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:44:11.859101458 +0000
+--- pristine/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 19:53:01.591820560 +0000
++++ fixed/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 19:53:01.816821861 +0000
 @@ -6,15 +6,30 @@
    "simulate": {
      "kappa": 0.1,
@@ -1381,7 +1381,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/surdurme_maliyeti.json fixed/data/etki_cephesi/surdurme_maliyeti.json
 --- pristine/data/etki_cephesi/surdurme_maliyeti.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/surdurme_maliyeti.json	2026-10-14 14:50:45.532693992 +0000
++++ fixed/data/etki_cephesi/surdurme_maliyeti.json	2026-10-14 19:53:01.816899221 +0000
 @@ -0,0 +1,16 @@
 +{
 +  "not": "Dış aktörlerin TR'nin kaybının DEVAMLILIĞI için katlandığı maliyet (karşı-hamleyi etkisizleştirme: diplomatik/güvenlik varlığı, finansman, lobi, yaptırım uygulama). Ölçülmüş veri yok; tek katsayılı varsayım.",
@@ -1400,8 +1400,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  "yorum": "MFIN (merkez finans vekil) de maliyete katlanır: sızıntının alıcısı olarak onu sürdürür. TR güçlüyse (C: pol 0,95) kaybı sürdürmek pahalı; TR zayıfsa (B: pol 0,41) ucuz. Maliyet kazancı aşamaz (oran < 1)."
 +}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/uretim_ic_akis_kopru.json fixed/data/etki_cephesi/uretim_ic_akis_kopru.json
---- pristine/data/etki_cephesi/uretim_ic_akis_kopru.json	2026-10-14 06:05:45.818841604 +0000
-+++ fixed/data/etki_cephesi/uretim_ic_akis_kopru.json	2026-10-14 07:55:43.680672112 +0000
+--- pristine/data/etki_cephesi/uretim_ic_akis_kopru.json	2026-10-14 19:53:01.591981809 +0000
++++ fixed/data/etki_cephesi/uretim_ic_akis_kopru.json	2026-10-14 19:53:01.817131416 +0000
 @@ -12,5 +12,11 @@
    "gsyh_ic_talep_uretim_kopukluk_duzeltme": 0.2,
    "uretim_akis_eslesme": 0.38,
@@ -1414,9 +1414,174 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  },
    "gsyh_not": "gsyh_ic_talep_uretim_kopukluk_duzeltme = sahte/ithal talep büyümesinin vekili; üretime bağlanan akışla kapanır (teshis/gsyh_etki_vekili ayrı çapa)."
  }
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/uretim_katman_model.json fixed/data/etki_cephesi/uretim_katman_model.json
+--- pristine/data/etki_cephesi/uretim_katman_model.json	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/uretim_katman_model.json	2026-10-14 19:55:12.782128477 +0000
+@@ -0,0 +1,161 @@
++{
++  "not": "Kullanıcının üretim katmanı modeli (Google Drive): 3↔2↔1 çözüm mimarisinin sayısal ayağı, '81 İl Sızıntı Matrisi' ve 5_REVIZYON sayfası. Tüm değerler kaynak belgeden aynen alındı; statü etiketleri belgedeki gibidir. Bu dosya yalnız _uretim_katman.py ve uretim_katman_rapor.py tarafından okunur.",
++  "kaynak": [
++    {
++      "baslik": "81 İl Sızıntı Matrisi Analizi",
++      "drive_id": "1WSI8f3jqplxSQ6TGOklvA46FN4lVXMyPAa4qE_68GlY",
++      "tarih": "2026-08-31",
++      "kullanim": "tipoloji katsayıları, cari açık stres testi, revizyon (adreslenebilir taban, ihracat esnekliği)"
++    },
++    {
++      "baslik": "Zarar_Teorisi_Tek_Cekirdek_Dort_Dugum_Tam_Rapor",
++      "drive_id": "1kyycqD5RedYe3UT8wJDTQInyGE8Wul71BXZMA1vxa84",
++      "tarih": "2026-08-31",
++      "kullanim": "81 il simülasyonundaki ithalat gereği senaryoları (286,1 / 231,0 / 193,1 mn TL); düğüm numaralaması ve 3↔2↔1 mimarisi sisteme bağlanmadı"
++    },
++    {
++      "baslik": "Görsellerdeki Üretim Borç Harcama Modelinin Teknik İncelemesi",
++      "drive_id": "1UfxS1v5YWw3LuWrC1R6KvvH7qVExYnBx",
++      "tarih": "2026-07-02",
++      "kullanim": "HC ≤ Y* + FX − DS kısıtı, iç/dış borç servisi ayrımı (sayısal parametre yok; kavramsal)"
++    },
++    {
++      "baslik": "Türkiye Ekonomisi Model Analizi Raporu",
++      "drive_id": "1LPVm6thF8tliPvYUMmj0D6d3trNxVIcFFMMPEVDRgdU",
++      "tarih": "2026-07-05",
++      "kullanim": "Y*, D, HC stok-akış çerçevesi (sayısal katman parametresi yok; senaryo anlatısı)"
++    }
++  ],
++  "makro_girdiler": {
++    "cari_acik_mrd_usd": {
++      "deger": 38.888,
++      "statu": "ÖLÇÜLÜ",
++      "not": "yıllıklandırılmış cari işlemler açığı (SBB Haziran 2026)"
++    },
++    "mal_ithalati_mrd_usd": {
++      "deger": 375.3,
++      "statu": "ÖLÇÜLÜ"
++    },
++    "ara_mali_ithalat_payi": {
++      "deger": 0.712,
++      "statu": "ÖLÇÜLÜ",
++      "not": "TÜİK Ocak–Temmuz 2026"
++    },
++    "enerji_altin_ithalati_mrd_usd": {
++      "deger": 81.3,
++      "statu": "ÖLÇÜLÜ"
++    },
++    "enerji_altin_ara_mali_tabanina_dahil_payi": {
++      "deger": 0.85,
++      "statu": "TÜRETİLMİŞ",
++      "not": "enerji ve parasal olmayan altının ara malı tabanındaki payı (belge: %85)"
++    }
++  },
++  "senaryolar": {
++    "koordinasyon": {
++      "aciklama": "λ +0,10, ρ +0,04; ithal girdi oranı (m) sabit",
++      "m_azalma": 0.0,
++      "etkilenen_taban_payi": 0.25,
++      "gecis_kaybi": 0.25,
++      "ihracat_kaybi_sabit_mrd_usd_eps030": 2.886
++    },
++    "orta_reform": {
++      "aciklama": "yerel tedarik koordinasyonu + koşullu teşvik; ithal girdi yoğunluğu −%19,25",
++      "m_azalma": 0.1925,
++      "etkilenen_taban_payi": 0.25,
++      "gecis_kaybi": 0.25,
++      "ihracat_kaybi_sabit_mrd_usd_eps030": 2.886
++    },
++    "guclu_reform": {
++      "aciklama": "derin tedarik dönüşümü ve yerlileştirme; ithal girdi yoğunluğu −%32,5",
++      "m_azalma": 0.325,
++      "etkilenen_taban_payi": 0.4,
++      "gecis_kaybi": 0.25,
++      "ihracat_kaybi_sabit_mrd_usd_eps030": 7.695
++    }
++  },
++  "ihracat_esnekligi": {
++    "eps_baz": 0.3,
++    "statu": "VARSAYIM",
++    "not": "ε=0,30 belge bazı; penaltı ε ile doğrusal ölçeklenir (belge duyarlılık tablosu: 0,15/0,50/0,75/1,00 ile uyumlu). Penaltı sabitleri (2,886 / 7,695 mrd $) belge hücrelerinden alındı; formülleri belgede yok."
++  },
++  "tipoloji": {
++    "not": "81 il, 8 tipe ayrılır; il bazlı katsayılar ölçülmemiş, tipoloji atamasıdır (belge: VARSAYIM). Sistemde yalnız belge ölçeğinde duyarlılık (λ, ρ) için saklanır.",
++    "tipler": [
++      "F",
++      "B1",
++      "C",
++      "A1",
++      "A2",
++      "A3",
++      "D",
++      "E"
++    ],
++    "ara_girdi_orani": {
++      "F": 0.62,
++      "B1": 0.72,
++      "C": 0.68,
++      "A1": 0.7,
++      "A2": 0.66,
++      "A3": 0.58,
++      "D": 0.58,
++      "E": 0.52
++    },
++    "dogrudan_ithalat_payi": {
++      "F": 0.22,
++      "B1": 0.28,
++      "C": 0.18,
++      "A1": 0.17,
++      "A2": 0.2,
++      "A3": 0.24,
++      "D": 0.14,
++      "E": 0.15
++    },
++    "il_ici_tedarik_lambda": {
++      "F": 0.42,
++      "B1": 0.3,
++      "C": 0.4,
++      "A1": 0.32,
++      "A2": 0.28,
++      "A3": 0.25,
++      "D": 0.35,
++      "E": 0.38
++    },
++    "ikamet_payi_rho": {
++      "F": 0.92,
++      "B1": 0.8,
++      "C": 0.95,
++      "A1": 0.93,
++      "A2": 0.9,
++      "A3": 0.88,
++      "D": 0.96,
++      "E": 0.9
++    }
++  },
++  "belge_degerleri_dogrulama": {
++    "adreslenebilir_ara_mali_tabani_mrd_usd": 198.11,
++    "brut_ithalat_tasarrufu_mrd_usd": {
++      "orta_reform": 12.86,
++      "guclu_reform": 34.74
++    },
++    "revize_net_iyilesme_mrd_usd": {
++      "koordinasyon": -2.886,
++      "orta_reform": 4.265,
++      "guclu_reform": 11.621
++    },
++    "revize_cari_acik_kapanma_orani": {
++      "koordinasyon": -0.074,
++      "orta_reform": 0.11,
++      "guclu_reform": 0.299
++    },
++    "kritik_esneklik": 0.75
++  },
++  "sisteme_baglama": {
++    "referans_seviye": "orta_reform",
++    "aciklama": "C senaryosu (kısmi kullanım) orta reform düzeyine karşılık gelir; A/B'nin daha zayıf gerçekleşmesi mevcut g_u = kullanım_s / kullanım_C ölçeğiyle taşınır. Koordinasyon ve güçlü reform düzeyleri bant uçlarıdır.",
++    "halka": "uretim_bagimlilik",
++    "usd_koprusu": "mal_net_ticaret",
++    "tavan_kullan": true,
++    "carpan_kullan": true
++  }
++}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/zarar_durdurma.json fixed/data/etki_cephesi/zarar_durdurma.json
 --- pristine/data/etki_cephesi/zarar_durdurma.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/zarar_durdurma.json	2026-10-14 16:14:49.764117446 +0000
++++ fixed/data/etki_cephesi/zarar_durdurma.json	2026-10-14 19:53:01.817228733 +0000
 @@ -0,0 +1,29 @@
 +{
 +  "not": "Zararı durdurma + refah rantına bağlama politikası senaryosu (D). Parametreler ATANMIŞTIR (geçmişten türetilmedi): politika kaldıraçlarının tarama aralığıdır, tahmin değildir. D, C senaryosunun kopyasıdır; yalnız aşağıdaki kaldıraçlar değişir.",
@@ -1448,8 +1613,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  "tr_ic_pay_ust_sinir": 0.95
 +}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/zarar_teorisi_kopru.json fixed/data/etki_cephesi/zarar_teorisi_kopru.json
---- pristine/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 06:05:45.819023385 +0000
-+++ fixed/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 07:45:20.550536409 +0000
+--- pristine/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 19:53:01.592251609 +0000
++++ fixed/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 19:53:01.817327044 +0000
 @@ -1,5 +1,5 @@
  {
 -  "not": "GitHub zarar-teorisi beş adım çözümünün işlediği varsayımı → etki cephesi (en olası C) üstüne köprü. Sayılar bes_adim_sonuc.json (koşu bitti, H-A* temiz).",
@@ -1485,7 +1650,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_gecmis.py fixed/etki_cephesi/_gecmis.py
 --- pristine/etki_cephesi/_gecmis.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/_gecmis.py	2026-10-14 08:24:11.534589892 +0000
++++ fixed/etki_cephesi/_gecmis.py	2026-10-14 19:53:01.817457905 +0000
 @@ -0,0 +1,125 @@
 +"""Geçmişten türetilen senaryo büyüklükleri (SAF: yalnız gözlem CSV'leri + tam_olgunluk_yil).
 +
@@ -1614,7 +1779,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return {"p": p, "sayim_acik_toplam": sayim, "taban_oran": taban}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_kur.py fixed/etki_cephesi/_kur.py
 --- pristine/etki_cephesi/_kur.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/_kur.py	2026-10-14 06:05:32.664714943 +0000
++++ fixed/etki_cephesi/_kur.py	2026-10-14 19:53:01.817496017 +0000
 @@ -0,0 +1,19 @@
 +"""Matris dönemine uygun USD/TRY.
 +
@@ -1637,7 +1802,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        return float(yedek), "yedek:gerceklik_capa(2024 ortalama) — matris dönemiyle uyumsuz"
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_olasilik.py fixed/etki_cephesi/_olasilik.py
 --- pristine/etki_cephesi/_olasilik.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/_olasilik.py	2026-10-14 08:24:33.456042504 +0000
++++ fixed/etki_cephesi/_olasilik.py	2026-10-14 19:53:01.817533753 +0000
 @@ -0,0 +1,210 @@
 +"""Senaryo olasılıkları: ölçülebilir kapılardan, SAF hesap (rapor okumaz → döngü yok).
 +
@@ -1849,9 +2014,97 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +def vekil_s(s: dict[str, Any]) -> float:
 +    return vekil()[str(s["id"])]
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_uretim_katman.py fixed/etki_cephesi/_uretim_katman.py
+--- pristine/etki_cephesi/_uretim_katman.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/_uretim_katman.py	2026-10-14 19:53:01.825447972 +0000
+@@ -0,0 +1,84 @@
++"""Kullanıcının üretim katmanı modeli (Drive: 81 İl Sızıntı Matrisi, Zarar Teorisi 3↔2↔1) — saf hesap.
++
++Belgedeki cari açık stres testi ve revizyon (adreslenebilir taban, ihracat esnekliği ε) aynen yeniden kurulur; sonuçları iki yere bağlanır:
++  (1) Üretim katmanının iyileşme TAVANI (mn $/yıl): uretim_rant_net_ticaret × net ticaret yerine modelin net cari denge iyileşmesi.
++  (2) 'uretim_bagimlilik' halka düzeltme çarpanı: 1 − net iyileşme / halka boşalmasının USD karşılığı (mal ticareti köprüsü).
++Diğer dört halkanın çarpanları atanmış kalır. Bu modül başka modülden veri okumaz (pure); köprü girdileri çağıran tarafından verilir.
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++
++
++def _cfg() -> dict[str, Any]:
++    return json.loads((DATA / "uretim_katman_model.json").read_text(encoding="utf-8"))
++
++
++def adreslenebilir_taban_mrd(cfg: dict[str, Any] | None = None) -> float:
++    c = cfg or _cfg()
++    m = c["makro_girdiler"]
++    ara = m["mal_ithalati_mrd_usd"]["deger"] * m["ara_mali_ithalat_payi"]["deger"]
++    dusen = m["enerji_altin_ithalati_mrd_usd"]["deger"] * m["enerji_altin_ara_mali_tabanina_dahil_payi"]["deger"]
++    return ara - dusen
++
++
++def ara_mali_taban_mrd(cfg: dict[str, Any] | None = None) -> float:
++    m = (cfg or _cfg())["makro_girdiler"]
++    return m["mal_ithalati_mrd_usd"]["deger"] * m["ara_mali_ithalat_payi"]["deger"]
++
++
++def brut_tasarruf_mrd(seviye: str, adreslenebilir: bool = False, cfg: dict[str, Any] | None = None) -> float:
++    c = cfg or _cfg()
++    s = c["senaryolar"][seviye]
++    taban = adreslenebilir_taban_mrd(c) if adreslenebilir else ara_mali_taban_mrd(c)
++    return taban * s["etkilenen_taban_payi"] * s["m_azalma"]
++
++
++def net_tasarruf_mrd(seviye: str, adreslenebilir: bool = True, cfg: dict[str, Any] | None = None) -> float:
++    c = cfg or _cfg()
++    return brut_tasarruf_mrd(seviye, adreslenebilir, c) * (1.0 - c["senaryolar"][seviye]["gecis_kaybi"])
++
++
++def ihracat_kaybi_mrd(seviye: str, eps: float | None = None, cfg: dict[str, Any] | None = None) -> float:
++    c = cfg or _cfg()
++    e0 = float(c["ihracat_esnekligi"]["eps_baz"])
++    e = e0 if eps is None else float(eps)
++    return float(c["senaryolar"][seviye]["ihracat_kaybi_sabit_mrd_usd_eps030"]) * e / e0
++
++
++def net_iyilesme_mrd(seviye: str, eps: float | None = None, cfg: dict[str, Any] | None = None) -> float:
++    """Revize net cari denge iyileşmesi (mrd $/yıl): enerji arındırılmış net ithal ikamesi − ihracat kaybı penaltisi."""
++    c = cfg or _cfg()
++    return net_tasarruf_mrd(seviye, True, c) - ihracat_kaybi_mrd(seviye, eps, c)
++
++
++def cari_kapanma_orani(seviye: str, eps: float | None = None, cfg: dict[str, Any] | None = None) -> float:
++    c = cfg or _cfg()
++    return net_iyilesme_mrd(seviye, eps, c) / float(c["makro_girdiler"]["cari_acik_mrd_usd"]["deger"])
++
++
++def tavan_usd_mn(seviye: str | None = None, eps: float | None = None) -> float:
++    c = _cfg()
++    sev = seviye or c["sisteme_baglama"]["referans_seviye"]
++    return max(0.0, net_iyilesme_mrd(sev, eps, c) * 1000.0)
++
++
++def halka_carpani(halka_vekil: float, usd_per_vekil_mn: float, seviye: str | None = None, eps: float | None = None) -> float:
++    """1 − net iyileşme (mn $) / halkanın USD karşılığı. Koordinasyon düzeyinde (negatif iyileşme) 1'in üstüne çıkabilir (halka büyür)."""
++    c = _cfg()
++    sev = seviye or c["sisteme_baglama"]["referans_seviye"]
++    halka_usd = float(halka_vekil) * float(usd_per_vekil_mn)
++    if halka_usd <= 0:
++        return 1.0
++    return max(0.0, 1.0 - net_iyilesme_mrd(sev, eps, c) * 1000.0 / halka_usd)
++
++
++def aktif() -> dict[str, Any] | None:
++    c = _cfg()
++    b = c["sisteme_baglama"]
++    return b if (b.get("tavan_kullan") or b.get("carpan_kullan")) else None
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/akis_olcum.py fixed/etki_cephesi/akis_olcum.py
---- pristine/etki_cephesi/akis_olcum.py	2026-10-14 06:05:45.822777055 +0000
-+++ fixed/etki_cephesi/akis_olcum.py	2026-10-14 07:49:13.540054095 +0000
+--- pristine/etki_cephesi/akis_olcum.py	2026-10-14 19:53:01.594736069 +0000
++++ fixed/etki_cephesi/akis_olcum.py	2026-10-14 19:53:01.817666811 +0000
 @@ -60,14 +60,14 @@
      return round(vekil * (cicek_usd / vekil_toplam), 1)
  
@@ -1894,7 +2147,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bant_sinama.py fixed/etki_cephesi/bant_sinama.py
 --- pristine/etki_cephesi/bant_sinama.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/bant_sinama.py	2026-10-14 15:17:44.115596420 +0000
++++ fixed/etki_cephesi/bant_sinama.py	2026-10-14 19:53:01.817761585 +0000
 @@ -0,0 +1,209 @@
 +"""Büyük kazananlar (Çin, Rusya, İran, ABD, İsrail, BAE, Suudi Arabistan, Fransa, AB), Yunanistan ve Balkanları belirsizlik bandıyla SINAMA (duyarlılık/dayanıklılık raporu).
 +
@@ -2106,8 +2359,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +if __name__ == "__main__":
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bolge_stok_akis.py fixed/etki_cephesi/bolge_stok_akis.py
---- pristine/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:05:45.822890890 +0000
-+++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 14:45:41.774350813 +0000
+--- pristine/etki_cephesi/bolge_stok_akis.py	2026-10-14 19:53:01.594973977 +0000
++++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 19:53:01.817943965 +0000
 @@ -4,6 +4,7 @@
  import json
  import sys
@@ -2285,7 +2538,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      lines.extend(["", "## Çevre kaybeden (Balkan / Kafkas tampon)", ""])
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/c_dinamik_olcut.py fixed/etki_cephesi/c_dinamik_olcut.py
 --- pristine/etki_cephesi/c_dinamik_olcut.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/c_dinamik_olcut.py	2026-10-14 08:24:11.537059066 +0000
++++ fixed/etki_cephesi/c_dinamik_olcut.py	2026-10-14 19:53:01.818066873 +0000
 @@ -0,0 +1,270 @@
 +"""C senaryosunun gerçekleşme durumunu ölçen DİNAMİK ölçüt (sıralı Bayes).
 +
@@ -2559,7 +2812,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/durdurma_yolu_kural.py fixed/etki_cephesi/durdurma_yolu_kural.py
 --- pristine/etki_cephesi/durdurma_yolu_kural.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/durdurma_yolu_kural.py	2026-10-14 16:23:46.110123334 +0000
++++ fixed/etki_cephesi/durdurma_yolu_kural.py	2026-10-14 19:53:01.818307178 +0000
 @@ -0,0 +1,209 @@
 +"""Durdurmanın nasıl gerçekleşeceği: kural bazlı yol (aktör bazlı değil).
 +
@@ -2772,7 +3025,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print("DURDURMA_YOLU_KURAL ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/evds_gozlem_cek.py fixed/etki_cephesi/evds_gozlem_cek.py
 --- pristine/etki_cephesi/evds_gozlem_cek.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/evds_gozlem_cek.py	2026-10-14 07:35:44.951868363 +0000
++++ fixed/etki_cephesi/evds_gozlem_cek.py	2026-10-14 19:53:01.818421988 +0000
 @@ -0,0 +1,51 @@
 +"""EVDS ödemeler dengesi aylık gözlem verisini yeniler (ağ gerekir)."""
 +from __future__ import annotations
@@ -2826,8 +3079,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 +    borc_cevirme()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
---- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
-+++ fixed/etki_cephesi/finans_katman.py	2026-10-14 08:24:45.038067306 +0000
+--- pristine/etki_cephesi/finans_katman.py	2026-10-14 19:53:01.596163724 +0000
++++ fixed/etki_cephesi/finans_katman.py	2026-10-14 19:53:01.833590363 +0000
 @@ -8,6 +8,8 @@
  from pathlib import Path
  from typing import Any
@@ -2889,7 +3142,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      ic_u = float(u["tr_ic_geri_kazanim_vekili"])
      rant_arti_u = float(u["rant_tr_arti_deger_vekili"])
  
-+    from uretim_ic_akis import _gerceklesme, etkin_carpan  # noqa: E402
++    from uretim_ic_akis import _gerceklesme, duzeltme_carpanlari, etkin_carpan  # noqa: E402
 +
 +    g_u = _gerceklesme(sid, u_kopru)
 +    g_f_pozitif = _gerceklesme_f(sid, kopru)
@@ -2899,7 +3152,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 -    oran_uretim = _bos_oran(halka, u_kopru["halka_duzeltme_carpan"])
 -    carpan_fin = dict(u_kopru["halka_duzeltme_carpan"])
 -    for k, v in (kopru.get("finans_halka_ek_carpan") or {}).items():
-+    carpan_u = etkin_carpan(u_kopru["halka_duzeltme_carpan"], g_u)
++    carpan_u = etkin_carpan(duzeltme_carpanlari(u_kopru, proj), g_u)
 +    oran_uretim = _bos_oran(halka, carpan_u)
 +    carpan_fin = dict(carpan_u)
 +    for k, v in etkin_carpan(kopru.get("finans_halka_ek_carpan") or {}, g_f).items():
@@ -3001,8 +3254,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          f"**{u['olcek_satir']}** ({u['yatirim_geliri_gideri_mn']:,} mn USD) ve TDS vekili.",
          "",
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman_senaryo_coklu.py fixed/etki_cephesi/finans_katman_senaryo_coklu.py
---- pristine/etki_cephesi/finans_katman_senaryo_coklu.py	2026-10-14 06:05:45.823419607 +0000
-+++ fixed/etki_cephesi/finans_katman_senaryo_coklu.py	2026-10-14 07:40:14.115650613 +0000
+--- pristine/etki_cephesi/finans_katman_senaryo_coklu.py	2026-10-14 19:53:01.596506017 +0000
++++ fixed/etki_cephesi/finans_katman_senaryo_coklu.py	2026-10-14 19:53:01.818657577 +0000
 @@ -4,6 +4,7 @@
  import json
  import sys
@@ -3022,7 +3275,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/gecmis_projeksiyon.py fixed/etki_cephesi/gecmis_projeksiyon.py
 --- pristine/etki_cephesi/gecmis_projeksiyon.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/gecmis_projeksiyon.py	2026-10-14 08:13:43.066009130 +0000
++++ fixed/etki_cephesi/gecmis_projeksiyon.py	2026-10-14 19:53:01.818730863 +0000
 @@ -0,0 +1,169 @@
 +"""Salt geçmiş projeksiyonu: yalnız gözlenmiş seriden ileri uzatma.
 +
@@ -3195,7 +3448,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/goreceli_konum.py fixed/etki_cephesi/goreceli_konum.py
 --- pristine/etki_cephesi/goreceli_konum.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/goreceli_konum.py	2026-10-14 15:27:50.613457904 +0000
++++ fixed/etki_cephesi/goreceli_konum.py	2026-10-14 19:53:01.818826661 +0000
 @@ -0,0 +1,237 @@
 +"""Göreceli konum, direnç alternatifi (seçenek 1) ve gerçek-kayıp kırılma oranı (seçenek 2). Tanı raporu: başka modüle girdi olmaz (döngü yok).
 +
@@ -3436,7 +3689,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print("GORECELI_KONUM ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/havza_kazanan_kisa_vade.py fixed/etki_cephesi/havza_kazanan_kisa_vade.py
 --- pristine/etki_cephesi/havza_kazanan_kisa_vade.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/havza_kazanan_kisa_vade.py	2026-10-14 15:42:14.072303666 +0000
++++ fixed/etki_cephesi/havza_kazanan_kisa_vade.py	2026-10-14 19:53:01.818936525 +0000
 @@ -0,0 +1,182 @@
 +"""Havzalar net kaybediyorsa kim kazanıyor? ve TR'nin kayıp hızının bölgeye parasal akış sağlaması (kısa vade, 2027–2029).
 +
@@ -3622,7 +3875,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print("HAVZA_KAZANAN_KISA_VADE ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/ikame_cift_sayim.py fixed/etki_cephesi/ikame_cift_sayim.py
 --- pristine/etki_cephesi/ikame_cift_sayim.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/ikame_cift_sayim.py	2026-10-14 15:59:35.003535875 +0000
++++ fixed/etki_cephesi/ikame_cift_sayim.py	2026-10-14 19:53:01.819025183 +0000
 @@ -0,0 +1,70 @@
 +"""Rakip ikame akışının çift sayımı: düzeltme sonrası doğrulama (K1 uygulandı).
 +
@@ -3696,7 +3949,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    print("IKAME_CIFT_SAYIM ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/kazanc_kayip_muhasebe.py fixed/etki_cephesi/kazanc_kayip_muhasebe.py
 --- pristine/etki_cephesi/kazanc_kayip_muhasebe.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/kazanc_kayip_muhasebe.py	2026-10-14 15:58:52.096394871 +0000
++++ fixed/etki_cephesi/kazanc_kayip_muhasebe.py	2026-10-14 19:53:01.819077033 +0000
 @@ -0,0 +1,150 @@
 +"""Kazanç–kayıp muhasebesi: dış aktör kazancı boşluğu (V) aşıyor mu? Ve kapsam (neyin modellenmediği).
 +
@@ -3849,8 +4102,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +if __name__ == "__main__":
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/lm_rant_sektor.py fixed/etki_cephesi/lm_rant_sektor.py
---- pristine/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:45.823723118 +0000
-+++ fixed/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:32.653932327 +0000
+--- pristine/etki_cephesi/lm_rant_sektor.py	2026-10-14 19:53:01.596775438 +0000
++++ fixed/etki_cephesi/lm_rant_sektor.py	2026-10-14 19:53:01.819181509 +0000
 @@ -19,6 +19,7 @@
  if str(ZARAR_DIR) not in sys.path:
      sys.path.insert(0, str(ZARAR_DIR))
@@ -3888,7 +4141,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      }
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olasilik_duyarlilik.py fixed/etki_cephesi/olasilik_duyarlilik.py
 --- pristine/etki_cephesi/olasilik_duyarlilik.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/olasilik_duyarlilik.py	2026-10-14 07:43:04.148460047 +0000
++++ fixed/etki_cephesi/olasilik_duyarlilik.py	2026-10-14 19:53:01.819262421 +0000
 @@ -0,0 +1,158 @@
 +"""C senaryosu olasılığı duyarlılık bandı (0,30–0,80).
 +
@@ -4050,7 +4303,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olasilik_kapilar.py fixed/etki_cephesi/olasilik_kapilar.py
 --- pristine/etki_cephesi/olasilik_kapilar.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/olasilik_kapilar.py	2026-10-14 08:24:33.456539329 +0000
++++ fixed/etki_cephesi/olasilik_kapilar.py	2026-10-14 19:53:01.819380684 +0000
 @@ -0,0 +1,45 @@
 +"""P(C) kapı raporu: `_olasilik.hesapla_P()` çıktısını yazar. Saf hesap `_olasilik.py`'dedir (rapor okumaz).
 +
@@ -4099,7 +4352,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/olu_agirlik_ayrisma.py fixed/etki_cephesi/olu_agirlik_ayrisma.py
 --- pristine/etki_cephesi/olu_agirlik_ayrisma.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/olu_agirlik_ayrisma.py	2026-10-14 16:00:42.349552041 +0000
++++ fixed/etki_cephesi/olu_agirlik_ayrisma.py	2026-10-14 19:53:01.819452100 +0000
 @@ -0,0 +1,147 @@
 +"""Ölü ağırlığı gerçek yıkım ve ölçüm boşluğu diye ayır.
 +
@@ -4249,8 +4502,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    calistir()
 +    print("OLU_AGIRLIK_AYRISMA ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
---- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
-+++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 16:15:13.585888717 +0000
+--- pristine/etki_cephesi/projeksiyon.py	2026-10-14 19:53:01.597185956 +0000
++++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 19:53:01.819647228 +0000
 @@ -3,6 +3,8 @@
  
  import json
@@ -4905,8 +5158,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/refah_dis_entegrasyon.py fixed/etki_cephesi/refah_dis_entegrasyon.py
---- pristine/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 06:05:45.827256705 +0000
-+++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 15:33:04.848250161 +0000
+--- pristine/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 19:53:01.599220445 +0000
++++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 19:53:01.820046990 +0000
 @@ -2,6 +2,7 @@
  from __future__ import annotations
  
@@ -5020,8 +5273,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "havza_kayip": havza_k,
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
---- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 16:24:16.448117605 +0000
+--- pristine/etki_cephesi/run_all.py	2026-10-14 19:53:01.599531080 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 19:53:09.621181898 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -5058,7 +5311,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,43 @@
+@@ -31,11 +47,44 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -5077,6 +5330,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "ikame_cift_sayim.py",
 +        "zarar_durdurma_senaryosu.py",
 +        "durdurma_yolu_kural.py",
++        "uretim_katman_rapor.py",
          ]
      )
 -    for s in steps:
@@ -5106,8 +5360,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_beklenen_kalibre.py fixed/etki_cephesi/senaryo_beklenen_kalibre.py
---- pristine/etki_cephesi/senaryo_beklenen_kalibre.py	2026-10-14 06:05:45.827591865 +0000
-+++ fixed/etki_cephesi/senaryo_beklenen_kalibre.py	2026-10-14 07:40:14.115093913 +0000
+--- pristine/etki_cephesi/senaryo_beklenen_kalibre.py	2026-10-14 19:53:01.599727387 +0000
++++ fixed/etki_cephesi/senaryo_beklenen_kalibre.py	2026-10-14 19:53:01.820336271 +0000
 @@ -4,6 +4,7 @@
  import json
  import sys
@@ -5126,8 +5380,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      olas = {k: v / s_olas for k, v in olas.items()}
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_coklu_p2.py fixed/etki_cephesi/senaryo_coklu_p2.py
---- pristine/etki_cephesi/senaryo_coklu_p2.py	2026-10-14 06:05:45.827683425 +0000
-+++ fixed/etki_cephesi/senaryo_coklu_p2.py	2026-10-14 07:40:14.115376190 +0000
+--- pristine/etki_cephesi/senaryo_coklu_p2.py	2026-10-14 19:53:01.599817463 +0000
++++ fixed/etki_cephesi/senaryo_coklu_p2.py	2026-10-14 19:53:01.820446016 +0000
 @@ -4,6 +4,7 @@
  import json
  import sys
@@ -5146,11 +5400,37 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      olas = {k: v / s_olas for k, v in olas.items()}
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_gerceklik_kalibre.py fixed/etki_cephesi/senaryo_gerceklik_kalibre.py
---- pristine/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 06:05:45.827814605 +0000
-+++ fixed/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 08:06:07.022380626 +0000
-@@ -145,10 +145,15 @@
+--- pristine/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 19:53:01.599887121 +0000
++++ fixed/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 19:53:01.836724952 +0000
+@@ -18,6 +18,7 @@
+ if str(REPO / "etki_cephesi") not in sys.path:
+     sys.path.insert(0, str(REPO / "etki_cephesi"))
+ from usd_kopru import from_akis_olcum, tr_net_usd_coklu  # noqa: E402
++import _uretim_katman as _uk  # noqa: E402
+ 
+ 
+ def _load(p: Path) -> dict[str, Any]:
+@@ -65,6 +66,14 @@
+     return kopru, k
+ 
+ 
++def _uretim_tavan_usd(tavan: dict[str, Any], tic: float) -> float:
++    """Üretim katmanı iyileşme tavanı (mn $/yıl): kullanıcı modeli (revize net cari denge iyileşmesi) aktifse o, değilse eski %2,5 × net ticaret."""
++    b = _uk.aktif()
++    if b and b.get("tavan_kullan"):
++        return round(_uk.tavan_usd_mn(), 1)
++    return round(tavan["uretim_rant_net_ticaret"] * tic, 1)
++
++
+ def _gerceklesme(delta_vekil: float, tavan_usd: float, usd_per_v: float, taban: float) -> float:
+     if delta_vekil <= 0 or usd_per_v <= 0:
+         return 1.0
+@@ -143,12 +152,17 @@
+         d_f *= delta_scale
+ 
      r_z = _gerceklesme(d_z, tavan["zarar_teorisi_yatirim_geliri"] * yat, usd_v, float(taban["zarar_teorisi"]))
-     r_u = _gerceklesme(d_u, tavan["uretim_rant_net_ticaret"] * tic, usd_v, float(taban["uretim_ic_akis"]))
+-    r_u = _gerceklesme(d_u, tavan["uretim_rant_net_ticaret"] * tic, usd_v, float(taban["uretim_ic_akis"]))
++    r_u = _gerceklesme(d_u, _uretim_tavan_usd(tavan, tic), usd_v, float(taban["uretim_ic_akis"]))
      r_f = _gerceklesme(d_f, tavan["finans_yatirim_geliri"] * yat, usd_v, float(taban["finans_katman"]))
 +    baglama = _load(DATA / "finans_katman_kopru.json").get("kalibre_yola_baglama") or {}
 +    kopru_sen = bool(baglama.get("aktif")) and bool((fin_doc.get("senaryo_gerceklesme") or {}).get("etiket"))
@@ -5166,7 +5446,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      tr_z_k = round(tr_c + d_z * r_z, 3)
      tr_u_k = round(tr_z_k + d_u * r_u, 3)
-@@ -185,18 +190,34 @@
+@@ -179,24 +193,40 @@
+     model_ham_usd = _tr_net_usd_satir(tr_f, kopruler)
+     model_ham = {"tr_net": tr_f, "tr_net_usd_mn": model_ham_usd}
+     cap_z_usd = round(tavan["zarar_teorisi_yatirim_geliri"] * yat, 1)
+-    cap_u_usd = round(tavan["uretim_rant_net_ticaret"] * tic, 1)
++    cap_u_usd = _uretim_tavan_usd(tavan, tic)
+     cap_f_usd = round(tavan["finans_yatirim_geliri"] * yat, 1)
+ 
      olgunluk = {"zarar": 7.0, "uretim": 12.0, "finans": 10.0}
      y0 = int(capa.get("yil", 2026)) + 2
      yol: list[dict[str, Any]] = []
@@ -5213,7 +5500,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      sifir: int | None = None
      for row in yol:
-@@ -204,9 +225,9 @@
+@@ -204,9 +234,9 @@
              sifir = int(row["yil"])
              break
      if sifir is None and tr_f_k < 0 and tr_f_k > tr_c:
@@ -5225,7 +5512,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      if sifir is not None and sifir > y0 + 35:
          sifir = None
  
-@@ -215,6 +236,7 @@
+@@ -215,6 +245,7 @@
      return {
          "senaryo_id": sid,
          "senaryo_pol_carpan": round(pol, 3) if senaryo else 1.0,
@@ -5233,7 +5520,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "senaryo_delta_olcek": round(delta_scale, 3) if senaryo else 1.0,
          "tr_c_refah": tr_c,
          "tr_net_kalibre_son": tr_f_k,
-@@ -276,6 +298,7 @@
+@@ -276,6 +307,7 @@
          "tr_net_usd_mn_son": yigin["tr_net_usd_mn_son"],
          "gsyh_yuzde_son": yigin["gsyh_yuzde_son"],
          "sifir_nokta_takvim": yigin["sifir_nokta_takvim"],
@@ -5243,7 +5530,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "dogrulama_2024": dogrulama,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_rapor.py fixed/etki_cephesi/senaryo_rapor.py
 --- pristine/etki_cephesi/senaryo_rapor.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 14:51:21.321968051 +0000
++++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 19:53:01.820840061 +0000
 @@ -0,0 +1,207 @@
 +"""Senaryo raporları: A, B, C için AYNI bölümler, AYNI alanlar (referans senaryo ayrıcalığı yok).
 +
@@ -5453,8 +5740,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +if __name__ == "__main__":
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_uygulanabilirlik.py fixed/etki_cephesi/senaryo_uygulanabilirlik.py
---- pristine/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:05:45.827930514 +0000
-+++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 14:55:58.986328946 +0000
+--- pristine/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 19:53:01.600052447 +0000
++++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 19:53:01.820995243 +0000
 @@ -3,6 +3,7 @@
  
  import json
@@ -5581,8 +5868,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "bilesenler_beklenen": bek_bil if bek else None,
          "agirliklar": agirlik,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/stok_akis_sim.py fixed/etki_cephesi/stok_akis_sim.py
---- pristine/etki_cephesi/stok_akis_sim.py	2026-10-14 06:05:45.828033665 +0000
-+++ fixed/etki_cephesi/stok_akis_sim.py	2026-10-14 06:44:11.859667506 +0000
+--- pristine/etki_cephesi/stok_akis_sim.py	2026-10-14 19:53:01.600428720 +0000
++++ fixed/etki_cephesi/stok_akis_sim.py	2026-10-14 19:53:01.821203866 +0000
 @@ -20,6 +20,7 @@
  if str(ZARAR_DIR) not in sys.path:
      sys.path.insert(0, str(ZARAR_DIR))
@@ -5887,7 +6174,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/tr_olcek_sinama.py fixed/etki_cephesi/tr_olcek_sinama.py
 --- pristine/etki_cephesi/tr_olcek_sinama.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/tr_olcek_sinama.py	2026-10-14 15:35:30.689265287 +0000
++++ fixed/etki_cephesi/tr_olcek_sinama.py	2026-10-14 19:53:01.821404461 +0000
 @@ -0,0 +1,175 @@
 +"""TR kaybının ölçeğini bağımsız gözlemle sına ve ölçek belirsizliğinin dış aktör sınıflarına yayılımını ölç.
 +
@@ -6065,8 +6352,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    calistir()
 +    print("TR_OLCEK_SINAMA ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/ulke_kanal_dokum_10y.py fixed/etki_cephesi/ulke_kanal_dokum_10y.py
---- pristine/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 06:05:45.830273100 +0000
-+++ fixed/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 07:40:14.114667866 +0000
+--- pristine/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 19:53:01.600651464 +0000
++++ fixed/etki_cephesi/ulke_kanal_dokum_10y.py	2026-10-14 19:53:01.821538712 +0000
 @@ -4,6 +4,7 @@
  import json
  from collections import defaultdict
@@ -6085,9 +6372,31 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      ow = {k: v / s_ for k, v in ow.items()}
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uretim_ic_akis.py fixed/etki_cephesi/uretim_ic_akis.py
---- pristine/etki_cephesi/uretim_ic_akis.py	2026-10-14 06:05:45.830864248 +0000
-+++ fixed/etki_cephesi/uretim_ic_akis.py	2026-10-14 07:54:43.581654327 +0000
-@@ -55,6 +55,21 @@
+--- pristine/etki_cephesi/uretim_ic_akis.py	2026-10-14 19:53:01.600966244 +0000
++++ fixed/etki_cephesi/uretim_ic_akis.py	2026-10-14 19:53:01.830648973 +0000
+@@ -2,16 +2,21 @@
+ from __future__ import annotations
+ 
+ import json
++import sys
+ from collections import defaultdict
+ from pathlib import Path
+ from typing import Any
+ 
+ REPO = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(Path(__file__).resolve().parent))
++import _uretim_katman as _uk  # noqa: E402
++
+ DATA = REPO / "data" / "etki_cephesi"
+ OUT = REPO / "reports" / "etki_cephesi"
+ PROJ = OUT / "PROJEKSIYON.json"
+ ZCOZ = OUT / "ZARAR_COZUM_C.json"
+ KOPRU = DATA / "uretim_ic_akis_kopru.json"
++AKIS = OUT / "AKIS_OLCUM.json"
+ 
+ 
+ def _load(p: Path) -> dict[str, Any]:
+@@ -55,6 +60,34 @@
      return int(round(y0 + tam_yil + (-tr_net1) / slope))
  
  
@@ -6102,6 +6411,19 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return max(0.0, min(1.0, k / k_c)) if k_c > 0 else 1.0
 +
 +
++def duzeltme_carpanlari(kopru: dict[str, Any], proj: dict[str, Any]) -> dict[str, float]:
++    """Halka düzeltme çarpanları (tam gerçekleşmede). 'uretim_bagimlilik' halkası, kullanıcının üretim katmanı modelinden (Drive: 81 İl Sızıntı
++    Matrisi, revize net cari denge iyileşmesi) türetilir: 1 − net iyileşme / halka boşalmasının USD karşılığı. Diğer halkalar atanmış kalır."""
++    base = {k: float(v) for k, v in kopru["halka_duzeltme_carpan"].items()}
++    b = _uk.aktif()
++    if b and b.get("carpan_kullan") and AKIS.is_file():
++        usd_per = float(_load(AKIS)["usd_kopruleri"][b["usd_koprusu"]]["usd_per_vekil_mn"])
++        halka = _halka_toplam(proj, "C").get(b["halka"], 0.0)
++        if halka > 0:
++            base[b["halka"]] = round(_uk.halka_carpani(halka, usd_per), 4)
++    return base
++
++
 +def etkin_carpan(carpan: dict[str, float], g: float) -> dict[str, float]:
 +    return {k: 1.0 - g * (1.0 - float(v)) for k, v in carpan.items()}
 +
@@ -6109,13 +6431,13 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def hesapla(senaryo_id: str = "C") -> dict[str, Any]:
      proj = _load(PROJ)
      sid = senaryo_id
-@@ -72,18 +87,19 @@
+@@ -72,18 +105,19 @@
      tr_net0 = float(z.get("tr_net_birlesik_vekil") or 0.0)
      ic_geri0 = float(z.get("tr_ic_geri_kazanim_vekili") or 0.0)
  
 -    carpan = kopru["halka_duzeltme_carpan"]
 +    g_u = _gerceklesme(sid, kopru)
-+    carpan = etkin_carpan(kopru["halka_duzeltme_carpan"], g_u)
++    carpan = etkin_carpan(duzeltme_carpanlari(kopru, proj), g_u)
      oran = _bosalma_oran(proj, sid, carpan)
      halka_raw = _halka_toplam(proj, sid)
  
@@ -6133,7 +6455,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      havza1 = round(havza0 * oran * (1.0 - u_es * 0.55), 3)
      ic_uretim = round(bos0 * u_es * 0.16, 3)
      ic_gsyh = round(bos0 * gsyh_d * 0.12, 3)
-@@ -103,6 +119,7 @@
+@@ -103,6 +137,7 @@
          "halka_toplam_ham": {k: round(v, 3) for k, v in halka_raw.items()},
          "halka_toplam_ham_C": {k: round(v, 3) for k, v in halka_raw.items()},
          "bosalma_oran_halka_duzeltme": round(oran, 4),
@@ -6141,9 +6463,127 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "C_zarar_cozum": {
              "turkiye_yaricevre_bosalma": bos0,
              "tr_net_birlesik_vekil": tr_net0,
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uretim_katman_rapor.py fixed/etki_cephesi/uretim_katman_rapor.py
+--- pristine/etki_cephesi/uretim_katman_rapor.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/uretim_katman_rapor.py	2026-10-14 19:53:01.828084990 +0000
+@@ -0,0 +1,114 @@
++"""Üretim katmanı modeli: Drive belgesinin yeniden üretimi, sisteme bağlanışı ve etkisi (tanı raporu).
++
++1) Belgenin cari açık stres testi/revizyon sayıları, parametrelerden yeniden hesaplanır ve belge değerleriyle karşılaştırılır.
++2) İhracat esnekliği ε duyarlılığı.
++3) Sisteme iki bağ: üretim bağımlılığı halka çarpanı (eski atanmış 0,68 → modelden türetilmiş) ve üretim katmanı iyileşme tavanı (eski %2,5 × net ticaret → modelin net iyileşmesi).
++4) Üretim katmanı gerçekleşmesinde taban (atanmış) mı yoksa tavan/ihtiyaç oranı mı belirleyici?
++Tanı raporu: başka modüle girdi olmaz.
++"""
++from __future__ import annotations
++
++import json
++import sys
++from pathlib import Path
++from typing import Any
++
++sys.path.insert(0, str(Path(__file__).resolve().parent))
++import _uretim_katman as U  # noqa: E402
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++SEVIYELER = ("koordinasyon", "orta_reform", "guclu_reform")
++ESKI_HALKA_CARPAN = 0.68  # uretim_ic_akis_kopru.json (atanmış)
++ESKI_TAVAN_YUZDE = 0.025  # gerceklik_capa.json iyilesme_tavan_yuzde_10y.uretim_rant_net_ticaret (atanmış)
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def calistir() -> dict[str, Any]:
++    cfg = _load(DATA / "uretim_katman_model.json")
++    dog = cfg["belge_degerleri_dogrulama"]
++    yeniden = {
++        "adreslenebilir_taban_mrd_usd": round(U.adreslenebilir_taban_mrd(), 3),
++        "brut_ithalat_tasarrufu_mrd_usd": {s: round(U.brut_tasarruf_mrd(s), 3) for s in SEVIYELER[1:]},
++        "revize_net_iyilesme_mrd_usd": {s: round(U.net_iyilesme_mrd(s), 3) for s in SEVIYELER},
++        "revize_cari_acik_kapanma_orani": {s: round(U.cari_kapanma_orani(s), 3) for s in SEVIYELER},
++    }
++    eps_tab = {str(e): {s: round(U.net_iyilesme_mrd(s, e), 3) for s in SEVIYELER} for e in (0.0, 0.15, 0.30, 0.50, 0.75, 1.0)}
++    # sisteme bağ
++    akis = _load(OUT / "AKIS_OLCUM.json")["usd_kopruleri"]
++    usd_mal = float(akis["mal_net_ticaret"]["usd_per_vekil_mn"])
++    usd_bop = float(akis["bop_merkez_rant"]["usd_per_vekil_mn"])
++    proj = _load(OUT / "PROJEKSIYON.json")
++    sen_c = next(s for s in proj["senaryolar"] if s["id"] == "C")
++    halka_u = sum(float(h["delta_endeks"]) for r in sen_c["tr_bosalma_detay"] for h in r["bes_halka"] if h["halka"] == "uretim_bagimlilik")
++    capa = _load(DATA / "kalibre" / "gerceklik_capa.json")
++    tic = abs(float(capa["usd_mn"]["net_ticaret"]))
++    kopru = _load(DATA / "uretim_ic_akis_kopru.json")
++    bag = cfg["sisteme_baglama"]
++    carpan = {s: round(U.halka_carpani(halka_u, usd_mal, s), 4) for s in SEVIYELER}
++    tavan = {s: round(U.tavan_usd_mn(s), 1) for s in SEVIYELER}
++    # gerçekleşme: taban mı tavan/ihtiyaç mı?
++    kal = _load(OUT / "GERCEKLIK_KALIBRE_C.json")
++    rows = {r["katman"]: r for r in kal["katman_yigini_kalibre"]}
++    r_u = float(rows["uretim_ic_akis"]["gerceklesme"])
++    d_u_gercek = (float(rows["uretim_ic_akis"]["tr_net"]) - float(rows["zarar_teorisi"]["tr_net"])) / r_u if r_u else 0.0
++    ihtiyac_usd = d_u_gercek * usd_bop
++    taban = float(capa["gerceklesme_taban"]["uretim_ic_akis"])
++    sonuc = {
++        "olcum": "uretim_katman_modeli",
++        "etiket": "tani_girdi_degil",
++        "kaynak": cfg["kaynak"],
++        "belge_degerleri": dog,
++        "yeniden_uretim": yeniden,
++        "ihracat_esnekligi_duyarlilik_net_iyilesme_mrd_usd": eps_tab,
++        "sisteme_baglama": {
++            "aktif": {"carpan": bool(bag.get("carpan_kullan")), "tavan": bool(bag.get("tavan_kullan")), "referans_seviye": bag["referans_seviye"]},
++            "halka_uretim_bagimlilik_vekil_C": round(halka_u, 3),
++            "halka_usd_mn_mal_koprusu": round(halka_u * usd_mal),
++            "halka_carpani": {"eski_atanmis": ESKI_HALKA_CARPAN, "modelden_seviye_basina": carpan, "sistemde_kullanilan": float(U.halka_carpani(halka_u, usd_mal))},
++            "tavan_usd_mn": {"eski_atanmis": round(ESKI_TAVAN_YUZDE * tic, 1), "modelden_seviye_basina": tavan, "sistemde_kullanilan": round(U.tavan_usd_mn(), 1)},
++        },
++        "gerceklesme_belirleyicisi": {
++            "uretim_katmani_adim_vekil_C": round(d_u_gercek, 3),
++            "ihtiyac_usd_mn_bop_koprusu": round(ihtiyac_usd),
++            "tavan_over_ihtiyac_eski": round(ESKI_TAVAN_YUZDE * tic / ihtiyac_usd, 4) if ihtiyac_usd else None,
++            "tavan_over_ihtiyac_model": round(U.tavan_usd_mn() / ihtiyac_usd, 4) if ihtiyac_usd else None,
++            "taban_atanmis": taban,
++            "uygulanan_gerceklesme": r_u,
++            "belirleyici": "taban (atanmış)" if U.tavan_usd_mn() / ihtiyac_usd < taban else "tavan/ihtiyaç oranı",
++        },
++        "not": "Tipoloji katsayıları ölçülmemiştir (belgede VARSAYIM). İhracat kaybı penaltı sabitleri belge hücrelerinden alındı. Üretim katmanı gerçekleşmesi, tavan/ihtiyaç oranı tabanın altında kaldığı için tabanla belirlenir.",
++    }
++    (OUT / "URETIM_KATMAN_MODEL.json").write_text(json.dumps(sonuc, ensure_ascii=False, indent=2), encoding="utf-8")
++    L = ["# Üretim katmanı modeli (Drive) ve sisteme bağlanışı", "", sonuc["not"], "", "## Kaynak belgeler", ""]
++    for k in cfg["kaynak"]:
++        L.append(f"- **{k['baslik']}** ({k['tarih']}, `{k['drive_id']}`): {k['kullanim']}")
++    L += ["", "## 1. Belge sayıları parametrelerden yeniden üretildi", "",
++          "| Büyüklük | Belge | Yeniden hesap |", "| --- | ---: | ---: |",
++          f"| Adreslenebilir ara malı tabanı (mrd $) | {dog['adreslenebilir_ara_mali_tabani_mrd_usd']} | {yeniden['adreslenebilir_taban_mrd_usd']} |"]
++    for s in SEVIYELER[1:]:
++        L.append(f"| Brüt ithalat tasarrufu, {s} (mrd $) | {dog['brut_ithalat_tasarrufu_mrd_usd'][s]} | {yeniden['brut_ithalat_tasarrufu_mrd_usd'][s]} |")
++    for s in SEVIYELER:
++        L.append(f"| Revize net iyileşme, {s} (mrd $) | {dog['revize_net_iyilesme_mrd_usd'][s]} | {yeniden['revize_net_iyilesme_mrd_usd'][s]} |")
++    for s in SEVIYELER:
++        L.append(f"| Cari açık kapanma oranı, {s} | {dog['revize_cari_acik_kapanma_orani'][s]} | {yeniden['revize_cari_acik_kapanma_orani'][s]} |")
++    L += ["", "## 2. İhracat esnekliği ε duyarlılığı: revize net iyileşme (mrd $/yıl)", "", "| ε | koordinasyon | orta reform | güçlü reform |", "| ---: | ---: | ---: | ---: |"]
++    for e, r in eps_tab.items():
++        L.append(f"| {e} | {r['koordinasyon']} | {r['orta_reform']} | {r['guclu_reform']} |")
++    L += ["", f"Kritik eşik ε ≈ {dog['kritik_esneklik']}: orta ve güçlü reform nötr/negatif.", "",
++          "## 3. Sisteme iki bağ", "", f"- Üretim bağımlılığı halkası (C): {sonuc['sisteme_baglama']['halka_uretim_bagimlilik_vekil_C']} vekil ≈ {sonuc['sisteme_baglama']['halka_usd_mn_mal_koprusu']:,} mn $ (mal ticareti köprüsü).",
++          f"- **Halka çarpanı:** eski atanmış {ESKI_HALKA_CARPAN}; modelden koordinasyon {carpan['koordinasyon']}, orta reform **{carpan['orta_reform']}** (kullanılan), güçlü reform {carpan['guclu_reform']}.",
++          f"- **İyileşme tavanı (mn $/yıl):** eski {sonuc['sisteme_baglama']['tavan_usd_mn']['eski_atanmis']:,}; modelden koordinasyon {tavan['koordinasyon']:,}, orta reform **{tavan['orta_reform']:,}** (kullanılan), güçlü reform {tavan['guclu_reform']:,}.", "",
++          "## 4. Üretim katmanı gerçekleşmesini ne belirliyor?", "",
++          f"Üretim katmanının adımı {sonuc['gerceklesme_belirleyicisi']['uretim_katmani_adim_vekil_C']} vekil ≈ {sonuc['gerceklesme_belirleyicisi']['ihtiyac_usd_mn_bop_koprusu']:,} mn $ (BoP köprüsü). Tavan/ihtiyaç oranı: eski {sonuc['gerceklesme_belirleyicisi']['tavan_over_ihtiyac_eski']}, modelden **{sonuc['gerceklesme_belirleyicisi']['tavan_over_ihtiyac_model']}**; atanmış taban {taban}. Uygulanan gerçekleşme {r_u}: belirleyici **{sonuc['gerceklesme_belirleyicisi']['belirleyici']}**."]
++    (OUT / "URETIM_KATMAN_MODEL.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    return sonuc
++
++
++if __name__ == "__main__":
++    calistir()
++    print("URETIM_KATMAN_MODEL ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uzun_vade_esik.py fixed/etki_cephesi/uzun_vade_esik.py
---- pristine/etki_cephesi/uzun_vade_esik.py	2026-10-14 06:05:45.831021724 +0000
-+++ fixed/etki_cephesi/uzun_vade_esik.py	2026-10-14 07:45:20.546962890 +0000
+--- pristine/etki_cephesi/uzun_vade_esik.py	2026-10-14 19:53:01.601137056 +0000
++++ fixed/etki_cephesi/uzun_vade_esik.py	2026-10-14 19:53:01.821784440 +0000
 @@ -82,7 +82,7 @@
          "tr_net_birlesik_vekil": {
              "B_ust_kotu": round(b_net, 3),
@@ -6172,8 +6612,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "",
          "## Tahmini düzelme aralığı",
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/zarar_10y_senaryo_coklu.py fixed/etki_cephesi/zarar_10y_senaryo_coklu.py
---- pristine/etki_cephesi/zarar_10y_senaryo_coklu.py	2026-10-14 06:05:45.831318454 +0000
-+++ fixed/etki_cephesi/zarar_10y_senaryo_coklu.py	2026-10-14 07:40:14.114272401 +0000
+--- pristine/etki_cephesi/zarar_10y_senaryo_coklu.py	2026-10-14 19:53:01.601646379 +0000
++++ fixed/etki_cephesi/zarar_10y_senaryo_coklu.py	2026-10-14 19:53:01.821897027 +0000
 @@ -4,6 +4,7 @@
  import json
  import sys
@@ -6192,8 +6632,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      olas = {k: v / s_olas for k, v in olas.items()}
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/zarar_cozum_entegrasyon.py fixed/etki_cephesi/zarar_cozum_entegrasyon.py
---- pristine/etki_cephesi/zarar_cozum_entegrasyon.py	2026-10-14 06:05:45.831403328 +0000
-+++ fixed/etki_cephesi/zarar_cozum_entegrasyon.py	2026-10-14 07:49:13.539372806 +0000
+--- pristine/etki_cephesi/zarar_cozum_entegrasyon.py	2026-10-14 19:53:01.601690381 +0000
++++ fixed/etki_cephesi/zarar_cozum_entegrasyon.py	2026-10-14 19:53:01.821997832 +0000
 @@ -164,9 +164,8 @@
              }
          )
@@ -6208,7 +6648,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "olcum": "zarar_cozum_senaryo_coklu",
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/zarar_durdurma_senaryosu.py fixed/etki_cephesi/zarar_durdurma_senaryosu.py
 --- pristine/etki_cephesi/zarar_durdurma_senaryosu.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/zarar_durdurma_senaryosu.py	2026-10-14 16:15:13.586592174 +0000
++++ fixed/etki_cephesi/zarar_durdurma_senaryosu.py	2026-10-14 19:53:01.822081791 +0000
 @@ -0,0 +1,144 @@
 +"""Zararı durdurma + refah rantına bağlama senaryosu (D): C'den türeyen politika kaldıraçları taraması.
 +
@@ -6355,8 +6795,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    calistir()
 +    print("ZARAR_DURDURMA_SENARYOSU ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_p3.py fixed/tests/test_etki_cephesi_p3.py
---- pristine/tests/test_etki_cephesi_p3.py	2026-10-14 06:05:45.846952283 +0000
-+++ fixed/tests/test_etki_cephesi_p3.py	2026-10-14 06:42:31.701662816 +0000
+--- pristine/tests/test_etki_cephesi_p3.py	2026-10-14 19:53:01.615159737 +0000
++++ fixed/tests/test_etki_cephesi_p3.py	2026-10-14 19:53:01.822233005 +0000
 @@ -31,7 +31,10 @@
      assert p.is_file()
      d = json.loads(p.read_text(encoding="utf-8"))
@@ -6371,8 +6811,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:24:16.449320688 +0000
-@@ -0,0 +1,865 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 19:53:09.620064298 +0000
+@@ -0,0 +1,899 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -7238,3 +7678,37 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            assert tuk == f["rezerv_tukenme_yili"], (ad, k)
 +    ms = d["gereken_hiz_carpani_rezerv_tukenmesin"]
 +    assert ms["bop_merkez_rant"] <= ms["mal_net_ticaret"] <= ms["tum_havza_rant"]  # daha büyük köprü daha hızlı kural ister
++
++def test_uretim_katman_modeli_belge_sayilarini_yeniden_uretir_ve_sisteme_baglanir():
++    d = _j(OUT / "URETIM_KATMAN_MODEL.json")
++    dog = d["belge_degerleri"]
++    yr = d["yeniden_uretim"]
++    # Drive belgesindeki revizyon sayıları parametrelerden yeniden üretilir (belge yuvarlamasına tolerans)
++    assert abs(yr["adreslenebilir_taban_mrd_usd"] - dog["adreslenebilir_ara_mali_tabani_mrd_usd"]) < 5e-3
++    for s, v in dog["brut_ithalat_tasarrufu_mrd_usd"].items():
++        assert abs(yr["brut_ithalat_tasarrufu_mrd_usd"][s] - v) < 5e-3, s
++    for s, v in dog["revize_net_iyilesme_mrd_usd"].items():
++        assert abs(yr["revize_net_iyilesme_mrd_usd"][s] - v) < 2e-3, s
++    for s, v in dog["revize_cari_acik_kapanma_orani"].items():
++        assert abs(yr["revize_cari_acik_kapanma_orani"][s] - v) < 1.5e-3, s
++    # 3↔2↔1 değişmezleri: koordinasyon tek başına cari dengeyi iyileştirmez (kötüleştirir); ε ≥ 0,75'te orta/güçlü reform nötr ya da negatif
++    assert yr["revize_net_iyilesme_mrd_usd"]["koordinasyon"] < 0 < yr["revize_net_iyilesme_mrd_usd"]["orta_reform"] < yr["revize_net_iyilesme_mrd_usd"]["guclu_reform"]
++    e = d["ihracat_esnekligi_duyarlilik_net_iyilesme_mrd_usd"]
++    assert e["0.75"]["orta_reform"] < 0.01 and e["0.75"]["guclu_reform"] < 0.1 and e["1.0"]["orta_reform"] < 0
++    ep = sorted(e, key=float)
++    assert all(e[a]["orta_reform"] >= e[b]["orta_reform"] for a, b in zip(ep, ep[1:]))  # ε arttıkça iyileşme azalır
++    # sisteme bağ: halka çarpanı ve tavan modelden; URETIM_IC_AKIS çıktısı çarpanla bağımsız yeniden hesaplanır
++    b = d["sisteme_baglama"]
++    c_u = b["halka_carpani"]["sistemde_kullanilan"]
++    assert abs(c_u - (1.0 - 4264.48 / b["halka_usd_mn_mal_koprusu"])) < 2e-3
++    kopru = _j(DATA / "uretim_ic_akis_kopru.json")
++    uic = _j(OUT / "URETIM_IC_AKIS_C.json")
++    ham = uic["halka_toplam_ham"]
++    carpan = {**kopru["halka_duzeltme_carpan"], "uretim_bagimlilik": c_u}  # C: g_u = 1
++    beklenen = sum(ham[k] * carpan[k] for k in ham) / sum(ham.values())
++    assert abs(uic["bosalma_oran_halka_duzeltme"] - beklenen) < 2e-3
++    kal = _j(OUT / "GERCEKLIK_KALIBRE_C.json")
++    assert abs(kal["iyilesme_tavan_usd_mn"]["uretim"] - b["tavan_usd_mn"]["sistemde_kullanilan"]) < 0.2
++    # gerçekleşmeyi taban mı belirliyor: model tavan/ihtiyaç < taban ise taban belirleyici
++    g = d["gerceklesme_belirleyicisi"]
++    assert (g["tavan_over_ihtiyac_model"] < g["taban_atanmis"]) == (g["belirleyici"] == "taban (atanmış)")
