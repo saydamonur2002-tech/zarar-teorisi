@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `54b66ff73d39e61e`, temiz kurulumda 3 geçiş),
-**76 test geçti** (27 mevcut + 49 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `17c5cf6a5533e0c3`, temiz kurulumda 3 geçiş),
+**77 test geçti** (27 mevcut + 50 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 > **K1 notu:** Bu belgenin "Rakip ikame çift sayımı" bölümünden ÖNCE yazılan bölümlerdeki MFİN, Çin, Rusya, AB, ABD vb. sayıları, ölü ağırlık, sistem toplamı ve kısa vade grup payları K1 düzeltmesinden önceki değerlerdir. Güncel değerler "K1 uygulandı: güncel değerler" bölümündedir.
@@ -441,6 +441,13 @@ Aktör değil **mekanizma** düzeyinde kurallar (halka, katman, kapı). `data/et
 - **Sonuç neredeyse oynamadı:** gerçekleşmeyi belirleyen tavan/ihtiyaç oranı eski 0,093, yeni **0,194**; ikisi de atanmış taban 0,25'in altında, yani gerçekleşmeyi hâlâ **atanmış taban** belirliyor, modelin tavanı değil. Skor 47,7 / `kisitli_uygulanabilir`; TR net 10y C −13,415 → −13,429, A −19,355 → −19,368, B −37,975 → −37,993; g_finans 0,2193 → 0,2186.
 - **3↔2↔1 ⇒ 4↓ ⇒ 5↓ mimarisi** (`durdurma_yolu_kural.py` içinde varyant): kalibre C yoluna uyum RMSE 0,012 (faz-sıralı mimari 0,019). Rezervi koruyan hız çarpanı m\*: BoP 1,0 / mal 4,27 / rant 5,23 (faz-sıralıda 1,0 / 3,83 / 4,97). Yani Drive mimarisi yolu daha iyi açıklıyor ama daha hızlı kural istiyor; 4. halka m = 1'de yalnız ~%19 durur ve dış kısıt kapısı hiç açılmaz.
 - **Eleştirel:** (1) Repo'nun "zarar fazı önce, sonra üretim + finans" sırası ile Drive'ın "3-2-1 önce, 4 ve 5 sonra" sırası çelişiyor; veri Drive'dan yana ağırlık veriyor ama iki yapıyı ayırt edecek bağımsız gözlem yok (RMSE farkı küçük, 2 serbest parametre). (2) Tipoloji katsayıları belgede VARSAYIM; bağlama bu yüzden çarpan ve tavanı değiştirse de karar sonucunu değiştirmiyor. (3) 4. halka kapısı sert tavan değil yumuşak hız çarpanı; test yalnız kalibre yolda "4 ≤ 1-2-3'ün en büyüğü" diyor, hızlı varyantlarda aşabilir. (4) Gerçek çözüm: taban 0,25'i bağımsız veriyle ölçmek; model tabanı kendiliğinden belirleyemiyor.
+
+## Drive'daki aykırı sıralama: Geçiş Koridoru (`DURDURMA_YOLU_KURAL`, `mimari_siralar`)
+
+- **Bulgu:** Rapor ("Tek Çekirdek, Dört Düğüm") 3-2-1'in "reform sırası değil, eşzamanlı kapalı döngü" olduğunu söyler ve "3 tek başına yapılırsa gelir ithalata kaçar, 2 tek başına üretim bileşimini değiştirmez, 1 tek başına talep ve finansman zinciri oluşmaz" der. Ama "Geçiş Koridoru" 6 aşamalı ve ardışık: 1 zarar haritası, 2 ayrıştırma, 3 koşullu tampon, 4 yerli tedarik programı, 5 mekânsal bağlantı, 6 döviz kazancı fonu. Halkalara eşlenince sıra **2 ve 4 ⇒ 1 ⇒ 3 ⇒ 5** olur: hem eş zamanlılık ilkesine hem tek başına uyarısına aykırı, ayrıca 1, 3'ten önce geliyor (3 önce yapılmazsa yerel gelir ithalata kaçar uyarısıyla da çelişiyor değil ama 3'ü geciktiriyor).
+- **Uygulama:** `simule_asamali`: aşama i, aşama i−1'in tüm halkaları kotaya (0,25 / 0,50) varınca açılır; hız sabiti kalibre C yoluna uydurulur. Eş zamanlı yapı (tek aşama) referans.
+- **Sonuç (m=1, 10 yıl):** koridor kota 0,25: RMSE 0,0103; zarar aktarımı %72, koordinasyon %50, üretim %20, **para sızıntısı %0, dış kısıt %0**. Kota 0,50: RMSE 0,0105; üretim %10, para sızıntısı ve dış kısıt %0. Eş zamanlı: RMSE 0,0089; zarar aktarımı %37, koordinasyon ve dış kısıt %23, üretim %15, para sızıntısı %14. Rezerv hepsinde mal ve rant köprüsünde 2030 / 2029'da biter; hız çarpanı 5'te koridor rant köprüsü 2031'e kayar.
+- **Eleştirel:** (1) Koridor kalibre yola eş zamanlıdan kötü değil, hatta eşdeğer uyuyor (0,010 vs 0,009): uyum sıra kanıtı değil, çünkü yalnız d(2036) ve yol şekli sınanıyor. (2) Asıl fark kökte: koridor, zararı 2 ve 4'te hızlı durdurur ama 1 ve 3'ü neredeyse hiç açmaz; yani görünür d aynı, kökler yerinde. (3) Halka eşlemesi (koridor aşamalarının halkalara dönüştürülmesi) benim yorumum, belge açık eşleme vermiyor; kota da atanmış. (4) Bu yüzden koridor aykırılığı bir hata iddiası değil, belgenin kendi içinde çelişen bir yeri; eş zamanlı yapı tek parametreli ve belgenin ilkesine uygun, bu yüzden referans olarak raporlandı.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
@@ -3291,8 +3298,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/durdurma_yolu_kural.py fixed/etki_cephesi/durdurma_yolu_kural.py
 --- pristine/etki_cephesi/durdurma_yolu_kural.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/durdurma_yolu_kural.py	2026-10-14 16:34:18.071670949 +0000
-@@ -0,0 +1,292 @@
++++ fixed/etki_cephesi/durdurma_yolu_kural.py	2026-10-14 16:51:18.820893847 +0000
+@@ -0,0 +1,359 @@
 +"""Durdurmanın nasıl gerçekleşeceği: kural bazlı yol (aktör bazlı değil).
 +
 +Kurallar (data/etki_cephesi/durdurma_kurallari.json):
@@ -3501,6 +3508,64 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return sonuc
 +
 +
++SIRALAR = {
++    # Drive "Geçiş Koridoru" (6 aşama): 1-2 zarar haritası/ayrıştırma (ölçüm: 2 ve 4'ün işi), 3 koşullu tampon (4), 4 yerli tedarik (1), 5 mekânsal bağlantı (3), 6 döviz kazancı fonu (5).
++    # Aynı belgenin "3-2-1 sıra değil, eşzamanlı döngüdür" ilkesine AYKIRI: ardışık ve 1, 3'ten önce.
++    "koridor_aykiri": (("koordinasyon_kopuk", "zarar_aktarimi"), ("uretim_bagimlilik",), ("para_sizintisi",), ("dis_kisit",)),
++    "eszamanli": (tuple(HALKALAR),),
++}
++
++
++def simule_asamali(G: dict[str, Any], a: float, m: float, n: int, asamalar: tuple, kota: float) -> dict[str, Any]:
++    """Aşamalı açılış: aşama i, aşama i-1'in tüm halkaları `kota` durma oranına varınca açılır (önceki yıl sonu değeriyle). Tek aşama = eş zamanlı."""
++    w, g = G["w"], G["g"]
++    s = {h: 0.0 for h in HALKALAR}
++    d_yol, s_yol = [], []
++    acilis = {h: None for h in HALKALAR}
++    for t in range(1, n + 1):
++        o = dict(s)
++        for i, grp in enumerate(asamalar):
++            kapi = 1.0 if i == 0 or min(o[h] for h in asamalar[i - 1]) >= kota else 0.0
++            for h in grp:
++                s[h] = o[h] + min(1.0, a * m * g[h]) * (1.0 - o[h]) * kapi
++                if kapi and acilis[h] is None:
++                    acilis[h] = t
++        d_yol.append(sum(w[h] * s[h] for h in HALKALAR))
++        s_yol.append(dict(s))
++    return {"d": d_yol, "s": s_yol, "acilis_yili": acilis}
++
++
++def kalibre_asamali(G: dict[str, Any], asamalar: tuple, kota: float) -> dict[str, Any]:
++    n = len(G["d_cal"])
++    hedef = G["d_cal"][-1]
++    lo, hi = 1e-6, 50.0
++    for _ in range(100):
++        mid = (lo + hi) / 2
++        if simule_asamali(G, mid, 1.0, n, asamalar, kota)["d"][-1] < hedef:
++            lo = mid
++        else:
++            hi = mid
++    a = (lo + hi) / 2
++    r = simule_asamali(G, a, 1.0, n, asamalar, kota)
++    rmse = (sum((x - y) ** 2 for x, y in zip(r["d"], G["d_cal"])) / n) ** 0.5
++    return {"a": a, "rmse": rmse, "ref_d": r["d"]}
++
++
++def siralar_blogu(G: dict[str, Any]) -> dict[str, Any]:
++    n = len(G["d_cal"])
++    blok: dict[str, Any] = {}
++    for ad, asamalar, kota in (("koridor_aykiri_kota025", SIRALAR["koridor_aykiri"], 0.25), ("koridor_aykiri_kota050", SIRALAR["koridor_aykiri"], 0.5), ("eszamanli", SIRALAR["eszamanli"], 0.0)):
++        k = kalibre_asamali(G, asamalar, kota)
++        var = {}
++        for vad, m in (("kalibre", 1.0), ("hiz_x2", 2.0), ("hiz_x3", 3.0), ("hiz_x5", 5.0)):
++            r = simule_asamali(G, k["a"], m, n, asamalar, kota)
++            var[vad] = {"hiz_carpani": m, "d_son": round(r["d"][-1], 4), "halka_durma_son_yil": {h: round(r["s"][-1][h], 3) for h in HALKALAR},
++                        "halka_acilis_yili": {h: (G["yillar"][y - 1] if y else None) for h, y in r["acilis_yili"].items()},
++                        "rezerv_tukenme_yili": {kp: v["rezerv_tukenme_yili"] for kp, v in akis(G, r["d"]).items()}}
++        blok[ad] = {"asamalar": [list(x) for x in asamalar], "kota": kota, "a": round(k["a"], 5), "rmse_d": round(k["rmse"], 5), "varyantlar": var}
++    return blok
++
++
 +def calistir() -> dict[str, Any]:
 +    G = _girdiler()
 +    n = len(G["d_cal"])
@@ -3546,6 +3611,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "varyantlar": varyantlar,
 +        "gereken_hiz_carpani_rezerv_tukenmesin": mstar,
 +        "mimari_321": mimari,
++        "mimari_siralar": siralar_blogu(G),
 +        "kapasite_mn_usd": {"cari_acik_ort": round(G["cari"]), "brut_rezerv": round(G["rezerv"])},
 +        "not": "Kurallar mekanizma düzeyinde (halka/katman/kapı), aktör düzeyinde değil. Eşleştirmeler ve kapı eşikleri atanmış; hız sabiti kalibre C yoluna uydurulmuş. Cari açık ve rezerv sabit (büyüme, yeni borç yok); rezerv brüt.",
 +    }
@@ -3578,6 +3644,14 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +              f"d ≥ 0,25 / 0,5 / 0,75 yılı: {v['esik_yili']['0.25']} / {v['esik_yili']['0.5']} / {v['esik_yili']['0.75']}; son yıl halka durma oranları: {v['halka_durma_son_yil']}",
 +              "Rezerv tükenme yılı (BoP / mal / rant): " + " / ".join(str(v["finansman"][k]["rezerv_tukenme_yili"] or "—") for k in KOPRULER), ""]
 +    L += ["3↔2↔1 mimarisiyle rezerv tükenmesin diye gereken m*: " + ", ".join(f"{k}: {v if v is not None else 'ulaşılamaz'}" for k, v in mimari["gereken_hiz_carpani_rezerv_tukenmesin"].items())]
++    L += ["", "## Drive'daki aykırı sıralama: Geçiş Koridoru (ardışık) ve eş zamanlı karşılaştırma", "",
++          "Belge 3-2-1'in 'bir reform sırası değil, eşzamanlı kapalı döngü' olduğunu söyler; ama Geçiş Koridoru ardışıktır: önce ölçüm ve koşullu tampon (2 ve 4), sonra yerli tedarik (1), sonra mekânsal bağlantı (3), en sonda döviz fonu (5). Bu hem eş zamanlılık ilkesine hem de 'üçü tek başına yapılırsa işlemez' uyarısına aykırı.", "",
++          "| Yapı | Kota | a | RMSE (d) | son yıl durma oranları (m=1) | rezerv tükenme yılı (BoP / mal / rant), m=1 → m=5 |", "| --- | ---: | ---: | ---: | --- | --- |"]
++    for ad, v in d["mimari_siralar"].items():
++        k1, k5 = v["varyantlar"]["kalibre"], v["varyantlar"]["hiz_x5"]
++        r1 = " / ".join(str(k1["rezerv_tukenme_yili"][k] or "—") for k in KOPRULER)
++        r5 = " / ".join(str(k5["rezerv_tukenme_yili"][k] or "—") for k in KOPRULER)
++        L.append(f"| {ad} | {v['kota']} | {v['a']} | {v['rmse_d']} | {k1['halka_durma_son_yil']} | {r1} → {r5} |")
 +    (OUT / "DURDURMA_YOLU_KURAL.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 +    return d
 +
@@ -7373,8 +7447,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:37:37.913318676 +0000
-@@ -0,0 +1,919 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:51:27.112877993 +0000
+@@ -0,0 +1,937 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -8294,4 +8368,22 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert all(b >= a - 1e-9 for a, b in zip(v["kalibre"]["d_yol"], v["hiz_x2"]["d_yol"]))
 +    ms = m["gereken_hiz_carpani_rezerv_tukenmesin"]
 +    assert ms["bop_merkez_rant"] <= ms["mal_net_ticaret"] <= ms["tum_havza_rant"]
++
++
++def test_durdurma_siralari_aykiri_koridor_ve_es_zamanli():
++    d = _j(OUT / "DURDURMA_YOLU_KURAL.json")["mimari_siralar"]
++    assert set(d) == {"koridor_aykiri_kota025", "koridor_aykiri_kota050", "eszamanli"}
++    for ad, v in d.items():
++        assert v["rmse_d"] < 0.03, ad
++        k = v["varyantlar"]
++        # hız çarpanı arttıkça son yıl durma monoton artar
++        ds = [k[x]["d_son"] for x in ("kalibre", "hiz_x2", "hiz_x3", "hiz_x5")]
++        assert ds == sorted(ds), ad
++        # kalibre hedef: d(2036) ~ kalibre C yolu
++        assert abs(ds[0] - 0.2188) < 0.01, ad
++    # koridorda 3 (para sızıntısı) 1'den (üretim) sonra açılır; kalibre yolda hiç açılmaz; 5 hiç açılmaz
++    kor = d["koridor_aykiri_kota025"]["varyantlar"]["kalibre"]
++    assert kor["halka_durma_son_yil"]["para_sizintisi"] == 0.0 and kor["halka_durma_son_yil"]["dis_kisit"] == 0.0
++    # eş zamanlıda hiçbir halka kapıda beklemez
++    assert all(v is not None for v in d["eszamanli"]["varyantlar"]["kalibre"]["halka_acilis_yili"].values())
 ```

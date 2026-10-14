@@ -123,3 +123,13 @@ d ≥ 0,25 / 0,5 / 0,75 yılı: 2029 / 2031 / 2033; son yıl halka durma oranlar
 Rezerv tükenme yılı (BoP / mal / rant): — / — / 2031
 
 3↔2↔1 mimarisiyle rezerv tükenmesin diye gereken m*: bop_merkez_rant: 1.0, mal_net_ticaret: 4.27, tum_havza_rant: 5.23
+
+## Drive'daki aykırı sıralama: Geçiş Koridoru (ardışık) ve eş zamanlı karşılaştırma
+
+Belge 3-2-1'in 'bir reform sırası değil, eşzamanlı kapalı döngü' olduğunu söyler; ama Geçiş Koridoru ardışıktır: önce ölçüm ve koşullu tampon (2 ve 4), sonra yerli tedarik (1), sonra mekânsal bağlantı (3), en sonda döviz fonu (5). Bu hem eş zamanlılık ilkesine hem de 'üçü tek başına yapılırsa işlemez' uyarısına aykırı.
+
+| Yapı | Kota | a | RMSE (d) | son yıl durma oranları (m=1) | rezerv tükenme yılı (BoP / mal / rant), m=1 → m=5 |
+| --- | ---: | ---: | ---: | --- | --- |
+| koridor_aykiri_kota025 | 0.25 | 0.18121 | 0.01027 | {'zarar_aktarimi': 0.723, 'uretim_bagimlilik': 0.197, 'para_sizintisi': 0.0, 'koordinasyon_kopuk': 0.504, 'dis_kisit': 0.0} | — / 2030 / 2029 → — / — / 2031 |
+| koridor_aykiri_kota050 | 0.5 | 0.22401 | 0.0105 | {'zarar_aktarimi': 0.801, 'uretim_bagimlilik': 0.104, 'para_sizintisi': 0.0, 'koordinasyon_kopuk': 0.583, 'dis_kisit': 0.0} | — / 2030 / 2029 → — / 2033 / 2031 |
+| eszamanli | 0.0 | 0.06846 | 0.00885 | {'zarar_aktarimi': 0.372, 'uretim_bagimlilik': 0.151, 'para_sizintisi': 0.14, 'koordinasyon_kopuk': 0.228, 'dis_kisit': 0.228} | — / 2030 / 2029 → — / — / 2031 |
