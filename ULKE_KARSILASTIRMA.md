@@ -25,14 +25,18 @@ Yazılanlar: **Japonya, Çin, Brezilya, Meksika, Polonya**.
 | Polonya | 2025-11 | yurt içi hazine kâğıdı | 11.7% | 88.3% | 0.0% | 100.0% | yazılır |
 | Endonezya | 2025-08-11 | SBN | 14.6% | 85.4% | — | — | yerli alacaklı, döviz ayrılmadı |
 
-## Eşik aralığı
+## Aralık ölçümü
 
-Durum: ölçüm. 0,20 kuralı bu boşlukların içindedir. Aralığın içindeki her kesit bu tabloda aynı etiketi verir.
+Durum: ölçüm. Kesit (alt, üst] aralığında kaydırıldı. İçindeki satır, iki kenarın arasına düşen paydır.
 
-- Yurt dışı: **14,6%** (Endonezya, 2025-08-11) ile **23,0%** (Euro alanı, 2024-Q4). Genişlik 8,4%. n=16.
-- Döviz, para kırılımı ölçülen satırlar: **3,8%** (Brezilya, 2026-08) ile **21,4%** (Türkiye, 2025-12). Genişlik 17,7%. n=3.
-- Yurt dışında en geniş komşu boşluk: 34,3% (Arjantin) ile 47,3% (İspanya).
-- Dövizde en geniş komşu boşluk, ölçülen üç satırda: 21,4% (Türkiye) ile 57,8% (Arjantin).
+| Aralık | Genişlik | İçindeki satır | 0,20 alttan | 0,20 üstten | Etiket değişen |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Yurt dışı | 8,39 puan | 0 | 5,39 | 3,00 | 0 |
+| Döviz | 17,66 puan | 0 | 16,25 | 1,41 | 0 |
+
+Yurt dışı kenarları 14,6% (Endonezya, 2025-08-11) ve 23,0% (Euro alanı, 2024-Q4). Euro alanı üst kenarı kaynağın yaklaşık yüzde 23 rakamıdır. n=16.
+Döviz kenarları 3,8% (Brezilya, 2026-08) ve 21,4% (Türkiye, 2025-12). Para kırılımı ölçülen satır n=3.
+En geniş komşu boşluk, yurt dışında 12,99 puan (Arjantin–İspanya), dövizde 36,42 puan (Türkiye–Arjantin).
 
 Kâğıt cinsinden konan döviz 0 bu aralığa girmez: Japonya, ABD, Çin, Almanya, Fransa, İtalya, İspanya, Euro alanı, İngiltere, Güney Kore, Meksika, Polonya.
 Döviz kırılımı ayrılmayan: Endonezya.

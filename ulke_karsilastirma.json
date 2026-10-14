@@ -16,7 +16,18 @@
       "ust": 0.23,
       "genislik": 0.0839,
       "n": 16,
-      "etiket": "olcum"
+      "etiket": "olcum",
+      "olcum": {
+        "genislik_puan": 8.39,
+        "ic_satir": 0,
+        "ic_ulkeler": [],
+        "kural_alttan_puan": 5.39,
+        "kural_ustten_puan": 3.0,
+        "etiket_degisen": 0,
+        "etiket_degisen_ulkeler": [],
+        "kesit": "(alt, ust]",
+        "etiket": "olcum"
+      }
     },
     "doviz_olculen": {
       "esik_kural": 0.2,
@@ -28,7 +39,18 @@
       "ust": 0.2141,
       "genislik": 0.1766,
       "n": 3,
-      "etiket": "olcum"
+      "etiket": "olcum",
+      "olcum": {
+        "genislik_puan": 17.66,
+        "ic_satir": 0,
+        "ic_ulkeler": [],
+        "kural_alttan_puan": 16.25,
+        "kural_ustten_puan": 1.41,
+        "etiket_degisen": 0,
+        "etiket_degisen_ulkeler": [],
+        "kesit": "(alt, ust]",
+        "etiket": "olcum"
+      }
     },
     "yabanci_en_genis_komsu": {
       "alt_ulke": "Arjantin",
@@ -39,6 +61,7 @@
       "ust": 0.473,
       "genislik": 0.1299,
       "n": 16,
+      "genislik_puan": 12.99,
       "etiket": "olcum"
     },
     "doviz_en_genis_komsu": {
@@ -50,6 +73,7 @@
       "ust": 0.5783,
       "genislik": 0.3642,
       "n": 3,
+      "genislik_puan": 36.42,
       "etiket": "olcum"
     },
     "doviz_kagit_sifir": [

@@ -208,14 +208,19 @@ SATIRLAR = [
 ]
 
 
-def etiket(yabanci: float, doviz: float | None) -> str:
+def etiket(
+    yabanci: float,
+    doviz: float | None,
+    y_esik: float = YABANCI_ESIK,
+    d_esik: float = DOVIZ_ESIK,
+) -> str:
     if doviz is None:
-        return "yerli_alacakli_doviz_ayrilmadi" if yabanci < YABANCI_ESIK else "yabanci_alacakli_doviz_ayrilmadi"
-    if yabanci < YABANCI_ESIK and doviz < DOVIZ_ESIK:
+        return "yerli_alacakli_doviz_ayrilmadi" if yabanci < y_esik else "yabanci_alacakli_doviz_ayrilmadi"
+    if yabanci < y_esik and doviz < d_esik:
         return "yazilir"
-    if yabanci < YABANCI_ESIK and doviz >= DOVIZ_ESIK:
+    if yabanci < y_esik and doviz >= d_esik:
         return "yerli_para_bacagi"
-    if yabanci >= YABANCI_ESIK and doviz >= DOVIZ_ESIK:
+    if yabanci >= y_esik and doviz >= d_esik:
         return "doviz_bacagi_disarida"
     return "yabanci_alacakli_buyuk"
 
@@ -262,8 +267,45 @@ def _en_genis(rows: list[dict], alan: str) -> dict:
         key=lambda g: g["genislik"],
     )
     bosluk["n"] = len(rows)
+    bosluk["genislik_puan"] = round(bosluk["genislik"] * 100, 2)
     bosluk["etiket"] = "olcum"
     return bosluk
+
+
+def _kume(rows: list[dict], y_esik: float, d_esik: float) -> dict[str, str]:
+    out = {}
+    for r in rows:
+        d = None if r["doviz_pay"] == "" else float(r["doviz_pay"])
+        out[r["ulke"]] = etiket(float(r["yabanci_pay"]), d, y_esik, d_esik)
+    return out
+
+
+def _olc(rows: list[dict], alan_satir: list[dict], alan: str, aralik: dict) -> dict:
+    """Aralığın ölçümü: genişlik, içindeki satır, kuralın kenara uzaklığı, etiket farkı."""
+    alt, ust, esik = aralik["alt"], aralik["ust"], aralik["esik_kural"]
+    ic = [r["ulke"] for r in alan_satir if alt < r[alan] < ust]
+    baz = _kume(rows, YABANCI_ESIK, DOVIZ_ESIK)
+    kesitler = [alt + (ust - alt) * t for t in (0.01, 0.5, 0.99)]
+    kesitler += [esik, ust]
+    degisen: list[str] = []
+    for k in kesitler:
+        y_esik = k if alan == "yabanci_pay" else YABANCI_ESIK
+        d_esik = k if alan == "doviz_pay" else DOVIZ_ESIK
+        simdi = _kume(rows, y_esik, d_esik)
+        for ulke, et in baz.items():
+            if simdi[ulke] != et and ulke not in degisen:
+                degisen.append(ulke)
+    return {
+        "genislik_puan": round((ust - alt) * 100, 2),
+        "ic_satir": len(ic),
+        "ic_ulkeler": ic,
+        "kural_alttan_puan": round((esik - alt) * 100, 2),
+        "kural_ustten_puan": round((ust - esik) * 100, 2),
+        "etiket_degisen": len(degisen),
+        "etiket_degisen_ulkeler": degisen,
+        "kesit": "(alt, ust]",
+        "etiket": "olcum",
+    }
 
 
 def _satir(r: dict) -> dict:
@@ -295,6 +337,8 @@ def main() -> dict:
     yabanci_aralik = _kenar(rows, "yabanci_pay", YABANCI_ESIK)
     doviz_olculen = [r for r in rows if r["ulke"] in DOVIZ_OLCULEN]
     doviz_aralik = _kenar(doviz_olculen, "doviz_pay", DOVIZ_ESIK)
+    yabanci_aralik["olcum"] = _olc(rows, rows, "yabanci_pay", yabanci_aralik)
+    doviz_aralik["olcum"] = _olc(rows, doviz_olculen, "doviz_pay", doviz_aralik)
     esik = {
         "yabanci": yabanci_aralik,
         "doviz_olculen": doviz_aralik,
@@ -354,24 +398,31 @@ def main() -> dict:
     def yuzde(x: float) -> str:
         return f"{x:.1%}".replace(".", ",")
 
+    def puan(x: float) -> str:
+        return f"{x:.2f}".replace(".", ",")
+
+    yo, do = yabanci_aralik["olcum"], doviz_aralik["olcum"]
     md += [
         "",
-        "## Eşik aralığı",
+        "## Aralık ölçümü",
         "",
-        "Durum: ölçüm. 0,20 kuralı bu boşlukların içindedir. Aralığın içindeki her kesit bu tabloda aynı etiketi verir.",
+        "Durum: ölçüm. Kesit (alt, üst] aralığında kaydırıldı. İçindeki satır, iki kenarın arasına düşen paydır.",
         "",
-        f"- Yurt dışı: **{yuzde(yabanci_aralik['alt'])}** ({yabanci_aralik['alt_ulke']}, {yabanci_aralik['alt_donem']}) "
-        f"ile **{yuzde(yabanci_aralik['ust'])}** ({yabanci_aralik['ust_ulke']}, {yabanci_aralik['ust_donem']}). "
-        f"Genişlik {yuzde(yabanci_aralik['genislik'])}. n={yabanci_aralik['n']}.",
-        f"- Döviz, para kırılımı ölçülen satırlar: **{yuzde(doviz_aralik['alt'])}** ({doviz_aralik['alt_ulke']}, {doviz_aralik['alt_donem']}) "
-        f"ile **{yuzde(doviz_aralik['ust'])}** ({doviz_aralik['ust_ulke']}, {doviz_aralik['ust_donem']}). "
-        f"Genişlik {yuzde(doviz_aralik['genislik'])}. n={doviz_aralik['n']}.",
-        f"- Yurt dışında en geniş komşu boşluk: {yuzde(esik['yabanci_en_genis_komsu']['alt'])} "
-        f"({esik['yabanci_en_genis_komsu']['alt_ulke']}) ile {yuzde(esik['yabanci_en_genis_komsu']['ust'])} "
-        f"({esik['yabanci_en_genis_komsu']['ust_ulke']}).",
-        f"- Dövizde en geniş komşu boşluk, ölçülen üç satırda: {yuzde(esik['doviz_en_genis_komsu']['alt'])} "
-        f"({esik['doviz_en_genis_komsu']['alt_ulke']}) ile {yuzde(esik['doviz_en_genis_komsu']['ust'])} "
-        f"({esik['doviz_en_genis_komsu']['ust_ulke']}).",
+        "| Aralık | Genişlik | İçindeki satır | 0,20 alttan | 0,20 üstten | Etiket değişen |",
+        "| --- | ---: | ---: | ---: | ---: | ---: |",
+        f"| Yurt dışı | {puan(yo['genislik_puan'])} puan | {yo['ic_satir']} | {puan(yo['kural_alttan_puan'])} | {puan(yo['kural_ustten_puan'])} | {yo['etiket_degisen']} |",
+        f"| Döviz | {puan(do['genislik_puan'])} puan | {do['ic_satir']} | {puan(do['kural_alttan_puan'])} | {puan(do['kural_ustten_puan'])} | {do['etiket_degisen']} |",
+        "",
+        f"Yurt dışı kenarları {yuzde(yabanci_aralik['alt'])} ({yabanci_aralik['alt_ulke']}, {yabanci_aralik['alt_donem']}) "
+        f"ve {yuzde(yabanci_aralik['ust'])} ({yabanci_aralik['ust_ulke']}, {yabanci_aralik['ust_donem']}). "
+        f"Euro alanı üst kenarı kaynağın yaklaşık yüzde 23 rakamıdır. n={yabanci_aralik['n']}.",
+        f"Döviz kenarları {yuzde(doviz_aralik['alt'])} ({doviz_aralik['alt_ulke']}, {doviz_aralik['alt_donem']}) "
+        f"ve {yuzde(doviz_aralik['ust'])} ({doviz_aralik['ust_ulke']}, {doviz_aralik['ust_donem']}). "
+        f"Para kırılımı ölçülen satır n={doviz_aralik['n']}.",
+        f"En geniş komşu boşluk, yurt dışında {puan(esik['yabanci_en_genis_komsu']['genislik_puan'])} puan "
+        f"({esik['yabanci_en_genis_komsu']['alt_ulke']}–{esik['yabanci_en_genis_komsu']['ust_ulke']}), "
+        f"dövizde {puan(esik['doviz_en_genis_komsu']['genislik_puan'])} puan "
+        f"({esik['doviz_en_genis_komsu']['alt_ulke']}–{esik['doviz_en_genis_komsu']['ust_ulke']}).",
         "",
         "Kâğıt cinsinden konan döviz 0 bu aralığa girmez: " + ", ".join(esik["doviz_kagit_sifir"]) + ".",
         "Döviz kırılımı ayrılmayan: " + ", ".join(esik["doviz_ayrilmadi"]) + ".",
@@ -398,12 +449,14 @@ def main() -> dict:
         d = "—" if r["doviz_pay"] == "" else f"{float(r['doviz_pay']):.1%}"
         print(f"{r['ulke']:<12} yabancı {r['yabanci_pay']:.1%} döviz {d} {r['etiket']}")
     print(
-        f"yurt dışı aralık {yabanci_aralik['alt']:.1%}–{yabanci_aralik['ust']:.1%} "
-        f"({yabanci_aralik['alt_ulke']}–{yabanci_aralik['ust_ulke']})"
+        f"yurt dışı {yo['genislik_puan']:.2f} puan  iç {yo['ic_satir']}  "
+        f"alttan {yo['kural_alttan_puan']:.2f}  üstten {yo['kural_ustten_puan']:.2f}  "
+        f"etiket değişen {yo['etiket_degisen']}"
     )
     print(
-        f"döviz aralık {doviz_aralik['alt']:.1%}–{doviz_aralik['ust']:.1%} "
-        f"({doviz_aralik['alt_ulke']}–{doviz_aralik['ust_ulke']}, n={doviz_aralik['n']})"
+        f"döviz {do['genislik_puan']:.2f} puan  iç {do['ic_satir']}  "
+        f"alttan {do['kural_alttan_puan']:.2f}  üstten {do['kural_ustten_puan']:.2f}  "
+        f"etiket değişen {do['etiket_degisen']}"
     )
     return sonuc
 
