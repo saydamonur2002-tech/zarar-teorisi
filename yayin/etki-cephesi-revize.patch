@@ -1095,7 +1095,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bolge_stok_akis.py fixed/etki_cephesi/bolge_stok_akis.py
 --- pristine/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:05:45.822890890 +0000
-+++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 07:40:14.116677949 +0000
++++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 14:20:37.195130998 +0000
 @@ -4,6 +4,7 @@
  import json
  import sys
@@ -1112,7 +1112,39 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
  
  def _nfp_aktör(base: np.ndarray, iso: str, ulke_sys: dict[str, Any]) -> np.ndarray:
-@@ -75,8 +77,8 @@
+@@ -52,22 +54,27 @@
+     return round((h + f - 0.45 * abs(d)) / 1e9, 4)
+ 
+ 
+-def _sinif_etiket(iso: str, rol: str, net_v: float, fark_usd: float | None) -> str:
++def _sinif_etiket(iso: str, rol: str, net_v: float, fark_usd: float | None, bant: float = 0.0) -> str:
++    """Sınıf, net'in belirsizlik BANDINA göre verilir (eski sabit ±0,08 eşiği kaldırıldı).
++
++    Kazanan: net − bant > 0. Kaybeden: net + bant < 0. Aksi halde net sıfırdan ayırt edilemez → bant içi.
++    Bant = sqrt((dağıtım kuralı belirsizliği)² + (bilinmeyen merkez payı)²); kapsamı kısmi aktörlerde yalnız ikincisi (alt sınır).
++    """
+     if iso == "TR":
+         return "tr_yaricevre_refah_reformu"
+-    if net_v > 0.08:
++    if net_v - bant > 0:
+         if rol in CEVRE_ROL:
+             return "cevre_entegre_kazanan"
+         if rol in MERKEZ_ROL:
+             return "merkez_entegre_kazanan"
+         return "entegre_kazanan"
+-    if net_v < -0.08:
++    if net_v + bant < 0:
+         if rol in CEVRE_ROL:
+             return "cevre_entegre_kaybeden"
+         return "entegre_kaybeden"
+     if fark_usd is not None and fark_usd > 400:
+         return "rant_kanali_bosluk_taraftari"
+-    return "notr"
++    return "belirsiz_bant_ici"
+ 
+ 
+ def calistir() -> dict[str, Any]:
+@@ -75,8 +82,8 @@
      zt = _load(DATA / "zarar_teorisi_kopru.json")
      ulke_sys = _load(DATA / "dis_ulke_sistemi.json")
      sen_doc = _load(DATA / "senaryolar.json")
@@ -1123,20 +1155,54 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      kappa = 0.1
  
      rant = _load(OUT / "DIS_RANT_PARASAL.json")
-@@ -119,9 +121,9 @@
+@@ -92,6 +99,15 @@
+     L, G, nfp_base = _matrices("2026-Q1")
+     aktorler: list[dict[str, Any]] = []
+ 
++    # Kapsamı KISMİ aktörlerde dağıtım kuralı belirsizliği ölçülemez (kanal kuralı modellenmemiş): bant en az, kapsamı TAM aktörlerin
++    # bant medyanı kadar tutulur (vekil varsayım). Aksi halde bant 0 görünür ve sahte "kesin" sınıf üretirdi.
++    tam_bantlar = sorted(
++        float(r.get("net_bandi") or 0.0)
++        for r in (defter_doc.get("ulke_defteri") or [])
++        if r.get("bant_kapsami") == "tam" and r["ulke"] not in ("TR", "MFIN") and float(r.get("net_bandi") or 0.0) > 0
++    )
++    bant_medyan_tam = tam_bantlar[len(tam_bantlar) // 2] if tam_bantlar else 0.0
++
+     for row in defter_doc.get("ulke_defteri") or []:
+         iso = str(row["ulke"])
+         meta = (ulke_sys.get("ulkeler") or {}).get(iso) or {}
+@@ -119,17 +135,25 @@
  
          if iso == "TR":
              tr_sfc = (stok_tr.get("entegre_puls") or {}).get("sektor_etkisi_trilyonTL") or {}
 -            sfc_net = round(
 -                float(tr_sfc.get("H", 0)) + float(tr_sfc.get("F", 0)) - 0.45 * abs(float(tr_sfc.get("D", 0))), 3
 -            )
+-
+-        sinif = _sinif_etiket(iso, rol, net_v, fark_usd)
 +            # TR = yerli sektörler (H+F+B+K); D dış alem. Eski formül D'yi ayrıca 0,45 ağırlıkla düşüyordu:
 +            # transfer D'ye +A, F'ye −A yazıldığında bu ikinci bir çift sayımdır.
 +            sfc_net = round(sum(float(tr_sfc.get(k, 0)) for k in ("H", "F", "B", "K")), 3)
- 
-         sinif = _sinif_etiket(iso, rol, net_v, fark_usd)
++
++        bant = float(row.get("net_bandi") or 0.0)
++        bant_vekil = row.get("bant_kapsami") == "kismi"
++        if bant_vekil:
++            bant = max(bant, bant_medyan_tam)
++        sinif = _sinif_etiket(iso, rol, net_v, fark_usd, bant)
          aktorler.append(
-@@ -137,6 +139,7 @@
+             {
+                 "ulke": iso,
+                 "ad": row.get("ad") or meta.get("ad") or iso,
+                 "rol": rol,
+                 "net_refah_entegre_vekil": round(net_v, 3),
++                "net_bandi": round(bant, 3),
++                "bant_kapsami": row.get("bant_kapsami", "tam"),
++                "bant_medyan_vekili": bool(bant_vekil),
++                "net_alt_ust": [round(net_v - bant, 3), round(net_v + bant, 3)],
+                 "net_refah_entegre_usd_mn": round(net_v * usd_per, 1),
+                 "dis_toplam_vekili": round(dis_v, 3),
+                 "havza_kayip_vekil": round(havza_k, 3),
+@@ -137,6 +161,7 @@
                  "rant_kanal_refah_dis_usd_mn": ref_dis_usd,
                  "rant_kanal_bosluk_fark_usd_mn": fark_usd,
                  "sfc_net_trilyonTL": sfc_net,
@@ -1144,7 +1210,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "sinif": sinif,
              }
          )
-@@ -166,7 +169,7 @@
+@@ -148,7 +173,7 @@
+             a["not"] = "Yapısal havza neti negatif; refah reformu ve 10y katmanlar ayrı yığın."
+ 
+     entegre_kazanan = sorted(
+-        [a for a in aktorler if a["net_refah_entegre_vekil"] > 0.05 and a["ulke"] != "MFIN"],
++        [a for a in aktorler if a["sinif"] in ("cevre_entegre_kazanan", "merkez_entegre_kazanan", "entegre_kazanan") and a["ulke"] != "MFIN"],
+         key=lambda x: -x["net_refah_entegre_vekil"],
+     )
+     cevre_kazanan = [a for a in entegre_kazanan if a["sinif"] == "cevre_entegre_kazanan"]
+@@ -166,7 +191,7 @@
      c_sen = next(s for s in sen_doc["senaryolar"] if s["id"] == "C")
      destek = {
          "senaryo": "C",
@@ -1153,7 +1228,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "iki_katman_not": (
              "1) Rant kanalı: boşluk→refah geçişinde hayalet rant kaybedenler (EU, US, CN…). "
              "2) Entegre defter: havza+ikame+kanal+refah — çevrede IR, EG, GR vb. net pozitif."
-@@ -182,6 +185,10 @@
+@@ -182,6 +207,10 @@
          "olcum": "bolge_stok_akis_kazanan_kaybeden",
          "rant_modeli": rant.get("rant_modeli"),
          "lambda": lam,
@@ -1164,6 +1239,28 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "usd_per_vekil_rant_mn": usd_per,
          "senaryo_destek": destek,
          "aktorler": aktorler,
+@@ -202,7 +231,7 @@
+         "",
+         f"*{ds['iki_katman_not']}*",
+         "",
+-        "## Halka çevre — İran, Mısır, Yunanistan, … (entegre net > 0)",
++        "## Halka çevre — bant dışı kazananlar (net − bant > 0)",
+         "",
+     ]
+     for a in d.get("halka_cevre_kazanan") or []:
+@@ -211,7 +240,11 @@
+             f"≈ {a['net_refah_entegre_usd_mn']:,} mn $/yıl — refah rant {a['refah_rant_vekil']}, "
+             f"havza kaybı {a['havza_kayip_vekil']}"
+         )
+-    lines.extend(["", "*(Balkan vekili çoğunlukla **EU** satırında; **FR** ayrı net +0,595 vekil.)*", "", "## Rakip yarıçevre (CN, RU — entegre kazanan)", ""])
++    belirsiz = [a for a in d["aktorler"] if a["sinif"] in ("belirsiz_bant_ici", "rant_kanali_bosluk_taraftari")]
++    lines.extend(["", "*(Balkan vekili çoğunlukla **EU** satırında.)*", "", "## Bant içi: sıfırdan ayırt edilemeyen (kazanan da kaybeden de denmez)", ""])
++    for a in sorted(belirsiz, key=lambda x: -abs(x["net_refah_entegre_vekil"])):
++        lines.append(f"- **{a['ulke']}** ({a['ad']}): net {a['net_refah_entegre_vekil']} ± {a['net_bandi']} → [{a['net_alt_ust'][0]}; {a['net_alt_ust'][1]}] ({a['sinif']}; bant kapsamı {a['bant_kapsami']})")
++    lines.extend(["", "## Rakip yarıçevre (CN, RU — entegre kazanan)", ""])
+     for a in d.get("rakip_yaricevre_kazanan") or []:
+         lines.append(f"- **{a['ulke']}:** net {a['net_refah_entegre_vekil']} vekil")
+     lines.extend(["", "## Çevre kaybeden (Balkan / Kafkas tampon)", ""])
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/c_dinamik_olcut.py fixed/etki_cephesi/c_dinamik_olcut.py
 --- pristine/etki_cephesi/c_dinamik_olcut.py	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/etki_cephesi/c_dinamik_olcut.py	2026-10-14 08:24:11.537059066 +0000
@@ -2249,7 +2346,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/projeksiyon.py fixed/etki_cephesi/projeksiyon.py
 --- pristine/etki_cephesi/projeksiyon.py	2026-10-14 06:05:45.826774441 +0000
-+++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 14:11:15.815650959 +0000
++++ fixed/etki_cephesi/projeksiyon.py	2026-10-14 14:19:51.345782897 +0000
 @@ -3,6 +3,8 @@
  
  import json
@@ -2259,7 +2356,15 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  from typing import Any
  
  REPO = Path(__file__).resolve().parents[1]
-@@ -500,14 +502,12 @@
+@@ -485,6 +487,7 @@
+                 "matris_kazanc": 0.0,
+                 "ikame_kazanc": 0.0,
+                 "merkez_sizinti": 0.0,
++                "kanal_alt": 0.0,
+             },
+         )
+ 
+@@ -500,14 +503,18 @@
          return False
  
      pasif_k = float((refah_doc or {}).get("kayip_pasif_ek") or 0.25) if refah_doc and refah_doc.get("aktif") else 0.25
@@ -2267,17 +2372,19 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      for bid, kayip in kayiplar.items():
          pasif = float(bag_etki_by_id.get(bid, {}).get("pasif_bosluk_dolgu", 0.0))
          vakum = float(kayip) + pasif * pasif_k
--        pkey = _bolge_veri_anahtar(bid, dis_pay)
--        for actor, pay in (dis_pay.get(pkey) or {}).items():
--            if actor == "TR" or _skip_kanal(bid, actor):
--                continue
--            _touch(actor)["kanal_kazanc"] += vakum * float(pay)
 +        bosluk_v += vakum
 +        # `kanal` dağıtım kuralı (V × aktör payı) KALDIRILDI: matris kuralıyla aynı boşluğu ikinci kez dağıtıyordu.
++        # Yalnız TANI için hesaplanır (kazanca girmez): dağıtım kuralı belirsizliği = |kanal − matris| (sınıf bandında kullanılır).
+         pkey = _bolge_veri_anahtar(bid, dis_pay)
+         for actor, pay in (dis_pay.get(pkey) or {}).items():
+             if actor == "TR" or _skip_kanal(bid, actor):
+                 continue
+-            _touch(actor)["kanal_kazanc"] += vakum * float(pay)
++            _touch(actor)["kanal_alt"] += vakum * float(pay)
          ukey = _bolge_veri_anahtar(bid, ub_rows)
          for row in ub_rows.get(ukey) or []:
              iso = row["iso"]
-@@ -537,12 +537,15 @@
+@@ -537,12 +544,15 @@
          if e.get("tur") == "sizinti":
              _touch("MFIN")["merkez_sizinti"] += float(e["akis_endeks"])
  
@@ -2297,15 +2404,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          toplam = round(kanal + matris + ikame + merkez, 3)
          if toplam < 0.02 and iso != "MFIN":
              continue
-@@ -555,6 +558,7 @@
+@@ -555,6 +565,8 @@
                  "ikame_kazanc": ikame,
                  "merkez_sizinti": merkez,
                  "fayda_endeks": toplam,
++                "kanal_alternatif_kazanc": round(v["kanal_alt"] * katsayi, 3),
 +                "normalizasyon": {"bosluk_V": round(bosluk_v, 3), "ham_toplam": round(ham_toplam, 3), "katsayi": round(katsayi, 4), "kanal_kaldirildi": True},
              }
          )
      out.sort(key=lambda x: -x["fayda_endeks"])
-@@ -616,10 +620,40 @@
+@@ -616,10 +628,40 @@
      return dagitim
  
  
@@ -2346,7 +2454,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  ) -> list[dict[str, Any]]:
      by_iso: dict[str, dict[str, Any]] = {}
      for u in ulke_kayiplari:
-@@ -679,6 +713,7 @@
+@@ -679,6 +721,7 @@
              row["merkez_belirsiz_vekil"] = bel
  
      out: list[dict[str, Any]] = []
@@ -2354,7 +2462,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      for iso, row in by_iso.items():
          dis_k = round(float(row["dis_kazanc_vekili"]), 3)
          havza_k = round(float(row["havza_kayip"]), 3)
-@@ -686,6 +721,7 @@
+@@ -686,6 +729,7 @@
          out.append(
              {
                  **row,
@@ -2362,7 +2470,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "dis_kazanc_vekili": dis_k,
                  "havza_kayip": havza_k,
                  "merkez_belirsiz_vekil": round(float(row.get("merkez_belirsiz_vekil", 0.0)), 3),
-@@ -789,10 +825,10 @@
+@@ -789,10 +833,10 @@
      ikame = float(akis_doc.get("yaricevre_rakip_ikame_carpan", 0.55))
  
      kalibre_kullanildi = (KALIBRE / "bolgeler.json").is_file()
@@ -2375,7 +2483,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "kalibre_2024_ticaret": kalibre_kullanildi,
          "rant_modeli": "refah" if refah_doc and refah_doc.get("aktif") else "bosluk",
          "kaynak_tez": "data/etki_cephesi/KAYNAK_TEZ.md",
-@@ -812,7 +848,7 @@
+@@ -812,7 +856,7 @@
          sid = sen["id"]
          ero = sen["etki_erosyon_carpani"]
          flex = sen["tr_diplomatik_flex"]
@@ -2384,7 +2492,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          bag_modu = sen.get("bag_modu") or {"kullanim": 0.3, "atil": 0.4, "aracsal": 0.3}
          kullanim = float(bag_modu.get("kullanim", 0.3))
          enigma_l = float(sen.get("enigma_carpan_levant", 1.0))
-@@ -903,6 +939,7 @@
+@@ -903,6 +947,7 @@
              sen_row["ulke_kayiplari"],
              sen_row["dis_aktör_kazanc"],
              ulke_names,
@@ -2392,7 +2500,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          )
  
      sonuc["_adlar"] = adlar
-@@ -928,31 +965,23 @@
+@@ -928,31 +973,23 @@
          lines.append(f"*{payload['referans_olcum_not']}*")
          lines.append("")
  
@@ -2439,7 +2547,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          lines.append(f"## Senaryo {sen['id']}: {sen['ad']}{tag}")
          lines.append("")
          lines.append(sen["aciklama"])
-@@ -1060,14 +1089,14 @@
+@@ -1060,14 +1097,14 @@
          lines.append("### Aktör birleşik (havza kaybı vs dış kazanç vekili)")
          lines.append("")
          lines.append(
@@ -2458,7 +2566,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
              )
          lines.append("")
  
-@@ -1156,13 +1185,29 @@
+@@ -1156,13 +1193,29 @@
      return "\n".join(lines)
  
  
@@ -2490,7 +2598,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      if sen.get("ulke_kayiplari"):
          ua = [f"# Senaryo {baslik_etiket} — ülke bazlı kayıp (10 yıl vekil)", ""]
          ua.append("| Ülke | Kayıp endeks | Net | Pasif | Araçsal | Temsil |")
-@@ -1213,16 +1258,19 @@
+@@ -1213,16 +1266,19 @@
          da.append("")
          da.append("## Birleşik (dış kazanç − havza kaybı)")
          da.append("")
@@ -2516,7 +2624,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
              )
          da.append("")
          (OUT / f"DIS_AKTOR_{sid}.md").write_text("\n".join(da), encoding="utf-8")
-@@ -1238,12 +1286,12 @@
+@@ -1238,12 +1294,12 @@
      (OUT / "PROJEKSIYON.json").write_text(json.dumps(clean, ensure_ascii=False, indent=2), encoding="utf-8")
      payload["_adlar"] = adlar
      (OUT / "PROJEKSIYON.md").write_text(_md(payload), encoding="utf-8")
@@ -2534,8 +2642,46 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  if __name__ == "__main__":
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/refah_dis_entegrasyon.py fixed/etki_cephesi/refah_dis_entegrasyon.py
 --- pristine/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 06:05:45.827256705 +0000
-+++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 14:16:11.022415266 +0000
-@@ -128,7 +128,8 @@
++++ fixed/etki_cephesi/refah_dis_entegrasyon.py	2026-10-14 14:19:51.346275955 +0000
+@@ -2,6 +2,7 @@
+ from __future__ import annotations
+ 
+ import json
++import math
+ import subprocess
+ import sys
+ from collections import defaultdict
+@@ -42,6 +43,7 @@
+         "merkez_sizinti": 0.0,
+         "merkez_belirsiz": 0.0,
+         "refah_rant": 0.0,
++        "kanal_alt": 0.0,
+     }
+ 
+ 
+@@ -65,6 +67,7 @@
+     ham = sum(float(eu.get(k) or 0) for k in keys)
+     if ham <= 1e-9:
+         return {"uygulandi": False, "not": "EU kanal/refah yok"}
++    keys = keys + ("kanal_alt",)  # tanı alanı da aynı payla bölünür (bant tutarlılığı)
+     aktar = {k: float(eu.get(k) or 0) * pay for k in keys}
+     for k in keys:
+         eu[k] = float(eu.get(k) or 0) * (1.0 - pay)
+@@ -77,11 +80,11 @@
+         w = weights.get(b, 1.0) / s
+         for k in keys:
+             acc[b][k] += aktar[k] * w
+-        dagitim[b] = round(sum(aktar[k] * w for k in keys), 3)
++        dagitim[b] = round(sum(aktar[k] * w for k in keys if k != "kanal_alt"), 3)
+     return {
+         "uygulandi": True,
+         "eu_satir_balkan_kanal_pay": pay,
+-        "eu_aktarilan_toplam_vekil": round(sum(aktar.values()), 3),
++        "eu_aktarilan_toplam_vekil": round(sum(v for k, v in aktar.items() if k != "kanal_alt"), 3),
+         "balkan_dagilim_vekil": dagitim,
+     }
+ 
+@@ -128,10 +131,12 @@
  
      for d in sen.get("dis_aktör_kazanc") or []:
          iso = d["aktor"]
@@ -2545,7 +2691,11 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          acc[iso]["ikame_kazanc"] += float(d.get("ikame_kazanc") or 0.0)
          acc[iso]["merkez_sizinti"] += float(d.get("merkez_sizinti") or 0.0)
          acc[iso]["merkez_belirsiz"] += float(d.get("merkez_belirsiz_vekil") or 0.0)
-@@ -164,7 +165,10 @@
++        acc[iso]["kanal_alt"] += float(d.get("kanal_alternatif_kazanc") or 0.0)
+ 
+     acc["TR"]["refah_rant"] += refah_tr_ic
+ 
+@@ -164,7 +169,10 @@
      ledger: list[dict[str, Any]] = []
      for iso, v in acc.items():
          ref = round(v["refah_rant"], 3)
@@ -2557,6 +2707,28 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          havza_k = round(max(0.0, -v["havza_net"]), 3)
          net = round(dis_k - havza_k + max(0.0, v["havza_net"]), 3)
          if iso == "TR":
+@@ -173,12 +181,20 @@
+             net = round(dis_k - havza_k, 3)
+         if abs(net) < 0.02 and ref < 0.02 and iso not in ("TR", "CN", "RU", "US", "MFIN"):
+             continue
++        # Net belirsizlik bandı: (1) dağıtım kuralı belirsizliği |kanal − matris| (iki kural da modelliyse),
++        # (2) kimliği bilinmeyen merkez payı (kazanç olabilir, sayılmadı). Bağımsız sayılıp karesel toplanır.
++        kapsam = next((a_.get("kazanc_kapsam") for a_ in sen.get("aktör_birlesik") or [] if a_.get("aktor") == iso), None)
++        kural = abs(v["kanal_alt"] - v["kanal_kazanc"]) if kapsam == "tam" else 0.0
++        bant = 0.0 if iso in ("TR", "MFIN") else math.sqrt(kural**2 + v["merkez_belirsiz"] ** 2)
+         ledger.append(
+             {
+                 "ulke": iso,
+                 "ad": names.get(iso, iso),
+                 "refah_endeks": _refah_endeks(iso, ulke_sys),
+-                **{k: round(v[k], 3) for k in v},
++                "kural_belirsizligi": round(kural, 3),
++                "net_bandi": round(bant, 3),
++                "bant_kapsami": "tam" if (kapsam == "tam" or iso in ("TR", "MFIN")) else "kismi",
++                **{k: round(v[k], 3) for k in v if k != "kanal_alt"},
+                 "dis_toplam_vekili": dis_k,
+                 "havza_kayip": havza_k,
+                 "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
 +++ fixed/etki_cephesi/run_all.py	2026-10-14 14:06:07.944526937 +0000
@@ -3540,8 +3712,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:16:40.196069852 +0000
-@@ -0,0 +1,449 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:21:02.566394605 +0000
+@@ -0,0 +1,479 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -3991,3 +4163,33 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            assert led[iso]["dis_toplam_vekili"] == round(led[iso]["kanal_kazanc"] + led[iso]["ikame_kazanc"] + led[iso]["merkez_sizinti"] + led[iso]["refah_rant"], 3)
 +    b = {a["ulke"]: a for a in _j(OUT / "BOLGE_STOK_AKIS.json")["aktorler"]}
 +    assert b["EG"]["sinif"] == "rant_kanali_bosluk_taraftari" and abs(b["EG"]["net_refah_entegre_vekil"]) < 0.08 / 2  # eşiğin (0,08) belirgin altında: bıçak sırtı değil
++
++
++def test_sinif_belirsizlik_bandina_gore_sabit_esik_yok():
++    sys.path.insert(0, str(REPO / "etki_cephesi"))
++    import bolge_stok_akis as bsa  # noqa: E402
++
++    # birim: net ± bant sıfırı kapsıyorsa kazanan da kaybeden de denmez
++    assert bsa._sinif_etiket("XX", "bolge_guc", 0.10, None, 0.20) == "belirsiz_bant_ici"
++    assert bsa._sinif_etiket("XX", "bolge_guc", 0.30, None, 0.20) == "cevre_entegre_kazanan"
++    assert bsa._sinif_etiket("XX", "bolge_guc", -0.30, None, 0.20) == "cevre_entegre_kaybeden"
++    assert bsa._sinif_etiket("XX", "bolge_guc", 0.10, 500.0, 0.20) == "rant_kanali_bosluk_taraftari"
++    assert bsa._sinif_etiket("XX", "bolge_guc", 0.0, None, 0.0) == "belirsiz_bant_ici"  # eski 'notr' sınıfı yok
++    b = _j(OUT / "BOLGE_STOK_AKIS.json")
++    kaz = {"cevre_entegre_kazanan", "merkez_entegre_kazanan", "entegre_kazanan"}
++    kay = {"cevre_entegre_kaybeden", "entegre_kaybeden"}
++    for a in b["aktorler"]:
++        alt, ust = a["net_alt_ust"]
++        if a["sinif"] in kaz:
++            assert alt > 0, a["ulke"]
++        elif a["sinif"] in kay:
++            assert ust < 0, a["ulke"]
++        elif a["ulke"] != "TR":
++            assert alt <= 0 <= ust, a["ulke"]  # bant içi: sıfırdan ayırt edilemiyor
++        assert a["sinif"] != "notr"
++    by = {a["ulke"]: a for a in b["aktorler"]}
++    assert by["EG"]["sinif"] in ("belirsiz_bant_ici", "rant_kanali_bosluk_taraftari") and by["EG"]["net_alt_ust"][0] < 0 < by["EG"]["net_alt_ust"][1]
++    tam = sorted(a["net_bandi"] for a in b["aktorler"] if a["bant_kapsami"] == "tam" and a["ulke"] not in ("TR", "MFIN") and a["net_bandi"] > 0)
++    med = tam[len(tam) // 2]
++    assert all(a["net_bandi"] >= med - 1e-9 for a in b["aktorler"] if a["bant_kapsami"] == "kismi")  # kısmi kapsamda bant, tam kapsamın medyanından dar olamaz
++    assert [a["ulke"] for a in b["halka_cevre_kazanan"]] == [a["ulke"] for a in b["halka_cevre_kazanan"] if a["net_alt_ust"][0] > 0]

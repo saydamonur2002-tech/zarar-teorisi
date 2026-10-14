@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `ad55076df4c8cfb1`, temiz kurulumda 3 geçiş),
-**58 test geçti** (27 mevcut + 31 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `25f7175d20e642fe`, temiz kurulumda 3 geçiş),
+**59 test geçti** (27 mevcut + 32 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -207,6 +207,16 @@ Mısır `kanal` kalkınca "çevre kazananı" olmaktan çıkmıştı (ledger neti
 - **Mısır'ın durumu:** C'de defter neti +0,012 (projeksiyon −0,010), A'da −0,037 (−0,079), B'de −0,224 (−0,320). Sınıf `rant_kanali_bosluk_taraftari`: boşluk rant kanalından 505,9 mn $ fark, ama net ≈ 0. Eşiğin (0,08) belirgin altında: artık bıçak sırtı değil, ve kazanan değil.
 - **Mısır kazanan olarak "düzelmedi" ve düzelmemeli:** önceki +0,50 yalnız `kanal` çift sayımından ve eşit dağıtılan belirsiz paydan geliyordu. Hiçbir muhasebede güvenilir biçimde pozitif değil.
 - Diğer aktörler: tüm kazanç satırları 0,06 azaldı (belirsiz pay), hiçbir sınıf değişmedi. Karar skoru (56,7), karar eşiği ve E[TR net] aynı; `kapanis_ok` A/B/C ve MFIN tutarlılığı korundu.
+
+## Sınıf eşiği belirsizlik bandıyla değiştirildi
+Önceki: `bolge_stok_akis._sinif_etiket` sabit ±0,08 eşiğiyle "kazanan/kaybeden/nötr" diyordu; Mısır +0,074'te bıçak sırtındaydı. Şimdi sınıf, net'in **belirsizlik bandına** göre:
+- **Kural:** kazanan ⇔ net − bant > 0; kaybeden ⇔ net + bant < 0; aksi halde `belirsiz_bant_ici` (rant kanalı boşluk farkı > 400 mn $ ise `rant_kanali_bosluk_taraftari`). Eski `notr` sınıfı kalktı.
+- **Bant = √(kural² + belirsiz²):** (1) dağıtım kuralı belirsizliği = |kanal kuralı − matris kuralı| (kaldırılan `kanal` kuralı yalnız TANI olarak hesaplanır, kazanca girmez; `kanal_alternatif_kazanc`); (2) kimliği bilinmeyen merkez payı (`merkez_belirsiz`, sayılmadı ama kazanç olabilir). Bağımsız sayılıp karesel toplanır. TR ve MFIN için bant 0.
+- **Kısmi kapsamlı aktörlerde** kanal kuralı hiç modellenmediğinden kural belirsizliği ölçülemez; bant en az tam kapsamlı aktörlerin bant medyanı (0,143) alınır (**vekil varsayım**; aksi halde bant 0 görünür, sahte "kesin" sınıf çıkardı).
+- **Çıktı:** her aktörde `net_bandi`, `net_alt_ust`, `bant_kapsami`. `BOLGE_STOK_AKIS.md` bant içi aktörleri ayrı listeler.
+- **Sınıf değişimi:** Bosna-Hersek kazanandan bant içine; Bulgaristan ve Kıbrıs nötrden bant içine; Sırbistan nötrden çevre kaybedene (net −0,065, bant 0,053). Mısır bant içinde ([−0,13; +0,15]). Kazananlar: Çin, Rusya, ABD, İran, BAE, AB, Suudi Arabistan, İsrail, Fransa, Yunanistan, Arnavutluk, Kuzey Makedonya. Bantlar: Çin ±1,12, Rusya ±1,13 (kural farkı büyük), İran ±0,14, ABD ±0,09.
+- **Hâlâ kenar:** Yunanistan net 0,167 / bant 0,158 (marj 0,009), Arnavutluk ve Kuzey Makedonya 0,18 / 0,143 (Balkan payları AB satırının atanmış %68'lik bölünmesinden geliyor). Bant içine girmeleri küçük bir bant değişiminde olur.
+- Karar skoru (56,7), karar eşiği P(C) (0,63), E[TR net 10 yıl] ve `kapanis_ok` aynı.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
