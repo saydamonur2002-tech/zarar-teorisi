@@ -27,8 +27,6 @@
 | [IKAME_CIFT_SAYIM.md](./IKAME_CIFT_SAYIM.md) | Rakip ikame akışının hem havza girişine hem aktör kazancına yazılması (çift sayım) doğrulaması: V korunum aşımı, iki düzeltme varyantının etkisi (tanı, ana model değişmedi) |
 | [ZARAR_DURDURMA_SENARYOSU.md](./ZARAR_DURDURMA_SENARYOSU.md) | Zararı durdurma (d) + refah rantına bağlama politika senaryosu (D): C'den türeyen kaldıraç taraması, TR/dış aktör net'leri, durdurmaya karşı çıkanlar, kısa vade finansman |
 | [DURDURMA_YOLU_KURAL.md](./DURDURMA_YOLU_KURAL.md) | Durdurmanın gerçekleşme yolu, kural bazlı (halka/katman/kapı, aktör değil): kalibre C yoluna uydurulmuş hız sabiti, hız çarpanı ve sıra kuralı varyantları, kısa vade finansman ve rezerv tükenme yılı |
-| [URETIM_KATMAN_MODEL.md](./URETIM_KATMAN_MODEL.md) | Drive'daki üretim katmanı modeli (81 il sızıntı, 3↔2↔1⇒4⇒5 mimarisi) sisteme bağlandı: belge sayılarının yeniden üretimi, ε duyarlılığı, halka çarpanı 0,68→0,773, üretim tavanı 2054→4264 mn $, atanmış taban 0,25'in bağlayıcı kaldığı bulgusu |
-| [DURDURMA_HIZ_KURAL.md](./DURDURMA_HIZ_KURAL.md) | Durdurma hızını belirleyen ölçülebilir kurallar (beş halka yok, tek durum d; zarar aktarımı stok-akışta): finansman gereği m*, gözlenen kapasite, mali alan (faiz/gelir); 4–5 kat hızın desteklenmediği sonucu |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 

@@ -1,8 +1,8 @@
-# Etki cephesi modeli: revize sonucu
+# Etki cephesi modeli: revize yaması
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `d44b9e6506200cb0`, temiz kurulumda 3 geçiş),
-**78 test geçti** (27 mevcut + 51 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `d30e721eda7075fb`, temiz kurulumda 3 geçiş),
+**74 test geçti** (27 mevcut + 47 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 > **K1 notu:** Bu belgenin "Rakip ikame çift sayımı" bölümünden ÖNCE yazılan bölümlerdeki MFİN, Çin, Rusya, AB, ABD vb. sayıları, ölü ağırlık, sistem toplamı ve kısa vade grup payları K1 düzeltmesinden önceki değerlerdir. Güncel değerler "K1 uygulandı: güncel değerler" bölümündedir.
@@ -432,32 +432,6 @@ Aktör değil **mekanizma** düzeyinde kurallar (halka, katman, kapı). `data/et
 - **TR net yolu:** kalibre −16,75 → −13,53; m = 3: −15,86 → −5,71; m = 5: −14,97 → −1,78.
 - **Eleştirel:** (1) halka–katman eşleştirmesi ve dış kısıt kapısı eşiği atanmış; koordinasyon ve dış kısıt hızları kendi katmanı olmadığı için ortalama alındı. (2) m\* = 3,8 – 5, finans katmanında g = 0,22 × 3,8 ≈ 0,84 demek; bu gözlenen en yüksek gerçekleşme oranının (0,665 – 0,7) üstünde: yani rezerv koruyan hız, modelin kendi gerçekleşme tavanlarıyla uyumsuz görünüyor. (3) Akış yıl sonu d ile hesaplanır (durdurma yıl içinde tamamlanmış gibi): iyimser. (4) Cari açık ve rezerv 2024'te sabit, brüt (net değil), yeni borç yok. (5) Kalibre yoldan şekil sapması (RMSE 0,019): kural ilk yıllarda doğrusaldan fazla, orta yıllarda az durdurur. (6) m'nin hangi politikayla elde edileceği modellenmedi: m yalnız ölçek.
 
-## Üretim katmanı modeli (Drive) sisteme entegre edildi (`URETIM_KATMAN_MODEL`, `_uretim_katman.py`)
-
-- **Kaynak:** Drive'da "81 İl Sızıntı Matrisi Analizi" (`1WSI8f3jqplxSQ6TGOklvA46FN4lVXMyPAa4qE_68GlY`) ve "Zarar_Teorisi_Tek_Cekirdek_Dort_Dugum_Tam_Rapor" (`1kyycqD5RedYe3UT8wJDTQInyGE8Wul71BXZMA1vxa84`) sayısal model içeriyor. İki kavramsal belge (Üretim Borç Harcama, TR Model Analizi) ve "Pasta_Borc_Faiz_Uretim_v2" tablosu kullanılabilir sayı vermedi: bağlanmadı.
-- **Model belge sayılarını yeniden üretiyor:** adreslenebilir ara malı tabanı 198,11 mrd $; net iyileşme koordinasyon −2,886 / orta reform 4,264 / güçlü reform 11,621 mrd $; cari açık kapanma −0,074 / 0,110 / 0,299 (testle kilitli). İhracat esnekliği ε (baz 0,30) duyarlılığı raporda: ε = 0'da orta reform 7,15, kritik ε ≈ 0,75.
-- **Bağlantı 1: üretim halkası çarpanı.** Eski atanmış 0,68 yerine veriden türeyen çarpan: koordinasyon 1,153 / **orta reform 0,773** / güçlü 0,383 (banda hâlâ giriyor, yani eski sayı keyfî ama kötü de değildi).
-- **Bağlantı 2: üretim tavanı.** Eski 2 054 mn $ yerine 4 264 mn $ (orta reform net iyileşme, mal net ticaret köprüsü).
-- **Sonuç neredeyse oynamadı:** gerçekleşmeyi belirleyen tavan/ihtiyaç oranı eski 0,093, yeni **0,194**; ikisi de atanmış taban 0,25'in altında, yani gerçekleşmeyi hâlâ **atanmış taban** belirliyor, modelin tavanı değil. Skor 47,7 / `kisitli_uygulanabilir`; TR net 10y C −13,415 → −13,429, A −19,355 → −19,368, B −37,975 → −37,993; g_finans 0,2193 → 0,2186.
-- **3↔2↔1 ⇒ 4↓ ⇒ 5↓ mimarisi** (`durdurma_yolu_kural.py` içinde varyant): kalibre C yoluna uyum RMSE 0,012 (faz-sıralı mimari 0,019). Rezervi koruyan hız çarpanı m\*: BoP 1,0 / mal 4,27 / rant 5,23 (faz-sıralıda 1,0 / 3,83 / 4,97). Yani Drive mimarisi yolu daha iyi açıklıyor ama daha hızlı kural istiyor; 4. halka m = 1'de yalnız ~%19 durur ve dış kısıt kapısı hiç açılmaz.
-- **Eleştirel:** (1) Repo'nun "zarar fazı önce, sonra üretim + finans" sırası ile Drive'ın "3-2-1 önce, 4 ve 5 sonra" sırası çelişiyor; veri Drive'dan yana ağırlık veriyor ama iki yapıyı ayırt edecek bağımsız gözlem yok (RMSE farkı küçük, 2 serbest parametre). (2) Tipoloji katsayıları belgede VARSAYIM; bağlama bu yüzden çarpan ve tavanı değiştirse de karar sonucunu değiştirmiyor. (3) 4. halka kapısı sert tavan değil yumuşak hız çarpanı; test yalnız kalibre yolda "4 ≤ 1-2-3'ün en büyüğü" diyor, hızlı varyantlarda aşabilir. (4) Gerçek çözüm: taban 0,25'i bağımsız veriyle ölçmek; model tabanı kendiliğinden belirleyemiyor.
-
-## Geçiş Koridoru sıralaması: deneme, doğrulanmamış (`DURDURMA_YOLU_KURAL`, `mimari_siralar`)
-
-- **Uyarı:** Koridor aşamalarının halkalara eşlenmesi ve kotalar belgede yok, bana ait; kullanıcının aradığı sıralama bu olmayabilir. Beş halka yapısı sonradan katman olarak değerlendirilip kural biriminden çıkarıldı (sonraki bölüm).
-- **Bulgu:** Rapor ("Tek Çekirdek, Dört Düğüm") 3-2-1'in "reform sırası değil, eşzamanlı kapalı döngü" olduğunu söyler ve "3 tek başına yapılırsa gelir ithalata kaçar, 2 tek başına üretim bileşimini değiştirmez, 1 tek başına talep ve finansman zinciri oluşmaz" der. Ama "Geçiş Koridoru" 6 aşamalı ve ardışık: 1 zarar haritası, 2 ayrıştırma, 3 koşullu tampon, 4 yerli tedarik programı, 5 mekânsal bağlantı, 6 döviz kazancı fonu. Halkalara eşlenince sıra **2 ve 4 ⇒ 1 ⇒ 3 ⇒ 5** olur: hem eş zamanlılık ilkesine hem tek başına uyarısına aykırı, ayrıca 1, 3'ten önce geliyor.
-- **Uygulama:** `simule_asamali`: aşama i, aşama i−1'in tüm halkaları kotaya (0,25 / 0,50) varınca açılır; hız sabiti kalibre C yoluna uydurulur. Eş zamanlı yapı (tek aşama) referans.
-- **Sonuç (m=1, 10 yıl):** koridor kota 0,25: RMSE 0,0103; zarar aktarımı %72, koordinasyon %50, üretim %20, **para sızıntısı %0, dış kısıt %0**. Kota 0,50: RMSE 0,0105; üretim %10, para sızıntısı ve dış kısıt %0. Eş zamanlı: RMSE 0,0089; zarar aktarımı %37, koordinasyon ve dış kısıt %23, üretim %15, para sızıntısı %14. Rezerv hepsinde mal ve rant köprüsünde 2030 / 2029'da biter; hız çarpanı 5'te koridor rant köprüsü 2031'e kayar.
-- **Eleştirel:** (1) Koridor kalibre yola eş zamanlıdan kötü değil, hatta eşdeğer uyuyor (0,010 vs 0,009): uyum sıra kanıtı değil, çünkü yalnız d(2036) ve yol şekli sınanıyor. (2) Asıl fark kökte: koridor, zararı 2 ve 4'te hızlı durdurur ama 1 ve 3'ü neredeyse hiç açmaz; yani görünür d aynı, kökler yerinde. (3) Halka eşlemesi (koridor aşamalarının halkalara dönüştürülmesi) benim yorumum, belge açık eşleme vermiyor; kota da atanmış. (4) Bu yüzden koridor aykırılığı bir hata iddiası değil, belgenin kendi içinde çelişen bir yeri; eş zamanlı yapı tek parametreli ve belgenin ilkesine uygun, bu yüzden referans olarak raporlandı.
-
-## Durdurma hızı: ölçülebilir kurallar, beş halka yok (`DURDURMA_HIZ_KURAL`, `durdurma_hiz_kural.py`)
-
-- **Çerçeve:** Beş halka (üretim, koordinasyon, para sızıntısı, zarar aktarımı, dış kısıt) model değil katmandır; bu modülde kullanılmaz. Tek durum d (durdurulan pay). Zarar aktarımı stok-akışta kalır: akış = sabit kayıp + boşalma·(1−d). Ölçülemeyen kurallar bırakıldı: dönüt, güven, tampon süresi, ücret–kredi bağı, başarı tanımı (hepsi ham metinlerden türetilmişti, hiçbirinin sayısal büyüklüğü yok).
-- **Ham metinden çıkan, ölçülebilen kurallar:** R1 finansman (para/borç üretim kapasitesine bağlı; rezerv dayanmalı), R2 gözlenen kapasite (katman gerçekleşme oranları), R3 mali alan (faiz yükü kamu harcama alanını daraltır; `1 − faiz/gelir`, EVDS bütçe: merkezi yönetim faiz giderleri / gelirleri, 12 ay kayan, 2022-12 %11,1 → 2026-08 %16,7).
-- **Sonuçlar:** b = 0,0244 ile m = 1 kalibre C yolunu üretir (RMSE 0,0096). R1: rezervin 10 yıl dayanması için gereken hız çarpanı mal köprüsünde m* = **4,74**, rant köprüsünde **5,99** (BoP'de gerek yok). R2: gözlenen kapasite en kötü katman 0,59, ortalama 1,0, en iyi katman **1,78** (zarar teorisi 0,665 / üretim 0,2375 / finans 0,2186; ortalama 0,374). R3: faiz/gelir oranı veri eğimiyle uzatılırsa (10 yılda ≈ %32) mali alan çarpanı 0,82; d(son) en iyi kapasitede 0,358 → 0,329.
-- **Hüküm (yalnız ölçülebilir kurallarla):** 4–5 kat hızı destekleyen bir koşul yok. Gereken 4,7–6,0, gözlenen en iyi 1,8. En iyi katman hızında bile rezerv mal ve rant köprüsünde 2030 ve 2029'da biter.
-- **Eleştirel:** (1) "Tüm katmanlar en iyi katman kadar hızlı" iyimser bir üst sınır, zarar teorisi katmanının 0,665'i bir politika paketinin değil, başka bir katmanın oranı. (2) R3'teki kapasite–mali alan bağı (`kapasite ∝ 1 − faiz/gelir`) atanmış bir bağlantı; faiz/gelir yolunun uzatılması bir öngörü değil, eğimin devamı. (3) Dışarıda bıraktığım kurallar hızı artırabilir; büyüklüğünü bu verilerle söyleyemem. Yani sonuç "4–5 kat imkânsız" değil, "bu verilerle desteklenmiyor". (4) Eski halka tabanlı modüller (`DURDURMA_YOLU_KURAL`) tarihsel kayıt olarak duruyor, yerini bu modül aldı.
-
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
 - `bolge_stok_akis`, `lm_rant_sektor` darbeleri sıfır toplamlı değil: yalnız ilan edildi.
@@ -796,29 +770,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    "TM",
 +    "IR"
 +  ]
-+}
-diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/butce_faiz_gelir.json fixed/data/etki_cephesi/gozlem/butce_faiz_gelir.json
---- pristine/data/etki_cephesi/gozlem/butce_faiz_gelir.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/gozlem/butce_faiz_gelir.json	2026-10-14 19:35:45.245191407 +0000
-@@ -0,0 +1,19 @@
-+{
-+  "nesne": "Merkezi yönetim faiz giderleri / merkezi yönetim gelirleri, 12 aylık kayan toplam",
-+  "kaynak": "TCMB EVDS bütçe grupları (bie_kbmgel TP.KB.GEL001, bie_kbmgid TP.KB.GID152); depodaki butce_ham.csv",
-+  "seri": {
-+    "2016-12": 0.0907,
-+    "2017-12": 0.09,
-+    "2018-12": 0.0976,
-+    "2019-12": 0.1141,
-+    "2020-12": 0.1301,
-+    "2021-12": 0.1285,
-+    "2022-12": 0.1109,
-+    "2023-12": 0.1295,
-+    "2024-12": 0.1465,
-+    "2025-12": 0.1601,
-+    "2026-08": 0.1666
-+  },
-+  "son_donem": "2026-08",
-+  "not": "Mali alan göstergesi: 1 − faiz/gelir. Gelecek yol veri eğiminden uzatılır; öngörü değildir."
 +}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json fixed/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json
 --- pristine/data/etki_cephesi/gozlem/dis_ticaret_gsyh_2023.json	1970-01-01 00:00:00.000000000 +0000
@@ -1932,171 +1883,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  },
    "gsyh_not": "gsyh_ic_talep_uretim_kopukluk_duzeltme = sahte/ithal talep büyümesinin vekili; üretime bağlanan akışla kapanır (teshis/gsyh_etki_vekili ayrı çapa)."
  }
-diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/uretim_katman_model.json fixed/data/etki_cephesi/uretim_katman_model.json
---- pristine/data/etki_cephesi/uretim_katman_model.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/uretim_katman_model.json	2026-10-14 16:32:23.851664159 +0000
-@@ -0,0 +1,161 @@
-+{
-+  "not": "Kullanıcının üretim katmanı modeli (Google Drive): 3↔2↔1 çözüm mimarisinin sayısal ayağı, '81 İl Sızıntı Matrisi' ve 5_REVIZYON sayfası. Tüm değerler kaynak belgeden aynen alındı; statü etiketleri belgedeki gibidir. Bu dosya yalnız _uretim_katman.py ve uretim_katman_rapor.py tarafından okunur.",
-+  "kaynak": [
-+    {
-+      "baslik": "81 İl Sızıntı Matrisi Analizi",
-+      "drive_id": "1WSI8f3jqplxSQ6TGOklvA46FN4lVXMyPAa4qE_68GlY",
-+      "tarih": "2026-08-31",
-+      "kullanim": "tipoloji katsayıları, cari açık stres testi, revizyon (adreslenebilir taban, ihracat esnekliği)"
-+    },
-+    {
-+      "baslik": "Zarar_Teorisi_Tek_Cekirdek_Dort_Dugum_Tam_Rapor",
-+      "drive_id": "1kyycqD5RedYe3UT8wJDTQInyGE8Wul71BXZMA1vxa84",
-+      "tarih": "2026-08-31",
-+      "kullanim": "düğüm numaralaması (1 üretim bağımlılığı, 2 koordinasyon, 3 yerel para sızıntısı, 4 zarar aktarımı, 5 dış kısıt); 3↔2↔1 çözüm mimarisi"
-+    },
-+    {
-+      "baslik": "Görsellerdeki Üretim Borç Harcama Modelinin Teknik İncelemesi",
-+      "drive_id": "1UfxS1v5YWw3LuWrC1R6KvvH7qVExYnBx",
-+      "tarih": "2026-07-02",
-+      "kullanim": "HC ≤ Y* + FX − DS kısıtı, iç/dış borç servisi ayrımı (sayısal parametre yok; kavramsal)"
-+    },
-+    {
-+      "baslik": "Türkiye Ekonomisi Model Analizi Raporu",
-+      "drive_id": "1LPVm6thF8tliPvYUMmj0D6d3trNxVIcFFMMPEVDRgdU",
-+      "tarih": "2026-07-05",
-+      "kullanim": "Y*, D, HC stok-akış çerçevesi (sayısal katman parametresi yok; senaryo anlatısı)"
-+    }
-+  ],
-+  "makro_girdiler": {
-+    "cari_acik_mrd_usd": {
-+      "deger": 38.888,
-+      "statu": "ÖLÇÜLÜ",
-+      "not": "yıllıklandırılmış cari işlemler açığı (SBB Haziran 2026)"
-+    },
-+    "mal_ithalati_mrd_usd": {
-+      "deger": 375.3,
-+      "statu": "ÖLÇÜLÜ"
-+    },
-+    "ara_mali_ithalat_payi": {
-+      "deger": 0.712,
-+      "statu": "ÖLÇÜLÜ",
-+      "not": "TÜİK Ocak–Temmuz 2026"
-+    },
-+    "enerji_altin_ithalati_mrd_usd": {
-+      "deger": 81.3,
-+      "statu": "ÖLÇÜLÜ"
-+    },
-+    "enerji_altin_ara_mali_tabanina_dahil_payi": {
-+      "deger": 0.85,
-+      "statu": "TÜRETİLMİŞ",
-+      "not": "enerji ve parasal olmayan altının ara malı tabanındaki payı (belge: %85)"
-+    }
-+  },
-+  "senaryolar": {
-+    "koordinasyon": {
-+      "aciklama": "λ +0,10, ρ +0,04; ithal girdi oranı (m) sabit",
-+      "m_azalma": 0.0,
-+      "etkilenen_taban_payi": 0.25,
-+      "gecis_kaybi": 0.25,
-+      "ihracat_kaybi_sabit_mrd_usd_eps030": 2.886
-+    },
-+    "orta_reform": {
-+      "aciklama": "yerel tedarik koordinasyonu + koşullu teşvik; ithal girdi yoğunluğu −%19,25",
-+      "m_azalma": 0.1925,
-+      "etkilenen_taban_payi": 0.25,
-+      "gecis_kaybi": 0.25,
-+      "ihracat_kaybi_sabit_mrd_usd_eps030": 2.886
-+    },
-+    "guclu_reform": {
-+      "aciklama": "derin tedarik dönüşümü ve yerlileştirme; ithal girdi yoğunluğu −%32,5",
-+      "m_azalma": 0.325,
-+      "etkilenen_taban_payi": 0.4,
-+      "gecis_kaybi": 0.25,
-+      "ihracat_kaybi_sabit_mrd_usd_eps030": 7.695
-+    }
-+  },
-+  "ihracat_esnekligi": {
-+    "eps_baz": 0.3,
-+    "statu": "VARSAYIM",
-+    "not": "ε=0,30 belge bazı; penaltı ε ile doğrusal ölçeklenir (belge duyarlılık tablosu: 0,15/0,50/0,75/1,00 ile uyumlu). Penaltı sabitleri (2,886 / 7,695 mrd $) belge hücrelerinden alındı; formülleri belgede yok."
-+  },
-+  "tipoloji": {
-+    "not": "81 il, 8 tipe ayrılır; il bazlı katsayılar ölçülmemiş, tipoloji atamasıdır (belge: VARSAYIM). Sistemde yalnız belge ölçeğinde duyarlılık (λ, ρ) için saklanır.",
-+    "tipler": [
-+      "F",
-+      "B1",
-+      "C",
-+      "A1",
-+      "A2",
-+      "A3",
-+      "D",
-+      "E"
-+    ],
-+    "ara_girdi_orani": {
-+      "F": 0.62,
-+      "B1": 0.72,
-+      "C": 0.68,
-+      "A1": 0.7,
-+      "A2": 0.66,
-+      "A3": 0.58,
-+      "D": 0.58,
-+      "E": 0.52
-+    },
-+    "dogrudan_ithalat_payi": {
-+      "F": 0.22,
-+      "B1": 0.28,
-+      "C": 0.18,
-+      "A1": 0.17,
-+      "A2": 0.2,
-+      "A3": 0.24,
-+      "D": 0.14,
-+      "E": 0.15
-+    },
-+    "il_ici_tedarik_lambda": {
-+      "F": 0.42,
-+      "B1": 0.3,
-+      "C": 0.4,
-+      "A1": 0.32,
-+      "A2": 0.28,
-+      "A3": 0.25,
-+      "D": 0.35,
-+      "E": 0.38
-+    },
-+    "ikamet_payi_rho": {
-+      "F": 0.92,
-+      "B1": 0.8,
-+      "C": 0.95,
-+      "A1": 0.93,
-+      "A2": 0.9,
-+      "A3": 0.88,
-+      "D": 0.96,
-+      "E": 0.9
-+    }
-+  },
-+  "belge_degerleri_dogrulama": {
-+    "adreslenebilir_ara_mali_tabani_mrd_usd": 198.11,
-+    "brut_ithalat_tasarrufu_mrd_usd": {
-+      "orta_reform": 12.86,
-+      "guclu_reform": 34.74
-+    },
-+    "revize_net_iyilesme_mrd_usd": {
-+      "koordinasyon": -2.886,
-+      "orta_reform": 4.265,
-+      "guclu_reform": 11.621
-+    },
-+    "revize_cari_acik_kapanma_orani": {
-+      "koordinasyon": -0.074,
-+      "orta_reform": 0.11,
-+      "guclu_reform": 0.299
-+    },
-+    "kritik_esneklik": 0.75
-+  },
-+  "sisteme_baglama": {
-+    "referans_seviye": "orta_reform",
-+    "aciklama": "C senaryosu (kısmi kullanım) orta reform düzeyine karşılık gelir; A/B'nin daha zayıf gerçekleşmesi mevcut g_u = kullanım_s / kullanım_C ölçeğiyle taşınır. Koordinasyon ve güçlü reform düzeyleri bant uçlarıdır.",
-+    "halka": "uretim_bagimlilik",
-+    "usd_koprusu": "mal_net_ticaret",
-+    "tavan_kullan": true,
-+    "carpan_kullan": true
-+  }
-+}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/zarar_durdurma.json fixed/data/etki_cephesi/zarar_durdurma.json
 --- pristine/data/etki_cephesi/zarar_durdurma.json	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/data/etki_cephesi/zarar_durdurma.json	2026-10-14 16:14:49.764117446 +0000
@@ -2532,94 +2318,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +def vekil_s(s: dict[str, Any]) -> float:
 +    return vekil()[str(s["id"])]
-diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_uretim_katman.py fixed/etki_cephesi/_uretim_katman.py
---- pristine/etki_cephesi/_uretim_katman.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/_uretim_katman.py	2026-10-14 16:32:23.863218789 +0000
-@@ -0,0 +1,84 @@
-+"""Kullanıcının üretim katmanı modeli (Drive: 81 İl Sızıntı Matrisi, Zarar Teorisi 3↔2↔1) — saf hesap.
-+
-+Belgedeki cari açık stres testi ve revizyon (adreslenebilir taban, ihracat esnekliği ε) aynen yeniden kurulur; sonuçları iki yere bağlanır:
-+  (1) Üretim katmanının iyileşme TAVANI (mn $/yıl): uretim_rant_net_ticaret × net ticaret yerine modelin net cari denge iyileşmesi.
-+  (2) 'uretim_bagimlilik' halka düzeltme çarpanı: 1 − net iyileşme / halka boşalmasının USD karşılığı (mal ticareti köprüsü).
-+Diğer dört halkanın çarpanları atanmış kalır. Bu modül başka modülden veri okumaz (pure); köprü girdileri çağıran tarafından verilir.
-+"""
-+from __future__ import annotations
-+
-+import json
-+from pathlib import Path
-+from typing import Any
-+
-+REPO = Path(__file__).resolve().parents[1]
-+DATA = REPO / "data" / "etki_cephesi"
-+
-+
-+def _cfg() -> dict[str, Any]:
-+    return json.loads((DATA / "uretim_katman_model.json").read_text(encoding="utf-8"))
-+
-+
-+def adreslenebilir_taban_mrd(cfg: dict[str, Any] | None = None) -> float:
-+    c = cfg or _cfg()
-+    m = c["makro_girdiler"]
-+    ara = m["mal_ithalati_mrd_usd"]["deger"] * m["ara_mali_ithalat_payi"]["deger"]
-+    dusen = m["enerji_altin_ithalati_mrd_usd"]["deger"] * m["enerji_altin_ara_mali_tabanina_dahil_payi"]["deger"]
-+    return ara - dusen
-+
-+
-+def ara_mali_taban_mrd(cfg: dict[str, Any] | None = None) -> float:
-+    m = (cfg or _cfg())["makro_girdiler"]
-+    return m["mal_ithalati_mrd_usd"]["deger"] * m["ara_mali_ithalat_payi"]["deger"]
-+
-+
-+def brut_tasarruf_mrd(seviye: str, adreslenebilir: bool = False, cfg: dict[str, Any] | None = None) -> float:
-+    c = cfg or _cfg()
-+    s = c["senaryolar"][seviye]
-+    taban = adreslenebilir_taban_mrd(c) if adreslenebilir else ara_mali_taban_mrd(c)
-+    return taban * s["etkilenen_taban_payi"] * s["m_azalma"]
-+
-+
-+def net_tasarruf_mrd(seviye: str, adreslenebilir: bool = True, cfg: dict[str, Any] | None = None) -> float:
-+    c = cfg or _cfg()
-+    return brut_tasarruf_mrd(seviye, adreslenebilir, c) * (1.0 - c["senaryolar"][seviye]["gecis_kaybi"])
-+
-+
-+def ihracat_kaybi_mrd(seviye: str, eps: float | None = None, cfg: dict[str, Any] | None = None) -> float:
-+    c = cfg or _cfg()
-+    e0 = float(c["ihracat_esnekligi"]["eps_baz"])
-+    e = e0 if eps is None else float(eps)
-+    return float(c["senaryolar"][seviye]["ihracat_kaybi_sabit_mrd_usd_eps030"]) * e / e0
-+
-+
-+def net_iyilesme_mrd(seviye: str, eps: float | None = None, cfg: dict[str, Any] | None = None) -> float:
-+    """Revize net cari denge iyileşmesi (mrd $/yıl): enerji arındırılmış net ithal ikamesi − ihracat kaybı penaltisi."""
-+    c = cfg or _cfg()
-+    return net_tasarruf_mrd(seviye, True, c) - ihracat_kaybi_mrd(seviye, eps, c)
-+
-+
-+def cari_kapanma_orani(seviye: str, eps: float | None = None, cfg: dict[str, Any] | None = None) -> float:
-+    c = cfg or _cfg()
-+    return net_iyilesme_mrd(seviye, eps, c) / float(c["makro_girdiler"]["cari_acik_mrd_usd"]["deger"])
-+
-+
-+def tavan_usd_mn(seviye: str | None = None, eps: float | None = None) -> float:
-+    c = _cfg()
-+    sev = seviye or c["sisteme_baglama"]["referans_seviye"]
-+    return max(0.0, net_iyilesme_mrd(sev, eps, c) * 1000.0)
-+
-+
-+def halka_carpani(halka_vekil: float, usd_per_vekil_mn: float, seviye: str | None = None, eps: float | None = None) -> float:
-+    """1 − net iyileşme (mn $) / halkanın USD karşılığı. Koordinasyon düzeyinde (negatif iyileşme) 1'in üstüne çıkabilir (halka büyür)."""
-+    c = _cfg()
-+    sev = seviye or c["sisteme_baglama"]["referans_seviye"]
-+    halka_usd = float(halka_vekil) * float(usd_per_vekil_mn)
-+    if halka_usd <= 0:
-+        return 1.0
-+    return max(0.0, 1.0 - net_iyilesme_mrd(sev, eps, c) * 1000.0 / halka_usd)
-+
-+
-+def aktif() -> dict[str, Any] | None:
-+    c = _cfg()
-+    b = c["sisteme_baglama"]
-+    return b if (b.get("tavan_kullan") or b.get("carpan_kullan")) else None
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/akis_olcum.py fixed/etki_cephesi/akis_olcum.py
 --- pristine/etki_cephesi/akis_olcum.py	2026-10-14 06:05:45.822777055 +0000
 +++ fixed/etki_cephesi/akis_olcum.py	2026-10-14 07:49:13.540054095 +0000
@@ -3328,149 +3026,10 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +if __name__ == "__main__":
 +    main()
-diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/durdurma_hiz_kural.py fixed/etki_cephesi/durdurma_hiz_kural.py
---- pristine/etki_cephesi/durdurma_hiz_kural.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/durdurma_hiz_kural.py	2026-10-14 19:38:25.102795443 +0000
-@@ -0,0 +1,135 @@
-+"""Durdurma hızını belirleyen ÖLÇÜLEBİLİR kurallar (aktör ve halka bazlı değil, tek durum d).
-+
-+Beş halka (üretim/koordinasyon/para sızıntısı/zarar aktarımı/dış kısıt) katmandır, hız modeli değil: burada kullanılmaz.
-+Zarar aktarımı stok-akış (SFC) hesabında kalır: akış = sabit kayıp + boşalma·(1−d) (durdurma_yolu_kural.akis).
-+Ölçülemeyen kurallar (dönüt, güven, tampon süresi, ücret-kredi bağı, başarı tanımı) bilerek dışarıda bırakıldı.
-+
-+Kurallar:
-+  R1 finansman gereği: rezervin 10 yıl dayanması için gereken en küçük hız çarpanı m* (köprü başına).
-+  R2 gözlenen kapasite tavanı: katmanların gözlenen gerçekleşme oranlarından (en iyi / ortalama / en kötü).
-+  R3 mali alan: kapasite (1 − faiz/gelir) ile ölçeklenir; yol veri eğiminden uzatılır.
-+"""
-+from __future__ import annotations
-+
-+import json
-+import statistics as st
-+import sys
-+from pathlib import Path
-+from typing import Any
-+
-+sys.path.insert(0, str(Path(__file__).resolve().parent))
-+import durdurma_yolu_kural as D  # noqa: E402
-+
-+DATA, OUT, KOPRULER = D.DATA, D.OUT, D.KOPRULER
-+
-+
-+def simule(b: float, m_yol: list[float]) -> list[float]:
-+    d, yol = 0.0, []
-+    for m in m_yol:
-+        d = d + min(1.0, b * m) * (1.0 - d)
-+        yol.append(d)
-+    return yol
-+
-+
-+def kalibre(d_cal: list[float]) -> dict[str, Any]:
-+    n, hedef = len(d_cal), d_cal[-1]
-+    lo, hi = 1e-6, 5.0
-+    for _ in range(100):
-+        mid = (lo + hi) / 2
-+        if simule(mid, [1.0] * n)[-1] < hedef:
-+            lo = mid
-+        else:
-+            hi = mid
-+    b = (lo + hi) / 2
-+    yol = simule(b, [1.0] * n)
-+    rmse = (sum((x - y) ** 2 for x, y in zip(yol, d_cal)) / n) ** 0.5
-+    return {"b": b, "rmse": rmse, "yol": yol}
-+
-+
-+def gereken_m(G: dict[str, Any], b: float, n: int, ust: float = 50.0) -> dict[str, float | None]:
-+    out: dict[str, float | None] = {}
-+    for k in KOPRULER:
-+        def tukenir(m: float) -> bool:
-+            return D.akis(G, simule(b, [m] * n))[k]["rezerv_tukenme_yili"] is not None
-+
-+        if not tukenir(1.0):
-+            out[k] = 1.0
-+        elif tukenir(ust):
-+            out[k] = None
-+        else:
-+            lo, hi = 1.0, ust
-+            for _ in range(40):
-+                mid = (lo + hi) / 2
-+                lo, hi = (mid, hi) if tukenir(mid) else (lo, mid)
-+            out[k] = round(hi, 2)
-+    return out
-+
-+
-+def faiz_yolu(seri: dict[str, float], yillar: list[int], mod: str) -> list[float]:
-+    ks = sorted(seri)
-+    son = seri[ks[-1]]
-+    egim = (son - seri["2022-12"]) / (int(ks[-1][:4]) + int(ks[-1][5:7]) / 12 - 2022 - 1.0)
-+    if mod == "sabit":
-+        return [son] * len(yillar)
-+    return [min(0.5, son + egim * (i + 1)) for i in range(len(yillar))]
-+
-+
-+def calistir() -> dict[str, Any]:
-+    G = D._girdiler()
-+    n = len(G["d_cal"])
-+    kal = kalibre(G["d_cal"])
-+    real = json.loads((DATA / "kalibre" / "gerceklik_realizasyon.json").read_text(encoding="utf-8"))["gerceklesme_oranlari"]
-+    kat = {k: float(real[k]) for k in ("zarar_teorisi", "uretim_ic_akis", "finans_katman")}
-+    g_ort = st.mean(kat.values())
-+    m_kap = {"en_kotu_katman": min(kat.values()) / g_ort, "ortalama": 1.0, "en_iyi_katman": max(kat.values()) / g_ort}
-+    faiz = json.loads((DATA / "gozlem" / "butce_faiz_gelir.json").read_text(encoding="utf-8"))
-+    r_ref = float(faiz["seri"][faiz["son_donem"]])
-+    gerek = gereken_m(G, kal["b"], n)
-+    yillar = G["yillar"]
-+    sen: dict[str, Any] = {}
-+    for fm in ("sabit", "veri_egimi"):
-+        r_yol = faiz_yolu(faiz["seri"], yillar, fm)
-+        k_faiz = [(1 - r) / (1 - r_ref) for r in r_yol]
-+        for ad, mk in m_kap.items():
-+            m_yol = [mk * k for k in k_faiz]
-+            d = simule(kal["b"], m_yol)
-+            fin = D.akis(G, d)
-+            sen[f"{ad}__faiz_{fm}"] = {
-+                "kapasite_m": round(mk, 3), "faiz_gelir_son_yil": round(r_yol[-1], 4), "mali_alan_carpani_son_yil": round(k_faiz[-1], 3),
-+                "d_son": round(d[-1], 4), "d_yol": [round(x, 3) for x in d],
-+                "rezerv_tukenme_yili": {k: fin[k]["rezerv_tukenme_yili"] for k in KOPRULER},
-+            }
-+    d_all = {
-+        "olcum": "durdurma_hiz_kural_olculebilir", "etiket": "tani_girdi_degil",
-+        "kalibrasyon": {"b": round(kal["b"], 5), "rmse_d": round(kal["rmse"], 5), "d_kalibre_yol": [round(x, 4) for x in G["d_cal"]], "d_kural_yolu": [round(x, 4) for x in kal["yol"]], "yillar": yillar},
-+        "R1_gereken_m_rezerv_dayansin": gerek,
-+        "R2_gozlenen_kapasite": {"katman_gerceklesme": {k: round(v, 4) for k, v in kat.items()}, "ortalama": round(g_ort, 4), "m_kapasite": {k: round(v, 3) for k, v in m_kap.items()}},
-+        "R3_mali_alan": {"faiz_gelir_son": r_ref, "donem": faiz["son_donem"], "seri": faiz["seri"]},
-+        "senaryolar": sen,
-+        "disarida_birakilan": ["dönüt kuralı", "güven kapısı", "tampon/geciktirme süresi", "ücret–kredi bağı", "başarı tanımı (H1 ölçütü)"],
-+        "not": "Beş halka katmandır, kullanılmadı; zarar aktarımı stok-akışta (akış = sabit kayıp + boşalma·(1−d)). Kapasite tavanı gözlenen katman gerçekleşme oranlarından; 'tüm katmanlar en iyi katman kadar hızlı' iyimser üst sınırdır. Kurallar yön ve gerek/yeter karşılaştırması verir, tahmin vermez.",
-+    }
-+    (OUT / "DURDURMA_HIZ_KURAL.json").write_text(json.dumps(d_all, ensure_ascii=False, indent=2), encoding="utf-8")
-+    L = ["# Durdurma hızını belirleyen ölçülebilir kurallar", "", d_all["not"], "",
-+         f"Tek durum d; hız sabiti b = {d_all['kalibrasyon']['b']} (m = 1 kalibre C yolunu üretir; RMSE {d_all['kalibrasyon']['rmse_d']}).", "",
-+         "## R1 Finansman gereği: rezerv 10 yıl dayansın diye gereken hız çarpanı m*", "",
-+         ", ".join(f"{k}: {v if v is not None else 'ulaşılamaz'}" for k, v in gerek.items()), "",
-+         "## R2 Gözlenen kapasite (katman gerçekleşme oranlarından)", "",
-+         "Katman oranları: " + ", ".join(f"{k} {v}" for k, v in d_all["R2_gozlenen_kapasite"]["katman_gerceklesme"].items()) + f"; ortalama {d_all['R2_gozlenen_kapasite']['ortalama']}.",
-+         "Kapasite çarpanı: " + ", ".join(f"{k} {v}" for k, v in d_all["R2_gozlenen_kapasite"]["m_kapasite"].items()), "",
-+         f"## R3 Mali alan: faiz/gelir {r_ref:.3f} ({faiz['son_donem']}); kapasite (1 − faiz/gelir) ile ölçeklenir", "",
-+         "| Senaryo | m kapasite | faiz/gelir son yıl | mali alan çarpanı | d(son) | Rezerv tükenme (BoP / mal / rant) |", "| --- | ---: | ---: | ---: | ---: | --- |"]
-+    for ad, v in sen.items():
-+        L.append(f"| {ad} | {v['kapasite_m']} | {v['faiz_gelir_son_yil']} | {v['mali_alan_carpani_son_yil']} | {v['d_son']} | " + " / ".join(str(v["rezerv_tukenme_yili"][k] or "—") for k in KOPRULER) + " |")
-+    mal = gerek["mal_net_ticaret"]
-+    en_iyi = sen["en_iyi_katman__faiz_sabit"]["kapasite_m"]
-+    L += ["", "## Sonuç", "",
-+          f"Rezervin dayanması için gereken hız (mal köprüsü) m* = {mal}, rant köprüsü m* = {gerek['tum_havza_rant']}; gözlenen en iyi katman hızı m = {en_iyi}. Ölçülebilir kurallarla 4–5 kat hızı destekleyen bir koşul yok: açık, kapasite ile gereğin farkıdır.",
-+          "Dışarıda bırakılan kurallar (dönüt, güven, tampon süresi, ücret–kredi bağı, başarı tanımı) ölçülemediği için bu sonuca girmez; açılırlarsa hız artabilir, ama büyüklüğü bu verilerle söylenemez.", ""]
-+    (OUT / "DURDURMA_HIZ_KURAL.md").write_text("\n".join(L) + "\n", encoding="utf-8")
-+    return d_all
-+
-+
-+if __name__ == "__main__":
-+    calistir()
-+    print("DURDURMA_HIZ_KURAL ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/durdurma_yolu_kural.py fixed/etki_cephesi/durdurma_yolu_kural.py
 --- pristine/etki_cephesi/durdurma_yolu_kural.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/durdurma_yolu_kural.py	2026-10-14 16:51:18.820893847 +0000
-@@ -0,0 +1,359 @@
++++ fixed/etki_cephesi/durdurma_yolu_kural.py	2026-10-14 16:23:46.110123334 +0000
+@@ -0,0 +1,209 @@
 +"""Durdurmanın nasıl gerçekleşeceği: kural bazlı yol (aktör bazlı değil).
 +
 +Kurallar (data/etki_cephesi/durdurma_kurallari.json):
@@ -3561,43 +3120,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return {"d": d_yol, "s": s_yol, "acilis_yili": acilis}
 +
 +
-+def simule_321(G: dict[str, Any], a: float, m: float, n: int) -> dict[str, Any]:
-+    """Kullanıcının 3↔2↔1 ⇒ 4↓ ⇒ 5↓ mimarisi (Drive: Zarar Teorisi Tek Çekirdek Dört Düğüm): 1, 2, 3 halkaları kendi hızlarıyla ilerler;
-+    zarar aktarımı (4) yalnız ORTAK ilerlemeyle azalır (geometrik ortalama J = (s1·s2·s3)^(1/3): biri sıfırsa 4 hiç azalmaz, 'tek başına yetmez');
-+    dış kısıt (5) 4 yarıya inince açılır ('4 küçüldükçe 5 gevşer')."""
-+    w, g = G["w"], G["g"]
-+    esik5 = 0.5
-+    s = {h: 0.0 for h in HALKALAR}
-+    d_yol, s_yol = [], []
-+    for t in range(1, n + 1):
-+        o = dict(s)
-+        for h in ("uretim_bagimlilik", "koordinasyon_kopuk", "para_sizintisi"):
-+            s[h] = o[h] + min(1.0, a * m * g[h]) * (1.0 - o[h])
-+        j = (o["uretim_bagimlilik"] * o["koordinasyon_kopuk"] * o["para_sizintisi"]) ** (1.0 / 3.0)
-+        s["zarar_aktarimi"] = o["zarar_aktarimi"] + min(1.0, a * m * g["zarar_aktarimi"]) * (1.0 - o["zarar_aktarimi"]) * j
-+        kapi5 = 1.0 if o["zarar_aktarimi"] >= esik5 else 0.0
-+        s["dis_kisit"] = o["dis_kisit"] + min(1.0, a * m * g["dis_kisit"]) * (1.0 - o["dis_kisit"]) * kapi5
-+        d_yol.append(sum(w[h] * s[h] for h in HALKALAR))
-+        s_yol.append(dict(s))
-+    return {"d": d_yol, "s": s_yol}
-+
-+
-+def kalibre_321(G: dict[str, Any]) -> dict[str, Any]:
-+    n = len(G["d_cal"])
-+    hedef = G["d_cal"][-1]
-+    lo, hi = 1e-6, 50.0
-+    for _ in range(100):
-+        mid = (lo + hi) / 2
-+        if simule_321(G, mid, 1.0, n)["d"][-1] < hedef:
-+            lo = mid
-+        else:
-+            hi = mid
-+    a = (lo + hi) / 2
-+    r = simule_321(G, a, 1.0, n)
-+    rmse = (sum((x - y) ** 2 for x, y in zip(r["d"], G["d_cal"])) / n) ** 0.5
-+    return {"a": a, "rmse": rmse, "ref_d": r["d"], "ulasilabilir": simule_321(G, hi, 1.0, n)["d"][-1] >= hedef - 1e-4}
-+
-+
 +def kalibre(G: dict[str, Any]) -> dict[str, Any]:
 +    n = len(G["d_cal"])
 +    hedef = G["d_cal"][-1]
@@ -3637,26 +3159,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return out
 +
 +
-+def hiz_carpani_ara_321(G: dict[str, Any], kal: dict[str, Any], n: int, ust: float) -> dict[str, float | None]:
-+    sonuc: dict[str, float | None] = {}
-+    for k in KOPRULER:
-+        def tukenir(m: float) -> bool:
-+            return akis(G, simule_321(G, kal["a"], m, n)["d"])[k]["rezerv_tukenme_yili"] is not None
-+
-+        if not tukenir(1.0):
-+            sonuc[k] = 1.0
-+            continue
-+        if tukenir(ust):
-+            sonuc[k] = None
-+            continue
-+        lo, hi = 1.0, ust
-+        for _ in range(40):
-+            mid = (lo + hi) / 2
-+            lo, hi = (mid, hi) if tukenir(mid) else (lo, mid)
-+        sonuc[k] = round(hi, 2)
-+    return sonuc
-+
-+
 +def hiz_carpani_ara(G: dict[str, Any], kal: dict[str, Any], n: int, sira: bool, ust: float) -> dict[str, float | None]:
 +    """Rezerv 10 yıl boyunca tükenmesin diye gereken en küçük hız çarpanı m* (köprü başına, ikili arama)."""
 +    sonuc: dict[str, float | None] = {}
@@ -3677,64 +3179,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            lo, hi = (mid, hi) if tukenir(mid) else (lo, mid)
 +        sonuc[k] = round(hi, 2)
 +    return sonuc
-+
-+
-+SIRALAR = {
-+    # Drive "Geçiş Koridoru" (6 aşama): 1-2 zarar haritası/ayrıştırma (ölçüm: 2 ve 4'ün işi), 3 koşullu tampon (4), 4 yerli tedarik (1), 5 mekânsal bağlantı (3), 6 döviz kazancı fonu (5).
-+    # Aynı belgenin "3-2-1 sıra değil, eşzamanlı döngüdür" ilkesine AYKIRI: ardışık ve 1, 3'ten önce.
-+    "koridor_aykiri": (("koordinasyon_kopuk", "zarar_aktarimi"), ("uretim_bagimlilik",), ("para_sizintisi",), ("dis_kisit",)),
-+    "eszamanli": (tuple(HALKALAR),),
-+}
-+
-+
-+def simule_asamali(G: dict[str, Any], a: float, m: float, n: int, asamalar: tuple, kota: float) -> dict[str, Any]:
-+    """Aşamalı açılış: aşama i, aşama i-1'in tüm halkaları `kota` durma oranına varınca açılır (önceki yıl sonu değeriyle). Tek aşama = eş zamanlı."""
-+    w, g = G["w"], G["g"]
-+    s = {h: 0.0 for h in HALKALAR}
-+    d_yol, s_yol = [], []
-+    acilis = {h: None for h in HALKALAR}
-+    for t in range(1, n + 1):
-+        o = dict(s)
-+        for i, grp in enumerate(asamalar):
-+            kapi = 1.0 if i == 0 or min(o[h] for h in asamalar[i - 1]) >= kota else 0.0
-+            for h in grp:
-+                s[h] = o[h] + min(1.0, a * m * g[h]) * (1.0 - o[h]) * kapi
-+                if kapi and acilis[h] is None:
-+                    acilis[h] = t
-+        d_yol.append(sum(w[h] * s[h] for h in HALKALAR))
-+        s_yol.append(dict(s))
-+    return {"d": d_yol, "s": s_yol, "acilis_yili": acilis}
-+
-+
-+def kalibre_asamali(G: dict[str, Any], asamalar: tuple, kota: float) -> dict[str, Any]:
-+    n = len(G["d_cal"])
-+    hedef = G["d_cal"][-1]
-+    lo, hi = 1e-6, 50.0
-+    for _ in range(100):
-+        mid = (lo + hi) / 2
-+        if simule_asamali(G, mid, 1.0, n, asamalar, kota)["d"][-1] < hedef:
-+            lo = mid
-+        else:
-+            hi = mid
-+    a = (lo + hi) / 2
-+    r = simule_asamali(G, a, 1.0, n, asamalar, kota)
-+    rmse = (sum((x - y) ** 2 for x, y in zip(r["d"], G["d_cal"])) / n) ** 0.5
-+    return {"a": a, "rmse": rmse, "ref_d": r["d"]}
-+
-+
-+def siralar_blogu(G: dict[str, Any]) -> dict[str, Any]:
-+    n = len(G["d_cal"])
-+    blok: dict[str, Any] = {}
-+    for ad, asamalar, kota in (("koridor_aykiri_kota025", SIRALAR["koridor_aykiri"], 0.25), ("koridor_aykiri_kota050", SIRALAR["koridor_aykiri"], 0.5), ("eszamanli", SIRALAR["eszamanli"], 0.0)):
-+        k = kalibre_asamali(G, asamalar, kota)
-+        var = {}
-+        for vad, m in (("kalibre", 1.0), ("hiz_x2", 2.0), ("hiz_x3", 3.0), ("hiz_x5", 5.0)):
-+            r = simule_asamali(G, k["a"], m, n, asamalar, kota)
-+            var[vad] = {"hiz_carpani": m, "d_son": round(r["d"][-1], 4), "halka_durma_son_yil": {h: round(r["s"][-1][h], 3) for h in HALKALAR},
-+                        "halka_acilis_yili": {h: (G["yillar"][y - 1] if y else None) for h, y in r["acilis_yili"].items()},
-+                        "rezerv_tukenme_yili": {kp: v["rezerv_tukenme_yili"] for kp, v in akis(G, r["d"]).items()}}
-+        blok[ad] = {"asamalar": [list(x) for x in asamalar], "kota": kota, "a": round(k["a"], 5), "rmse_d": round(k["rmse"], 5), "varyantlar": var}
-+    return blok
 +
 +
 +def calistir() -> dict[str, Any]:
@@ -3758,20 +3202,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            "finansman": akis(G, d),
 +        }
 +    mstar = hiz_carpani_ara(G, kal, n, True, float(cfg["m_arama_ust"]))
-+    # Kullanıcının 3↔2↔1 ⇒ 4 ⇒ 5 mimarisi (Drive): aynı kalibrasyon hedefi, farklı kural yapısı
-+    k321 = kalibre_321(G)
-+    mimari = {"kalibrasyon": {"a": round(k321["a"], 5), "rmse_d": round(k321["rmse"], 5), "d_kural_yolu": [round(x, 4) for x in k321["ref_d"]]}, "varyantlar": {}}
-+    for ad, m in (("kalibre", 1.0), ("hiz_x2", 2.0), ("hiz_x3", 3.0), ("hiz_x5", 5.0)):
-+        r = simule_321(G, k321["a"], m, n)
-+        dd = r["d"]
-+        mimari["varyantlar"][ad] = {
-+            "hiz_carpani": m,
-+            "d_yol": [round(x, 4) for x in dd],
-+            "halka_durma_son_yil": {h: round(r["s"][-1][h], 3) for h in HALKALAR},
-+            "esik_yili": {str(e): next((G["yillar"][i] for i, x in enumerate(dd) if x >= e), None) for e in (0.25, 0.5, 0.75)},
-+            "finansman": akis(G, dd),
-+        }
-+    mimari["gereken_hiz_carpani_rezerv_tukenmesin"] = hiz_carpani_ara_321(G, k321, n, float(cfg["m_arama_ust"]))
 +    d = {
 +        "olcum": "durdurma_yolu_kural_bazli",
 +        "etiket": "tani_girdi_degil",
@@ -3781,8 +3211,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "kalibrasyon": {"a": round(kal["a"], 5), "theta_z": round(kal["theta_z"], 4), "rmse_d": round(kal["rmse"], 5), "d_kalibre_yol": [round(x, 4) for x in G["d_cal"]], "d_kural_yolu": [round(x, 4) for x in kal["ref_d"]], "yillar": G["yillar"], "faz_siniri_yili": G["yillar"][G["faz_siniri"]]},
 +        "varyantlar": varyantlar,
 +        "gereken_hiz_carpani_rezerv_tukenmesin": mstar,
-+        "mimari_321": mimari,
-+        "mimari_siralar": siralar_blogu(G),
 +        "kapasite_mn_usd": {"cari_acik_ort": round(G["cari"]), "brut_rezerv": round(G["rezerv"])},
 +        "not": "Kurallar mekanizma düzeyinde (halka/katman/kapı), aktör düzeyinde değil. Eşleştirmeler ve kapı eşikleri atanmış; hız sabiti kalibre C yoluna uydurulmuş. Cari açık ve rezerv sabit (büyüme, yeni borç yok); rezerv brüt.",
 +    }
@@ -3804,25 +3232,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            L.append(f"| {k} | {f['cari_aciga_oran'][0]} → {f['cari_aciga_oran'][-1]} | {f['akis_cariye_siger_ilk_yil'] or '—'} | {f['kumulatif_asim_mn_usd']:,} | {f['rezerv_orani']} | {f['rezerv_tukenme_yili'] or '—'} |")
 +        L.append("")
 +    L += ["## Rezerv 10 yıl boyunca tükenmesin diye gereken hız çarpanı m* (kalibre sıra kuralıyla)", "", ", ".join(f"{k}: {v if v is not None else 'ulaşılamaz'}" for k, v in mstar.items())]
-+    L += ["", "## Alternatif kural yapısı: kullanıcının 3↔2↔1 ⇒ 4 ⇒ 5 mimarisi", "",
-+          "Halkalar 1 (üretim), 2 (koordinasyon), 3 (para sızıntısı) kendi hızlarında ilerler; 4 (zarar aktarımı) yalnız ortak ilerlemeyle (geometrik ortalama) azalır, 5 (dış kısıt) 4 yarıya inince açılır.",
-+          f"Kalibrasyon: a = {mimari['kalibrasyon']['a']}, kalibre yola RMSE (d) = {mimari['kalibrasyon']['rmse_d']} (faz sıralı yapı: {d['kalibrasyon']['rmse_d']}).", "",
-+          "| Yıl | " + " | ".join(str(y) for y in G["yillar"]) + " |", "| --- | " + " | ".join("---:" for _ in G["yillar"]) + " |",
-+          "| d (kalibre C yolu) | " + " | ".join(f"{x:.3f}" for x in G["d_cal"]) + " |",
-+          "| d (3↔2↔1, m=1) | " + " | ".join(f"{x:.3f}" for x in mimari["kalibrasyon"]["d_kural_yolu"]) + " |", ""]
-+    for ad, v in mimari["varyantlar"].items():
-+        L += [f"### 3↔2↔1 {ad} (m = {v['hiz_carpani']})", "", "d yolu: " + ", ".join(f"{x:.3f}" for x in v["d_yol"]),
-+              f"d ≥ 0,25 / 0,5 / 0,75 yılı: {v['esik_yili']['0.25']} / {v['esik_yili']['0.5']} / {v['esik_yili']['0.75']}; son yıl halka durma oranları: {v['halka_durma_son_yil']}",
-+              "Rezerv tükenme yılı (BoP / mal / rant): " + " / ".join(str(v["finansman"][k]["rezerv_tukenme_yili"] or "—") for k in KOPRULER), ""]
-+    L += ["3↔2↔1 mimarisiyle rezerv tükenmesin diye gereken m*: " + ", ".join(f"{k}: {v if v is not None else 'ulaşılamaz'}" for k, v in mimari["gereken_hiz_carpani_rezerv_tukenmesin"].items())]
-+    L += ["", "## Drive'daki aykırı sıralama: Geçiş Koridoru (ardışık) ve eş zamanlı karşılaştırma", "",
-+          "Belge 3-2-1'in 'bir reform sırası değil, eşzamanlı kapalı döngü' olduğunu söyler; ama Geçiş Koridoru ardışıktır: önce ölçüm ve koşullu tampon (2 ve 4), sonra yerli tedarik (1), sonra mekânsal bağlantı (3), en sonda döviz fonu (5). Bu hem eş zamanlılık ilkesine hem de 'üçü tek başına yapılırsa işlemez' uyarısına aykırı.", "",
-+          "| Yapı | Kota | a | RMSE (d) | son yıl durma oranları (m=1) | rezerv tükenme yılı (BoP / mal / rant), m=1 → m=5 |", "| --- | ---: | ---: | ---: | --- | --- |"]
-+    for ad, v in d["mimari_siralar"].items():
-+        k1, k5 = v["varyantlar"]["kalibre"], v["varyantlar"]["hiz_x5"]
-+        r1 = " / ".join(str(k1["rezerv_tukenme_yili"][k] or "—") for k in KOPRULER)
-+        r5 = " / ".join(str(k5["rezerv_tukenme_yili"][k] or "—") for k in KOPRULER)
-+        L.append(f"| {ad} | {v['kota']} | {v['a']} | {v['rmse_d']} | {k1['halka_durma_son_yil']} | {r1} → {r5} |")
 +    (OUT / "DURDURMA_YOLU_KURAL.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 +    return d
 +
@@ -3887,7 +3296,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    borc_cevirme()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
 --- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
-+++ fixed/etki_cephesi/finans_katman.py	2026-10-14 16:32:40.881075606 +0000
++++ fixed/etki_cephesi/finans_katman.py	2026-10-14 08:24:45.038067306 +0000
 @@ -8,6 +8,8 @@
  from pathlib import Path
  from typing import Any
@@ -3949,7 +3358,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      ic_u = float(u["tr_ic_geri_kazanim_vekili"])
      rant_arti_u = float(u["rant_tr_arti_deger_vekili"])
  
-+    from uretim_ic_akis import _gerceklesme, duzeltme_carpanlari, etkin_carpan  # noqa: E402
++    from uretim_ic_akis import _gerceklesme, etkin_carpan  # noqa: E402
 +
 +    g_u = _gerceklesme(sid, u_kopru)
 +    g_f_pozitif = _gerceklesme_f(sid, kopru)
@@ -3959,7 +3368,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 -    oran_uretim = _bos_oran(halka, u_kopru["halka_duzeltme_carpan"])
 -    carpan_fin = dict(u_kopru["halka_duzeltme_carpan"])
 -    for k, v in (kopru.get("finans_halka_ek_carpan") or {}).items():
-+    carpan_u = etkin_carpan(duzeltme_carpanlari(u_kopru, proj), g_u)
++    carpan_u = etkin_carpan(u_kopru["halka_duzeltme_carpan"], g_u)
 +    oran_uretim = _bos_oran(halka, carpan_u)
 +    carpan_fin = dict(carpan_u)
 +    for k, v in etkin_carpan(kopru.get("finans_halka_ek_carpan") or {}, g_f).items():
@@ -6081,7 +5490,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 19:36:46.302998716 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 16:24:16.448117605 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -6118,7 +5527,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,45 @@
+@@ -31,11 +47,43 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -6137,8 +5546,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "ikame_cift_sayim.py",
 +        "zarar_durdurma_senaryosu.py",
 +        "durdurma_yolu_kural.py",
-+        "durdurma_hiz_kural.py",
-+        "uretim_katman_rapor.py",
          ]
      )
 -    for s in steps:
@@ -6209,36 +5616,10 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_gerceklik_kalibre.py fixed/etki_cephesi/senaryo_gerceklik_kalibre.py
 --- pristine/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 06:05:45.827814605 +0000
-+++ fixed/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 16:32:52.277941948 +0000
-@@ -18,6 +18,7 @@
- if str(REPO / "etki_cephesi") not in sys.path:
-     sys.path.insert(0, str(REPO / "etki_cephesi"))
- from usd_kopru import from_akis_olcum, tr_net_usd_coklu  # noqa: E402
-+import _uretim_katman as _uk  # noqa: E402
- 
- 
- def _load(p: Path) -> dict[str, Any]:
-@@ -65,6 +66,14 @@
-     return kopru, k
- 
- 
-+def _uretim_tavan_usd(tavan: dict[str, Any], tic: float) -> float:
-+    """Üretim katmanı iyileşme tavanı (mn $/yıl): kullanıcı modeli (revize net cari denge iyileşmesi) aktifse o, değilse eski %2,5 × net ticaret."""
-+    b = _uk.aktif()
-+    if b and b.get("tavan_kullan"):
-+        return round(_uk.tavan_usd_mn(), 1)
-+    return round(tavan["uretim_rant_net_ticaret"] * tic, 1)
-+
-+
- def _gerceklesme(delta_vekil: float, tavan_usd: float, usd_per_v: float, taban: float) -> float:
-     if delta_vekil <= 0 or usd_per_v <= 0:
-         return 1.0
-@@ -143,12 +152,17 @@
-         d_f *= delta_scale
- 
++++ fixed/etki_cephesi/senaryo_gerceklik_kalibre.py	2026-10-14 08:06:07.022380626 +0000
+@@ -145,10 +145,15 @@
      r_z = _gerceklesme(d_z, tavan["zarar_teorisi_yatirim_geliri"] * yat, usd_v, float(taban["zarar_teorisi"]))
--    r_u = _gerceklesme(d_u, tavan["uretim_rant_net_ticaret"] * tic, usd_v, float(taban["uretim_ic_akis"]))
-+    r_u = _gerceklesme(d_u, _uretim_tavan_usd(tavan, tic), usd_v, float(taban["uretim_ic_akis"]))
+     r_u = _gerceklesme(d_u, tavan["uretim_rant_net_ticaret"] * tic, usd_v, float(taban["uretim_ic_akis"]))
      r_f = _gerceklesme(d_f, tavan["finans_yatirim_geliri"] * yat, usd_v, float(taban["finans_katman"]))
 +    baglama = _load(DATA / "finans_katman_kopru.json").get("kalibre_yola_baglama") or {}
 +    kopru_sen = bool(baglama.get("aktif")) and bool((fin_doc.get("senaryo_gerceklesme") or {}).get("etiket"))
@@ -6254,14 +5635,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      tr_z_k = round(tr_c + d_z * r_z, 3)
      tr_u_k = round(tr_z_k + d_u * r_u, 3)
-@@ -179,24 +193,40 @@
-     model_ham_usd = _tr_net_usd_satir(tr_f, kopruler)
-     model_ham = {"tr_net": tr_f, "tr_net_usd_mn": model_ham_usd}
-     cap_z_usd = round(tavan["zarar_teorisi_yatirim_geliri"] * yat, 1)
--    cap_u_usd = round(tavan["uretim_rant_net_ticaret"] * tic, 1)
-+    cap_u_usd = _uretim_tavan_usd(tavan, tic)
-     cap_f_usd = round(tavan["finans_yatirim_geliri"] * yat, 1)
- 
+@@ -185,18 +190,34 @@
      olgunluk = {"zarar": 7.0, "uretim": 12.0, "finans": 10.0}
      y0 = int(capa.get("yil", 2026)) + 2
      yol: list[dict[str, Any]] = []
@@ -6308,7 +5682,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
      sifir: int | None = None
      for row in yol:
-@@ -204,9 +234,9 @@
+@@ -204,9 +225,9 @@
              sifir = int(row["yil"])
              break
      if sifir is None and tr_f_k < 0 and tr_f_k > tr_c:
@@ -6320,7 +5694,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      if sifir is not None and sifir > y0 + 35:
          sifir = None
  
-@@ -215,6 +245,7 @@
+@@ -215,6 +236,7 @@
      return {
          "senaryo_id": sid,
          "senaryo_pol_carpan": round(pol, 3) if senaryo else 1.0,
@@ -6328,7 +5702,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "senaryo_delta_olcek": round(delta_scale, 3) if senaryo else 1.0,
          "tr_c_refah": tr_c,
          "tr_net_kalibre_son": tr_f_k,
-@@ -276,6 +307,7 @@
+@@ -276,6 +298,7 @@
          "tr_net_usd_mn_son": yigin["tr_net_usd_mn_son"],
          "gsyh_yuzde_son": yigin["gsyh_yuzde_son"],
          "sifir_nokta_takvim": yigin["sifir_nokta_takvim"],
@@ -7181,30 +6555,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uretim_ic_akis.py fixed/etki_cephesi/uretim_ic_akis.py
 --- pristine/etki_cephesi/uretim_ic_akis.py	2026-10-14 06:05:45.830864248 +0000
-+++ fixed/etki_cephesi/uretim_ic_akis.py	2026-10-14 16:32:40.880372324 +0000
-@@ -2,16 +2,21 @@
- from __future__ import annotations
- 
- import json
-+import sys
- from collections import defaultdict
- from pathlib import Path
- from typing import Any
- 
- REPO = Path(__file__).resolve().parents[1]
-+sys.path.insert(0, str(Path(__file__).resolve().parent))
-+import _uretim_katman as _uk  # noqa: E402
-+
- DATA = REPO / "data" / "etki_cephesi"
- OUT = REPO / "reports" / "etki_cephesi"
- PROJ = OUT / "PROJEKSIYON.json"
- ZCOZ = OUT / "ZARAR_COZUM_C.json"
- KOPRU = DATA / "uretim_ic_akis_kopru.json"
-+AKIS = OUT / "AKIS_OLCUM.json"
- 
- 
- def _load(p: Path) -> dict[str, Any]:
-@@ -55,6 +60,34 @@
++++ fixed/etki_cephesi/uretim_ic_akis.py	2026-10-14 07:54:43.581654327 +0000
+@@ -55,6 +55,21 @@
      return int(round(y0 + tam_yil + (-tr_net1) / slope))
  
  
@@ -7219,19 +6571,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    return max(0.0, min(1.0, k / k_c)) if k_c > 0 else 1.0
 +
 +
-+def duzeltme_carpanlari(kopru: dict[str, Any], proj: dict[str, Any]) -> dict[str, float]:
-+    """Halka düzeltme çarpanları (tam gerçekleşmede). 'uretim_bagimlilik' halkası, kullanıcının üretim katmanı modelinden (Drive: 81 İl Sızıntı
-+    Matrisi, revize net cari denge iyileşmesi) türetilir: 1 − net iyileşme / halka boşalmasının USD karşılığı. Diğer halkalar atanmış kalır."""
-+    base = {k: float(v) for k, v in kopru["halka_duzeltme_carpan"].items()}
-+    b = _uk.aktif()
-+    if b and b.get("carpan_kullan") and AKIS.is_file():
-+        usd_per = float(_load(AKIS)["usd_kopruleri"][b["usd_koprusu"]]["usd_per_vekil_mn"])
-+        halka = _halka_toplam(proj, "C").get(b["halka"], 0.0)
-+        if halka > 0:
-+            base[b["halka"]] = round(_uk.halka_carpani(halka, usd_per), 4)
-+    return base
-+
-+
 +def etkin_carpan(carpan: dict[str, float], g: float) -> dict[str, float]:
 +    return {k: 1.0 - g * (1.0 - float(v)) for k, v in carpan.items()}
 +
@@ -7239,13 +6578,13 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def hesapla(senaryo_id: str = "C") -> dict[str, Any]:
      proj = _load(PROJ)
      sid = senaryo_id
-@@ -72,18 +105,19 @@
+@@ -72,18 +87,19 @@
      tr_net0 = float(z.get("tr_net_birlesik_vekil") or 0.0)
      ic_geri0 = float(z.get("tr_ic_geri_kazanim_vekili") or 0.0)
  
 -    carpan = kopru["halka_duzeltme_carpan"]
 +    g_u = _gerceklesme(sid, kopru)
-+    carpan = etkin_carpan(duzeltme_carpanlari(kopru, proj), g_u)
++    carpan = etkin_carpan(kopru["halka_duzeltme_carpan"], g_u)
      oran = _bosalma_oran(proj, sid, carpan)
      halka_raw = _halka_toplam(proj, sid)
  
@@ -7263,7 +6602,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      havza1 = round(havza0 * oran * (1.0 - u_es * 0.55), 3)
      ic_uretim = round(bos0 * u_es * 0.16, 3)
      ic_gsyh = round(bos0 * gsyh_d * 0.12, 3)
-@@ -103,6 +137,7 @@
+@@ -103,6 +119,7 @@
          "halka_toplam_ham": {k: round(v, 3) for k, v in halka_raw.items()},
          "halka_toplam_ham_C": {k: round(v, 3) for k, v in halka_raw.items()},
          "bosalma_oran_halka_duzeltme": round(oran, 4),
@@ -7271,124 +6610,6 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "C_zarar_cozum": {
              "turkiye_yaricevre_bosalma": bos0,
              "tr_net_birlesik_vekil": tr_net0,
-diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uretim_katman_rapor.py fixed/etki_cephesi/uretim_katman_rapor.py
---- pristine/etki_cephesi/uretim_katman_rapor.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/uretim_katman_rapor.py	2026-10-14 16:35:04.489266395 +0000
-@@ -0,0 +1,114 @@
-+"""Üretim katmanı modeli: Drive belgesinin yeniden üretimi, sisteme bağlanışı ve etkisi (tanı raporu).
-+
-+1) Belgenin cari açık stres testi/revizyon sayıları, parametrelerden yeniden hesaplanır ve belge değerleriyle karşılaştırılır.
-+2) İhracat esnekliği ε duyarlılığı.
-+3) Sisteme iki bağ: üretim bağımlılığı halka çarpanı (eski atanmış 0,68 → modelden türetilmiş) ve üretim katmanı iyileşme tavanı (eski %2,5 × net ticaret → modelin net iyileşmesi).
-+4) Üretim katmanı gerçekleşmesinde taban (atanmış) mı yoksa tavan/ihtiyaç oranı mı belirleyici?
-+Tanı raporu: başka modüle girdi olmaz.
-+"""
-+from __future__ import annotations
-+
-+import json
-+import sys
-+from pathlib import Path
-+from typing import Any
-+
-+sys.path.insert(0, str(Path(__file__).resolve().parent))
-+import _uretim_katman as U  # noqa: E402
-+
-+REPO = Path(__file__).resolve().parents[1]
-+DATA = REPO / "data" / "etki_cephesi"
-+OUT = REPO / "reports" / "etki_cephesi"
-+SEVIYELER = ("koordinasyon", "orta_reform", "guclu_reform")
-+ESKI_HALKA_CARPAN = 0.68  # uretim_ic_akis_kopru.json (atanmış)
-+ESKI_TAVAN_YUZDE = 0.025  # gerceklik_capa.json iyilesme_tavan_yuzde_10y.uretim_rant_net_ticaret (atanmış)
-+
-+
-+def _load(p: Path) -> dict[str, Any]:
-+    return json.loads(p.read_text(encoding="utf-8"))
-+
-+
-+def calistir() -> dict[str, Any]:
-+    cfg = _load(DATA / "uretim_katman_model.json")
-+    dog = cfg["belge_degerleri_dogrulama"]
-+    yeniden = {
-+        "adreslenebilir_taban_mrd_usd": round(U.adreslenebilir_taban_mrd(), 3),
-+        "brut_ithalat_tasarrufu_mrd_usd": {s: round(U.brut_tasarruf_mrd(s), 3) for s in SEVIYELER[1:]},
-+        "revize_net_iyilesme_mrd_usd": {s: round(U.net_iyilesme_mrd(s), 3) for s in SEVIYELER},
-+        "revize_cari_acik_kapanma_orani": {s: round(U.cari_kapanma_orani(s), 3) for s in SEVIYELER},
-+    }
-+    eps_tab = {str(e): {s: round(U.net_iyilesme_mrd(s, e), 3) for s in SEVIYELER} for e in (0.0, 0.15, 0.30, 0.50, 0.75, 1.0)}
-+    # sisteme bağ
-+    akis = _load(OUT / "AKIS_OLCUM.json")["usd_kopruleri"]
-+    usd_mal = float(akis["mal_net_ticaret"]["usd_per_vekil_mn"])
-+    usd_bop = float(akis["bop_merkez_rant"]["usd_per_vekil_mn"])
-+    proj = _load(OUT / "PROJEKSIYON.json")
-+    sen_c = next(s for s in proj["senaryolar"] if s["id"] == "C")
-+    halka_u = sum(float(h["delta_endeks"]) for r in sen_c["tr_bosalma_detay"] for h in r["bes_halka"] if h["halka"] == "uretim_bagimlilik")
-+    capa = _load(DATA / "kalibre" / "gerceklik_capa.json")
-+    tic = abs(float(capa["usd_mn"]["net_ticaret"]))
-+    kopru = _load(DATA / "uretim_ic_akis_kopru.json")
-+    bag = cfg["sisteme_baglama"]
-+    carpan = {s: round(U.halka_carpani(halka_u, usd_mal, s), 4) for s in SEVIYELER}
-+    tavan = {s: round(U.tavan_usd_mn(s), 1) for s in SEVIYELER}
-+    # gerçekleşme: taban mı tavan/ihtiyaç mı?
-+    kal = _load(OUT / "GERCEKLIK_KALIBRE_C.json")
-+    rows = {r["katman"]: r for r in kal["katman_yigini_kalibre"]}
-+    r_u = float(rows["uretim_ic_akis"]["gerceklesme"])
-+    d_u_gercek = (float(rows["uretim_ic_akis"]["tr_net"]) - float(rows["zarar_teorisi"]["tr_net"])) / r_u if r_u else 0.0
-+    ihtiyac_usd = d_u_gercek * usd_bop
-+    taban = float(capa["gerceklesme_taban"]["uretim_ic_akis"])
-+    sonuc = {
-+        "olcum": "uretim_katman_modeli",
-+        "etiket": "tani_girdi_degil",
-+        "kaynak": cfg["kaynak"],
-+        "belge_degerleri": dog,
-+        "yeniden_uretim": yeniden,
-+        "ihracat_esnekligi_duyarlilik_net_iyilesme_mrd_usd": eps_tab,
-+        "sisteme_baglama": {
-+            "aktif": {"carpan": bool(bag.get("carpan_kullan")), "tavan": bool(bag.get("tavan_kullan")), "referans_seviye": bag["referans_seviye"]},
-+            "halka_uretim_bagimlilik_vekil_C": round(halka_u, 3),
-+            "halka_usd_mn_mal_koprusu": round(halka_u * usd_mal),
-+            "halka_carpani": {"eski_atanmis": ESKI_HALKA_CARPAN, "modelden_seviye_basina": carpan, "sistemde_kullanilan": float(U.halka_carpani(halka_u, usd_mal))},
-+            "tavan_usd_mn": {"eski_atanmis": round(ESKI_TAVAN_YUZDE * tic, 1), "modelden_seviye_basina": tavan, "sistemde_kullanilan": round(U.tavan_usd_mn(), 1)},
-+        },
-+        "gerceklesme_belirleyicisi": {
-+            "uretim_katmani_adim_vekil_C": round(d_u_gercek, 3),
-+            "ihtiyac_usd_mn_bop_koprusu": round(ihtiyac_usd),
-+            "tavan_over_ihtiyac_eski": round(ESKI_TAVAN_YUZDE * tic / ihtiyac_usd, 4) if ihtiyac_usd else None,
-+            "tavan_over_ihtiyac_model": round(U.tavan_usd_mn() / ihtiyac_usd, 4) if ihtiyac_usd else None,
-+            "taban_atanmis": taban,
-+            "uygulanan_gerceklesme": r_u,
-+            "belirleyici": "taban (atanmış)" if U.tavan_usd_mn() / ihtiyac_usd < taban else "tavan/ihtiyaç oranı",
-+        },
-+        "not": "Tipoloji katsayıları ölçülmemiştir (belgede VARSAYIM). İhracat kaybı penaltı sabitleri belge hücrelerinden alındı. Üretim katmanı gerçekleşmesi, tavan/ihtiyaç oranı tabanın altında kaldığı için tabanla belirlenir.",
-+    }
-+    (OUT / "URETIM_KATMAN_MODEL.json").write_text(json.dumps(sonuc, ensure_ascii=False, indent=2), encoding="utf-8")
-+    L = ["# Üretim katmanı modeli (Drive) ve sisteme bağlanışı", "", sonuc["not"], "", "## Kaynak belgeler", ""]
-+    for k in cfg["kaynak"]:
-+        L.append(f"- **{k['baslik']}** ({k['tarih']}, `{k['drive_id']}`): {k['kullanim']}")
-+    L += ["", "## 1. Belge sayıları parametrelerden yeniden üretildi", "",
-+          "| Büyüklük | Belge | Yeniden hesap |", "| --- | ---: | ---: |",
-+          f"| Adreslenebilir ara malı tabanı (mrd $) | {dog['adreslenebilir_ara_mali_tabani_mrd_usd']} | {yeniden['adreslenebilir_taban_mrd_usd']} |"]
-+    for s in SEVIYELER[1:]:
-+        L.append(f"| Brüt ithalat tasarrufu, {s} (mrd $) | {dog['brut_ithalat_tasarrufu_mrd_usd'][s]} | {yeniden['brut_ithalat_tasarrufu_mrd_usd'][s]} |")
-+    for s in SEVIYELER:
-+        L.append(f"| Revize net iyileşme, {s} (mrd $) | {dog['revize_net_iyilesme_mrd_usd'][s]} | {yeniden['revize_net_iyilesme_mrd_usd'][s]} |")
-+    for s in SEVIYELER:
-+        L.append(f"| Cari açık kapanma oranı, {s} | {dog['revize_cari_acik_kapanma_orani'][s]} | {yeniden['revize_cari_acik_kapanma_orani'][s]} |")
-+    L += ["", "## 2. İhracat esnekliği ε duyarlılığı: revize net iyileşme (mrd $/yıl)", "", "| ε | koordinasyon | orta reform | güçlü reform |", "| ---: | ---: | ---: | ---: |"]
-+    for e, r in eps_tab.items():
-+        L.append(f"| {e} | {r['koordinasyon']} | {r['orta_reform']} | {r['guclu_reform']} |")
-+    L += ["", f"Kritik eşik ε ≈ {dog['kritik_esneklik']}: orta ve güçlü reform nötr/negatif.", "",
-+          "## 3. Sisteme iki bağ", "", f"- Üretim bağımlılığı halkası (C): {sonuc['sisteme_baglama']['halka_uretim_bagimlilik_vekil_C']} vekil ≈ {sonuc['sisteme_baglama']['halka_usd_mn_mal_koprusu']:,} mn $ (mal ticareti köprüsü).",
-+          f"- **Halka çarpanı:** eski atanmış {ESKI_HALKA_CARPAN}; modelden koordinasyon {carpan['koordinasyon']}, orta reform **{carpan['orta_reform']}** (kullanılan), güçlü reform {carpan['guclu_reform']}.",
-+          f"- **İyileşme tavanı (mn $/yıl):** eski {sonuc['sisteme_baglama']['tavan_usd_mn']['eski_atanmis']:,}; modelden koordinasyon {tavan['koordinasyon']:,}, orta reform **{tavan['orta_reform']:,}** (kullanılan), güçlü reform {tavan['guclu_reform']:,}.", "",
-+          "## 4. Üretim katmanı gerçekleşmesini ne belirliyor?", "",
-+          f"Üretim katmanının adımı {sonuc['gerceklesme_belirleyicisi']['uretim_katmani_adim_vekil_C']} vekil ≈ {sonuc['gerceklesme_belirleyicisi']['ihtiyac_usd_mn_bop_koprusu']:,} mn $ (BoP köprüsü). Tavan/ihtiyaç oranı: eski {sonuc['gerceklesme_belirleyicisi']['tavan_over_ihtiyac_eski']}, modelden **{sonuc['gerceklesme_belirleyicisi']['tavan_over_ihtiyac_model']}**; atanmış taban {taban}. Uygulanan gerçekleşme {r_u}: belirleyici **{sonuc['gerceklesme_belirleyicisi']['belirleyici']}**."]
-+    (OUT / "URETIM_KATMAN_MODEL.md").write_text("\n".join(L) + "\n", encoding="utf-8")
-+    return sonuc
-+
-+
-+if __name__ == "__main__":
-+    calistir()
-+    print("URETIM_KATMAN_MODEL ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/uzun_vade_esik.py fixed/etki_cephesi/uzun_vade_esik.py
 --- pristine/etki_cephesi/uzun_vade_esik.py	2026-10-14 06:05:45.831021724 +0000
 +++ fixed/etki_cephesi/uzun_vade_esik.py	2026-10-14 07:45:20.546962890 +0000
@@ -7619,8 +6840,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 19:36:46.305132694 +0000
-@@ -0,0 +1,956 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 16:24:16.449320688 +0000
+@@ -0,0 +1,865 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -8486,95 +7707,4 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            assert tuk == f["rezerv_tukenme_yili"], (ad, k)
 +    ms = d["gereken_hiz_carpani_rezerv_tukenmesin"]
 +    assert ms["bop_merkez_rant"] <= ms["mal_net_ticaret"] <= ms["tum_havza_rant"]  # daha büyük köprü daha hızlı kural ister
-+
-+
-+def test_uretim_katman_modeli_belge_sayilarini_yeniden_uretir_ve_sisteme_baglanir():
-+    d = _j(OUT / "URETIM_KATMAN_MODEL.json")
-+    dog = d["belge_degerleri"]
-+    yr = d["yeniden_uretim"]
-+    # Drive belgesindeki revizyon sayıları parametrelerden yeniden üretilir (belge yuvarlamasına tolerans)
-+    assert abs(yr["adreslenebilir_taban_mrd_usd"] - dog["adreslenebilir_ara_mali_tabani_mrd_usd"]) < 5e-3
-+    for s, v in dog["brut_ithalat_tasarrufu_mrd_usd"].items():
-+        assert abs(yr["brut_ithalat_tasarrufu_mrd_usd"][s] - v) < 5e-3, s
-+    for s, v in dog["revize_net_iyilesme_mrd_usd"].items():
-+        assert abs(yr["revize_net_iyilesme_mrd_usd"][s] - v) < 2e-3, s
-+    for s, v in dog["revize_cari_acik_kapanma_orani"].items():
-+        assert abs(yr["revize_cari_acik_kapanma_orani"][s] - v) < 1.5e-3, s
-+    # 3↔2↔1 değişmezleri: koordinasyon tek başına cari dengeyi iyileştirmez (kötüleştirir); ε ≥ 0,75'te orta/güçlü reform nötr ya da negatif
-+    assert yr["revize_net_iyilesme_mrd_usd"]["koordinasyon"] < 0 < yr["revize_net_iyilesme_mrd_usd"]["orta_reform"] < yr["revize_net_iyilesme_mrd_usd"]["guclu_reform"]
-+    e = d["ihracat_esnekligi_duyarlilik_net_iyilesme_mrd_usd"]
-+    assert e["0.75"]["orta_reform"] < 0.01 and e["0.75"]["guclu_reform"] < 0.1 and e["1.0"]["orta_reform"] < 0
-+    ep = sorted(e, key=float)
-+    assert all(e[a]["orta_reform"] >= e[b]["orta_reform"] for a, b in zip(ep, ep[1:]))  # ε arttıkça iyileşme azalır
-+    # sisteme bağ: halka çarpanı ve tavan modelden; URETIM_IC_AKIS çıktısı çarpanla bağımsız yeniden hesaplanır
-+    b = d["sisteme_baglama"]
-+    c_u = b["halka_carpani"]["sistemde_kullanilan"]
-+    assert abs(c_u - (1.0 - 4264.48 / b["halka_usd_mn_mal_koprusu"])) < 2e-3
-+    kopru = _j(DATA / "uretim_ic_akis_kopru.json")
-+    uic = _j(OUT / "URETIM_IC_AKIS_C.json")
-+    ham = uic["halka_toplam_ham"]
-+    carpan = {**kopru["halka_duzeltme_carpan"], "uretim_bagimlilik": c_u}  # C: g_u = 1
-+    beklenen = sum(ham[k] * carpan[k] for k in ham) / sum(ham.values())
-+    assert abs(uic["bosalma_oran_halka_duzeltme"] - beklenen) < 2e-3
-+    kal = _j(OUT / "GERCEKLIK_KALIBRE_C.json")
-+    assert abs(kal["iyilesme_tavan_usd_mn"]["uretim"] - b["tavan_usd_mn"]["sistemde_kullanilan"]) < 0.2
-+    # gerçekleşmeyi taban mı belirliyor: model tavan/ihtiyaç < taban ise taban belirleyici
-+    g = d["gerceklesme_belirleyicisi"]
-+    assert (g["tavan_over_ihtiyac_model"] < g["taban_atanmis"]) == (g["belirleyici"] == "taban (atanmış)")
-+
-+
-+def test_durdurma_3_2_1_mimarisi_degisimmezleri():
-+    d = _j(OUT / "DURDURMA_YOLU_KURAL.json")
-+    m = d["mimari_321"]
-+    assert m["kalibrasyon"]["rmse_d"] < 0.03
-+    v = m["varyantlar"]
-+    for ad, r in v.items():
-+        assert r["d_yol"] == sorted(r["d_yol"]) and 0 <= r["d_yol"][-1] <= 1, ad
-+        # 4 (zarar aktarımı) yalnız 1, 2, 3'ün ortak ilerlemesiyle azalır: kapı yumuşak bir hız çarpanıdır, sıkı tavan değil: kalibre yolda 4, 1-2-3'ün en büyüğünü aşmaz; hızlı varyantlarda aşabilir
-+        s = r["halka_durma_son_yil"]
-+        if ad == "kalibre":
-+            assert s["zarar_aktarimi"] <= max(s["uretim_bagimlilik"], s["koordinasyon_kopuk"], s["para_sizintisi"]) + 1e-9, ad
-+        assert 0 <= s["zarar_aktarimi"] <= 1, ad
-+        # 5 (dış kısıt) 4'ten önce açılmaz
-+        assert s["dis_kisit"] <= s["zarar_aktarimi"] + 1e-9, ad
-+    assert all(b >= a - 1e-9 for a, b in zip(v["kalibre"]["d_yol"], v["hiz_x2"]["d_yol"]))
-+    ms = m["gereken_hiz_carpani_rezerv_tukenmesin"]
-+    assert ms["bop_merkez_rant"] <= ms["mal_net_ticaret"] <= ms["tum_havza_rant"]
-+
-+
-+def test_durdurma_siralari_aykiri_koridor_ve_es_zamanli():
-+    d = _j(OUT / "DURDURMA_YOLU_KURAL.json")["mimari_siralar"]
-+    assert set(d) == {"koridor_aykiri_kota025", "koridor_aykiri_kota050", "eszamanli"}
-+    for ad, v in d.items():
-+        assert v["rmse_d"] < 0.03, ad
-+        k = v["varyantlar"]
-+        # hız çarpanı arttıkça son yıl durma monoton artar
-+        ds = [k[x]["d_son"] for x in ("kalibre", "hiz_x2", "hiz_x3", "hiz_x5")]
-+        assert ds == sorted(ds), ad
-+        # kalibre hedef: d(2036) ~ kalibre C yolu
-+        assert abs(ds[0] - 0.2188) < 0.01, ad
-+    # koridorda 3 (para sızıntısı) 1'den (üretim) sonra açılır; kalibre yolda hiç açılmaz; 5 hiç açılmaz
-+    kor = d["koridor_aykiri_kota025"]["varyantlar"]["kalibre"]
-+    assert kor["halka_durma_son_yil"]["para_sizintisi"] == 0.0 and kor["halka_durma_son_yil"]["dis_kisit"] == 0.0
-+    # eş zamanlıda hiçbir halka kapıda beklemez
-+    assert all(v is not None for v in d["eszamanli"]["varyantlar"]["kalibre"]["halka_acilis_yili"].values())
-+
-+
-+def test_durdurma_hiz_kurallari_olculebilir_ve_halkasiz():
-+    d = _j(OUT / "DURDURMA_HIZ_KURAL.json")
-+    assert d["kalibrasyon"]["rmse_d"] < 0.02
-+    cap = d["R2_gozlenen_kapasite"]["m_kapasite"]
-+    assert cap["en_kotu_katman"] < cap["ortalama"] == 1.0 < cap["en_iyi_katman"]
-+    # kapasite artınca d(son) artar; faiz/gelir artınca (mali alan daralınca) d(son) azalır
-+    s = d["senaryolar"]
-+    assert s["en_kotu_katman__faiz_sabit"]["d_son"] < s["ortalama__faiz_sabit"]["d_son"] < s["en_iyi_katman__faiz_sabit"]["d_son"]
-+    for ad in ("en_kotu_katman", "ortalama", "en_iyi_katman"):
-+        assert s[f"{ad}__faiz_veri_egimi"]["d_son"] < s[f"{ad}__faiz_sabit"]["d_son"]
-+    # kalibre (ortalama, sabit faiz) hedef yolu üretir
-+    assert abs(s["ortalama__faiz_sabit"]["d_son"] - d["kalibrasyon"]["d_kalibre_yol"][-1]) < 0.02
-+    # gereken hız, gözlenen en iyi kapasiteden büyük (4–5 kat desteklenmiyor)
-+    assert d["R1_gereken_m_rezerv_dayansin"]["mal_net_ticaret"] > cap["en_iyi_katman"]
-+    # beş halka kuralı yok
-+    assert "halka_durma_son_yil" not in json.dumps(d)
-+
 ```
