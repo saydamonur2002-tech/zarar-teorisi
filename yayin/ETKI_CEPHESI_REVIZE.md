@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `0f88ed164036edd2`, temiz kurulumda 3 geçiş),
-**51 test geçti** (27 mevcut + 24 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `c946d1a7f932300a`, temiz kurulumda 3 geçiş),
+**52 test geçti** (27 mevcut + 25 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -124,11 +124,18 @@ Okuma: C yolunun kendi sonucu (−17,19 → −13,10, iyileşir) değişmedi. De
 | TR net (vekil) | Önce A | Sonra A | Önce B | Sonra B | C |
 |---|---:|---:|---:|---:|---:|
 | Üretim iç akışı | −6,34 | **−13,32** | −10,10 | **−24,82** | −4,38 |
-| Finans katmanı | −2,25 | **−7,33** | −7,12 | **−18,49** | −0,49 |
-| Kalibre son (gerçeklik) | −16,31 | −17,62 | −32,19 | −33,88 | −11,21 |
+| Finans katmanı | −2,25 | **−7,33** | −7,12 | **−31,15** (ters çevrilmiş; çevrilmeseydi −18,49) | −0,49 |
+| Kalibre son (gerçeklik) | −16,31 | −17,62 | −32,19 | −38,31 | −11,21 |
 
-- Katman yığını tutarlı: zarar çözümü ≤ üretim ≤ finans (test). Sıfır yılı (aynı eğimin devamı varsayımı): A 2065, B 2087 (önce 2044), C 2044.
+- Katman yığını: zarar çözümü ≤ üretim; finans ≥ üretim, yalnız B'de (ters çevrilmiş) finans < üretim (test). Sıfır yılı (aynı eğimin devamı varsayımı): A 2065, B 2087 (önce 2044), C 2044.
 - **Karara etkisi küçük:** skor 57,9 ve karar aynı; E[TR net 10 yıl] −22,18 → −22,50. Çünkü kalibre yol, üretim/finans katmanlarına düşük gerçekleşme ağırlığı veriyor (0,10 / 0,09 civarı); büyük katman farkı kalibrasyonda sönüyor.
+
+## B'nin finans katmanı araçsallaşma yönünde ters çevrildi
+- **Kural:** `bag_modu` içinde baskın mod araçsal ise (yalnız B: 0,54) finans katmanı ters çevrilir. A baskın modu atıl, C kullanım: çevrilmez. Etkin g_f = −güç · g_f, güç = 1 (B: +0,432 → **−0,432**).
+- **Ne olur:** `etkin_carpan = 1 − g(1 − çarpan)` olduğu için g < 0 iken azaltım çarpanları artırım çarpanına döner (halka ek çarpanları, MFIN kenar), iç tutma, TDS rahatı ve kredi kesintisi kazanımı kayba döner. Finans geri kazanım B'de pozitif yerine **−2,81**. Anlam: finans kanalları TR lehine kısalmaz, dış çıkar ağının aracına döner.
+- **B finans TR net:** −18,49 (çevrilmemiş) → **−31,15**; üretim katmanı −24,82'den de kötü. Boşalma 34,5, sıfır yılı yok (net yükselmiyor). B kalibre son −33,88 → −38,31; GSYH vekili %9,43 → %10,66.
+- **Duyarlılık (varsayım):** çevrilmemiş −18,49 · güç 0 (finans etkisiz) −24,82 · güç 0,5 −27,99 · güç 1 (tam ayna) −31,15. Ayna simetri ve güç = 1 **varsayım**; `finans_katman_kopru.json` `ters_cevirme` (aktif/güç) ile ayarlanır.
+- **Karara etkisi yok:** skor 57,9, E[TR net 10 yıl] −22,50 aynı. Finans katmanı "varsayım çarpanlı ham" etiketli ve 10 yıllık kalibre yola (ZARAR_10Y_GSYH) girmiyor; yalnız finans raporlarına ve `GERCEKLIK_KALIBRE` son değerine yansır. Yani bu ters çevirme karar skorunu değil, B'nin finans raporunu değiştirir.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

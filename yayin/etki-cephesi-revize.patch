@@ -47,8 +47,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/finans_katman_kopru.json fixed/data/etki_cephesi/finans_katman_kopru.json
 --- pristine/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 06:05:45.811750548 +0000
-+++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 07:55:43.681477523 +0000
-@@ -12,5 +12,11 @@
++++ fixed/data/etki_cephesi/finans_katman_kopru.json	2026-10-14 08:00:24.416488002 +0000
+@@ -12,5 +12,18 @@
    "kredi_ihtiyaci_sifir_merkez_kesinti": 0.11,
    "tr_finans_geri_tranchman": 0.42,
    "tam_olgunluk_yil": 10,
@@ -57,6 +57,13 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    "surucu": "politika gerçekleşme: pol = clip(1.05 − etki_erozyonu + tr_diplomatik_flex, 0.25, 1); g_f = min(1, pol_s / pol_C)",
 +    "not": "Finans halka ek çarpanları, MFIN kenar çarpanı, yatırım geliri iç tutma, TDS rahatı ve kredi kesintisi dış koşula (erozyon, diplomatik esneklik) bağlıdır. Etkin çarpan = 1 − g_f (1 − çarpan). Eski ek ölçekleme (pol_oran / merkez_oran ve boşalma·havza × merkez_oran) KALDIRILDI: merkez sızıntı çarpanı projeksiyonda zaten uygulanıyor, ikinci kez uygulamak çift saymaydı. aktif=false: g_f=1 (eski çift sayan ölçekleme geri gelmez).",
 +    "aktif": true
++  },
++  "ters_cevirme": {
++    "aktif": true,
++    "etiket": "varsayim_ayna_simetri",
++    "kosul": "bag_modu içinde baskın mod = aracsal (argmax). A: atıl, C: kullanım → ters çevrilmez; B: araçsal → ters çevrilir.",
++    "guc": 1.0,
++    "not": "Araçsallaşmada finans kanalları (MFIN kenar, yatırım geliri, TDS, kredi) TR lehine kısalmaz, dış hegemon çıkar ağının aracına döner. Etkin g_f = −guc · g_f: etkin_carpan = 1 − g(1 − çarpan) olduğundan azaltım çarpanları (<1) artırım çarpanına (>1) döner, iç tutma/TDS rahatı/kredi kesintisi kazanımı kayba döner. Ayna simetri ve guc=1 varsayımdır; duyarlılık: ters_cevirme_bandi (guc 0 / 0,5 / 1)."
 +  },
    "empirik_olcek_satir": "birincil_gelir_yatirim_gideri"
  }
@@ -1317,7 +1324,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    borc_cevirme()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
 --- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
-+++ fixed/etki_cephesi/finans_katman.py	2026-10-14 07:54:43.582243680 +0000
++++ fixed/etki_cephesi/finans_katman.py	2026-10-14 08:01:03.916436605 +0000
 @@ -69,6 +69,14 @@
      return next(s for s in sen_doc["senaryolar"] if s["id"] == sid)
  
@@ -1333,14 +1340,38 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def _senaryo_finans_carpanlari(proj: dict[str, Any], sid: str) -> tuple[float, float]:
      """Politika gerçekleşme (C=1) ve merkez sızıntı göreli (C merkez çarpanı=0.9)."""
      _ = proj
-@@ -134,10 +142,15 @@
+@@ -115,7 +123,20 @@
+     subprocess.check_call([sys.executable, str(REPO / "etki_cephesi" / "uretim_ic_akis.py")])
+ 
+ 
+-def hesapla(senaryo_id: str = "C") -> dict[str, Any]:
++def _baskin_mod(sid: str) -> str:
++    bm = _senaryo_meta(sid)["bag_modu"]
++    return max(bm, key=lambda k: float(bm[k]))
++
++
++def _ters_isaret(sid: str, kopru: dict[str, Any]) -> float:
++    """Araçsallaşmada finans katmanı ters çevrilir: −guc. Aksi halde +1."""
++    cfg = kopru.get("ters_cevirme") or {}
++    if cfg.get("aktif") and _baskin_mod(sid) == "aracsal":
++        return -float(cfg.get("guc", 1.0))
++    return 1.0
++
++
++def hesapla(senaryo_id: str = "C", isaret_override: float | None = None, band: bool = True) -> dict[str, Any]:
+     sid = senaryo_id
+     _ensure_uretim_sid(sid)
+     proj = _load(PROJ)
+@@ -134,10 +155,17 @@
      ic_u = float(u["tr_ic_geri_kazanim_vekili"])
      rant_arti_u = float(u["rant_tr_arti_deger_vekili"])
  
 +    from uretim_ic_akis import _gerceklesme, etkin_carpan  # noqa: E402
 +
 +    g_u = _gerceklesme(sid, u_kopru)
-+    g_f = _gerceklesme_f(sid, kopru)
++    g_f_pozitif = _gerceklesme_f(sid, kopru)
++    isaret = _ters_isaret(sid, kopru) if isaret_override is None else float(isaret_override)
++    g_f = g_f_pozitif * isaret  # < 0: ters çevrilmiş (araçsallaşma)
      halka = _halka_toplam(proj, sid)
 -    oran_uretim = _bos_oran(halka, u_kopru["halka_duzeltme_carpan"])
 -    carpan_fin = dict(u_kopru["halka_duzeltme_carpan"])
@@ -1352,7 +1383,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          carpan_fin[k] = float(carpan_fin.get(k, 1.0)) * float(v)
      oran_fin = _bos_oran(halka, carpan_fin)
      bos_fin = round(bos_u * (oran_fin / oran_uretim) if oran_uretim > 0 else bos_u, 3)
-@@ -145,10 +158,10 @@
+@@ -145,10 +173,10 @@
      mfin_z = float(z.get("merkez_mfin_kenar") or _mfin_kenar(proj, sid))
      merkez_z = float(z.get("merkez_finans_sizinti_toplam") or 1.0)
      mfin_u = round(mfin_z * (merkez_u / merkez_z) if merkez_z > 0 else mfin_z, 3)
@@ -1365,7 +1396,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      merkez_fin = round(max(0.0, merkez_fin - kredi_kes), 3)
  
      sen_c = next(s for s in proj["senaryolar"] if s["id"] == sid)
-@@ -158,8 +171,8 @@
+@@ -158,8 +186,8 @@
      cicek = float(satir.get("usd_mn") or 0.0)
      tds = float(((fin.get("akis_satirlari") or {}).get("dis_borc_servisi_tds") or {}).get("usd_mn") or 0.0)
  
@@ -1376,7 +1407,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      usd_bop_tut = cicek * bop_pay
      usd_tds_rah = tds * tds_rah * 0.002
      vekil_bop = _vekil_from_usd(usd_bop_tut, cicek, merkez_rant_c)
-@@ -169,12 +182,9 @@
+@@ -169,12 +197,9 @@
      mfin_tr = round((mfin_u - mfin_fin) * tranch, 3)
      merkez_tr = round((merkez_u - merkez_fin) * tranch * 0.85, 3)
      finans_geri_ham = mfin_tr + merkez_tr + (vekil_bop + vekil_tds) * tranch
@@ -1390,7 +1421,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
      tr_net_fin = round(-havza_fin + ic_u + rant_arti_u * 0.92 + finans_geri, 3)
  
      tam = float(kopru.get("tam_olgunluk_yil") or 10)
-@@ -199,10 +209,12 @@
+@@ -199,10 +224,20 @@
  
      return {
          "olcum": "finans_katman_uretim_ustu",
@@ -1400,16 +1431,46 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
          "taban": kopru.get("taban"),
          "finans_halka_oran_uretim_ustu": round(oran_fin / oran_uretim, 4) if oran_uretim else 1.0,
 -        "senaryo_finans_carpanlari": {"politika_C_bazli": pol_oran, "merkez_sizinti_C_bazli": mer_oran},
-+        "senaryo_gerceklesme": {"g_uretim": round(g_u, 4), "g_finans": round(g_f, 4), "etiket": (kopru.get("senaryo_gerceklesme") or {}).get("etiket")},
++        "senaryo_gerceklesme": {
++            "g_uretim": round(g_u, 4),
++            "g_finans": round(g_f, 4),
++            "g_finans_pozitif": round(g_f_pozitif, 4),
++            "baskin_mod": _baskin_mod(sid),
++            "ters_cevrildi": bool(g_f < 0),
++            "etiket": (kopru.get("senaryo_gerceklesme") or {}).get("etiket"),
++        },
++        "ters_cevirme_bandi": _ters_band(sid) if band and g_f < 0 else None,
          "usd_vekili": {
              "yatirim_geliri_gideri_mn": cicek,
              "icde_tutulan_mn": round(usd_bop_tut, 1),
-@@ -258,6 +270,8 @@
+@@ -250,6 +285,12 @@
+     }
+ 
+ 
++def _ters_band(sid: str) -> dict[str, Any]:
++    """Ters çevirme gücü duyarlılığı (TR net): çevrilmemiş (+1), etkisiz (0), yarım ayna (−0,5), tam ayna (−1)."""
++    ad = {"cevrilmemis_pozitif": 1.0, "guc_0.0_etkisiz": 0.0, "guc_0.5": -0.5, "guc_1.0_tam_ayna": -1.0}
++    return {k: hesapla(sid, isaret_override=v, band=False)["finans_katman_tam"]["tr_net_birlesik_vekil"] for k, v in ad.items()}
++
++
+ def _md(d: dict[str, Any]) -> str:
+     t = d["uretim_ic_akis_taban"]
+     f = d["finans_katman_tam"]
+@@ -258,6 +299,17 @@
      lines = [
          "# Finans katmanı (üretim + halka üstü)",
          "",
 +        "> **Etiket: varsayım çarpanlı ham.** İşaret dönüşü atanmış çarpanlarla üretilir; ölçüm değildir, yayınlanan sonuç değildir.",
 +        "",
++        *(
++            [
++                f"> **Ters çevrilmiş (araçsallaşma, baskın mod = {d['senaryo_gerceklesme']['baskin_mod']}).** Finans kanalları TR lehine kısalmaz, "
++                f"dış çıkar ağının aracına döner (g_f = {d['senaryo_gerceklesme']['g_finans']}). Duyarlılık (TR net): {d['ters_cevirme_bandi']}. Ayna simetri ve güç varsayımdır.",
++                "",
++            ]
++            if d["senaryo_gerceklesme"].get("ters_cevrildi")
++            else []
++        ),
          "MFIN kenar, merkez sızıntı, finans halkaları (3)(4)(5), "
          f"**{u['olcek_satir']}** ({u['yatirim_geliri_gideri_mn']:,} mn USD) ve TDS vekili.",
          "",
@@ -1891,8 +1952,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_rapor.py fixed/etki_cephesi/senaryo_rapor.py
 --- pristine/etki_cephesi/senaryo_rapor.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 07:55:24.225351628 +0000
-@@ -0,0 +1,177 @@
++++ fixed/etki_cephesi/senaryo_rapor.py	2026-10-14 08:01:03.917020858 +0000
+@@ -0,0 +1,180 @@
 +"""Senaryo raporları: A, B, C için AYNI bölümler, AYNI alanlar (referans senaryo ayrıcalığı yok).
 +
 +Çıktı: `SENARYO_RAPOR_{A,B,C}.md` (aynı iskelet) ve `SENARYO_KARSILASTIRMA.md` (yan yana).
@@ -1995,7 +2056,9 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +            ("Finans katmanı TR net", _g(fk, "finans_katman_tam.tr_net_birlesik_vekil")),
 +            ("Finans: sıfır üstü takvim yılı", _g(fk, "sifir_nokta.takvim_yil_sifir_ustu")),
 +            ("Üretime bağlanma gerçekleşmesi g_u (bağ kullanımı / C)", _g(ui, "senaryo_gerceklesme.g_uretim")),
-+            ("Finans dış koşul gerçekleşmesi g_f (politika / C)", _g(fk, "senaryo_gerceklesme.g_finans")),
++            ("Finans dış koşul gerçekleşmesi g_f (politika / C; < 0: ters çevrilmiş)", _g(fk, "senaryo_gerceklesme.g_finans")),
++            ("Finans ters çevrildi (araçsallaşma)", _g(fk, "senaryo_gerceklesme.ters_cevrildi")),
++            ("Finans TR net: çevrilmemiş olsaydı (varsayım bandı üstü)", _g(fk, "ters_cevirme_bandi.cevrilmemis_pozitif")),
 +            ("Finans etiketi", fk.get("etiket")),
 +        ]),
 +        ("6. Stok-akış (SFC, tr TL)", [
@@ -2033,6 +2096,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    "g_u = bağ kullanımı / C'ninki (üretime bağlama kanalı), g_f = politika gerçekleşmesi / C'ninki (dış koşul: erozyon, diplomatik esneklik). "
 +    "Etkin çarpan = 1 − g (1 − çarpan); C'de g = 1. Çarpanların kendisi (halka düzeltmesi, MFIN, TDS, iç tutma) tüm senaryolarda ortak ve atanmıştır; "
 +    "g türetilmiştir ama doğrusal ölçekleme varsayımdır. "
++    "Baskın modu araçsal olan senaryoda (B) finans katmanı ters çevrilir (g_f < 0, ayna simetri, güç 1: varsayım; duyarlılık finans raporunda). "
 +    "F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. "
 +    "Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz."
 +)
@@ -2650,8 +2714,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 07:55:24.288630088 +0000
-@@ -0,0 +1,301 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 08:01:03.917616775 +0000
+@@ -0,0 +1,322 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -2946,10 +3010,31 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        z = zc["zarar_cozum_sonrasi"]["tr_net_birlesik_vekil"]
 +        a = ur["uretim_ic_akis_tam"]["tr_net_birlesik_vekil"]
 +        b = fi["finans_katman_tam"]["tr_net_birlesik_vekil"]
-+        assert z <= a <= b
++        assert z <= a  # üretim katmanı yalnız iyileştirir
++        if fi["senaryo_gerceklesme"]["ters_cevrildi"]:
++            assert b < a  # araçsallaşmada finans katmanı ters çevrilir: üretimden kötü
++        else:
++            assert a <= b
 +        assert "senaryo_finans_carpanlari" not in fi  # çift sayan C-göreli ölçekleme kalktı
 +    assert g["C"] == (1.0, 1.0)  # C'nin sayıları değişmez
 +    assert g["C"][0] > g["A"][0] > g["B"][0] and g["C"][1] > g["A"][1] > g["B"][1]
 +    assert abs(g["A"][0] - sen["A"]["bag_modu"]["kullanim"] / sen["C"]["bag_modu"]["kullanim"]) < 1e-3
 +    assert u.etkin_carpan({"x": 0.5}, 1.0) == {"x": 0.5} and u.etkin_carpan({"x": 0.5}, 0.0) == {"x": 1.0}
 +    assert uk["senaryo_gerceklesme"]["aktif"] and fk["senaryo_gerceklesme"]["aktif"]
++
++
++def test_b_finans_katmani_arac_sallasmada_ters_cevrildi():
++    d = {sid: _j(OUT / f"FINANS_KATMAN_{sid}.json") for sid in "ABC"}
++    assert [d[s]["senaryo_gerceklesme"]["baskin_mod"] for s in "ABC"] == ["atil", "aracsal", "kullanim"]
++    assert [d[s]["senaryo_gerceklesme"]["ters_cevrildi"] for s in "ABC"] == [False, True, False]
++    assert d["B"]["senaryo_gerceklesme"]["g_finans"] == -d["B"]["senaryo_gerceklesme"]["g_finans_pozitif"]
++    f = d["B"]["finans_katman_tam"]
++    assert f["tr_finans_geri_kazanim_vekili"] < 0  # kazanım kayba döndü
++    u = d["B"]["uretim_ic_akis_taban"]
++    assert f["turkiye_yaricevre_bosalma"] > f["turkiye_yaricevre_bosalma"] - 1e-12 and f["merkez_finans_sizinti_toplam"] > 0
++    b = d["B"]["ters_cevirme_bandi"]
++    # güç arttıkça B kötüleşir: çevrilmemiş > etkisiz > yarım > tam
++    assert b["cevrilmemis_pozitif"] > b["guc_0.0_etkisiz"] > b["guc_0.5"] > b["guc_1.0_tam_ayna"]
++    assert abs(b["guc_0.0_etkisiz"] - u["tr_net_birlesik_vekil"]) < 1e-9  # güç 0 = finans katmanı yok
++    assert abs(b["guc_1.0_tam_ayna"] - f["tr_net_birlesik_vekil"]) < 1e-9
++    assert d["A"]["ters_cevirme_bandi"] is None and d["C"]["ters_cevirme_bandi"] is None

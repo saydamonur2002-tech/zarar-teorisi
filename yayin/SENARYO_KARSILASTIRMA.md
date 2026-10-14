@@ -52,10 +52,12 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | --- | ---: | ---: | ---: |
 | Üretim iç akış TR net | -13.32 | -24.82 | -4.383 |
 | Üretim: sıfır yılı tahmini | 2065 | 2087 | 2044 |
-| Finans katmanı TR net | -7.334 | -18.486 | -0.489 |
-| Finans: sıfır üstü takvim yılı | 2048 | 2065 | 2037 |
+| Finans katmanı TR net | -7.334 | -31.154 | -0.489 |
+| Finans: sıfır üstü takvim yılı | 2048 | — | 2037 |
 | Üretime bağlanma gerçekleşmesi g_u (bağ kullanımı / C) | 0.423 | 0.269 | 1 |
-| Finans dış koşul gerçekleşmesi g_f (politika / C) | 0.737 | 0.432 | 1 |
+| Finans dış koşul gerçekleşmesi g_f (politika / C; < 0: ters çevrilmiş) | 0.737 | -0.432 | 1 |
+| Finans ters çevrildi (araçsallaşma) | hayır | evet | hayır |
+| Finans TR net: çevrilmemiş olsaydı (varsayım bandı üstü) | — | -18.486 | — |
 | Finans etiketi | varsayim_carpanli_ham | varsayim_carpanli_ham | varsayim_carpanli_ham |
 
 ## 6. Stok-akış (SFC, tr TL)
@@ -76,10 +78,10 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
-| TR net son (kalibre) | -17.615 | -33.876 | -11.211 |
-| GSYH % | 4.902 | 9.427 | 3.12 |
+| TR net son (kalibre) | -17.615 | -38.312 | -11.211 |
+| GSYH % | 4.902 | 10.661 | 3.12 |
 | TR net 10. yıl yolu | -19.975 | -35.337 | -13.623 |
-| Gerçekleşme: zarar / üretim / finans | 0.49 / 0.175 / 0.154 | 0.287 / 0.102 / 0.09 | 0.665 / 0.237 / 0.22 |
+| Gerçekleşme: zarar / üretim / finans | 0.49 / 0.175 / 0.154 | 0.287 / 0.102 / 0.41 | 0.665 / 0.237 / 0.22 |
 
 ## 8. Dış rant parasal akışı
 
@@ -103,4 +105,4 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 
 ## Not
 
-**Yapısal sınır (A, B, C için aynı):** üretim ve finans katmanları senaryoya özgü gerçekleşmeyle kurulur: g_u = bağ kullanımı / C'ninki (üretime bağlama kanalı), g_f = politika gerçekleşmesi / C'ninki (dış koşul: erozyon, diplomatik esneklik). Etkin çarpan = 1 − g (1 − çarpan); C'de g = 1. Çarpanların kendisi (halka düzeltmesi, MFIN, TDS, iç tutma) tüm senaryolarda ortak ve atanmıştır; g türetilmiştir ama doğrusal ölçekleme varsayımdır. F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz.
+**Yapısal sınır (A, B, C için aynı):** üretim ve finans katmanları senaryoya özgü gerçekleşmeyle kurulur: g_u = bağ kullanımı / C'ninki (üretime bağlama kanalı), g_f = politika gerçekleşmesi / C'ninki (dış koşul: erozyon, diplomatik esneklik). Etkin çarpan = 1 − g (1 − çarpan); C'de g = 1. Çarpanların kendisi (halka düzeltmesi, MFIN, TDS, iç tutma) tüm senaryolarda ortak ve atanmıştır; g türetilmiştir ama doğrusal ölçekleme varsayımdır. Baskın modu araçsal olan senaryoda (B) finans katmanı ters çevrilir (g_f < 0, ayna simetri, güç 1: varsayım; duyarlılık finans raporunda). F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz.
