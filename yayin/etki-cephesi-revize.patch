@@ -1093,6 +1093,162 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
  
  if __name__ == "__main__":
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bant_sinama.py fixed/etki_cephesi/bant_sinama.py
+--- pristine/etki_cephesi/bant_sinama.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/bant_sinama.py	2026-10-14 14:24:40.419219968 +0000
+@@ -0,0 +1,152 @@
++"""Yunanistan ve Balkanları belirsizlik bandıyla SINAMA (duyarlılık/dayanıklılık raporu).
++
++Neden bu aktörler: sınıfları (kazanan/kaybeden/bant içi) atanmış parametrelere dayanıyor.
++  * Balkan ülkeleri (RS, BA, BG, AL, MK): kazançları AB satırının atanmış %68'lik bölünmesinden (`eu_satir_balkan_kanal_pay`)
++    ve (kayıtlı olmayan ülkelerde) eşit refah-endeksi ağırlığından gelir; yani bu ülkeler neredeyse AYNI kazanç dilimini alır,
++    sınıfı yalnız kendi havza kaybı belirler.
++  * Yunanistan: kazancı dağıtım kuralına (matris ↔ kanal) çok duyarlı.
++Sınama (tek parametre, diğerleri taban): bölünme payı p, dağıtım kuralı, bilinmeyen merkez payının kazanç sayılması, kazancın tamamı ×0,5/×1,5
++(atanmış aktör payları ve katsayılar), kayıp ölçeği.
++Çıktı: her aktör için sınıf kümesi, dayanıklılık, kırılma noktası p*.  Bu rapor başka modüle girdi olmaz (döngü yok).
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++DATA = REPO / "data" / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++AKTORLER = ("GR", "RS", "BA", "BG", "AL", "MK", "CY")
++P_IZGARA = (0.34, 0.51, 0.68, 0.85)  # taban 0,68; −%50, −%25, taban, +%25
++KAYIP_OLCEK = (0.75, 1.0, 1.25)
++KAZANC_OLCEK = (0.5, 1.5)  # atanmış aktör payları ve katsayıları: kazancın tamamı ×0,5 / ×1,5
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def _sinif_fn():
++    import bolge_stok_akis  # noqa: E402  (pipeline modülü; lazy)
++
++    return bolge_stok_akis._sinif_etiket
++
++
++def hesapla() -> dict[str, Any]:
++    sinif = _sinif_fn()
++    capa = _load(DATA / "kalibre" / "uluslararasi_stok_akis_capa.json")
++    usys = (_load(DATA / "dis_ulke_sistemi.json")).get("ulkeler") or {}
++    balkan = list(capa.get("balkan_aktörler") or [])
++    p0 = float(capa.get("eu_satir_balkan_kanal_pay") or 0.68)
++    ends = {b: float((usys.get(b) or {}).get("refah_endeks") or 0.5) for b in balkan}
++    w = {b: ends[b] / (sum(ends.values()) or 1.0) for b in balkan}
++    proj = {s["id"]: s for s in _load(OUT / "PROJEKSIYON.json")["senaryolar"]}
++    out_s: list[dict[str, Any]] = []
++    for sid in ("A", "B", "C"):
++        led = {r["ulke"]: r for r in _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")["ulke_defteri"]}
++        tam_b = sorted(r["net_bandi"] for r in led.values() if r.get("bant_kapsami") == "tam" and r["ulke"] not in ("TR", "MFIN") and r["net_bandi"] > 0)
++        med = tam_b[len(tam_b) // 2] if tam_b else 0.0
++        eu = led["EU"]
++        raw = {k: eu[k] / (1 - p0) for k in ("kanal_kazanc", "ikame_kazanc", "refah_rant")}
++        raw_top = sum(raw.values())
++        dk = {d["aktor"]: d for d in proj[sid]["dis_aktör_kazanc"]}
++        satirlar: list[dict[str, Any]] = []
++        for iso in AKTORLER:
++            r = led.get(iso)
++            if not r:
++                continue
++            rol = str((usys.get(iso) or {}).get("rol") or "")
++            kaybi = float(r["havza_kayip"])
++            kazanc_ledger = float(r["kanal_kazanc"]) + float(r["ikame_kazanc"]) + float(r["merkez_sizinti"]) + float(r["refah_rant"])
++            dilim0 = p0 * raw_top * w[iso] if iso in balkan else 0.0
++            sahip = kazanc_ledger - dilim0  # bölünmeden bağımsız kendi kazancı
++            bant = float(r["net_bandi"])
++            if r.get("bant_kapsami") == "kismi":
++                bant = max(bant, med)
++            kural = float(r.get("kural_belirsizligi") or 0.0)
++            belirsiz = float(r.get("merkez_belirsiz") or 0.0)
++            # dağıtım kuralı: üst uç = matris yerine kanal (yalnız tam kapsamlı aktörde; projeksiyondan yön bilinir)
++            d = dk.get(iso) or {}
++            kanal_alt = float(d.get("kanal_alternatif_kazanc") or 0.0)
++            matris = float(d.get("matris_kazanc") or 0.0)
++            kural_yukari = max(0.0, kanal_alt - matris) if r.get("bant_kapsami") == "tam" else 0.0
++
++            def net(p=p0, kural_ekle=0.0, belirsiz_ekle=0.0, olcek=1.0, kazanc_olcek=1.0) -> float:
++                dilim = p * raw_top * w[iso] if iso in balkan else 0.0
++                return (sahip + dilim + kural_ekle + belirsiz_ekle) * kazanc_olcek - kaybi * olcek
++
++            taban = net()
++            varyantlar: dict[str, float] = {"taban": taban}
++            for p in P_IZGARA:
++                if iso in balkan:
++                    varyantlar[f"p={p}"] = net(p=p)
++            if kural_yukari > 0:
++                varyantlar["kural=kanal(üst)"] = net(kural_ekle=kural_yukari)
++            if belirsiz > 0:
++                varyantlar["belirsiz pay kazanç sayılır"] = net(belirsiz_ekle=belirsiz)
++            for ko in KAZANC_OLCEK:
++                varyantlar[f"kazanç×{ko}"] = net(kazanc_olcek=ko)
++            for o in KAYIP_OLCEK:
++                if o != 1.0 and kaybi > 0:
++                    varyantlar[f"kayıp×{o}"] = net(olcek=o)
++            siniflar = {k: sinif(iso, rol, v, None, bant) for k, v in varyantlar.items()}
++            kume = sorted(set(siniflar.values()))
++            # kırılma noktaları (yalnız Balkan): p* için net = 0, net − bant = 0, net + bant = 0
++            kir = None
++            if iso in balkan and raw_top * w[iso] > 0:
++                birim = raw_top * w[iso]
++                kir = {
++                    "p_net_sifir": round((kaybi - sahip) / birim, 3),
++                    "p_kazanan_baslar": round((kaybi + bant - sahip) / birim, 3),
++                    "p_kaybeden_biter": round((kaybi - bant - sahip) / birim, 3),
++                }
++            satirlar.append(
++                {
++                    "ulke": iso,
++                    "net": round(taban, 3),
++                    "bant": round(bant, 3),
++                    "bant_kapsami": r.get("bant_kapsami"),
++                    "marj": round(abs(taban) - bant, 3),  # > 0: bant dışı (karar verilmiş); < 0: bant içi
++                    "taban_sinif": siniflar["taban"],
++                    "sinif_kumesi": kume,
++                    "dayanikli": len(kume) == 1,
++                    "kirilma_p": kir,
++                    "varyant_siniflari": siniflar,
++                }
++            )
++        out_s.append({"id": sid, "bolunme_pay_p0": p0, "kismi_bant_medyani": round(med, 3), "aktorler": satirlar})
++    return {
++        "olcum": "bant_sinama_yunanistan_balkan",
++        "etiket": "duyarlilik_dayaniklilik",
++        "p_izgara": list(P_IZGARA),
++        "kayip_olcek": list(KAYIP_OLCEK),
++        "senaryolar": out_s,
++        "not": "Tek parametre değişir, diğerleri taban. 'dayanıklı' = sınıf bütün varyantlarda aynı. p, kayıp ve kazanç ölçekleri atanmış büyüklüklerin ±%25–50 salınımıdır, gerçek belirsizliğin ölçüsü değildir. Yunanistan'ın kural ve belirsiz-pay varyantları yalnız yukarı yönlüdür; aşağı yön yalnız kazanç×0,5 varyantından gelir.",
++    }
++
++
++def _md(d: dict[str, Any]) -> str:
++    L = ["# Yunanistan ve Balkanların bantla sınanması", "", f"**Etiket:** `{d['etiket']}`. {d['not']}", ""]
++    for s in d["senaryolar"]:
++        L += [f"## Senaryo {s['id']} (AB→Balkan bölünme payı p = {s['bolunme_pay_p0']}, kısmi bant medyanı {s['kismi_bant_medyani']})", "", "| Ülke | Net | Bant | Marj (|net|−bant) | Taban sınıf | Sınıf kümesi (tüm varyantlar) | Dayanıklı | p*: net=0 / kazanan başlar / kaybeden biter |", "| --- | ---: | ---: | ---: | --- | --- | --- | --- |"]
++        for a in s["aktorler"]:
++            k = a["kirilma_p"]
++            ks = f"{k['p_net_sifir']} / {k['p_kazanan_baslar']} / {k['p_kaybeden_biter']}" if k else "—"
++            L.append(f"| {a['ulke']} | {a['net']} | {a['bant']} | {a['marj']} | {a['taban_sinif']} | {', '.join(a['sinif_kumesi'])} | {'evet' if a['dayanikli'] else 'HAYIR'} | {ks} |")
++        L.append("")
++    L += ["## Okuma", "", "- `p*` (net=0): Balkan ülkesinin net'i sıfırlayan AB→Balkan bölünme payı. Taban p = 0,68; p* bunun altındaysa ülke p'nin makul aralığında kazanan, üstündeyse kaybeden. Kazanan sınıf için p'nin `kazanan başlar` değerini aşması gerekir.", "- 'Dayanıklı = HAYIR': sınıf, atanmış bir parametrenin tek başına ±%25–50 salınımıyla değişiyor; bu aktör hakkında 'kazanan/kaybeden' iddiası kurulamaz.", ""]
++    return "\n".join(L)
++
++
++def main() -> None:
++    d = hesapla()
++    OUT.mkdir(parents=True, exist_ok=True)
++    (OUT / "BANT_SINAMA.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    (OUT / "BANT_SINAMA.md").write_text(_md(d), encoding="utf-8")
++    print("BANT_SINAMA:", {s["id"]: {a["ulke"]: a["dayanikli"] for a in s["aktorler"]} for s in d["senaryolar"]})
++
++
++if __name__ == "__main__":
++    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bolge_stok_akis.py fixed/etki_cephesi/bolge_stok_akis.py
 --- pristine/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:05:45.822890890 +0000
 +++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 14:20:37.195130998 +0000
@@ -2731,7 +2887,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 14:06:07.944526937 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 14:24:14.558453205 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -2768,7 +2924,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,35 @@
+@@ -31,11 +47,36 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -2779,6 +2935,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "senaryo_rapor.py",
 +        "gecmis_projeksiyon.py",
 +        "kazanc_kayip_muhasebe.py",
++        "bant_sinama.py",
          ]
      )
 -    for s in steps:
@@ -3712,8 +3869,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:21:02.566394605 +0000
-@@ -0,0 +1,479 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:25:18.395871050 +0000
+@@ -0,0 +1,502 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -4193,3 +4350,26 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    med = tam[len(tam) // 2]
 +    assert all(a["net_bandi"] >= med - 1e-9 for a in b["aktorler"] if a["bant_kapsami"] == "kismi")  # kısmi kapsamda bant, tam kapsamın medyanından dar olamaz
 +    assert [a["ulke"] for a in b["halka_cevre_kazanan"]] == [a["ulke"] for a in b["halka_cevre_kazanan"] if a["net_alt_ust"][0] > 0]
++
++
++def test_yunanistan_balkan_bant_sinamasi():
++    d = _j(OUT / "BANT_SINAMA.json")
++    assert [s["id"] for s in d["senaryolar"]] == ["A", "B", "C"]
++    b = {a["ulke"]: a for a in _j(OUT / "BOLGE_STOK_AKIS.json")["aktorler"]}
++    c = {a["ulke"]: a for a in next(s for s in d["senaryolar"] if s["id"] == "C")["aktorler"]}
++    for iso, a in c.items():  # taban, ana raporla tutarlı
++        assert abs(a["net"] - b[iso]["net_refah_entegre_vekil"]) < 0.01, iso
++        if abs(a["marj"]) > 0.005:  # marj yuvarlama düzeyindeyse (BA: 0,001) sınıf eşitliği beklenmez
++            assert a["taban_sinif"] == b[iso]["sinif"], iso
++    for s in d["senaryolar"]:
++        by = {a["ulke"]: a for a in s["aktorler"]}
++        assert not by["GR"]["dayanikli"]  # kazanç×0,5 ile bant içine düşer
++        assert "belirsiz_bant_ici" in by["GR"]["sinif_kumesi"]
++        for iso in ("RS", "BA", "BG", "AL", "MK"):
++            assert not by[iso]["dayanikli"], (s["id"], iso)  # hiçbir Balkan ülkesinin sınıfı atanmış parametre salınımına dayanıklı değil
++        # Balkan kırılma noktaları: p* hesaplanmış ve sıralı (net=0, kazanan başlar, kaybeden biter)
++        for iso in ("RS", "BA", "BG", "AL", "MK"):
++            k = by[iso]["kirilma_p"]
++            assert k["p_kaybeden_biter"] <= k["p_net_sifir"] <= k["p_kazanan_baslar"]
++    cc = {a["ulke"]: a for a in next(s for s in d["senaryolar"] if s["id"] == "C")["aktorler"]}
++    assert cc["AL"]["kirilma_p"]["p_net_sifir"] < 0.68 < cc["BG"]["kirilma_p"]["p_net_sifir"]  # AL taban p'de kazanan tarafta, BG kaybeden tarafta

@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `25f7175d20e642fe`, temiz kurulumda 3 geçiş),
-**59 test geçti** (27 mevcut + 32 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `8129e5332ab1d67b`, temiz kurulumda 3 geçiş),
+**60 test geçti** (27 mevcut + 33 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -217,6 +217,15 @@ Mısır `kanal` kalkınca "çevre kazananı" olmaktan çıkmıştı (ledger neti
 - **Sınıf değişimi:** Bosna-Hersek kazanandan bant içine; Bulgaristan ve Kıbrıs nötrden bant içine; Sırbistan nötrden çevre kaybedene (net −0,065, bant 0,053). Mısır bant içinde ([−0,13; +0,15]). Kazananlar: Çin, Rusya, ABD, İran, BAE, AB, Suudi Arabistan, İsrail, Fransa, Yunanistan, Arnavutluk, Kuzey Makedonya. Bantlar: Çin ±1,12, Rusya ±1,13 (kural farkı büyük), İran ±0,14, ABD ±0,09.
 - **Hâlâ kenar:** Yunanistan net 0,167 / bant 0,158 (marj 0,009), Arnavutluk ve Kuzey Makedonya 0,18 / 0,143 (Balkan payları AB satırının atanmış %68'lik bölünmesinden geliyor). Bant içine girmeleri küçük bir bant değişiminde olur.
 - Karar skoru (56,7), karar eşiği P(C) (0,63), E[TR net 10 yıl] ve `kapanis_ok` aynı.
+
+## Yunanistan ve Balkanların bantla sınanması
+`bant_sinama.py` → `BANT_SINAMA.{json,md}` (duyarlılık/dayanıklılık; başka modüle girdi olmaz). Tek atanmış parametre değişir: AB→Balkan bölünme payı p (taban 0,68; 0,34 / 0,51 / 0,85), dağıtım kuralı (matris ↔ kanal üst ucu), bilinmeyen merkez payının kazanç sayılması, kazancın tamamı ×0,5 / ×1,5, kayıp ×0,75 / ×1,25.
+- **Sonuç: Yunanistan ve beş Balkan ülkesinden hiçbirinin sınıfı dayanıklı değil** (A, B, C'nin hepsinde); yalnız Kıbrıs hep bant içinde.
+- **Yunanistan:** taban "çevre kazananı" (C: net 0,167, bant 0,158, marj 0,009). Dağıtım kuralı ve belirsiz pay varyantları yalnız yukarı iter; **kazanç ×0,5** ile bant içine düşer. Yani Yunanistan'ın kazananlığı atanmış aktör payına (`dis_aktör_pay`) bağlı.
+- **Balkanlar kazançlarını AB satırının atanmış bölünmesinden alıyor ve neredeyse eşit pay alıyor** (kayıtlı refah endeksi olmayan BA, BG, AL, MK için eşit ağırlık): bu dört ülkenin kazancı aynı (C: 0,35); sınıfı yalnız kendi havza kaybı belirliyor. Kırılma payı p* (net = 0), C: **AL 0,33, MK 0,33, BA 0,40** (taban 0,68'in altında → kazanan tarafta), **BG 0,78, RS 0,82** (üstünde → kaybeden tarafta). "Kazanan başlar" payı (bant dışı kazanan): AL/MK 0,60, BA 0,68, yani taban p'de AL/MK marjı 0,04, BA'nın 0,001.
+- **p'nin %25'lik azalması** (0,51) AL, MK ve BA'yı bant içine alıyor; %50'lik azalması (0,34) net'i sıfıra yaklaştırıyor. Balkan "kazananları" tek bir atanmış bölünme payının sonucu, ölçülmüş bir bulgu değil.
+- **Sınıf kümeleri:** RS kaybeden ↔ bant içi (C'de üç sınıf), BG bant içi ↔ kaybeden; A'da BA/BG bant içi, B'de AL/MK bant içi.
+- BA'da net − bant marjı 0,001: yuvarlama düzeyinde (C'de ana rapor bant içi, sınama kazanan diyor).
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
