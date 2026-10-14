@@ -106,6 +106,16 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | Merkez sızıntı (mn $) | 51,935.9 | 111,361.1 | 25,430.5 |
 | Kanal ikame (mn $) | 92,477.1 | 113,950.3 | 70,696.7 |
 
+## 10. Dış aktörlerin kaybın devamlılığı için maliyeti (varsayım)
+
+| Alan | A | B | C |
+| --- | ---: | ---: | ---: |
+| Maliyet katsayısı κ × TR karşı-hamle gücü pol | 0.2 × 0.7 | 0.2 × 0.41 | 0.2 × 0.95 |
+| Σ sürdürme maliyeti (TR, MFIN hariç) | 2.36 | 1.824 | 2.375 |
+| Σ dış kazanç (TR, MFIN hariç) | 19.165 | 25.249 | 14.248 |
+| Maliyet / kazanç | 0.123 | 0.072 | 0.167 |
+| Kazançtan maliyet düşülünce Σ dış net | 16.805 | 23.425 | 11.873 |
+
 ## Not
 
 **Yapısal sınır (A, B, C için aynı):** üretim ve finans katmanları senaryoya özgü gerçekleşmeyle kurulur: g_u = bağ kullanımı / C'ninki (üretime bağlama kanalı), g_f = politika gerçekleşmesi / C'ninki (dış koşul: erozyon, diplomatik esneklik). Etkin çarpan = 1 − g (1 − çarpan); C'de g = 1. Çarpanların kendisi (halka düzeltmesi, MFIN, TDS, iç tutma) tüm senaryolarda ortak ve atanmıştır; g türetilmiştir ama doğrusal ölçekleme varsayımdır. Baskın modu araçsal olan senaryoda (B) finans katmanı ters çevrilir (g_f < 0, ayna simetri, güç 1: varsayım; duyarlılık finans raporunda). F.4 stok yolu (bölüm 6) beş adımın kredi itişinden gelir ve senaryodan bağımsızdır; üç sütunda aynı olması senaryo farkı değil model yapısıdır. Finans katmanı kalibre yola bağlıdır (üretimle eşzamanlı yükselir); çarpanları atanmıştır. Olasılık ölçülmemiştir (gözlem yokken tekdüze); bu rapor senaryolar arasında sıra kurmaz.

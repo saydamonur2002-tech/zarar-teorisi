@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `684e3a601f70423b`, temiz kurulumda 3 geçiş),
-**61 test geçti** (27 mevcut + 34 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `59c2c071a9ada012`, temiz kurulumda 3 geçiş),
+**62 test geçti** (27 mevcut + 35 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -251,6 +251,14 @@ Aynı varyantlar; AB için bölünme payı (1 − p) ile kalan pay. Sınama sır
 - **A:** Çin ve Rusya kazanan (marj ≈ 0,25, k\* ≈ 0,93: kazançlarının %7'si silinse bant içine); Fransa ve Yunanistan bant içi. **B:** kaybı modelde olmayan sekizin **hiçbiri bant dışı kazanan değil** (Çin 2,41 ± 3,25 …); B'de yalnız İran kazanan kalır, İsrail kenarda.
 - Karar skoru (56,7), karar ve E[TR net] aynı; halka-çevre koalisyonu bileşeni (İran, İsrail) etkilenmedi.
 - `BANT_SINAMA`: taban artık referans-kayıplı; varyantlar "bilinmeyen kayıp = 0 (yalnız modelli)" ve "en yüksek referans oran"; r\* (kayıp belirsizliği hariç diğer bant) korunur: Çin 0,57, Rusya 0,56, ABD 0,96 (C).
+
+## Senaryoya maliyet eklendi: dış ülkelerin kaybın devamlılığı için katlandığı maliyet
+`data/etki_cephesi/surdurme_maliyeti.json` (varsayım, ölçülmüş veri yok). Dış aktör, TR'nin kaybını sürdürmek için (karşı-hamleyi etkisizleştirme: diplomatik/güvenlik varlığı, finansman, lobi, yaptırım uygulama) kazancından bir kısmını harcar.
+- **Formül:** maliyet = κ · pol_s · aktörün kazancı. κ = **0,20** (varsayım, bant 0,10 – 0,35); pol_s = clip(1,05 − etki erozyonu + diplomatik esneklik, 0,25, 1) = **TR'nin karşı-hamle gücü** (`stok_akis_sim` ve `finans_katman` ile aynı formül): A 0,70, B 0,41, C 0,95. TR güçlüyse kaybı sürdürmek pahalı (C), zayıfsa ucuz (B). TR ve MFIN muaf; maliyet kazancı aşamaz (oran < 1). Kazançla orantılı dağıtılır (bedava binici yok sayılır).
+- **Çıktı:** `surdurme_maliyeti`, `net_birlesik_maliyetli` (projeksiyon), `net_maliyetli` (defter); bant, κ bandının yarı aralığıyla (±(0,35−0,10)/2 · pol · kazanç) genişler; sınıf maliyetli net'e göre. `SENARYO_RAPOR` bölüm 10: Σ maliyet A 2,36 / B 1,82 / C 2,38; Σ dış kazanç (TR, MFIN hariç) 19,2 / 25,2 / 14,2; maliyet/kazanç %12 / %7 / %17.
+- **Sınıf etkisi (C):** Çin net 2,04 → **1,54** (bant ±1,60), Rusya 1,96 → 1,48 (±1,57): **bant içine girdiler** (`rant_kanali_bosluk_taraftari`); Fransa de bant içi. ABD 1,13 (±0,84), BAE 0,50, Suudi Arabistan 0,41, AB 0,48, İran 0,95 (±0,23), İsrail 0,36 hâlâ bant dışı kazanan. **A:** Çin ve Rusya bant içinde; ABD, BAE, Suudi Arabistan, AB kazanan. **B:** yalnız İran kazanan.
+- **Karar etkisi:** skor 56,7 → **53,7**, karar `kisitli_uygulanabilir`; karar eşiği P(C) 0,63 → **0,75**; K2 sonuçları skoru 51,2 – 55,3'e indi. **Bu 3 puan dolaylı bir etki:** doğrudan maliyetin değil, `direnc_dusuk` bileşeninin (1,0 → 0,75) sonucu. Çin ve Rusya bant içine düşünce "rant kanalı boşluk taraftarı" etiketini aldılar ve direnç sayımına girdiler; bant dışı kazanan olarak bu sayıma girmiyorlardı. Yani direnç, aktörün boşluk rantından yararlanmasına değil sınıf etiketine bağlı: kazanan = direnç yok, bant içi + büyük rant farkı = direnç. Bu tutarsızlık maliyetten önce de vardı, maliyet onu görünür kıldı.
+- `BANT_SINAMA`: taban artık referans-kayıplı ve maliyetli; varyantlar "sürdürme maliyeti = 0" ve "κ üst".
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
