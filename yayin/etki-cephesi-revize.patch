@@ -2835,7 +2835,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    main()
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/durdurma_hiz_kural.py fixed/etki_cephesi/durdurma_hiz_kural.py
 --- pristine/etki_cephesi/durdurma_hiz_kural.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/durdurma_hiz_kural.py	2026-10-14 19:36:14.479470850 +0000
++++ fixed/etki_cephesi/durdurma_hiz_kural.py	2026-10-14 19:38:25.102795443 +0000
 @@ -0,0 +1,135 @@
 +"""Durdurma hızını belirleyen ÖLÇÜLEBİLİR kurallar (aktör ve halka bazlı değil, tek durum d).
 +
