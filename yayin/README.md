@@ -18,7 +18,7 @@
 | [OLASILIK_KAPILAR.md](./OLASILIK_KAPILAR.md) | P(C) ölçülebilir kapılarla yeniden kuruldu: tekdüze prior, EVDS borç çevirme kapısı, kapı sonuç tablosu; tek kapı karar eşiğini geçirmez; olabilirlikler geçmişten (`_gecmis.py`: senaryo = geçmiş rejimi), ana pipeline bu olasılığı kullanır (`_olasilik.py`, döngü yok) |
 | [SENARYO_KARSILASTIRMA.md](./SENARYO_KARSILASTIRMA.md) | A, B, C yan yana: aynı 9 bölüm, aynı alanlar (zip içinde `SENARYO_RAPOR_{A,B,C}.md`); üretim/finans katmanlarının senaryoya özgü gerçekleşmesi (g_u, g_f) ve F.4 stok yolunun senaryodan bağımsızlığı notuyla |
 | [GECMIS_PROJEKSIYON.md](./GECMIS_PROJEKSIYON.md) | Salt geçmiş projeksiyonu: yalnız EVDS gözlem serisinden ileri uzatma (senaryo, olasılık, katman çarpanı yok); geriye test: üç yöntem de 2023–2025'i eksik tahmin etti |
-| [KAZANC_KAYIP_MUHASEBE.md](./KAZANC_KAYIP_MUHASEBE.md) | Dış aktör kazancı ile havza kaybı tutmuyor: dört kazanç kanalı aynı boşluktan (V) besleniyor, toplam V'nin %170–218'i; modellenmeyen aktörler sıfır değil `—` (bilinmiyor) işaretli |
+| [KAZANC_KAYIP_MUHASEBE.md](./KAZANC_KAYIP_MUHASEBE.md) | Kazanç–boşluk muhasebesi: `kanal` dağıtım kuralı kaldırıldı, kalan kanallar V'ye normalize (Σ kazanç ≤ V); modellenmeyen aktörler sıfır değil `—` (bilinmiyor) işaretli |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 

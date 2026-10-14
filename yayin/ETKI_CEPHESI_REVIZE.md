@@ -1,7 +1,7 @@
 # Etki cephesi modeli: revize sonucu
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `8b5c6ae4630ba80a`, temiz kurulumda 3 geçiş),
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `7500618977dc1497`, temiz kurulumda 3 geçiş),
 **57 test geçti** (27 mevcut + 30 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
@@ -38,27 +38,27 @@ Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla k
 | Beklenen karışımın iyileşmesi | +0,087 skor (özet "iyileşir" diyordu) | −1,00 vekil: iyileşme yok, engel olarak yazıldı |
 | Lm × rant, kur | 32,87 | 44,38; kapanış_ok = False (Σ x = +0,178) |
 
-Not: bu tablo P(C)=0,60 ile. P(C) kapılara, kapılar ve katmanlar geçmişe bağlanınca skor 58,7 ve karar `kisitli_uygulanabilir` (aşağıda).
+Not: bu tablo P(C)=0,60 ile. P(C) kapılara, kapılar ve katmanlar geçmişe bağlanıp `kanal` kuralı kalkınca skor 56,7 ve karar `kisitli_uygulanabilir` (aşağıda).
 | 10 | C'nin gerçekleşmesini ölçen bir ölçüt yoktu | `c_dinamik_olcut.py`: sıralı Bayes, EVDS merkez sızıntı oranı; güç analizi (aşağıda) |
 
 ## C olasılığı duyarlılığı (yeni rapor)
-`olasilik_duyarlilik.py` → `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. P(C) 0,30–0,80, kalan A:B taban oranla bölünür (taban 1:1). **Yeni olasılık üretmez.** Tablo, kapı ve katmanlar geçmişten kurulduktan sonraki güncel durum:
+`olasilik_duyarlilik.py` → `reports/etki_cephesi/OLASILIK_DUYARLILIK.{json,md}`. P(C) 0,30–0,80, kalan A:B taban oranla bölünür (taban 1:1). **Yeni olasılık üretmez.** Tablo, kapı ve katmanlar geçmişten kurulduktan ve `kanal` dağıtım kuralı kaldırıldıktan sonraki güncel durum:
 
 | P(C) | P(A) | P(B) | E[TR net 10y, yaşam dahil] | E[GSYH %] | E[iyileşme] | Skor | Karar |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| 0.30 | 0.350 | 0.350 | -23.622 | 7.059 | -6.43 | 58.1 | kisitli_uygulanabilir |
-| 0.35 | 0.325 | 0.325 | -22.846 | 6.826 | -5.66 | 59.0 | kisitli_uygulanabilir |
-| 0.40 | 0.300 | 0.300 | -22.07 | 6.594 | -4.88 | 59.9 | kisitli_uygulanabilir |
-| 0.45 | 0.275 | 0.275 | -21.293 | 6.361 | -4.10 | 60.8 | kisitli_uygulanabilir |
-| 0.50 | 0.250 | 0.250 | -20.517 | 6.129 | -3.33 | 61.7 | kisitli_uygulanabilir |
-| 0.55 | 0.225 | 0.225 | -19.741 | 5.896 | -2.55 | 62.6 | uygulanabilir_kosullu |
-| 0.60 | 0.200 | 0.200 | -18.965 | 5.664 | -1.77 | 63.5 | uygulanabilir_kosullu |
-| 0.65 | 0.175 | 0.175 | -18.189 | 5.431 | -1.00 | 64.4 | uygulanabilir_kosullu |
-| 0.70 | 0.150 | 0.150 | -17.412 | 5.198 | -0.22 | 65.3 | uygulanabilir_kosullu |
-| 0.75 | 0.125 | 0.125 | -16.636 | 4.966 | +0.55 | 67.2 | uygulanabilir_kosullu |
-| 0.80 | 0.100 | 0.100 | -15.86 | 4.733 | +1.33 | 69.5 | uygulanabilir_kosullu |
+| 0.30 | 0.350 | 0.350 | -23.622 | 7.059 | -6.43 | 56.1 | kisitli_uygulanabilir |
+| 0.35 | 0.325 | 0.325 | -22.846 | 6.826 | -5.66 | 57.0 | kisitli_uygulanabilir |
+| 0.40 | 0.300 | 0.300 | -22.07 | 6.594 | -4.88 | 57.9 | kisitli_uygulanabilir |
+| 0.45 | 0.275 | 0.275 | -21.293 | 6.361 | -4.10 | 58.8 | kisitli_uygulanabilir |
+| 0.50 | 0.250 | 0.250 | -20.517 | 6.129 | -3.33 | 59.7 | kisitli_uygulanabilir |
+| 0.55 | 0.225 | 0.225 | -19.741 | 5.896 | -2.55 | 60.6 | kisitli_uygulanabilir |
+| 0.60 | 0.200 | 0.200 | -18.965 | 5.664 | -1.77 | 61.5 | kisitli_uygulanabilir |
+| 0.65 | 0.175 | 0.175 | -18.189 | 5.431 | -1.00 | 62.4 | uygulanabilir_kosullu |
+| 0.70 | 0.150 | 0.150 | -17.412 | 5.198 | -0.22 | 63.3 | uygulanabilir_kosullu |
+| 0.75 | 0.125 | 0.125 | -16.636 | 4.966 | +0.55 | 65.2 | uygulanabilir_kosullu |
+| 0.80 | 0.100 | 0.100 | -15.86 | 4.733 | +1.33 | 67.5 | uygulanabilir_kosullu |
 
-- Karar eşiği (skor 62) geçişi P(C) ≈ **0,52**. Kapılardan bugünkü P(C) = 0,33, yani eşiğin altında.
+- Karar eşiği (skor 62) geçişi P(C) ≈ **0,63** (kanal kaldırılmadan önce 0,52). Kapılardan bugünkü P(C) = 0,33, yani eşiğin altında.
 - Beklenen karışımda iyileşme ancak P(C) ≳ 0,72'de başlıyor.
 - E[TR net 10 yıl] aralığı −23,62 … −15,86.
 
@@ -80,10 +80,10 @@ Not: bu tablo P(C)=0,60 ile. P(C) kapılara, kapılar ve katmanlar geçmişe ba�
 
 | Çıktı | P(C)=0,60 (eski) | P(C)=1/3 (kapılar, gözlem yok) |
 |---|---|---|
-| Uygulanabilirlik skoru | 62,7 | **58,7** |
+| Uygulanabilirlik skoru | 62,7 | **56,7** |
 | Karar | uygulanabilir_kosullu | **kisitli_uygulanabilir** |
-| Skor C-senaryosu / beklenen A·B·C | 67,1 / 54,5 | 63,5 / 49,7 |
-| Senaryo skorları A / B / C | 50,1 / 49,4 / 73,0 | 52,3 / 52,3 / 69,3 |
+| Skor C-senaryosu / beklenen A·B·C | 67,1 / 54,5 | 61,5 / 47,7 |
+| Senaryo skorları A / B / C | 50,1 / 49,4 / 73,0 | 50,3 / 50,3 / 67,3 |
 | E[TR net 10 yıl] (yaşam dahil) | −18,19 | **−23,10** |
 | Beklenen karışımın iyileşmesi | −1,00 | **−5,91** (iyileşme yok) |
 | C yolu TR net 10. yıl | −17,19 → −13,10 | −17,19 → −12,72 (olasılığa bağlı değil; finans bağlaması ve geçmiş çarpanından) |
@@ -100,12 +100,12 @@ Okuma: C yolunun kendi sonucu iyileşir; olasılık ona dokunmaz. Değişen, C'y
 
 | Açık | P(A) | P(B) | P(C) | Skor | Karar | Eşiği geçer |
 | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| 0/3 | 0.785 | 0.024 | 0.192 | 56.2 | kisitli_uygulanabilir | hayır |
-| 1/3 | 0.427 | 0.156 | 0.417 | 60.2 | kisitli_uygulanabilir | hayır |
-| 2/3 | 0.108 | 0.472 | 0.42 | 60.3 | kisitli_uygulanabilir | hayır |
-| 3/3 | 0.014 | 0.76 | 0.225 | 56.8 | kisitli_uygulanabilir | hayır |
+| 0/3 | 0.785 | 0.024 | 0.192 | 54.2 | kisitli_uygulanabilir | hayır |
+| 1/3 | 0.427 | 0.156 | 0.417 | 58.2 | kisitli_uygulanabilir | hayır |
+| 2/3 | 0.108 | 0.472 | 0.42 | 58.3 | kisitli_uygulanabilir | hayır |
+| 3/3 | 0.014 | 0.76 | 0.225 | 54.8 | kisitli_uygulanabilir | hayır |
 
-- **Sonuç:** K2 P(C)'yi monoton artırmıyor: 3/3 açıkta B öne çıkıyor (0,76), C en çok 1–2 açıkta (0,42). En iyi tek kapı P(C) = 0,42; karar eşiği 0,52; **hiçbir K2 sonucu eşiği geçirmez** (skorlar 56,2 … 60,3). Önceki sürümün "3/3 açıkta eşiği 0,1 puan farkla geçer" bulgusu (atanmış δ ile) geçmişten kurulunca ortadan kalktı: o geçiş varsayımın ürünüymüş.
+- **Sonuç:** K2 P(C)'yi monoton artırmıyor: 3/3 açıkta B öne çıkıyor (0,76), C en çok 1–2 açıkta (0,42). En iyi tek kapı P(C) = 0,42; karar eşiği şimdi 0,63; **hiçbir K2 sonucu eşiği geçirmez** (skorlar 54,2 … 58,3).
 - λ duyarlılığı (geçmişe ağırlık): λ = 0 saf geçmiş, λ = 1 kapı bilgi taşımaz (0,333). Eski el ataması prior kullanılırsa sonuç prior'a yaslanır: tabloyu prior belirler, kapı değil.
 
 ## A, B, C için eşit ayrıntı (yeni)
@@ -181,15 +181,24 @@ Senaryolar kaldı; büyüklükleri geçmişten gelir (`etki_cephesi/_gecmis.py`,
 - Karar değişmedi: geçmişten kurmak sonucu çok oynatmadı (skor −0,1). Merkez sızıntı çarpanı yalnız merkez sızıntı kalemini değiştiriyor; TR boşalma ve karar skorunu belirleyen kalemler değişmedi.
 - Bu bölümden önceki bölümlerdeki finans ve katman sayıları atanmış çarpanlarla hesaplanmıştı (örn. "ters çevirme", "kalibre yola bağlandı" tabloları); güncel değerler yukarıdaki tablodadır, mekanizmalar aynıdır.
 
-## Kazanç–kayıp tutarsızlığı bulundu, modellenmeyenler işaretlendi
-`kazanc_kayip_muhasebe.py` → `KAZANC_KAYIP_MUHASEBE.{json,md}` (teşhis; modeli değiştirmez).
+## Kapsam işaretleri: modellenmeyenler "bilinmiyor"
+`kazanc_kayip_muhasebe.py` → `KAZANC_KAYIP_MUHASEBE.{json,md}` (ilk sürüm teşhisti; bu bölümdeki oranlar düzeltmeden öncekidir).
 - **Kaynak:** `projeksiyon.py` bir korunum özdeşliği tanımlamıyordu. Dış aktör kazancı dört kanaldan geliyor ve dördü **aynı bölge kaybından** (TR boşalması V) besleniyor: `kanal` (V × aktör payı), `matris` (V × katsayı farkı), `ikame` ve `merkez` kenarları (bölge kaybı × pay × çarpan). Birbirini dışlamıyorlar.
 - **Ölçüm (V = TR boşalması + 0,08 · pasif):** kanal + matris V'nin **%128'i** (aynı boşluk iki kuralla dağıtılıyor); dört kanalın toplamı V'nin A'da **%184**, B'de %218, C'de %170'i. A'da V = 25,4; Σ kazanç = 46,7 (kanal 18,3 + matris 14,3 + ikame 4,9 + merkez 9,2).
 - **Kayıp tarafı ayrı bir nicelik:** TR kaybı 25,8 + TR dışı ülke kayıpları 14,4 = 40,2. Σ kazanç − Σ kayıp: A +6,5, B +22,1, C +2,5. Bu fark korunum ihlali değil, **özdeşliğin hiç tanımlı olmamasının** sonucu: kazanç V'den, kayıp bölge net etkisinden hesaplanıyor. "Kazanan kaybedenin kaybettiği kadar kazanır" modelde yok.
-- **Düzeltme yapılmadı:** bir dağıtım kuralı seçilmeli (kanal ya da matris) ya da payların toplamı 1'e normalize edilmeli. Hangisi kullanıcı kararı.
+- **Düzeltme:** ilk sürümde yapılmadı (kullanıcı kararı bekleniyordu); sonraki bölümde uygulandı.
 - **Kapsam işaretleri** (`aktör_birlesik`: `kazanc_kapsam`, `kayip_kapsam`, `net_kapsam`): kazanç kanalı hiç modellenmemişse "yok", biri modelliyse "kısmi", ikisi modelliyse "tam". Kayıp listesinde olmayan aktör için "bilinmiyor". Raporlarda sıfır yerine `—`, kısmi için `†`, net yalnız ikisi tam modelliyse yazılır. 37 aktörden **net tam yalnız 6** (İran, İsrail, Mısır, Sırbistan, Azerbaycan, Türkiye); kazancı tam modellenenler 14 (13 aktör + MFIN); kayıp bilinmeyenler 8 (Çin, Rusya, AB, ABD, BAE, Suudi Arabistan, Fransa, Yunanistan); "Körfez (vekil)" düğümünün kazancı yok.
 - **Evren dışı** (modelde hiç yok; derleme): Katar, Kuveyt, Umman, Ürdün, Hindistan, Japonya, Güney Kore, Birleşik Krallık, Almanya, İtalya.
 - `DIS_AKTOR_*.md` birleşik tablosu eskiden ilk 30 satırı gösteriyordu (en büyük kayıp ülkeler, Irak ve Körfez, kesiliyordu); artık tüm aktörler yazılıyor.
+
+## Kazanç–kayıp tutarsızlığı bulundu, `kanal` kaldırıldı, normalize edildi
+`kazanc_kayip_muhasebe.py` → `KAZANC_KAYIP_MUHASEBE.{json,md}`.
+- **Kaynak:** dış aktör kazancı dört kanaldan geliyor ve dördü **aynı bölge kaybından** (boşluk V = TR boşalması + 0,08 · pasif) besleniyordu: `kanal` (V × aktör payı), `matris` (V × katsayı farkı), `ikame`, `merkez`. Birbirini dışlamıyorlardı: kanal + matris V'nin %128'i; dört kanalın toplamı A'da %184, B'de %218, C'de %170.
+- **Düzeltme (kullanıcı kararı: kanalı kaldır + normalize):** `kanal` kuralı kaldırıldı (matris kuralıyla aynı boşluğu ikinci kez dağıtıyordu). Kalan üç kanalın (matris, ikame, merkez) toplamı V'yi aşıyorsa orantılı küçültülür, altındaysa dokunulmaz. Katsayılar: **A 0,894, B 0,689, C 1,0** (ham toplam V'nin %112 / %145 / %98'i). Artık Σ kazanç ≤ V: A 25,40 / V 25,40, B 40,46 / 40,46, C 17,05 / 17,40.
+- Defterde (`DIS_ULKE_REFAH`, uluslararası stok-akış) `kanal_kazanc` yuvası artık matris kuralını taşır; stok kapanışı ve MFIN tutarlılığı korundu (`kapanis_ok` A/B/C, `mfin uyum_ok`).
+- **Σ kazanç = Σ kayıp hedeflenmedi:** kayıp bölge net etkisi (A: TR 25,8 + diğer 14,4 = 40,2), kazanç ise TR boşalmasının dağıtımı (V). Aralarındaki fark artık negatif (A −14,8, B −25,4, C −10,0): kazanç kayıptan az.
+- **Karara etkisi (dikkat):** skor 58,7 → **56,7**, karar `kisitli_uygulanabilir`; karar eşiği P(C) 0,52 → **0,63**; C senaryosunun kendi skoru 63,5 → 61,5. Sebep tek bir aktör: **Mısır** çevre kazananı olmaktan çıktı (net birleşik +0,50 → eşik 0,05'in altı); "halka-çevre koalisyonu" bileşeni 0,75 → 0,50. Yani karar skoru bir aktörün çift sayılmış kazancından 2 puan alıyormuş. E[TR net 10 yıl] değişmedi (−23,10).
+- Kapsam işaretleri (yukarıdaki bölüm) geçerli: kazanç tam modellenenler 14, net tam 6 aktör.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.

@@ -101,10 +101,10 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
 | Kapanış tamam | evet | evet | evet |
-| Havza net stok (mn $) | 21,947.1 | -20,865.1 | 25,909.1 |
+| Havza net stok (mn $) | 59,935.9 | 112,206.2 | 40,831.1 |
 | Havza kayıp brüt kenar (mn $) | 216,391.5 | 354,705.8 | 145,721.8 |
-| Merkez sızıntı (mn $) | 57,179.1 | 158,199.8 | 25,430.5 |
-| Kanal ikame (mn $) | 125,222.6 | 200,182.8 | 85,619.1 |
+| Merkez sızıntı (mn $) | 51,935.9 | 111,361.1 | 25,430.5 |
+| Kanal ikame (mn $) | 92,477.1 | 113,950.3 | 70,696.7 |
 
 ## Not
 
