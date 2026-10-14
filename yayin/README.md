@@ -20,6 +20,7 @@
 | [GECMIS_PROJEKSIYON.md](./GECMIS_PROJEKSIYON.md) | Salt geçmiş projeksiyonu: yalnız EVDS gözlem serisinden ileri uzatma (senaryo, olasılık, katman çarpanı yok); geriye test: üç yöntem de 2023–2025'i eksik tahmin etti |
 | [KAZANC_KAYIP_MUHASEBE.md](./KAZANC_KAYIP_MUHASEBE.md) | Kazanç–boşluk muhasebesi: `kanal` dağıtım kuralı kaldırıldı, kalan kanallar V'ye normalize (Σ kazanç ≤ V); modellenmeyen aktörler sıfır değil `—` (bilinmiyor) işaretli |
 | [BANT_SINAMA.md](./BANT_SINAMA.md) | Büyük kazananlar (Çin, Rusya, İran, ABD, İsrail, BAE, Suudi Arabistan, Fransa, AB), Yunanistan ve Balkanların bantla sınanması: sınıflar kazanç/pay salınımlarına dayanıklı mı; kaybı modelde olmayan aktörler için bilinmeyen kayıp oranı kırılması r* |
+| [GORECELI_KONUM.md](./GORECELI_KONUM.md) | Göreceli konum (herkes batarken en geç batan), alternatif direnç tanımı (rant kaybı − net kazanç) ve Çin/Rusya/ABD/AB için gerçek kayıp kırılma oranı; tanı raporu, ana skoru değiştirmez. Yerel iç elit katmanı modelde yok |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 

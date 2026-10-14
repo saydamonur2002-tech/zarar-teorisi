@@ -1,8 +1,8 @@
 # Etki cephesi modeli: revize yaması
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
-Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `8ced87eabe0f4e04`, temiz kurulumda 3 geçiş),
-**64 test geçti** (27 mevcut + 37 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `b624db7f9c331642`, temiz kurulumda 3 geçiş),
+**65 test geçti** (27 mevcut + 38 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 ## Düzeltilen hatalar
@@ -273,6 +273,15 @@ MFIN (merkez finans vekili) önceden kaybı "tanımsız" ve maliyetten muaftı; 
 **Düzeltme:** direnç = boşluk→refah geçişinde rant kanalı kaybı (`rant_kanal_bosluk_fark_usd_mn`) 1000 mn $'ı aşan her dış aktör (TR hariç), etiketten bağımsız. Eşik ve 8'e bölme aynı kaldı. Sayılanlar: Çin (2629), Rusya (2324), ABD (2778), AB (3114), İran (1400), BAE (1105) = 6 aktör; eskiden 2. `direnc_dusuk` 0,75 → **0,25**.
 **Etki:** skor 53,7 → **47,7**, karar `kisitli_uygulanabilir` (eşik 45'e 2,7 puan). Skor aralığı (P(C) 0,30–0,80) 47,1 – 58,5: **skor 62 eşiği bantta hiçbir yerde geçilmiyor** (önceden ~0,75'te geçiliyordu; `karar_kosullu_skor_62` = `None`). Yalnız C senaryosunun skoru 52,5, olasılık ağırlıklı A/B/C karışımı 38,7. E[TR net 10y] −23,10 değişmedi (direnç TR net'ini etkilemez, yalnız skoru).
 **Eleştirel not:** 1000 mn $ eşiği ve "8 aktör = sıfır skor" ölçeği atanmış; ayrıca fark, net kazancı hesaba katmaz (ABD'nin net'i +1,13 iken direnç sayılır). Yani bu bileşen "rant kaybeden güçlü aktör sayısı"dır, "gerçekten engelleyecek aktör sayısı" değil. Hâlâ büyük bir parametre kararı; yine de eski etiket artefaktından daha doğrudan ölçülür.
+
+## Göreceli konum, direnç alternatifi ve kırılma oranı (`GORECELI_KONUM`, tanı raporu)
+Soru: herkes batarken en geç batan, göreceli olarak kazanan sayılabilir mi? Ve MFİN'in kaybının karşı tarafı yerel iç elit olabilir mi?
+- **Elit katmanı modelde yok.** Aktörler ülke düzeyinde; "yerel iç elit" ayrı bir aktör, kanal veya sektör değil. MFİN'in kaybının kime aktığı da modellenmiyor: kayıp referans oran vekili, karşı taraf tanımsız. Bu yüzden elit sorusu **ölçülmedi**; yalnız ülke düzeyi sınırı verildi. Elit için ayrı veri ve ayrı aktör gerekir.
+- **Ülke düzeyinde cevap: kısmen evet, ama zayıf.** Net kaybeden 22 aktör var (her senaryoda). Medyandan, ortak bantla ayırt edilebilir derecede iyi olanlar (göreceli kazanan): A'da Kıbrıs ve Sırbistan; B ve C'de Kıbrıs, Mısır, Bulgaristan, Sırbistan. En geç batanlar Kıbrıs, Mısır, Bulgaristan, Sırbistan, Tunus; en çok batanlar Irak, GCC, Lübnan/Suriye. Kıbrıs ve Mısır mutlak olarak bant içi (kaybeden denemez), Sırbistan mutlak bant dışı kaybeden: yani "göreceli kazanan" ile "mutlak kaybeden" aynı aktörde birlikte durabilir.
+- **Eleştirel not:** kısmi kapsamlı aktörlerde bant ölçülmüş değil, tam kapsamlıların medyanı vekil; bu yüzden "ayırt edilebilir" ayrımı sınırda (CY: +0,293 fark, 0,284 bant). Göreceli sıralama mutlak net'ten daha güvenilir değil, yalnız farklı bir soruyu yanıtlıyor.
+- **MFİN ölçeği:** MFİN net'i, 22 kaybedenin |toplam| net'inin A'da 0,41, B'de 0,46, C'de 0,31 katı. Yani "MFİN'in kazancı kaybedenlerin kaybını tek başına karşılamaz"; ama kaybedenlerin toplamı da vekil kayıplara dayanıyor.
+- **Seçenek 1 (alternatif direnç = rant kaybı − net kazanç > 1000 mn $):** 6 aktörden **hiçbiri** kalmaz (AB'nin rant kaybı 3.114, net kazancı 2.568: fark 546). Bileşen 0,25 → 1,0, skor 47,7 → **56,7** (yalnız tanı; ana skor 47,7 kalır). Bu, sonucun tanım seçimine ne kadar duyarlı olduğunu gösteriyor: aynı veriyle 9 puan. Ana skorda sınıf-bağımsız basit tanımı korudum çünkü alternatif, rant kaybını net kazançla telafi edilebilir sayıyor (kazanç kaybı gerçekten kapatıyor mu? kapatmayabilir: kazanç farklı kanaldan, kayıp farklı aktör grubundan).
+- **Seçenek 2 (Çin, Rusya, ABD, AB gerçek kaybı):** veri yok, bu yüzden kayıp modellenmedi; onun yerine kırılma oranı verildi. Net'i sıfırlamak için kayıp/kazanç oranı A 0,86, B 0,92, C 0,81 olmalı; kazanan sınıfını (bant dışı) korumak için Çin/Rusya'da yalnız ≈0,17 – 0,22, ABD/AB'de ≈0,26 – 0,37. Uygulanan referans oran 0,22 – 0,45; Mısır'ın maksimum oranı (1,03 – 1,56) bunları aşar. Yani Çin ve Rusya'nın kazanan olması, kayıplarının Mısır benzeri bir oranda olmamasına bağlı; bu ölçülmedi.
 
 ## Düzeltilmeyen / açık
 - Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
@@ -2510,6 +2519,200 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +
 +if __name__ == "__main__":
 +    main()
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/goreceli_konum.py fixed/etki_cephesi/goreceli_konum.py
+--- pristine/etki_cephesi/goreceli_konum.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/goreceli_konum.py	2026-10-14 15:05:49.394190619 +0000
+@@ -0,0 +1,190 @@
++"""Göreceli konum, direnç alternatifi (seçenek 1) ve gerçek-kayıp kırılma oranı (seçenek 2). Tanı raporu: başka modüle girdi olmaz (döngü yok).
++
++1) Göreceli konum: "herkes batarken en geç batan" kazanan sayılabilir mi? Mutlak sınıf (net ± bant) ile göreceli sıra ayrı verilir.
++   Göreceli kazanan = mutlak net < 0 (bant dışı kaybeden DEĞİL ayrımı yapılmaz) ama kaybeden aktörlerin medyanından, ortak bantla,
++   ayırt edilebilir derecede iyi olan aktör. Bant kısmi-kapsam proxy'si olduğundan ayırt edilebilirlik zayıftır; bunu raporda belirtir.
++   Yerel iç elit katmanı modelde YOK (aktörler ülke düzeyinde): elit sorusu burada ölçülmez, yalnız ülke düzeyindeki sınırı verilir.
++2) Seçenek 1 (alternatif direnç): rant kaybı − net kazanç > 1000 mn $. Ana skor değişmez; alternatif yalnız burada raporlanır.
++3) Seçenek 2: kaybı modelde olmayan kazananlar için net'i sıfıra getiren kayıp/kazanç oranı r0 = 1 − maliyet/kazanç ve referans oranlarla karşılaştırma.
++"""
++from __future__ import annotations
++
++import json
++import statistics as st
++from pathlib import Path
++from typing import Any
++
++REPO = Path(__file__).resolve().parents[1]
++OUT = REPO / "reports" / "etki_cephesi"
++ESIK_DIRENC_USD = 1000.0
++AGIRLIK_DIRENC = 12.0  # senaryo_uygulanabilirlik ile aynı; skor = 0,65 skor_c + 0,35 skor_bek, ikisinde de direnç x12 -> skora 12 x delta
++
++
++def _load(p: Path) -> dict[str, Any]:
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def goreceli(sid: str) -> dict[str, Any]:
++    d = _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")
++    rows = [r for r in d["ulke_defteri"] if r["ulke"] not in ("TR", "MFIN")]
++    net = {r["ulke"]: float(r.get("net_maliyetli", r.get("net_refah_entegre")) or 0.0) for r in rows}
++    # Kısmi kapsamlı aktörlerde bant ölçülmedi: bolge_stok_akis ile aynı vekil (tam kapsamlıların kayıp-hariç bant medyanı).
++    tam = sorted(
++        float(r.get("net_bandi_kayip_haric") or 0.0)
++        for r in d["ulke_defteri"]
++        if r.get("bant_kapsami") == "tam" and r["ulke"] not in ("TR", "MFIN") and float(r.get("net_bandi_kayip_haric") or 0.0) > 0
++    )
++    vekil = tam[len(tam) // 2] if tam else 0.0
++    bant = {
++        r["ulke"]: max(float(r.get("net_bandi") or 0.0), vekil) if r.get("bant_kapsami") == "kismi" else float(r.get("net_bandi") or 0.0)
++        for r in rows
++    }
++    kaybeden = sorted([u for u in net if net[u] < 0], key=lambda u: -net[u])
++    med = st.median(net[u] for u in kaybeden) if kaybeden else 0.0
++    bmed = st.median(bant[u] for u in kaybeden) if kaybeden else 0.0
++    sira = []
++    for u in kaybeden:
++        fark = net[u] - med
++        ortak = (bant[u] ** 2 + bmed**2) ** 0.5
++        sira.append(
++            {
++                "ulke": u,
++                "net": round(net[u], 3),
++                "kayip_medyanina_gore": round(fark, 3),
++                "ortak_bant": round(ortak, 3),
++                "ayirt_edilebilir_iyi": bool(fark - ortak > 0),
++                "mutlak_sinif": "kaybeden" if net[u] + bant[u] < 0 else "bant_ici",
++            }
++        )
++    mf = next(r for r in d["ulke_defteri"] if r["ulke"] == "MFIN")
++    toplam_kayip = sum(net[u] for u in kaybeden)
++    kazanan_toplam = sum(v for v in net.values() if v > 0)
++    return {
++        "id": sid,
++        "kaybeden_sayisi": len(kaybeden),
++        "kaybeden_medyan_net": round(med, 3),
++        "en_gec_batan": sira[:5],
++        "en_cok_batan": list(reversed(sira[-3:])),
++        "ayirt_edilebilir_goreceli_kazanan": [x["ulke"] for x in sira if x["ayirt_edilebilir_iyi"]],
++        "mutlak_kaybeden_bant_disi": [x["ulke"] for x in sira if x["mutlak_sinif"] == "kaybeden"],
++        "kaybeden_net_toplam": round(toplam_kayip, 3),
++        "diger_kazanan_net_toplam": round(kazanan_toplam, 3),
++        "mfin_net": round(float(mf.get("net_maliyetli") or 0.0), 3),
++        "mfin_net_kaybeden_toplaminin_kati": round(float(mf.get("net_maliyetli") or 0.0) / abs(toplam_kayip), 3) if toplam_kayip else None,
++    }
++
++
++def direnc_alternatif() -> dict[str, Any]:
++    b = _load(OUT / "BOLGE_STOK_AKIS.json")
++    usd_per = None
++    satir = []
++    for a in b["aktorler"]:
++        if a["ulke"] == "TR":
++            continue
++        fark = a.get("rant_kanal_bosluk_fark_usd_mn")
++        if fark is None or fark <= 0:
++            continue
++        net_usd = float(a.get("net_refah_entegre_usd_mn") or 0.0)
++        satir.append(
++            {
++                "ulke": a["ulke"],
++                "rant_kaybi_usd_mn": fark,
++                "net_kazanc_usd_mn": net_usd,
++                "ana_tanim_direnc": bool(fark > ESIK_DIRENC_USD),
++                "alternatif_direnc": bool(fark - max(net_usd, 0.0) > ESIK_DIRENC_USD),
++            }
++        )
++    ana = sum(1 for s in satir if s["ana_tanim_direnc"])
++    alt = sum(1 for s in satir if s["alternatif_direnc"])
++    sk_ana, sk_alt = max(0.0, 1 - ana / 8.0), max(0.0, 1 - alt / 8.0)
++    u = _load(OUT / "SENARYO_UYGULANABILIRLIK.json")
++    return {
++        "satirlar": sorted(satir, key=lambda s: -s["rant_kaybi_usd_mn"]),
++        "ana_direnc_sayisi": ana,
++        "alternatif_direnc_sayisi": alt,
++        "direnc_skor_ana": round(sk_ana, 3),
++        "direnc_skor_alternatif": round(sk_alt, 3),
++        "skor_ana": u["skor_0_100"],
++        "skor_alternatif": round(u["skor_0_100"] + AGIRLIK_DIRENC * (sk_alt - sk_ana), 1),
++        "not": "Alternatif yalnız tanı: net kazancı yüksek aktör rant kaybını telafi ettiği için direnç sayılmaz. Ana skor değişmedi.",
++    }
++
++
++def kirilma_orani() -> dict[str, Any]:
++    out = {}
++    bs = _load(OUT / "BANT_SINAMA.json")
++    ssen = bs["senaryolar"] if isinstance(bs["senaryolar"], list) else list(bs["senaryolar"].values())
++    for sid in ("A", "B", "C"):
++        d = _load(OUT / f"DIS_ULKE_REFAH_{sid}.json")
++        sen = next(s for s in ssen if s["id"] == sid)
++        ref = sen.get("kayip_orani_referans_aktorler") or {}
++        satir = {}
++        for r in d["ulke_defteri"]:
++            iso = r["ulke"]
++            if iso not in ("CN", "RU", "US", "EU"):
++                continue
++            g = float(r.get("net_refah_entegre") or 0.0) + float(r.get("havza_kayip") or 0.0)
++            c = float(r.get("surdurme_maliyeti") or 0.0)
++            if g <= 0:
++                continue
++            r0 = 1.0 - c / g
++            r_bant = 1.0 - (c + float(r.get("net_bandi") or 0.0)) / g
++            satir[iso] = {
++                "kazanc": round(g, 3),
++                "maliyet": round(c, 3),
++                "r_net_sifir": round(r0, 3),
++                "r_bant_dis_kazanan_sinir": round(r_bant, 3),
++                "uygulanan_referans_oran": round(float(r.get("havza_kayip_referans") or 0.0) / g, 3),
++            }
++        out[sid] = {"referans_oranlar": ref, "aktorler": satir}
++    return out
++
++
++def calistir() -> dict[str, Any]:
++    d = {
++        "olcum": "goreceli_konum_direnc_alternatif_kirilma",
++        "etiket": "tani_girdi_degil",
++        "goreceli": {s: goreceli(s) for s in ("A", "B", "C")},
++        "direnc_alternatif_C": direnc_alternatif(),
++        "kirilma_orani": kirilma_orani(),
++        "not": "Yerel iç elit katmanı modelde yok; ülke düzeyi. Elit sorusu ölçülmez, ancak mutlak/göreceli ayrımı ülke düzeyinde verilir.",
++    }
++    OUT.mkdir(parents=True, exist_ok=True)
++    (OUT / "GORECELI_KONUM.json").write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
++    L = ["# Göreceli konum, direnç alternatifi ve kırılma oranı", "", d["not"], ""]
++    L.append("## 1. Göreceli konum: herkes batarken en geç batan")
++    for s in ("A", "B", "C"):
++        g = d["goreceli"][s]
++        L += [
++            "",
++            f"### Senaryo {s}",
++            f"- Net kaybeden aktör: {g['kaybeden_sayisi']} · kaybeden medyan net {g['kaybeden_medyan_net']:+.3f}",
++            f"- Σ kaybeden net {g['kaybeden_net_toplam']:+.2f} · Σ diğer kazanan net {g['diger_kazanan_net_toplam']:+.2f} · MFIN net {g['mfin_net']:+.2f} (kaybedenlerin |toplamının| {g['mfin_net_kaybeden_toplaminin_kati']} katı)",
++            f"- Mutlak olarak bant dışı kaybeden: {', '.join(g['mutlak_kaybeden_bant_disi']) or '—'}",
++            f"- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): {', '.join(g['ayirt_edilebilir_goreceli_kazanan']) or 'yok (ayırt edilemiyor)'}",
++            "",
++            "| En geç batan | Net | Medyana göre | Ortak bant | Ayırt edilebilir | Mutlak sınıf |",
++            "| --- | ---: | ---: | ---: | --- | --- |",
++        ]
++        for x in g["en_gec_batan"]:
++            L.append(f"| {x['ulke']} | {x['net']:+.3f} | {x['kayip_medyanina_gore']:+.3f} | {x['ortak_bant']:.3f} | {'evet' if x['ayirt_edilebilir_iyi'] else 'hayır'} | {x['mutlak_sinif']} |")
++        L.append("- En çok batan: " + ", ".join(f"{x['ulke']} {x['net']:+.2f}" for x in g["en_cok_batan"]))
++    a = d["direnc_alternatif_C"]
++    L += ["", "## 2. Seçenek 1: alternatif direnç (rant kaybı − net kazanç)", "",
++          f"Ana tanım {a['ana_direnc_sayisi']} aktör (bileşen {a['direnc_skor_ana']}), alternatif {a['alternatif_direnc_sayisi']} aktör (bileşen {a['direnc_skor_alternatif']}). Skor {a['skor_ana']} → {a['skor_alternatif']} (yalnız tanı).", "",
++          "| Aktör | Rant kaybı mn $ | Net kazanç mn $ | Ana | Alternatif |", "| --- | ---: | ---: | --- | --- |"]
++    for s in a["satirlar"]:
++        L.append(f"| {s['ulke']} | {s['rant_kaybi_usd_mn']:,.0f} | {s['net_kazanc_usd_mn']:,.0f} | {'evet' if s['ana_tanim_direnc'] else '—'} | {'evet' if s['alternatif_direnc'] else '—'} |")
++    L += ["", "## 3. Seçenek 2: gerçek kayıp için kırılma oranı", "",
++          "Kayıp/kazanç oranı r. r_net_sıfır: net 0'a ininceye kadar katlanılabilir oran; r_bant: kazanan sınıfını koruyan üst oran. Referans oranlar Mısır/İran/İsrail kayıplarından.", "",
++          "| Senaryo | Aktör | Kazanç | Maliyet | r_net_sıfır | r_bant | Uygulanan oran |", "| --- | --- | ---: | ---: | ---: | ---: | ---: |"]
++    for sid, v in d["kirilma_orani"].items():
++        for iso, x in v["aktorler"].items():
++            L.append(f"| {sid} | {iso} | {x['kazanc']:.2f} | {x['maliyet']:.2f} | {x['r_net_sifir']:.2f} | {x['r_bant_dis_kazanan_sinir']:.2f} | {x['uygulanan_referans_oran']:.2f} |")
++    (OUT / "GORECELI_KONUM.md").write_text("\n".join(L) + "\n", encoding="utf-8")
++    return d
++
++
++if __name__ == "__main__":
++    calistir()
++    print("GORECELI_KONUM ok")
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/kazanc_kayip_muhasebe.py fixed/etki_cephesi/kazanc_kayip_muhasebe.py
 --- pristine/etki_cephesi/kazanc_kayip_muhasebe.py	1970-01-01 00:00:00.000000000 +0000
 +++ fixed/etki_cephesi/kazanc_kayip_muhasebe.py	2026-10-14 14:51:21.321415334 +0000
@@ -3381,7 +3584,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
                  "net_refah_entegre": net,
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
 --- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
-+++ fixed/etki_cephesi/run_all.py	2026-10-14 14:24:14.558453205 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 15:05:59.381675178 +0000
 @@ -1,12 +1,17 @@
  """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
  from __future__ import annotations
@@ -3418,7 +3621,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def main() -> None:
      capa_apply = "--capa-apply" in sys.argv
      steps: list[str] = []
-@@ -31,11 +47,36 @@
+@@ -31,11 +47,37 @@
          "senaryo_gerceklik_kalibre.py --skip-pipeline",
          "zarar_10y_gsyh.py",
          "modul_entegrasyon_kalibre.py --modules-only",
@@ -3430,6 +3633,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "gecmis_projeksiyon.py",
 +        "kazanc_kayip_muhasebe.py",
 +        "bant_sinama.py",
++        "goreceli_konum.py",
          ]
      )
 -    for s in steps:
@@ -4397,8 +4601,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 14:56:42.201623824 +0000
-@@ -0,0 +1,602 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 15:05:59.382845297 +0000
+@@ -0,0 +1,622 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -5001,4 +5205,24 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    agir = [a["ulke"] for a in b["aktorler"] if a["ulke"] != "TR" and (a.get("rant_kanal_bosluk_fark_usd_mn") or 0) > 1000]
 +    assert {"CN", "RU", "US", "EU"} <= set(agir)
 +    assert u["bilesenler"]["direnc_dusuk"] == round(max(0.0, 1.0 - len(agir) / 8.0), 3)
++
++
++def test_goreceli_konum_direnc_alternatifi_ve_kirilma_orani():
++    g = _j(OUT / "GORECELI_KONUM.json")
++    for sid in ("A", "B", "C"):
++        x = g["goreceli"][sid]
++        # en geç batan listesi sıralı ve hepsi net < 0; ayırt edilebilir olan, medyandan ortak bant kadar iyi olandır
++        nets = [a["net"] for a in x["en_gec_batan"]]
++        assert nets == sorted(nets, reverse=True) and all(n < 0 for n in nets)
++        for a in x["en_gec_batan"]:
++            assert a["ayirt_edilebilir_iyi"] == (a["kayip_medyanina_gore"] - a["ortak_bant"] > 0)
++        assert x["kaybeden_net_toplam"] < 0
++    d = _j(OUT / "SENARYO_UYGULANABILIRLIK.json")
++    a = g["direnc_alternatif_C"]
++    assert a["ana_direnc_sayisi"] == round((1 - d["bilesenler"]["direnc_dusuk"]) * 8)
++    assert a["alternatif_direnc_sayisi"] <= a["ana_direnc_sayisi"]
++    assert a["skor_ana"] == d["skor_0_100"]  # ana skor tanıdan etkilenmez
++    for sid, v in g["kirilma_orani"].items():
++        for iso, k in v["aktorler"].items():
++            assert 0 < k["r_bant_dis_kazanan_sinir"] < k["r_net_sifir"] < 1
 ```
