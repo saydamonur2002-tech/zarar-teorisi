@@ -1,0 +1,868 @@
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/.github/workflows/etki-cephesi.yml fixed/.github/workflows/etki-cephesi.yml
+--- pristine/.github/workflows/etki-cephesi.yml	2026-10-14 06:05:45.810940119 +0000
++++ fixed/.github/workflows/etki-cephesi.yml	2026-10-14 06:04:49.033075737 +0000
+@@ -27,6 +27,6 @@
+       - name: Install dependencies
+         run: pip install -r requirements.txt
+       - name: Pytest (etki cephesi)
+-        run: pytest tests/test_etki_cephesi_p4.py tests/test_etki_cephesi_p3.py tests/test_etki_cephesi_p2.py tests/test_etki_cephesi_stok_kapanis.py tests/test_etki_cephesi_kurum.py -q
++        run: pytest tests/test_etki_cephesi_p4.py tests/test_etki_cephesi_p3.py tests/test_etki_cephesi_p2.py tests/test_etki_cephesi_stok_kapanis.py tests/test_etki_cephesi_kurum.py tests/test_etki_cephesi_sfc_revize.py -q
+       - name: Durum ozeti (rapor butunlugu)
+         run: python etki_cephesi/durum_ozeti.py
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/REVIZE_NOTU.md fixed/data/etki_cephesi/REVIZE_NOTU.md
+--- pristine/data/etki_cephesi/REVIZE_NOTU.md	1970-01-01 00:00:00.000000000 +0000
++++ fixed/data/etki_cephesi/REVIZE_NOTU.md	2026-10-14 06:44:34.191861624 +0000
+@@ -0,0 +1,16 @@
++# Revize notu (SFC köprüsü)
++
++Düzeltilen hatalar (hepsi kodda doğrulandı, `reports_before/after` karşılaştırması patch çıktısında):
++
++1. **Tavan gerçekleşme gibi kullanılıyordu.** `stok_silim_tavan` (0,2582) hazneler arası brüt çift düzeyinin ÜST SINIRIDIR; F.4 stokuna ait değil, gerçekleşen silinme değil. `_stok_f4_yolu` bunu 10 yılda lineer uyguluyordu (25.339,8 → 18.797,1). Artık baz yol sabit (silinen ölçülmedi); oranlar `silinen_oran_senaryo` varsayım bandıdır, 0,2582 yalnız tutarlılık kontrolüdür.
++2. **λ iki üst sınırın oranından türetiliyordu.** `ic_dongu_kazanim = 1 − eski_tavan/yeni_tavan = 0,7181`. Kazanım değil, iki üst sınırın oranı; zarar-teorisi `OKU.txt` λ'yı "tanımlanamadı" diye işaretler. Artık λ açık senaryo parametresi (varsayılan 0,5 = `akis_model.simulate` varsayılanı), bant 0,25 / 0,5 / 0,75.
++3. **Sıfır toplam kimliği bozuluyordu.** Karşı bacağı tanımsız "refah/tasarruf/yaşam maliyeti" darbeleri (+0,660 tr TL) SFC'ye girip tüm sektörleri artıya çekiyordu. Artık `dissal: true` işaretli darbeler SFC dışında raporlanır; kapanış farkı (`kapanis`) ilan edilir.
++4. **Kur uyumsuzluğu.** 2026-Q1 matrisi 2024 ortalama kuruyla (32,87) çevriliyordu. Artık matris dönemi kuru (zarar-teorisi `akis_model_ozeti.json`, 2026-Q1 = 44,38).
++5. **Finans katmanı etiketi.** İşaret dönüşü (−3,237 → +0,241) atanmış çarpanlarla üretilir; rapor "varsayım çarpanlı ham" etiketi taşır.
++
++6. **D'nin çift muamelesi.** Dış rant F'ye "zarar" yazılıp L ile D'ye kayıp olarak yayılıyordu (D −0,218) ve ayrıca "D kârı" G ile yerli sektörlere dağıtılıyordu (D'de kalmıyordu). Rant bir transferdir: artık F −A, D +A, doğrudan NFP'ye, toplam sıfır. Ödeyen F, transfer payı %100 (kullanıcı kararı): 22.550 mn $ × 44,38 = 1,001 tr TL, kapsam dışı rant yok. `bolge_stok_akis` TR net tanımı yerli sektörler toplamı (H+F+B+K) oldu: eski formül D'yi 0,45 ağırlıkla ayrıca düşüyordu (ikinci çift sayım). `test_stok_akis_senaryo_coklu` işareti buna göre güncellendi (C ≤ A ≤ B: C en az rant kaçırır).
++
++Düzeltilmeyen / açık:
++- Ödeyenin yalnız F olması kullanıcı kararıdır; rantın bir kısmını H veya kamu ödüyorsa transfer F'ye fazla yazılır.
++- `bolge_stok_akis` ve `lm_rant_sektor` darbeleri de sıfır toplamlı değil: yalnız ilan edildi (`x_toplam_trilyonTL`, `kapanis_ok`), yeniden tasarlanmadı.
++- λ ve kappa hâlâ ölçülmüş değil. Sonuçlar senaryo bandıdır.
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/stok_akis_kopru.json fixed/data/etki_cephesi/stok_akis_kopru.json
+--- pristine/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:05:45.818614052 +0000
++++ fixed/data/etki_cephesi/stok_akis_kopru.json	2026-10-14 06:44:11.859101458 +0000
+@@ -6,15 +6,30 @@
+   "simulate": {
+     "kappa": 0.1,
+     "hops": 80,
+-    "lambda_kaynak": "zarar_teorisi_kopru.json → ic_dongu_kazanim"
++    "lambda": {
++      "varsayilan": 0.5,
++      "bant": [
++        0.25,
++        0.5,
++        0.75
++      ],
++      "etiket": "senaryo_parametresi",
++      "not": "lambda tanimlanamadi (zarar-teorisi OKU.txt). Eski kaynak ic_dongu_kazanim (iki ust sinirin orani) kaldirildi."
++    }
+   },
+   "akis_kaynaklari": {
+     "zarar_bosluk_rant_dis": {
+       "rapor": "DIS_RANT_PARASAL.json",
+       "alan": "ozet.zarar_usd_mn_toplam",
+       "sektor_baslangic": "F",
+-      "tur": "zarar",
+-      "pay": 0.55
++      "tur": "transfer",
++      "pay": 1.0,
++      "mod": "transfer",
++      "odeyen": "F",
++      "alan_sektor": "D",
++      "mod_not": "Dis rant bir TRANSFERDIR: F -A, D +A, toplam sifir. Kayip olarak L ile D'ye yayilmaz (eski cift muamele).",
++      "eski_pay": 0.55,
++      "pay_not": "Odeyen F, transfer payi %100 (kullanici karari). eski_pay yalniz eski cift muamele kiyasi icin."
+     },
+     "zarar_bosluk_rant_d_absorpsiyon": {
+       "rapor": "DIS_RANT_PARASAL.json",
+@@ -22,34 +37,48 @@
+       "sektor_baslangic": "D",
+       "tur": "kar",
+       "pay": 0.45,
+-      "not": "D soğurucu — rant dışa çıkışın karşı bacak vekili"
++      "not": "D soğurucu — rant dışa çıkışın karşı bacak vekili",
++      "devre_disi": true,
++      "devre_disi_not": "Transfer modunda D karsi bacagi zaten +A. Eski 'D kar' darbesi G ile yerli sektorlere dagitiliyordu (D'de kalmiyordu): cift muamele. Yalniz kiyas icin hesaplanir."
+     },
+     "refah_tasarruf": {
+       "rapor": "MODUL_KALIBRE.json",
+       "alan": "rant_parasal_ozet.tasarruf_refah_vs_zarar_usd_mn",
+       "sektor_baslangic": "F",
+       "tur": "kar",
+-      "gerceklesme_kaynak": "GERCEKLIK_KALIBRE.json → gerceklesme_oranlari.zarar_teorisi"
++      "gerceklesme_kaynak": "GERCEKLIK_KALIBRE.json → gerceklesme_oranlari.zarar_teorisi",
++      "dissal": true,
++      "dissal_not": "karsi bacak tanimsiz: SFC sifir toplam kimligine girmez"
+     },
+     "refah_tr_ic": {
+       "rapor": "MODUL_KALIBRE.json",
+       "alan": "rant_parasal_ozet.refah_tr_ic_usd_mn",
+       "sektor_baslangic": "H",
+       "tur": "kar",
+-      "gerceklesme": 1.0
++      "gerceklesme": 1.0,
++      "dissal": true,
++      "dissal_not": "karsi bacak tanimsiz: SFC sifir toplam kimligine girmez"
+     },
+     "yasam_maliyet_10y": {
+       "rapor": "YASAM_MALIYET_KATMAN.json",
+       "alan": "hane_tasarruf_usd_mn_10y",
+       "sektor_baslangic": "H",
+       "tur": "kar",
+-      "gerceklesme_kaynak": "YASAM_MALIYET_KATMAN.json → gercelesme"
++      "gerceklesme_kaynak": "YASAM_MALIYET_KATMAN.json → gercelesme",
++      "dissal": true,
++      "dissal_not": "karsi bacak tanimsiz: SFC sifir toplam kimligine girmez"
+     }
+   },
+   "bes_adim_stok": {
+     "kredi_itis_milyar_yillik": 0.0,
+-    "stok_silim_tavan": 0.2582,
+     "stok_bas_milyar": 25339.8,
+-    "not": "bes_adim_sonuc / bes_yil_senaryo — F.4 stok yolu"
++    "not": "stok_silim_ust_sinir hazneler arasi brut cift duzeyinin UST SINIRIDIR (ozet: gerceklesen mahsup degil, F.4 stokuna ait degil). Gerceklesmis silinme gibi kullanilmaz; silinen olculmedi. Oranlar varsayim bandi.",
++    "stok_silim_ust_sinir": 0.2582,
++    "silinen_oran_varsayilan": 0.0,
++    "silinen_oran_senaryo": [
++      0.0,
++      0.1,
++      0.2
++    ]
+   }
+ }
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/zarar_teorisi_kopru.json fixed/data/etki_cephesi/zarar_teorisi_kopru.json
+--- pristine/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 06:05:45.819023385 +0000
++++ fixed/data/etki_cephesi/zarar_teorisi_kopru.json	2026-10-14 06:05:32.659254227 +0000
+@@ -17,12 +17,22 @@
+   },
+   "etki_cephesi_carpanlari": {
+     "not": "ic_dongu = 1 − eski_tavan/yeni_tavan (iç eşleşme tavanı). Finans halkaları kanallar.json payına göre kısalır; kredi_ihtiyaci=0 merkez sızıntısına ek kesinti.",
+-    "ic_dongu_kazanim": 0.7181,
++    "ic_dongu_kazanim": 0.5,
+     "finans_halka_agirlik_payi": 0.66,
+     "merkez_sizinti_duyarlilik": 0.55,
+     "bosalma_duyarlilik": 0.45,
+     "rant_duyarlilik": 0.18,
+-    "tr_ic_geri_kazanim_payi": 0.14
++    "tr_ic_geri_kazanim_payi": 0.14,
++    "ic_dongu_kazanim_etiket": "senaryo_parametresi",
++    "ic_dongu_kazanim_bant": [
++      0.25,
++      0.5,
++      0.75
++    ],
++    "ic_dongu_kazanim_not": "REVIZE: eski deger 0.7181 = 1 - eski_tavan/yeni_tavan idi. Bu iki ust sinirin orani, kazanim degil; zarar-teorisi OKU.txt lambda'yi 'TANIMLANAMADI' diye isaretler. Varsayilan simulate() lam=0.5.",
++    "ic_dongu_tavan_orani_bilgi": 0.282,
++    "ic_dongu_kazanim_eski_hatali": 0.7181
+   },
+-  "hedef_senaryo_etki_cephesi": "C"
++  "hedef_senaryo_etki_cephesi": "C",
++  "revize_notu": "Bkz. data/etki_cephesi/REVIZE_NOTU.md"
+ }
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/_kur.py fixed/etki_cephesi/_kur.py
+--- pristine/etki_cephesi/_kur.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/etki_cephesi/_kur.py	2026-10-14 06:05:32.664714943 +0000
+@@ -0,0 +1,19 @@
++"""Matris dönemine uygun USD/TRY.
++
++SFC matrisi (L_v2, G_v2, NFP) hangi dönemdeyse USD→TL çevirisi o dönemin kuruyla yapılır.
++Kaynak: zarar-teorisi akis_model_ozeti.json -> dis_borc_artisi.stok_milyar_USD.<dönem>.USDTRY
++(EVDS TP.DK.USD.A çeyrek sonu). Bulunamazsa yedek (gerceklik_capa 2024 ortalaması) döner ve etiketlenir.
++"""
++from __future__ import annotations
++
++import json
++from pathlib import Path
++
++
++def kur_matris_donemi(zarar_dir: Path, donem: str, yedek: float) -> tuple[float, str]:
++    try:
++        oz = json.loads((zarar_dir / "akis_model_ozeti.json").read_text(encoding="utf-8"))
++        v = float(oz["dis_borc_artisi"]["stok_milyar_USD"][str(donem)]["USDTRY"])
++        return v, f"akis_model_ozeti.dis_borc_artisi.{donem}.USDTRY"
++    except (OSError, KeyError, TypeError, ValueError):
++        return float(yedek), "yedek:gerceklik_capa(2024 ortalama) — matris dönemiyle uyumsuz"
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/bolge_stok_akis.py fixed/etki_cephesi/bolge_stok_akis.py
+--- pristine/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:05:45.822890890 +0000
++++ fixed/etki_cephesi/bolge_stok_akis.py	2026-10-14 06:41:40.065930691 +0000
+@@ -25,6 +25,7 @@
+ from akis_model import simulate  # noqa: E402
+ 
+ from stok_akis_sim import _matrices, _shock_vec, _load  # noqa: E402
++from _kur import kur_matris_donemi  # noqa: E402
+ 
+ 
+ def _nfp_aktör(base: np.ndarray, iso: str, ulke_sys: dict[str, Any]) -> np.ndarray:
+@@ -75,8 +76,8 @@
+     zt = _load(DATA / "zarar_teorisi_kopru.json")
+     ulke_sys = _load(DATA / "dis_ulke_sistemi.json")
+     sen_doc = _load(DATA / "senaryolar.json")
+-    lam = float(zt["etki_cephesi_carpanlari"]["ic_dongu_kazanim"])
+-    kur = float(capa["kur_tl_usd"])
++    lam = float(zt["etki_cephesi_carpanlari"]["ic_dongu_kazanim"])  # senaryo parametresi (bkz. REVIZE_NOTU.md)
++    kur, kur_kaynak = kur_matris_donemi(ZARAR_DIR, "2026-Q1", float(capa["kur_tl_usd"]))
+     kappa = 0.1
+ 
+     rant = _load(OUT / "DIS_RANT_PARASAL.json")
+@@ -119,9 +120,9 @@
+ 
+         if iso == "TR":
+             tr_sfc = (stok_tr.get("entegre_puls") or {}).get("sektor_etkisi_trilyonTL") or {}
+-            sfc_net = round(
+-                float(tr_sfc.get("H", 0)) + float(tr_sfc.get("F", 0)) - 0.45 * abs(float(tr_sfc.get("D", 0))), 3
+-            )
++            # TR = yerli sektörler (H+F+B+K); D dış alem. Eski formül D'yi ayrıca 0,45 ağırlıkla düşüyordu:
++            # transfer D'ye +A, F'ye −A yazıldığında bu ikinci bir çift sayımdır.
++            sfc_net = round(sum(float(tr_sfc.get(k, 0)) for k in ("H", "F", "B", "K")), 3)
+ 
+         sinif = _sinif_etiket(iso, rol, net_v, fark_usd)
+         aktorler.append(
+@@ -137,6 +138,7 @@
+                 "rant_kanal_refah_dis_usd_mn": ref_dis_usd,
+                 "rant_kanal_bosluk_fark_usd_mn": fark_usd,
+                 "sfc_net_trilyonTL": sfc_net,
++                "x_toplam_trilyonTL": round(float(x_ent.sum()) / 1e9, 3),
+                 "sinif": sinif,
+             }
+         )
+@@ -182,6 +184,10 @@
+         "olcum": "bolge_stok_akis_kazanan_kaybeden",
+         "rant_modeli": rant.get("rant_modeli"),
+         "lambda": lam,
++        "lambda_etiket": "senaryo_parametresi (tanimlanamadi)",
++        "kur_tl_usd": kur,
++        "kur_kaynak": kur_kaynak,
++        "kapanis_uyari": "x_toplam_trilyonTL != 0: aktor basina SFC darbesi sifir toplamli degil (karsi bacak tanimsiz); sfc_net bir skor, NFP degildir.",
+         "usd_per_vekil_rant_mn": usd_per,
+         "senaryo_destek": destek,
+         "aktorler": aktorler,
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/finans_katman.py fixed/etki_cephesi/finans_katman.py
+--- pristine/etki_cephesi/finans_katman.py	2026-10-14 06:05:45.823337680 +0000
++++ fixed/etki_cephesi/finans_katman.py	2026-10-14 06:05:32.656290792 +0000
+@@ -199,6 +199,8 @@
+ 
+     return {
+         "olcum": "finans_katman_uretim_ustu",
++        "etiket": "varsayim_carpanli_ham",
++        "uyari": "Isaret donusu atanmis carpanlarla (finans_katman_kopru.json) uretilir; olcum degil, yayinlanan sonuc degil. Kalibre yol ve yayin metni ZARAR_10Y_GSYH / video ile okunmali.",
+         "senaryo": sid,
+         "taban": kopru.get("taban"),
+         "finans_halka_oran_uretim_ustu": round(oran_fin / oran_uretim, 4) if oran_uretim else 1.0,
+@@ -258,6 +260,8 @@
+     lines = [
+         "# Finans katmanı (üretim + halka üstü)",
+         "",
++        "> **Etiket: varsayım çarpanlı ham.** İşaret dönüşü atanmış çarpanlarla üretilir; ölçüm değildir, yayınlanan sonuç değildir.",
++        "",
+         "MFIN kenar, merkez sızıntı, finans halkaları (3)(4)(5), "
+         f"**{u['olcek_satir']}** ({u['yatirim_geliri_gideri_mn']:,} mn USD) ve TDS vekili.",
+         "",
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/lm_rant_sektor.py fixed/etki_cephesi/lm_rant_sektor.py
+--- pristine/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:45.823723118 +0000
++++ fixed/etki_cephesi/lm_rant_sektor.py	2026-10-14 06:05:32.653932327 +0000
+@@ -19,6 +19,7 @@
+ if str(ZARAR_DIR) not in sys.path:
+     sys.path.insert(0, str(ZARAR_DIR))
+ from akis_model import simulate  # noqa: E402
++from _kur import kur_matris_donemi  # noqa: E402
+ 
+ 
+ def _load(p: Path) -> dict[str, Any]:
+@@ -62,7 +63,7 @@
+     L, G, nfp = _matrices(donem)
+     lam = float(zt["etki_cephesi_carpanlari"]["ic_dongu_kazanim"])
+     kappa = float((_load(DATA / "stok_akis_kopru.json").get("simulate") or {}).get("kappa") or 0.1)
+-    kur = float(capa["kur_tl_usd"])
++    kur, kur_kaynak = kur_matris_donemi(ZARAR_DIR, donem, float(capa["kur_tl_usd"]))
+     r_z = float(ger.get("gerceklesme_oranlari", {}).get("zarar_teorisi") or 0.7)
+ 
+     kanal_map = kopru.get("kanal_lm") or {}
+@@ -119,10 +120,17 @@
+         "olcum": "lm_rant_sektor_yayilim",
+         "matris_donem": donem,
+         "gerceklesme_zarar_katman": r_z,
++        "kur_tl_usd": kur,
++        "kur_kaynak": kur_kaynak,
++        "lambda": lam,
++        "lambda_etiket": "senaryo_parametresi (tanimlanamadi)",
+         "gruplar": satirlar,
+         "entegre": {
+             "usd_mn_toplam": round(sum(s["usd_mn_girdi"] for s in satirlar), 1),
+             "sektor_etkisi_trilyonTL": _impact_dict(imp_all),
++            "x_toplam_trilyonTL": round(float(x_top.sum()) / 1e9, 3),
++            "kapanis_ok": abs(float(x_top.sum())) / 1e9 <= 1e-3,
++            "kapanis_not": "Kapanis_ok=False: darbeler sifir toplamli degil; sektor_etkisi NFP degisimi olarak okunmaz.",
+         },
+         "kaynak": ["DIS_RANT_PARASAL.json", "kalibre/lm_rant_kopru.json", f"L_v2_{donem}.csv"],
+     }
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/run_all.py fixed/etki_cephesi/run_all.py
+--- pristine/etki_cephesi/run_all.py	2026-10-14 06:05:45.827348060 +0000
++++ fixed/etki_cephesi/run_all.py	2026-10-14 06:17:54.276667410 +0000
+@@ -1,12 +1,17 @@
+ """Etki cephesi tam zincir + P2 (A/B/C, 10y uluslararası)."""
+ from __future__ import annotations
+ 
++import hashlib
++import json
+ import subprocess
+ import sys
+ from pathlib import Path
+ 
+ REPO = Path(__file__).resolve().parents[1]
+ ETKI = REPO / "etki_cephesi"
++OUT = REPO / "reports" / "etki_cephesi"
++KALIBRE = REPO / "data" / "etki_cephesi" / "kalibre"
++MAKS_GECIS = 5
+ 
+ 
+ def _run(name: str) -> None:
+@@ -14,6 +19,17 @@
+     subprocess.check_call([sys.executable, str(ETKI / parts[0]), *parts[1:]])
+ 
+ 
++def _ozet() -> str:
++    """Üretilmiş raporlar + kalibre verisi özeti (satır sonu ve kararlılık dosyası hariç)."""
++    h = hashlib.sha256()
++    for d in (OUT, KALIBRE):
++        for f in sorted(d.rglob("*")):
++            if f.is_file() and f.name != "RUN_ALL_KARARLILIK.json":
++                h.update(f.name.encode())
++                h.update(f.read_bytes().replace(b"\r\n", b"\n"))
++    return h.hexdigest()[:16]
++
++
+ def main() -> None:
+     capa_apply = "--capa-apply" in sys.argv
+     steps: list[str] = []
+@@ -33,9 +49,26 @@
+         "modul_entegrasyon_kalibre.py --modules-only",
+         ]
+     )
+-    for s in steps:
+-        print(f"=== {s} ===")
+-        _run(s)
++    # Pipeline kendi çıktısını girdi okur (kalibre/ ve raporlar). Kararlı duruma kadar geç;
++    # tek geçiş eski raporları okuyup ara durum bırakabilir.
++    onceki = _ozet()
++    kararli = False
++    gecis = 0
++    for gecis in range(1, MAKS_GECIS + 1):
++        for s in steps:
++            print(f"=== [geçiş {gecis}] {s} ===")
++            _run(s)
++        simdi = _ozet()
++        if simdi == onceki:
++            kararli = True
++            break
++        onceki = simdi
++    OUT.mkdir(parents=True, exist_ok=True)
++    (OUT / "RUN_ALL_KARARLILIK.json").write_text(
++        json.dumps({"gecis": gecis, "kararli": kararli, "ozet": onceki}, ensure_ascii=False, indent=2),
++        encoding="utf-8",
++    )
++    print(f"Kararlı durum: {kararli} (geçiş {gecis})")
+ 
+ 
+ if __name__ == "__main__":
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/senaryo_uygulanabilirlik.py fixed/etki_cephesi/senaryo_uygulanabilirlik.py
+--- pristine/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:05:45.827930514 +0000
++++ fixed/etki_cephesi/senaryo_uygulanabilirlik.py	2026-10-14 06:16:41.935921582 +0000
+@@ -145,15 +145,28 @@
+             )
+             skor_senaryo[sid] = skor_s
+ 
++    iy_c = tr_10 - tr_bas
++    iy_bek = tr_bek - tr_bas
++
++    def _yon(v: float) -> str:
++        return "iyileşir" if v > 0.05 else ("değişmez" if abs(v) <= 0.05 else "kötüleşir")
++
++    # Özet metni sayılardan türetilir (sabit cümle yok): yön, işaret ve eşik kontrolü burada.
++    sayisal = (
++        f"C yolunda 10 yılda TR net {tr_bas:+.2f} → {tr_10:+.2f} (Δ {iy_c:+.2f} vekil: {_yon(iy_c)}); "
++        f"olasılık ağırlıklı beklenen karışımda Δ {iy_bek:+.2f} ({_yon(iy_bek)}); "
++        f"katman gerçekleşme ortalaması {g_mean:.2f}."
++    )
++    bop_txt = "2024 çapaları içinde tutarlı" if bop_skor >= 0.8 else "2024 çapalarından sapıyor"
+     if skor >= 62:
+         karar = "uygulanabilir_kosullu"
+-        ozet = "Politika yığını ve refah rantı, 2024 çapaları içinde tutarlı; kısmi gerçekleşme ile 10 yılda TR net iyileşir."
++        ozet = f"Politika yığını ve refah rantı {bop_txt}. {sayisal}"
+     elif skor >= 45:
+         karar = "kisitli_uygulanabilir"
+-        ozet = "Model yön doğru; merkez/rakip direnç ve düşük üretim/finans gerçekleşmesi tempo kısar."
++        ozet = f"Model yön doğru; merkez/rakip direnç ve düşük üretim/finans gerçekleşmesi tempo kısar. {sayisal}"
+     else:
+         karar = "dusuk_uygulanabilirlik"
+-        ozet = "Stok kapanışı veya dış direnç zayıflatır; senaryo analitik senaryo olarak kalmalı."
++        ozet = f"Stok kapanışı veya dış direnç zayıflatır; senaryo analitik senaryo olarak kalmalı. {sayisal}"
+ 
+     engeller = []
+     if g_mean < 0.35:
+@@ -164,6 +177,10 @@
+         engeller.append("Uluslararası stok net toplamı kapanmıyor — vekil ölçeği abartılı olabilir.")
+     if tr_10 > -8:
+         engeller.append("TR net hâlâ derin negatif; hedef ‘sıfıra yakın’ değil.")
++    if iy_bek <= 0.05:
++        engeller.append(
++            f"Olasılık ağırlıklı beklenen karışımda TR net başlangıç düzeyinin altında (Δ {iy_bek:+.2f}); iyileşme yok."
++        )
+ 
+     kolaylastirici = []
+     if halka:
+@@ -180,6 +197,8 @@
+         "skor_senaryo_ab_c": skor_senaryo or None,
+         "karar": karar,
+         "ozet": ozet,
++        "iyilesme_c_vekil": round(iy_c, 2),
++        "iyilesme_beklenen_vekil": round(iy_bek, 2),
+         "bilesenler": bilesenler,
+         "bilesenler_beklenen": bek_bil if bek else None,
+         "agirliklar": agirlik,
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/stok_akis_sim.py fixed/etki_cephesi/stok_akis_sim.py
+--- pristine/etki_cephesi/stok_akis_sim.py	2026-10-14 06:05:45.828033665 +0000
++++ fixed/etki_cephesi/stok_akis_sim.py	2026-10-14 06:44:11.859667506 +0000
+@@ -20,6 +20,7 @@
+ if str(ZARAR_DIR) not in sys.path:
+     sys.path.insert(0, str(ZARAR_DIR))
+ from akis_model import simulate  # noqa: E402
++from _kur import kur_matris_donemi  # noqa: E402
+ 
+ 
+ def _load(p: Path) -> dict[str, Any]:
+@@ -69,19 +70,26 @@
+     return {s: round(float(v[i]) / 1e9, 3) for i, s in enumerate(SEC)}
+ 
+ 
+-def _stok_f4_yolu(yillar: list[int], tavan: float, stok0: float, itis: float) -> list[dict[str, Any]]:
++def _stok_f4_yolu(yillar: list[int], oran: float, stok0: float, itis: float, ust_sinir: float) -> list[dict[str, Any]]:
++    """F.4 stok yolu. `oran` bir VARSAYIM senaryosudur (silinen payı), ölçüm değil.
++
++    Önceki sürüm `stok_silim_tavan` (0,2582: hazneler arası brüt çift düzeyinin ÜST SINIRI, F.4 stokuna ait
++    değil) gerçekleşmiş silinme gibi uyguluyordu. Burada baz yol sabittir (silinen ölçülmedi); tavan yalnız
++    `oran <= ust_sinir` tutarlılık kontrolüdür.
++    """
+     rows = []
+-    stok = stok0
+     for i, y in enumerate(yillar):
+         u = min(1.0, (i + 1) / len(yillar))
+-        sil = stok0 * tavan * u
+-        stok = max(stok0 * (1.0 - tavan * u), stok0 - sil)
++        sil = stok0 * oran * u
+         rows.append(
+             {
+                 "yil": y,
+-                "stok_f4_milyar": round(stok, 1),
++                "stok_f4_milyar": round(stok0 - sil, 1),
+                 "silinen_kumulatif_milyar": round(sil, 1),
+                 "yeni_itis_milyar": itis,
++                "etiket": "varsayim" if oran > 0 else "olculmedi_sabit",
++                "oran_varsayim": oran,
++                "ust_sinir_icinde": oran <= ust_sinir,
+             }
+         )
+     return rows
+@@ -91,10 +99,12 @@
+     sid = senaryo_id
+     kopru = _load(DATA / "stok_akis_kopru.json")
+     capa = _load(KALIBRE / "gerceklik_capa.json")
+-    zt_kopru = _load(DATA / "zarar_teorisi_kopru.json")
+-    lam = float(zt_kopru["etki_cephesi_carpanlari"]["ic_dongu_kazanim"])
+-    kappa = float(kopru["simulate"]["kappa"])
+-    kur = float(capa["kur_tl_usd"])
++    sim_cfg = kopru.get("simulate") or {}
++    lam_cfg = sim_cfg.get("lambda") or {}
++    lam = float(lam_cfg.get("varsayilan", 0.5))
++    lam_bant = [float(v) for v in (lam_cfg.get("bant") or [0.25, 0.5, 0.75])]
++    kappa = float(sim_cfg["kappa"])
++    kur, kur_kaynak = kur_matris_donemi(ZARAR_DIR, str(kopru.get("matris_donem") or "2026-Q1"), float(capa["kur_tl_usd"]))
+ 
+     modul = _load(OUT / "MODUL_KALIBRE.json") if (OUT / "MODUL_KALIBRE.json").is_file() else {}
+     dis_path = OUT / f"DIS_RANT_PARASAL_{sid}.json"
+@@ -124,7 +134,11 @@
+     L, G, nfp = _matrices(str(kopru.get("matris_donem") or "2026-Q1"))
+ 
+     pulslar: list[dict[str, Any]] = []
+-    x_toplam = np.zeros(5)
++    x_kapali = np.zeros(5)  # SFC'ye giren darbeler (zarar/kâr; L-G ile yayılır)
++    x_transfer = np.zeros(5)  # transferler: doğrudan NFP'ye yazılır, yayılmaz, toplamı sıfır
++    x_dissal = np.zeros(5)  # karşı bacağı tanımsız; SFC kimliğine girmez
++    x_eski_cift = np.zeros(5)  # yalnız kıyas: eski çift muamele (zarar F + D 'kâr')
++    kapsam_disi_usd = 0.0
+     for ad, spec in (kopru.get("akis_kaynaklari") or {}).items():
+         rapor = str(spec["rapor"])
+         doc = docs.get(rapor) or _load(OUT / rapor)
+@@ -139,8 +153,48 @@
+             else:
+                 g = float(gdoc.get(fld.strip()) or r_y)
+         pay = float(spec.get("pay") or 1.0)
++        if spec.get("mod") == "transfer":
++            # F -A, D +A: toplam sıfır; L ile yayılmaz (kayıp değil, devir).
++            xt = np.zeros(5)
++            a_x = abs(_usd_mn_to_x(usd, kur) * pay * g)
++            xt[IDX[spec["odeyen"]]] -= a_x
++            xt[IDX[spec["alan_sektor"]]] += a_x
++            x_transfer += xt
++            x_eski_cift += _shock_vec(usd, kur, spec["sektor_baslangic"], "zarar", pay=float(spec.get("eski_pay", pay)), gerceklesme=g)
++            kapsam_disi_usd += usd * (1.0 - pay) * g
++            pulslar.append(
++                {
++                    "id": ad,
++                    "usd_mn_girdi": round(usd * pay * g, 1),
++                    "sektor_baslangic": spec["odeyen"],
++                    "tur": "transfer",
++                    "gerceklesme": g,
++                    "sfc_dahil": True,
++                    "x_trilyonTL": round(float(xt.sum()) / 1e9, 3),
++                    "x_sektor_trilyonTL": _impact_dict(xt),
++                    "sektor_etkisi_trilyonTL": _impact_dict(xt),
++                }
++            )
++            continue
+         x = _shock_vec(usd, kur, spec["sektor_baslangic"], spec["tur"], pay=pay, gerceklesme=g)
++        if spec.get("devre_disi"):
++            x_eski_cift += x
++            pulslar.append(
++                {
++                    "id": ad,
++                    "usd_mn_girdi": round(usd * pay * g, 1),
++                    "sektor_baslangic": spec["sektor_baslangic"],
++                    "tur": spec["tur"],
++                    "gerceklesme": g,
++                    "sfc_dahil": False,
++                    "devre_disi": True,
++                    "x_trilyonTL": round(float(x[IDX[spec["sektor_baslangic"]]]) / 1e9, 3),
++                    "sektor_etkisi_trilyonTL": _impact_dict(simulate(L, G, nfp, x, lam=lam, kappa=kappa)),
++                }
++            )
++            continue
+         imp = simulate(L, G, nfp, x, lam=lam, kappa=kappa)
++        dissal = bool(spec.get("dissal"))
+         pulslar.append(
+             {
+                 "id": ad,
+@@ -148,27 +202,52 @@
+                 "sektor_baslangic": spec["sektor_baslangic"],
+                 "tur": spec["tur"],
+                 "gerceklesme": g,
++                "sfc_dahil": not dissal,
+                 "x_trilyonTL": round(float(x[IDX[spec["sektor_baslangic"]]]) / 1e9, 3),
+                 "sektor_etkisi_trilyonTL": _impact_dict(imp),
+             }
+         )
+-        x_toplam += x
++        if dissal:
++            x_dissal += x
++        else:
++            x_kapali += x
++
++    imp_entegre = simulate(L, G, nfp, x_kapali, lam=lam, kappa=kappa) + x_transfer
++    imp_eski = simulate(L, G, nfp, x_kapali + x_dissal + x_eski_cift, lam=lam, kappa=kappa)
++    imp_eski_cift = simulate(L, G, nfp, x_eski_cift, lam=lam, kappa=kappa)
++    x_kapali_top = float(x_kapali.sum() + x_transfer.sum()) / 1e9
++    tol = 1e-3
++    kapanis = {
++        "x_kapali_toplam_trilyonTL": round(x_kapali_top, 3),
++        "entegre_etki_toplam_trilyonTL": round(float(imp_entegre.sum()) / 1e9, 3),
++        "acik_fark_trilyonTL": round(x_kapali_top, 3),
++        "kapanis_ok": abs(x_kapali_top) <= tol,
++        "not": (
++            "Sıfır toplam kimliği (Σ NFP = 0) için SFC'ye giren darbelerin toplamı 0 olmalı. Fark ilan edilir, "
++            "gizlenmez. Dış rant transfer olarak yazılır (F −A, D +A); tutarın geri kalanı kapsam dışıdır."
++        ),
++    }
+ 
+-    imp_entegre = simulate(L, G, nfp, x_toplam, lam=lam, kappa=kappa)
++    lambda_bandi = {
++        str(lb): _impact_dict(simulate(L, G, nfp, x_kapali, lam=lb, kappa=kappa)) for lb in lam_bant
++    }
+ 
+     yillar = [int(r["yil"]) for r in yasam.get("yillik_seri") or []]
+     if not yillar:
+         yillar = list(range(2027, 2037))
+     bes = kopru.get("bes_adim_stok") or {}
+-    stok_yolu = _stok_f4_yolu(
+-        yillar,
+-        float(bes.get("stok_silim_tavan") or 0.2582),
+-        float(bes.get("stok_bas_milyar") or 25339.8),
+-        float(bes.get("kredi_itis_milyar_yillik") or 0.0),
+-    )
++    stok0 = float(bes.get("stok_bas_milyar") or 25339.8)
++    ust = float(bes.get("stok_silim_ust_sinir") or 0.2582)
++    itis = float(bes.get("kredi_itis_milyar_yillik") or 0.0)
++    oran = float(bes.get("silinen_oran_varsayilan", 0.0))
++    stok_yolu = _stok_f4_yolu(yillar, oran, stok0, itis, ust)
++    stok_bandi = {
++        str(o): _stok_f4_yolu(yillar, float(o), stok0, itis, ust)[-1]
++        for o in (bes.get("silinen_oran_senaryo") or [0.0, 0.1, 0.2])
++    }
+ 
+     yillik: list[dict[str, Any]] = []
+-    x_kum = np.zeros(5)
++    x_kum = np.zeros(5)  # dışsal (karşı bacaksız) kümülatif girdi: yalnız kıyas
+     seri = yasam.get("yillik_seri") or []
+     for i, y in enumerate(yillar):
+         x_y = np.zeros(5)
+@@ -188,7 +267,9 @@
+             {
+                 "yil": y,
+                 "stok_f4": stok_yolu[i] if i < len(stok_yolu) else None,
+-                "kumulatif_sektor_etkisi_trilyonTL": _impact_dict(imp_y),
++                "kumulatif_sektor_etkisi_trilyonTL": _impact_dict(np.zeros(5)),
++                "kumulatif_dissal_dahil_eski_trilyonTL": _impact_dict(imp_y),
++                "dissal_kumulatif_x_trilyonTL": round(float(x_kum.sum()) / 1e9, 3),
+             }
+         )
+ 
+@@ -198,16 +279,40 @@
+         "senaryo_politika_carpan": round(pol, 3),
+         "matris_donem": kopru.get("matris_donem"),
+         "lambda_yayilim": lam,
++        "lambda_etiket": "senaryo_parametresi (tanimlanamadi; zarar-teorisi OKU.txt). Bant altta.",
++        "lambda_bandi_sektor_etkisi_trilyonTL": lambda_bandi,
+         "kappa": kappa,
+         "kur_tl_usd": kur,
++        "kur_kaynak": kur_kaynak,
+         "nfp_2026Q1_trilyonTL": _load(ZARAR_DIR / "akis_model_ozeti.json")["nfp_2026Q1_trilyonTL"],
+         "pulslar": pulslar,
+         "entegre_puls": {
+-            "x_trilyonTL_sektor": {s: round(float(x_toplam[i]) / 1e9, 3) for i, s in enumerate(SEC)},
++            "x_trilyonTL_sektor": {s: round(float(x_kapali[i] + x_transfer[i]) / 1e9, 3) for i, s in enumerate(SEC)},
++            "transfer_trilyonTL_sektor": {s: round(float(x_transfer[i]) / 1e9, 3) for i, s in enumerate(SEC)},
+             "sektor_etkisi_trilyonTL": _impact_dict(imp_entegre),
++            "kapanis": kapanis,
++        },
++        "cift_muamele": {
++            "duzeltildi": True,
++            "aciklama": (
++                "Eski: F 'zararı' L ile yayılıp D'ye kayıp yazılıyordu (kayıp ≠ transfer) ve ayrıca 'D kârı' G ile "
++                "yerli sektörlere dağıtılıyordu (D'de kalmıyordu). Yeni: dış rant F→D transferi, doğrudan NFP, toplam sıfır."
++            ),
++            "kapsam_disi_rant_usd_mn": round(kapsam_disi_usd, 1),
++            "kapsam_disi_not": "Rant tutarının transfer payı dışında kalanı; pay %100 ise 0.",
++            "eski_sektor_etkisi_trilyonTL": _impact_dict(imp_eski_cift),
++            "yeni_sektor_etkisi_trilyonTL": _impact_dict(x_transfer),
++        },
++        "dissal_enjeksiyon": {
++            "x_toplam_trilyonTL": round(float(x_dissal.sum()) / 1e9, 3),
++            "pulslar": [p["id"] for p in pulslar if not p["sfc_dahil"] and not p.get("devre_disi")],
++            "not": "Karşı bacağı tanımsız 'refah/tasarruf' girdileri. SFC'ye girmez: sıfır toplam kimliğini bozar.",
++            "eski_davranis_sektor_etkisi_trilyonTL": _impact_dict(imp_eski),
++            "eski_davranis_not": "Yalnız kıyas: dışsal girdiler dahil edilince tüm sektörler artıya geçer (para yaratımı).",
+         },
+         "yillik_stok_akis": yillik,
+-        "bes_adim_kisit": kopru.get("bes_adim_stok"),
++        "stok_f4_bandi_son_yil": stok_bandi,
++        "bes_adim_kisit": bes,
+         "kaynak": [
+             "stok_akis_kopru.json",
+             "MODUL_KALIBRE.json",
+@@ -220,33 +325,57 @@
+ 
+ def _md(d: dict[str, Any]) -> str:
+     e = d["entegre_puls"]["sektor_etkisi_trilyonTL"]
++    k = d["entegre_puls"]["kapanis"]
+     lines = [
+-        "# Stok-akış simülasyonu (SFC × etki cephesi)",
++        "# Stok-akış simülasyonu (SFC × etki cephesi) — revize",
+         "",
+-        f"Matris **{d['matris_donem']}** · λ={d['lambda_yayilim']} · κ={d['kappa']} · kur **{d['kur_tl_usd']}**",
++        f"Matris **{d['matris_donem']}** · λ={d['lambda_yayilim']} (**senaryo**, tanımsız) · κ={d['kappa']} · "
++        f"kur **{d['kur_tl_usd']}** ({d['kur_kaynak']})",
+         "",
+-        "## Entegre sektör etkisi (trilyon TL)",
++        "## Entegre sektör etkisi (trilyon TL) — yalnız SFC'ye giren darbeler",
+         "",
+         "| Sektör | Δ (trilyon TL) |",
+         "| --- | ---: |",
+     ]
+     for s in SEC:
+         lines.append(f"| {s} | {e[s]:,.3f} |")
++    lines.extend(
++        [
++            "",
++            f"**Kapanış:** Σ darbe = {k['x_kapali_toplam_trilyonTL']} tr TL → "
++            f"{'OK' if k['kapanis_ok'] else 'AÇIK FARK (ilan edildi)'}. {k['not']}",
++            "",
++            f"**Dış rant (F→D transfer):** " + ", ".join(
++                f"{s}={d['cift_muamele']['yeni_sektor_etkisi_trilyonTL'][s]}" for s in SEC
++            ) + f"; eski çift muamele: " + ", ".join(
++                f"{s}={d['cift_muamele']['eski_sektor_etkisi_trilyonTL'][s]}" for s in SEC
++            ) + f". Kapsam dışı rant: {d['cift_muamele']['kapsam_disi_rant_usd_mn']:,} mn USD.",
++            "",
++            f"**Dışsal enjeksiyon (SFC dışı):** {d['dissal_enjeksiyon']['x_toplam_trilyonTL']} tr TL. "
++            f"{d['dissal_enjeksiyon']['not']}",
++            "",
++            "## λ bandı (sektör etkisi, tr TL)",
++            "",
++        ]
++    )
++    for lb, v in d["lambda_bandi_sektor_etkisi_trilyonTL"].items():
++        lines.append(f"- λ={lb}: " + ", ".join(f"{s}={v[s]}" for s in SEC))
+     lines.extend(["", "## Akış pulsları", ""])
+     for p in d["pulslar"]:
+         lines.append(
+-            f"- **{p['id']}** ({p['tur']}, {p['sektor_baslangic']}): "
++            f"- **{p['id']}** ({p['tur']}, {p['sektor_baslangic']}, "
++            f"{'SFC' if p['sfc_dahil'] else ('devre dışı' if p.get('devre_disi') else 'dışsal')}): "
+             f"{p['usd_mn_girdi']:,} mn USD → D dağılımı "
+             f"H={p['sektor_etkisi_trilyonTL']['H']}, F={p['sektor_etkisi_trilyonTL']['F']}, "
+             f"D={p['sektor_etkisi_trilyonTL']['D']}"
+         )
+-    lines.extend(["", "## 10 yıl — F.4 stok yolu (beş adım)", ""])
++    lines.extend(["", "## F.4 stok yolu — silinen ölçülmedi; oranlar varsayım bandıdır", ""])
+     for row in d["yillik_stok_akis"]:
+         st = row.get("stok_f4") or {}
+-        lines.append(
+-            f"- **{row['yil']}:** F.4 stok **{st.get('stok_f4_milyar', '—')}** milyar TL · "
+-            f"itiş {st.get('yeni_itis_milyar', 0)} · küm. etki D={row['kumulatif_sektor_etkisi_trilyonTL']['D']}"
+-        )
++        lines.append(f"- **{row['yil']}:** F.4 stok **{st.get('stok_f4_milyar', '—')}** milyar TL ({st.get('etiket')})")
++    lines.extend(["", "Son yıl bandı:"])
++    for o, r in d["stok_f4_bandi_son_yil"].items():
++        lines.append(f"- silinen oran {o} (varsayım, ≤ üst sınır: {r['ust_sinir_icinde']}): {r['stok_f4_milyar']} milyar TL")
+     lines.append("")
+     return "\n".join(lines)
+ 
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_p3.py fixed/tests/test_etki_cephesi_p3.py
+--- pristine/tests/test_etki_cephesi_p3.py	2026-10-14 06:05:45.846952283 +0000
++++ fixed/tests/test_etki_cephesi_p3.py	2026-10-14 06:42:31.701662816 +0000
+@@ -31,7 +31,10 @@
+     assert p.is_file()
+     d = json.loads(p.read_text(encoding="utf-8"))
+     by_id = {x["id"]: x for x in d["senaryolar"]}
+-    assert by_id["C"]["entegre_D_trilyonTL"] >= by_id["B"]["entegre_D_trilyonTL"]
++    # Revize: dış rant F→D TRANSFERİ olarak yazılır; entegre_D = D'ye giden rant (kaçak).
++    # Eski çift muamelede D kayıp taşıyordu ve test işareti ona göre kuruluydu (C >= B).
++    # Kısmi kullanımlı C en az, araçsallaşan B en çok rant kaçırır: C <= A <= B.
++    assert by_id["C"]["entegre_D_trilyonTL"] <= by_id["A"]["entegre_D_trilyonTL"] <= by_id["B"]["entegre_D_trilyonTL"]
+ 
+ 
+ def test_uluslararasi_snapshots():
+diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
+--- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 06:44:11.860004244 +0000
+@@ -0,0 +1,132 @@
++"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
++from __future__ import annotations
++
++import json
++import sys
++from pathlib import Path
++
++import numpy as np
++
++REPO = Path(__file__).resolve().parents[1]
++OUT = REPO / "reports" / "etki_cephesi"
++DATA = REPO / "data" / "etki_cephesi"
++ZARAR = REPO / "_incoming" / "zarar-teorisi-main"
++
++
++def _j(p: Path):
++    return json.loads(p.read_text(encoding="utf-8"))
++
++
++def test_lambda_turetilmis_degil():
++    c = _j(DATA / "zarar_teorisi_kopru.json")["etki_cephesi_carpanlari"]
++    b = _j(DATA / "zarar_teorisi_kopru.json")["bes_adim_kanit"]
++    turetilmis = round(1 - b["eski_tavan"] / b["yeni_tavan"], 4)
++    assert c["ic_dongu_kazanim"] != turetilmis
++    assert c["ic_dongu_kazanim_etiket"] == "senaryo_parametresi"
++    assert c["ic_dongu_kazanim"] in c["ic_dongu_kazanim_bant"]
++
++
++def test_stok_yolu_tavani_gerceklesme_saymaz():
++    d = _j(OUT / "STOK_AKIS_SIM.json")
++    bes = d["bes_adim_kisit"]
++    assert "stok_silim_tavan" not in bes
++    son = d["yillik_stok_akis"][-1]["stok_f4"]
++    assert son["etiket"] == "olculmedi_sabit"
++    assert son["stok_f4_milyar"] == bes["stok_bas_milyar"]
++    for r in d["stok_f4_bandi_son_yil"].values():
++        assert r["ust_sinir_icinde"] is True
++
++
++def test_sfc_kapanis_ilan_ve_dissal_ayrik():
++    d = _j(OUT / "STOK_AKIS_SIM.json")
++    e = d["entegre_puls"]
++    toplam_etki = sum(e["sektor_etkisi_trilyonTL"].values())
++    # simulate toplamı korur: etki toplamı = darbe toplamı
++    assert abs(toplam_etki - e["kapanis"]["x_kapali_toplam_trilyonTL"]) <= 5e-3
++    assert e["kapanis"]["acik_fark_trilyonTL"] == e["kapanis"]["x_kapali_toplam_trilyonTL"]
++    dissal = {p["id"] for p in d["pulslar"] if not p["sfc_dahil"] and not p.get("devre_disi")}
++    assert dissal == set(d["dissal_enjeksiyon"]["pulslar"])
++    assert dissal  # refah/tasarruf/yasam darbeleri SFC dışında
++    kapali_toplam = sum(p["x_trilyonTL"] for p in d["pulslar"] if p["sfc_dahil"])
++    assert abs(kapali_toplam - e["kapanis"]["x_kapali_toplam_trilyonTL"]) <= 5e-3
++
++
++def test_kur_matris_donemi():
++    d = _j(OUT / "STOK_AKIS_SIM.json")
++    oz = _j(ZARAR / "akis_model_ozeti.json")
++    beklenen = float(oz["dis_borc_artisi"]["stok_milyar_USD"][d["matris_donem"]]["USDTRY"])
++    assert d["kur_tl_usd"] == beklenen
++    assert d["kur_tl_usd"] != 32.87
++
++
++def test_simulate_toplami_korur():
++    sys.path.insert(0, str(ZARAR))
++    from akis_model import simulate  # noqa: E402
++
++    L = np.loadtxt(ZARAR / "L_v2_2026-Q1.csv", delimiter=",", skiprows=1, usecols=range(1, 6))
++    G = np.loadtxt(ZARAR / "G_v2_2026-Q1.csv", delimiter=",", skiprows=1, usecols=range(1, 6))
++    nfp = np.array([1.0, -3.0, 0.5, -0.6, 1.5]) * 1e9
++    for s in range(5):
++        x = np.zeros(5)
++        x[s] = -1e9
++        assert abs(float(simulate(L, G, nfp, x, lam=0.5, kappa=0.1).sum()) - float(x.sum())) <= 1e-4 * abs(float(x.sum()))
++
++
++def test_finans_katman_etiketi():
++    d = _j(OUT / "FINANS_KATMAN.json")
++    assert d["etiket"] == "varsayim_carpanli_ham"
++    assert "varsayım çarpanlı ham" in (OUT / "FINANS_KATMAN.md").read_text(encoding="utf-8")
++
++
++def test_lm_rant_kapanis_ilani():
++    d = _j(OUT / "LM_RANT_SEKTOR.json")
++    assert "kapanis_ok" in d["entegre"] and "x_toplam_trilyonTL" in d["entegre"]
++    assert d["kur_tl_usd"] != 32.87
++
++
++def test_uygulanabilirlik_ozeti_sayidan_turetilir():
++    d = _j(OUT / "SENARYO_UYGULANABILIRLIK.json")
++    # sabit "10 yılda TR net iyileşir" cümlesi yok; özet sayıları içerir
++    assert f"{d['iyilesme_beklenen_vekil']:+.2f}" in d["ozet"]
++    assert f"{d['iyilesme_c_vekil']:+.2f}" in d["ozet"]
++    if d["iyilesme_beklenen_vekil"] <= 0.05:
++        assert "kısmi gerçekleşme ile 10 yılda TR net iyileşir" not in d["ozet"]
++        assert any("iyileşme yok" in e for e in d["engeller"])
++
++
++def test_pipeline_kararli_duruma_oturdu():
++    d = _j(OUT / "RUN_ALL_KARARLILIK.json")
++    assert d["kararli"] is True
++
++
++def test_d_cift_muamelesi_duzeltildi():
++    d = _j(OUT / "STOK_AKIS_SIM.json")
++    tr = [p for p in d["pulslar"] if p["tur"] == "transfer"]
++    assert len(tr) == 1
++    xs = tr[0]["x_sektor_trilyonTL"]
++    assert abs(sum(xs.values())) <= 1e-3  # toplam sıfır
++    assert xs["F"] < 0 and abs(xs["D"] + xs["F"]) <= 1e-3  # F -A, D +A
++    assert all(abs(xs[s]) <= 1e-3 for s in ("H", "B", "K"))
++    e = d["entegre_puls"]
++    assert e["kapanis"]["kapanis_ok"] is True
++    # transfer yayılmaz: entegre etki doğrudan transfer
++    for s in ("H", "F", "B", "K", "D"):
++        assert abs(e["sektor_etkisi_trilyonTL"][s] - xs[s]) <= 1e-3
++    # devre dışı eski D "kârı" SFC'ye girmez
++    off = [p for p in d["pulslar"] if p.get("devre_disi")]
++    assert off and all(p["sfc_dahil"] is False for p in off)
++    # eski muamele kıyasta durur ve farklıdır: D kayıp yazılıyor, yerli sektörlere sızıyor
++    cm = d["cift_muamele"]
++    assert cm["duzeltildi"] is True
++    assert cm["eski_sektor_etkisi_trilyonTL"]["D"] != cm["yeni_sektor_etkisi_trilyonTL"]["D"]
++    assert cm["kapsam_disi_rant_usd_mn"] == 0.0  # transfer payı %100 (ödeyen F)
++    # transfer tutarı = tüm dış rant (USD) × kur
++    rant = _j(OUT / "DIS_RANT_PARASAL_C.json")["ozet"]["zarar_usd_mn_toplam"] if (OUT / "DIS_RANT_PARASAL_C.json").is_file() else _j(OUT / "DIS_RANT_PARASAL.json")["ozet"]["zarar_usd_mn_toplam"]
++    assert abs(tr[0]["usd_mn_girdi"] - rant * d["pulslar"][0]["gerceklesme"]) <= 0.1
++
++
++def test_bolge_tr_net_d_cift_sayim_yok():
++    d = _j(OUT / "BOLGE_STOK_AKIS.json")
++    s = _j(OUT / "STOK_AKIS_SIM.json")["entegre_puls"]["sektor_etkisi_trilyonTL"]
++    tr = [a for a in d["aktorler"] if a["ulke"] == "TR"][0]
++    assert abs(tr["sfc_net_trilyonTL"] - round(s["H"] + s["F"] + s["B"] + s["K"], 3)) <= 1e-3
