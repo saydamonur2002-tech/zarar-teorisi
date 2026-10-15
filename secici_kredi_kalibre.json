@@ -1,0 +1,257 @@
+{
+ "serbest": {
+  "alpha": 0.7556268289549322,
+  "pt": 0.3455837038277859,
+  "rho": 0.4866399076162165,
+  "tay": 0.2737968841172699,
+  "cred": 0.2717610931122373
+ },
+ "baslangic": {
+  "alpha": 0.8,
+  "pt": 0.25,
+  "rho": 0.5,
+  "tay": 0.5,
+  "cred": 0.3
+ },
+ "iceri": [
+  [
+   "pi",
+   1,
+   -0.0281
+  ],
+  [
+   "pi",
+   2,
+   -0.0145
+  ],
+  [
+   "i",
+   1,
+   -0.0113
+  ],
+  [
+   "i",
+   2,
+   0.0268
+  ],
+  [
+   "dep",
+   1,
+   -0.0187
+  ],
+  [
+   "dep",
+   2,
+   0.0233
+  ]
+ ],
+ "disari": [
+  [
+   "pi",
+   3,
+   -0.025
+  ],
+  [
+   "pi",
+   6,
+   -0.0796
+  ],
+  [
+   "i",
+   3,
+   0.0185
+  ]
+ ],
+ "iceri_kalibresiz": [
+  [
+   "pi",
+   1,
+   -0.0545
+  ],
+  [
+   "pi",
+   2,
+   -0.0343
+  ],
+  [
+   "i",
+   1,
+   0.0418
+  ],
+  [
+   "i",
+   2,
+   0.0751
+  ],
+  [
+   "dep",
+   1,
+   -0.0177
+  ],
+  [
+   "dep",
+   2,
+   0.1315
+  ]
+ ],
+ "disari_kalibresiz": [
+  [
+   "pi",
+   3,
+   -0.0473
+  ],
+  [
+   "pi",
+   6,
+   -0.0835
+  ],
+  [
+   "i",
+   3,
+   0.0484
+  ]
+ ],
+ "geri_test": [
+  {
+   "yil": 2018,
+   "gercek": 0.203,
+   "model": 0.11994369965344154,
+   "naif": 0.1192
+  },
+  {
+   "yil": 2019,
+   "gercek": 0.1184,
+   "model": 0.17788959192044948,
+   "naif": 0.203
+  },
+  {
+   "yil": 2020,
+   "gercek": 0.146,
+   "model": 0.1067213905262424,
+   "naif": 0.1184
+  },
+  {
+   "yil": 2021,
+   "gercek": 0.3608,
+   "model": 0.14724097210241047,
+   "naif": 0.146
+  },
+  {
+   "yil": 2022,
+   "gercek": 0.6427,
+   "model": 0.3122765331414053,
+   "naif": 0.3608
+  },
+  {
+   "yil": 2023,
+   "gercek": 0.6477,
+   "model": 0.6575539718547314,
+   "naif": 0.6427
+  },
+  {
+   "yil": 2024,
+   "gercek": 0.4438,
+   "model": 0.5916623398784802,
+   "naif": 0.6477
+  },
+  {
+   "yil": 2025,
+   "gercek": 0.3089,
+   "model": 0.38511866946806633,
+   "naif": 0.4438
+  }
+ ],
+ "capa": {
+  "pi0": {
+   "deger": 0.3089,
+   "eski": 0.3,
+   "sinif": "olcum",
+   "kaynak": "V24 TÜFE Aralık/Aralık"
+  },
+  "om0": {
+   "deger": 0.6000000000000001,
+   "eski": 0.5,
+   "sinif": "tahmin",
+   "kaynak": "V01/V15; V01 tabloda GSYH×0,600 (TÜİK 2023-24 oranı)"
+  },
+  "cad0": {
+   "deger": 0.018851843359872233,
+   "eski": 0.04,
+   "sinif": "olcum",
+   "kaynak": "V16/V15 (C1 göstergesi)"
+  },
+  "X0": {
+   "deger": 25.99868754990868,
+   "eski": 30.0,
+   "sinif": "tahmin",
+   "kaynak": "V17/V15; V17 tabloda (mal+seyahat)×1,25×kur"
+  },
+  "nfp": {
+   "deger": 0.014919236881428832,
+   "eski": 0.015,
+   "sinif": "tahmin",
+   "kaynak": "V20/V15; ikincil gelir dahil vekil"
+  },
+  "Cf0": {
+   "deger": 38.879989879902915,
+   "eski": 42.0,
+   "sinif": "tahmin",
+   "kaynak": "A1 × Yh0; V02 tabloda tahmin"
+  },
+  "D10": {
+   "deger": 3.5262213296858818,
+   "eski": 4.0,
+   "sinif": "tahmin",
+   "kaynak": "V03/V01 × Yh0 toplam; H1/H2 bölüşümü 0,4/0,6 ölçülemedi"
+  },
+  "D20": {
+   "deger": 5.289331994528823,
+   "eski": 6.0,
+   "sinif": "tahmin",
+   "kaynak": "V03/V01 × Yh0 toplam; H1/H2 bölüşümü 0,4/0,6 ölçülemedi"
+  },
+  "cc": {
+   "deger": 0.08235229006728283,
+   "eski": 0.15,
+   "sinif": "olcum",
+   "kaynak": "(ΔV10 − bireysel kredi artışı)/V15"
+  },
+  "ccp_ref": {
+   "deger": 0.04659461368374169,
+   "eski": 0.03,
+   "sinif": "olcum",
+   "kaynak": "A2 (V03−V04)/V01"
+  },
+  "G0": {
+   "deger": 0.1989263209493916,
+   "eski": 0.18,
+   "sinif": "olcum",
+   "kaynak": "(V28 − V25)/V15 faiz hariç merkezi yönetim gideri"
+  },
+  "mx": {
+   "deger": 0.6693590078884787,
+   "eski": 0.4,
+   "sinif": "tahmin",
+   "kaynak": "C2 = V18/V17 (Kavram_Gösterge: C2 ↔ mx); iç satışa giden ara girdiyi de içerir, üst sınır"
+  },
+  "mc": {
+   "deger": 0.07093766228110675,
+   "eski": 0.2,
+   "sinif": "kalibre",
+   "kaynak": "t0 ithalat kimliği: ortak ölçek ×0.355"
+  },
+  "mi": {
+   "deger": 0.15960974013249019,
+   "eski": 0.45,
+   "sinif": "kalibre",
+   "kaynak": "t0 ithalat kimliği: ortak ölçek ×0.355"
+  },
+  "mg": {
+   "deger": 0.035468831140553374,
+   "eski": 0.1,
+   "sinif": "kalibre",
+   "kaynak": "t0 ithalat kimliği: ortak ölçek ×0.355"
+  }
+ },
+ "Z0": -8.776888746722008
+}
