@@ -1,0 +1,30 @@
+[
+ {
+  "yil": 2024,
+  "carry_puan": 28.9,
+  "acik_artisi": 75.6,
+  "ic_kredi": 39.8,
+  "ic_mevduat_azalis": 30.2,
+  "ic_kanal": 70.0,
+  "dis_kanal": 1.6,
+  "diger": 4.0,
+  "ic_pay": 0.93,
+  "dis_pay": 0.02,
+  "ic_per_puan": 2.42,
+  "dis_per_puan": 0.06
+ },
+ {
+  "yil": 2025,
+  "carry_puan": 21.5,
+  "acik_artisi": 44.2,
+  "ic_kredi": 27.3,
+  "ic_mevduat_azalis": -7.7,
+  "ic_kanal": 19.7,
+  "dis_kanal": 25.3,
+  "diger": -0.7,
+  "ic_pay": 0.45,
+  "dis_pay": 0.57,
+  "ic_per_puan": 0.92,
+  "dis_per_puan": 1.18
+ }
+]
