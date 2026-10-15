@@ -6,6 +6,8 @@ KULLANICI VARSAYIMI: H'nin borcunun payı Ha'da yoğunlaşır. Çalışan taban 
 Varsayımlar
   borç payları (Ha, Hm, Ho): taban D_A_BASE=0.40; duyarlılık grid'inde 0.18..0.90; varlık/mevduat (0.05, 0.15, 0.80) (mevduat yoğunluğu: ~2,7 milyon kişi
   ve ≥1 milyon TL hesaplar toplam mevduatın çoğunu tutuyor, BDDK/haber, Eyl 2025; kesin pay yok)
+  DİKKAT: borç payı ≠ varlık payı. Taban borç payı Ha %40 / Hm %20 / Ho %40 (D_A_BASE; kalan Hm:Ho = 1:2);
+  varlık/mevduat payı Ha %5 / Hm %15 / Ho %80. İki küme aynı sırada (Ha, Hm, Ho) yazılır ama ayrı varsayımdır; toplanmaz, birbirinin yerine kullanılmaz.
   gelir: asgari net 28.075,50; memur bekâr kök ~66.188 (benim hesabım); kişi sayısı: asgari ~6,85 milyon, memur 3,67 milyon
   taşıma kapasitesi: taksit/gelir <= %30, 36 ay eşit taksit, faiz EVDS ihtiyaç kredisi (akım) son gözlem (KKDF/BSMV hariç)
   bireysel gelir ve bireysel borç (hane = 1 gelirli kişi) varsayımı; çok gelirli haneler kapasiteyi artırır.
