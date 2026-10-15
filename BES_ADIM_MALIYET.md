@@ -16,6 +16,8 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 
 **Adım 4.** İhraç, θ · 19.361,9 · Δu₃'tür; 19.361,9, üç ölçülmüş adres stokunun toplamıdır (hane vadeli mevduat 8.322,4 + firma vadeli mevduat 4.400,1 + gerçek kişi YP mevduat 6.639,4; 2026-Q1). θ ∈ {0,1; 0,25; 0,5}, yenileme χ ∈ {0; 0,5}, prim π ∈ {%2; %5} varsayımdır; ihraççı K′ de varsayımdır. 12 senaryoda 2029–2031 toplam prim 77,5 ile 1.058,9 milyar TL arasında, bankaların mevduat kaybından doğan yıllık kredi daralması (× 0,08) 154,9 ile 774,5 milyar TL arasındadır. Yürütme maliyeti prim toplamının ρ katıdır; ρ'nun bu adımdaki dayanağı en zayıftır, çünkü hedeflenmiş transfer idaresi için bildirilen aralık mevduat senedine taşınmıştır. Senedin endeks bacağı hesaplanmadığı için prim alt sınır olabilir.
 
+**Adım 4.5.** Yeni para birimine geçiş, adım 4 ile 5 arasında plasebodur (`ADIM45_PARA_BIRIMI.md`): tüm TL değerleri sabit oranla çevrilir (örnek 1 yeni = 1.000 eski), beş oran adım 1-5 çıktılarında çevirmeden önce ve sonra aynı çıkar. Bu denklik aritmetik gereğidir; modelde para yanılsaması ve yuvarlama enflasyonu yok. Fayda sıfır, tek gerçek terim yürütme maliyetidir. Sıfır atma türünde (A) banknot basımı ≈ 10 milyon $ (2004 tahmini) ve kurum başına 20–100 bin $ yazılım × 100–1.000 kurum (varsayım): 0,39 – 3,62 milyar TL. Yeni para birimi türünde (B) GSYH'nin %0,3–1,0'ı (Avro bölgesine girenlerde bildirilen aralık, ikincil kaynak): 133,8 – 445,9 milyar TL (GSYH 2024: 44.587,2 milyar TL).
+
 **Adım 5.** Akış, ev sahibinden (Ho) kiracıya (Ha) giden transferdir (`adim5_kira_aralik.csv`). Birim kira 258,45 TL/m²/ay, EVDS serisi TP.BK.TR, 2026-Q2 (değerlemesi yapılan konutlar), tek ölçüm. Konut alanı 90–110 m², kiracı hane oranı %25–30 ve toplam hane 26,4 milyon varsayım ya da elle girilmiş dış kaynaktır. Piyasa kirası 23.260 – 28.430 TL/ay, HEKİS havuz kirası 20.000 TL/ay (model varsayımı) olduğundan fark 3.260 – 8.430 TL/ay'dır. Transfer = fark × kiracı hane × kapsama payı × 12: kapsama %20'de 51,6 – 160,2, %50'de 129,1 – 400,6, %100'de 258,2 – 801,1 milyar TL/yıl. Yürütme maliyeti transferin ρ katıdır; hane içi bir aktarım olduğu için H toplamında net maliyet değil dağılımdır.
 
 ## Adım 1: stok
@@ -52,6 +54,12 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 - **yürütme ρ=9% (orta)**: 7.0 – 95.3 milyar TL (2029-31) (`modellendi_band`). Orta senaryo prim 529.4 × ρ = 47.6.
 - **yürütme ρ=25% (pilot payı)**: 19.4 – 264.7 milyar TL (2029-31) (`modellendi_band`). hekis_model pilot SAFETY=1,25 (karar).
 - **yürütme ρ=29% (üst)**: 22.5 – 307.1 milyar TL (2029-31) (`modellendi_band`).
+
+## Adım 4.5: yeni para birimi (plasebo)
+
+- **maliyet: fayda**: 0 – 0 milyar TL (`plasebo`). Oranlar çevirmeden önce ve sonra aynı (aritmetik gereği).
+- **yürütme A: sıfır atma (basım + yazılım)**: 0.39 – 3.62 milyar TL (tek sefer) (`modellendi_band`). Basım ≈ 10 milyon $ (2004 tahmini) + kurum başı yazılım 20-100 bin $ × N (100-1.000, varsayım).
+- **yürütme B: yeni para birimi (GSYH %0,3-1,0)**: 133.8 – 445.9 milyar TL (tek sefer) (`modellendi_band`). Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak.
 
 ## Adım 5: kira
 

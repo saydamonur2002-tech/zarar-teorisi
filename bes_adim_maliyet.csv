@@ -22,6 +22,9 @@
 4,yürütme ρ=9% (orta),modellendi_band,7.0,95.3,milyar TL (2029-31),yurutme_maliyet.py,Orta senaryo prim 529.4 × ρ = 47.6.
 4,yürütme ρ=25% (pilot payı),modellendi_band,19.4,264.7,milyar TL (2029-31),yurutme_maliyet.py,"hekis_model pilot SAFETY=1,25 (karar)."
 4,yürütme ρ=29% (üst),modellendi_band,22.5,307.1,milyar TL (2029-31),yurutme_maliyet.py,
+4.5,maliyet: fayda,plasebo,0,0,milyar TL,adim45_para_birimi.py,Oranlar çevirmeden önce ve sonra aynı (aritmetik gereği).
+4.5,yürütme A: sıfır atma (basım + yazılım),modellendi_band,0.39,3.62,milyar TL (tek sefer),adim45_para_birimi.py,"Basım ≈ 10 milyon $ (2004 tahmini) + kurum başı yazılım 20-100 bin $ × N (100-1.000, varsayım)."
+4.5,"yürütme B: yeni para birimi (GSYH %0,3-1,0)",modellendi_band,133.8,445.9,milyar TL (tek sefer),adim45_para_birimi.py,Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak.
 5,"maliyet: Ho→Ha transferi, kapsama %20",band_varsayim,51.6,160.2,milyar TL/yıl,adim5_kira_aralik.csv,H içi aktarım; H toplam NL 0.
 5,"maliyet: Ho→Ha transferi, kapsama %50",band_varsayim,129.1,400.6,milyar TL/yıl,adim5_kira_aralik.csv,
 5,"maliyet: Ho→Ha transferi, kapsama %100",band_varsayim,258.2,801.1,milyar TL/yıl,adim5_kira_aralik.csv,

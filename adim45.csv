@@ -1,0 +1,9 @@
+﻿adim,kalem,durum,alt,ust,birim,kaynak,not
+4.5,plasebo: oran değişimi,max |Δoran|,1.11e-16,,birimsiz,adim45_para_birimi.py,s=1/1000; denklik aritmetik gereği (kurgu).
+4.5,oran: ortak/brüt (adım 1),oran,0.258188,0.258188,birimsiz,adim45_para_birimi.py,çevirmeden önce / sonra
+4.5,oran: silinen/kredi ihtiyacı (adım 2),oran,1.753272,1.753272,birimsiz,adim45_para_birimi.py,çevirmeden önce / sonra
+4.5,oran: duran faiz/S0 (adım 3),oran,0.095328,0.095328,birimsiz,adim45_para_birimi.py,çevirmeden önce / sonra
+4.5,oran: prim/adres (adım 4),oran,0.027342,0.027342,birimsiz,adim45_para_birimi.py,çevirmeden önce / sonra
+4.5,oran: HEKİS/piyasa kira (adım 5),oran,0.859845,0.859845,birimsiz,adim45_para_birimi.py,çevirmeden önce / sonra
+4.5,maliyet A: sıfır atma (basım + yazılım),modellendi_band,0.39,3.62,milyar TL (tek sefer),adim45_para_birimi.py,Basım 0.33; yazılım 0.07-3.29 (N=100-1.000 varsayım).
+4.5,"maliyet B: yeni para birimi (GSYH %0,3-1,0)",modellendi_band,133.8,445.9,milyar TL (tek sefer),adim45_para_birimi.py,Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak.
