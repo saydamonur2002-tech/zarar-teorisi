@@ -38,6 +38,12 @@
       "dosya": "adim3.csv",
       "kredi_ihtiyaci": 0.0,
       "f_f4_yuk": 25339.8,
+      "duran_faiz_2029": {
+        "0.25": 1207.7,
+        "0.5": 2415.4,
+        "1.0": 4830.8
+      },
+      "duran_faiz_etiket": "modellendi_varsayim_kappa",
       "finansman_gideri_2024": 3143.4,
       "finansman_gideri_2025": null,
       "bddk_2025": 17302.0,

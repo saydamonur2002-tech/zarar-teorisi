@@ -2,7 +2,7 @@
 
 Çalıştır: `python3 adim3_faiz_durma.py`. Çıktı: `adim3_faiz_durma.csv`, `adim3_faiz_durma_sonuc.json`.
 
-`adim3.csv` yazılmaz; oradaki 'Faizin durması modellenmedi' ve H-A3 kilidi durur. Kural burada, ayrı dosyada.
+`bes_adim.py` bu sonucu okur ve `adim3.csv`'ye aynı etiketle yazar. Etiket `olculdu` olmaz. κ varsayımdır.
 
 ## Kural
 
@@ -24,4 +24,4 @@
 
 - 'Faiz durdu, firma rahatladı' denmez; κ varsayım, r_t ileri sabit, ψ 2024 kapsamından.
 - Yıllık duran faiz 2024 finansman giderine eşitlenmez; oran karşılaştırma içindir.
-- Bu sayılar `adim3.csv`'ye, `uc_kural_senaryo.csv`'ye taşınmaz.
+- Etiket `modellendi_varsayim_kappa` olarak girer; `olculdu` yazılmaz. `uc_kural_senaryo.csv`'ye taşınmaz.

@@ -206,7 +206,7 @@ def build() -> Document:
         [
             ["1 Mahsup", "Karşılıklı (kilitli) borç", "silinen boş; tavan 0,0728 / 0,2582", "adim1_nace.py"],
             ["2 Ödeme + şart", "Vadeyi uzatan davranış; ücret gecikmesi", "sentetik temerrüt 0, modellendi", "adim2_nace_ag.py"],
-            ["3 Faiz durması", "Sisteme giren F.4 stoğunda tahakkuk", "faiz durması modellenmedi (orası kilit)", "adim3_faiz_durma.py"],
+            ["3 Faiz durması", "Sisteme giren F.4 stoğunda tahakkuk", "duran faiz satırı modellendi_varsayim_kappa; stok durur", "adim3_faiz_durma.py"],
             ["4 Adres yönlendirme", "Mevduat → kâğıt; kredi itişi", "üç adres ölçüldü; senet modellenmedi", "adim4_adres_yonlendirme.py"],
             ["5 Kira", "Piyasa kirası → politika kirası", "kira olculmedi; HEKİS 20.000 modellendi", "adim5_kira.py"],
         ],

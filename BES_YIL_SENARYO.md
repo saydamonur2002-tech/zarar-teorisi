@@ -4,7 +4,7 @@ Senaryo; ölçüm değil. Çalıştır: `python3 bes_yil_senaryo.py`. Çıktı: 
 
 Taban: TÜFE yıllık 29.73 (2026-09); AOFM 37.0 (2026-10); USD/TRY 49.13 (2026-10); firma F.4 stoku 25,339.8 milyar (2026-Q1). Beklenti: EVDS Piyasa Katılımcıları Anketi, 2026-09.
 
-Optimum aralık tanımı: model beş adımı tam uygular; yeni kredi itişi 0 (adım 3), eski stok silinen 0 ile yeni_tavan 0,2582 arası (adım 1 stok). Geçiş payı kapısı boş; enflasyon etkisi mantıksal sınırlarla [0, 1] bant olarak verilir. Faiz ve döviz için model etkisi `modellenmedi`; senaryo anket beklentisine eşit.
+Optimum aralık tanımı: model beş adımı tam uygular; yeni kredi itişi 0 (adım 3), eski stok silinen 0 ile yeni_tavan 0,2582 arası (adım 1 stok). Geçiş payı kapısı boş; enflasyon etkisi mantıksal sınırlarla [0, 1] bant olarak verilir. Politika faizi ve döviz için model etkisi `modellenmedi`; senaryo anket beklentisine eşit. Firma kredi faizinin durması ayrı satırdadır.
 
 ## Tablo (alt / üst)
 
@@ -53,7 +53,7 @@ Optimum aralık tanımı: model beş adımı tam uygular; yeni kredi itişi 0 (a
 - Model 2027 başında tam uygulanır; etki her yıl aynı. Geçiş süresi, kısmi uygulama yok.
 - Enflasyon etkisi: −geçiş × 7,62; geçiş 0 ve 1 mantıksal uç. varsayim_esik.csv eşikleri (0, 1/3, 1) buraya taşınmadı.
 - 2029–2030 için anket ufku yok; beklenti `bulunamadi`, senaryo boş. 2031 yalnız TÜFE (5 yıl sonrası).
-- Eski stok faizinin durması ve faiz tahakkuku modellenmedi; stok sütunu anapara.
+- Stok sütunu anaparadır. Duran faiz `adim3.csv` satırında, etiket `modellendi_varsayim_kappa`; stoktan düşülmez. Politika faizi (AOFM) mekanizması yoktur.
 
 ## Ne denmez
 

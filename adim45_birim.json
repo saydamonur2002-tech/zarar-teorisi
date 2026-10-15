@@ -1,0 +1,40 @@
+{
+  "adim": 4.5,
+  "pencere": [
+    "2030-Q1",
+    "2030-Q2",
+    "2030-Q3",
+    "2030-Q4"
+  ],
+  "etiket_takvim": "senaryo_takvimi",
+  "olcum_donem": "2026-Q1",
+  "lam": 1.0,
+  "lam_etiket": "varsayim_parite",
+  "fiat": "Yeni TL altın ya da döviz üzerinde alacak değildir. Dolara çevrilerek ödenmez.",
+  "kimlik": "TL_yeni = TL_eski * (1 + u*(lam-1)); u=1 iken lam * eski. kur ayni carpan. USD stok ve faiz orani durur.",
+  "stok_milyar": {
+    "tcmb_nakit": 898.3,
+    "banka_kasasi_nakit_icinde": 356.3,
+    "yurtici_tl_mevduat": 15574.5,
+    "tl_para_toplam": 16472.8,
+    "tl_para_yeni_lam1": 16472.8,
+    "fark_lam1": 0.0,
+    "yurtici_yp_tl_karsilik": 10026.3,
+    "gercek_kisi_yp": 6639.4,
+    "kagit_theta_025": 4840.5
+  },
+  "r_2025_durur": {
+    "r_ic": 0.22646842104302997,
+    "r_dis": 0.03314956342851737,
+    "r_diger": 0.03176076279063271
+  },
+  "silinen": "",
+  "yazilmayan": [
+    "adim4.csv",
+    "adim5.csv",
+    "senet_kilit.txt",
+    "kapi_kilit.txt",
+    "tavan_akis.csv",
+    "tek_sistem_kademe.py"
+  ]
+}

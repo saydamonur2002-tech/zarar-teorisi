@@ -785,7 +785,7 @@
       "deger": 0.0,
       "birim": "trilyon TL/ay",
       "durum": "modellendi",
-      "not": "brüt 0.0 → şart 0.0. Faizin durması modellenmedi; firma finansman gideri referans bloğunda ölçüldü (Sektör Bilançoları 2024; 2025 bulunamadı).",
+      "not": "brüt 0.0 → şart 0.0. Faiz durması adim3.csv satırında, etiket modellendi_varsayim_kappa (κ varsayım, ΣNL=0). firma finansman gideri referans bloğunda ölçüldü (Sektör Bilançoları 2024; 2025 bulunamadı).",
       "dosya": "odeme_mahsup_sonuc.json"
     },
     {

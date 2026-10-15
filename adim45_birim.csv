@@ -1,0 +1,41 @@
+﻿donem,u,lam,nesne,eski,yeni,fark,birim,etiket,not
+2026-Q1,,1.0,tcmb_nakit_yukumluluk,898.3,898.3,0.0,milyar TL,olcum,"TCMB F.2 para. Banka kasası bunun içindedir, eklenmez."
+2026-Q1,,1.0,yurtici_tl_mevduat,15574.5,15574.5,0.0,milyar TL,olcum,HPB tablo 3. YP yoktur.
+2026-Q1,,1.0,gercek_kisi_tl,8037.5,8037.5,0.0,milyar TL,olcum,HPB tablo 3.3
+2026-Q1,,1.0,ticari_tl,3993.3,3993.3,0.0,milyar TL,olcum,HPB tablo 3.6
+2026-Q1,,1.0,resmi_tl,1455.9,1455.9,0.0,milyar TL,olcum,HPB tablo 3.9
+2026-Q1,,1.0,hhkaok_tl,331.6,331.6,0.0,milyar TL,olcum,HPB tablo 3.12
+2026-Q1,,1.0,bdfk_tl,1756.2,1756.2,0.0,milyar TL,olcum,HPB tablo 3.15
+2026-Q1,,1.0,tl_para_toplam,16472.8,16472.8,0.0,milyar TL,olcum,Nakit yükümlülüğü + yurt içi TL mevduat. M1 değildir.
+2026-Q1,,1.0,yurtici_yp_tl_karsilik,10026.3,10026.3,0.0,milyar TL karsilik,olcum_cevrilemez,USD stok durur. TL karşılığı kur ile ölçeklenir.
+2026-Q1,,1.0,gercek_kisi_yp,6639.4,6639.4,0.0,milyar TL karsilik,olcum_cevrilemez,Adım 4 adresidir. Fiat TL stokuna girmez.
+2026-Q1,,1.0,tuzel_yp,3386.9,3386.9,0.0,milyar TL karsilik,olcum_cevrilemez,USD stok durur.
+2030-Q4,1,1.0,kagit_stok_theta_025,4840.5,4840.5,0.0,milyar TL,band_varsayim,"Ayrı kat. Para toplamına eklenmez. θ=0,25, χ=0."
+2030-Q1,0.25,1.0,tl_para_toplam,16472.8,16472.8,0.0,milyar TL,senaryo_takvimi,"Stok 2026-Q1 ölçümüdür, 2030'a taşınmaz."
+2030-Q1,0.25,1.0,kur_carpan,1.0,1.0,0.0,carpan,kimlik,kur_yeni = λ · kur_eski. Düzey tahmini bu dosyada yok.
+2030-Q1,0.25,1.0,usd_stok_carpan,1.0,1.0,0.0,carpan,kimlik,USD stok durur.
+2030-Q1,0.25,1.0,faiz_orani_carpan,1.0,1.0,0.0,carpan,kimlik,r ve AOFM ölçeklenmez.
+2030-Q1,0.25,1.0,nfp_fark,0.0,0.0,0.0,milyar TL,kimlik,İki taraf da ölçeklenir. Transfer yoktur.
+2030-Q1,0.25,1.0,nl_toplam,0.0,0.0,0.0,milyar TL,kimlik,ΣNL = 0.
+2030-Q1,0.25,1.0,silinen,,,,milyar TL,bos,Geçiş silme değildir.
+2030-Q2,0.50,1.0,tl_para_toplam,16472.8,16472.8,0.0,milyar TL,senaryo_takvimi,"Stok 2026-Q1 ölçümüdür, 2030'a taşınmaz."
+2030-Q2,0.50,1.0,kur_carpan,1.0,1.0,0.0,carpan,kimlik,kur_yeni = λ · kur_eski. Düzey tahmini bu dosyada yok.
+2030-Q2,0.50,1.0,usd_stok_carpan,1.0,1.0,0.0,carpan,kimlik,USD stok durur.
+2030-Q2,0.50,1.0,faiz_orani_carpan,1.0,1.0,0.0,carpan,kimlik,r ve AOFM ölçeklenmez.
+2030-Q2,0.50,1.0,nfp_fark,0.0,0.0,0.0,milyar TL,kimlik,İki taraf da ölçeklenir. Transfer yoktur.
+2030-Q2,0.50,1.0,nl_toplam,0.0,0.0,0.0,milyar TL,kimlik,ΣNL = 0.
+2030-Q2,0.50,1.0,silinen,,,,milyar TL,bos,Geçiş silme değildir.
+2030-Q3,0.75,1.0,tl_para_toplam,16472.8,16472.8,0.0,milyar TL,senaryo_takvimi,"Stok 2026-Q1 ölçümüdür, 2030'a taşınmaz."
+2030-Q3,0.75,1.0,kur_carpan,1.0,1.0,0.0,carpan,kimlik,kur_yeni = λ · kur_eski. Düzey tahmini bu dosyada yok.
+2030-Q3,0.75,1.0,usd_stok_carpan,1.0,1.0,0.0,carpan,kimlik,USD stok durur.
+2030-Q3,0.75,1.0,faiz_orani_carpan,1.0,1.0,0.0,carpan,kimlik,r ve AOFM ölçeklenmez.
+2030-Q3,0.75,1.0,nfp_fark,0.0,0.0,0.0,milyar TL,kimlik,İki taraf da ölçeklenir. Transfer yoktur.
+2030-Q3,0.75,1.0,nl_toplam,0.0,0.0,0.0,milyar TL,kimlik,ΣNL = 0.
+2030-Q3,0.75,1.0,silinen,,,,milyar TL,bos,Geçiş silme değildir.
+2030-Q4,1.00,1.0,tl_para_toplam,16472.8,16472.8,0.0,milyar TL,senaryo_takvimi,"Stok 2026-Q1 ölçümüdür, 2030'a taşınmaz."
+2030-Q4,1.00,1.0,kur_carpan,1.0,1.0,0.0,carpan,kimlik,kur_yeni = λ · kur_eski. Düzey tahmini bu dosyada yok.
+2030-Q4,1.00,1.0,usd_stok_carpan,1.0,1.0,0.0,carpan,kimlik,USD stok durur.
+2030-Q4,1.00,1.0,faiz_orani_carpan,1.0,1.0,0.0,carpan,kimlik,r ve AOFM ölçeklenmez.
+2030-Q4,1.00,1.0,nfp_fark,0.0,0.0,0.0,milyar TL,kimlik,İki taraf da ölçeklenir. Transfer yoktur.
+2030-Q4,1.00,1.0,nl_toplam,0.0,0.0,0.0,milyar TL,kimlik,ΣNL = 0.
+2030-Q4,1.00,1.0,silinen,,,,milyar TL,bos,Geçiş silme değildir.

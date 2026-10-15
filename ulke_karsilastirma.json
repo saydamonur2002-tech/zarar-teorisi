@@ -1,0 +1,391 @@
+{
+  "kural": {
+    "yabanci_esik": 0.2,
+    "doviz_esik": 0.2,
+    "etiket": "karsilastirma_kurali",
+    "anlam": "Bes adim bu ulkelerde olculmedi. Test, yerli para alacaklisinin yerli olmasi ve doviz bacaginin disarida kalmasidir."
+  },
+  "aralik": {
+    "min": 0.15,
+    "max": 0.25,
+    "etiket": "karsilastirma_kurali",
+    "ic_yabanci": [
+      {
+        "ulke": "Euro alanı",
+        "donem": "2024-Q4",
+        "pay": 0.23,
+        "alan": "yabanci_pay"
+      }
+    ],
+    "ic_doviz": [
+      {
+        "ulke": "Türkiye",
+        "donem": "2025-12",
+        "pay": 0.2141,
+        "alan": "doviz_pay"
+      }
+    ],
+    "min_degisen": [],
+    "max_degisen": [
+      {
+        "ulke": "Türkiye",
+        "baz": "yerli_para_bacagi",
+        "yeni": "yazilir"
+      },
+      {
+        "ulke": "Euro alanı",
+        "baz": "yabanci_alacakli_buyuk",
+        "yeni": "yazilir"
+      }
+    ],
+    "max_yalniz_yabanci": [
+      {
+        "ulke": "Euro alanı",
+        "baz": "yabanci_alacakli_buyuk",
+        "yeni": "yazilir"
+      }
+    ],
+    "max_yalniz_doviz": [
+      {
+        "ulke": "Türkiye",
+        "baz": "yerli_para_bacagi",
+        "yeni": "yazilir"
+      }
+    ]
+  },
+  "esik_araligi": {
+    "yabanci": {
+      "esik_kural": 0.2,
+      "alt_ulke": "Endonezya",
+      "alt_donem": "2025-08-11",
+      "alt": 0.1461,
+      "ust_ulke": "Euro alanı",
+      "ust_donem": "2024-Q4",
+      "ust": 0.23,
+      "genislik": 0.0839,
+      "n": 16,
+      "etiket": "olcum",
+      "olcum": {
+        "genislik_puan": 8.39,
+        "ic_satir": 0,
+        "ic_ulkeler": [],
+        "kural_alttan_puan": 5.39,
+        "kural_ustten_puan": 3.0,
+        "etiket_degisen": 0,
+        "etiket_degisen_ulkeler": [],
+        "kesit": "(alt, ust]",
+        "etiket": "olcum"
+      }
+    },
+    "doviz_olculen": {
+      "esik_kural": 0.2,
+      "alt_ulke": "Brezilya",
+      "alt_donem": "2026-08",
+      "alt": 0.0375,
+      "ust_ulke": "Türkiye",
+      "ust_donem": "2025-12",
+      "ust": 0.2141,
+      "genislik": 0.1766,
+      "n": 3,
+      "etiket": "olcum",
+      "olcum": {
+        "genislik_puan": 17.66,
+        "ic_satir": 0,
+        "ic_ulkeler": [],
+        "kural_alttan_puan": 16.25,
+        "kural_ustten_puan": 1.41,
+        "etiket_degisen": 0,
+        "etiket_degisen_ulkeler": [],
+        "kesit": "(alt, ust]",
+        "etiket": "olcum"
+      }
+    },
+    "yabanci_en_genis_komsu": {
+      "alt_ulke": "Arjantin",
+      "alt_donem": "2025-12",
+      "alt": 0.3431,
+      "ust_ulke": "İspanya",
+      "ust_donem": "2025-12",
+      "ust": 0.473,
+      "genislik": 0.1299,
+      "n": 16,
+      "genislik_puan": 12.99,
+      "etiket": "olcum"
+    },
+    "doviz_en_genis_komsu": {
+      "alt_ulke": "Türkiye",
+      "alt_donem": "2025-12",
+      "alt": 0.2141,
+      "ust_ulke": "Arjantin",
+      "ust_donem": "2025-12",
+      "ust": 0.5783,
+      "genislik": 0.3642,
+      "n": 3,
+      "genislik_puan": 36.42,
+      "etiket": "olcum"
+    },
+    "doviz_kagit_sifir": [
+      "Japonya",
+      "ABD",
+      "Çin",
+      "Almanya",
+      "Fransa",
+      "İtalya",
+      "İspanya",
+      "Euro alanı",
+      "İngiltere",
+      "Güney Kore",
+      "Meksika",
+      "Polonya"
+    ],
+    "doviz_ayrilmadi": [
+      "Endonezya"
+    ],
+    "anlam": "0,20 kurali bu bosluklarin icindedir. Araligin icindeki her kesit bu tabloda ayni etiketi verir. Aralik bir yasa degildir. Kagit cinsinden konan doviz 0, doviz araligina girmez."
+  },
+  "grup": {
+    "yerli_para_bacagi": [
+      "Türkiye"
+    ],
+    "yazilir": [
+      "Japonya",
+      "Çin",
+      "Brezilya",
+      "Meksika",
+      "Polonya"
+    ],
+    "yabanci_alacakli_buyuk": [
+      "ABD",
+      "Almanya",
+      "Fransa",
+      "İtalya",
+      "İspanya",
+      "Euro alanı",
+      "İngiltere",
+      "Güney Kore"
+    ],
+    "doviz_bacagi_disarida": [
+      "Arjantin"
+    ],
+    "yerli_alacakli_doviz_ayrilmadi": [
+      "Endonezya"
+    ]
+  },
+  "yazilir": [
+    "Japonya",
+    "Çin",
+    "Brezilya",
+    "Meksika",
+    "Polonya"
+  ],
+  "satirlar": [
+    {
+      "ulke": "Türkiye",
+      "stok": "merkezi yönetim iç borç",
+      "donem": "2025-12",
+      "yabanci_pay": 0.076,
+      "yerli_pay": 0.924,
+      "doviz_pay": 0.2141,
+      "yerli_para_pay": 0.7859,
+      "etiket": "yerli_para_bacagi",
+      "kaynak": "Hazine, Kamu Borç Yönetimi Raporu 2026, s. iç borç kompozisyonu",
+      "url": "https://ms.hmb.gov.tr/uploads/2026/08/Kamu-borc-Yonetimi-Raporu-2026-2f52a814a2d37854.pdf",
+      "not": "Yurt dışı yerleşik payı yüzde 7,6. İç borcun 1.745,8 / 8.152,8'i döviz. ROW→F 6.575 ve ROW→GY 3.131 başka stoktur, bu paydaya girmez."
+    },
+    {
+      "ulke": "Japonya",
+      "stok": "JGB + T-bill",
+      "donem": "2026-06",
+      "yabanci_pay": 0.1313,
+      "yerli_pay": 0.8687,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yazilir",
+      "kaynak": "MOF holder tablosu, BOJ flow of funds, 17 Eylül 2026 ön rakam",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/reference/Others/holdings01.pdf",
+      "not": "Yabancı 149,9 / 1.142,0 trilyon yen. T-bill hariç JGB'de yabancı yüzde 7,9 (79,9 / 1.006,5). BOJ, JGB'nin yüzde 46,7'si. Kâğıt yen cinsidir."
+    },
+    {
+      "ulke": "ABD",
+      "stok": "Treasury",
+      "donem": "2025-06",
+      "yabanci_pay": 0.34,
+      "yerli_pay": 0.66,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "ABD Hazine / Fed, yabancı portföy anketi, 30 Haziran 2025",
+      "url": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/shl2025r.pdf",
+      "not": "Rapor: yabancılar Treasury'nin yüzde 34'ü. Uzun vadeli Treasury tutma 7.665 milyar dolar. Kâğıt dolar cinsidir."
+    },
+    {
+      "ulke": "Çin",
+      "stok": "tahvil saklama, bütün piyasa",
+      "donem": "2025-12",
+      "yabanci_pay": 0.0178,
+      "yerli_pay": 0.9822,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yazilir",
+      "kaynak": "PBOC, Xinhua 18 Şubat 2026",
+      "url": "http://english.people.com.cn/n3/2026/0218/c90000-20426924.html",
+      "not": "Yurt dışı kurum saklaması 3,5 / 196,7 trilyon yuan, yüzde 1,8. Stok bütün tahvil piyasasıdır, yalnız hazine kâğıdı değildir. Kâğıt yuan cinsidir."
+    },
+    {
+      "ulke": "Arjantin",
+      "stok": "merkezi idare brüt borç",
+      "donem": "2025-12",
+      "yabanci_pay": 0.3431,
+      "yerli_pay": 0.6569,
+      "doviz_pay": 0.5783,
+      "yerli_para_pay": 0.4217,
+      "etiket": "doviz_bacagi_disarida",
+      "kaynak": "Ekonomi Bakanlığı, deuda pública 31-12-2025, A.4.5 ve A.1.4",
+      "url": "https://www.argentina.gob.ar/sites/default/files/deuda_publica_31-12-2025.xlsx",
+      "not": "Yurt dışı yerleşik 155,3 / 452,7 milyar dolar, yüzde 34,3. Döviz 261,8 / 452,7. Yerli para yüzde 42,2. Para ve yerleşim çaprazı bu iki tabloda yok."
+    },
+    {
+      "ulke": "Brezilya",
+      "stok": "federal kamu borcu",
+      "donem": "2026-08",
+      "yabanci_pay": 0.0991,
+      "yerli_pay": 0.9009,
+      "doviz_pay": 0.0375,
+      "yerli_para_pay": 0.9625,
+      "etiket": "yazilir",
+      "kaynak": "Tesouro Nacional, Federal Public Debt monthly, Ağustos 2026",
+      "url": "https://cdn.tesouro.gov.br/sistemas-internos/apex/producao/sistemas/thot/arquivos/publicacoes/55920_2565378/Texto_RMD_Ingles%20Aug26.pdf",
+      "not": "Yerleşik olmayanlar DFPD'nin yüzde 9,91'i. Dış federal borç stokun yüzde 3,75'i (348,3 milyar real, 67,2 milyar dolar). DFPD 8.944,5 milyar real."
+    },
+    {
+      "ulke": "Almanya",
+      "stok": "devlet borç kâğıdı",
+      "donem": "2025-12",
+      "yabanci_pay": 0.572,
+      "yerli_pay": 0.428,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "Banco de España, FSR Spring 2026 kutu 4.2, ECB SHS",
+      "url": "https://www.bde.es/f/webbe/Secciones/Publicaciones/InformesBoletinesRevistas/InformesEstabilidadFinancera/26/FSR_2026_1_Box4_2.pdf",
+      "not": "Yurt dışı = euro alanı bankası 3,5 + euro alanı banka dışı 19,4 + euro dışı 34,3. Yerli banka ve banka dışı 14,9. Basılan satırlar 72,1 eder. Kalan 27,9 kutu metninde Eurosistemdir, ayrı satır basılmadı. Kâğıt euro cinsidir."
+    },
+    {
+      "ulke": "Fransa",
+      "stok": "genel yönetim uzun vadeli borç kâğıdı",
+      "donem": "2025-12",
+      "yabanci_pay": 0.546,
+      "yerli_pay": 0.454,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "Banque de France, securities issues, 2025-Q4",
+      "url": "https://www.banque-france.fr/system/files/webstats/Emission_et_detention_de_titres_francais_2025T4_20260414/EN_Stat_Info_Securities_issues_by_French_residents_2025Q4.pdf",
+      "not": "Yerleşik olmayanların payı yüzde 54,6. 2024 sonu yüzde 52,8. Kâğıt euro cinsidir."
+    },
+    {
+      "ulke": "İtalya",
+      "stok": "devlet borç kâğıdı",
+      "donem": "2025-12",
+      "yabanci_pay": 0.318,
+      "yerli_pay": 0.682,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "Banco de España, FSR Spring 2026 kutu 4.2, ECB SHS",
+      "url": "https://www.bde.es/f/webbe/Secciones/Publicaciones/InformesBoletinesRevistas/InformesEstabilidadFinancera/26/FSR_2026_1_Box4_2.pdf",
+      "not": "Yurt dışı = euro alanı bankası 6,1 + euro alanı banka dışı 13,6 + euro dışı 12,1. Yerli banka 14,5, yerli banka dışı 30,7. Kâğıt euro cinsidir."
+    },
+    {
+      "ulke": "İspanya",
+      "stok": "devlet borç kâğıdı",
+      "donem": "2025-12",
+      "yabanci_pay": 0.473,
+      "yerli_pay": 0.527,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "Banco de España, FSR Spring 2026 kutu 4.2, ECB SHS",
+      "url": "https://www.bde.es/f/webbe/Secciones/Publicaciones/InformesBoletinesRevistas/InformesEstabilidadFinancera/26/FSR_2026_1_Box4_2.pdf",
+      "not": "Yurt dışı = euro alanı bankası 10,3 + euro alanı banka dışı 19,2 + euro dışı 17,8. Yerli banka 14,0, yerli banka dışı 13,8. Kâğıt euro cinsidir."
+    },
+    {
+      "ulke": "Euro alanı",
+      "stok": "genel yönetim borcu",
+      "donem": "2024-Q4",
+      "yabanci_pay": 0.23,
+      "yerli_pay": 0.77,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "ECB, International Role of the Euro, 2025",
+      "url": "https://www.ecb.europa.eu/press/other-publications/ire/article/html/ecb.ireart202506_01~a8b7241329.en.html",
+      "not": "Alan dışı yerleşikler stokun yüzde 23'ü, yaklaşık 2.600 milyar euro. Alan içi tutma bu payda yerlidir. Ülke satırlarının toplamı değildir."
+    },
+    {
+      "ulke": "İngiltere",
+      "stok": "gilt",
+      "donem": "2024-09",
+      "yabanci_pay": 0.32,
+      "yerli_pay": 0.68,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "HM Treasury, Debt Management Report 2025-26",
+      "url": "https://www.gov.uk/government/publications/debt-management-report-2025-26/debt-management-report-2025-26-accessible",
+      "not": "Yurt dışı yatırımcı gilt stokunun yüzde 32'si. İngiltere Merkez Bankası APF yüzde 24. Sigorta ve emeklilik yüzde 21. Kâğıt sterlin cinsidir."
+    },
+    {
+      "ulke": "Güney Kore",
+      "stok": "hazine tahvili",
+      "donem": "2025-12",
+      "yabanci_pay": 0.257,
+      "yerli_pay": 0.743,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yabanci_alacakli_buyuk",
+      "kaynak": "Ekonomi ve Maliye Bakanlığı, Korea Treasury Bonds 2025",
+      "url": "https://ktb.mofe.go.kr/eng/publications.do",
+      "not": "Yabancı pay yüzde 25,7. Tutulan stok 297,4 trilyon won. 2024 payı yüzde 22,8. Kâğıt won cinsidir."
+    },
+    {
+      "ulke": "Meksika",
+      "stok": "devlet iç kâğıdı",
+      "donem": "2025-12",
+      "yabanci_pay": 0.114,
+      "yerli_pay": 0.886,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yazilir",
+      "kaynak": "Monex, Banxico yerleşik dağılımı",
+      "url": "https://www.monex.com.mx/portal/download/reportes/260121%20Reconfiguracion%20demanda%20extranjera.pdf",
+      "not": "Kayıtlı yerleşik pay yüzde 88,6. Kayıtlı yurt dışı pay yüzde 11,4. Not, yerleşik saklamanın bir kısmında lehtarın yabancı olabileceğini yazar. Bu satır Banxico kaydını kullanır. Kâğıt peso cinsidir."
+    },
+    {
+      "ulke": "Polonya",
+      "stok": "yurt içi hazine kâğıdı",
+      "donem": "2025-11",
+      "yabanci_pay": 0.117,
+      "yerli_pay": 0.883,
+      "doviz_pay": 0.0,
+      "yerli_para_pay": 1.0,
+      "etiket": "yazilir",
+      "kaynak": "Polonya Maliye Bakanlığı, 2026 birinci çeyrek finansman planı",
+      "url": "https://www.gov.pl/attachment/fe7a3cce-e597-4289-b09e-972d337e798e",
+      "not": "Yerleşik olmayan portföy 169,6 milyar zloti, yurt içi hazine kâğıdının yüzde 11,7'si. İhraç yeri yurt dışı olan borç, hazine borcunun yüzde 20,4'üdür ve bu paydanın dışındadır. Kâğıt zloti cinsidir."
+    },
+    {
+      "ulke": "Endonezya",
+      "stok": "SBN",
+      "donem": "2025-08-11",
+      "yabanci_pay": 0.1461,
+      "yerli_pay": 0.8539,
+      "doviz_pay": "",
+      "yerli_para_pay": "",
+      "etiket": "yerli_alacakli_doviz_ayrilmadi",
+      "kaynak": "Bisnis, Maliye Bakanlığı borç kâğıdı müdürü, 13 Ağustos 2025",
+      "url": "https://premium.bisnis.com/read/20250815/664/1902826/comparing-foreign-bondholders-in-the-government-bond-sbn-during-the-eras-of-sby-jokowi-and-prabowo",
+      "not": "Yabancı 938,28 / 6.420,62 trilyon rupiah, yüzde 14,6. Bank Indonesia yüzde 24,2. Ticari banka yüzde 20,3. SBN'nin döviz kırılımı bu haberde yok."
+    }
+  ]
+}
