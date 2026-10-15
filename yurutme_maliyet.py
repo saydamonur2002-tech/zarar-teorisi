@@ -5,7 +5,7 @@ Program akışı: adım 1'de ortak stok (silinebilecek üst sınır), adım 2'de
 Adım 1 ve 2'de akış bir STOK (tek seferlik temizleme/mahsup), adım 3 ve 5'te yıllık akış, adım 4'te 2029-2031 toplamı: birimler karıştırılmaz.
 ρ bandı (varsayım, kaynaklı ama ikincil):
   alt  0,004  hedeflenmiş programlarda bireysel hedefleme idari maliyetinin alt ucu (Grosh'a atfedilen aralık 0,4%-29%; ikincil kaynak, doğrulanmadı)
-  orta 0,09   aynı aralığın ortalaması (%9)
+  orta 0,09   aynı kaynakta bildirilen ortalama (%9)
   pilot 0,25  hekis_model pilot payı (SAFETY=1,25; karar)
   üst  0,29   aynı aralığın üst ucu
 Adım 1, 2 (stok mahsubu) ve 4 (senet) için ρ'nun dayanağı zayıf: hedeflenmiş transfer idaresi aralığı bu işlere taşınmıştır. Stok mahsubunda (adım 1, 2) yalnız alt uç (%0,4) kullanılır: %9 ve üstü ρ, ortak stoka uygulandığında 1.800-5.900 milyar TL gibi gerçekçi olmayan tutarlar verir (temizleme maliyeti stokla orantılı değildir). Kullanılan değer üst sınırdır."""
