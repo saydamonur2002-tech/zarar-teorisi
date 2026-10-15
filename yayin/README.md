@@ -29,6 +29,7 @@
 | [DURDURMA_YOLU_KURAL.md](./DURDURMA_YOLU_KURAL.md) | Durdurmanın gerçekleşme yolu, kural bazlı (halka/katman/kapı, aktör değil): kalibre C yoluna uydurulmuş hız sabiti, hız çarpanı ve sıra kuralı varyantları, kısa vade finansman ve rezerv tükenme yılı |
 | [URETIM_KATMAN_MODEL.md](./URETIM_KATMAN_MODEL.md) | Drive'daki üretim katmanı modeli (81 il sızıntı) sisteme bağlandı: belge sayılarının yeniden üretimi, ε duyarlılığı, halka çarpanı 0,68→0,773, üretim tavanı 2054→4264 mn $, atanmış taban 0,25'in bağlayıcı kaldığı bulgusu |
 | [TABAN_DUYARLILIK.md](./TABAN_DUYARLILIK.md) | Gerçekleşme tabanlarının (zarar 0,70 / üretim 0,25 / finans 0,22) tüm zincir yeniden koşularak duyarlılığı: kararı zarar tabanı belirliyor, üretim ve finans tabanı belirlemiyor |
+| [GIDISAT_RAPORU.md](./GIDISAT_RAPORU.md) | Güncel EVDS verisiyle gidişat (2026-08/10): 12 aylık cari açık, yatırım geliri dengesi, rezerv, faiz/gelir, TÜFE; hane kredisi stresi; modelin güncel çapalarla duyarlılığı (`gidisat_evds.py`) |
 
 Yenilemek: repo kökünde `python3 yayin_zarar_teorisi_docx.py` — çıktı kökte oluşur; kopya buraya `cp ZARAR_TEORISI_MINSKY_BULGULAR.docx yayin/` ile alınır.
 
