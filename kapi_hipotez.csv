@@ -1,0 +1,6 @@
+hipotez,sonuc,neden
+H-A,test edilemez,"2024-W04, 2024-W12 ve 2024-W52 konuşmalar arşivi listesi kilitlendi, yön kodlanmadı. Eski beş konuşma evren değil. Küme sabit doğrulanamadı."
+H-B,test edilemez,4483 kırılımı yok. Katsayı yok. Haberle doldurulmadı.
+H-C,karışık,Rol dönümünde gecikme kovası ve geri adım kuralı. İki gösterge birlikte kayan dönüm rol kuralı kaydıdır. Hizip kodu boş. Oyuncu küme cümlesi yok.
+H-D,test edilemez,Sıkı adayı geri adım 1 (2024-12-26). Hizip kodu boş. Küme değişmeden şartı doğrulanamadı. Kasa gevşekken küme yenilgisi cümlesi yazılmadı.
+H-E,test edilemez,Hizip ve kasa kontrol edilemedi. Artık pay hesaplanmadı. Küçük n.

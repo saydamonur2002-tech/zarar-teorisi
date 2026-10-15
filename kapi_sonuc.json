@@ -1,0 +1,10 @@
+{
+  "teori": "İkinci tur ölçümü. Nüsha: 2023/284 ek listesi okundu, ilgili koltuklarda bitiş bulundu. Aynı karar atama kümesidir, hizip kodu boş. Sıkılık kuralı yalnız tur2 satırında. Tıkaç adı konmadı: nüsha ile sıkılık aynı adı göstermiyor. Ceza kapalı. Bilgi kapısı açılmadı. Tek imza tıkaç ilanı değil.",
+  "tikac_adi": "konmadi",
+  "uyari": "Küçük n. OCR. Yeni atananların kendi bitişi bulunamadı. Haftalık net rezerv serisi doğrulanmadı. Hizip yok. 2023-06-23 ile 2024-01-24 arası gün satırı tek tek açılmadı. Kodlama hata payı var.",
+  "nusha": "bitis_bulundu",
+  "tikac_kapali": "ceza kapalı; bilgi kapısı açılmadı; sıkılık küme şartıyla ayırt etmedi",
+  "evds_hata": "",
+  "cop_zaman": 1,
+  "cop_kasa": 1
+}
