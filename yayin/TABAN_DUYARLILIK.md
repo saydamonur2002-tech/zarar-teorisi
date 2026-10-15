@@ -69,6 +69,15 @@ Karar, zarar tabanı **0.513** ve üstündeyken duruyor (0,51'de skor 44,9 ile d
 
 Üç taban birlikte ölçeklenince karar, çarpan **0.79** (yani %79) ve üstündeyken duruyor; marj **%21**. Yalnız zarar tabanı için eşik %73 (marj %27); üretim ve finans tabanı tek başına kararı hiçbir noktada değiştirmiyor. Birlikte düşürünce eşik yükselir (daha dar marj), çünkü üretim tabanı (otomatik 0,194'ün üstünde olduğu sürece bağlayıcı) skoru birkaç onda puan aşağı çeker.
 
+## Bu sayılar neyi temsil ediyor?
+
+- **Katman yığını:** TR net kaybı, C yolundan başlayıp üç adımda iyileşir: zarar çözümü (C → C_zarar_cozum), üretim iç akışı, finans katmanı. Modelin her adım için hesapladığı iyileşme (Δ): zarar 4,587 vekil (≈ 11.876 mn $), üretim 8,491 (≈ 21.984 mn $), finans 3,162 (≈ 8.187 mn $); 1 vekil ≈ 2.589,12 mn $.
+- **Gerçekleşme oranı:** Her adımın Δ'sinin TR net'e gerçekten yansıyan payı. TR net(10y) = C + Δ_zarar·r_z + Δ_üretim·r_ü + Δ_finans·r_f. Yani "model bu kadar iyileşme hesapladı, politikanın bunun yüzde kaçı gerçekleşir" varsayımı.
+- **Otomatik oran:** Katmanın 10 yıllık USD iyileşme tavanı ÷ Δ (USD). Tavanlar: zarar 1.507 mn $ (yatırım geliri giderinin %8'i), üretim 4.264 mn $ (Drive modeli, orta reform net iyileşme), finans 1.884 mn $ (yatırım geliri giderinin %10'u). Sonuç: zarar 0,127, üretim 0,194, finans 0,230. Bu, "mümkün olan en çok bu kadar kazanılır" tavanından türeyen orandır.
+- **Taban:** Otomatik oran ne derse desin gerçekleşmenin en az bu orana çıkacağı **varsayımı** (`max(taban, otomatik)`). Zarar 0,70 = zarar çözümü adımının en az %70'i, üretim 0,25 = en az %25'i, finans 0,22 = en az %22'si gerçekleşir. Son uygulanan oran bunun ×0,95 (politika katsayısı) halidir: 0,665 / 0,2375 / 0,2186.
+- **Dolayısıyla:** Taban bir "uygulama başarısı alt sınırı" varsayımıdır; ölçülmüş bir değer değil ve nereden geldiği kayıtlı değil. Zarar tabanı, otomatik tavandan türeyen orandan yaklaşık 5,5 kat büyüktür; yani model zarar adımının tavanın izin verdiğinden çok daha fazlasının gerçekleşeceğini varsayıyor.
+- **Eşiklerin anlamı:** Skor 45'in altına inince karar `kisitli_uygulanabilir`'den `dusuk_uygulanabilirlik`'e düşer. Zarar tabanı 0,70'ten 0,513'e (%73) inerse ya da üç taban birlikte %79'a inerse bu olur. Yani bu uygulama-başarısı varsayımlarının yaklaşık beşte biri kadar iyimser olması kararı bozar.
+
 ## Okuma
 
 - **Kararı zarar teorisi tabanı (0,70) belirliyor.** Yalnız onu sıfırlamak skoru 47,7 → 39,4 yapar ve kararı `dusuk_uygulanabilirlik`e çevirir; eşik 0,513'tür.
