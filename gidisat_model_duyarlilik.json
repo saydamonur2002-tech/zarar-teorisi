@@ -1,0 +1,54 @@
+{
+  "yontem": "Yöntem: repodaki 2024 çapalarının (yatırım geliri gideri 18.841, ihracat 261.925, ithalat 344.100 mn $) EVDS ödemeler dengesi serilerindeki 12 aylık büyüme çarpanlarıyla (2024-12 → 2026-08) ölçeklendiği bir yan koşu: ihracat ×1,0688, ithalat ×1,1282; yatırım geliri gideri iki tanım için ×1,237 (brüt gider) ve ×1,343 (net denge). Tanımlar farklı kaynaklardan (TİM/Hazine ve TCMB ödemeler dengesi) geldiği için düzey değil büyüme oranı uygulandı. Resmî çapalar 2024'te bırakıldı; bu bir yeniden kalibrasyon değil duyarlılık koşusudur. Tabanlar (0,70 / 0,25 / 0,22) aynen.",
+  "sonuclar": {
+    "baz": {
+      "ad": "2024 çapası (repo)",
+      "skor": 47.7,
+      "karar": "kisitli_uygulanabilir",
+      "tr_net_10y": -13.429,
+      "g": {
+        "zarar_teorisi": 0.665,
+        "uretim_ic_akis": 0.2375,
+        "finans_katman": 0.2186
+      },
+      "tavan": {
+        "zarar": 1507.3,
+        "uretim": 4264.5,
+        "finans": 1884.1
+      }
+    },
+    "brut": {
+      "ad": "yatırım geliri gideri ×1,237 (brüt gider, 12a 2026-08)",
+      "skor": 48.0,
+      "karar": "kisitli_uygulanabilir",
+      "tr_net_10y": -13.38,
+      "g": {
+        "zarar_teorisi": 0.665,
+        "uretim_ic_akis": 0.2375,
+        "finans_katman": 0.2705
+      },
+      "tavan": {
+        "zarar": 1864.5,
+        "uretim": 4264.5,
+        "finans": 2330.6
+      }
+    },
+    "net": {
+      "ad": "yatırım geliri gideri ×1,343 (net denge, 12a 2026-08)",
+      "skor": 48.2,
+      "karar": "kisitli_uygulanabilir",
+      "tr_net_10y": -13.358,
+      "g": {
+        "zarar_teorisi": 0.665,
+        "uretim_ic_akis": 0.2375,
+        "finans_katman": 0.2936
+      },
+      "tavan": {
+        "zarar": 2024.2,
+        "uretim": 4264.5,
+        "finans": 2530.3
+      }
+    }
+  },
+  "okuma": "**Okuma:** Çapalar güncellenince zarar ve finans tavanları büyür (yatırım geliri gideri arttığı için); finans gerçekleşmesi 0,219 → 0,271–0,294 yükselir çünkü otomatik oran tabanın (0,22) üstüne çıkar. Zarar gerçekleşmesi 0,665'te kalır çünkü zarar tabanı (0,70) hâlâ bağlayıcıdır. Skor 47,7 → 48,0–48,2, karar `kisitli_uygulanabilir` aynı; 45 çizgisine marj 2,7 puandan 3,0–3,2 puana çıkar. Yani güncel dış denge verisi (daha yüksek yatırım geliri gideri) modelin sonucunu zayıflatmıyor; sınırlı iyileştiriyor, ama bu iyileşme tavan hesabının mekaniğinden geliyor (gider arttıkça tavan büyür), gerçek bir iyileşme değil. Karar hâlâ zarar tabanına bağlı (eşik 0,513)."
+}
