@@ -1,0 +1,15 @@
+﻿adim,kalem,durum,alt,ust,birim,kaynak,not
+1,maliyet,yok,,,milyar TL,—,Adım 1 stok; maliyet satırı yok.
+1,yürütme,modellenmedi,,,milyar TL,—,"Tespit, tahsil, idari maliyet modelde yok."
+2,maliyet,yok,,,milyar TL,—,"Temerrüt 0, parametre; maliyet satırı yok."
+2,yürütme,modellenmedi,,,milyar TL,—,
+3,maliyet,yok,,,milyar TL,—,Kredi ihtiyacı 0; faizin durması modellenmedi.
+3,yürütme,modellenmedi,,,milyar TL,—,
+4,maliyet: prim toplamı 2029-2031,band_varsayim,77.5,1058.9,milyar TL,adim4_adres_yonlendirme.csv,"12 senaryo; orta (θ 0,25 χ 0,5 π 0,05) 529.4. Endeks bacağı hesaplanmadı: alt sınır olabilir."
+4,"maliyet: kredi daralması (tepe, yıllık)",band_varsayim,154.9,774.5,milyar TL/yıl,adim4_adres_yonlendirme.csv,"Orta 387.2. Banka mevduat kaybı × 0,08."
+4,yürütme,modellenmedi,,,milyar TL,—,İhraççı K′ varsayım. Prim sübvansiyon olmadığı için pilot payı uygulanmaz.
+5,"maliyet: Ho→Ha transferi, kapsama %20",band_varsayim,51.6,160.2,milyar TL/yıl,adim5_kira_aralik.csv,H içi aktarım; H toplam NL 0.
+5,"maliyet: Ho→Ha transferi, kapsama %50",band_varsayim,129.1,400.6,milyar TL/yıl,adim5_kira_aralik.csv,
+5,"maliyet: Ho→Ha transferi, kapsama %100",band_varsayim,258.2,801.1,milyar TL/yıl,adim5_kira_aralik.csv,
+5,yürütme,modellenmedi,,,milyar TL/yıl,—,"Tespit, tahsil, idari maliyet modelde yok."
+5,yürütme: ima edilen ödenek (pilot payı %25 × transfer %20-100),varsayim_pay,12.9,200.3,milyar TL/yıl,"hekis_model pilot SAFETY=1,25",Maliyet tahmini değil; yürütme için ayrılabilecek pay. Gerçek maliyet: tespit/tahsil/idari verisi yok.

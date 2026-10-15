@@ -44,6 +44,10 @@ Adım dosyalarına ve kapılara yazılmaz; etiketiyle okunur. Harita: `GIRDI_HAR
 | kapı | `gecis_payi_band_sonuc.json` | `gecis_payi_band.py` | geçiş payı nokta tahmini: 0.9389 | `tahmin_ols` |
 | 5 | `adim5_kira_sonuc.json` | `adim5_kira.py` | birim kira TL/m²/ay: 258.45 | `olcum` |
 
+## Maliyet ve yürütme maliyeti
+
+Adım adım: `BES_ADIM_MALIYET.md` (`python3 bes_adim_maliyet.py`). Adım 4 ve 5 maliyeti band (varsayım); yürütme maliyeti (tespit, tahsil, idari) hiçbir adımda `modellenmedi`.
+
 ## Ne denmez
 
 - 'Beş adım kuruldu' denmez. Şu adım şu etiket; kilitli kapı boş.

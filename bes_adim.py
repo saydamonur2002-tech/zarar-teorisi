@@ -280,6 +280,8 @@ def md(son: dict) -> str:
               "| Adım | Yan dosya | Kod | Sayı | Etiket |", "| --- | --- | --- | --- | --- |"]
         s += [f"| {y['adim']} | `{y['dosya']}` | `{y['kod']}` | {y['sayi']} | `{y['etiket']}` |" for y in yan]
         s.append("")
+    s += ["## Maliyet ve yürütme maliyeti", "",
+          "Adım adım: `BES_ADIM_MALIYET.md` (`python3 bes_adim_maliyet.py`). Adım 4 ve 5 maliyeti band (varsayım); yürütme maliyeti (tespit, tahsil, idari) hiçbir adımda `modellenmedi`.", ""]
     s += ["## Ne denmez", "",
           "- 'Beş adım kuruldu' denmez. Şu adım şu etiket; kilitli kapı boş.",
           "- 'Stok yüzde X silindi' denmez; silinen boş.",
