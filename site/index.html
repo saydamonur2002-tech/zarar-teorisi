@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>Beş Adım Maliyet Modeli</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Yerleşim: solda girdiler, sağda sonuç; altta adım adım açıklama. Defter/muhasebe dili: gri-yeşil zemin, mürekkep, tek vurgu. */
+:root{
+  --bg:#EDF0EE; --surface:#FFFFFF; --ink:#15201E; --muted:#56635F; --line:#D2D9D6; --soft:#E4E9E6;
+  --accent:#0E6B5E; --accent-ink:#FFFFFF; --warn:#8A4B0E; --warnbg:#F6EBDD;
+  --c1:#7E8E89; --c2:#0E6B5E; --c3:#C0641B; --c4:#B0344F;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1715; --surface:#17211F; --ink:#E6EEEB; --muted:#9AAAA5; --line:#2A3835; --soft:#1F2C29;
+  --accent:#3FC1A9; --accent-ink:#0B1412; --warn:#E8B27A; --warnbg:#2B2116;
+  --c1:#7C8B87; --c2:#3FC1A9; --c3:#E2954A; --c4:#E26A84; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1715; --surface:#17211F; --ink:#E6EEEB; --muted:#9AAAA5; --line:#2A3835; --soft:#1F2C29;
+  --accent:#3FC1A9; --accent-ink:#0B1412; --warn:#E8B27A; --warnbg:#2B2116;
+  --c1:#7C8B87; --c2:#3FC1A9; --c3:#E2954A; --c4:#E26A84; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);margin:0;
+  padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;line-height:1.15}
+h1{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:20px;font-weight:700}
+h3{font-size:16px;font-weight:700}
+.lede{max-width:68ch;color:var(--muted);margin:10px 0 0}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;min-width:0}
+.panel + .panel{margin-top:16px}
+.presets{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+button.pre{font:600 13px var(--f-body);padding:8px 14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:4px;cursor:pointer}
+button.pre[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button.pre:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:16px}
+.field label,.field .lab{font-weight:600;font-size:13px;display:flex;justify-content:space-between;gap:8px}
+.field .val{font-family:var(--f-mono);color:var(--accent);font-weight:500}
+.field small{color:var(--muted);font-size:12px;line-height:1.4}
+input[type=range]{width:100%;accent-color:var(--accent)}
+select{font:14px var(--f-body);padding:7px 8px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:4px;width:100%}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.kpis{grid-template-columns:minmax(0,1fr)}}
+.kpi .n{font:500 26px var(--f-mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.kpi .t{font-size:12px;color:var(--muted);margin-top:2px}
+.kpi.main .n{color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);margin:10px 0 0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+svg .grid line{stroke:var(--line)}
+.s1{fill:var(--c1)}.s2{fill:var(--c2)}.s3{fill:var(--c3)}.s4{fill:var(--c4)}
+.chartbox{overflow-x:auto}
+.chartbox svg{min-width:460px;width:100%;height:auto;display:block}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;color:var(--muted);font-size:12px}
+td{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+tr.peak td{background:var(--soft)}
+.note{background:var(--warnbg);color:var(--warn);border-radius:4px;padding:10px 12px;font-size:13px}
+.step5{display:flex;flex-direction:column;gap:4px}
+details{border-top:1px solid var(--line);padding:12px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font:700 16px var(--f-display);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+details p{margin:10px 0 0;max-width:72ch}
+.tag{font:500 11px var(--f-mono);padding:2px 7px;border-radius:3px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.tag.o{color:var(--accent);border-color:var(--accent)}
+.tag.v{color:var(--warn);border-color:var(--warn)}
+footer{color:var(--muted);font-size:13px;max-width:78ch}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Beş adım, ne kadara mal olur?</h1>
+  <p class="lede">Borç çözümü önerisinin yürütme maliyetini (tespit, tahsil, idare) kaydırıcılarla değiştir ve yıl yıl, GSYH'ye oranıyla gör. Tutarlar milyar TL. Sayılar tahmin değil, varsayım bandıdır.</p>
+</header>
+
+<div class="grid">
+<aside>
+  <div class="panel">
+    <h2>Senaryo</h2>
+    <div class="presets" role="group" aria-label="Hazır senaryolar">
+      <button class="pre" data-p="dusuk" aria-pressed="false">Düşük</button>
+      <button class="pre" data-p="orta" aria-pressed="true">Orta</button>
+      <button class="pre" data-p="yuksek" aria-pressed="false">Yüksek</button>
+    </div>
+    <div class="field">
+      <label for="rho"><span>Yürütme oranı ρ</span><span class="val" id="rhoV"></span></label>
+      <input id="rho" type="range" min="0.4" max="29" step="0.1" value="9">
+      <small>Akışın yüzde kaçı idareye gider. Uçlar ikincil kaynaktan, %25 pilot kararı. Dayanağı zayıf.</small>
+    </div>
+    <div class="field">
+      <label for="kappa"><span>Faiz durma payı κ (adım 3)</span><span class="val" id="kappaV"></span></label>
+      <input id="kappa" type="range" min="0.25" max="1" step="0.05" value="0.5">
+      <small>Firma kredi stokunun ne kadarında faiz durur. Varsayım.</small>
+    </div>
+    <div class="field">
+      <span class="lab">Senet (adım 4)</span>
+      <div class="row3">
+        <div><label for="theta" class="lab">Dönüşüm θ</label><select id="theta"><option value="0.1">%10</option><option value="0.25" selected>%25</option><option value="0.5">%50</option></select></div>
+        <div><label for="chi" class="lab">Yenileme χ</label><select id="chi"><option value="0.0">%0</option><option value="0.5" selected>%50</option></select></div>
+        <div><label for="pi" class="lab">Prim π</label><select id="pi"><option value="0.02">%2</option><option value="0.05" selected>%5</option></select></div>
+      </div>
+      <small id="a4info"></small>
+    </div>
+    <div class="field">
+      <span class="lab">Yeni para birimi (adım 4.5, 2030)</span>
+      <div class="row3" style="grid-template-columns:2fr 1fr">
+        <select id="u45" aria-label="Adım 4.5 seçeneği"><option value="yok">Yok</option><option value="A" selected>A: basım + yazılım</option><option value="B">B: tam yeni birim</option></select>
+        <select id="b45" aria-label="Bant"><option value="lo">alt</option><option value="mid" selected>orta</option><option value="hi">üst</option></select>
+      </div>
+      <small>Fayda her durumda 0 (plasebo). Yalnızca maliyet.</small>
+    </div>
+    <div class="field">
+      <label for="kap"><span>Kira kapsaması (adım 5)</span><span class="val" id="kapV"></span></label>
+      <input id="kap" type="range" min="20" max="100" step="5" value="50">
+      <small>Toplamdan ayrı gösterilir; hane içi aktarımdır.</small>
+    </div>
+    <div class="field">
+      <label for="reel"><span>Reel büyüme (payda)</span><span class="val" id="reelV"></span></label>
+      <input id="reel" type="range" min="0" max="6" step="0.5" value="3">
+      <small>GSYH 2025'ten sonrası için benim varsayımım. Daha yüksek büyüme, oranı düşürür.</small>
+    </div>
+    <div class="field">
+      <label for="y12"><span>Adım 1-2 hangi yıla yazılsın</span></label>
+      <select id="y12"><option>2026</option><option>2027</option><option>2028</option><option selected>2029</option><option>2030</option><option>2031</option></select>
+      <small>Repoda takvim yılı yok; tek sefer maliyet. Her zaman ρ = %0,4 (stok mahsubunda yüksek oran uygulanmaz).</small>
+    </div>
+  </div>
+</aside>
+
+<main>
+  <div class="panel">
+    <div class="kpis" aria-live="polite">
+      <div class="kpi main"><div class="n" id="kPeakPct"></div><div class="t" id="kPeakT"></div></div>
+      <div class="kpi"><div class="n" id="kPeakAbs"></div><div class="t">zirve yılın maliyeti, milyar TL</div></div>
+      <div class="kpi"><div class="n" id="kTot"></div><div class="t">2026-2031 toplamı, milyar TL</div></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>Yıllık maliyet, GSYH'nin yüzdesi</h2>
+    <div class="chartbox"><svg id="chart" role="img" aria-label="Yıl bazında yürütme maliyeti, GSYH yüzdesi, adımlara göre yığılmış"></svg></div>
+    <p class="legend">
+      <span><i style="background:var(--c1)"></i>Adım 1-2 mahsup</span>
+      <span><i style="background:var(--c2)"></i>Adım 3 faiz durma</span>
+      <span><i style="background:var(--c3)"></i>Adım 4 senet</span>
+      <span><i style="background:var(--c4)"></i>Adım 4.5 yeni birim</span>
+    </p>
+  </div>
+  <div class="panel">
+    <h2>Yıl yıl tablo</h2>
+    <div class="tablebox"><table id="tbl"></table></div>
+  </div>
+  <div class="panel step5" id="s5"></div>
+  <div class="note" id="warn" hidden></div>
+</main>
+</div>
+
+<section class="panel" aria-labelledby="adimlar">
+  <h2 id="adimlar">Her adım ne yapıyor, sayı nereden geliyor</h2>
+  <details><summary>Adım 1: sektörler arası mahsup <span class="tag o">ölçüm + üst sınır</span></summary>
+    <p>Sektör çiftleri arasında karşılıklı duran borç-alacağın kayıtta birbirine karşı düşülmesi. Ortak stok 20.363 milyar TL, ama kimden-kime tablosu olmadığı için bu bir tavan. Yürütme maliyeti yalnızca %0,4 ile hesaplanır: 81,5 milyar TL, tek sefer.</p></details>
+  <details><summary>Adım 2: ağ üzerinden çok taraflı mahsup <span class="tag v">kenarlar varsayım</span></summary>
+    <p>17 NACE firma grubu, 17 hane düğümü ve bir dış düğüm; 322 kenar. Silinen 14.602 milyar TL (%88,5). Düğümler ölçüm, kenarlar çekim/RAS varsayımı; bu yüzden oran bir üst sınır. Yürütme maliyeti 58,4 milyar TL, tek sefer.</p></details>
+  <details><summary>Adım 3: faizin durması <span class="tag v">κ varsayım</span></summary>
+    <p>Duran faiz = κ × firma kredi stoku (25.340 milyar TL, ölçüm) × faiz (%53,2, 2026-09 sabit) × kapsam düzeltmesi. 2029'da κ = 0,25 / 0,5 / 1,0 için 1.208 / 2.416 / 4.831 milyar TL. Kayıp ya borç verene ya kamuya düşer; model kimin ödeyeceğini seçmez. Beş adımın en pahalı kalemi budur.</p></details>
+  <details><summary>Adım 4: adres yönlendirmeli senet <span class="tag v">θ, χ, π varsayım</span></summary>
+    <p>Hane ve firma vadeli mevduatı ile gerçek kişi YP mevduatı (toplam 19.362 milyar TL, ölçüm) üzerinden senet. 12 senaryoda 2029-2031 prim toplamı 77,5 ile 1.058,9 milyar TL. Bankalarda kredi daralması yılda 155 ile 775 milyar TL. Endeks bacağı hesaplanmadı, prim bir alt sınır olabilir.</p></details>
+  <details><summary>Adım 4.5: yeni Türk lirasına geçiş <span class="tag">plasebo</span></summary>
+    <p>1'e 1 pariteyle geçiş, 2030'un dört çeyreğinde. Kimsenin net pozisyonu değişmez, yani fayda sıfır. Maliyet: A (basım + yazılım) 0,6 – 5,4; B (tam yeni birim, GSYH'nin %0,3-1,0'ı) 190 – 632 milyar TL. Bu adım borcu azaltmaz.</p></details>
+  <details><summary>Adım 5: kira farkı <span class="tag v">hane sayısı, kiracı oranı varsayım</span></summary>
+    <p>Piyasa kirası (aylık 23.260 – 28.430 TL) ile havuz kirası (20.000 TL, model kararı) arasındaki fark ev sahibinden kiracıya aktarılır. Hane içi aktarım olduğu için net etkisi sıfır; yalnızca yürütme maliyeti gerçek bir kaynak tüketimidir. Bu yüzden grafikteki toplama girmez.</p></details>
+</section>
+
+<footer>
+  <p>Payda: GSYH 2025 = 63.240,5 milyar TL (EVDS, ölçüm). Sonrası: önceki yıl × (1 + TÜFE senaryosu) × (1 + reel büyüme). 2029-2030 için TÜFE senaryosu yok, 2028 ile 2031 arası doğrusal doldurulur. Hazır "düşük", "orta" ve "yüksek" ayarları bant uçlarıdır, tutarlı birer tahmin değildir.</p>
+  <p>Kod ve tüm tablolar: <a href="https://github.com/saydamonur2002-tech/zarar-teorisi" target="_blank" rel="noopener">github.com/saydamonur2002-tech/zarar-teorisi</a></p>
+</footer>
+</div>
+
+<script>
+const A4={"0.1|0.0|0.02":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":14.5,"2030":38.8,"2031":24.2},"0.1|0.0|0.05":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":36.4,"2030":96.8,"2031":60.6},"0.1|0.5|0.02":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":14.5,"2030":38.8,"2031":31.6},"0.1|0.5|0.05":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":36.4,"2030":96.8,"2031":78.7},"0.25|0.0|0.02":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":36.4,"2030":96.8,"2031":60.6},"0.25|0.0|0.05":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":90.8,"2030":242.0,"2031":151.3},"0.25|0.5|0.02":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":36.4,"2030":96.8,"2031":78.7},"0.25|0.5|0.05":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":90.8,"2030":242.0,"2031":196.6},"0.5|0.0|0.02":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":72.6,"2030":193.6,"2031":121.0},"0.5|0.0|0.05":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":181.6,"2030":484.0,"2031":302.6},"0.5|0.5|0.02":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":72.6,"2030":193.6,"2031":157.4},"0.5|0.5|0.05":{"2026":0.0,"2027":0.0,"2028":0.0,"2029":181.6,"2030":484.0,"2031":393.3}};
+const YILLAR=[2026,2027,2028,2029,2030,2031];
+const GSYH25=63240.5;
+const TUFE={2026:.2961,2027:.1888,2028:.1451,2031:.0828};
+TUFE[2029]=TUFE[2028]+(TUFE[2031]-TUFE[2028])/3;
+TUFE[2030]=TUFE[2028]+(TUFE[2031]-TUFE[2028])*2/3;
+const SEKIL3={2026:0,2027:0,2028:.625,2029:1,2030:1,2031:1};
+const TAM3=4830.8;
+const ST1=20363.4, ST2=14602.3, RHO_STOK=.004;
+const C45={A:{lo:.59,hi:5.40},B:{lo:189.7,hi:632.4}};
+const KRED={"0.1":154.9,"0.25":387.2,"0.5":774.5};
+const PRE={
+  dusuk:{rho:.4,kappa:.25,theta:"0.1",chi:"0.0",pi:"0.02",u45:"A",b45:"lo"},
+  orta:{rho:9,kappa:.5,theta:"0.25",chi:"0.5",pi:"0.05",u45:"A",b45:"mid"},
+  yuksek:{rho:29,kappa:1,theta:"0.5",chi:"0.5",pi:"0.05",u45:"B",b45:"hi"}};
+const $=id=>document.getElementById(id);
+const fmt=(x,d=1)=>x.toLocaleString("tr-TR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const pct=(x,d=2)=>"%"+fmt(x,d);
+function band(b,lo,hi){return b==="lo"?lo:b==="hi"?hi:(lo+hi)/2}
+function gsyhYolu(reel){const g={2025:GSYH25};for(const y of YILLAR)g[y]=g[y-1]*(1+TUFE[y])*(1+reel);return g}
+function hesapla(s){
+  const g=gsyhYolu(s.reel),r=s.rho/100,rows=[];
+  const key=`${s.theta}|${s.chi}|${s.pi}`,prim=A4[key];
+  for(const y of YILLAR){
+    const a12=y===s.y12?(ST1+ST2)*RHO_STOK:0;
+    const a3=TAM3*s.kappa*SEKIL3[y]*r;
+    const a4=prim[y]*r;
+    const a45=(y===2030&&s.u45!=="yok")?band(s.b45,C45[s.u45].lo,C45[s.u45].hi):0;
+    const tp=a12+a3+a4+a45;
+    rows.push({y,g:g[y],a12,a3,a4,a45,tp,p:100*tp/g[y]});
+  }
+  const t5lo=258.2*s.kap/100,t5hi=801.1*s.kap/100;
+  return {rows,g,t5:{lo:t5lo*r,hi:t5hi*r,glo:t5lo,ghi:t5hi}};
+}
+function oku(){return{rho:+$("rho").value,kappa:+$("kappa").value,theta:$("theta").value,chi:$("chi").value,pi:$("pi").value,
+  u45:$("u45").value,b45:$("b45").value,kap:+$("kap").value,reel:+$("reel").value/100,y12:+$("y12").value}}
+function ciz(rows){
+  const W=720,H=300,L=46,R=12,T=14,B=30,iw=W-L-R,ih=H-T-B;
+  const mx=Math.max(...rows.map(r=>r.p),.05);
+  const ad=[.05,.1,.2,.25,.5,1,2,2.5,5,10].find(a=>a>=mx*1.05/4)||10;
+  const top=Math.ceil(mx*1.05/ad)*ad||ad;
+  const Y=v=>T+ih-(v/top)*ih;
+  let s="";
+  for(let v=0;v<=top+1e-9;v+=ad){s+=`<g class="grid"><line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/></g><text x="${L-6}" y="${Y(v)+4}" text-anchor="end">${fmt(v,ad<1?2:ad%1?1:0)}%</text>`}
+  const bw=iw/rows.length;
+  rows.forEach((r,i)=>{
+    const x=L+i*bw+bw*.18,w=bw*.64;let acc=0;
+    for(const [k,c] of [["a12","s1"],["a3","s2"],["a4","s3"],["a45","s4"]]){
+      const v=100*r[k]/r.g;if(v<=0)continue;
+      const y0=Y(acc+v),h=Y(acc)-y0;acc+=v;
+      s+=`<rect class="${c}" x="${x}" y="${y0}" width="${w}" height="${Math.max(h,.5)}"><title>${r.y}: ${fmt(r[k])} milyar TL</title></rect>`;
+    }
+    s+=`<text x="${x+w/2}" y="${H-10}" text-anchor="middle">${r.y}</text>`;
+    if(r.p>0)s+=`<text x="${x+w/2}" y="${Y(r.p)-5}" text-anchor="middle" style="fill:var(--ink)">${fmt(r.p,2)}</text>`;
+  });
+  $("chart").setAttribute("viewBox",`0 0 ${W} ${H}`);$("chart").innerHTML=s;
+}
+function render(){
+  const s=oku(),o=hesapla(s),rows=o.rows;
+  $("rhoV").textContent=pct(s.rho,1);$("kappaV").textContent=fmt(s.kappa,2);$("kapV").textContent="%"+s.kap;$("reelV").textContent=pct(s.reel*100,1);
+  const pk=rows.reduce((a,b)=>b.p>a.p?b:a);
+  $("kPeakPct").textContent=pct(pk.p,2);$("kPeakT").textContent=`GSYH'nin zirve payı (${pk.y})`;
+  $("kPeakAbs").textContent=fmt(pk.tp,0);$("kTot").textContent=fmt(rows.reduce((a,b)=>a+b.tp,0),0);
+  ciz(rows);
+  let h="<thead><tr><th>Yıl</th><th>GSYH</th><th>Adım 1-2</th><th>Adım 3</th><th>Adım 4</th><th>Adım 4.5</th><th>Toplam</th><th>% GSYH</th></tr></thead><tbody>";
+  for(const r of rows)h+=`<tr${r===pk&&r.tp>0?' class="peak"':""}><td>${r.y}</td><td>${fmt(r.g,0)}</td><td>${fmt(r.a12)}</td><td>${fmt(r.a3)}</td><td>${fmt(r.a4)}</td><td>${fmt(r.a45)}</td><td>${fmt(r.tp)}</td><td>${fmt(r.p,3)}</td></tr>`;
+  $("tbl").innerHTML=h+"</tbody>";
+  const k=$("theta").value;
+  $("a4info").textContent=`Bu seçimde 2029-31 prim toplamı ${fmt(Object.values(A4[`${s.theta}|${s.chi}|${s.pi}`]).reduce((a,b)=>a+b,0))} milyar TL; bankalarda kredi daralması yılda yaklaşık ${fmt(KRED[k])} milyar TL.`;
+  const g26=o.g[2026],t=o.t5;
+  $("s5").innerHTML=`<h3>Adım 5: kira farkı (toplama girmez)</h3>
+    <div>Transfer, kapsama %${s.kap}: <span class="mono">${fmt(t.glo)} – ${fmt(t.ghi)}</span> milyar TL/yıl (hane içi aktarım, net etki 0).</div>
+    <div>Yürütme maliyeti: <span class="mono">${fmt(t.lo)} – ${fmt(t.hi)}</span> milyar TL/yıl, yani GSYH 2026'nın <span class="mono">${pct(100*t.lo/g26,3)} – ${pct(100*t.hi/g26,3)}</span>'i (2026 fiyatıyla).</div>`;
+  const w=$("warn");
+  w.hidden=!(s.rho>.4);
+  w.textContent=`Adım 1-2 bu ayarda da ρ = %0,4 ile hesaplanıyor. Stok mahsubuna ${pct(s.rho,1)} uygulamak 1.000 milyar TL'yi aşan, gerçekçi olmayan tutarlar verir.`;
+  document.querySelectorAll("button.pre").forEach(b=>{
+    const p=PRE[b.dataset.p];
+    b.setAttribute("aria-pressed",String(Math.abs(p.rho-s.rho)<.05&&Math.abs(p.kappa-s.kappa)<.01&&p.theta===s.theta&&p.chi===s.chi&&p.pi===s.pi&&p.u45===s.u45&&p.b45===s.b45));
+  });
+}
+document.querySelectorAll("button.pre").forEach(b=>b.addEventListener("click",()=>{
+  const p=PRE[b.dataset.p];
+  $("rho").value=p.rho;$("kappa").value=p.kappa;$("theta").value=p.theta;$("chi").value=p.chi;$("pi").value=p.pi;$("u45").value=p.u45;$("b45").value=p.b45;render();
+}));
+["rho","kappa","theta","chi","pi","u45","b45","kap","reel","y12"].forEach(id=>$(id).addEventListener("input",render));
+render();
+</script>
+
+</body></html>
