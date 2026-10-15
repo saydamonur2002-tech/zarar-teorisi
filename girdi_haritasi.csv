@@ -7,7 +7,7 @@ adim2_nace_ag_sonuc.json,beta_tavan,Faz 2,Adım 2 parametre (β),ust_sinir,0.043
 adim2_nace_ag_sonuc.json,senaryolar/lam1.0_h0.5_b0.3/kredi_ihtiyaci_brut,Faz 2,Adım 3 (köprü kredi karşılaştırma),modellendi_olculmus_dugum,8328.6,Mahsup öncesi stok ölçekli köprü ihtiyacı; F.4 ile oran,adim3.csv deger,True
 tek_sistem_kopru.csv,2026-Q1 F_F4_yuk evds_milyar,tek_sistem_kopru,Adım 3 (Faz 3 S₀),olcum,,Faiz durma kuralının stok tabanı,—,True
 faiz_ham.csv,TP.KTF17 son ay,EVDS,Adım 3 (Faz 3 r_t),olcum,,Ticari kredi faizi; ileri dönem sabit (varsayım),—,True
-adim3_faiz_durma_sonuc.json,psi/psi,Faz 3,Adım 3,olcum_turevi,0.3584,Etkin faiz payı; finansman gideri 2024 / (r̄·S̄),adim3.csv,True
+adim3_faiz_durma_sonuc.json,psi/psi,Faz 3,Adım 3,olcum_turevi,0.3584,Etkin faiz payı; finansman gideri 2024 / (r̄·S̄). Satır etiketi modellendi_varsayim_kappa,adim3.csv deger olculdu yazılmaz; uc_kural_senaryo.csv,True
 adim3_faiz_durma_sonuc.json,yillik_duran_faiz_etkin_milyar/0.5,Faz 3,Adım 4 (Faz 4 prim karşılaştırma),modellendi_varsayim_kappa,,Prim yıllık / duran faiz oranı; eşitlik değil,adim4.csv; senet satırı,True
 adim4.csv,üç adres satırı deger (olculdu),Adım 4,Faz 4 (A_j),olcum,,Yönlendirme tabanı,—,True
 tek_sistem_kademe.py,K3_MEVDUAT_KREDI_PAYI,kademe,Faz 4 (kredi itişi),kademe sabiti,,B′ mevduat kaybı → kredi daralması,—,True

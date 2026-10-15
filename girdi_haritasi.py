@@ -49,7 +49,7 @@ HARITA = [
     ("faiz_ham.csv", "TP.KTF17 son ay", "EVDS", "Adım 3 (Faz 3 r_t)", "olcum",
      "Ticari kredi faizi; ileri dönem sabit (varsayım)", "—"),
     ("adim3_faiz_durma_sonuc.json", "psi/psi", "Faz 3", "Adım 3", "olcum_turevi",
-     "Etkin faiz payı; finansman gideri 2024 / (r̄·S̄)", "adim3.csv"),
+     "Etkin faiz payı; finansman gideri 2024 / (r̄·S̄). Satır etiketi modellendi_varsayim_kappa", "adim3.csv deger olculdu yazılmaz; uc_kural_senaryo.csv"),
     ("adim3_faiz_durma_sonuc.json", "yillik_duran_faiz_etkin_milyar/0.5", "Faz 3", "Adım 4 (Faz 4 prim karşılaştırma)", "modellendi_varsayim_kappa",
      "Prim yıllık / duran faiz oranı; eşitlik değil", "adim4.csv; senet satırı"),
     ("adim4.csv", "üç adres satırı deger (olculdu)", "Adım 4", "Faz 4 (A_j)", "olcum",
@@ -73,7 +73,7 @@ HARITA = [
 FAZ_OZETI = [
     ("1", "adim1_stok.csv", "eski/yeni tavan üst sınır; silinen boş", "F içi netleştirme: EVDS konsolide fark (ölçüm), NACE taban (üst sınır), çekim/RAS kenar (varsayım)", "adim1_nace.py", "silinen hâlâ boş; firma düzeyi kimden-kime yok"),
     ("2", "adim2.csv", "sentetik 150 firma, temerrüt 0", "17 NACE + hane + dış düğüm; nakit/ücret/çalışan ölçüm; G1 çapası λ*; β tavanı", "adim2_nace_ag.py", "kenar dağılımı varsayım"),
-    ("3", "adim3.csv", "kredi ihtiyacı 0; faiz durması modellenmedi", "D_t=κ·u2·S₀, I_t=ψ·r_t/4·D_t; F/B′ NL transferi; κ bandı", "adim3_faiz_durma.py", "κ varsayım; r_t ileri sabit"),
+    ("3", "adim3.csv", "kredi ihtiyacı 0; duran faiz satırı modellendi_varsayim_kappa", "D_t=κ·u2·S₀, I_t=ψ·r_t/4·D_t; F/B′ NL transferi; κ bandı", "adim3_faiz_durma.py", "etiket yükseltilmedi; κ varsayım; r_t ileri sabit"),
     ("4", "adim4.csv", "üç adres olculdu; senet modellenmedi", "θ yönlendirme, vade, χ çıkış, π prim; SFC muhasebesi; kredi itişi", "adim4_adres_yonlendirme.py", "senet satırı ve kilit dokunulmadı; endeks bacağı yok"),
     ("kapı", "tavan_akis.csv", "geçiş payı boş", "OLS+NW tahmin; 95 bandı daralmadı, 68 bandı [0,20; 1]", "gecis_payi_band.py", "tahmin_ols; kapı boş"),
     ("5", "adim5.csv", "kira olculmedi; HEKİS 20.000 TL/ay", "birim kira ölçümü × varsayım band; HEKİS/piyasa oranı", "adim5_kira.py", "N elle; κ, m² varsayım"),
@@ -96,8 +96,8 @@ def main() -> None:
 
     md = ["# Girdi haritası — hangi çıktı hangi adıma, hangi etiketle", "",
           "Çalıştır: `python3 girdi_haritasi.py`. Çıktı: `girdi_haritasi.csv`.", "",
-          "Kural: katman sonuçları birbirine taşınmaz. Bir sayı başka adıma yalnız girdi olarak, kendi etiketiyle girer; hedef adımın sonuç "
-          "sütununa yazılmaz; hedefin etiketi kaynağınkinden iyi olamaz. Kilitler (`test_bes_adim.py`) olduğu gibi durur: silinen boş, senet "
+          "Kural: bir sayı başka adıma yalnız girdi olarak, kendi etiketiyle girer; hedefin etiketi kaynağınkinden iyi olamaz. "
+          "Kilitler (`test_bes_adim.py`) olduğu gibi durur: silinen boş, senet "
           "`modellenmedi`, üç kapı boş, akış 0,4270 `baska_nesne`.", "",
           "## Faz özeti: şu an ne var / ne eklendi / ne eksik", "",
           "| Adım | Kilitli dosya | Şu an ne var | Ne eklendi (yan dosya) | Kod | Ne eksik |", "| --- | --- | --- | --- | --- | --- |"]

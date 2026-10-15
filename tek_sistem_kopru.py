@@ -359,7 +359,8 @@ def esleme(ev: dict) -> list[dict]:
         "donem": "2026-Q1 (sentetik 150 firma)",
         "deger": None if oz.get("kredi_ihtiyaci_sart") is None else _r(oz.get("kredi_ihtiyaci_sart"), 2),
         "birim": "trilyon TL/ay", "durum": "modellendi",
-        "not": f"brüt {oz.get('kredi_ihtiyaci_brut')} → şart {oz.get('kredi_ihtiyaci_sart')}. Faizin durması modellenmedi; "
+        "not": f"brüt {oz.get('kredi_ihtiyaci_brut')} → şart {oz.get('kredi_ihtiyaci_sart')}. "
+               "Faiz durması adim3.csv satırında, etiket modellendi_varsayim_kappa (κ varsayım, ΣNL=0). "
                "firma finansman gideri referans bloğunda ölçüldü (Sektör Bilançoları 2024; 2025 bulunamadı).",
         "dosya": "odeme_mahsup_sonuc.json",
     })

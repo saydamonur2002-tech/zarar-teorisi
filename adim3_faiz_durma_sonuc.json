@@ -1,7 +1,7 @@
 {
   "faz": 3,
   "adim": 3,
-  "adim3_csv": "yazilmadi (H-A3 kilidi durur; 'modellenmedi' metni orada kalır, kural burada)",
+  "adim3_csv": "bes_adim.py okur; satır etiketi modellendi_varsayim_kappa; yükseltilmez",
   "kural": "D_t = κ·u2_t·S₀; I_t = ψ·(r_t/4)·D_t; F NL += I_t, ödeyen hazne NL −= I_t; ΣNL = 0",
   "S0_milyar": 25339.8,
   "S0_kaynak": "tek_sistem_kopru.csv 2026-Q1 F_F4_yuk (olculdu)",

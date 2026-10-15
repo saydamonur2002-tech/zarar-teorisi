@@ -14,8 +14,10 @@ sütun. Silinen boş: kimden-kime xls depoda yok. Üst sınır, skor değil.
 
 Çıktı: adim1_stok.csv, adim2.csv, adim3.csv, adim4.csv, adim5.csv, bes_adim_sonuc.json (kosu; son boş), BES_ADIM.md\nSon satır (`son`) test_bes_adim.py'den gelir; koşu yazmaz.
 
-Yan dosyalar (Faz 1–6; kilit dışı, yalnız okunur, md'de listelenir): adim1_nace.py, adim2_nace_ag.py, adim3_faiz_durma.py,
-adim4_adres_yonlendirme.py, gecis_payi_band.py, adim5_kira.py; harita girdi_haritasi.py. Hiçbiri bu adım dosyalarına yazmaz.
+Yan dosyalar (Faz 1–6; kilit dışı, md'de listelenir): adim1_nace.py, adim2_nace_ag.py, adim3_faiz_durma.py,
+adim4_adres_yonlendirme.py, gecis_payi_band.py, adim5_kira.py; harita girdi_haritasi.py.
+adim3, adim3_faiz_durma_sonuc.json'u okur ve duran faiz satırını aynı etiketle (`modellendi_varsayim_kappa`) yazar.
+Etiket `olculdu` olmaz. Diğer yan dosyalar adım dosyalarına yazmaz.
 """
 
 from __future__ import annotations
@@ -131,6 +133,41 @@ def adim2() -> dict:
 
 
 # ---------------------------------------------------------------- adım 3
+FAIZ_KAPPA = ("0.25", "0.5", "1.0")
+FAIZ_ETIKET = "modellendi_varsayim_kappa"
+
+
+def _faiz_satirlari() -> tuple[list[dict], dict]:
+    """Duran faiz, adim3_faiz_durma_sonuc.json'dan. Etiket kaynağın etiketi; yükseltilmez."""
+    yol = KOK / "adim3_faiz_durma_sonuc.json"
+    if not yol.exists():
+        return [], {}
+    j = json.loads(yol.read_text(encoding="utf-8"))
+    yillik = j.get("yillik_duran_faiz_etkin_milyar") or {}
+    psi = (j.get("psi") or {}).get("psi")
+    s0 = j.get("S0_milyar")
+    satirlar = []
+    ozet = {}
+    for kap in FAIZ_KAPPA:
+        yl = yillik.get(kap) or {}
+        if "2029" not in yl:
+            continue
+        deger = float(yl["2029"])
+        ozet[kap] = deger
+        satirlar.append({
+            "adim": 3, "kaynak": "adim3_faiz_durma.py", "nesne": f"duran faiz, etkin, κ={kap}",
+            "donem": "2029", "deger": deger, "birim": "milyar TL/yıl", "durum": FAIZ_ETIKET,
+            "not": (
+                f"κ varsayım. 2027 {yl.get('2027')}; 2028 {yl.get('2028')} (K2 rampası); "
+                f"2029-2031 {yl.get('2029')}. S₀ {s0} olculdu. ψ {psi} olcum_turevi. "
+                "r 2026-09 sonrası sabit varsayım. ΣNL=0. Stok silinmedi. "
+                "2024 finansman giderine eşitlenmez. Etiket yükseltilmedi."
+            ),
+            "dosya": "adim3_faiz_durma_sonuc.json",
+        })
+    return satirlar, ozet
+
+
 def adim3() -> dict:
     om = json.load((KOK / "odeme_mahsup_sonuc.json").open(encoding="utf-8"))
     kop = _csv("tek_sistem_kopru.csv")
@@ -138,20 +175,34 @@ def adim3() -> dict:
     bddk = next(r for r in kop if r["blok"] == "mutabakat" and r["donem"] == "2025-Q4" and r["evds_anahtar"] == "F_F4_yuk")
     fg24 = next(r for r in kop if r["blok"] == "referans" and r["donem"] == "2024" and r["kalem"] == "firma finansman gideri")
     fg25 = next(r for r in kop if r["blok"] == "referans" and r["donem"] == "2025" and r["kalem"] == "firma finansman gideri")
+    faiz, faiz_2029 = _faiz_satirlari()
     s1 = {"adim": 3, "kaynak": "odeme_mahsup.py", "nesne": "kredi ihtiyacı, şart sonrası", "donem": "2026-Q1 (sentetik 150 firma)",
           "deger": om["ozet"]["kredi_ihtiyaci_sart"], "birim": "trilyon TL/ay", "durum": "modellendi",
-          "not": f"Faizin durması modellenmedi. 2025 finansman gideri birincilde yok (Sektör Bilançoları son yayın 2024). "
+          "not": f"Faiz durması ayrı satırda, etiket {FAIZ_ETIKET}. 2025 finansman gideri birincilde yok (Sektör Bilançoları son yayın 2024). "
                  f"2024 {float(fg24['evds_milyar']):.1f} milyar referans; eşitlenmez. RAPOR {float(fg25['tek_sistem_milyar']):.0f} ölçülmedi.",
           "dosya": "odeme_mahsup_sonuc.json"}
     s2 = {"adim": 3, "kaynak": "tek_sistem_kopru.py", "nesne": "firma F.4 kredi yükümlülüğü (EVDS konsolide olmayan)", "donem": "2026-Q1",
           "deger": float(f4["evds_milyar"]), "birim": "milyar TL", "durum": "olculdu",
           "not": f"adım değil, stok. BDDK ticari 2025 {float(bddk['tek_sistem_milyar']):.0f}; EVDS/BDDK {float(bddk['evds_bolu_tek']):.2f} durur "
-                 f"({f4['seri']}).", "dosya": "tek_sistem_kopru.csv"}
+                 f"({f4['seri']}). Stok silinmedi.", "dosya": "tek_sistem_kopru.csv"}
     alan = list(s1.keys())
-    _yaz("adim3.csv", alan, [s1, s2])
+    _yaz("adim3.csv", alan, [s1, s2, *faiz])
+    kaynak = {}
+    yol = KOK / "adim3_faiz_durma_sonuc.json"
+    if yol.exists():
+        kaynak = json.loads(yol.read_text(encoding="utf-8")).get("yillik_duran_faiz_etkin_milyar") or {}
+    faiz_ok = (
+        len(faiz) == 3
+        and set(faiz_2029) == set(FAIZ_KAPPA)
+        and all(s["durum"] == FAIZ_ETIKET for s in faiz)
+        and all(abs(faiz_2029[k] - float(kaynak[k]["2029"])) < 0.05 for k in FAIZ_KAPPA)
+        and all(float(kaynak[k]["2027"]) == 0.0 for k in FAIZ_KAPPA)
+        and all("ΣNL=0" in s["not"] and "varsayım" in s["not"] for s in faiz)
+    )
     ha3 = "temiz" if (s1["durum"] == "modellendi" and s2["durum"] == "olculdu" and s2["not"].startswith("adım değil")
-                     and _bos(fg25["evds_milyar"]) and float(bddk["tek_sistem_milyar"]) == 17302.0) else "ihlal"
+                     and _bos(fg25["evds_milyar"]) and float(bddk["tek_sistem_milyar"]) == 17302.0 and faiz_ok) else "ihlal"
     return {"adim": 3, "dosya": "adim3.csv", "kredi_ihtiyaci": s1["deger"], "f_f4_yuk": s2["deger"],
+            "duran_faiz_2029": faiz_2029, "duran_faiz_etiket": FAIZ_ETIKET,
             "finansman_gideri_2024": float(fg24["evds_milyar"]), "finansman_gideri_2025": None,
             "bddk_2025": float(bddk["tek_sistem_milyar"]), "evds_bolu_bddk": float(bddk["evds_bolu_tek"]), "H-A3": ha3, "etiket": ha3}
 
@@ -247,7 +298,9 @@ def md(son: dict) -> str:
         s.append(f"| 2 | `adim2.csv` | H-A2 {x['H-A2']} | `{x['etiket']}` | temerrüt {x['temerrut']}, `modellendi`; {x['parametre']} parametre |")
     if "3" in a:
         x = a["3"]
-        s.append(f"| 3 | `adim3.csv` | H-A3 {x['H-A3']} | `{x['etiket']}` | kredi ihtiyacı {x['kredi_ihtiyaci']} `modellendi`; F F.4 {f(x['f_f4_yuk'])} `olculdu` (stok) |")
+        df = x.get("duran_faiz_2029") or {}
+        bant = "/".join(f(df.get(k)) for k in ("0.25", "0.5", "1.0"))
+        s.append(f"| 3 | `adim3.csv` | H-A3 {x['H-A3']} | `{x['etiket']}` | kredi ihtiyacı {x['kredi_ihtiyaci']} `modellendi`; F F.4 {f(x['f_f4_yuk'])} `olculdu` (stok); duran faiz 2029 κ 0,25/0,5/1 {bant} `{x.get('duran_faiz_etiket')}` |")
     if "4" in a:
         x = a["4"]
         s.append(f"| 4 | `adim4.csv` | H-A4 {x['H-A4']} | `{x['etiket']}` | üç adres adayı `olculdu`; senet `modellenmedi`, ihraç/prim/çıkış boş |")
@@ -276,13 +329,14 @@ def md(son: dict) -> str:
     yan = yan_dosyalar()
     if yan:
         s += ["## Kilit dışı yan dosyalar (Faz 1–6; girdi, sonuç değil)", "",
-              "Adım dosyalarına ve kapılara yazılmaz; etiketiyle okunur. Harita: `GIRDI_HARITASI.md`.", "",
+              "Etiketiyle okunur. Adım 3 duran faiz satırı bu etiketi taşır (`modellendi_varsayim_kappa`). Harita: `GIRDI_HARITASI.md`.", "",
               "| Adım | Yan dosya | Kod | Sayı | Etiket |", "| --- | --- | --- | --- | --- |"]
         s += [f"| {y['adim']} | `{y['dosya']}` | `{y['kod']}` | {y['sayi']} | `{y['etiket']}` |" for y in yan]
         s.append("")
     s += ["## Ne denmez", "",
           "- 'Beş adım kuruldu' denmez. Şu adım şu etiket; kilitli kapı boş.",
           "- 'Stok yüzde X silindi' denmez; silinen boş.",
+          "- 'Faiz durdu, stok silindi' denmez. Duran faiz satırı `modellendi_varsayim_kappa`; F.4 stoku `olculdu` durur; ΣNL=0.",
           "- 'HEKİS döngüyü kırdı' denmez; adım 5 kira `olculmedi`, HEKİS `modellendi`.",
           "- HEKİS senedi ile hedef primli senet eşitlenmez; senet `modellenmedi`."]
     return "\n".join(s) + "\n"

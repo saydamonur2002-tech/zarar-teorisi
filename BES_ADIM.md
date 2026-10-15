@@ -10,7 +10,7 @@ Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` i
 | --- | --- | --- | --- | --- |
 | 1 stok | `adim1_stok.csv` | H-S1 temiz, H-S2 temiz | `temiz` | eski_tavan 0.0728; yeni_tavan 0.2582; silinen boş |
 | 2 | `adim2.csv` | H-A2 temiz | `temiz` | temerrüt 0, `modellendi`; holding_odeme_orani 0.5; ucret_gecis_beta 0.3 parametre |
-| 3 | `adim3.csv` | H-A3 temiz | `temiz` | kredi ihtiyacı 0.0 `modellendi`; F F.4 25,339.8 `olculdu` (stok) |
+| 3 | `adim3.csv` | H-A3 temiz | `temiz` | kredi ihtiyacı 0.0 `modellendi`; F F.4 25,339.8 `olculdu` (stok); duran faiz 2029 κ 0,25/0,5/1 1,207.7/2,415.4/4,830.8 `modellendi_varsayim_kappa` |
 | 4 | `adim4.csv` | H-A4 temiz | `temiz` | üç adres adayı `olculdu`; senet `modellenmedi`, ihraç/prim/çıkış boş |
 | 5 | `adim5.csv` | H-A5 temiz | `temiz` | kira `olculmedi`; HEKİS havuz kirası 20,000 TL/ay `modellendi` |
 
@@ -33,7 +33,7 @@ Son satır (`bes_adim_sonuc.json` `son`) koşudan gelmez; `python3 test_bes_adim
 
 ## Kilit dışı yan dosyalar (Faz 1–6; girdi, sonuç değil)
 
-Adım dosyalarına ve kapılara yazılmaz; etiketiyle okunur. Harita: `GIRDI_HARITASI.md`.
+Etiketiyle okunur. Adım 3 duran faiz satırı bu etiketi taşır (`modellendi_varsayim_kappa`). Harita: `GIRDI_HARITASI.md`.
 
 | Adım | Yan dosya | Kod | Sayı | Etiket |
 | --- | --- | --- | --- | --- |
@@ -48,5 +48,6 @@ Adım dosyalarına ve kapılara yazılmaz; etiketiyle okunur. Harita: `GIRDI_HAR
 
 - 'Beş adım kuruldu' denmez. Şu adım şu etiket; kilitli kapı boş.
 - 'Stok yüzde X silindi' denmez; silinen boş.
+- 'Faiz durdu, stok silindi' denmez. Duran faiz satırı `modellendi_varsayim_kappa`; F.4 stoku `olculdu` durur; ΣNL=0.
 - 'HEKİS döngüyü kırdı' denmez; adım 5 kira `olculmedi`, HEKİS `modellendi`.
 - HEKİS senedi ile hedef primli senet eşitlenmez; senet `modellenmedi`.

@@ -1,6 +1,7 @@
 """Faz 3 — Adım 3: faiz tahakkukunun durması kuralı, SFC transfer olarak.
 
-`adim3.csv` yazılmaz (orada "Faizin durması modellenmedi" durur; H-A3 kilidi dokunulmaz). Kural burada ayrı dosyada:
+Bu dosya `adim3.csv` yazmaz. `bes_adim.py` bu json'u okur ve duran faiz satırını aynı etiketle
+(`modellendi_varsayim_kappa`) `adim3.csv`'ye yazar. Etiket `olculdu` olmaz. κ varsayımdır.
 
   Durdurulan stok  D_t = κ · u2_t · S₀
       S₀   = firma F.4 kredi yükümlülüğü 2026-Q1 (tek_sistem_kopru.csv, `olculdu`)              → ölçüm
@@ -92,7 +93,7 @@ def main() -> dict:
 
     tam_yil = {kap: {y: round(v, 1) for y, v in yl.items() if y not in ("2026",)} for kap, yl in yillik.items()}
     oran_2024 = {kap: {y: round(v / psi["finansman_gideri_2024"], 3) for y, v in yl.items()} for kap, yl in tam_yil.items()}
-    sonuc = {"faz": 3, "adim": 3, "adim3_csv": "yazilmadi (H-A3 kilidi durur; 'modellenmedi' metni orada kalır, kural burada)",
+    sonuc = {"faz": 3, "adim": 3, "adim3_csv": "bes_adim.py okur; satır etiketi modellendi_varsayim_kappa; yükseltilmez",
              "kural": "D_t = κ·u2_t·S₀; I_t = ψ·(r_t/4)·D_t; F NL += I_t, ödeyen hazne NL −= I_t; ΣNL = 0",
              "S0_milyar": s0, "S0_kaynak": "tek_sistem_kopru.csv 2026-Q1 F_F4_yuk (olculdu)", "faiz_seri": FAIZ_SERI, "faiz_son": {son_ay: r_son},
              "psi": psi, "kappa": list(KAPPA), "K2_pencere": [k2.baslangic, k2.bitis], "donem": [tk.DONEM_BAS, tk.DONEM_SON],
@@ -104,7 +105,7 @@ def main() -> dict:
     yillar = sorted({y for yl in tam_yil.values() for y in yl})
     md = ["# Faz 3 — Adım 3: faiz tahakkukunun durması kuralı (SFC transfer)", "",
           "Çalıştır: `python3 adim3_faiz_durma.py`. Çıktı: `adim3_faiz_durma.csv`, `adim3_faiz_durma_sonuc.json`.", "",
-          "`adim3.csv` yazılmaz; oradaki 'Faizin durması modellenmedi' ve H-A3 kilidi durur. Kural burada, ayrı dosyada.", "",
+          "`bes_adim.py` bu sonucu okur ve `adim3.csv`'ye aynı etiketle yazar. Etiket `olculdu` olmaz. κ varsayımdır.", "",
           "## Kural", "", f"- `{sonuc['kural']}`",
           f"- S₀ = {f(s0)} milyar (F F.4, 2026-Q1, `olculdu`). r_t = {FAIZ_SERI} ticari kredi faizi; son gözlem {son_ay}: {r_son:.2f}%; sonrası sabit (varsayım).",
           f"- ψ = {psi['finansman_gideri_2024']:,.1f} / ({psi['r_bar_2024']:.4f} × {f(psi['s_bar_2024'])}) = **{psi['psi']:.4f}** (`{psi['durum']}`). {psi['not']}",
@@ -117,7 +118,7 @@ def main() -> dict:
     md += ["", "## Ne denmez", "",
            "- 'Faiz durdu, firma rahatladı' denmez; κ varsayım, r_t ileri sabit, ψ 2024 kapsamından.",
            "- Yıllık duran faiz 2024 finansman giderine eşitlenmez; oran karşılaştırma içindir.",
-           "- Bu sayılar `adim3.csv`'ye, `uc_kural_senaryo.csv`'ye taşınmaz.", ""]
+           "- Etiket `modellendi_varsayim_kappa` olarak girer; `olculdu` yazılmaz. `uc_kural_senaryo.csv`'ye taşınmaz.", ""]
     (KOK / "ADIM3_FAIZ_DURMA.md").write_text("\n".join(md), encoding="utf-8")
     print(f"S0 {s0:,.1f} | r_son {son_ay} {r_son:.2f}% | ψ {psi['psi']:.4f} | yıllık etkin duran faiz κ=1: {tam_yil[1.0]}")
     return sonuc

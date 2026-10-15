@@ -12,7 +12,8 @@ Optimum aralık (model kendi beş adımını tam uygular):
   Adım 1 stok: eski stok silinen ∈ [0, yeni_tavan 0,2582] (adim1_stok.csv; silinen boş, xls yok). Bant uçları: 0 ve üst sınır.
   Enflasyon: tavan = itiş × geçiş (tavan_akis.py). Geçiş payı kapısı boş; bant mantıksal sınırlardan [0, 1], eşik değil.
              varsayim_esik.csv eşikleri (0, 1/3, 1) buraya taşınmaz.
-  Faiz: politika faizi mekanizması depoda yok; eski stok faizinin durması modellenmedi (adim3.csv) → etki boş.
+  Faiz: politika faizi (AOFM) mekanizması depoda yok → etki boş. Firma kredi faizinin durması adim3.csv
+        satırında, etiket modellendi_varsayim_kappa; AOFM hücresine ve F.4 anapara stokuna yazılmaz.
   Döviz: senet `modellenmedi` (adim4.csv, senet_kilit.txt); dovize_kacis 0,4 parametre, veri değil → etki boş.
 
 Üç kilitli kapı (vade dilimi, ödenmeyen emir, geçiş payı) her yıl `bos`; bu dosya kapıyı doldurmaz.
@@ -100,7 +101,8 @@ def depo() -> dict:
     return {"stok_2026q1": float(f4["evds_milyar"]), "itis_milyar_2025": float(ta["f4_akim"]), "itis_puan_gsyh_2025": float(ta["oran_akim"]),
             "gecis_bos": ta["gecis"] == "" and ta["tavan"] == "", "yeni_tavan": a1["yeni_tavan"], "eski_tavan": a1["eski_tavan"],
             "silinen_bos": a1["silinen"] is None, "kredi_ihtiyaci_sart": om["ozet"]["kredi_ihtiyaci_sart"],
-            "dovize_kacis_parametre": om["parametreler"]["dovize_kacis"], "faiz_durmasi": a3[0]["not"].split(".")[0],
+            "dovize_kacis_parametre": om["parametreler"]["dovize_kacis"],
+            "faiz_durmasi": "firma stok faizi modellendi_varsayim_kappa" if any(r["durum"] == "modellendi_varsayim_kappa" for r in a3) else "Faizin durması modellenmedi",
             "senet_durum": senet["durum"], "senet_kilit": (KOK / "senet_kilit.txt").read_text(encoding="utf-8").strip()}
 
 
@@ -141,7 +143,7 @@ def satirlar(ev: dict, dp: dict) -> list[dict]:
         bek = ev["beklenti"]["faiz"].get(yil)
         ek(yil, "faiz_politika", ev["aofm"]["deger"], ev["aofm"]["tarih"], S_AOFM, bek, s, ufuk, None, None,
            "modellenmedi" if model else "taban_yili", "yüzde",
-           "" , f"Politika faizi mekanizması depoda yok. {dp['faiz_durmasi']} (adim3.csv). Senaryo = anket." if model else "Taban: AOFM son ay.")
+           "" , f"Politika faizi (AOFM) mekanizması depoda yok. {dp['faiz_durmasi']}; firma kredi stoğu içindir, AOFM hücresine yazılmaz. Senaryo = anket." if model else "Taban: AOFM son ay.")
         # döviz
         s, ufuk = PK["usd"].get(yil, (None, None))
         bek = ev["beklenti"]["usd"].get(yil)
@@ -158,7 +160,7 @@ def satirlar(ev: dict, dp: dict) -> list[dict]:
                          "taban_durum": "olculdu", "beklenti": model_yok, "beklenti_seri": "TP.FINHESTNKS62011.ZP34", "beklenti_ufuk": f"model yok: 2026-Q1 + 2025 akımı × {t}",
                          "beklenti_durum": "varsayim", "model_etki_alt": round(alt - model_yok, 1), "model_etki_ust": round(ust - model_yok, 1),
                          "model_etki_durum": "varsayim", "senaryo_alt": alt, "senaryo_ust": ust, "senaryo_durum": "senaryo", "birim": "milyar TL (nominal)",
-                         **kapi, "varsayim": f"yeni itiş 0 (kredi_ihtiyaci_sart {dp['kredi_ihtiyaci_sart']}); eski stok silinen ∈ [0, {tav}] tek sefer; faiz tahakkuku yok",
+                         **kapi, "varsayim": f"yeni itiş 0 (kredi_ihtiyaci_sart {dp['kredi_ihtiyaci_sart']}); eski stok silinen ∈ [0, {tav}] tek sefer; stok sütunu anapara, duran faiz stoktan düşülmez",
                          "not": f"Alt uç yeni_tavan {tav} üst sınırında, üst uç silinen 0. Silinen boş, xls yok. 'Model yok' sütunu 2025 nominal akımı sabit varsayımı; GSYH yolu yok."})
         else:
             rows.append({"yil": yil, "degisken": "stok_firma_f4_kredi", "taban": stok0, "taban_tarih": "2026-Q1", "taban_seri": "TP.FINHESTNKS11.ZP34",
@@ -185,7 +187,7 @@ def md(rows: list[dict], ev: dict, dp: dict, kn: dict) -> str:
          f"USD/TRY {f(ev['usd']['deger'])} ({ev['usd']['tarih']}); firma F.4 stoku {f(dp['stok_2026q1'], 1)} milyar (2026-Q1). "
          f"Beklenti: EVDS Piyasa Katılımcıları Anketi, {ev['anket_ayi']}.", "",
          "Optimum aralık tanımı: model beş adımı tam uygular; yeni kredi itişi 0 (adım 3), eski stok silinen 0 ile yeni_tavan 0,2582 arası (adım 1 stok). "
-         "Geçiş payı kapısı boş; enflasyon etkisi mantıksal sınırlarla [0, 1] bant olarak verilir. Faiz ve döviz için model etkisi `modellenmedi`; senaryo anket beklentisine eşit.", "",
+         "Geçiş payı kapısı boş; enflasyon etkisi mantıksal sınırlarla [0, 1] bant olarak verilir. Politika faizi ve döviz için model etkisi `modellenmedi`; senaryo anket beklentisine eşit. Firma kredi faizinin durması ayrı satırdadır.", "",
          "## Tablo (alt / üst)", "",
          "| Yıl | Değişken | Taban | Beklenti / model yok | Model etkisi | Senaryo | Etki etiketi | Üç kapı |",
          "| ---: | --- | ---: | ---: | ---: | ---: | --- | --- |"]
@@ -208,7 +210,7 @@ def md(rows: list[dict], ev: dict, dp: dict, kn: dict) -> str:
           "- Model 2027 başında tam uygulanır; etki her yıl aynı. Geçiş süresi, kısmi uygulama yok.",
           "- Enflasyon etkisi: −geçiş × 7,62; geçiş 0 ve 1 mantıksal uç. varsayim_esik.csv eşikleri (0, 1/3, 1) buraya taşınmadı.",
           "- 2029–2030 için anket ufku yok; beklenti `bulunamadi`, senaryo boş. 2031 yalnız TÜFE (5 yıl sonrası).",
-          "- Eski stok faizinin durması ve faiz tahakkuku modellenmedi; stok sütunu anapara.", "",
+          "- Stok sütunu anaparadır. Duran faiz `adim3.csv` satırında, etiket `modellendi_varsayim_kappa`; stoktan düşülmez. Politika faizi (AOFM) mekanizması yoktur.", "",
           "## Ne denmez", "",
           "- 'Enflasyon 7,6 puan iner' denmez. Bant [0, −7,62]; geçiş kapısı boş.",
           "- 'Stok yüzde 26 silindi' denmez. Tavan 0,2582 üst sınır; silinen boş.",

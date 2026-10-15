@@ -43,7 +43,7 @@
     "silinen_bos": true,
     "kredi_ihtiyaci_sart": 0.0,
     "dovize_kacis_parametre": 0.4,
-    "faiz_durmasi": "Faizin durması modellenmedi",
+    "faiz_durmasi": "firma stok faizi modellendi_varsayim_kappa",
     "senet_durum": "modellenmedi",
     "senet_kilit": "modellenmedi"
   },
@@ -204,7 +204,7 @@
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
       "varsayim": "",
-      "not": "Politika faizi mekanizması depoda yok. Faizin durması modellenmedi (adim3.csv). Senaryo = anket."
+      "not": "Politika faizi (AOFM) mekanizması depoda yok. firma stok faizi modellendi_varsayim_kappa; firma kredi stoğu içindir, AOFM hücresine yazılmaz. Senaryo = anket."
     },
     {
       "yil": 2027,
@@ -251,7 +251,7 @@
       "vade_dilimi": "bos",
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
-      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; faiz tahakkuku yok",
+      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; stok sütunu anapara, duran faiz stoktan düşülmez",
       "not": "Alt uç yeni_tavan 0.2582 üst sınırında, üst uç silinen 0. Silinen boş, xls yok. 'Model yok' sütunu 2025 nominal akımı sabit varsayımı; GSYH yolu yok."
     },
     {
@@ -300,7 +300,7 @@
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
       "varsayim": "",
-      "not": "Politika faizi mekanizması depoda yok. Faizin durması modellenmedi (adim3.csv). Senaryo = anket."
+      "not": "Politika faizi (AOFM) mekanizması depoda yok. firma stok faizi modellendi_varsayim_kappa; firma kredi stoğu içindir, AOFM hücresine yazılmaz. Senaryo = anket."
     },
     {
       "yil": 2028,
@@ -347,7 +347,7 @@
       "vade_dilimi": "bos",
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
-      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; faiz tahakkuku yok",
+      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; stok sütunu anapara, duran faiz stoktan düşülmez",
       "not": "Alt uç yeni_tavan 0.2582 üst sınırında, üst uç silinen 0. Silinen boş, xls yok. 'Model yok' sütunu 2025 nominal akımı sabit varsayımı; GSYH yolu yok."
     },
     {
@@ -396,7 +396,7 @@
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
       "varsayim": "",
-      "not": "Politika faizi mekanizması depoda yok. Faizin durması modellenmedi (adim3.csv). Senaryo = anket."
+      "not": "Politika faizi (AOFM) mekanizması depoda yok. firma stok faizi modellendi_varsayim_kappa; firma kredi stoğu içindir, AOFM hücresine yazılmaz. Senaryo = anket."
     },
     {
       "yil": 2029,
@@ -443,7 +443,7 @@
       "vade_dilimi": "bos",
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
-      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; faiz tahakkuku yok",
+      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; stok sütunu anapara, duran faiz stoktan düşülmez",
       "not": "Alt uç yeni_tavan 0.2582 üst sınırında, üst uç silinen 0. Silinen boş, xls yok. 'Model yok' sütunu 2025 nominal akımı sabit varsayımı; GSYH yolu yok."
     },
     {
@@ -492,7 +492,7 @@
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
       "varsayim": "",
-      "not": "Politika faizi mekanizması depoda yok. Faizin durması modellenmedi (adim3.csv). Senaryo = anket."
+      "not": "Politika faizi (AOFM) mekanizması depoda yok. firma stok faizi modellendi_varsayim_kappa; firma kredi stoğu içindir, AOFM hücresine yazılmaz. Senaryo = anket."
     },
     {
       "yil": 2030,
@@ -539,7 +539,7 @@
       "vade_dilimi": "bos",
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
-      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; faiz tahakkuku yok",
+      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; stok sütunu anapara, duran faiz stoktan düşülmez",
       "not": "Alt uç yeni_tavan 0.2582 üst sınırında, üst uç silinen 0. Silinen boş, xls yok. 'Model yok' sütunu 2025 nominal akımı sabit varsayımı; GSYH yolu yok."
     },
     {
@@ -588,7 +588,7 @@
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
       "varsayim": "",
-      "not": "Politika faizi mekanizması depoda yok. Faizin durması modellenmedi (adim3.csv). Senaryo = anket."
+      "not": "Politika faizi (AOFM) mekanizması depoda yok. firma stok faizi modellendi_varsayim_kappa; firma kredi stoğu içindir, AOFM hücresine yazılmaz. Senaryo = anket."
     },
     {
       "yil": 2031,
@@ -635,7 +635,7 @@
       "vade_dilimi": "bos",
       "odenmeyen_emir": "bos",
       "gecis_payi": "bos",
-      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; faiz tahakkuku yok",
+      "varsayim": "yeni itiş 0 (kredi_ihtiyaci_sart 0.0); eski stok silinen ∈ [0, 0.2582] tek sefer; stok sütunu anapara, duran faiz stoktan düşülmez",
       "not": "Alt uç yeni_tavan 0.2582 üst sınırında, üst uç silinen 0. Silinen boş, xls yok. 'Model yok' sütunu 2025 nominal akımı sabit varsayımı; GSYH yolu yok."
     }
   ]
