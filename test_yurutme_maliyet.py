@@ -8,9 +8,16 @@ def test_rho_bandi_sirali_ve_pilot_payi():
     assert r["pilot"] == 0.25
 
 
-def test_adim_1_3_akis_yok():
+def test_adim_1_2_stok_ust_sinir_ve_adim_3_yillik():
     h = Y.hepsi()
-    assert h["1"] is None and h["2"] is None and h["3"] is None
+    for n in ("1", "2"):
+        assert set(h[n]["yurutme"]) == {"alt"}
+        assert abs(h[n]["yurutme"]["alt"] - h[n]["akis"] * Y.RHO["alt"]) < 1e-9
+        assert h[n]["uygulanmaz"]["orta"] > 1000  # gerçekçi olmayan tutar
+    assert abs(h["1"]["akis"] - 20363.4) < 0.05 and abs(h["2"]["akis"] - 14602.3) < 0.05
+    # adım 3: κ arttıkça duran faiz ve yürütme artar
+    k = sorted(h["3"], key=float)
+    assert [h["3"][x]["akis"] for x in k] == sorted(h["3"][x]["akis"] for x in k)
 
 
 def test_adim_5_yurutme_akis_carpi_rho():

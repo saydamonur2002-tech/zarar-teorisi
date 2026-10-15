@@ -2,22 +2,33 @@
 
 Çalıştır: `python3 bes_adim_maliyet.py`. Çıktı: `bes_adim_maliyet.csv`. Maliyet satırları adım 4 ve 5'in kendi koşularındaki bantlardan; yürütme satırları `yurutme_maliyet.py` modelinden. Tüm sayılar varsayım bandı; ölçüm değil.
 
-Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py`): yürütme = program akışı × ρ. Program akışı: adım 5'te Ho→Ha transferi, adım 4'te prim toplamı; adım 1-3'te yürütülen akış yok (0, kurgu). ρ bandı varsayım: %0,4 / %9 / %25 (pilot payı) / %29; alt, orta ve üst uçlar Grosh'a atfedilen hedefleme idaresi aralığı (ikincil kaynak, doğrulanmadı), %25 `hekis_model` pilot payı (karar). Bileşenlere (tespit/tahsil/idari) ayrılmadı: yalnız toplam.
+Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py`): yürütme = program akışı × ρ. Program akışı: adım 1'de ortak stok, adım 2'de mahsupla silinen, adım 3'te yıllık duran faiz, adım 4'te prim toplamı, adım 5'te Ho→Ha transferi; adım 1 (ortak stok) ve 2 (mahsupla silinen) için stok, yalnız alt ρ ile üst sınır; adım 3 (duran faiz) için yıllık akış. ρ bandı varsayım: %0,4 / %9 / %25 (pilot payı) / %29; alt, orta ve üst uçlar Grosh'a atfedilen hedefleme idaresi aralığı (ikincil kaynak, doğrulanmadı), %25 `hekis_model` pilot payı (karar). Bileşenlere (tespit/tahsil/idari) ayrılmadı: yalnız toplam.
 
 ## Adım 1: stok
 
 - **maliyet**: `yok`. Adım 1 stok; maliyet satırı yok.
-- **yürütme**: 0 – 0 milyar TL (`akis_yok`). Yürütülen akış yok: 0 kurgu gereği (maliyet yok demek değil).
+- **yürütme ρ=0.4% (üst sınır): ortak stok 20,363.4 × ρ**: 81.5 – 81.5 milyar TL (tek sefer) (`modellendi_ust_sinir`). Silinen tutar boş: ortak stok silinebilecek en çok. ρ ≥ %9 uygulanmaz: 1,833-5,905 milyar TL gerçekçi değil.
 
 ## Adım 2: temerrüt ve ücret
 
 - **maliyet**: `yok`. Temerrüt 0, parametre; maliyet satırı yok.
-- **yürütme**: 0 – 0 milyar TL (`akis_yok`). Yürütülen akış yok: 0 kurgu gereği.
+- **yürütme ρ=0.4% (üst sınır): silinen 14,602.3 × ρ**: 58.4 – 58.4 milyar TL (tek sefer) (`modellendi_ust_sinir`). Mahsupla silinen (Faz 2 düğümlü ağ; kenarlar varsayım, üst sınır). ρ ≥ %9 uygulanmaz: 1,314-4,235 milyar TL gerçekçi değil.
 
 ## Adım 3: faiz durma
 
 - **maliyet**: `yok`. Kredi ihtiyacı 0; faizin durması modellenmedi.
-- **yürütme**: 0 – 0 milyar TL (`akis_yok`). Yürütülen akış yok: 0 kurgu gereği.
+- **yürütme ρ=0.4% (alt), κ=0.25: duran faiz 1,207.6 × ρ**: 4.8 – 4.8 milyar TL/yıl (2029) (`modellendi_band`). κ varsayım; r_t ileri sabit (Faz 3).
+- **yürütme ρ=9% (orta), κ=0.25: duran faiz 1,207.6 × ρ**: 108.7 – 108.7 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), κ=0.25: duran faiz 1,207.6 × ρ**: 301.9 – 301.9 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=29% (üst), κ=0.25: duran faiz 1,207.6 × ρ**: 350.2 – 350.2 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=0.4% (alt), κ=0.5: duran faiz 2,415.6 × ρ**: 9.7 – 9.7 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=9% (orta), κ=0.5: duran faiz 2,415.6 × ρ**: 217.4 – 217.4 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), κ=0.5: duran faiz 2,415.6 × ρ**: 603.9 – 603.9 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=29% (üst), κ=0.5: duran faiz 2,415.6 × ρ**: 700.5 – 700.5 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=0.4% (alt), κ=1.0: duran faiz 4,830.8 × ρ**: 19.3 – 19.3 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=9% (orta), κ=1.0: duran faiz 4,830.8 × ρ**: 434.8 – 434.8 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), κ=1.0: duran faiz 4,830.8 × ρ**: 1207.7 – 1207.7 milyar TL/yıl (2029) (`modellendi_band`).
+- **yürütme ρ=29% (üst), κ=1.0: duran faiz 4,830.8 × ρ**: 1400.9 – 1400.9 milyar TL/yıl (2029) (`modellendi_band`).
 
 ## Adım 4: adres yönlendirme (senet)
 
@@ -48,7 +59,7 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 
 ## Ne denmez
 
-- 'Yürütme maliyeti ölçüldü' denmez; ρ bandı varsayım, program akışı bant. Adım 1-3'te 0, 'maliyet yok' değil 'yürütülen akış yok'.
+- 'Yürütme maliyeti ölçüldü' denmez; ρ bandı varsayım, program akışı bant. Adım 1 ve 2 stok mahsubu: yalnız alt ρ, üst sınır; bu oran stok temizliği için bile iyimser olabilir.
 - ρ'nun dayanağı ikincil kaynak (Grosh'a atfedilen %0,4-29); adım 4'te (mevduat senedi) daha da zayıf.
 - Adım 4 ve 5 maliyetleri toplanmaz: biri prim ve kredi daralması, öteki hane içi aktarım.
 - Bantlar güven aralığı değil; varsayım aralığının uçları.

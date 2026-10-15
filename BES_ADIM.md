@@ -46,7 +46,7 @@ Adım dosyalarına ve kapılara yazılmaz; etiketiyle okunur. Harita: `GIRDI_HAR
 
 ## Maliyet ve yürütme maliyeti
 
-Adım adım: `BES_ADIM_MALIYET.md` (`python3 bes_adim_maliyet.py`; model: `yurutme_maliyet.py`). Adım 4 ve 5 maliyeti band (varsayım). Yürütme maliyeti (tespit + tahsil + idari) = program akışı × ρ, ρ bandı varsayım (%0,4 / %9 / %25 pilot payı / %29); adım 1-3'te yürütülen akış yok (0, kurgu).
+Adım adım: `BES_ADIM_MALIYET.md` (`python3 bes_adim_maliyet.py`; model: `yurutme_maliyet.py`). Adım 4 ve 5 maliyeti band (varsayım). Yürütme maliyeti (tespit + tahsil + idari) = program akışı × ρ, ρ bandı varsayım (%0,4 / %9 / %25 pilot payı / %29); adım 1 (ortak stok) ve 2 (mahsupla silinen) için stok, yalnız alt ρ ile üst sınır; adım 3 (duran faiz) için yıllık akış.
 
 ## Ne denmez
 

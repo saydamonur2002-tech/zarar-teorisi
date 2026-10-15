@@ -1,10 +1,21 @@
 ﻿adim,kalem,durum,alt,ust,birim,kaynak,not
 1,maliyet,yok,,,milyar TL,—,Adım 1 stok; maliyet satırı yok.
-1,yürütme,akis_yok,0,0,milyar TL,yurutme_maliyet.py,Yürütülen akış yok: 0 kurgu gereği (maliyet yok demek değil).
 2,maliyet,yok,,,milyar TL,—,"Temerrüt 0, parametre; maliyet satırı yok."
-2,yürütme,akis_yok,0,0,milyar TL,yurutme_maliyet.py,Yürütülen akış yok: 0 kurgu gereği.
 3,maliyet,yok,,,milyar TL,—,Kredi ihtiyacı 0; faizin durması modellenmedi.
-3,yürütme,akis_yok,0,0,milyar TL,yurutme_maliyet.py,Yürütülen akış yok: 0 kurgu gereği.
+1,"yürütme ρ=0.4% (üst sınır): ortak stok 20,363.4 × ρ",modellendi_ust_sinir,81.5,81.5,milyar TL (tek sefer),yurutme_maliyet.py,"Silinen tutar boş: ortak stok silinebilecek en çok. ρ ≥ %9 uygulanmaz: 1,833-5,905 milyar TL gerçekçi değil."
+2,"yürütme ρ=0.4% (üst sınır): silinen 14,602.3 × ρ",modellendi_ust_sinir,58.4,58.4,milyar TL (tek sefer),yurutme_maliyet.py,"Mahsupla silinen (Faz 2 düğümlü ağ; kenarlar varsayım, üst sınır). ρ ≥ %9 uygulanmaz: 1,314-4,235 milyar TL gerçekçi değil."
+3,"yürütme ρ=0.4% (alt), κ=0.25: duran faiz 1,207.6 × ρ",modellendi_band,4.8,4.8,milyar TL/yıl (2029),yurutme_maliyet.py,κ varsayım; r_t ileri sabit (Faz 3).
+3,"yürütme ρ=9% (orta), κ=0.25: duran faiz 1,207.6 × ρ",modellendi_band,108.7,108.7,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=25% (pilot payı), κ=0.25: duran faiz 1,207.6 × ρ",modellendi_band,301.9,301.9,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=29% (üst), κ=0.25: duran faiz 1,207.6 × ρ",modellendi_band,350.2,350.2,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=0.4% (alt), κ=0.5: duran faiz 2,415.6 × ρ",modellendi_band,9.7,9.7,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=9% (orta), κ=0.5: duran faiz 2,415.6 × ρ",modellendi_band,217.4,217.4,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=25% (pilot payı), κ=0.5: duran faiz 2,415.6 × ρ",modellendi_band,603.9,603.9,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=29% (üst), κ=0.5: duran faiz 2,415.6 × ρ",modellendi_band,700.5,700.5,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=0.4% (alt), κ=1.0: duran faiz 4,830.8 × ρ",modellendi_band,19.3,19.3,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=9% (orta), κ=1.0: duran faiz 4,830.8 × ρ",modellendi_band,434.8,434.8,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=25% (pilot payı), κ=1.0: duran faiz 4,830.8 × ρ",modellendi_band,1207.7,1207.7,milyar TL/yıl (2029),yurutme_maliyet.py,
+3,"yürütme ρ=29% (üst), κ=1.0: duran faiz 4,830.8 × ρ",modellendi_band,1400.9,1400.9,milyar TL/yıl (2029),yurutme_maliyet.py,
 4,maliyet: prim toplamı 2029-2031,band_varsayim,77.5,1058.9,milyar TL,adim4_adres_yonlendirme.csv,"12 senaryo; orta (θ 0,25 χ 0,5 π 0,05) 529.4. Endeks bacağı hesaplanmadı: alt sınır olabilir."
 4,"maliyet: kredi daralması (tepe, yıllık)",band_varsayim,154.9,774.5,milyar TL/yıl,adim4_adres_yonlendirme.csv,"Orta 387.2. Banka mevduat kaybı × 0,08."
 4,yürütme ρ=0.4% (alt),modellendi_band,0.3,4.2,milyar TL (2029-31),yurutme_maliyet.py,Prim toplamı × ρ. ρ dayanağı zayıf: hedeflenmiş transfer idaresi aralığı senet ihracına taşındı.
