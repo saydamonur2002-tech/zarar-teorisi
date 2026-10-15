@@ -1,12 +1,13 @@
 """Beş adımın maliyeti ve yürütme maliyeti, adım adım. Girdi: adim4_adres_yonlendirme.csv, adim5_kira_aralik.csv (kendi adım koşuları).
 Çıktı: bes_adim_maliyet.csv, BES_ADIM_MALIYET.md. Yeni model değil: var olan bantların okunması.
-Yürütme maliyeti (tespit, tahsil, idari) hiçbir adımda modellenmedi; tek referans hekis_model pilot payı (SAFETY = 1,25, karar)."""
+Yürütme maliyeti (tespit + tahsil + idari) yurutme_maliyet.py modeliyle: program akışı × ρ (ρ bandı varsayım). Adım 1-3'te akış yok: yürütme 0 (kurgu)."""
 import collections
 import csv
 from pathlib import Path
 
+import yurutme_maliyet as Y
+
 KOK = Path(__file__).resolve().parent
-PILOT_PAY = 0.25  # hekis_model/hekis/pilot.py SAFETY - 1; karar, ölçüm değil
 
 
 def oku(ad):
@@ -35,29 +36,39 @@ def main():
     orta = a4[(0.25, 0.5, 0.05)]
     tr = {k: a5[f"Ho→Ha yıllık transfer, kapsama payı {k}%"] for k in (20, 50, 100)}
     kira = a5["kira akışı yıllık (yol A)"]
+    h = Y.hepsi()
+    y4, y5 = h["4"], h["5"]
+    R = Y.RHO
+    sat4 = lambda ad: (f"{y4['yurutme'][ad][0]:.1f}", f"{y4['yurutme'][ad][1]:.1f}")
     rows = [
         ("1", "maliyet", "yok", "", "", "milyar TL", "—", "Adım 1 stok; maliyet satırı yok."),
-        ("1", "yürütme", "modellenmedi", "", "", "milyar TL", "—", "Tespit, tahsil, idari maliyet modelde yok."),
+        ("1", "yürütme", "akis_yok", "0", "0", "milyar TL", "yurutme_maliyet.py", "Yürütülen akış yok: 0 kurgu gereği (maliyet yok demek değil)."),
         ("2", "maliyet", "yok", "", "", "milyar TL", "—", "Temerrüt 0, parametre; maliyet satırı yok."),
-        ("2", "yürütme", "modellenmedi", "", "", "milyar TL", "—", ""),
+        ("2", "yürütme", "akis_yok", "0", "0", "milyar TL", "yurutme_maliyet.py", "Yürütülen akış yok: 0 kurgu gereği."),
         ("3", "maliyet", "yok", "", "", "milyar TL", "—", "Kredi ihtiyacı 0; faizin durması modellenmedi."),
-        ("3", "yürütme", "modellenmedi", "", "", "milyar TL", "—", ""),
+        ("3", "yürütme", "akis_yok", "0", "0", "milyar TL", "yurutme_maliyet.py", "Yürütülen akış yok: 0 kurgu gereği."),
         ("4", "maliyet: prim toplamı 2029-2031", "band_varsayim", f"{min(prim):.1f}", f"{max(prim):.1f}", "milyar TL", "adim4_adres_yonlendirme.csv", f"12 senaryo; orta (θ 0,25 χ 0,5 π 0,05) {orta['prim']:.1f}. Endeks bacağı hesaplanmadı: alt sınır olabilir."),
         ("4", "maliyet: kredi daralması (tepe, yıllık)", "band_varsayim", f"{min(kredi):.1f}", f"{max(kredi):.1f}", "milyar TL/yıl", "adim4_adres_yonlendirme.csv", f"Orta {orta['kredi']:.1f}. Banka mevduat kaybı × 0,08."),
-        ("4", "yürütme", "modellenmedi", "", "", "milyar TL", "—", "İhraççı K′ varsayım. Prim sübvansiyon olmadığı için pilot payı uygulanmaz."),
-        ("5", "maliyet: Ho→Ha transferi, kapsama %20", "band_varsayim", f"{tr[20][0]:.1f}", f"{tr[20][1]:.1f}", "milyar TL/yıl", "adim5_kira_aralik.csv", "H içi aktarım; H toplam NL 0."),
-        ("5", "maliyet: Ho→Ha transferi, kapsama %50", "band_varsayim", f"{tr[50][0]:.1f}", f"{tr[50][1]:.1f}", "milyar TL/yıl", "adim5_kira_aralik.csv", ""),
-        ("5", "maliyet: Ho→Ha transferi, kapsama %100", "band_varsayim", f"{tr[100][0]:.1f}", f"{tr[100][1]:.1f}", "milyar TL/yıl", "adim5_kira_aralik.csv", ""),
-        ("5", "yürütme", "modellenmedi", "", "", "milyar TL/yıl", "—", "Tespit, tahsil, idari maliyet modelde yok."),
-        ("5", "yürütme: ima edilen ödenek (pilot payı %25 × transfer %20-100)", "varsayim_pay", f"{PILOT_PAY*tr[20][0]:.1f}", f"{PILOT_PAY*tr[100][1]:.1f}", "milyar TL/yıl", "hekis_model pilot SAFETY=1,25", "Maliyet tahmini değil; yürütme için ayrılabilecek pay. Gerçek maliyet: tespit/tahsil/idari verisi yok."),
+        ("4", f"yürütme ρ={R['alt']:.1%} (alt)", "modellendi_band", *sat4("alt"), "milyar TL (2029-31)", "yurutme_maliyet.py", "Prim toplamı × ρ. ρ dayanağı zayıf: hedeflenmiş transfer idaresi aralığı senet ihracına taşındı."),
+        ("4", f"yürütme ρ={R['orta']:.0%} (orta)", "modellendi_band", *sat4("orta"), "milyar TL (2029-31)", "yurutme_maliyet.py", f"Orta senaryo prim {y4['orta_senaryo_akis']:.1f} × ρ = {y4['yurutme_orta_senaryo']['orta']:.1f}."),
+        ("4", f"yürütme ρ={R['pilot']:.0%} (pilot payı)", "modellendi_band", *sat4("pilot"), "milyar TL (2029-31)", "yurutme_maliyet.py", "hekis_model pilot SAFETY=1,25 (karar)."),
+        ("4", f"yürütme ρ={R['ust']:.0%} (üst)", "modellendi_band", *sat4("ust"), "milyar TL (2029-31)", "yurutme_maliyet.py", ""),
     ]
+    for k in ("20", "50", "100"):
+        a = y5[k]
+        rows.append(("5", f"maliyet: Ho→Ha transferi, kapsama %{k}", "band_varsayim", f"{a['akis_alt']:.1f}", f"{a['akis_ust']:.1f}", "milyar TL/yıl", "adim5_kira_aralik.csv", "H içi aktarım; H toplam NL 0." if k == "20" else ""))
+    for k in ("20", "50", "100"):
+        a = y5[k]
+        for ad, etk in (("alt", "alt"), ("orta", "orta"), ("pilot", "pilot payı"), ("ust", "üst")):
+            lo, hi = a["yurutme"][ad]
+            rows.append(("5", f"yürütme ρ={R[ad]:.1%} ({etk}), kapsama %{k}" if ad == "alt" else f"yürütme ρ={R[ad]:.0%} ({etk}), kapsama %{k}", "modellendi_band", f"{lo:.1f}", f"{hi:.1f}", "milyar TL/yıl", "yurutme_maliyet.py", "Transfer × ρ." if (k, ad) == ("20", "alt") else ""))
     with open(KOK / "bes_adim_maliyet.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         w.writerow(["adim", "kalem", "durum", "alt", "ust", "birim", "kaynak", "not"])
         w.writerows(rows)
     L = ["# Beş adımın maliyeti ve yürütme maliyeti, adım adım", "",
-         "Çalıştır: `python3 bes_adim_maliyet.py`. Çıktı: `bes_adim_maliyet.csv`. Yeni model değil: adım 4 ve 5'in kendi koşularındaki bantların okunması. Tüm sayılar varsayım bandı; ölçüm değil.", "",
-         "Yürütme maliyeti = tespit + tahsil + idari maliyet. **Hiçbir adımda modellenmedi** (`hekis_model/PILOT.md`: 'tespit, tahsil ve idari maliyet modelde yok'). Repodaki tek referans pilot eşiğindeki %25 pay (bedel/sübvansiyon ≥ 1,25; karar).", ""]
+         "Çalıştır: `python3 bes_adim_maliyet.py`. Çıktı: `bes_adim_maliyet.csv`. Maliyet satırları adım 4 ve 5'in kendi koşularındaki bantlardan; yürütme satırları `yurutme_maliyet.py` modelinden. Tüm sayılar varsayım bandı; ölçüm değil.", "",
+         "Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py`): yürütme = program akışı × ρ. Program akışı: adım 5'te Ho→Ha transferi, adım 4'te prim toplamı; adım 1-3'te yürütülen akış yok (0, kurgu). ρ bandı varsayım: %0,4 / %9 / %25 (pilot payı) / %29; alt, orta ve üst uçlar Grosh'a atfedilen hedefleme idaresi aralığı (ikincil kaynak, doğrulanmadı), %25 `hekis_model` pilot payı (karar). Bileşenlere (tespit/tahsil/idari) ayrılmadı: yalnız toplam.", ""]
     for n, ad in (("1", "stok"), ("2", "temerrüt ve ücret"), ("3", "faiz durma"), ("4", "adres yönlendirme (senet)"), ("5", "kira")):
         L += [f"## Adım {n}: {ad}", ""]
         for r in (x for x in rows if x[0] == n):
@@ -67,7 +78,8 @@ def main():
                 L.append(f"- **{r[1]}**: `{r[2]}`. {r[7]}".rstrip())
         L.append("")
     L += ["## Ne denmez", "",
-          "- 'Yürütme maliyeti hesaplandı' denmez; satırlar `modellenmedi`. Yalnız adım 5'te pilot payına dayanan bir ödenek var (`varsayim_pay`).",
+          "- 'Yürütme maliyeti ölçüldü' denmez; ρ bandı varsayım, program akışı bant. Adım 1-3'te 0, 'maliyet yok' değil 'yürütülen akış yok'.",
+          "- ρ'nun dayanağı ikincil kaynak (Grosh'a atfedilen %0,4-29); adım 4'te (mevduat senedi) daha da zayıf.",
           "- Adım 4 ve 5 maliyetleri toplanmaz: biri prim ve kredi daralması, öteki hane içi aktarım.",
           "- Bantlar güven aralığı değil; varsayım aralığının uçları.", ""]
     (KOK / "BES_ADIM_MALIYET.md").write_text("\n".join(L), encoding="utf-8")
