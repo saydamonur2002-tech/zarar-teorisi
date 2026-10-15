@@ -8,18 +8,25 @@ Tek gerçek terim: yürütme maliyeti.
 Maliyet iki rejimle (milyar TL, tek sefer):
   A sıfır atma (YTL 2005 türü): banknot basımı ≈ 10 milyon $ (2004 tahmini, Hürriyet; 'ek maliyet değil' denmişti) + kurum başı yazılım 20-100 bin $ (TCMB Başkan Yardımcısı aktarımı) × kurum sayısı N (bilinmiyor; 100-1.000 varsayım).
   B yeni para birimi (euro türü tam değişim): GSYH'nin %0,3-1,0'ı (Avro bölgesine girenlerde ort. %0,3-0,5, Litvanya %0,5-0,7, Hırvatistan %0,5-1; ikincil kaynak, doğrulanmadı). Muhalif/kampanya kaynaklı %4,4 (Birleşik Krallık) kullanılmaz.
+Üç dönüşüm kuralı (kullanıcı: "1 TL => 1 YTL veya sabit tutulmuş bir çapa, sonra geçiş"):
+  1) başa baş (1 yeni = 1 eski, s=1): yalnız ad/etiket değişir; sıfır atılmaz.
+  2) sıfır atma (YTL 2005: 1 yeni = 1.000.000 eski): s=1e-6.
+  3) sabit çapa (1 yeni = 1 çapa birimi, örnek ABD doları, kur 32,87): s=1/32,87; sonra geçiş (çift dolaşım dönemi).
+Maliyet eşlemesi: 1 → yalnız yazılım/etiket (A'nın yazılım terimi); 2 → A; 3 → B (yuvarlak olmayan çarpan, çift gösterim/dolaşım; avro türü). Çapanın savunma maliyeti (rezerv) modellenmedi.
 GSYH ve kur: etki cephesi paketi gerceklik_capa.json (2024): 44.587.225,44 milyon TL; 32,87 TL/$."""
 import csv
 from pathlib import Path
 
 KOK = Path(__file__).resolve().parent
 S = 1 / 1000  # 1 yeni birim = 1.000 eski TL (örnek)
+KURALLAR = {"basa_bas": 1.0, "sifir_atma": 1e-6, "sabit_capa": None}  # sabit_capa: 1/KUR (KUR aşağıda)
 GSYH_MLR_TL = 44587.22544
 KUR = 32.87
 BANKNOT_MN_USD = 10.0
 YAZILIM_USD = (20_000, 100_000)
 KURUM_N = (100, 1000)  # varsayım
 B_ORAN = (0.003, 0.010)
+KURALLAR["sabit_capa"] = 1 / KUR
 
 
 def _oku(ad):
@@ -67,16 +74,25 @@ def maliyet():
     return {"A_basim": a_basim, "A_yazilim": a_yaz, "A": A, "B": B}
 
 
+def kural_maliyet():
+    c = maliyet()
+    return {"basa_bas": c["A_yazilim"], "sifir_atma": c["A"], "sabit_capa": c["B"]}
+
+
 def main():
     k = kalemler()
     o0, o1 = oranlar(k), oranlar(cevir(k))
     fark = {a: abs(o0[a] - o1[a]) for a in o0}
+    kural_fark = {ad: max(abs(o0[a] - oranlar(cevir(k, s))[a]) for a in o0) for ad, s in KURALLAR.items()}
     c = maliyet()
     rows = [["4.5", "plasebo: oran değişimi", "max |Δoran|", f"{max(fark.values()):.2e}", "", "birimsiz", "adim45_para_birimi.py", "s=1/1000; denklik aritmetik gereği (kurgu)."]]
     for a, v in o0.items():
         rows.append(["4.5", f"oran: {a}", "oran", f"{v:.6f}", f"{o1[a]:.6f}", "birimsiz", "adim45_para_birimi.py", "çevirmeden önce / sonra"])
     rows += [["4.5", "maliyet A: sıfır atma (basım + yazılım)", "modellendi_band", f"{c['A'][0]:.2f}", f"{c['A'][1]:.2f}", "milyar TL (tek sefer)", "adim45_para_birimi.py", f"Basım {c['A_basim']:.2f}; yazılım {c['A_yazilim'][0]:.2f}-{c['A_yazilim'][1]:.2f} (N=100-1.000 varsayım)."],
              ["4.5", "maliyet B: yeni para birimi (GSYH %0,3-1,0)", "modellendi_band", f"{c['B'][0]:.1f}", f"{c['B'][1]:.1f}", "milyar TL (tek sefer)", "adim45_para_birimi.py", "Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak."]]
+    kural_maliyet = {"basa_bas": c["A_yazilim"], "sifir_atma": c["A"], "sabit_capa": c["B"]}
+    for ad, s in KURALLAR.items():
+        rows.append(["4.5", f"kural {ad}: s={s:.3g}", "modellendi_band", f"{kural_maliyet[ad][0]:.2f}", f"{kural_maliyet[ad][1]:.2f}", "milyar TL (tek sefer)", "adim45_para_birimi.py", f"max |Δoran|={kural_fark[ad]:.1e}"])
     with open(KOK / "adim45.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         w.writerow(["adim", "kalem", "durum", "alt", "ust", "birim", "kaynak", "not"])
@@ -88,7 +104,13 @@ def main():
          f"Adım 1-5 çıktılarından beş oran çevirmeden önce ve sonra hesaplandı; en büyük fark {max(fark.values()):.1e} (kayan nokta düzeyi). Bu denklik **aritmetik gereğidir**: modelde para yanılsaması, yuvarlama enflasyonu veya fiyat belirleme alışkanlığı yok, dolayısıyla etki tanım gereği sıfırdır. Gerçekte bu terimler vardır ve yeni para birimi plasebo olmayabilir; model bunu ölçmez.", "",
          "| Oran | Çevirmeden önce | Sonra |", "| --- | ---: | ---: |"]
     L += [f"| {a} | {v:.6f} | {o1[a]:.6f} |" for a, v in o0.items()]
-    L += ["", "## Tek gerçek terim: yürütme maliyeti (milyar TL, tek sefer)", "",
+    L += ["", "## Üç dönüşüm kuralı ve maliyeti (milyar TL, tek sefer)", "",
+          "| Kural | Çevirme oranı s | max \\|Δoran\\| | Maliyet alt – üst | Eşleme |", "| --- | ---: | ---: | ---: | --- |"]
+    esl = {"basa_bas": "yalnız yazılım/etiket (A'nın yazılım terimi)", "sifir_atma": "A: basım + yazılım", "sabit_capa": "B: yuvarlak olmayan çarpan, çift dolaşım (avro türü)"}
+    for ad, s in KURALLAR.items():
+        L.append(f"| {ad} | {s:.3g} | {kural_fark[ad]:.1e} | {kural_maliyet[ad][0]:.2f} – {kural_maliyet[ad][1]:.2f} | {esl[ad]} |")
+    L += ["", "Sabit çapa kuralında 1 yeni birim = 1 çapa birimidir (örnek ABD doları, kur 32,87); 'sonra geçiş' çift dolaşım dönemidir ve B maliyetine eşlenmiştir. Çapanın savunma maliyeti (rezerv, faiz) modellenmedi: çapa kuralı plasebo değildir, sabit kur rejimi gerçek bir kısıttır; burada yalnız birim dönüşümü plasebo sayılır.", "",
+          "## Tek gerçek terim: yürütme maliyeti (milyar TL, tek sefer)", "",
           f"- **A. Sıfır atma (YTL 2005 türü):** {c['A'][0]:.2f} – {c['A'][1]:.2f}. Banknot basımı ≈ 10 milyon $ (2004 tahmini, Hürriyet; 'ek maliyet değil' denmişti) = {c['A_basim']:.2f} milyar TL (kur 32,87); yazılım kurum başına 20–100 bin $ (TCMB Başkan Yardımcısı aktarımı), kurum sayısı N bilinmiyor, 100–1.000 varsayım: {c['A_yazilim'][0]:.2f} – {c['A_yazilim'][1]:.2f} milyar TL.",
           f"- **B. Yeni para birimi (euro türü tam değişim):** GSYH'nin %0,3–1,0'ı = {c['B'][0]:.1f} – {c['B'][1]:.1f} milyar TL (GSYH 2024: 44.587,2 milyar TL). Avro bölgesine girenlerde ortalama %0,3–0,5, Litvanya %0,5–0,7, Hırvatistan %0,5–1 (bir Bulgaristan analizinde aktarılan, ikincil kaynak, doğrulanmadı). Birleşik Krallık için kampanya kaynaklı %4,4 kullanılmadı.", "",
           "Fayda sıfır (plasebo), maliyet pozitif: net etki = −maliyet. Adım 4 ve 5 ile toplanmaz (tek seferlik; öteki adımlar akış ve stok).", "",

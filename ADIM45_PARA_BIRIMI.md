@@ -14,6 +14,16 @@ Tüm TL değerleri sabit bir oranla (örnek: 1 yeni birim = 1.000 eski TL) yeni 
 | prim/adres (adım 4) | 0.027342 | 0.027342 |
 | HEKİS/piyasa kira (adım 5) | 0.859845 | 0.859845 |
 
+## Üç dönüşüm kuralı ve maliyeti (milyar TL, tek sefer)
+
+| Kural | Çevirme oranı s | max \|Δoran\| | Maliyet alt – üst | Eşleme |
+| --- | ---: | ---: | ---: | --- |
+| basa_bas | 1 | 0.0e+00 | 0.07 – 3.29 | yalnız yazılım/etiket (A'nın yazılım terimi) |
+| sifir_atma | 1e-06 | 2.2e-16 | 0.39 – 3.62 | A: basım + yazılım |
+| sabit_capa | 0.0304 | 1.1e-16 | 133.76 – 445.87 | B: yuvarlak olmayan çarpan, çift dolaşım (avro türü) |
+
+Sabit çapa kuralında 1 yeni birim = 1 çapa birimidir (örnek ABD doları, kur 32,87); 'sonra geçiş' çift dolaşım dönemidir ve B maliyetine eşlenmiştir. Çapanın savunma maliyeti (rezerv, faiz) modellenmedi: çapa kuralı plasebo değildir, sabit kur rejimi gerçek bir kısıttır; burada yalnız birim dönüşümü plasebo sayılır.
+
 ## Tek gerçek terim: yürütme maliyeti (milyar TL, tek sefer)
 
 - **A. Sıfır atma (YTL 2005 türü):** 0.39 – 3.62. Banknot basımı ≈ 10 milyon $ (2004 tahmini, Hürriyet; 'ek maliyet değil' denmişti) = 0.33 milyar TL (kur 32,87); yazılım kurum başına 20–100 bin $ (TCMB Başkan Yardımcısı aktarımı), kurum sayısı N bilinmiyor, 100–1.000 varsayım: 0.07 – 3.29 milyar TL.

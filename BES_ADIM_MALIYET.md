@@ -60,6 +60,9 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 - **maliyet: fayda**: 0 – 0 milyar TL (`plasebo`). Oranlar çevirmeden önce ve sonra aynı (aritmetik gereği).
 - **yürütme A: sıfır atma (basım + yazılım)**: 0.39 – 3.62 milyar TL (tek sefer) (`modellendi_band`). Basım ≈ 10 milyon $ (2004 tahmini) + kurum başı yazılım 20-100 bin $ × N (100-1.000, varsayım).
 - **yürütme B: yeni para birimi (GSYH %0,3-1,0)**: 133.8 – 445.9 milyar TL (tek sefer) (`modellendi_band`). Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak.
+- **kural basa_bas (s=1)**: 0.07 – 3.29 milyar TL (tek sefer) (`modellendi_band`). 1 TL = 1 YTL: yalnız ad/etiket; yazılım terimi.
+- **kural sifir_atma (s=1e-06)**: 0.39 – 3.62 milyar TL (tek sefer) (`modellendi_band`). YTL 2005 türü, 1 yeni = 1.000.000 eski.
+- **kural sabit_capa (s=0.0304)**: 133.76 – 445.87 milyar TL (tek sefer) (`modellendi_band`). 1 yeni = 1 çapa birimi (örnek USD), sonra geçiş: çift dolaşım; savunma maliyeti modellenmedi.
 
 ## Adım 5: kira
 

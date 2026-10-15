@@ -63,7 +63,8 @@ def main():
     c45 = P45.maliyet()
     rows += [("4.5", "maliyet: fayda", "plasebo", "0", "0", "milyar TL", "adim45_para_birimi.py", "Oranlar çevirmeden önce ve sonra aynı (aritmetik gereği)."),
              ("4.5", "yürütme A: sıfır atma (basım + yazılım)", "modellendi_band", f"{c45['A'][0]:.2f}", f"{c45['A'][1]:.2f}", "milyar TL (tek sefer)", "adim45_para_birimi.py", "Basım ≈ 10 milyon $ (2004 tahmini) + kurum başı yazılım 20-100 bin $ × N (100-1.000, varsayım)."),
-             ("4.5", "yürütme B: yeni para birimi (GSYH %0,3-1,0)", "modellendi_band", f"{c45['B'][0]:.1f}", f"{c45['B'][1]:.1f}", "milyar TL (tek sefer)", "adim45_para_birimi.py", "Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak.")]
+             ("4.5", "yürütme B: yeni para birimi (GSYH %0,3-1,0)", "modellendi_band", f"{c45['B'][0]:.1f}", f"{c45['B'][1]:.1f}", "milyar TL (tek sefer)", "adim45_para_birimi.py", "Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak."),
+             *[("4.5", f"kural {ad} (s={P45.KURALLAR[ad]:.3g})", "modellendi_band", f"{v[0]:.2f}", f"{v[1]:.2f}", "milyar TL (tek sefer)", "adim45_para_birimi.py", {"basa_bas": "1 TL = 1 YTL: yalnız ad/etiket; yazılım terimi.", "sifir_atma": "YTL 2005 türü, 1 yeni = 1.000.000 eski.", "sabit_capa": "1 yeni = 1 çapa birimi (örnek USD), sonra geçiş: çift dolaşım; savunma maliyeti modellenmedi."}[ad]) for ad, v in P45.kural_maliyet().items()]]
     for k in ("20", "50", "100"):
         a = y5[k]
         rows.append(("5", f"maliyet: Ho→Ha transferi, kapsama %{k}", "band_varsayim", f"{a['akis_alt']:.1f}", f"{a['akis_ust']:.1f}", "milyar TL/yıl", "adim5_kira_aralik.csv", "H içi aktarım; H toplam NL 0." if k == "20" else ""))

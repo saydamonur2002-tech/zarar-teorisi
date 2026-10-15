@@ -25,6 +25,9 @@
 4.5,maliyet: fayda,plasebo,0,0,milyar TL,adim45_para_birimi.py,Oranlar çevirmeden önce ve sonra aynı (aritmetik gereği).
 4.5,yürütme A: sıfır atma (basım + yazılım),modellendi_band,0.39,3.62,milyar TL (tek sefer),adim45_para_birimi.py,"Basım ≈ 10 milyon $ (2004 tahmini) + kurum başı yazılım 20-100 bin $ × N (100-1.000, varsayım)."
 4.5,"yürütme B: yeni para birimi (GSYH %0,3-1,0)",modellendi_band,133.8,445.9,milyar TL (tek sefer),adim45_para_birimi.py,Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak.
+4.5,kural basa_bas (s=1),modellendi_band,0.07,3.29,milyar TL (tek sefer),adim45_para_birimi.py,1 TL = 1 YTL: yalnız ad/etiket; yazılım terimi.
+4.5,kural sifir_atma (s=1e-06),modellendi_band,0.39,3.62,milyar TL (tek sefer),adim45_para_birimi.py,"YTL 2005 türü, 1 yeni = 1.000.000 eski."
+4.5,kural sabit_capa (s=0.0304),modellendi_band,133.76,445.87,milyar TL (tek sefer),adim45_para_birimi.py,"1 yeni = 1 çapa birimi (örnek USD), sonra geçiş: çift dolaşım; savunma maliyeti modellenmedi."
 5,"maliyet: Ho→Ha transferi, kapsama %20",band_varsayim,51.6,160.2,milyar TL/yıl,adim5_kira_aralik.csv,H içi aktarım; H toplam NL 0.
 5,"maliyet: Ho→Ha transferi, kapsama %50",band_varsayim,129.1,400.6,milyar TL/yıl,adim5_kira_aralik.csv,
 5,"maliyet: Ho→Ha transferi, kapsama %100",band_varsayim,258.2,801.1,milyar TL/yıl,adim5_kira_aralik.csv,
