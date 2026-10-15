@@ -1,0 +1,207 @@
+{
+  "n": 16,
+  "calisan": 0,
+  "calisan_ulkeler": [],
+  "yazilan_gecti": 6,
+  "fatura_gecti": 0,
+  "bes_adim": "bulunamadi",
+  "bes_adim_sorgu": "18",
+  "kimlik_bagimsiz": {
+    "turkiye_para": "gecti",
+    "turkiye_para_fark": 0.0,
+    "arjantin_yerlesim": "gecti",
+    "arjantin_para": "gecti",
+    "arjantin_para_fark": 0.0
+  },
+  "band": {
+    "min_degisen": [],
+    "max_degisen": [
+      "Euro alanı",
+      "Türkiye"
+    ]
+  },
+  "turkiye_fatura_baska_dosya": {
+    "dosya": "orta_vade_senaryo.json",
+    "yil": 2029,
+    "faiz_37": 5338.0,
+    "durum": "bu kosuya girmez"
+  },
+  "satirlar": [
+    {
+      "ulke": "Türkiye",
+      "kimlik": "kurulum",
+      "yazilan": "kaldi",
+      "yazilan_durum": "capraz_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "capraz_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Japonya",
+      "kimlik": "bagimsiz_gecti",
+      "yazilan": "gecti",
+      "yazilan_durum": "yazildi",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "ABD",
+      "kimlik": "veri_yok",
+      "yazilan": "kaldi",
+      "yazilan_durum": "stok_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "stok_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Çin",
+      "kimlik": "bagimsiz_gecti",
+      "yazilan": "gecti",
+      "yazilan_durum": "yazildi",
+      "fatura": "veri_yok",
+      "adim_kayit": "uygulandi_tarihsel; adım 3 tersi, kredi enjeksiyonu",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Arjantin",
+      "kimlik": "bagimsiz_gecti",
+      "yazilan": "kaldi",
+      "yazilan_durum": "capraz_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "capraz_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Brezilya",
+      "kimlik": "kurulum",
+      "yazilan": "gecti",
+      "yazilan_durum": "yazildi",
+      "fatura": "veri_yok",
+      "adim_kayit": "adim4_5_kismi; yeni inşa, 1964",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Almanya",
+      "kimlik": "veri_yok",
+      "yazilan": "kaldi",
+      "yazilan_durum": "stok_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "stok_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Fransa",
+      "kimlik": "veri_yok",
+      "yazilan": "kaldi",
+      "yazilan_durum": "stok_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "stok_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "İtalya",
+      "kimlik": "veri_yok",
+      "yazilan": "kaldi",
+      "yazilan_durum": "stok_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "ozel_platform",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "stok_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "İspanya",
+      "kimlik": "veri_yok",
+      "yazilan": "kaldi",
+      "yazilan_durum": "stok_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "ozel_platform; adim5_bulundu",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "stok_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Euro alanı",
+      "kimlik": "kurulum",
+      "yazilan": "gecti",
+      "yazilan_durum": "yazildi",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "İngiltere",
+      "kimlik": "veri_yok",
+      "yazilan": "kaldi",
+      "yazilan_durum": "stok_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "stok_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Güney Kore",
+      "kimlik": "kurulum",
+      "yazilan": "gecti",
+      "yazilan_durum": "yazildi",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Meksika",
+      "kimlik": "veri_yok",
+      "yazilan": "kaldi",
+      "yazilan_durum": "stok_yok",
+      "fatura": "veri_yok",
+      "adim_kayit": "adim2_4_kismi; nesne banka kredisi, 1995",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "stok_yok, fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Polonya",
+      "kimlik": "kurulum",
+      "yazilan": "gecti",
+      "yazilan_durum": "yazildi",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "fatura_yok, bes_adim_yok"
+    },
+    {
+      "ulke": "Endonezya",
+      "kimlik": "bagimsiz_gecti",
+      "yazilan": "kaldi",
+      "yazilan_durum": "doviz_ayrilmadi",
+      "fatura": "veri_yok",
+      "adim_kayit": "taramada_yok",
+      "bes_adim": "bulunamadi",
+      "calisiyor": "hayir",
+      "neden": "doviz_ayrilmadi, fatura_yok, bes_adim_yok"
+    }
+  ]
+}
