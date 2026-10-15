@@ -2,7 +2,7 @@
 
 Kaynak: `zarar-teorisi` dalı `cursor/odeme-zinciri-kalicilik-f01a`, `yayin/etki-cephesi-model.zip`.
 Doğrulama: yama temiz zip çıkarımına uygulandı, `run_all.py` tek komutla kararlı duruma vardı (özet `5881d07c4312aaca`, temiz kurulumda 3 geçiş),
-**77 test geçti** (27 mevcut + 50 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
+**78 test geçti** (27 mevcut + 51 yeni; bir mevcut testin işareti güncellendi). Orijinal pipeline zip'teki raporları birebir yeniden üretiyor
 (fark yalnız CRLF/LF ve bir Windows yol ayracı).
 
 > **K1 notu:** Bu belgenin "Rakip ikame çift sayımı" bölümünden ÖNCE yazılan bölümlerdeki MFİN, Çin, Rusya, AB, ABD vb. sayıları, ölü ağırlık, sistem toplamı ve kısa vade grup payları K1 düzeltmesinden önceki değerlerdir. Güncel değerler "K1 uygulandı: güncel değerler" bölümündedir.
@@ -445,7 +445,7 @@ Aktör değil **mekanizma** düzeyinde kurallar (halka, katman, kapı). `data/et
 
 - **Taban nedir:** `gerceklik_capa.json` → `gerceklesme_taban` (zarar teorisi 0,70, üretim 0,25, finans 0,22). Gerçekleşme = min(1, max(taban, otomatik)) × 0,95; otomatik = USD tavanı ÷ beklenen iyileşme (zarar 0,127, üretim 0,194, finans 0,230). Tabanların kaynağı kodda, veride ve raporlarda yok; `gerceklik_capa_senkron.py` yalnız USD çapalarını günceller.
 - **Tarama:** Tabanlar ölçeklenip tüm zincir (`run_all`) kararlı duruma kadar yeniden koşuldu (üçü birlikte 0–1,0; tek tek 0–0,75).
-- **Sonuç:** Kararı **zarar teorisi tabanı (0,70)** belirliyor: yalnız onu sıfırlamak skoru 47,7 → 39,4, kararı `kisitli_uygulanabilir` → `dusuk_uygulanabilirlik` yapar; ince taramada eşik **0,513** (0,513'te skor 45,0 `kisitli_uygulanabilir`, 0,51'de 44,9 `dusuk_uygulanabilirlik`); 0,513 / 0,70 = %73, marj **%27**. Üç taban birlikte en az mevcut değerin 0,8'i kadar olmalı. **Üretim tabanı (0,25) kararı değiştirmiyor** (47,7 → 47,1); finans tabanı bağlayıcı değil.
+- **Sonuç:** Kararı **zarar teorisi tabanı (0,70)** belirliyor: yalnız onu sıfırlamak skoru 47,7 → 39,4, kararı `kisitli_uygulanabilir` → `dusuk_uygulanabilirlik` yapar; ince taramada eşik **0,513** (0,513'te skor 45,0 `kisitli_uygulanabilir`, 0,51'de 44,9 `dusuk_uygulanabilirlik`); 0,513 / 0,70 = %73, marj **%27**. Üç taban birlikte ölçeklenince ince taramada eşik **%79** (marj %21): %78'de skor 44,9 `dusuk_uygulanabilirlik`, %79'da 45,0 `kisitli_uygulanabilir`. **Üretim tabanı (0,25) kararı değiştirmiyor** (47,7 → 47,1); finans tabanı bağlayıcı değil.
 - **Eleştirel:** (1) Üretim tabanına verdiğim önem yanlıştı; asıl bağımlılık zarar teorisi tabanında. (2) Tabansız uç da doğru değil: tavanlar atanmış yüzdeler. (3) Skor 47,7, 45 çizgisinin 2,7 puan üstünde ve bu fark tek bir elle yazılmış sayıya (0,70) bağlı; marjı %27. Skor bir ölçüm değil, bir kabuldür.
 
 ## Düzeltilmeyen / açık
@@ -1886,8 +1886,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +}
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/data/etki_cephesi/taban_duyarlilik.json fixed/data/etki_cephesi/taban_duyarlilik.json
 --- pristine/data/etki_cephesi/taban_duyarlilik.json	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/data/etki_cephesi/taban_duyarlilik.json	2026-10-14 20:50:03.121068759 +0000
-@@ -0,0 +1,549 @@
++++ fixed/data/etki_cephesi/taban_duyarlilik.json	2026-10-15 04:46:27.541375152 +0000
+@@ -0,0 +1,722 @@
 +{
 +  "olcum": "gerceklesme_taban_duyarlilik",
 +  "etiket": "tani_girdi_degil",
@@ -2337,6 +2337,177 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +      "karar": "kisitli_uygulanabilir"
 +    },
 +    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.71,
++      "taban": {
++        "zarar_teorisi": 0.497,
++        "uretim_ic_akis": 0.1775,
++        "finans_katman": 0.1562,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.4722,
++        "uretim_ic_akis": 0.1843,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.426,
++      "skor": 44.2,
++      "karar": "dusuk_uygulanabilirlik"
++    },
++    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.72,
++      "taban": {
++        "zarar_teorisi": 0.504,
++        "uretim_ic_akis": 0.18,
++        "finans_katman": 0.1584,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.4788,
++        "uretim_ic_akis": 0.1843,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.396,
++      "skor": 44.3,
++      "karar": "dusuk_uygulanabilirlik"
++    },
++    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.73,
++      "taban": {
++        "zarar_teorisi": 0.511,
++        "uretim_ic_akis": 0.1825,
++        "finans_katman": 0.1606,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.4855,
++        "uretim_ic_akis": 0.1843,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.365,
++      "skor": 44.4,
++      "karar": "dusuk_uygulanabilirlik"
++    },
++    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.74,
++      "taban": {
++        "zarar_teorisi": 0.518,
++        "uretim_ic_akis": 0.185,
++        "finans_katman": 0.1628,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.4921,
++        "uretim_ic_akis": 0.1843,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.335,
++      "skor": 44.5,
++      "karar": "dusuk_uygulanabilirlik"
++    },
++    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.75,
++      "taban": {
++        "zarar_teorisi": 0.525,
++        "uretim_ic_akis": 0.1875,
++        "finans_katman": 0.165,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.4988,
++        "uretim_ic_akis": 0.1843,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.304,
++      "skor": 44.5,
++      "karar": "dusuk_uygulanabilirlik"
++    },
++    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.76,
++      "taban": {
++        "zarar_teorisi": 0.532,
++        "uretim_ic_akis": 0.19,
++        "finans_katman": 0.1672,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.5054,
++        "uretim_ic_akis": 0.1843,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.274,
++      "skor": 44.7,
++      "karar": "dusuk_uygulanabilirlik"
++    },
++    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.77,
++      "taban": {
++        "zarar_teorisi": 0.539,
++        "uretim_ic_akis": 0.1925,
++        "finans_katman": 0.1694,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.5121,
++        "uretim_ic_akis": 0.1843,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.243,
++      "skor": 44.8,
++      "karar": "dusuk_uygulanabilirlik"
++    },
++    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.78,
++      "taban": {
++        "zarar_teorisi": 0.546,
++        "uretim_ic_akis": 0.195,
++        "finans_katman": 0.1716,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.5187,
++        "uretim_ic_akis": 0.1853,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.211,
++      "skor": 44.9,
++      "karar": "dusuk_uygulanabilirlik"
++    },
++    {
++      "tur": "ince_ortak",
++      "katman": null,
++      "taban_carpani": 0.79,
++      "taban": {
++        "zarar_teorisi": 0.553,
++        "uretim_ic_akis": 0.1975,
++        "finans_katman": 0.1738,
++        "yasam_maliyet_katman": 0.28
++      },
++      "gerceklesme": {
++        "zarar_teorisi": 0.5254,
++        "uretim_ic_akis": 0.1876,
++        "finans_katman": 0.2186
++      },
++      "tr_net_10y_c": -14.175,
++      "skor": 45.0,
++      "karar": "kisitli_uygulanabilir"
++    },
++    {
 +      "tur": "ince",
 +      "katman": "zarar_teorisi",
 +      "taban_carpani": 0.7142857142857143,
@@ -2434,6 +2605,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +  ],
 +  "ortak_ilk_kisitli_uygulanabilir_carpan": 0.8,
 +  "zarar_tabani_en_kucuk_kisitli_taban_ince_tarama": 0.513,
++  "ortak_esik_carpani_ince_tarama": 0.79,
++  "ortak_marj": 0.21,
 +  "zarar_tabani_marj": 0.2671,
 +  "not": "Otomatik gerçekleşme (tavan ÷ beklenen iyileşme) tabana göre max alınır; taban 0 iken yalnız otomatik hesap işler. Tavanlar (zarar 0,08×yatırım geliri vb.) da atanmıştır."
 +}
@@ -7212,8 +7385,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/etki_cephesi/taban_duyarlilik.py fixed/etki_cephesi/taban_duyarlilik.py
 --- pristine/etki_cephesi/taban_duyarlilik.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/etki_cephesi/taban_duyarlilik.py	2026-10-14 20:39:33.607209408 +0000
-@@ -0,0 +1,82 @@
++++ fixed/etki_cephesi/taban_duyarlilik.py	2026-10-15 04:40:00.827068783 +0000
+@@ -0,0 +1,88 @@
 +"""Gerçekleşme tabanı duyarlılığı: kalibre tabanlar (gerceklik_capa.json → gerceklesme_taban) ölçeklenip tüm zincir yeniden koşulur.
 +
 +Bağımsız araç (run_all adımı değil): her senaryo repo'nun geçici bir kopyasında run_all'ı kararlı duruma kadar çalıştırır.
@@ -7236,6 +7409,7 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +KATMANLAR = ("zarar_teorisi", "uretim_ic_akis", "finans_katman")
 +ORTAK = [round(0.1 * i, 1) for i in range(0, 11)]
 +TEK = [0.0, 0.25, 0.5, 0.75]
++INCE_ORTAK = [round(0.01 * i, 2) for i in range(71, 80)]  # üç taban birlikte, eşik çevresi
 +INCE_ZARAR = [0.50, 0.51, 0.513, 0.52, 0.53]  # zarar teorisi tabanı, mutlak değer (eşik çevresi)
 +
 +
@@ -7272,13 +7446,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    for k in KATMANLAR:
 +        isler += [("tek", k, c) for c in TEK]
 +    capa_z = capa0["zarar_teorisi"]
++    isler += [("ince_ortak", None, c) for c in INCE_ORTAK]
 +    isler += [("ince", "zarar_teorisi", t / capa_z) for t in INCE_ZARAR]
 +    with ThreadPoolExecutor(max_workers=4) as ex:
-+        sonuc = list(ex.map(lambda j: kos({kk: j[2] for kk in KATMANLAR} if j[0] == "ortak" else {j[1]: j[2]}), isler))
++        sonuc = list(ex.map(lambda j: kos({kk: j[2] for kk in KATMANLAR} if j[0] in ("ortak", "ince_ortak") else {j[1]: j[2]}), isler))
 +    satirlar = [{"tur": j[0], "katman": j[1], "taban_carpani": j[2], **s} for j, s in zip(isler, sonuc)]
 +    ortak = [s for s in satirlar if s["tur"] == "ortak"]
 +    gecis = next((s["taban_carpani"] for s in ortak if s["karar"] == "kisitli_uygulanabilir"), None)
 +    ince = [s for s in satirlar if s["tur"] == "ince"]
++    ortak_ince = sorted((s for s in satirlar if s["tur"] in ("ortak", "ince_ortak")), key=lambda s: s["taban_carpani"])
++    o_esik = next((s["taban_carpani"] for s in ortak_ince if s["karar"] == "kisitli_uygulanabilir"), None)
 +    z_esik = min((s["taban"]["zarar_teorisi"] for s in ince if s["karar"] == "kisitli_uygulanabilir"), default=None)
 +    d = {
 +        "olcum": "gerceklesme_taban_duyarlilik", "etiket": "tani_girdi_degil",
@@ -7286,6 +7463,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +        "satirlar": satirlar,
 +        "ortak_ilk_kisitli_uygulanabilir_carpan": gecis,
 +        "zarar_tabani_en_kucuk_kisitli_taban_ince_tarama": z_esik,
++        "ortak_esik_carpani_ince_tarama": o_esik,
++        "ortak_marj": None if o_esik is None else round(1 - o_esik, 4),
 +        "zarar_tabani_marj": None if z_esik is None else round((capa_z - z_esik) / capa_z, 4),
 +        "not": "Otomatik gerçekleşme (tavan ÷ beklenen iyileşme) tabana göre max alınır; taban 0 iken yalnız otomatik hesap işler. Tavanlar (zarar 0,08×yatırım geliri vb.) da atanmıştır.",
 +    }
@@ -7935,8 +8114,8 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
  def test_uluslararasi_snapshots():
 diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.json -x dis_aktör_pay.json -x kalibrasyon_meta.json -x gerceklik_realizasyon.json pristine/tests/test_etki_cephesi_sfc_revize.py fixed/tests/test_etki_cephesi_sfc_revize.py
 --- pristine/tests/test_etki_cephesi_sfc_revize.py	1970-01-01 00:00:00.000000000 +0000
-+++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-14 20:50:03.122693145 +0000
-@@ -0,0 +1,929 @@
++++ fixed/tests/test_etki_cephesi_sfc_revize.py	2026-10-15 04:46:27.542754463 +0000
+@@ -0,0 +1,940 @@
 +"""Revize: SFC köprüsü hataları (tavan=gerçekleşme, türetilmiş λ, kapanış, kur, etiket)."""
 +from __future__ import annotations
 +
@@ -8865,5 +9044,16 @@ diff -ruN -x reports -x _incoming -x __pycache__ -x .pytest_cache -x bolgeler.js
 +    assert d["zarar_tabani_en_kucuk_kisitli_taban_ince_tarama"] == 0.513
 +    assert abs(d["zarar_tabani_marj"] - (0.70 - 0.513) / 0.70) < 1e-3
 +    assert [s["skor"] for s in ince] == sorted(s["skor"] for s in ince)
++
++
++def test_ortak_taban_esigi_0_79():
++    d = json.loads((DATA / "taban_duyarlilik.json").read_text(encoding="utf-8"))
++    sat = sorted((s for s in d["satirlar"] if s["tur"] in ("ortak", "ince_ortak")), key=lambda s: s["taban_carpani"])
++    kar = [s["karar"] for s in sat]
++    assert kar == sorted(kar, key=lambda k: k == "kisitli_uygulanabilir")
++    assert d["ortak_esik_carpani_ince_tarama"] == 0.79 and abs(d["ortak_marj"] - 0.21) < 1e-6
++    # eşikte üç taban birlikte mevcut değerin %79'u
++    e = next(s for s in sat if s["taban_carpani"] == 0.79)
++    assert abs(e["taban"]["zarar_teorisi"] - 0.79 * 0.70) < 1e-3 and e["skor"] >= 45.0
 +
 ```
