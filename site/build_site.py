@@ -5,10 +5,12 @@
 """
 import csv
 import json
+import sys
 from pathlib import Path
 
 KOK = Path(__file__).resolve().parent.parent
 SITE = Path(__file__).resolve().parent
+sys.path.insert(0, str(KOK))
 
 
 def oku(ad):
@@ -45,7 +47,27 @@ def veri():
     a4 = {k: {m: [v[m][q] for q in q4] for m in v} for k, v in a4.items()}
     a45 = json.load(open(KOK / "adim45_birim.json", encoding="utf-8"))
     a5 = [{"n": x["nesne"], "lo": x["alt"], "hi": x["ust"], "e": x["durum"]} for x in oku("adim5_kira_aralik.csv")]
-    return {"pairs": pairs, "nace": nace, "y20": y20, "dugum": dugum, "a2": a2, "q4": q4, "a4": a4, "a45": a45, "a5": a5}
+    return {"pairs": pairs, "nace": nace, "y20": y20, "dugum": dugum, "a2": a2, "q4": q4, "a4": a4, "a45": a45, "a5": a5, "sk": secici()}
+
+
+def secici():
+    import secici_kredi as K
+    import secici_kredi_kalibre as C
+    V, _ = K.veri()
+    S = {x["kod"]: x for x in K.sabitler()["gostergeler"]}
+    olcum = {}
+    for y in K.YILLAR:
+        o = K.olcum(V, y)
+        g = [{"kod": k, "ad": S[k]["ad"], "deger": v, "skor": o["skor"][k], "guvenli": S[k]["guvenli"], "kritik": S[k]["kritik"]}
+             for k, v in o["gosterge"].items() if v is not None]
+        olcum[y] = {"DKBE": o["DKBE"], "rejim": o["rejim"], "kapsam": o["kapsam"], "sutun": o["sutun"], "g": g}
+    sim = {"once": {}, "sonra": {}}
+    for r in csv.DictReader(open(KOK / "secici_kredi_kalibre.csv", encoding="utf-8-sig")):
+        d = sim[r["kalibrasyon"]].setdefault(r["senaryo"], {k: [] for k in ("pi", "i", "dep", "gAD", "cad", "gu1", "rw", "A", "loc", "kor")})
+        for k in d:
+            d[k].append(float(r[k]))
+    kal = json.load(open(KOK / "secici_kredi_kalibre.json", encoding="utf-8"))
+    return {"olcum": olcum, "sim": sim, "kal": kal, "hedef": {k: {str(t): v for t, v in h.items()} for k, h in C.HEDEF.items()}}
 
 
 def main():
