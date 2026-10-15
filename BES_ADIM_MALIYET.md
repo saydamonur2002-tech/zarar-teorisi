@@ -16,7 +16,7 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 
 **Adım 4.** İhraç, θ · 19.361,9 · Δu₃'tür; 19.361,9, üç ölçülmüş adres stokunun toplamıdır (hane vadeli mevduat 8.322,4 + firma vadeli mevduat 4.400,1 + gerçek kişi YP mevduat 6.639,4; 2026-Q1). θ ∈ {0,1; 0,25; 0,5}, yenileme χ ∈ {0; 0,5}, prim π ∈ {%2; %5} varsayımdır; ihraççı K′ de varsayımdır. 12 senaryoda 2029–2031 toplam prim 77,5 ile 1.058,9 milyar TL arasında, bankaların mevduat kaybından doğan yıllık kredi daralması (× 0,08) 154,9 ile 774,5 milyar TL arasındadır. Yürütme maliyeti prim toplamının ρ katıdır; ρ'nun bu adımdaki dayanağı en zayıftır, çünkü hedeflenmiş transfer idaresi için bildirilen aralık mevduat senedine taşınmıştır. Senedin endeks bacağı hesaplanmadığı için prim alt sınır olabilir.
 
-**Adım 4.5.** Yeni para birimine geçiş, adım 4 ile 5 arasında plasebodur (`ADIM45_PARA_BIRIMI.md`): tüm TL değerleri sabit oranla çevrilir (örnek 1 yeni = 1.000 eski), beş oran adım 1-5 çıktılarında çevirmeden önce ve sonra aynı çıkar. Bu denklik aritmetik gereğidir; modelde para yanılsaması ve yuvarlama enflasyonu yok. Fayda sıfır, tek gerçek terim yürütme maliyetidir. Sıfır atma türünde (A) banknot basımı ≈ 10 milyon $ (2004 tahmini) ve kurum başına 20–100 bin $ yazılım × 100–1.000 kurum (varsayım): 0,39 – 3,62 milyar TL. Yeni para birimi türünde (B) GSYH'nin %0,3–1,0'ı (Avro bölgesine girenlerde bildirilen aralık, ikincil kaynak): 133,8 – 445,9 milyar TL (GSYH 2024: 44.587,2 milyar TL).
+**Adım 4.5.** Tanım repodadır (`ADIM45_BIRIM.md`): mevcut TL'den yeni fiat TL'ye geçiş, λ = 1 parite (varsayım), yeni lira altın ya da döviz üzerinde alacak değil, kur çapası 49,1274 TL/USD (`bes_yil_senaryo.csv` taban, tüm yıllarda sabit), pencere 2030-Q1..Q4. TL para stoku 16.472,8 milyar TL (2026-Q1). Plasebo kontrolü (`ADIM45_MALIYET.md`): TL bileşen payları λ'dan bağımsız aynı kalır; bu aritmetik gereğidir, para yanılsaması ve yuvarlama enflasyonu modelde yok. Fayda sıfır; tek gerçek terim yürütme maliyeti: A (banknot basımı ≈ 10 milyon $ × 49,1274 + kurum başı yazılım 20–100 bin $ × 100–1.000 kurum, varsayım) 0,59 – 5,40 milyar TL; B (tam yeni birim, GSYH 2025'in %0,3–1,0'ı, ikincil kaynak) 189,7 – 632,4 milyar TL üst referans.
 
 **Adım 5.** Akış, ev sahibinden (Ho) kiracıya (Ha) giden transferdir (`adim5_kira_aralik.csv`). Birim kira 258,45 TL/m²/ay, EVDS serisi TP.BK.TR, 2026-Q2 (değerlemesi yapılan konutlar), tek ölçüm. Konut alanı 90–110 m², kiracı hane oranı %25–30 ve toplam hane 26,4 milyon varsayım ya da elle girilmiş dış kaynaktır. Piyasa kirası 23.260 – 28.430 TL/ay, HEKİS havuz kirası 20.000 TL/ay (model varsayımı) olduğundan fark 3.260 – 8.430 TL/ay'dır. Transfer = fark × kiracı hane × kapsama payı × 12: kapsama %20'de 51,6 – 160,2, %50'de 129,1 – 400,6, %100'de 258,2 – 801,1 milyar TL/yıl. Yürütme maliyeti transferin ρ katıdır; hane içi bir aktarım olduğu için H toplamında net maliyet değil dağılımdır.
 
@@ -57,12 +57,9 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 
 ## Adım 4.5: yeni para birimi (plasebo)
 
-- **maliyet: fayda**: 0 – 0 milyar TL (`plasebo`). Oranlar çevirmeden önce ve sonra aynı (aritmetik gereği).
-- **yürütme A: sıfır atma (basım + yazılım)**: 0.39 – 3.62 milyar TL (tek sefer) (`modellendi_band`). Basım ≈ 10 milyon $ (2004 tahmini) + kurum başı yazılım 20-100 bin $ × N (100-1.000, varsayım).
-- **yürütme B: yeni para birimi (GSYH %0,3-1,0)**: 133.8 – 445.9 milyar TL (tek sefer) (`modellendi_band`). Avro bölgesine girenlerde bildirilen aralık; ikincil kaynak.
-- **kural basa_bas (s=1)**: 0.07 – 3.29 milyar TL (tek sefer) (`modellendi_band`). 1 TL = 1 YTL: yalnız ad/etiket; yazılım terimi.
-- **kural sifir_atma (s=1e-06)**: 0.39 – 3.62 milyar TL (tek sefer) (`modellendi_band`). YTL 2005 türü, 1 yeni = 1.000.000 eski.
-- **kural sabit_capa (s=0.0304)**: 133.76 – 445.87 milyar TL (tek sefer) (`modellendi_band`). 1 yeni = 1 çapa birimi (örnek USD), sonra geçiş: çift dolaşım; savunma maliyeti modellenmedi.
+- **fayda**: 0 – 0 milyar TL (`plasebo`). TL bileşen payları λ'dan bağımsız (aritmetik gereği); repo tanımı: ADIM45_BIRIM.md, λ=1 parite.
+- **yürütme A: basım + yazılım**: 0.59 – 5.40 milyar TL (tek sefer, 2030 penceresi) (`modellendi_band`). Basım ≈ 10 milyon $ × 49,1274 (sabit çapa) + kurum başı yazılım 20-100 bin $ × N (100-1.000, varsayım).
+- **yürütme B: tam yeni birim (GSYH %0,3-1,0), üst referans**: 189.7 – 632.4 milyar TL (tek sefer) (`modellendi_band`). GSYH 2025 63,240.5 milyar TL (tavan_akis.csv); aralık ikincil kaynak.
 
 ## Adım 5: kira
 

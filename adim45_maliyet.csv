@@ -1,0 +1,10 @@
+﻿adim,kalem,durum,alt,ust,birim,kaynak,not
+4.5,"plasebo: parite (repo, λ=1)",oran,0.00e+00,,birimsiz,adim45_maliyet.py,"TL para 16,472.8 → 1.647e+04; kur_yeni 49.13; USD stok ve faiz ×1."
+4.5,"plasebo: örnek: λ=0,001",oran,1.11e-16,,birimsiz,adim45_maliyet.py,"TL para 16,472.8 → 16.47; kur_yeni 0.04913; USD stok ve faiz ×1."
+4.5,plasebo: örnek: λ=1e-6 (2005 türü),oran,0.00e+00,,birimsiz,adim45_maliyet.py,"TL para 16,472.8 → 0.01647; kur_yeni 4.913e-05; USD stok ve faiz ×1."
+4.5,yürütme A: basım + yazılım,modellendi_band,0.59,5.40,"milyar TL (tek sefer, 2030 penceresi)",adim45_maliyet.py,Basım 0.49; yazılım 0.10-4.91 (N=100-1.000 varsayım). Yeni birim parite iken de yeni banknot gerekir (varsayım).
+4.5,"yürütme B: tam yeni birim (GSYH %0,3-1,0), üst referans",modellendi_band,189.7,632.4,milyar TL (tek sefer),adim45_maliyet.py,"GSYH 2025 63,240.5 milyar TL (tavan_akis.csv); aralık ikincil kaynak."
+4.5,"A üst ucu, 2030-Q1 (Δu=0.25)",modellendi_band,0.15,1.35,milyar TL,adim45_maliyet.py,Δu ile eşit dağılım (varsayım).
+4.5,"A üst ucu, 2030-Q2 (Δu=0.25)",modellendi_band,0.15,1.35,milyar TL,adim45_maliyet.py,Δu ile eşit dağılım (varsayım).
+4.5,"A üst ucu, 2030-Q3 (Δu=0.25)",modellendi_band,0.15,1.35,milyar TL,adim45_maliyet.py,Δu ile eşit dağılım (varsayım).
+4.5,"A üst ucu, 2030-Q4 (Δu=0.25)",modellendi_band,0.15,1.35,milyar TL,adim45_maliyet.py,Δu ile eşit dağılım (varsayım).

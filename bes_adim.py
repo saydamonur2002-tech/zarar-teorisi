@@ -281,7 +281,7 @@ def md(son: dict) -> str:
         s += [f"| {y['adim']} | `{y['dosya']}` | `{y['kod']}` | {y['sayi']} | `{y['etiket']}` |" for y in yan]
         s.append("")
     s += ["## Maliyet ve yürütme maliyeti", "",
-          "Adım adım: `BES_ADIM_MALIYET.md` (`python3 bes_adim_maliyet.py`; model: `yurutme_maliyet.py`). Adım 4 ve 5 maliyeti band (varsayım). Yürütme maliyeti (tespit + tahsil + idari) = program akışı × ρ, ρ bandı varsayım (%0,4 / %9 / %25 pilot payı / %29); adım 1 (ortak stok) ve 2 (mahsupla silinen) için stok, yalnız alt ρ ile üst sınır; adım 3 (duran faiz) için yıllık akış. Adım 4.5 (yeni para birimine geçiş, plasebo; adım 4 ile 5 arası): `ADIM45_PARA_BIRIMI.md`; fayda 0, yürütme maliyeti rejime göre 0,39 – 445,9 milyar TL (tek sefer).", ""]
+          "Adım adım: `BES_ADIM_MALIYET.md` (`python3 bes_adim_maliyet.py`; model: `yurutme_maliyet.py`). Adım 4 ve 5 maliyeti band (varsayım). Yürütme maliyeti (tespit + tahsil + idari) = program akışı × ρ, ρ bandı varsayım (%0,4 / %9 / %25 pilot payı / %29); adım 1 (ortak stok) ve 2 (mahsupla silinen) için stok, yalnız alt ρ ile üst sınır; adım 3 (duran faiz) için yıllık akış. Adım 4.5 (TL'den yeni fiat TL'ye geçiş, λ=1 parite, plasebo; adım 4 ile 5 arası): tanım `ADIM45_BIRIM.md`, plasebo ve maliyet `ADIM45_MALIYET.md`; fayda 0, yürütme maliyeti A 0,59 – 5,40, B (üst referans) 189,7 – 632,4 milyar TL (tek sefer).", ""]
     s += ["## Ne denmez", "",
           "- 'Beş adım kuruldu' denmez. Şu adım şu etiket; kilitli kapı boş.",
           "- 'Stok yüzde X silindi' denmez; silinen boş.",
