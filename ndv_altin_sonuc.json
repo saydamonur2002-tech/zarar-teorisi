@@ -1,0 +1,195 @@
+{
+  "cekilme": "2026-10-16",
+  "onkait": "NDV_ALTIN_ONKAYIT.md",
+  "dogrulanan": {
+    "brut_rezerv_ndv_degil": {
+      "kod": "TP.AB.TOPLAM",
+      "ad": "Total (Million USD)",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "altin_milyon_usd_miktar_degil": {
+      "kod": "TP.AB.C1",
+      "ad": "Gold (Million USD)",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "doviz_rezerv_milyon_usd": {
+      "kod": "TP.AB.C2",
+      "ad": "Foreign Exchange (Million USD)",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "yabanci_aktif": {
+      "kod": "TP.AB.A02",
+      "ad": "A.1 FOREIGN ASSETS",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "yabanci_pasif": {
+      "kod": "TP.AB.A10",
+      "ad": "P.1 TOTAL FOREIGN LIABILITIES",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "zorunlu_karsilik_bloke": {
+      "kod": "TP.AB.A19",
+      "ad": "P.2Aba Required Reserves in Blocked Accounts",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "acik_piyasa": {
+      "kod": "TP.AB.A24",
+      "ad": "P.2Ba Open Market Operations",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "tl_mevduat_faizi_3ay": {
+      "kod": "TP.TRY.MT02",
+      "ad": "Up to 3 Months (TRY Deposits, Flow, %)",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "usd_mevduat_faizi_3ay_dth_degil": {
+      "kod": "TP.USD.MT02",
+      "ad": "Up to 3 Months (USD Deposits, Flow, %)",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "pka_dolar_12ay": {
+      "kod": "TP.PKAUO.S05.C.U",
+      "ad": "Expectation of 12 Months Ahead US Dollar Rate in the Interbank Foreign Exchange Market (TRY)",
+      "durum": "dogrulandi",
+      "n": 166,
+      "ilk": "2013-01",
+      "son": "2026-10"
+    },
+    "pka_enf_24ay": {
+      "kod": "TP.PKAUO.S01.F.U",
+      "ad": "Expectation of 24 Months Ahead Annual CPI (% Change)",
+      "durum": "dogrulandi",
+      "n": 166,
+      "ilk": "2013-01",
+      "son": "2026-10"
+    },
+    "usdtry": {
+      "kod": "TP.DK.USD.A.YTL",
+      "ad": "(USD)  US  Dollar  (Buying)",
+      "durum": "dogrulandi",
+      "n": 298,
+      "ilk": "2002-01",
+      "son": "2026-10"
+    },
+    "mevduat_toplam_yeni": {
+      "kod": "TP.HPBITABLO2.1",
+      "ad": "1.DEPOSITS",
+      "durum": "dogrulandi",
+      "n": 29,
+      "ilk": "2024-06",
+      "son": "2026-10"
+    },
+    "tl_mevduat_yeni": {
+      "kod": "TP.HPBITABLO2.3",
+      "ad": "1.1.1.TRY",
+      "durum": "dogrulandi",
+      "n": 29,
+      "ilk": "2024-06",
+      "son": "2026-10"
+    },
+    "yp_mevduat_yeni": {
+      "kod": "TP.HPBITABLO2.6",
+      "ad": "1.1.2.FX",
+      "durum": "dogrulandi",
+      "n": 29,
+      "ilk": "2024-06",
+      "son": "2026-10"
+    },
+    "altin_mevduat_usd_yeni": {
+      "kod": "TP.HPBITABLO4.7",
+      "ad": "1.1.1.d.US Dollar Equivalent of Precious Metals Deposit Accounts",
+      "durum": "dogrulandi",
+      "n": 29,
+      "ilk": "2024-06",
+      "son": "2026-10"
+    },
+    "tl_mevduat_arsiv": {
+      "kod": "TP.MEVDUAT.I001",
+      "ad": "I. DEPOSITS IN TRY (Archive)",
+      "durum": "dogrulandi",
+      "n": 146,
+      "ilk": "2012-12",
+      "son": "2025-01"
+    },
+    "yp_mevduat_arsiv": {
+      "kod": "TP.MEVDUAT.I067",
+      "ad": "II. DEPOSITS IN FX (Archive)",
+      "durum": "dogrulandi",
+      "n": 146,
+      "ilk": "2012-12",
+      "son": "2025-01"
+    },
+    "kiymetli_maden_arsiv": {
+      "kod": "TP.MEVDUAT.I0981",
+      "ad": "II.A.2.c.Precious Stones Deposit Accounts(Real+Legal Persons) (Archive)",
+      "durum": "dogrulandi",
+      "n": 146,
+      "ilk": "2012-12",
+      "son": "2025-01"
+    },
+    "mevduat_toplam_arsiv": {
+      "kod": "TP.MEVDUAT.I114",
+      "ad": "III.TOTAL DEPOSITS (TRY+FX) (Archive)",
+      "durum": "dogrulandi",
+      "n": 146,
+      "ilk": "2012-12",
+      "son": "2025-01"
+    },
+    "kkm_tl_stok": {
+      "kod": "TP.KKM.K4",
+      "ad": "2. TRY KKM – Total (billion TRY)",
+      "durum": "dogrulandi",
+      "n": 56,
+      "ilk": "2021-12",
+      "son": "2026-07"
+    }
+  },
+  "bulunamayan": [
+    "swap_yukumlulugu",
+    "altin_swap_ton",
+    "altin_ons_fiyati",
+    "altin_mevduat_gram",
+    "dth_faizi_sepet",
+    "ndv_swap_duzeltmeli",
+    "niv_repo_tahvil_kkm"
+  ],
+  "swap_duzeltmesi": "yapilmadi",
+  "swap_not": "TP.AB.A02 yabancı aktif ve TP.AB.A10 yabancı pasif duruyor. Ayrı swap stoku ve altın swap tonu yok. Brüt TP.AB.TOPLAM NDV yerine konmadı. Zorunlu karşılık blokesi TP.AB.A19 ayrı duruyor; NDV formülüne sokulmadı.",
+  "artik": "kurulmadi",
+  "kkm_teblig": "bu turda KKM tebliği indirilmedi. 21 Aralık 2021 tarihli açılan Resmî Gazete maddesi özel tüketim vergisi tebliğidir. Tarih oradan alınmadı.",
+  "H1": "belirlenemiyor",
+  "H2": "belirlenemiyor",
+  "H3": "belirlenemiyor",
+  "H4": "belirlenemiyor",
+  "H5": "belirlenemiyor",
+  "H6": "belirlenemiyor",
+  "katsayi": null,
+  "vif": null
+}
