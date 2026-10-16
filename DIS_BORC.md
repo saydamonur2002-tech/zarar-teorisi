@@ -1,6 +1,6 @@
 # Dış borçta sahip ve ödeyen
 
-Kurallar: `DIS_BORC_ONKAYIT.md`. Çekim: 2026-10-16. Ham: `dis_borc_ham.csv`.
+Kurallar: `DIS_BORC_ONKAYIT.md`. Çekim: 2026-10-16. Ham: `dis_borc_sahip_ham.csv`.
 
 2026-Q2’de brüt dış borcun yüzde 81,9’u genel hükümetin dışındadır. En büyük iki sahip diğer sektörler ve bankalardır. Kısa vadeli brüt geri ödeme yayımlı olmadığı için ödeme kaynağı belirlenemiyor. En büyük belirsizlik, stok değişiminin işlem, değerleme ve diğer hacim diye ayrılmamasıdır.
 

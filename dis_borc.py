@@ -235,7 +235,7 @@ def main() -> None:
         for k, seri in blok.items():
             for t, v in seri.items():
                 ham.append((kaynak, k, ad.get(k), t, v))
-    with (KOK / "dis_borc_ham.csv").open("w", newline="", encoding="utf-8") as f:
+    with (KOK / "dis_borc_sahip_ham.csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["kaynak", "kod", "ad", "donem", "deger"])
         w.writerows(ham)
