@@ -1,0 +1,86 @@
+{
+  "cekilme": "2026-10-16",
+  "S5": "belirlenemiyor",
+  "neden": "NACE kesiminde özkaynağı aşan döviz kaybı yok. Çekilen stok ve satış kesim etiketi taşımıyor.",
+  "mevduat_ve_net": "cekilemedi",
+  "seriler": [
+    {
+      "kod": "TP.HPBITABLO6.26",
+      "ad": "1.2.1.b.FX",
+      "durum": "var",
+      "freq": "3",
+      "agg": "last",
+      "n": 120,
+      "ilk": "28-06-2024",
+      "son": "09-10-2026",
+      "son_deger": 8948876050.0,
+      "hata": null,
+      "rol": "banka_yp_ticari"
+    },
+    {
+      "kod": "TP.FDVY16",
+      "ad": "B.a.1.1.1.FX Loans",
+      "durum": "var",
+      "freq": "5",
+      "agg": "last",
+      "n": 284,
+      "ilk": "2002-12",
+      "son": "2026-07",
+      "son_deger": 179415.0,
+      "hata": null,
+      "rol": "firma_yurtici_banka_doviz_kredisi"
+    },
+    {
+      "kod": "TP.SATIM.USD",
+      "ad": "ASK Amount (USD) (Archive)",
+      "durum": "var",
+      "freq": "2",
+      "agg": "sum",
+      "n": 12,
+      "ilk": "11-07-2002",
+      "son": "23-01-2014",
+      "son_deger": 3151.0,
+      "hata": null,
+      "rol": "tcmb_satim_usd"
+    },
+    {
+      "kod": "TP.SATIM.EUR",
+      "ad": "ASK Amount (EUR) (Archive)",
+      "durum": "bos",
+      "freq": "5",
+      "agg": "sum",
+      "n": 0,
+      "ilk": null,
+      "son": null,
+      "son_deger": null,
+      "hata": null,
+      "rol": "tcmb_satim_eur"
+    },
+    {
+      "kod": "TP.SATIM.CHF",
+      "ad": "ASK Amount (CHF) (Archive)",
+      "durum": "bos",
+      "freq": "5",
+      "agg": "sum",
+      "n": 0,
+      "ilk": null,
+      "son": null,
+      "son_deger": null,
+      "hata": null,
+      "rol": "tcmb_satim_chf"
+    },
+    {
+      "kod": "TP.SATIM.DEM",
+      "ad": "ASK Amount (DEM) (Archive)",
+      "durum": "bos",
+      "freq": "5",
+      "agg": "sum",
+      "n": 0,
+      "ilk": null,
+      "son": null,
+      "son_deger": null,
+      "hata": null,
+      "rol": "tcmb_satim_dem"
+    }
+  ]
+}

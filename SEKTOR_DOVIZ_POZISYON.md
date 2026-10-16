@@ -47,7 +47,7 @@ Sektör net pozisyonlarının toplamı yazılmadı. Yurt dışı net pozisyon bu
 
 ## 6. Kayıp aktarımı
 
-S5 ölçülemedi. Özkaynağı aşan kayıp, bu tabloda banka kredisine veya TCMB döviz satışına bağlanamaz. O kanal BDDK ve TCMB verisi ister. Bu turda o sınama yapılmadı.
+S5 belirlenemiyor. Kanal serileri çekildi. Ayrıntı `SEKTOR_S5.md`. Kesim kaybı olmadığı için stok artışı aktarım yazılmadı.
 
 ## 7. Beklemedeki kalemler
 
