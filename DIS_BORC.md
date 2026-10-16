@@ -6,7 +6,7 @@ Kurallar: `DIS_BORC_ONKAYIT.md`. Çekim: 2026-10-16. Ham: `dis_borc_sahip_ham.cs
 
 ## Veri doğrulama
 
-Birim, TCMB Dış Borç Metaveri, 12 Mart 2026: tüm değişkenler milyon ABD doları. Ödemeler dengesi metaverisi aynı birimi yazar. KVDB metaverisi de milyon ABD dolarıdır. Kısa vade, her iki metaveride orijinal vadesi bir yıla kadar olandır. Vadeye kalan süre değildir.
+Birim, TCMB Dış Borç Metaveri, 12 Mart 2026: tüm değişkenler milyon ABD doları. Ödemeler dengesi metaverisi aynı birimi yazar. KVDB metaverisi de milyon ABD dolarıdır. Brüt dış borçtaki kısa vade, Dış Borç Metaveri’de orijinal vadesi bir yıla kadar olandır. KVDB sözlüğü de “kısa vade”yi orijinal vade diye tanımlar. Aynı belgenin IV. bölümü ikinci bir stok tanımlar: kalan vadeye göre kısa vadeli dış borç. Temmuz 2026 bülteni, Tablo 5 dipnotunda bunu “orijinal vadesine bakılmaksızın vadesine bir yıl ve daha kısa kalan dış borç” diye yazar.
 
 | Kalem | Kod | Birim | İlk | Son | Kırılım | Durum |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -16,14 +16,14 @@ Birim, TCMB Dış Borç Metaveri, 12 Mart 2026: tüm değişkenler milyon ABD do
 | Bankalar | `TP.BRUTDBSDDS.G30` | milyon USD | 2005-Q4 | 2026-Q2 | sektör | doğrulandı |
 | Diğer sektörler | `TP.BRUTDBSDDS.G43` | milyon USD | 2005-Q4 | 2026-Q2 | sektör | firma ve hane ayrılmıyor |
 | Doğrudan yatırım borç ilişkisi | `TP.BRUTDBSDDS.G56` | milyon USD | 2005-Q4 | 2026-Q2 | ayrı satır | doğrulandı |
-| Borçlu tablosu, kısa vade | `TP.BRUTDBORCLU.G19` | milyon USD | 1989-Q4 | 2026-Q2 | orijinal vade | vadeye kalan süre değil |
+| Borçlu tablosu, kısa vade | `TP.BRUTDBORCLU.G19` | milyon USD | 1989-Q4 | 2026-Q2 | orijinal vade | çeyrek brüt dış borç |
 | Döviz dağılımı | `TP.BRUTDBDOVKOMP.G1`–`G7` | milyon USD | 2000-Q4 | 2026-Q2 | para birimi, sektör yok | doğrulandı, n=103 |
 | Uzun vadeli kredi kullanımı ve geri ödemesi | `TP.ODEAYRSUNUM6.Q164` ve kardeşleri | milyon USD | 1989-12 | 2026-08 | sektör, brüt | yalnız uzun vadeli kredi |
 | Kısa vadeli kredi | `TP.ODEAYRSUNUM6.Q162` ve kardeşleri | milyon USD | 1989-12 | 2026-08 | sektör, net | brüt geri ödeme yok |
 | Net hata ve noksan | `TP.ODEAYRSUNUM6.Q210` | milyon USD | 1989-12 | 2026-08 | sektör yok | doğrulandı |
-| KVDB toplam | `TP.KALANVADE.K20` | milyon USD | 2011-07 | 2026-07 | sektör | çeyrek kısa vadeyle aynı değil |
+| KVDB, orijinal vade toplam | `TP.KVDB19` | milyon USD | 1989-12 | 2026-07 | Tablo 1 | bültenle aynı hücre |
+| KVDB, kalan vade toplam | `TP.KALANVADE.K20` | milyon USD | 2011-07 | 2026-07 | Tablo 5 | 2026-07 hücresi 248.128 |
 | Değerleme, diğer hacim | yok | — | — | — | — | katalogda yok |
-| Vadeye kalan bir yıl | yok | — | — | — | — | katalogda yok |
 
 Ortak tam yıl, SDDS yıl sonu ile uzun vadeli kredi akımı için 2006–2025’tir. S1’i bağlayan seri SDDS’tir. 2005-Q4’te başlar.
 
@@ -84,7 +84,21 @@ Değerleme ve diğer hacim serisi katalogda yoktur. Artık yazılmadı. Yüzde 5
 
 Net hata ve noksan, 2025 toplamı −5.902 milyon ABD dolarıdır. Sektör ödemesi değildir.
 
-KVDB toplamı ile borçlu tablosunun kısa vadesi aynı tarihte ayrılır. 2025-12 KVDB 230.461, 2025-Q4 kısa vade 167.462. 2026-06 KVDB 238.910, 2026-Q2 kısa vade 170.722. Fark, kısa vadenin yaklaşık yüzde 40’ıdır. KVDB, çeyrek stokun yerine konmadı. İkisinin metaverisi de orijinal vade der. Sayılar yine de ayrıdır. Nedeni bu turda kapatılmadı.
+## Hangi kısa vade
+
+İki yayımlanmış stok vardır. Biri orijinal vadedir. Öteki kalan vadedir.
+
+Orijinal vade, borçlu tablosundaki `TP.BRUTDBORCLU.G19` ve KVDB Tablo 1’deki `TP.KVDB19`’dur. 2026-06’da `TP.KVDB19` 170.597’dir. Bülten Tablo 1, 2026 Ç2 toplamı da 170.597’dir. TCMB 23.094, genel hükümet 790, bankalar 74.604, diğer sektörler 72.109. Alt kalemler de aynı sayıdır. 2026-Q2’de G19 170.722’dir. Aylık toplamdan farkı 125 milyon ABD dolarıdır. 125’in kalem dökümü yayımlı bir mutabakat satırında yoktur. İki hücre birleştirilmedi.
+
+Kalan vade, `TP.KALANVADE.K20`’dir. Grup adı “Kalan Vadeye Göre Borç”tır. İngilizce grup adı “Debt Stock on a Remaining Maturity Basis”tir. 2026-07’de seri 248.128’dir. Bültenin Tablo 5 toplamı da 248.128’dir. Merkez Bankası, genel hükümet, banka kredisi, mevduat satırları, diğer sektörler ve alt kalemler aynı sayıdır. Tablo 6, `TP.KALVADBG.K18` ile aynı toplamı verir.
+
+2026-06’da kalan vade toplamı 238.910, orijinal vade aylık toplamı 170.597’dir. Fark 68.313’tür. Bu fark, aynı aydaki dört satır farkının toplamıdır. Genel hükümet 11.062 − 790 = 10.272. Banka kredileri 44.013 − 7.977 = 36.036. Ticari krediler 64.313 − 63.565 = 748. Diğer krediler 29.801 − 8.544 = 21.257. Döviz tevdiat hesabı, banka mevduatı, TL mevduat ve prefinansman iki tabloda da aynı sayıdır. Yöntem, genel hükümet hücresini gelecek bir yılın borç projeksiyonu diye yazar. Banka kredisi, ticari kredi ve diğer kredi satırına, vadesine bir yıldan az kalmış uzun vadeli kısmın eklendiğini yazar. 68.313, ayrı bir “uzun vade artığı” satırı olarak yayımlı değildir. Dört satır farkının toplamıdır.
+
+G19 ile K20 arasındaki 68.188, bu 68.313’ten çeyrek–ay farkı olan 125’in çıkarılmasıdır. K20, G19’un yerine konmadı.
+
+Aynı ikili, yıl sonlarında da durur. 2024-12 orijinal aylık 172.988, çeyrek 173.015, kalan vade 221.287. 2025-12 orijinal aylık 167.367, çeyrek 167.462, kalan vade 230.461.
+
+S2 değişmedi. İki stok da geri ödeme akımı değildir. Kısa vadeli brüt kullanım ve brüt geri ödeme hâlâ yoktur. Ön kayıt, sözlükteki orijinal vade cümlesini `TP.KALANVADE` grubuna uygulamıştı. Tablo 5 eşlemesi bu okumayı düzeltir. Eşikler ve S1–S4 durur.
 
 ## S1–S4
 
@@ -122,7 +136,7 @@ Bankanın bu dar akımdaki payı, borç payının üstündedir. Genel hükümeti
 
 ## Eksik kırılım
 
-Sektör dövizi olmadığı için kur riskinin kimde olduğu kapanır. Vadeye kalan bir yıl olmadığı için “bir yıl içinde vadesi gelen” oran kapanır. Kısa vadede brüt kullanım ve brüt ödeme ayrılmadığı için S2 kapanır. Değerleme satırı olmadığı için stoktan geri ödeme çıkarmak kapanır. Diğer sektörün içinde firma ve hane ayrılmaz.
+Sektör dövizi olmadığı için kur riskinin kimde olduğu kapanır. Kalan vadeye göre stok yayımlıdır; bu stok geri ödeme değildir ve S2’yi kapatmaz. Kısa vadede brüt kullanım ve brüt ödeme ayrılmadığı için S2 kapanır. Değerleme satırı olmadığı için stoktan geri ödeme çıkarmak kapanır. Diğer sektörün içinde firma ve hane ayrılmaz.
 
 Yıl sonu stok çeyrektir. Çeyrek içinde gelip giden kur, Aralık veya Haziran bakiyesinde durmaz. Döviz cinsi stok zaten dolarla yazılır. TL’nin çeyrek içi sıçraması, dolar stokunun döviz dilimini oynatmaz. TL dilimi yüzde 12,2’dir. Onun dolar karşılığı çeyrek sonu paritesine bağlıdır.
 
