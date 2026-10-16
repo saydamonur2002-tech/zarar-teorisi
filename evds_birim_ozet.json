@@ -1,0 +1,41 @@
+{
+  "cekme": {
+    "uc": "POST https://evds3.tcmb.gov.tr/igmevdsms-dis/fe",
+    "frequency": "5",
+    "aggregationTypes": "last",
+    "groupSeperator": false,
+    "startDate": "01-01-1950",
+    "endDate": "30-09-2026",
+    "donen_ay": 921,
+    "ilk": "1950-01",
+    "son_pencere": "2026-09",
+    "bos_ay_tanimi": "ilk dolu ay ile son dolu ay arasinda degeri olmayan ay"
+  },
+  "seriler": {
+    "TP.AB.C1": {"ad": "Altın (Milyon ABD Doları)", "baslangic": "1987-12", "son": "2026-09", "n": 466, "bos": 0, "durum": "dogrulandi"},
+    "TP.AB.C2": {"ad": "Döviz (Milyon ABD Doları)", "baslangic": "1987-12", "son": "2026-09", "n": 466, "bos": 0, "durum": "dogrulandi"},
+    "TP.AB.A02": {"ad": "A.1 DIŞ VARLIKLAR", "baslangic": "1980-12", "son": "2026-09", "n": 506, "bos": 44, "bos_yer": "1981-1984 Aralik disi", "durum": "dogrulandi"},
+    "TP.AB.A10": {"ad": "P.1 TOPLAM DÖVİZ YÜKÜMLÜLÜKLERİ", "baslangic": "1980-12", "son": "2026-09", "n": 506, "bos": 44, "bos_yer": "1981-1984 Aralik disi", "durum": "dogrulandi"},
+    "TP.REZVARPD.K11": {"ad": "1.1.4.1.(Saf) Milyon Troy Ons", "baslangic": "2000-08", "son": "2026-09", "n": 314, "bos": 0, "durum": "celiskili"},
+    "TP.SWAPTEKTAR.TOTALSTOKALIMYONLU": {"ad": "19.TOPLAM - STOK (Alım Yönlü)", "baslangic": "2021-01", "son": "2026-09", "n": 69, "bos": 0, "durum": "dogrulanmadi"},
+    "TP.SWAPTEKTAR.SWAPASTOKUSDTUTAR": {"ad": "6.TCMB TL Karşılığı Altın Swap Piyasası – Stok", "baslangic": "2021-01", "son": "2026-09", "n": 69, "bos": 0, "durum": "dogrulanmadi"},
+    "TP.MK.LON.YTL": {"ad": "1 Ons Altın Londra Satış Fiyatı (ABD Doları/Ons)", "baslangic": "1973-12", "son": "2026-05", "n": 586, "bos": 44, "bos_yer": "1974-1977 Aralik disi", "durum": "dogrulandi"},
+    "TP.DK.USD.A.YTL": {"ad": "(USD) ABD Doları (Döviz Alış)", "baslangic": "1950-01", "son": "2026-09", "n": 921, "bos": 0, "durum": "dogrulandi"},
+    "TP.KM.F19": {"ad": "6. DÖVİZ TEVDİAT HESAPLARI", "baslangic": "1986-01", "son": "2026-08", "n": 488, "bos": 0, "durum": "dogrulandi"},
+    "TP.KM.F22": {"ad": "7.KIYMETLİ MADEN DEPO HESAPLARI (YP)", "baslangic": "1986-01", "son": "2026-08", "n": 488, "bos": 0, "durum": "dogrulandi"},
+    "TP.KM.F35": {"ad": "9. TOPLAM", "baslangic": "1986-01", "son": "2026-08", "n": 488, "bos": 0, "durum": "dogrulandi"},
+    "TP.MT210AGS.TRY.MT04": {"ad": "1 Yıla Kadar Vadeli (TL Mevduat, Stok,%)", "baslangic": "2000-06", "son": "2026-08", "n": 315, "bos": 0, "durum": "dogrulandi"},
+    "TP.MT210AGS.USD.MT04": {"ad": "1 Yıla Kadar Vadeli (ABD doları Mevduat, Stok, %)", "baslangic": "2000-06", "son": "2026-08", "n": 315, "bos": 0, "durum": "dogrulandi"},
+    "TP.KM.G46": {"ad": "3.ALTIN DEPO HESAPLARI (YP)", "baslangic": "1986-01", "son": "2026-08", "n": 488, "bos": 0, "durum": "dogrulandi"},
+    "TP.KM.G01": {"ad": "1.TL MEVDUAT", "baslangic": "1986-01", "son": "2026-08", "n": 488, "bos": 0, "durum": "dogrulandi"},
+    "TP.HPBITABLO3.1": {"ad": "1.TOPLAM TL MEVDUAT", "baslangic": "2024-06", "son": "2026-09", "n": 28, "bos": 0, "durum": "dogrulandi"}
+  },
+  "bulunamadi": ["net altin ton", "swap dusulmus net doviz rezervi", "altin mevduati gram stok"],
+  "capraz_2026_05": {
+    "TP.AB.C1": 105991.9605,
+    "TP.REZVARPD.K11": 23.466,
+    "TP.MK.LON.YTL": 4591.85,
+    "ons_carpi_fiyat_milyon_usd": 107752.3521,
+    "TP.REZVARPD.K10": 105992.0
+  }
+}
