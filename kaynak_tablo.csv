@@ -1,0 +1,18 @@
+﻿gosterge,kurum,tablo,surum,birim,not
+brüt dış borç stoku,TCMB,"EVDS bie_brutdbborclu TP.BRUTDBORCLU.G1, yılın 4. çeyreği",16 Ekim 2026,milyon ABD doları,"ham/tcmb_dis_borc_metaveri.pdf: tüm değişkenler milyon ABD doları. 12 Mart 2026 yöntem değişikliği (piyasa değeri, elde tutanın yerleşikliği) sonrası seri."
+kısa vadeli dış borç,TCMB,EVDS TP.BRUTDBORCLU.G19 / G1,16 Ekim 2026,"pay, birimsiz",Kısa vade: orijinal vadesi 1 yıla kadar. Aynı metaveri.
+dış âlem B.9,TCMB,"finansal hesap BF.9 akımı, S.2, tampon_yillik.csv NL",16 Ekim 2026 finansal hesap çekimi,milyon TL; pay GSYH'ye bölünür,"Pozitif değer, dış âlemin o yıl net borç verdiği anlamına gelir. Stok pozisyonu bu sütun değildir."
+GSYH,TÜİK via EVDS,"TP.GSYIH20.BY.B1GQ, dört çeyrek toplamı",16 Ekim 2026,milyon TL,veri_hanehalki.csv. Bülten 58286 GSMH ile aynı sürüm değildir.
+USD alış,TCMB,"TP.DK.USD.A.YTL, aralık, aylık frekansta last",16 Ekim 2026,TL / USD,Yıl sonu kur. Kur şokunun ölçüsü budur.
+hane TL mevduat,TCMB,"TP.KM.E040, aralık, mevduat bankaları",16 Ekim 2026,EVDS ham; seri listesinde birim alanı yok,Pay hesabında birim sadeleşir. Düzey milyar TL'ye çevrilmedi.
+hane döviz tevdiat,TCMB,"TP.KM.E050, aralık",16 Ekim 2026,EVDS ham; birim alanı yok,Yerleşik gerçek kişiler. Kıymetli maden ayrıdır (E056).
+hane kıymetli maden,TCMB,"TP.KM.E056, aralık",16 Ekim 2026,EVDS ham; birim alanı yok,Döviz tevdiatın içinde değildir. İkinci pay bunu paydaya katar.
+ticari kredi TL / YP,TCMB,"TP.HPBITABLO6.21 ve .26, aralık",16 Ekim 2026,EVDS ham; 2024 öncesi gözlem yok,Tüketici kredisinde TL/YP ayrımı yok. Şok yıllarında TL borç payı boş.
+KKM,TCMB,"TP.KKM.K1, K2, K4, aralık",16 Ekim 2026,K1 ve K2 milyar ABD doları; K4 milyar TL (seri adında yazılı),K4 hane kırılımı vermez. Döviz payına eklenmedi.
+yapılandırılmış kredi,BDDK / TCMB,katalogda ayrı seri bulunamadı,16 Ekim 2026,,veri yok
+"gelir dilimi, mülk geliri",TÜİK GYKA,yayımlanmış %20 tablosu,beklenen Ekim 2026 sürümü klasörde yok,,veri yok
+tüketim dilimi,TÜİK HBA,"2018, 2021, 2023 dilim tablosu",,,veri yok
+borç yükü dilimi,TÜİK GYKA,"çok yük oranı, %20",,,veri yok
+mevduat tutar dilimi,TBB / BDDK,hesap büyüklüğü dilimi,,,veri yok. Hane dilimi değildir.
+kurtarma tarihi,"Resmî Gazete, TCMB, BDDK","kamu sermayesi, yapılandırma",,,"veri yok. Kart faiz tavanı ayrı satırda, kurtarma sayılmadı."
+takip oranı,TCMB,"bie_hpbitablo6, takip_aylik.csv",seri 2024-06'da başlıyor,oran,"2018, 2021, 2023 ile örtüşen gözlem yok."

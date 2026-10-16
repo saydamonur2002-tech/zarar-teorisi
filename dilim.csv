@@ -1,0 +1,329 @@
+﻿yil,dilim,gosterge,deger,birim,duzeltme,kaynak,not
+2018,alt20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2018,alt20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2018,alt20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2018,alt20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,alt20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2018,alt20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,alt20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2018,alt20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,ikinci20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2018,ikinci20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2018,ikinci20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2018,ikinci20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,ikinci20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2018,ikinci20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,ikinci20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2018,ikinci20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,orta20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2018,orta20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2018,orta20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2018,orta20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,orta20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2018,orta20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,orta20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2018,orta20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,dorduncu20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2018,dorduncu20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2018,dorduncu20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2018,dorduncu20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,dorduncu20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2018,dorduncu20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,dorduncu20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2018,dorduncu20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,ust20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2018,ust20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2018,ust20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2018,ust20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,ust20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2018,ust20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,ust20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2018,ust20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2018,hesap_dilimi,mevduat_tutar,,,ham,veri yok,TBB/BDDK mevduat tutar dilimi bu klasörde yok. Hesap dilimi hane dilimi değildir; olsaydı da 'alt %20 şunu aldı' denmeyecekti.
+2019,alt20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2019,alt20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2019,alt20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2019,alt20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,alt20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2019,alt20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,alt20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2019,alt20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,ikinci20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2019,ikinci20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2019,ikinci20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2019,ikinci20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,ikinci20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2019,ikinci20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,ikinci20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2019,ikinci20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,orta20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2019,orta20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2019,orta20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2019,orta20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,orta20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2019,orta20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,orta20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2019,orta20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,dorduncu20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2019,dorduncu20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2019,dorduncu20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2019,dorduncu20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,dorduncu20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2019,dorduncu20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,dorduncu20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2019,dorduncu20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,ust20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2019,ust20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2019,ust20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2019,ust20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,ust20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2019,ust20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,ust20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2019,ust20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2019,hesap_dilimi,mevduat_tutar,,,ham,veri yok,TBB/BDDK mevduat tutar dilimi bu klasörde yok. Hesap dilimi hane dilimi değildir; olsaydı da 'alt %20 şunu aldı' denmeyecekti.
+2020,alt20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2020,alt20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2020,alt20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2020,alt20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,alt20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2020,alt20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,alt20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2020,alt20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,ikinci20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2020,ikinci20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2020,ikinci20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2020,ikinci20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,ikinci20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2020,ikinci20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,ikinci20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2020,ikinci20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,orta20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2020,orta20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2020,orta20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2020,orta20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,orta20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2020,orta20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,orta20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2020,orta20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,dorduncu20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2020,dorduncu20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2020,dorduncu20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2020,dorduncu20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,dorduncu20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2020,dorduncu20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,dorduncu20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2020,dorduncu20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,ust20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2020,ust20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2020,ust20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2020,ust20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,ust20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2020,ust20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,ust20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2020,ust20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2020,hesap_dilimi,mevduat_tutar,,,ham,veri yok,TBB/BDDK mevduat tutar dilimi bu klasörde yok. Hesap dilimi hane dilimi değildir; olsaydı da 'alt %20 şunu aldı' denmeyecekti.
+2021,alt20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2021,alt20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2021,alt20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2021,alt20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,alt20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2021,alt20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,alt20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2021,alt20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,ikinci20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2021,ikinci20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2021,ikinci20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2021,ikinci20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,ikinci20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2021,ikinci20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,ikinci20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2021,ikinci20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,orta20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2021,orta20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2021,orta20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2021,orta20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,orta20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2021,orta20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,orta20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2021,orta20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,dorduncu20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2021,dorduncu20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2021,dorduncu20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2021,dorduncu20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,dorduncu20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2021,dorduncu20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,dorduncu20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2021,dorduncu20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,ust20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2021,ust20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2021,ust20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2021,ust20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,ust20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2021,ust20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,ust20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2021,ust20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2021,hesap_dilimi,mevduat_tutar,,,ham,veri yok,TBB/BDDK mevduat tutar dilimi bu klasörde yok. Hesap dilimi hane dilimi değildir; olsaydı da 'alt %20 şunu aldı' denmeyecekti.
+2022,alt20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2022,alt20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2022,alt20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2022,alt20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,alt20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2022,alt20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,alt20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2022,alt20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,ikinci20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2022,ikinci20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2022,ikinci20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2022,ikinci20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,ikinci20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2022,ikinci20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,ikinci20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2022,ikinci20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,orta20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2022,orta20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2022,orta20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2022,orta20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,orta20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2022,orta20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,orta20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2022,orta20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,dorduncu20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2022,dorduncu20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2022,dorduncu20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2022,dorduncu20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,dorduncu20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2022,dorduncu20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,dorduncu20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2022,dorduncu20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,ust20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2022,ust20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2022,ust20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2022,ust20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,ust20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2022,ust20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,ust20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2022,ust20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2022,hesap_dilimi,mevduat_tutar,,,ham,veri yok,TBB/BDDK mevduat tutar dilimi bu klasörde yok. Hesap dilimi hane dilimi değildir; olsaydı da 'alt %20 şunu aldı' denmeyecekti.
+2023,alt20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2023,alt20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2023,alt20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2023,alt20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,alt20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2023,alt20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,alt20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2023,alt20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,ikinci20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2023,ikinci20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2023,ikinci20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2023,ikinci20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,ikinci20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2023,ikinci20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,ikinci20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2023,ikinci20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,orta20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2023,orta20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2023,orta20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2023,orta20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,orta20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2023,orta20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,orta20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2023,orta20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,dorduncu20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2023,dorduncu20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2023,dorduncu20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2023,dorduncu20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,dorduncu20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2023,dorduncu20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,dorduncu20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2023,dorduncu20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,ust20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2023,ust20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2023,ust20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2023,ust20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,ust20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2023,ust20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,ust20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2023,ust20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2023,hesap_dilimi,mevduat_tutar,,,ham,veri yok,TBB/BDDK mevduat tutar dilimi bu klasörde yok. Hesap dilimi hane dilimi değildir; olsaydı da 'alt %20 şunu aldı' denmeyecekti.
+2024,alt20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2024,alt20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2024,alt20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2024,alt20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,alt20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2024,alt20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,alt20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2024,alt20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,ikinci20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2024,ikinci20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2024,ikinci20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2024,ikinci20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,ikinci20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2024,ikinci20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,ikinci20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2024,ikinci20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,orta20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2024,orta20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2024,orta20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2024,orta20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,orta20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2024,orta20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,orta20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2024,orta20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,dorduncu20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2024,dorduncu20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2024,dorduncu20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2024,dorduncu20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,dorduncu20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2024,dorduncu20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,dorduncu20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2024,dorduncu20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,ust20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2024,ust20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2024,ust20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2024,ust20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,ust20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2024,ust20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,ust20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2024,ust20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2024,hesap_dilimi,mevduat_tutar,,,ham,veri yok,TBB/BDDK mevduat tutar dilimi bu klasörde yok. Hesap dilimi hane dilimi değildir; olsaydı da 'alt %20 şunu aldı' denmeyecekti.
+2025,alt20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2025,alt20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2025,alt20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2025,alt20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,alt20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2025,alt20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,alt20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2025,alt20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,ikinci20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2025,ikinci20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2025,ikinci20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2025,ikinci20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,ikinci20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2025,ikinci20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,ikinci20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2025,ikinci20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,orta20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2025,orta20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2025,orta20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2025,orta20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,orta20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2025,orta20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,orta20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2025,orta20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,dorduncu20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2025,dorduncu20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2025,dorduncu20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2025,dorduncu20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,dorduncu20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2025,dorduncu20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,dorduncu20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2025,dorduncu20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,ust20,mulk_geliri,,,ham,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi."
+2025,ust20,mulk_geliri,,,duzeltilmis,veri yok,"TÜİK Gelir ve Yaşam Koşulları, gelir türünün %20 dilim payı bu klasörde yok. 16 Ekim 2026 araması tablo dosyası vermedi. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok."
+2025,ust20,faiz_yuku,,,ham,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı.
+2025,ust20,faiz_yuku,,,duzeltilmis,veri yok,Dilim faiz yükü tablosu yok. Ulusal hesap D.41 hanesi boş olduğu için yük hesaplanmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,ust20,borc_yuku_cok_yuk,,,ham,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok.
+2025,ust20,borc_yuku_cok_yuk,,,duzeltilmis,veri yok,TÜİK 'çok yük' oranının dilim tablosu bu klasörde yok. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,ust20,tuketim,,,ham,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı.
+2025,ust20,tuketim,,,duzeltilmis,veri yok,TÜİK Hanehalkı Bütçe Araştırması dilim tüketimi bu klasörde yok. Vekil olarak GSYH kullanılmadı. Düzeltme yapılmadı: dilim payı ve ulusal hesap faiz/kira toplamı birlikte yok.
+2025,hesap_dilimi,mevduat_tutar,,,ham,veri yok,TBB/BDDK mevduat tutar dilimi bu klasörde yok. Hesap dilimi hane dilimi değildir; olsaydı da 'alt %20 şunu aldı' denmeyecekti.
