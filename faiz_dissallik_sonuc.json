@@ -1,0 +1,626 @@
+{
+  "cekilme": "2026-10-16",
+  "onkait": "FAIZ_DISSALLIK_ONKAYIT.md",
+  "hedef": {
+    "deger": 5.0,
+    "kaynak": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Price+Stability+and+Inflation/Inflation+Targets",
+    "indirildi": "2026-10-16",
+    "not": "Sayfadaki tabloda 2012-2028 hedefi 5. Sapma = 12 aylık TÜFE − 5."
+  },
+  "ad": {
+    "TP.APIFON4": "Weighted Average Cost of the CBRT Funding",
+    "TP.PY.P06.ON": "(ON) Simple Interest Rate Weighted Average (%) (Overnight)",
+    "TP.TUKFIY2025.GENEL": "General Index",
+    "TP.FE.OKTG03": "B.CPI excluding unprocessed food, energy, alcoholic beverages tobacco and gold (Archive)",
+    "TP.FE.OKTG04": "C.CPI excluding energy, food and non-alcoholic beverages, alcoholic beverages, tobacco and gold (Archive)",
+    "TP.TSANAYMT2021.BCD": "Total industry (Industrial Production Index - Seasonal and Calendar Adjusted)",
+    "TP.DK.USD.A.YTL": "(USD)  US  Dollar  (Buying)",
+    "TP.KREDI.L001": "I.TOTAL VOLUME OF LOANS (Archive)",
+    "TP.PKAUO.S01.E.U": "Expectation of 12 Months Ahead Annual CPI (% Change)"
+  },
+  "kapsam": {
+    "TP.APIFON4": {
+      "ilk": "2011-01",
+      "son": "2026-10",
+      "n": 190
+    },
+    "TP.PY.P06.ON": {
+      "ilk": "2006-01",
+      "son": "2026-10",
+      "n": 250
+    },
+    "TP.TUKFIY2025.GENEL": {
+      "ilk": "2006-01",
+      "son": "2026-09",
+      "n": 249
+    },
+    "TP.FE.OKTG03": {
+      "ilk": "2006-01",
+      "son": "2025-12",
+      "n": 240
+    },
+    "TP.FE.OKTG04": {
+      "ilk": "2006-01",
+      "son": "2025-12",
+      "n": 240
+    },
+    "TP.TSANAYMT2021.BCD": {
+      "ilk": "2006-01",
+      "son": "2026-08",
+      "n": 248
+    },
+    "TP.DK.USD.A.YTL": {
+      "ilk": "2006-01",
+      "son": "2026-10",
+      "n": 250
+    },
+    "TP.KREDI.L001": {
+      "ilk": "2006-01",
+      "son": "2025-01",
+      "n": 229
+    },
+    "TP.PKAUO.S01.E.U": {
+      "ilk": "2013-01",
+      "son": "2026-10",
+      "n": 166
+    }
+  },
+  "turev_kapsam": {
+    "tufe_12ay": {
+      "ilk": "2007-01",
+      "son": "2026-09",
+      "n": 237
+    },
+    "sapma": {
+      "ilk": "2007-01",
+      "son": "2026-09",
+      "n": 237
+    },
+    "uretim_acigi": {
+      "ilk": "2006-01",
+      "son": "2026-08",
+      "n": 248
+    },
+    "kur_degisim": {
+      "ilk": "2006-02",
+      "son": "2026-10",
+      "n": 249
+    },
+    "kredi_12ay": {
+      "ilk": "2007-01",
+      "son": "2025-01",
+      "n": 217
+    }
+  },
+  "politika_faizi": {
+    "seri": null,
+    "seri_karar": "belirlenemiyor",
+    "neden": "Bir haftalık repo ihale faizi EVDS kataloğunda yok. Elle kodlanmadı."
+  },
+  "fonlama": {
+    "seri": "TP.APIFON4",
+    "tam": {
+      "n": 168,
+      "ilk": "2011-02",
+      "son": "2025-01",
+      "bant": 4,
+      "r2": 0.9877,
+      "katsayi": [
+        {
+          "ad": "a",
+          "katsayi": -1.1664,
+          "se": 0.5397,
+          "t": -2.16,
+          "anlamli_005": true
+        },
+        {
+          "ad": "b1_enflasyon_sapmasi",
+          "katsayi": -0.0163,
+          "se": 0.0174,
+          "t": -0.94,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b2_uretim_acigi",
+          "katsayi": 0.0194,
+          "se": 0.0124,
+          "t": 1.56,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b3_kur",
+          "katsayi": -0.0278,
+          "se": 0.0181,
+          "t": -1.53,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b4_kredi",
+          "katsayi": 0.0485,
+          "se": 0.0178,
+          "t": 2.72,
+          "anlamli_005": true
+        },
+        {
+          "ad": "b5_faiz_gecikme",
+          "katsayi": 1.0216,
+          "se": 0.0266,
+          "t": 38.46,
+          "anlamli_005": true
+        }
+      ],
+      "dissallik": "icsel",
+      "kirilma": null
+    },
+    "kirilma_denklemi": {
+      "n": 168,
+      "ilk": "2011-02",
+      "son": "2025-01",
+      "bant": 4,
+      "r2": 0.9918,
+      "katsayi": [
+        {
+          "ad": "a",
+          "katsayi": 0.6398,
+          "se": 0.5519,
+          "t": 1.16,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b1_enflasyon_sapmasi",
+          "katsayi": 0.0169,
+          "se": 0.0182,
+          "t": 0.93,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b2_uretim_acigi",
+          "katsayi": 0.0587,
+          "se": 0.0241,
+          "t": 2.43,
+          "anlamli_005": true
+        },
+        {
+          "ad": "b3_kur",
+          "katsayi": -0.0222,
+          "se": 0.0226,
+          "t": -0.98,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b4_kredi",
+          "katsayi": 0.0063,
+          "se": 0.0167,
+          "t": 0.38,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b5_faiz_gecikme",
+          "katsayi": 0.9196,
+          "se": 0.0305,
+          "t": 30.13,
+          "anlamli_005": true
+        },
+        {
+          "ad": "d2018",
+          "katsayi": 2.0302,
+          "se": 0.4517,
+          "t": 4.49,
+          "anlamli_005": true
+        },
+        {
+          "ad": "d2020",
+          "katsayi": 0.2962,
+          "se": 0.4688,
+          "t": 0.63,
+          "anlamli_005": false
+        },
+        {
+          "ad": "d2122",
+          "katsayi": -1.3577,
+          "se": 0.6753,
+          "t": -2.01,
+          "anlamli_005": true
+        },
+        {
+          "ad": "d2023",
+          "katsayi": 3.259,
+          "se": 1.0765,
+          "t": 3.03,
+          "anlamli_005": true
+        }
+      ],
+      "dissallik": "dissal",
+      "kirilma": true
+    },
+    "donem": [
+      {
+        "n": 90,
+        "ilk": "2011-02",
+        "son": "2018-07",
+        "bant": 3,
+        "r2": 0.9529,
+        "katsayi": [
+          {
+            "ad": "a",
+            "katsayi": -0.6301,
+            "se": 0.4777,
+            "t": -1.32,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b1_enflasyon_sapmasi",
+            "katsayi": 0.1742,
+            "se": 0.0485,
+            "t": 3.59,
+            "anlamli_005": true
+          },
+          {
+            "ad": "b2_uretim_acigi",
+            "katsayi": -0.0136,
+            "se": 0.0321,
+            "t": -0.42,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b3_kur",
+            "katsayi": 0.0146,
+            "se": 0.0178,
+            "t": 0.82,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b4_kredi",
+            "katsayi": 0.0208,
+            "se": 0.011,
+            "t": 1.88,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b5_faiz_gecikme",
+            "katsayi": 0.9533,
+            "se": 0.0308,
+            "t": 30.91,
+            "anlamli_005": true
+          }
+        ],
+        "dissallik": "icsel",
+        "kirilma": null,
+        "donem": "p1",
+        "sinir": [
+          "0000-01",
+          "2018-07"
+        ],
+        "karar": "icsel"
+      },
+      {
+        "donem": "p2",
+        "sinir": [
+          "2018-08",
+          "2020-02"
+        ],
+        "n": 19,
+        "ilk": "2018-08",
+        "son": "2020-02",
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      {
+        "donem": "p3",
+        "sinir": [
+          "2020-03",
+          "2021-08"
+        ],
+        "n": 18,
+        "ilk": "2020-03",
+        "son": "2021-08",
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      {
+        "donem": "p4",
+        "sinir": [
+          "2021-09",
+          "2023-05"
+        ],
+        "n": 21,
+        "ilk": "2021-09",
+        "son": "2023-05",
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      {
+        "donem": "p5",
+        "sinir": [
+          "2023-06",
+          "2099-12"
+        ],
+        "n": 20,
+        "ilk": "2023-06",
+        "son": "2025-01",
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      }
+    ],
+    "kirilma_var": true,
+    "seri_karar": "icsel",
+    "ortak_ilk": "2011-01",
+    "ortak_son": "2025-01",
+    "ortak_ay_sayisi": 169
+  },
+  "gecelik": {
+    "seri": "TP.PY.P06.ON",
+    "tam": {
+      "n": 217,
+      "ilk": "2007-01",
+      "son": "2025-01",
+      "bant": 4,
+      "r2": 0.9836,
+      "katsayi": [
+        {
+          "ad": "a",
+          "katsayi": -0.9025,
+          "se": 0.4084,
+          "t": -2.21,
+          "anlamli_005": true
+        },
+        {
+          "ad": "b1_enflasyon_sapmasi",
+          "katsayi": -0.0038,
+          "se": 0.0154,
+          "t": -0.25,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b2_uretim_acigi",
+          "katsayi": 0.0151,
+          "se": 0.0151,
+          "t": 1.0,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b3_kur",
+          "katsayi": -0.0072,
+          "se": 0.0162,
+          "t": -0.45,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b4_kredi",
+          "katsayi": 0.0336,
+          "se": 0.0137,
+          "t": 2.45,
+          "anlamli_005": true
+        },
+        {
+          "ad": "b5_faiz_gecikme",
+          "katsayi": 1.0106,
+          "se": 0.0199,
+          "t": 50.89,
+          "anlamli_005": true
+        }
+      ],
+      "dissallik": "icsel",
+      "kirilma": null
+    },
+    "kirilma_denklemi": {
+      "n": 217,
+      "ilk": "2007-01",
+      "son": "2025-01",
+      "bant": 4,
+      "r2": 0.9882,
+      "katsayi": [
+        {
+          "ad": "a",
+          "katsayi": 0.4534,
+          "se": 0.3964,
+          "t": 1.14,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b1_enflasyon_sapmasi",
+          "katsayi": 0.0152,
+          "se": 0.0154,
+          "t": 0.99,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b2_uretim_acigi",
+          "katsayi": 0.0506,
+          "se": 0.0181,
+          "t": 2.79,
+          "anlamli_005": true
+        },
+        {
+          "ad": "b3_kur",
+          "katsayi": -0.0064,
+          "se": 0.0169,
+          "t": -0.38,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b4_kredi",
+          "katsayi": 0.0061,
+          "se": 0.013,
+          "t": 0.47,
+          "anlamli_005": false
+        },
+        {
+          "ad": "b5_faiz_gecikme",
+          "katsayi": 0.9264,
+          "se": 0.0217,
+          "t": 42.68,
+          "anlamli_005": true
+        },
+        {
+          "ad": "d2018",
+          "katsayi": 1.9986,
+          "se": 0.4449,
+          "t": 4.49,
+          "anlamli_005": true
+        },
+        {
+          "ad": "d2020",
+          "katsayi": 0.2284,
+          "se": 0.3236,
+          "t": 0.71,
+          "anlamli_005": false
+        },
+        {
+          "ad": "d2122",
+          "katsayi": -1.3417,
+          "se": 0.6193,
+          "t": -2.17,
+          "anlamli_005": true
+        },
+        {
+          "ad": "d2023",
+          "katsayi": 3.0782,
+          "se": 0.9409,
+          "t": 3.27,
+          "anlamli_005": true
+        }
+      ],
+      "dissallik": "dissal",
+      "kirilma": true
+    },
+    "donem": [
+      {
+        "n": 139,
+        "ilk": "2007-01",
+        "son": "2018-07",
+        "bant": 4,
+        "r2": 0.953,
+        "katsayi": [
+          {
+            "ad": "a",
+            "katsayi": -0.0865,
+            "se": 0.2713,
+            "t": -0.32,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b1_enflasyon_sapmasi",
+            "katsayi": 0.1423,
+            "se": 0.1187,
+            "t": 1.2,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b2_uretim_acigi",
+            "katsayi": 0.0334,
+            "se": 0.0286,
+            "t": 1.17,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b3_kur",
+            "katsayi": 0.0084,
+            "se": 0.0138,
+            "t": 0.61,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b4_kredi",
+            "katsayi": 0.0015,
+            "se": 0.0114,
+            "t": 0.13,
+            "anlamli_005": false
+          },
+          {
+            "ad": "b5_faiz_gecikme",
+            "katsayi": 0.9442,
+            "se": 0.0299,
+            "t": 31.57,
+            "anlamli_005": true
+          }
+        ],
+        "dissallik": "dissal",
+        "kirilma": null,
+        "donem": "p1",
+        "sinir": [
+          "0000-01",
+          "2018-07"
+        ],
+        "karar": "dissal"
+      },
+      {
+        "donem": "p2",
+        "sinir": [
+          "2018-08",
+          "2020-02"
+        ],
+        "n": 19,
+        "ilk": "2018-08",
+        "son": "2020-02",
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      {
+        "donem": "p3",
+        "sinir": [
+          "2020-03",
+          "2021-08"
+        ],
+        "n": 18,
+        "ilk": "2020-03",
+        "son": "2021-08",
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      {
+        "donem": "p4",
+        "sinir": [
+          "2021-09",
+          "2023-05"
+        ],
+        "n": 21,
+        "ilk": "2021-09",
+        "son": "2023-05",
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      {
+        "donem": "p5",
+        "sinir": [
+          "2023-06",
+          "2099-12"
+        ],
+        "n": 20,
+        "ilk": "2023-06",
+        "son": "2025-01",
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      }
+    ],
+    "kirilma_var": true,
+    "seri_karar": "belirlenemiyor",
+    "ortak_ilk": "2007-01",
+    "ortak_son": "2025-01",
+    "ortak_ay_sayisi": 217
+  },
+  "reel": [
+    {
+      "faiz": "TP.APIFON4",
+      "beklenti": "TP.PKAUO.S01.E.U",
+      "doldurma": "yok",
+      "beklenti_bos_ay": [],
+      "beklenti_bos_n": 0,
+      "reel_n": 166,
+      "reel_ilk": "2013-01",
+      "reel_son": "2026-10",
+      "reel_son_deger": 13.11
+    },
+    {
+      "faiz": "TP.PY.P06.ON",
+      "beklenti": "TP.PKAUO.S01.E.U",
+      "doldurma": "yok",
+      "beklenti_bos_ay": [],
+      "beklenti_bos_n": 0,
+      "reel_n": 166,
+      "reel_ilk": "2013-01",
+      "reel_son": "2026-10",
+      "reel_son_deger": 11.61
+    }
+  ]
+}
