@@ -1,0 +1,667 @@
+{
+  "evren": "KAP metni önbelleği, 2023 satışına göre ilk 100 faaliyet firması. Yıl bazında BIST 100 üyeliği kurulmadı.",
+  "metin": {
+    "2016": 74,
+    "2022": 87
+  },
+  "tablo": {
+    "yararlanan": {
+      "n_firma": 45,
+      "n_d_cek": 45,
+      "n_d_vo": 45,
+      "cek_2016": {
+        "n": 45,
+        "p25": 0.06889637401281999,
+        "medyan": 0.08450784598397257,
+        "p75": 0.11635271838703566
+      },
+      "cek_2023": {
+        "n": 45,
+        "p25": 0.030750663475537968,
+        "medyan": 0.07853861620035274,
+        "p75": 0.14275654934373797
+      },
+      "vo_2016": {
+        "n": 45,
+        "p25": 6.787023211619383e-05,
+        "medyan": 0.053046384386071996,
+        "p75": 0.10044419858062265
+      },
+      "vo_2023": {
+        "n": 45,
+        "p25": 0.018166760959400778,
+        "medyan": 0.08422134980377324,
+        "p75": 0.14056015608117267
+      },
+      "d_cek": {
+        "n": 45,
+        "p25": -5.312437089276695,
+        "medyan": 0.8968485928063374,
+        "p75": 5.4811108154506325
+      },
+      "d_vo": {
+        "n": 45,
+        "p25": -2.408895739540423,
+        "medyan": 2.6892917558280085,
+        "p75": 9.17033948855689
+      },
+      "kod": [
+        "ARCLK",
+        "ASELS",
+        "ASUZU",
+        "AYES",
+        "BANVT",
+        "BESLR",
+        "BRISA",
+        "CIMSA",
+        "DGNMO",
+        "EGPRO",
+        "ENJSA",
+        "EREGL",
+        "FROTO",
+        "GUBRF",
+        "HEKTS",
+        "IZMDC",
+        "JANTS",
+        "KAREL",
+        "KORDS",
+        "KRDMA",
+        "KRDMB",
+        "KRDMD",
+        "MAVI",
+        "MNDRS",
+        "ODAS",
+        "OTKAR",
+        "OYAKC",
+        "PETKM",
+        "PNSUT",
+        "RYSAS",
+        "SARKY",
+        "SASA",
+        "SISE",
+        "TATGD",
+        "THYAO",
+        "TKFEN",
+        "TMSN",
+        "TTRAK",
+        "TUKAS",
+        "TUPRS",
+        "ULKER",
+        "VAKKO",
+        "VESBE",
+        "YATAS",
+        "ZOREN"
+      ]
+    },
+    "yararlanmayan": {
+      "n_firma": 1,
+      "n_d_cek": 1,
+      "n_d_vo": 1,
+      "cek_2016": {
+        "n": 1,
+        "p25": 0.0023452195956893615,
+        "medyan": 0.0023452195956893615,
+        "p75": 0.0023452195956893615
+      },
+      "cek_2023": {
+        "n": 1,
+        "p25": -0.01506973022384256,
+        "medyan": -0.01506973022384256,
+        "p75": -0.01506973022384256
+      },
+      "vo_2016": {
+        "n": 1,
+        "p25": 0.03696897687762131,
+        "medyan": 0.03696897687762131,
+        "p75": 0.03696897687762131
+      },
+      "vo_2023": {
+        "n": 1,
+        "p25": 0.009013111929486308,
+        "medyan": 0.009013111929486308,
+        "p75": 0.009013111929486308
+      },
+      "d_cek": {
+        "n": 1,
+        "p25": -1.741494981953192,
+        "medyan": -1.741494981953192,
+        "p75": -1.741494981953192
+      },
+      "d_vo": {
+        "n": 1,
+        "p25": -2.7955864948135,
+        "medyan": -2.7955864948135,
+        "p75": -2.7955864948135
+      },
+      "kod": [
+        "SANKO"
+      ]
+    },
+    "bilinmeyen": {
+      "n_firma": 54,
+      "n_d_cek": 54,
+      "n_d_vo": 54,
+      "cek_2016": {
+        "n": 54,
+        "p25": 0.025768956676892014,
+        "medyan": 0.07978005763313728,
+        "p75": 0.15532800313904693
+      },
+      "cek_2023": {
+        "n": 54,
+        "p25": 0.02520264721494496,
+        "medyan": 0.0836708170349504,
+        "p75": 0.15622028288543638
+      },
+      "vo_2016": {
+        "n": 54,
+        "p25": -0.021039712097814967,
+        "medyan": 0.018465352303591538,
+        "p75": 0.10209441209898656
+      },
+      "vo_2023": {
+        "n": 54,
+        "p25": 0.01219011373903968,
+        "medyan": 0.0608461414358671,
+        "p75": 0.17207846955247386
+      },
+      "d_cek": {
+        "n": 54,
+        "p25": -4.579309937763928,
+        "medyan": -0.9053196080174926,
+        "p75": 5.108620453293297
+      },
+      "d_vo": {
+        "n": 54,
+        "p25": -3.1381773166013835,
+        "medyan": 4.322800710877422,
+        "p75": 11.120482193099939
+      },
+      "kod": [
+        "AEFES",
+        "AKCNS",
+        "AKENR",
+        "AKSA",
+        "AKSEN",
+        "ALCAR",
+        "ARENA",
+        "AYEN",
+        "AYGAZ",
+        "BASCM",
+        "BEYAZ",
+        "BIMAS",
+        "BIZIM",
+        "BRSAN",
+        "BTCIM",
+        "BUCIM",
+        "CCOLA",
+        "CLEBI",
+        "CMENT",
+        "CRFSA",
+        "DARDL",
+        "DEVA",
+        "DOAS",
+        "DOKTA",
+        "DYOBY",
+        "ECILC",
+        "ENKAI",
+        "GOLTS",
+        "GOODY",
+        "GSRAY",
+        "INDES",
+        "INGRM",
+        "ISDMR",
+        "KARSN",
+        "KENT",
+        "MGROS",
+        "MNDTR",
+        "MPARK",
+        "NUHCM",
+        "PGSUS",
+        "PRKAB",
+        "SELEC",
+        "SOKM",
+        "TAVHL",
+        "TBORG",
+        "TCELL",
+        "TKNSA",
+        "TOASO",
+        "TRALT",
+        "TRENJ",
+        "TRMET",
+        "TTKOM",
+        "ULUUN",
+        "VESTL"
+      ]
+    }
+  },
+  "fark_d_cek": 2.6383435747595296,
+  "fark_d_vo": 5.484878250641509,
+  "yanlis_bilinmeyen_kontrol": {
+    "fark_d_cek": 1.9183543493810506,
+    "fark_d_vo": -1.2235562006326548,
+    "d_cek": {
+      "yararlanan": {
+        "n": 45,
+        "p25": -5.312437089276695,
+        "medyan": 0.8968485928063374,
+        "p75": 5.4811108154506325
+      },
+      "yararlanmayan": {
+        "n": 55,
+        "p25": -4.541713979479996,
+        "medyan": -1.0215057565747132,
+        "p75": 5.054784996128394
+      },
+      "bilinmeyen": {
+        "n": 0,
+        "p25": null,
+        "medyan": null,
+        "p75": null
+      }
+    },
+    "d_vo": {
+      "yararlanan": {
+        "n": 45,
+        "p25": -2.408895739540423,
+        "medyan": 2.6892917558280085,
+        "p75": 9.17033948855689
+      },
+      "yararlanmayan": {
+        "n": 55,
+        "p25": -3.047623932105174,
+        "medyan": 3.9128479564606633,
+        "p75": 10.658605884144995
+      },
+      "bilinmeyen": {
+        "n": 0,
+        "p25": null,
+        "medyan": null,
+        "p75": null
+      }
+    }
+  },
+  "yalniz_belge": {
+    "n": {
+      "yararlanan": 31,
+      "yararlanmayan": 1,
+      "bilinmeyen": 68
+    },
+    "fark_d_cek": 2.8166038495285033,
+    "fark_d_vo": 3.983148713173529,
+    "d_cek_yar": {
+      "n": 31,
+      "p25": -5.867637071690909,
+      "medyan": 1.0751088675753113,
+      "p75": 5.501225743892424
+    },
+    "d_vo_yar": {
+      "n": 31,
+      "p25": -3.998263681477711,
+      "medyan": 1.187562218360029,
+      "p75": 8.527974437753619
+    }
+  },
+  "kardemir_ab_dusulunce": {
+    "n_yar": 43,
+    "d_cek": {
+      "n": 43,
+      "p25": -6.040055506971186,
+      "medyan": 1.0751088675753113,
+      "p75": 5.493227316849195
+    },
+    "d_vo": {
+      "n": 43,
+      "p25": -2.4668660439290067,
+      "medyan": 2.58026053861083,
+      "p75": 7.047670358669705
+    }
+  },
+  "smd_gercek_kontrol": [
+    {
+      "degisken": "log_satis_2016",
+      "n_yararlanan": 45,
+      "n_diger": 1,
+      "ort_yararlanan": 21.105873565580865,
+      "ort_diger": 20.58388170009376,
+      "smd": null,
+      "dengesiz": null
+    },
+    {
+      "degisken": "cekirdek_2016",
+      "n_yararlanan": 45,
+      "n_diger": 1,
+      "ort_yararlanan": 0.09599841614125416,
+      "ort_diger": 0.0023452195956893615,
+      "smd": null,
+      "dengesiz": null
+    },
+    {
+      "degisken": "vergi_oncesi_2016",
+      "n_yararlanan": 45,
+      "n_diger": 1,
+      "ort_yararlanan": 0.0535962465886165,
+      "ort_diger": 0.03696897687762131,
+      "smd": null,
+      "dengesiz": null
+    },
+    {
+      "degisken": "ihracat_payi_2016",
+      "n_yararlanan": 45,
+      "n_diger": 1,
+      "ort_yararlanan": 0.23163953668835877,
+      "ort_diger": 0.002402517394174893,
+      "smd": null,
+      "dengesiz": null
+    }
+  ],
+  "smd_bilinmeyen_yanlis": [
+    {
+      "degisken": "log_satis_2016",
+      "n_yararlanan": 45,
+      "n_diger": 54,
+      "ort_yararlanan": 21.105873565580865,
+      "ort_diger": 21.35426942426859,
+      "smd": -0.1895807585024202,
+      "dengesiz": true
+    },
+    {
+      "degisken": "cekirdek_2016",
+      "n_yararlanan": 45,
+      "n_diger": 54,
+      "ort_yararlanan": 0.09599841614125416,
+      "ort_diger": 0.09988308541391785,
+      "smd": -0.037212106209062304,
+      "dengesiz": false
+    },
+    {
+      "degisken": "vergi_oncesi_2016",
+      "n_yararlanan": 45,
+      "n_diger": 54,
+      "ort_yararlanan": 0.0535962465886165,
+      "ort_diger": 0.04693793556135234,
+      "smd": 0.04341165970413794,
+      "dengesiz": false
+    },
+    {
+      "degisken": "ihracat_payi_2016",
+      "n_yararlanan": 45,
+      "n_diger": 54,
+      "ort_yararlanan": 0.23163953668835877,
+      "ort_diger": 0.17298859356160573,
+      "smd": 0.25347098271987284,
+      "dengesiz": true
+    }
+  ],
+  "sektor_yar": {
+    "Dayanıklı tüketim": 4,
+    "Makine ve teçhizat": 2,
+    "Otomotiv": 7,
+    "Mineral ürünler": 6,
+    "Gıda ve içecek": 6,
+    "Enerji": 3,
+    "Ana metal": 5,
+    "Kimya": 4,
+    "Tekstil ve giyim": 4,
+    "Ulaştırma": 2,
+    "İnşaat": 1,
+    "Ticaret": 1
+  },
+  "sektor_bil": {
+    "Gıda ve içecek": 6,
+    "Mineral ürünler": 7,
+    "Enerji": 4,
+    "Tekstil ve giyim": 1,
+    "Dayanıklı tüketim": 2,
+    "Ticaret": 9,
+    "Kimya": 6,
+    "Ulaştırma": 4,
+    "Ana metal": 2,
+    "Otomotiv": 5,
+    "İnşaat": 1,
+    "Hizmet": 3,
+    "Kağıt": 1,
+    "Makine ve teçhizat": 1,
+    "Madencilik": 2
+  },
+  "sanko": {
+    "d_vo": -2.7955864948135,
+    "logsat_2016": 20.58388170009376,
+    "cek_2023": -0.01506973022384256,
+    "grup": "faaliyet",
+    "sektor": "Pazarlama",
+    "cek_2019": 0.0120791613697775,
+    "vo_2016": 0.03696897687762131,
+    "d_cek": -1.741494981953192,
+    "cek_2017": 0.0008808491683920042,
+    "vo_2017": 0.04439289863860348,
+    "vo_2023": 0.009013111929486308,
+    "cek_2016": 0.0023452195956893615,
+    "cek_2018": 0.0025168682615686355,
+    "kod": "SANKO",
+    "ihr_2016": 0.002402517394174893,
+    "ana": "Ticaret",
+    "vo_2018": 0.0200890013608295,
+    "vo_2019": 0.0527755847181612
+  },
+  "yol_yar_cek": {
+    "2016": {
+      "n": 45,
+      "p25": 0.06889637401281999,
+      "medyan": 0.08450784598397257,
+      "p75": 0.11635271838703566
+    },
+    "2017": {
+      "n": 45,
+      "p25": 0.0687045928756379,
+      "medyan": 0.10941826610578059,
+      "p75": 0.14944828980672958
+    },
+    "2018": {
+      "n": 45,
+      "p25": 0.07571494667932185,
+      "medyan": 0.1254882376692097,
+      "p75": 0.17124959957851335
+    },
+    "2019": {
+      "n": 45,
+      "p25": 0.06563895413960752,
+      "medyan": 0.0991458555420893,
+      "p75": 0.1442333722605637
+    },
+    "2023": {
+      "n": 45,
+      "p25": 0.030750663475537968,
+      "medyan": 0.07853861620035274,
+      "p75": 0.14275654934373797
+    }
+  },
+  "yol_bil_cek": {
+    "2016": {
+      "n": 54,
+      "p25": 0.025768956676892014,
+      "medyan": 0.07978005763313728,
+      "p75": 0.15532800313904693
+    },
+    "2017": {
+      "n": 54,
+      "p25": 0.030480915870633455,
+      "medyan": 0.07429161356719648,
+      "p75": 0.14575670142562852
+    },
+    "2018": {
+      "n": 54,
+      "p25": 0.038062207345288736,
+      "medyan": 0.09587496346703611,
+      "p75": 0.17001975093824356
+    },
+    "2019": {
+      "n": 54,
+      "p25": 0.03609663001111434,
+      "medyan": 0.08559034162003595,
+      "p75": 0.15971349910660038
+    },
+    "2023": {
+      "n": 54,
+      "p25": 0.02520264721494496,
+      "medyan": 0.0836708170349504,
+      "p75": 0.15622028288543638
+    }
+  },
+  "yol_yar_vo": {
+    "2016": {
+      "n": 45,
+      "p25": 6.787023211619383e-05,
+      "medyan": 0.053046384386071996,
+      "p75": 0.10044419858062265
+    },
+    "2017": {
+      "n": 45,
+      "p25": 0.033019598205074684,
+      "medyan": 0.06299813207487866,
+      "p75": 0.10853506099077263
+    },
+    "2018": {
+      "n": 45,
+      "p25": 0.024555126225462503,
+      "medyan": 0.07216763837367997,
+      "p75": 0.11518691996251412
+    },
+    "2019": {
+      "n": 45,
+      "p25": -0.003474835976866986,
+      "medyan": 0.04097390905338269,
+      "p75": 0.09038514042292427
+    },
+    "2023": {
+      "n": 45,
+      "p25": 0.018166760959400778,
+      "medyan": 0.08422134980377324,
+      "p75": 0.14056015608117267
+    }
+  },
+  "listeler": {
+    "yararlanan": [
+      "ARCLK",
+      "ASELS",
+      "ASUZU",
+      "AYES",
+      "BANVT",
+      "BESLR",
+      "BRISA",
+      "CIMSA",
+      "DGNMO",
+      "EGPRO",
+      "ENJSA",
+      "EREGL",
+      "FROTO",
+      "GUBRF",
+      "HEKTS",
+      "IZMDC",
+      "JANTS",
+      "KAREL",
+      "KORDS",
+      "KRDMA",
+      "KRDMB",
+      "KRDMD",
+      "MAVI",
+      "MNDRS",
+      "ODAS",
+      "OTKAR",
+      "OYAKC",
+      "PETKM",
+      "PNSUT",
+      "RYSAS",
+      "SARKY",
+      "SASA",
+      "SISE",
+      "TATGD",
+      "THYAO",
+      "TKFEN",
+      "TMSN",
+      "TTRAK",
+      "TUKAS",
+      "TUPRS",
+      "ULKER",
+      "VAKKO",
+      "VESBE",
+      "YATAS",
+      "ZOREN"
+    ],
+    "yararlanmayan": [
+      "SANKO"
+    ],
+    "bilinmeyen": [
+      "AEFES",
+      "AKCNS",
+      "AKENR",
+      "AKSA",
+      "AKSEN",
+      "ALCAR",
+      "ARENA",
+      "AYEN",
+      "AYGAZ",
+      "BASCM",
+      "BEYAZ",
+      "BIMAS",
+      "BIZIM",
+      "BRSAN",
+      "BTCIM",
+      "BUCIM",
+      "CCOLA",
+      "CLEBI",
+      "CMENT",
+      "CRFSA",
+      "DARDL",
+      "DEVA",
+      "DOAS",
+      "DOKTA",
+      "DYOBY",
+      "ECILC",
+      "ENKAI",
+      "GOLTS",
+      "GOODY",
+      "GSRAY",
+      "INDES",
+      "INGRM",
+      "ISDMR",
+      "KARSN",
+      "KENT",
+      "MGROS",
+      "MNDTR",
+      "MPARK",
+      "NUHCM",
+      "PGSUS",
+      "PRKAB",
+      "SELEC",
+      "SOKM",
+      "TAVHL",
+      "TBORG",
+      "TCELL",
+      "TKNSA",
+      "TOASO",
+      "TRALT",
+      "TRENJ",
+      "TRMET",
+      "TTKOM",
+      "ULUUN",
+      "VESTL"
+    ],
+    "gelir_satiri_olup_belge_yok": [
+      "ARCLK",
+      "AYES",
+      "IZMDC",
+      "KAREL",
+      "KORDS",
+      "MAVI",
+      "MNDRS",
+      "SARKY",
+      "SISE",
+      "THYAO",
+      "TMSN",
+      "VAKKO",
+      "YATAS",
+      "ZOREN"
+    ]
+  }
+}
