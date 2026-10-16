@@ -107,11 +107,13 @@ def sec(rows, ad):
 
 
 def nitelik_bul(html):
-    m = re.search(r"Finansal Tablo Niteliği.{0,400}?>(Konsolide|Bireysel|Solo)<", html, re.S | re.I)
-    if m:
-        return m.group(1)
-    m = re.search(r"Finansal Tablo Niteliği.{0,200}", html, re.S)
-    return ("ham:" + re.sub(r"\s+", " ", m.group(0))[:180]) if m else None
+    m = re.search(r"Finansal Tablo Niteliği(.{0,350})", html, re.S)
+    if not m:
+        return None
+    text = re.sub(r"<[^>]+>", " ", m.group(0))
+    text = re.sub(r"\s+", " ", text)
+    m2 = re.search(r"Finansal Tablo Niteliği\s+(.+?)\s+(?:Dipnot|<|$)", text)
+    return (m2.group(1).strip() if m2 else text[:80])
 
 
 def xbrl_cek(idx):
@@ -149,6 +151,7 @@ def xbrl_cek(idx):
         "idx": idx,
         "unit": unit,
         "n_satir": len(rows),
+        "n_sutun": len(cols),
         "cur_col": cur,
         "prev_col": prev,
         "nitelik": nitelik_bul(html),
