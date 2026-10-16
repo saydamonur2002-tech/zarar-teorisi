@@ -1,0 +1,568 @@
+{
+  "cekilme": "2026-10-16",
+  "onkait": "ZINCIR_ONKAYIT.md",
+  "merkezi_iddia_20_30": "Bu tur türetilmedi. Kredi ikame bandı ölçülmedi.",
+  "sok": "TP.APIFON4 AOFM, yüzde puan farkı. Bir haftalık repo ihale faizi değil.",
+  "meta_aylik": {
+    "ad": {
+      "TP.APIFON4": "Weighted Average Cost of the CBRT Funding",
+      "TP.TUKFIY2025.GENEL": "General Index",
+      "TP.DK.USD.A.YTL": "(USD)  US  Dollar  (Buying)",
+      "TP.HPBITABLO6.20": "1.2.1.Commercial Loans",
+      "TP.HPBITABLO6.3": "1.1.1.Housing (TRY + FX)",
+      "TP.HPBITABLO6.11": "1.1.3.Other (TRY + FX)",
+      "TP.HPBITABLO6.2": "1.1.CONSUMER LOANS",
+      "TP.HPBITABLO6.1": "1.RESIDENTS",
+      "TP.HPBITABLO2.3": "1.1.1.TRY",
+      "TP.HPBITABLO2.6": "1.1.2.FX",
+      "TP.HPBITABLO2.10": "1.1.2.i.Of which: Total FX Deposits (Million USD)",
+      "TP.HPBITABLO5.1": "1.Parity-Adjusted Change (Residents)",
+      "TP.KFE.TR": "Residential Property Price Index (RPPI)",
+      "TP.PKAUO.S05.C.U": "Expectation of 12 Months Ahead US Dollar Rate in the Interbank Foreign Exchange Market (TRY)",
+      "TP.AB.TOPLAM": "Total (Million USD)",
+      "TP.KKM.K1": "1. DDKKM – Total (billion USD)",
+      "TP.KKM.K4": "2. TRY KKM – Total (billion TRY)"
+    },
+    "var": {
+      "TP.APIFON4": true,
+      "TP.TUKFIY2025.GENEL": true,
+      "TP.DK.USD.A.YTL": true,
+      "TP.HPBITABLO6.20": true,
+      "TP.HPBITABLO6.3": true,
+      "TP.HPBITABLO6.11": true,
+      "TP.HPBITABLO6.2": true,
+      "TP.HPBITABLO6.1": true,
+      "TP.HPBITABLO2.3": true,
+      "TP.HPBITABLO2.6": true,
+      "TP.HPBITABLO2.10": true,
+      "TP.HPBITABLO5.1": true,
+      "TP.KFE.TR": true,
+      "TP.PKAUO.S05.C.U": true,
+      "TP.AB.TOPLAM": true,
+      "TP.KKM.K1": true,
+      "TP.KKM.K4": true
+    }
+  },
+  "meta_ceyrek": {
+    "ad": {
+      "TP.GSYIH20.BY.B1GQ": "Gross Domestic Product (Purchaser's Price) (Expenditure Approach, Current Prices)",
+      "TP.FINHESTNKS13.ZP34": "F.4.Loans,General Government (Non-Consolidated, Stock)",
+      "TP.FINHESTNKS11.ZP34": "F.4.Loans,Nonfinancial Corporations (Non-Consolidated, Stock)",
+      "TP.FINHESTNKS62011.ZP34": "F.4.Loans, Non-financial Corporations (Non-Consolidated, Flow)",
+      "TP.FINHESTNKS62014.ZP34": "F.4.Loans, Households (Non-Consolidated, Flow)",
+      "TP.FINHESTNKS14.ZP34": "F.4.Loans,Households (Non-Consolidated, Stock)"
+    },
+    "var": {
+      "TP.GSYIH20.BY.B1GQ": true,
+      "TP.FINHESTNKS13.ZP34": true,
+      "TP.FINHESTNKS11.ZP34": true,
+      "TP.FINHESTNKS62011.ZP34": true,
+      "TP.FINHESTNKS62014.ZP34": true,
+      "TP.FINHESTNKS14.ZP34": true
+    }
+  },
+  "kapsam": {
+    "TP.APIFON4": {
+      "ilk": "2013-01",
+      "son": "2026-10",
+      "n": 166
+    },
+    "TP.TUKFIY2025.GENEL": {
+      "ilk": "2013-01",
+      "son": "2026-09",
+      "n": 165
+    },
+    "TP.DK.USD.A.YTL": {
+      "ilk": "2013-01",
+      "son": "2026-10",
+      "n": 166
+    },
+    "TP.HPBITABLO6.20": {
+      "ilk": "2024-06",
+      "son": "2026-10",
+      "n": 29
+    },
+    "TP.HPBITABLO6.3": {
+      "ilk": "2024-06",
+      "son": "2026-10",
+      "n": 29
+    },
+    "TP.HPBITABLO6.11": {
+      "ilk": "2024-06",
+      "son": "2026-10",
+      "n": 29
+    },
+    "TP.HPBITABLO6.2": {
+      "ilk": "2024-06",
+      "son": "2026-10",
+      "n": 29
+    },
+    "TP.HPBITABLO6.1": {
+      "ilk": "2024-06",
+      "son": "2026-10",
+      "n": 29
+    },
+    "TP.HPBITABLO2.3": {
+      "ilk": "2024-06",
+      "son": "2026-10",
+      "n": 29
+    },
+    "TP.HPBITABLO2.6": {
+      "ilk": "2024-06",
+      "son": "2026-10",
+      "n": 29
+    },
+    "TP.HPBITABLO2.10": {
+      "ilk": "2024-06",
+      "son": "2026-10",
+      "n": 29
+    },
+    "TP.HPBITABLO5.1": {
+      "ilk": "2014-02",
+      "son": "2026-10",
+      "n": 153
+    },
+    "TP.KFE.TR": {
+      "ilk": "2013-01",
+      "son": "2026-09",
+      "n": 165
+    },
+    "TP.PKAUO.S05.C.U": {
+      "ilk": "2013-01",
+      "son": "2026-10",
+      "n": 166
+    },
+    "TP.AB.TOPLAM": {
+      "ilk": "2013-01",
+      "son": "2026-10",
+      "n": 166
+    },
+    "TP.KKM.K1": {
+      "ilk": "2021-12",
+      "son": "2026-07",
+      "n": 56
+    },
+    "TP.KKM.K4": {
+      "ilk": "2021-12",
+      "son": "2026-07",
+      "n": 56
+    },
+    "TP.GSYIH20.BY.B1GQ": {
+      "ilk": "2013-Q1",
+      "son": "2026-Q2",
+      "n": 54
+    },
+    "TP.FINHESTNKS13.ZP34": {
+      "ilk": "2013-Q4",
+      "son": "2026-Q1",
+      "n": 47
+    },
+    "TP.FINHESTNKS11.ZP34": {
+      "ilk": "2013-Q4",
+      "son": "2026-Q1",
+      "n": 47
+    },
+    "TP.FINHESTNKS62011.ZP34": {
+      "ilk": "2013-Q4",
+      "son": "2026-Q1",
+      "n": 47
+    },
+    "TP.FINHESTNKS62014.ZP34": {
+      "ilk": "2013-Q4",
+      "son": "2026-Q1",
+      "n": 47
+    },
+    "TP.FINHESTNKS14.ZP34": {
+      "ilk": "2013-Q4",
+      "son": "2026-Q1",
+      "n": 47
+    }
+  },
+  "H1": {
+    "butun": "belirlenemiyor",
+    "sektor": {
+      "ticari": {
+        "h6_lag3": {
+          "n": 7,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h6_lag6": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h9_lag3": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h9_lag6": {
+          "n": 1,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h12_lag3": {
+          "n": 1,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h12_lag6": {
+          "n": 0,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "sektor_karar": "belirlenemiyor"
+      },
+      "ihtiyac": {
+        "h6_lag3": {
+          "n": 7,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h6_lag6": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h9_lag3": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h9_lag6": {
+          "n": 1,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h12_lag3": {
+          "n": 1,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h12_lag6": {
+          "n": 0,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "sektor_karar": "belirlenemiyor"
+      },
+      "konut": {
+        "h6_lag3": {
+          "n": 7,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h6_lag6": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h9_lag3": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h9_lag6": {
+          "n": 1,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h12_lag3": {
+          "n": 1,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "h12_lag6": {
+          "n": 0,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "sektor_karar": "belirlenemiyor"
+      }
+    },
+    "kuklasiz_h9": {
+      "ticari": {
+        "n": 4,
+        "karar": "belirlenemiyor",
+        "neden": "n<36",
+        "isaret_karari": "belirlenemiyor"
+      },
+      "ihtiyac": {
+        "n": 4,
+        "karar": "belirlenemiyor",
+        "neden": "n<36",
+        "isaret_karari": "belirlenemiyor"
+      },
+      "konut": {
+        "n": 4,
+        "karar": "belirlenemiyor",
+        "neden": "n<36",
+        "isaret_karari": "belirlenemiyor"
+      }
+    }
+  },
+  "H2": {
+    "karar": "belirlenemiyor",
+    "neden": "Çeyreklik akım regresyonu n=7; ön kayıt eşiği 36.",
+    "akim_regresyon": {
+      "n": 7,
+      "karar": "belirlenemiyor",
+      "neden": "n<36"
+    },
+    "birim_notu": {
+      "ticari": {
+        "medyan_oran": 0.2392,
+        "n": 9,
+        "uyari": "Medyan borç/GSYH aralığında."
+      },
+      "konut": {
+        "medyan_oran": 0.0111,
+        "n": 9,
+        "uyari": "Medyan 0,05–5 dışında. Birim (bin TL / bin TL) tutmayabilir; oran karar sayısı değildir."
+      },
+      "ihtiyac": {
+        "medyan_oran": 0.033,
+        "n": 9,
+        "uyari": "Medyan 0,05–5 dışında. Birim (bin TL / bin TL) tutmayabilir; oran karar sayısı değildir."
+      }
+    },
+    "akim_nfc_var": true,
+    "akim_hane_var": true,
+    "kamu_f4_var": true
+  },
+  "H3": {
+    "tl": {
+      "kredi_mevduat": {
+        "n": 13,
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      "mevduat_kredi": {
+        "n": 13,
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      "karar": "belirlenemiyor",
+      "not": "Banka bilançosu yok. destekleniyor etiketi verilmez."
+    },
+    "yp_tl_karsiligi": {
+      "kredi_mevduat": {
+        "n": 13,
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      "mevduat_kredi": {
+        "n": 13,
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      "karar": "belirlenemiyor",
+      "not": "Banka bilançosu yok. destekleniyor etiketi verilmez."
+    },
+    "yp_usd": {
+      "kredi_mevduat": {
+        "n": 13,
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      "mevduat_kredi": {
+        "n": 13,
+        "karar": "belirlenemiyor",
+        "neden": "n<36"
+      },
+      "karar": "belirlenemiyor",
+      "not": "Banka bilançosu yok. destekleniyor etiketi verilmez."
+    }
+  },
+  "H4": {
+    "karar": "belirlenemiyor",
+    "kontolsuz": {
+      "n": 16,
+      "karar": "belirlenemiyor",
+      "neden": "n<36"
+    },
+    "kontrollu": {
+      "n": 16,
+      "karar": "belirlenemiyor",
+      "neden": "n<36"
+    },
+    "tl_pay_kontrollu_karar_degil": {
+      "n": 16,
+      "karar": "belirlenemiyor",
+      "neden": "n<36"
+    },
+    "cikti": "TP.HPBITABLO5.1"
+  },
+  "H5": {
+    "karar": "belirlenemiyor",
+    "lp_h3": {
+      "n": 10,
+      "karar": "belirlenemiyor",
+      "neden": "n<36"
+    },
+    "cagdas_ols_karar_degil": {
+      "n": 16,
+      "karar": "belirlenemiyor",
+      "neden": "n<36"
+    },
+    "korelasyon_gecikme": {
+      "-3": 0.0318,
+      "-2": 0.1317,
+      "-1": 0.2554,
+      "0": 0.4351,
+      "1": 0.6211,
+      "2": 0.7164,
+      "3": 0.8537
+    },
+    "en_buyuk_mutlak": "3"
+  },
+  "H6": {
+    "karar": "belirlenemiyor",
+    "neden": "KKM tebliğ metni bu turda indirilmedi. Seri başlangıcı ilan tarihi sayılmaz.",
+    "kkm_k1_ilk_ay": "2021-12",
+    "kkm_k1_n": 56
+  },
+  "H7": {
+    "lcr": {
+      "esik": "asgari %100",
+      "olcum": null,
+      "neden": "EVDS katalog taramasında LCR/LKO serisi bulunamadı."
+    },
+    "kv_dis_borc_rezerv": {
+      "esik": "analitik: kısa vadeli dış borç / brüt rezerv > 1",
+      "olcum": null,
+      "neden": "Kısa vadeli dış borç serisi bu çekimde yok."
+    },
+    "yp_pozisyon": {
+      "esik": "kullanılmadı",
+      "neden": "Yönetmelik maddesi dosyaya inmedi. %20 yazılmadı."
+    },
+    "net_rezerv_swap": {
+      "esik": "negatif ise sorun",
+      "olcum": null,
+      "neden": "Swap stoku serisi yok. Brüt rezervden net rezerv türetilmedi."
+    },
+    "brut_rezerv_milyon_usd": {
+      "seri": "TP.AB.TOPLAM",
+      "son": {
+        "ay": "2026-10",
+        "deger": 171574.9525
+      }
+    },
+    "karar": "belirlenemiyor"
+  },
+  "rakipler": {
+    "kuresel": {
+      "karar": "belirlenemiyor",
+      "neden": "VIX, EMBI veya Fed fonlama serisi izin verilen kaynakta çekilmedi."
+    },
+    "kur_soku": {
+      "kuklali_h1": {
+        "ticari": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "ihtiyac": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "konut": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        }
+      },
+      "kuklasiz_h1_h9": {
+        "ticari": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "ihtiyac": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        },
+        "konut": {
+          "n": 4,
+          "karar": "belirlenemiyor",
+          "neden": "n<36",
+          "isaret_karari": "belirlenemiyor"
+        }
+      },
+      "not": "Karar kuklalı belirtimdir. Kuklasız sütun rakibin ayırt ediciliğini gösterir."
+    },
+    "maliye": {
+      "nesne": "TP.FINHESTNKS13.ZP34 genel yönetim F.4, Hazine iç borç stoku değil",
+      "var": true,
+      "karar": "belirlenemiyor",
+      "neden": "Özel kredi büyümesini açıklayan ayrı bir maliye regresyonu, nesne Hazine stoku olmadığı için karar sayılmadı."
+    },
+    "reel_gelir": {
+      "karar": "belirlenemiyor",
+      "neden": "Resmî zincirlenmiş hacim GSYH bu çekimde yok. Vekil kurulmadı."
+    }
+  },
+  "stok_akis": {
+    "donem": [
+      "2024-Q3",
+      "2026-Q1"
+    ],
+    "n": 7,
+    "bddk_fark_medyan": 1081666273.0,
+    "f4_fark_medyan": 1819892048.3,
+    "akim_medyan": 1092672770.2,
+    "medyan_bddk_bolu_f4": 0.6156,
+    "medyan_akim_bolu_f4fark": 0.7005,
+    "not": "Üçü aynı nesne değil. BDDK banka kredisi; F.4 tüm borç verenler, konsolide olmayan. Fark kapatılmaz."
+  },
+  "zayiflik": {
+    "banka_bilancosu": "kapanmadi",
+    "kredi_gelir_karisikligi": "kapanmadi; H2 özdeşlik diye ayrıldı, nedensel etiket verilmedi",
+    "birim": {
+      "ticari": {
+        "medyan_oran": 0.2392,
+        "n": 9,
+        "uyari": "Medyan borç/GSYH aralığında."
+      },
+      "konut": {
+        "medyan_oran": 0.0111,
+        "n": 9,
+        "uyari": "Medyan 0,05–5 dışında. Birim (bin TL / bin TL) tutmayabilir; oran karar sayısı değildir."
+      },
+      "ihtiyac": {
+        "medyan_oran": 0.033,
+        "n": 9,
+        "uyari": "Medyan 0,05–5 dışında. Birim (bin TL / bin TL) tutmayabilir; oran karar sayısı değildir."
+      }
+    },
+    "yil_etiketi": "bu turda iki yıl etiketi düzeltilmedi",
+    "band_20_30": "kapanmadi; bu turda türetilmedi"
+  }
+}
