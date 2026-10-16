@@ -1,5 +1,7 @@
 # Kontrol turu: finansman, hayatta kalma, pay sınıfı, eşik, TMS 29
 
+Bu notun 2022 sütunu özgün 2022 bildirimi değildir. Satış ve vergi öncesi, ölçülen 99 firmanın 96’sında 2023 TMS 29 karşılaştırmalısıyla örtüşür. Finansal gider satırı (`3HC`) aynı karşılaştırmalı finansman gideriyle 98 firmanın 12’sinde örtüşür. Dipnot kırılımı, çıkan firma listesi ve bu örtüşmenin hesabı `MARJ_TUR3.md` içindedir. Aşağıdaki “kur farkı ayrılamadı” cümlesi, dipnotu kapanan 25 firma için artık geçerli değildir.
+
 Kaynaklar bu turda yeniden okundu. Önceki turdaki sayılar iddia kabul edildi; aşağıya yalnız yeniden hesaplananlar yazıldı.
 
 Hesap: firma değişimi = (2022 marjı − 2016 marjı) × 100. Sonra bu firma değişimlerinin medyanı, p25–p75 aralığı ve ortalaması. Çekirdek = (brüt kâr + pazarlama + genel yönetim + Ar-Ge) / satış. Bu tanım diğer faaliyet gelirini dışarıda bırakır. Faaliyet = XI_29 `3DF` / satış; bu satır diğer faaliyet gelir ve giderini içerir. Vergi öncesi = `3I` / satış. Net diğer = (`3DD` + `3DE`) / satış. Net finansman = (`3HB` + `3HC`) / satış. Net yatırım = (`3HA` + `3HAA`) / satış. Artık = vergi öncesi değişimi − (çekirdek + net diğer + net yatırım + net finansman). `3HAC` (özkaynak yöntemi) ve `3HCA` (vergi öncesi diğer) `marj_ham.csv` içinde yoktur; artığın içinde kalırlar.
