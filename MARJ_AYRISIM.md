@@ -1,5 +1,7 @@
 # Faaliyet marjı: üç açıklama, 2016-2022
 
+Bu dosyadaki medyanlar `marj_kontrol.py` ile yeniden hesaplandı. Bileşen medyanları toplanıp vergi öncesi medyana eşitlenemez: medyanların toplamı +1,9 puandır, vergi öncesi medyan +2,1 puandır. Ortalamalar toplanır. Güncel ayrıştırma, hayatta kalma, pay sınıfı, eşik ve TMS 29 notu [MARJ_KONTROL.md](MARJ_KONTROL.md) içindedir.
+
 ## Ana bulgu
 
 2023 satış hasılatına göre sıralanmış, 2016-2023 satışları eksiksiz 100 faaliyet firmasında çekirdek marjın medyanı 2016'dan 2022'ye **1,0 yüzde puan geriledi**, diğer faaliyet gelirini içeren faaliyet marjı **0,1 puan geriledi**, vergi öncesi marj **2,1 puan yükseldi**. Aynı pencerede net finansman marjının medyanı **2,8 puan yükseldi**; net diğer faaliyet marjının medyanı **0,1 puanın altında** kaldı. Satış ile satışların maliyeti, yıllık ortalama TÜFE ile arındırıldıktan sonra da birlikte hareket ediyor (medyan beta **0,95**). Bu eşhareket, dolaylı ithalatın gözlemi değildir. Yüksek diğer faaliyet geliri olan yarıda da çekirdek marj geriledi; vergi öncesi yükseliş finansman satırıyla aynı yöndedir ve diğer faaliyet gelirinin alt kalemlerine ayrılamamıştır. **Güven: düşük.** Üç açıklamadan hiçbiri bu veriyle seçilemiyor. Örneklem, 16 Ekim 2026'da listede duran ve sekiz yıl satışı olan firmalardır; kapananlar yoktur. Hammadde dipnotu, döviz cinsi alım ve enflasyon düzeltmesinin firma yüzündeki kırılımı yoktur.
