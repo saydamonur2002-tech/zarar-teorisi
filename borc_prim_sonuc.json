@@ -1,0 +1,73 @@
+{
+  "cekilme": "2026-10-16",
+  "onkait": "BORC_PRIM_ONKAYIT.md",
+  "tahvil_10y": null,
+  "borc_stoku_genel_yonetim": null,
+  "vix": null,
+  "abd_10y": null,
+  "seri": {
+    "fonlama": {
+      "kod": "TP.APIFON4",
+      "ad": "Weighted Average Cost of the CBRT Funding",
+      "n": 190,
+      "ilk": "2011-01",
+      "son": "2026-10"
+    },
+    "toplanti_beklenti": {
+      "kod": "TP.PKAUO.S04.C.U",
+      "ad": "Expectation of CBRT Policy Rate for the First Meeting (%)",
+      "n": 17,
+      "ilk": "2025-06",
+      "son": "2026-10"
+    },
+    "ay_sonu_beklenti_ikame_degil": {
+      "kod": "TP.PKAUO.S04.A.U",
+      "ad": "Expectation of One_Week CBRT Repo Auction Interest Rate by the End of the Current Month (%)",
+      "n": 149,
+      "ilk": "2013-01",
+      "son": "2025-05"
+    },
+    "enf_beklenti_24ay": {
+      "kod": "TP.PKAUO.S01.F.U",
+      "ad": "Expectation of 24 Months Ahead Annual CPI (% Change)",
+      "n": 166,
+      "ilk": "2013-01",
+      "son": "2026-10"
+    },
+    "usd": {
+      "kod": "TP.DK.USD.A.YTL",
+      "ad": "(USD)  US  Dollar  (Buying)",
+      "n": 250,
+      "ilk": "2006-01",
+      "son": "2026-10"
+    },
+    "gsyh": {
+      "kod": "TP.GSYIH20.BY.B1GQ",
+      "ad": "Gross Domestic Product (Purchaser's Price) (Expenditure Approach, Current Prices)",
+      "n": 82,
+      "ilk": "2006-Q1",
+      "son": "2026-Q2"
+    },
+    "f0_yukumluluk_borc_stoku_degil": {
+      "kod": "TP.FINHESTNKS13.ZP45",
+      "ad": "F.0.Financial Liabilities,General Government (Non-Consolidated, Stock)",
+      "n": 50,
+      "ilk": "2010-Q4",
+      "son": "2026-Q1"
+    },
+    "f3_senet_borc_stoku_degil": {
+      "kod": "TP.FINHESTNKS13.ZP31",
+      "ad": "F.3.Debt Securities,General Government (Non-Consolidated, Stock)",
+      "n": 50,
+      "ilk": "2010-Q4",
+      "son": "2026-Q1"
+    }
+  },
+  "denklem": "kurulmadi",
+  "neden": "10 yıllık gösterge tahvil faizi ve genel yönetim borç stoku çekilemedi. Prim ve borç/GSYH yazılmadı. F.0 ve F.3 yerine konmadı. Toplantı beklentisi n<36.",
+  "H1": "belirlenemiyor",
+  "H2": "belirlenemiyor",
+  "H3": "belirlenemiyor",
+  "H4": "belirlenemiyor",
+  "katsayi": null
+}
