@@ -2,7 +2,7 @@
 
 Kurallar: `KALAN_VADE_ARTIS_ONKAYIT.md`. Çekim: 2026-10-16. Ham: `kalan_vade_artis_ham.csv`.
 
-2026-06’dan 2026-07’ye kalan vade stoku 9.218 milyon ABD doları arttı. Bu artış ölçüldü. Yeni borçlanma, geri ödeme, vade geçişi, değerleme ve diğer hacmin payı ölçülmedi. Beş bileşen de belirlenemiyor olduğu için hangisinin en büyük parça olduğu sıralanamaz. En sağlam hücre, stokun kendisidir: `TP.KALANVADE.K20`, 2026-06’da 238.910, 2026-07’de 248.128.
+2026-06’dan 2026-07’ye kalan vade stoku 9.218 milyon ABD doları arttı. Bu artış ölçüldü. Yeni borçlanma, geri ödeme, vade geçişi, değerleme ve diğer hacmin payı ölçülmedi. Beş bileşen de belirlenemiyor olduğu için hangisinin en büyük parça olduğu sıralanamaz. En sağlam hücre, stokun kendisidir: `TP.KALANVADE.K20`, 2026-06’da 238.910, 2026-07’de 248.128. Aynı ayın orijinal vade stoku, `TP.KVDB19`, 6.552 arttı. 9.218’in 6.552’si bu komşu stokun artışıyla aynı sayıdır. Kalan 2.666 yalnız kalan vade tablosundadır. Bu yakınlık, bileşenin adı değildir.
 
 ## Veri doğrulama
 
@@ -90,6 +90,36 @@ Kredi bazında anapara takvimi. Hangi uzun vadeli borcun kalan vadesinin o ay bi
 Kısa vadeli brüt kullanım ve brüt geri ödeme, bu stokla aynı kapsamda. Bu ikisi gelirse S3 hesaplanır. Net finansal hesap satırı yetmez.
 
 Bu stok için değerleme ve diğer hacim satırı. İkisi de gelirse artık yazılır ve S4 uygulanır.
+
+## Hangi veriye yakın
+
+Stok, bir tarihteki bakiyedir. Artış, dört ayrı yoldan gelebilir: yeni kısa vadeli borç, vade geçişi, parite değerlemesi, geri ödemenin beklenenden az olması. Dördüncüsü bakiyeyi yerinde tutar. 9.218’lik bir artışı tek başına üretmez. İlk üçü ayrı satır ister. O satırlar yoktur. S1–S4 durur.
+
+9.218, kendi tablosunun satır toplamıdır. Milyon ABD doları, 2026-07 eksi 2026-06.
+
+| Kalem | Kalan vade | Orijinal vade | Yalnız kalan vadede |
+| --- | ---: | ---: | ---: |
+| TCMB | 49 | 49 | 0 |
+| Genel hükümet | 2.337 | 639 | 1.698 |
+| Bankalar | 3.951 | 3.242 | 709 |
+| Banka kredileri | 2.580 | 1.871 | 709 |
+| Döviz tevdiat | 230 | 230 | 0 |
+| Banka mevduatı | 1.285 | 1.285 | 0 |
+| TL mevduat | −144 | −144 | 0 |
+| Diğer sektörler | 2.881 | 2.622 | 259 |
+| Ticari krediler | 1.514 | 1.501 | 13 |
+| Diğer krediler | 1.367 | 1.121 | 246 |
+| Toplam | 9.218 | 6.552 | 2.666 |
+
+Toplam, TCMB, genel hükümet, bankalar ve diğer sektörlerin toplamıdır. Kredi ve mevduat satırları bankanın içindedir. Ticari kredi ve diğer kredi, diğer sektörün içindedir.
+
+Orijinal vade, `TP.KVDB19` ve alt satırlarıdır. 2026-06’da 170.597, 2026-07’de 177.149. Mevduat satırları iki tabloda da aynı farkı verir. Bu dilim, kalan vade tablosuna sonradan eklenen uzun vade parçası değildir. İki stokta birden duran bir bakiye değişimidir. İçinde yeni borç, ödeme ve parite hâlâ ayrılmamıştır.
+
+Yalnız kalan vade tablosunda duran 2.666’nın 1.698’i genel hükümet satırındadır. Yöntem, bu satırı gelecek bir yılın borç projeksiyonu diye yazar. Ayrı bir vade geçişi akımı değildir. Banka kredisindeki 709 ve diğer kredideki 246 da aynı durumdadır: iki stokun farkının değişimidir, takvim satırı değildir.
+
+Uzun vadeli kredi kullanımı, 2026-07, dört sektörün toplamı 7.848’dir. 9.218’e uzaklığı 1.370’tir. Sayı, orijinal vade stokunun 6.552’sinden daha yakındır. Kavram yakından uzaktır. Bu, uzun vadeli kredinin o ay çekilen anaparasıdır. Bir yılın içine yeni giren borç değildir. Kısa vadeli net satırlar, 2026-07: `Q145` 3, `Q162` 0, `Q167` 570, `Q175` 0, `Q180` 272, `Q189` 1.483. En büyüğü ticari kredinin netidir, 1.483. Hiçbiri 9.218 değildir. Bu altı satırın yan yana toplamı yayımlanmış bir toplam değildir. Nettir. S3’e girmedi.
+
+Yakın veri, aynı ailenin öbür stokudur: orijinal vadeye göre kısa vadeli dış borç, aynı ay, 6.552. Artışın mekanizması bu komşuluktan okunmaz.
 
 ## Monografi
 
