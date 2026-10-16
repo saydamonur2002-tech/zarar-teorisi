@@ -1,0 +1,294 @@
+{
+  "cekme": "EVDS3 frequency=5, aggregation=last, 2003-01 .. 2026-09",
+  "esik": 36,
+  "regresyon": "yok",
+  "seriler": [
+    {
+      "kod": "TP.AB.C2",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Brüt döviz rezervi, milyon ABD doları",
+      "not": "NDV yerine kullanılmadı"
+    },
+    {
+      "kod": "TP.AB.C1",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Brüt altın, milyon ABD doları",
+      "not": "fiyatlı stok; miktar değil"
+    },
+    {
+      "kod": "TP.AB.A02",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Analitik bilanço dış varlıklar",
+      "not": "altın dahil"
+    },
+    {
+      "kod": "TP.AB.A10",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Toplam döviz yükümlülükleri",
+      "not": "ZK ayrılmaz"
+    },
+    {
+      "kod": "TP.AB.A14",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Bankalar döviz mevduatı",
+      "not": "ZK ile serbest mevduat birlikte"
+    },
+    {
+      "kod": "TP.AB.A19",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Zorunlu karşılıklar bloke hesabı",
+      "not": "TL bloke; döviz ZK stoku değil"
+    },
+    {
+      "kod": "TP.AB.A24",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Açık piyasa işlemleri",
+      "not": "NİV'nin tamamı değil"
+    },
+    {
+      "kod": "TP.AB.A051",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Menkul kıymetler",
+      "not": "NİV'nin tamamı değil"
+    },
+    {
+      "kod": "TP.REZVARPD.K11",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Resmi altın, milyon troy ons",
+      "not": "brüt miktar; net değil"
+    },
+    {
+      "kod": "TP.REZVARPD.K10",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Altın, mevduat ve swap dahil değer",
+      "not": "miktar değil"
+    },
+    {
+      "kod": "TP.DOVVARNC.K15",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "Forward, future ve swap açık pozisyonu",
+      "not": "saf swap stoku değil"
+    },
+    {
+      "kod": "TP.SWAPTEKTAR.TOTALSTOKALIMYONLU",
+      "baslangic": "2021-01",
+      "bitis": "2026-09",
+      "n": 69,
+      "durum": "doğrulandı",
+      "ad": "TCMB swap stoku, alım yönlü",
+      "not": "2021'den itibaren"
+    },
+    {
+      "kod": "TP.SWAPTEKTAR.SWAPASTOKUSDTUTAR",
+      "baslangic": "2021-01",
+      "bitis": "2026-09",
+      "n": 69,
+      "durum": "doğrulandı",
+      "ad": "TL karşılığı altın swap stoku, ABD doları",
+      "not": "ton değil"
+    },
+    {
+      "kod": "TP.KM.F19",
+      "baslangic": "2003-01",
+      "bitis": "2026-08",
+      "n": 284,
+      "durum": "doğrulandı",
+      "ad": "Döviz tevdiat hesapları",
+      "not": "mevduat bankaları; yerleşik ayrımı yok"
+    },
+    {
+      "kod": "TP.KM.F22",
+      "baslangic": "2003-01",
+      "bitis": "2026-08",
+      "n": 284,
+      "durum": "doğrulandı",
+      "ad": "Kıymetli maden depo hesapları",
+      "not": "altın mevduatı kodu değil"
+    },
+    {
+      "kod": "TP.KM.F35",
+      "baslangic": "2003-01",
+      "bitis": "2026-08",
+      "n": 284,
+      "durum": "doğrulandı",
+      "ad": "Mevduat bankaları toplam mevduat",
+      "not": "bankalararası dahil"
+    },
+    {
+      "kod": "TP.KM.F25",
+      "baslangic": "2003-01",
+      "bitis": "2026-08",
+      "n": 284,
+      "durum": "doğrulandı",
+      "ad": "Bankalararası mevduat",
+      "not": "payda dışı bırakılacak kalem"
+    },
+    {
+      "kod": "TP.HPBITABLO3.2",
+      "baslangic": "2024-06",
+      "bitis": "2026-09",
+      "n": 28,
+      "durum": "doğrulandı",
+      "ad": "Yurt içi yerleşik TL mevduat",
+      "not": "haftalık tablonun aylık hali"
+    },
+    {
+      "kod": "TP.HPBITABLO4.2",
+      "baslangic": "2024-06",
+      "bitis": "2026-09",
+      "n": 28,
+      "durum": "doğrulandı",
+      "ad": "Yurt içi yerleşik YP mevduat",
+      "not": "haftalık tablonun aylık hali"
+    },
+    {
+      "kod": "TP.HPBITABLO4.7",
+      "baslangic": "2024-06",
+      "bitis": "2026-09",
+      "n": 28,
+      "durum": "doğrulandı",
+      "ad": "Gerçek kişi kıymetli maden, ABD doları karşılığı",
+      "not": "gram değil"
+    },
+    {
+      "kod": "TP.HPBITABLO4.12",
+      "baslangic": "2024-06",
+      "bitis": "2026-09",
+      "n": 28,
+      "durum": "doğrulandı",
+      "ad": "Tüzel kişi kıymetli maden, ABD doları karşılığı",
+      "not": "gram değil"
+    },
+    {
+      "kod": "TP.MT210AGS.TRY.MT04",
+      "baslangic": "2003-01",
+      "bitis": "2026-08",
+      "n": 284,
+      "durum": "doğrulandı",
+      "ad": "TL mevduat faizi, 1 yıla kadar, stok, %",
+      "not": "yıllıklandırılmış"
+    },
+    {
+      "kod": "TP.MT210AGS.USD.MT04",
+      "baslangic": "2003-01",
+      "bitis": "2026-08",
+      "n": 284,
+      "durum": "doğrulandı",
+      "ad": "ABD doları mevduat faizi, 1 yıla kadar, stok, %",
+      "not": "DTH sepeti değil"
+    },
+    {
+      "kod": "TP.PKAUO.S05.C.U",
+      "baslangic": "2013-01",
+      "bitis": "2026-09",
+      "n": 165,
+      "durum": "doğrulandı",
+      "ad": "PKA 12 ay sonrası ABD doları kuru beklentisi, TL",
+      "not": "uygun ortalama"
+    },
+    {
+      "kod": "TP.PKAUO.S01.F.U",
+      "baslangic": "2013-01",
+      "bitis": "2026-09",
+      "n": 165,
+      "durum": "doğrulandı",
+      "ad": "PKA 24 ay sonrası yıllık TÜFE beklentisi, %",
+      "not": "uygun ortalama"
+    },
+    {
+      "kod": "TP.DK.USD.A.YTL",
+      "baslangic": "2003-01",
+      "bitis": "2026-09",
+      "n": 285,
+      "durum": "doğrulandı",
+      "ad": "ABD doları alış kuru",
+      "not": "aylık"
+    },
+    {
+      "kod": "TP.MK.LON.YTL",
+      "baslangic": "2003-01",
+      "bitis": "2026-05",
+      "n": 281,
+      "durum": "doğrulandı",
+      "ad": "Londra ons altın, ABD doları/ons",
+      "not": "bitiş serinin kendi sonudur"
+    },
+    {
+      "kod": "TP.KKM.K4",
+      "baslangic": "2021-12",
+      "bitis": "2026-07",
+      "n": 56,
+      "durum": "doğrulandı",
+      "ad": "TL KKM stoku, milyar TL",
+      "not": "banka mevduatı; TCMB yükümlülüğü değil"
+    }
+  ],
+  "eksik_tanim": [
+    {
+      "ad": "Swap ve zorunlu karşılık düşülmüş net döviz rezervi",
+      "durum": "bulunamadı",
+      "neden": "Saf zorunlu karşılık stokunun EVDS kodu yok. TP.AB.A14 bankaların döviz mevduatıdır. TP.AB.C2 brüttür ve NDV diye kullanılmadı.",
+      "hipotez": "H1, H3, H4, H6"
+    },
+    {
+      "ad": "Net altın miktarı, ton",
+      "durum": "bulunamadı",
+      "neden": "TP.REZVARPD.K11 brüt ons miktarıdır. Altın swapının ons veya ton kodu yok. ABD doları stokundan tona çevirmek fiyatı miktara karıştırır; yapılmadı.",
+      "hipotez": "H2, H3, H4, H6"
+    },
+    {
+      "ad": "Altın mevduatı, gram ve TL",
+      "durum": "bulunamadı",
+      "neden": "Ayrı altın mevduatı kodu yok. TP.KM.F22 kıymetli maden depo hesabıdır ve altın vekili yapılmadı.",
+      "hipotez": "H5"
+    },
+    {
+      "ad": "Net iç varlık, repo + tahvil + KKM'den doğan TCMB yükümlülüğü",
+      "durum": "bulunamadı",
+      "neden": "Üç kalem tek yayımlanmış NİV kodunda yok. TP.KKM.K4 banka stokudur.",
+      "hipotez": "H3"
+    }
+  ],
+  "kisa_dogrulanan": {
+    "kod": "TP.HPBITABLO3.2",
+    "baslangic": "2024-06",
+    "bitis": "2026-09",
+    "n": 28,
+    "durum": "doğrulandı",
+    "ad": "Yurt içi yerleşik TL mevduat",
+    "not": "haftalık tablonun aylık hali"
+  }
+}
