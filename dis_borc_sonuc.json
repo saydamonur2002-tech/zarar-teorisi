@@ -1,0 +1,576 @@
+{
+  "cekilme": "2026-10-16",
+  "birim_stok": "milyon ABD doları",
+  "birim_akim": "milyon ABD doları",
+  "birim_kaynak": "TCMB Dış Borç Metaveri, 12 Mart 2026; Ödemeler Dengesi Metaveri; KVDB Metaveri",
+  "son_ceyrek": "2026-Q2",
+  "sdds_toplam": 538956.0,
+  "sdds_parca": {
+    "genel_hukumet": 97683.0,
+    "tcmb": 23094.0,
+    "bankalar": 185237.0,
+    "diger": 212561.0,
+    "dogrudan_yatirim": 20381.0
+  },
+  "sdds_fark": 0.0,
+  "sdds_fark_oran": 0.0,
+  "gh_iki_tablo_fark_oran": 0.0,
+  "kamu_disi": 0.8187551488433193,
+  "S1": "destekleniyor",
+  "S2": "belirlenemiyor",
+  "S3": "belirlenemiyor",
+  "S4_sektor": "belirlenemiyor",
+  "S4_borc_gsyh": "belirlenemiyor",
+  "kur": {
+    "donem": "2026-Q2",
+    "toplam": 538956.0,
+    "tl": 66006.9392,
+    "doviz_payi": 0.8775281484944968,
+    "usd": 263369.4691,
+    "eur": 155238.3517,
+    "jpy": 3941.1689,
+    "sdr": 7366.9286,
+    "diger": 43033.1426
+  },
+  "ozdeslik": "belirlenemiyor",
+  "akim_yil": 2025,
+  "akim": {
+    "tcmb_uzun_kullanim": 0.0,
+    "tcmb_uzun_odeme": 0.0,
+    "tcmb_imf_kullanim": 0.0,
+    "tcmb_imf_odeme": 0.0,
+    "banka_uzun_kullanim": 53196.0,
+    "banka_uzun_odeme": 31019.0,
+    "gh_uzun_kullanim": 4421.0,
+    "gh_uzun_odeme": 2406.0,
+    "gh_imf_kullanim": 0.0,
+    "gh_imf_odeme": 0.0,
+    "diger_uzun_kullanim": 40132.0,
+    "diger_uzun_odeme": 19372.0,
+    "hata_noksan": -5902.0,
+    "banka_kisa_net": -7475.0,
+    "gh_kisa_net": 0.0,
+    "diger_kisa_net": 2307.0,
+    "tcmb_kisa_net": 0.0
+  },
+  "banka_uzun_net_2025": 22177.0,
+  "banka_uzun_kullanim_eksi_odeme": 22177.0,
+  "banka_uzun_net_ad": "3.4.2.2.2.2.Long Term",
+  "kvdb_karsilastirma": {
+    "ceyrek": "2026-Q2",
+    "ay": "2026-06",
+    "borclu_kisa": 170722.0,
+    "kvdb": 238910.0,
+    "fark_oran": 0.39940956642963416
+  },
+  "borclu_son": {
+    "borclu_toplam": 538956.0,
+    "borclu_kamu": 197910.0,
+    "borclu_gh": 97683.0,
+    "borclu_kamu_banka": 77551.0,
+    "borclu_tcmb": 23094.0,
+    "borclu_ozel": 317952.0,
+    "borclu_ozel_banka": 107686.0,
+    "borclu_kisa": 170722.0
+  },
+  "yilsonu_son8": [
+    {
+      "donem": "2018-Q4",
+      "toplam": 412049.0,
+      "genel_hukumet": 88639.0,
+      "tcmb": 5914.0,
+      "bankalar": 161953.0,
+      "diger": 141617.0,
+      "dogrudan_yatirim": 13926.0,
+      "toplam_farki": 0.0,
+      "fark_oran": 0.0,
+      "kisa_orijinal": 92722.0,
+      "kisa_pay": 0.2250266351817381,
+      "tl": 25610.1444,
+      "doviz_payi": 0.9378468473409716
+    },
+    {
+      "donem": "2019-Q4",
+      "toplam": 398506.0,
+      "genel_hukumet": 89285.0,
+      "tcmb": 8452.0,
+      "bankalar": 150247.0,
+      "diger": 138015.0,
+      "dogrudan_yatirim": 12507.0,
+      "toplam_farki": 0.0,
+      "fark_oran": 0.0,
+      "kisa_orijinal": 95532.0,
+      "kisa_pay": 0.23972537427290933,
+      "tl": 21842.1128,
+      "doviz_payi": 0.9451900026599349
+    },
+    {
+      "donem": "2020-Q4",
+      "toplam": 390820.0,
+      "genel_hukumet": 81807.0,
+      "tcmb": 21344.0,
+      "bankalar": 142661.0,
+      "diger": 133925.0,
+      "dogrudan_yatirim": 11083.0,
+      "toplam_farki": 0.0,
+      "fark_oran": 0.0,
+      "kisa_orijinal": 111506.0,
+      "kisa_pay": 0.2853129317844532,
+      "tl": 28452.9842,
+      "doviz_payi": 0.9271967038534363
+    },
+    {
+      "donem": "2021-Q4",
+      "toplam": 378522.0,
+      "genel_hukumet": 73607.0,
+      "tcmb": 26052.0,
+      "bankalar": 125409.0,
+      "diger": 143260.0,
+      "dogrudan_yatirim": 10194.0,
+      "toplam_farki": 0.0,
+      "fark_oran": 0.0,
+      "kisa_orijinal": 118422.0,
+      "kisa_pay": 0.3128536782538399,
+      "tl": 16947.5823,
+      "doviz_payi": 0.9552269556326977
+    },
+    {
+      "donem": "2022-Q4",
+      "toplam": 388639.0,
+      "genel_hukumet": 64569.0,
+      "tcmb": 32790.0,
+      "bankalar": 123785.0,
+      "diger": 155364.0,
+      "dogrudan_yatirim": 12131.0,
+      "toplam_farki": 0.0,
+      "fark_oran": 0.0,
+      "kisa_orijinal": 148494.0,
+      "kisa_pay": 0.3820872326246208,
+      "tl": 19331.7943,
+      "doviz_payi": 0.9502577088248992
+    },
+    {
+      "donem": "2023-Q4",
+      "toplam": 432551.0,
+      "genel_hukumet": 75877.0,
+      "tcmb": 46360.0,
+      "bankalar": 136766.0,
+      "diger": 160925.0,
+      "dogrudan_yatirim": 12623.0,
+      "toplam_farki": 0.0,
+      "fark_oran": 0.0,
+      "kisa_orijinal": 175042.0,
+      "kisa_pay": 0.4046736685385076,
+      "tl": 25097.5678,
+      "doviz_payi": 0.9419777834290061
+    },
+    {
+      "donem": "2024-Q4",
+      "toplam": 461237.0,
+      "genel_hukumet": 90799.0,
+      "tcmb": 34701.0,
+      "bankalar": 155892.0,
+      "diger": 165049.0,
+      "dogrudan_yatirim": 14796.0,
+      "toplam_farki": 0.0,
+      "fark_oran": 0.0,
+      "kisa_orijinal": 173015.0,
+      "kisa_pay": 0.375110843232438,
+      "tl": 60498.2853,
+      "doviz_payi": 0.8688347090541305
+    },
+    {
+      "donem": "2025-Q4",
+      "toplam": 522732.0,
+      "genel_hukumet": 98982.0,
+      "tcmb": 24965.0,
+      "bankalar": 180254.8301,
+      "diger": 199386.5458,
+      "dogrudan_yatirim": 19143.6241,
+      "toplam_farki": 0.0,
+      "fark_oran": 0.0,
+      "kisa_orijinal": 167462.1699,
+      "kisa_pay": 0.3203595148183008,
+      "tl": 62774.1904,
+      "doviz_payi": 0.8799113304714462
+    }
+  ],
+  "kapsam": [
+    {
+      "rol": "sdds_toplam",
+      "kod": "TP.BRUTDBSDDS.G1",
+      "ad": "1.  Total",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_gh",
+      "kod": "TP.BRUTDBSDDS.G2",
+      "ad": "2. General Government",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_tcmb",
+      "kod": "TP.BRUTDBSDDS.G16",
+      "ad": "3. Central Bank",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_banka",
+      "kod": "TP.BRUTDBSDDS.G30",
+      "ad": "4. Banks",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_diger",
+      "kod": "TP.BRUTDBSDDS.G43",
+      "ad": "5. Other Sectors",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_dy",
+      "kod": "TP.BRUTDBSDDS.G56",
+      "ad": "6. Direct Investment: Intercompany Lending",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_gh_kisa",
+      "kod": "TP.BRUTDBSDDS.G3",
+      "ad": "2.1. Short-term",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_tcmb_kisa",
+      "kod": "TP.BRUTDBSDDS.G17",
+      "ad": "3.1. Short-term",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_banka_kisa",
+      "kod": "TP.BRUTDBSDDS.G31",
+      "ad": "4.1. Short-term",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "sdds_diger_kisa",
+      "kod": "TP.BRUTDBSDDS.G44",
+      "ad": "5.1. Short-term",
+      "n": 83,
+      "ilk": "2005-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "borclu_toplam",
+      "kod": "TP.BRUTDBORCLU.G1",
+      "ad": "1.  Total",
+      "n": 147,
+      "ilk": "1989-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "borclu_kamu",
+      "kod": "TP.BRUTDBORCLU.G2",
+      "ad": "1.1. Public Sector",
+      "n": 147,
+      "ilk": "1989-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "borclu_gh",
+      "kod": "TP.BRUTDBORCLU.G3",
+      "ad": "1.1.1. General Government",
+      "n": 147,
+      "ilk": "1989-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "borclu_kamu_banka",
+      "kod": "TP.BRUTDBORCLU.G8",
+      "ad": "1.1.2.1. Banks",
+      "n": 147,
+      "ilk": "1989-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "borclu_tcmb",
+      "kod": "TP.BRUTDBORCLU.G13",
+      "ad": "1.2. Central Bank",
+      "n": 147,
+      "ilk": "1989-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "borclu_ozel",
+      "kod": "TP.BRUTDBORCLU.G14",
+      "ad": "1.3. Private Sector",
+      "n": 147,
+      "ilk": "1989-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "borclu_ozel_banka",
+      "kod": "TP.BRUTDBORCLU.G16",
+      "ad": "1.3.1.1. Banks",
+      "n": 147,
+      "ilk": "1989-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "borclu_kisa",
+      "kod": "TP.BRUTDBORCLU.G19",
+      "ad": "2.Short-term",
+      "n": 147,
+      "ilk": "1989-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "kur_toplam",
+      "kod": "TP.BRUTDBDOVKOMP.G1",
+      "ad": "1. Total",
+      "n": 103,
+      "ilk": "2000-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "kur_usd",
+      "kod": "TP.BRUTDBDOVKOMP.G2",
+      "ad": "1.1. USD",
+      "n": 103,
+      "ilk": "2000-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "kur_eur",
+      "kod": "TP.BRUTDBDOVKOMP.G3",
+      "ad": "1.2. EUR",
+      "n": 103,
+      "ilk": "2000-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "kur_jpy",
+      "kod": "TP.BRUTDBDOVKOMP.G4",
+      "ad": "1.3. JPY",
+      "n": 103,
+      "ilk": "2000-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "kur_sdr",
+      "kod": "TP.BRUTDBDOVKOMP.G5",
+      "ad": "1.4. SDR",
+      "n": 103,
+      "ilk": "2000-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "kur_tl",
+      "kod": "TP.BRUTDBDOVKOMP.G6",
+      "ad": "1.5. TRY",
+      "n": 103,
+      "ilk": "2000-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "kur_diger",
+      "kod": "TP.BRUTDBDOVKOMP.G7",
+      "ad": "1.6. Other",
+      "n": 103,
+      "ilk": "2000-Q4",
+      "son": "2026-Q2"
+    },
+    {
+      "rol": "tcmb_uzun_kullanim",
+      "kod": "TP.ODEAYRSUNUM6.Q164",
+      "ad": "3.4.2.2.1.3.1.Drawings",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "tcmb_uzun_odeme",
+      "kod": "TP.ODEAYRSUNUM6.Q165",
+      "ad": "3.4.2.2.1.3.2.Repayments",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "tcmb_imf_kullanim",
+      "kod": "TP.ODEAYRSUNUM6.Q160",
+      "ad": "3.4.2.2.1.1.1.Drawings",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "tcmb_imf_odeme",
+      "kod": "TP.ODEAYRSUNUM6.Q161",
+      "ad": "3.4.2.2.1.1.2.Repayments",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "banka_uzun_kullanim",
+      "kod": "TP.ODEAYRSUNUM6.Q169",
+      "ad": "3.4.2.2.2.2.1.Drawings",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "banka_uzun_odeme",
+      "kod": "TP.ODEAYRSUNUM6.Q170",
+      "ad": "3.4.2.2.2.2.2.Repayments",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "gh_uzun_kullanim",
+      "kod": "TP.ODEAYRSUNUM6.Q177",
+      "ad": "3.4.2.2.3.3.1.Drawings",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "gh_uzun_odeme",
+      "kod": "TP.ODEAYRSUNUM6.Q178",
+      "ad": "3.4.2.2.3.3.2.Repayments",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "gh_imf_kullanim",
+      "kod": "TP.ODEAYRSUNUM6.Q173",
+      "ad": "3.4.2.2.3.1.1.Drawings",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "gh_imf_odeme",
+      "kod": "TP.ODEAYRSUNUM6.Q174",
+      "ad": "3.4.2.2.3.1.2.Repayments",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "diger_uzun_kullanim",
+      "kod": "TP.ODEAYRSUNUM6.Q182",
+      "ad": "3.4.2.2.4.2.1.Drawings",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "diger_uzun_odeme",
+      "kod": "TP.ODEAYRSUNUM6.Q183",
+      "ad": "3.4.2.2.4.2.2.Repayments",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "hata_noksan",
+      "kod": "TP.ODEAYRSUNUM6.Q210",
+      "ad": "4.Net Errors and Omissions",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "banka_kisa_net",
+      "kod": "TP.ODEAYRSUNUM6.Q167",
+      "ad": "3.4.2.2.2.1.Short Term",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "gh_kisa_net",
+      "kod": "TP.ODEAYRSUNUM6.Q175",
+      "ad": "3.4.2.2.3.2.Other Short Term",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "diger_kisa_net",
+      "kod": "TP.ODEAYRSUNUM6.Q180",
+      "ad": "3.4.2.2.4.1.Short Term",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "tcmb_kisa_net",
+      "kod": "TP.ODEAYRSUNUM6.Q162",
+      "ad": "3.4.2.2.1.2.Other Short Term",
+      "n": 419,
+      "ilk": "1989-12",
+      "son": "2026-08"
+    },
+    {
+      "rol": "kvdb_tcmb",
+      "kod": "TP.KALANVADE.K1",
+      "ad": "1.Central Bank",
+      "n": 181,
+      "ilk": "2011-07",
+      "son": "2026-07"
+    },
+    {
+      "rol": "kvdb_gh",
+      "kod": "TP.KALANVADE.K4",
+      "ad": "2.General Government",
+      "n": 181,
+      "ilk": "2011-07",
+      "son": "2026-07"
+    },
+    {
+      "rol": "kvdb_banka",
+      "kod": "TP.KALANVADE.K5",
+      "ad": "3.Banks",
+      "n": 181,
+      "ilk": "2011-07",
+      "son": "2026-07"
+    },
+    {
+      "rol": "kvdb_diger",
+      "kod": "TP.KALANVADE.K12",
+      "ad": "4.Other Sectors",
+      "n": 181,
+      "ilk": "2011-07",
+      "son": "2026-07"
+    },
+    {
+      "rol": "kvdb_toplam",
+      "kod": "TP.KALANVADE.K20",
+      "ad": "5.Total",
+      "n": 181,
+      "ilk": "2011-07",
+      "son": "2026-07"
+    }
+  ]
+}
