@@ -33,8 +33,14 @@ TOKEN = re.compile(
 )
 
 
+_AY = r"ocak|şubat|subat|mart|nisan|mayıs|mayis|haziran|temmuz|ağustos|agustos|eylül|eylul|ekim|kasım|kasim|aralık|aralik"
+
+
 def satir_sayilari(line: str) -> list[float]:
-    temiz = re.sub(r"(?<=\s)-(?=\s|$)", " 0 ", line)
+    temiz = re.sub(rf"\b\d{{1,2}}\s+(?:{_AY})\s+\d{{4}}\b", " ", line, flags=re.I)
+    temiz = re.sub(r"\(\d{1,2}\)", " ", temiz)  # dipnot işareti, tutar değil
+    temiz = re.sub(r"(?<=\s)--(?=\s|$)", " 0 ", temiz)
+    temiz = re.sub(r"(?<=\s)-(?=\s|$)", " 0 ", temiz)
     temiz = re.sub(r"\(Not\s*\d+\)", " ", temiz, flags=re.I)
     temiz = re.sub(r"\bNot\s+\d+\b", " ", temiz, flags=re.I)
     out = []
@@ -87,14 +93,21 @@ def sinif(label: str) -> str:
 
 
 def _baslik(line: str, taraf: str) -> bool:
+    # Dipnot numarası ("28 Finansman gelirleri", "DİPNOT 23 - ...") tutar değildir.
+    # İ harfi, küçük harf eşlemesinde 'dipnot' kalıbını kaçırır.
+    line = line.strip().replace("İ", "I").replace("ı", "i")
+    line = re.sub(r"^\s*(?:DIPNOT|NOT)?\s*\d{1,2}\s*[-–.]?\s*", "", line, flags=re.I)
     if satir_sayilari(line):
         return False
     u = line.lower()
     if "toplam" in u or "öncesi" in u or "oncesi" in u:
         return False
+    # Dipnot cümlesi başlık değildir ("...finansman giderlerinden oluşmaktadır").
+    if len(line) > 90 or "olus" in u or "oluş" in u:
+        return False
     if taraf == "gelir":
         return "finansman gelir" in u or "finansal gelir" in u
-    return "finansman gider" in u or "finansal gider" in u
+    return "finansman gider" in u or "finansal gider" in u or ("finansman" in u and "gider" in u)
 
 
 def blok_ayir(metin: str, hedef: float, taraf: str) -> dict:
@@ -132,32 +145,41 @@ def blok_ayir(metin: str, hedef: float, taraf: str) -> dict:
             if _baslik(line, "gider" if taraf == "gelir" else "gelir"):
                 break
             kes.append(line)
-        bir = birlestir(kes)
-        kalem = []
-        for line in bir:
-            nums = satir_sayilari(line)
-            if not nums:
+        pencereler = [kes]
+        son_toplam = None
+        for n, line in enumerate(kes):
+            if "toplam" in line.lower() and satir_sayilari(line):
+                son_toplam = n
+        if son_toplam is not None and son_toplam + 1 < len(kes):
+            # Aynı başlık altında gider ve gelir art arda ise, ara toplamdan sonrası ayrı bloktur.
+            pencereler.append(kes[son_toplam + 1:])
+        for pencere_kalem in pencereler:
+            bir = birlestir(pencere_kalem)
+            kalem = []
+            for line in bir:
+                nums = satir_sayilari(line)
+                if not nums:
+                    continue
+                cari = nums[0]
+                et = re.sub(r"\s+", " ", NUM.sub(" ", line)).strip(" -:.")
+                if len(et) < 3:
+                    continue
+                kalem.append((sinif(et), cari, et))
+            if not kalem:
                 continue
-            cari = nums[0]
-            et = re.sub(r"\s+", " ", NUM.sub(" ", line)).strip(" -:.")
-            if len(et) < 3:
-                continue
-            kalem.append((sinif(et), cari, et))
-        if not kalem:
-            continue
-        toplam = sum(v for _, v, _ in kalem)
-        fark = abs(abs(toplam) - hedef_abs)
-        tol = max(2.0, hedef_abs * 0.01)
-        rec = {
-            "durum": "kapandi" if fark <= tol else "kapanmadi",
-            "kur": sum(v for s, v, _ in kalem if s == "kur"),
-            "faiz": sum(v for s, v, _ in kalem if s == "faiz"),
-            "diger": sum(v for s, v, _ in kalem if s == "diger"),
-            "toplam": toplam,
-            "hedef": hedef,
-            "fark": fark,
-            "satir": [{"sinif": s, "tutar": v, "ad": e} for s, v, e in kalem],
-        }
-        if best is None or (rec["durum"] == "kapandi" and best["durum"] != "kapandi") or fark < best["fark"]:
-            best = rec
+            toplam = sum(v for _, v, _ in kalem)
+            fark = abs(abs(toplam) - hedef_abs)
+            tol = max(2.0, hedef_abs * 0.01)
+            rec = {
+                "durum": "kapandi" if fark <= tol else "kapanmadi",
+                "kur": sum(v for s, v, _ in kalem if s == "kur"),
+                "faiz": sum(v for s, v, _ in kalem if s == "faiz"),
+                "diger": sum(v for s, v, _ in kalem if s == "diger"),
+                "toplam": toplam,
+                "hedef": hedef,
+                "fark": fark,
+                "satir": [{"sinif": s, "tutar": v, "ad": e} for s, v, e in kalem],
+            }
+            if best is None or (rec["durum"] == "kapandi" and best["durum"] != "kapandi") or fark < best["fark"]:
+                best = rec
     return best or {"durum": "baslik_yok", "satir": []}

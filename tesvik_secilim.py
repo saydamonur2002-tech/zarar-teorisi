@@ -103,7 +103,8 @@ def sinif_metin(text: str | None):
         if any(k in u for k in ("kıdem", "kidem", "kiralama", "sendika")):
             continue
         pos = re.findall(r"(?<![\d.])\d{1,3}(?:\.\d{3})+", line)
-        pos = [p for p in pos if not (1990 <= int(p.replace(".", "")) <= 2035 and "." not in p)]
+        pos += re.findall(r"(?<![\d,])\d{1,3}(?:,\d{3})+", line)
+        pos = [p for p in pos if not (1990 <= int(p.replace(".", "").replace(",", "")) <= 2035 and "." not in p and "," not in p)]
         dash = bool(re.search(r"(^|\s)-(\s|$)", line) or "--" in line)
         if pos:
             gelir_poz = True
