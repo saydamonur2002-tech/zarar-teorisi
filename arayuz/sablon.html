@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beş adım — inceleme</title>
+<style>
+  :root {
+    --kagit: #f3f0e8;
+    --kart: #fffdf8;
+    --murekkep: #1c1915;
+    --soluk: #5c564c;
+    --cizgi: #ddd4c4;
+    --yesil: #145c32;
+    --yesil-zemin: #e7f3ec;
+    --kehribar: #7a4e00;
+    --kehribar-zemin: #f8efd8;
+    --vurgu: #1f4d3a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--kagit);
+    color: var(--murekkep);
+    font: 16px/1.5 "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  }
+  a { color: var(--vurgu); }
+  header, main { max-width: 68rem; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+  header h1 { font-size: 1.7rem; line-height: 1.2; margin: 0 0 0.4rem; }
+  header p { margin: 0.3rem 0; color: var(--soluk); }
+  #secici {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    align-items: end;
+    background: #efeae0;
+    border-bottom: 1px solid var(--cizgi);
+    padding: 0.75rem 1rem;
+  }
+  #secici fieldset { border: 0; margin: 0; padding: 0; }
+  #secici legend, #secici .etiket { display: block; font-size: 0.78rem; letter-spacing: 0.02em; color: var(--soluk); }
+  #secici button, #secici input {
+    font: inherit;
+    color: var(--murekkep);
+    background: var(--kart);
+    border: 1px solid var(--cizgi);
+    border-radius: 4px;
+    padding: 0.35rem 0.7rem;
+  }
+  #secici button[aria-pressed="true"] { background: var(--vurgu); color: #fff; border-color: var(--vurgu); }
+  #secici input { width: 5.5rem; }
+  #durum { max-width: 68rem; margin: 0 auto; padding: 0.6rem 1rem 0; }
+  section { margin: 1.5rem 0; scroll-margin-top: 6rem; }
+  section h2 { font-size: 1.35rem; margin: 0 0 0.4rem; }
+  section h3 { font-size: 1.05rem; margin: 1rem 0 0.3rem; }
+  .kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 0.75rem; }
+  article, .kutu {
+    background: var(--kart);
+    border: 1px solid var(--cizgi);
+    border-radius: 6px;
+    padding: 0.8rem 0.9rem;
+  }
+  article h3 { margin-top: 0; }
+  table { width: 100%; border-collapse: collapse; background: var(--kart); font-size: 0.92rem; }
+  th, td { border-bottom: 1px solid var(--cizgi); text-align: left; vertical-align: top; padding: 0.35rem 0.45rem; }
+  th { font-weight: 600; }
+  .tablo-kaydir { overflow-x: auto; }
+  .rakam { display: inline-flex; flex-wrap: wrap; gap: 0.25rem; align-items: baseline; }
+  .deger { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+  .birim { color: var(--soluk); font-size: 0.82rem; }
+  .kaynak { font-size: 0.72rem; }
+  .rozet {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 0.68rem;
+    line-height: 1.4;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+  }
+  .rozet.kanit { background: var(--yesil-zemin); color: var(--yesil); }
+  .rozet.aday { background: var(--kehribar-zemin); color: var(--kehribar); }
+  .uyari { background: #f8e8e4; border: 1px solid #e2c4bc; padding: 0.5rem 0.7rem; border-radius: 4px; }
+  blockquote { margin: 0.4rem 0; padding-left: 0.8rem; border-left: 3px solid var(--vurgu); }
+  figure { margin: 0.8rem 0; background: var(--kart); border: 1px solid var(--cizgi); border-radius: 6px; padding: 0.5rem; }
+  figcaption { font-size: 0.9rem; margin-bottom: 0.3rem; }
+  svg { width: 100%; height: auto; }
+  .secili { background: #f3f7f4; }
+  footer { max-width: 68rem; margin: 0 auto; padding: 0 1rem 2rem; color: var(--soluk); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Beş adım, tek dosyada</h1>
+  <p>Sayılar <code>arayuz/build.py</code> ile gömülür. Sayfa ağ istemez. Formüller <code>para_arzi</code> betikleriyle aynıdır; kilitli senaryoda JSON hücresine eşitlik test edilir.</p>
+</header>
+<form id="secici">
+  <fieldset>
+    <legend>Senaryo gövdesi</legend>
+    <button type="button" data-ad="dusuk">düşük</button>
+    <button type="button" data-ad="orta" aria-pressed="true">orta</button>
+    <button type="button" data-ad="yuksek">yüksek</button>
+  </fieldset>
+  <label><span class="etiket">θ</span><input id="theta" type="number" min="0" max="1" step="0.01" value="0.25"></label>
+  <label><span class="etiket">χ</span><input id="chi" type="number" min="0" max="1" step="0.01" value="0.5"></label>
+  <fieldset>
+    <legend>β</legend>
+    <button type="button" data-beta="0">0</button>
+    <button type="button" data-beta="0.5" aria-pressed="true">0,5</button>
+    <button type="button" data-beta="1">1</button>
+  </fieldset>
+</form>
+<p id="durum" aria-live="polite"></p>
+<main>
+  <section id="adimlar"><h2>Beş adım ve 4.5</h2><div class="kartlar"></div></section>
+  <section id="m2"><h2>M2</h2></section>
+  <section id="enflasyon"><h2>Enflasyon köprüsü</h2></section>
+  <section id="reel"><h2>Net reel rahatlama</h2></section>
+  <section id="rant"><h2>Sabit rant ve etki cephesi</h2></section>
+  <section id="yanlis"><h2>Yanlışlanan hipotezler</h2></section>
+</main>
+<footer>Kilitli θ ve χ, gövdenin JSON senaryosudur. κ, adres bandı ve birleşik ayak gövdeye bağlıdır; seçici onları serbest bırakmaz.</footer>
+<script id="veri" type="application/json">@@VERI@@</script>
+<script id="formuller">@@FORMULLER@@</script>
+<script id="ui">@@UI@@</script>
+</body>
+</html>
