@@ -1,6 +1,6 @@
 # Gidişat raporu (güncel EVDS verisiyle)
 
-Veri: TCMB EVDS3 (anahtarsız), son gözlem: ödemeler dengesi ve bütçe 2026-08, rezerv 02-10-2026, TÜFE 2026-08. Ham seriler `gidisat_ham.csv`. 12 aylık kayan toplamlar mn $ (cari ve yatırım geliri) ve oran (faiz/gelir).
+Veri: TCMB EVDS3 (anahtarsız), son gözlem: ödemeler dengesi ve bütçe 2026-08, rezerv 09-10-2026, TÜFE 2026-08. Ham seriler `gidisat_ham.csv`. 12 aylık kayan toplamlar mn $ (cari ve yatırım geliri) ve oran (faiz/gelir).
 
 ## 1. Dış denge
 
@@ -13,12 +13,12 @@ Veri: TCMB EVDS3 (anahtarsız), son gözlem: ödemeler dengesi ve bütçe 2026-0
 
 ## 2. Rezerv
 
-- Toplam rezerv: 05-01-2024 139.6 mrd $ → son 26 haftanın zirvesi 21-08-2026 188.4 → son 02-10-2026 167.4 mrd $. Son 4 haftada -16.9 mrd $ (-9.2%).
-- Rezerv / 12 aylık cari açık: 4.0 yıl.
+- Toplam rezerv: 05-01-2024 139.6 mrd $ → son 26 haftanın zirvesi 21-08-2026 188.4 → son 09-10-2026 171.6 mrd $. Son 4 haftada -7.1 mrd $ (-4.0%).
+- Rezerv / 12 aylık cari açık: 4.1 yıl.
 
 ## 3. Faiz yükü ve enflasyon
 
-- Merkezi yönetim faiz giderleri / gelirleri (12a): %14.7 (2024-12) → %16.9 (2025-08) → %16.0 (2025-12) → %16.7 (2026-08).
+- Merkezi yönetim faiz giderleri / gelirleri (12a): %14.6 (2024-12) → %16.9 (2025-08) → %16.0 (2025-12) → %16.7 (2026-08).
 - TÜFE yıllık (2026-08): %31.5.
 
 ## 4. Hane ve kredi (kullanıcı verisi ve haber aktarımı; resmî kaynaklardan doğrulanmadı)

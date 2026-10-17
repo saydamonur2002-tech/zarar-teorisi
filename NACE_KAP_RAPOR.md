@@ -24,7 +24,7 @@
 
 ## 4. KAP tarama
 
-- Benzersiz bildirim (aylık pencereler): (önbellek). Başlıkta “ilişkili taraf”: (önbellek).
+- Benzersiz bildirim (aylık pencereler): 12000. Başlıkta “ilişkili taraf”: 26.
 - `byCriteria` yanıtı **2000/tavan**; tavan kesilmiş aylarda ilişkili taraf metni dışarıda kalmış olabilir.
 - HTML gövdede sayı çıkmayan satır → kenar yazılmadı (sentetik doldurma yok). Sonuç: **tutarlı tablo görülmedi**, “bildirim yok” değil.
 
