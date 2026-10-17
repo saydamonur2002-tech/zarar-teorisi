@@ -1,0 +1,1803 @@
+{
+ "A": {
+  "on": 12722.5,
+  "uc": 19361.9
+ },
+ "Ah": {
+  "on": 8322.4,
+  "uc": 14961.8
+ },
+ "artis_banka": 2660.8843,
+ "beta": 0.0439,
+ "c_bant": [
+  0.08,
+  0.787
+ ],
+ "etiket": "aday: fungible nakit, stok ve akim olcekleri varsayim; R olculmedi",
+ "kredi_bant": {
+  "on|0.0": {
+   "M": 0.0,
+   "eski_daralma_yil": [
+    0.0,
+    0.0
+   ],
+   "tesis_akim_TCMB_kalan": 0.0,
+   "tesis_stok_daralma": 0.0
+  },
+  "on|0.1": {
+   "M": 1272.25,
+   "eski_daralma_yil": [
+    101.78,
+    1001.26
+   ],
+   "tesis_akim_TCMB_kalan": 954.19,
+   "tesis_stok_daralma": 0.0
+  },
+  "on|0.25": {
+   "M": 3180.62,
+   "eski_daralma_yil": [
+    254.45,
+    2503.15
+   ],
+   "tesis_akim_TCMB_kalan": 2385.47,
+   "tesis_stok_daralma": 0.0
+  },
+  "on|0.5": {
+   "M": 6361.25,
+   "eski_daralma_yil": [
+    508.9,
+    5006.3
+   ],
+   "tesis_akim_TCMB_kalan": 4770.94,
+   "tesis_stok_daralma": 0.0
+  },
+  "uc|0.0": {
+   "M": 0.0,
+   "eski_daralma_yil": [
+    0.0,
+    0.0
+   ],
+   "tesis_akim_TCMB_kalan": 0.0,
+   "tesis_stok_daralma": 0.0
+  },
+  "uc|0.1": {
+   "M": 1936.19,
+   "eski_daralma_yil": [
+    154.9,
+    1523.78
+   ],
+   "tesis_akim_TCMB_kalan": 1452.14,
+   "tesis_stok_daralma": 0.0
+  },
+  "uc|0.25": {
+   "M": 4840.48,
+   "eski_daralma_yil": [
+    387.24,
+    3809.45
+   ],
+   "tesis_akim_TCMB_kalan": 3630.36,
+   "tesis_stok_daralma": 0.0
+  },
+  "uc|0.5": {
+   "M": 9680.95,
+   "eski_daralma_yil": [
+    774.48,
+    7618.91
+   ],
+   "tesis_akim_TCMB_kalan": 7260.71,
+   "tesis_stok_daralma": 0.0
+  }
+ },
+ "kur": 19.29,
+ "lam": 1.0357,
+ "prim_ornek_theta_0_10": [
+  {
+   "ad": "on",
+   "olcek": "stok",
+   "pi": 0.02,
+   "tau0": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1272.25,
+    "Kp_TCMB_son": 0.0,
+    "M": 1272.25,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 25.445,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 0
+   },
+   "tau1_R0": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1272.25,
+    "Kp_TCMB_son": 0.0,
+    "M": 1272.25,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 25.445,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   },
+   "tau1_R_esit_kupon": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1272.25,
+    "Kp_TCMB_son": 0.0,
+    "M": 1272.25,
+    "Pi": 25.445,
+    "R": 25.445,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 25.445,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -25.445,
+     "F": 0.0,
+     "H": 25.445,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   }
+  },
+  {
+   "ad": "on",
+   "olcek": "stok",
+   "pi": 0.05,
+   "tau0": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1272.25,
+    "Kp_TCMB_son": 0.0,
+    "M": 1272.25,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 63.6125,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 0
+   },
+   "tau1_R0": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1272.25,
+    "Kp_TCMB_son": 0.0,
+    "M": 1272.25,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 63.6125,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   },
+   "tau1_R_esit_kupon": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1272.25,
+    "Kp_TCMB_son": 0.0,
+    "M": 1272.25,
+    "Pi": 63.6125,
+    "R": 63.61250000000001,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 63.6125,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -63.6125,
+     "F": 0.0,
+     "H": 63.6125,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   }
+  },
+  {
+   "ad": "on",
+   "olcek": "akim",
+   "pi": 0.02,
+   "tau0": {
+    "Bp_rezerv_son": -954.1875,
+    "F": 318.0625,
+    "Kp_TCMB_son": 954.1875,
+    "M": 1272.25,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 25.445,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 0
+   },
+   "tau1_R0": {
+    "Bp_rezerv_son": -954.1875,
+    "F": 318.0625,
+    "Kp_TCMB_son": 954.1875,
+    "M": 1272.25,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 25.445,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   },
+   "tau1_R_esit_kupon": {
+    "Bp_rezerv_son": -954.1875,
+    "F": 318.0625,
+    "Kp_TCMB_son": 954.1875,
+    "M": 1272.25,
+    "Pi": 25.445,
+    "R": 25.445,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 25.445,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -25.445,
+     "F": 0.0,
+     "H": 25.445,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   }
+  },
+  {
+   "ad": "on",
+   "olcek": "akim",
+   "pi": 0.05,
+   "tau0": {
+    "Bp_rezerv_son": -954.1875,
+    "F": 318.0625,
+    "Kp_TCMB_son": 954.1875,
+    "M": 1272.25,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 63.6125,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 0
+   },
+   "tau1_R0": {
+    "Bp_rezerv_son": -954.1875,
+    "F": 318.0625,
+    "Kp_TCMB_son": 954.1875,
+    "M": 1272.25,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 63.6125,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   },
+   "tau1_R_esit_kupon": {
+    "Bp_rezerv_son": -954.1875,
+    "F": 318.0625,
+    "Kp_TCMB_son": 954.1875,
+    "M": 1272.25,
+    "Pi": 63.6125,
+    "R": 63.61250000000001,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 63.6125,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -63.6125,
+     "F": 0.0,
+     "H": 63.6125,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   }
+  },
+  {
+   "ad": "uc",
+   "olcek": "stok",
+   "pi": 0.02,
+   "tau0": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1936.19,
+    "Kp_TCMB_son": 0.0,
+    "M": 1936.19,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 38.7238,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 0
+   },
+   "tau1_R0": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1936.19,
+    "Kp_TCMB_son": 0.0,
+    "M": 1936.19,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 38.7238,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   },
+   "tau1_R_esit_kupon": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1936.19,
+    "Kp_TCMB_son": 0.0,
+    "M": 1936.19,
+    "Pi": 38.7238,
+    "R": 38.723800000000004,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 38.7238,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -38.7238,
+     "F": 0.0,
+     "H": 38.7238,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   }
+  },
+  {
+   "ad": "uc",
+   "olcek": "stok",
+   "pi": 0.05,
+   "tau0": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1936.19,
+    "Kp_TCMB_son": 0.0,
+    "M": 1936.19,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 96.8095,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 0
+   },
+   "tau1_R0": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1936.19,
+    "Kp_TCMB_son": 0.0,
+    "M": 1936.19,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 96.8095,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   },
+   "tau1_R_esit_kupon": {
+    "Bp_rezerv_son": 0.0,
+    "F": 1936.19,
+    "Kp_TCMB_son": 0.0,
+    "M": 1936.19,
+    "Pi": 96.8095,
+    "R": 96.80950000000003,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 96.8095,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -96.8095,
+     "F": 0.0,
+     "H": 96.8095,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   }
+  },
+  {
+   "ad": "uc",
+   "olcek": "akim",
+   "pi": 0.02,
+   "tau0": {
+    "Bp_rezerv_son": -1452.1425,
+    "F": 484.0475,
+    "Kp_TCMB_son": 1452.1425,
+    "M": 1936.19,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 38.7238,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 0
+   },
+   "tau1_R0": {
+    "Bp_rezerv_son": -1452.1425,
+    "F": 484.0475,
+    "Kp_TCMB_son": 1452.1425,
+    "M": 1936.19,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 38.7238,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   },
+   "tau1_R_esit_kupon": {
+    "Bp_rezerv_son": -1452.1425,
+    "F": 484.0475,
+    "Kp_TCMB_son": 1452.1425,
+    "M": 1936.19,
+    "Pi": 38.7238,
+    "R": 38.723800000000004,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 38.7238,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -38.7238,
+     "F": 0.0,
+     "H": 38.7238,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   }
+  },
+  {
+   "ad": "uc",
+   "olcek": "akim",
+   "pi": 0.05,
+   "tau0": {
+    "Bp_rezerv_son": -1452.1425,
+    "F": 484.0475,
+    "Kp_TCMB_son": 1452.1425,
+    "M": 1936.19,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 96.8095,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 0
+   },
+   "tau1_R0": {
+    "Bp_rezerv_son": -1452.1425,
+    "F": 484.0475,
+    "Kp_TCMB_son": 1452.1425,
+    "M": 1936.19,
+    "Pi": 0.0,
+    "R": 0.0,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 96.8095,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -0.0,
+     "F": 0.0,
+     "H": 0.0,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   },
+   "tau1_R_esit_kupon": {
+    "Bp_rezerv_son": -1452.1425,
+    "F": 484.0475,
+    "Kp_TCMB_son": 1452.1425,
+    "M": 1936.19,
+    "Pi": 96.8095,
+    "R": 96.80950000000003,
+    "cikis_nakit": 0.0,
+    "havadan_kupon": 96.8095,
+    "kuram_prim_siniri": true,
+    "nfp_toplam": 0.0,
+    "nl": {
+     "B": 0.0,
+     "D": -96.8095,
+     "F": 0.0,
+     "H": 96.8095,
+     "K": 0.0
+    },
+    "nl_toplam": 0.0,
+    "tau": 1
+   }
+  }
+ ],
+ "seyrek": {
+  "acik|akim|on|0.0": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4810.19,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|akim|on|0.1": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4492.13,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|akim|on|0.25": {
+   "acilan_pay": 0.0667,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4015.03,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|akim|on|0.5": {
+   "acilan_pay": 0.1,
+   "batik_med": 9,
+   "kilitli_med": 8,
+   "kopru_med": 3219.88,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|akim|uc|0.0": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4810.19,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|akim|uc|0.1": {
+   "acilan_pay": 0.0333,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4326.14,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|akim|uc|0.25": {
+   "acilan_pay": 0.1,
+   "batik_med": 10,
+   "kilitli_med": 8,
+   "kopru_med": 3600.07,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|akim|uc|0.5": {
+   "acilan_pay": 0.2,
+   "batik_med": 9,
+   "kilitli_med": 9,
+   "kopru_med": 2389.95,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|stok|on|0.0": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4810.19,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|stok|on|0.1": {
+   "acilan_pay": 0.1,
+   "batik_med": 10,
+   "kilitli_med": 8,
+   "kopru_med": 3537.94,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|stok|on|0.25": {
+   "acilan_pay": 0.2333,
+   "batik_med": 8,
+   "kilitli_med": 9,
+   "kopru_med": 1629.56,
+   "n": 30,
+   "temerrut_med": 12
+  },
+  "acik|stok|on|0.5": {
+   "acilan_pay": 0.3667,
+   "batik_med": 1,
+   "kilitli_med": 11,
+   "kopru_med": 756.94,
+   "n": 30,
+   "temerrut_med": 1
+  },
+  "acik|stok|uc|0.0": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4810.19,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|stok|uc|0.1": {
+   "acilan_pay": 0.1333,
+   "batik_med": 9,
+   "kilitli_med": 8,
+   "kopru_med": 2874.0,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "acik|stok|uc|0.25": {
+   "acilan_pay": 0.3667,
+   "batik_med": 1,
+   "kilitli_med": 15,
+   "kopru_med": 756.94,
+   "n": 30,
+   "temerrut_med": 1
+  },
+  "acik|stok|uc|0.5": {
+   "acilan_pay": 0.3667,
+   "batik_med": 1,
+   "kilitli_med": 7,
+   "kopru_med": 756.94,
+   "n": 30,
+   "temerrut_med": 1
+  },
+  "borc|akim|on|0.0": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4810.19,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "borc|akim|on|0.1": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4642.44,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "borc|akim|on|0.25": {
+   "acilan_pay": 0.0,
+   "batik_med": 10,
+   "kilitli_med": 7,
+   "kopru_med": 4390.81,
+   "n": 30,
+   "temerrut_med": 12
+  },
+  "borc|akim|on|0.5": {
+   "acilan_pay": 0.0,
+   "batik_med": 10,
+   "kilitli_med": 8,
+   "kopru_med": 3905.88,
+   "n": 30,
+   "temerrut_med": 12
+  },
+  "borc|akim|uc|0.0": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4810.19,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "borc|akim|uc|0.1": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4554.89,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "borc|akim|uc|0.25": {
+   "acilan_pay": 0.0,
+   "batik_med": 10,
+   "kilitli_med": 7,
+   "kopru_med": 4150.46,
+   "n": 30,
+   "temerrut_med": 12
+  },
+  "borc|akim|uc|0.5": {
+   "acilan_pay": 0.0,
+   "batik_med": 9,
+   "kilitli_med": 7,
+   "kopru_med": 3352.36,
+   "n": 30,
+   "temerrut_med": 11
+  },
+  "borc|stok|on|0.0": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4810.19,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "borc|stok|on|0.1": {
+   "acilan_pay": 0.0,
+   "batik_med": 10,
+   "kilitli_med": 7,
+   "kopru_med": 4108.81,
+   "n": 30,
+   "temerrut_med": 12
+  },
+  "borc|stok|on|0.25": {
+   "acilan_pay": 0.0,
+   "batik_med": 8,
+   "kilitli_med": 8,
+   "kopru_med": 2896.42,
+   "n": 30,
+   "temerrut_med": 10
+  },
+  "borc|stok|on|0.5": {
+   "acilan_pay": 0.0333,
+   "batik_med": 5,
+   "kilitli_med": 8,
+   "kopru_med": 1261.83,
+   "n": 30,
+   "temerrut_med": 6
+  },
+  "borc|stok|uc|0.0": {
+   "acilan_pay": 0.0,
+   "batik_med": 11,
+   "kilitli_med": 7,
+   "kopru_med": 4810.19,
+   "n": 30,
+   "temerrut_med": 13
+  },
+  "borc|stok|uc|0.1": {
+   "acilan_pay": 0.0,
+   "batik_med": 9,
+   "kilitli_med": 7,
+   "kopru_med": 3703.62,
+   "n": 30,
+   "temerrut_med": 12
+  },
+  "borc|stok|uc|0.25": {
+   "acilan_pay": 0.0,
+   "batik_med": 7,
+   "kilitli_med": 8,
+   "kopru_med": 2031.64,
+   "n": 30,
+   "temerrut_med": 8
+  },
+  "borc|stok|uc|0.5": {
+   "acilan_pay": 0.2,
+   "batik_med": 2,
+   "kilitli_med": 8,
+   "kopru_med": 871.43,
+   "n": 30,
+   "temerrut_med": 2
+  }
+ },
+ "seyrek_min_F": {
+  "acik|birlikte": {
+   "max": null,
+   "med": null,
+   "min": null,
+   "n": 30,
+   "yok": 30
+  },
+  "acik|kopru": {
+   "max": 4343.7,
+   "med": 2256.89,
+   "min": 472.84,
+   "n": 30,
+   "yok": 19
+  },
+  "borc|birlikte": {
+   "max": 15802.0,
+   "med": 15649.24,
+   "min": 14000.39,
+   "n": 30,
+   "yok": 22
+  },
+  "borc|kopru": {
+   "max": 11635.9,
+   "med": 9558.78,
+   "min": 5191.03,
+   "n": 30,
+   "yok": 19
+  }
+ },
+ "tam": {
+  "acik|akim|on|0.0": {
+   "F": 0.0,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 443.8682,
+   "temerrut": 7,
+   "zarar": 355.7383
+  },
+  "acik|akim|on|0.1": {
+   "F": 318.06,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 125.8057,
+   "temerrut": 7,
+   "zarar": 100.782
+  },
+  "acik|akim|on|0.25": {
+   "F": 795.16,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 16,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|akim|on|0.5": {
+   "F": 1590.31,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 14,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|akim|uc|0.0": {
+   "F": 0.0,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 443.8682,
+   "temerrut": 7,
+   "zarar": 355.7383
+  },
+  "acik|akim|uc|0.1": {
+   "F": 484.05,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 16,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|akim|uc|0.25": {
+   "F": 1210.12,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 15,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|akim|uc|0.5": {
+   "F": 2420.24,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 12,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|stok|on|0.0": {
+   "F": 0.0,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 443.8682,
+   "temerrut": 7,
+   "zarar": 355.7383
+  },
+  "acik|stok|on|0.1": {
+   "F": 1272.25,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 15,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|stok|on|0.25": {
+   "F": 3180.62,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 11,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|stok|on|0.5": {
+   "F": 6361.25,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 9,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "P",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|stok|uc|0.0": {
+   "F": 0.0,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 443.8682,
+   "temerrut": 7,
+   "zarar": 355.7383
+  },
+  "acik|stok|uc|0.1": {
+   "F": 1936.19,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 13,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|stok|uc|0.25": {
+   "F": 4840.48,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 9,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "P",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "acik|stok|uc|0.5": {
+   "F": 9680.95,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 9,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "P",
+    "R"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "borc|akim|on|0.0": {
+   "F": 0.0,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 443.8682,
+   "temerrut": 7,
+   "zarar": 355.7383
+  },
+  "borc|akim|on|0.1": {
+   "F": 318.06,
+   "acildi": false,
+   "batik": 5,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "S"
+   ],
+   "kilitli": 11,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 402.4137,
+   "temerrut": 7,
+   "zarar": 324.9535
+  },
+  "borc|akim|on|0.25": {
+   "F": 795.16,
+   "acildi": false,
+   "batik": 5,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "S"
+   ],
+   "kilitli": 11,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 340.2319,
+   "temerrut": 7,
+   "zarar": 278.9879
+  },
+  "borc|akim|on|0.5": {
+   "F": 1590.31,
+   "acildi": false,
+   "batik": 4,
+   "batik_ad": [
+    "D",
+    "E",
+    "I",
+    "S"
+   ],
+   "kilitli": 12,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 241.2055,
+   "temerrut": 5,
+   "zarar": 204.0871
+  },
+  "borc|akim|uc|0.0": {
+   "F": 0.0,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 443.8682,
+   "temerrut": 7,
+   "zarar": 355.7383
+  },
+  "borc|akim|uc|0.1": {
+   "F": 484.05,
+   "acildi": false,
+   "batik": 5,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "S"
+   ],
+   "kilitli": 11,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 380.7801,
+   "temerrut": 7,
+   "zarar": 308.9617
+  },
+  "borc|akim|uc|0.25": {
+   "F": 1210.12,
+   "acildi": false,
+   "batik": 5,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "S"
+   ],
+   "kilitli": 11,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 286.1479,
+   "temerrut": 7,
+   "zarar": 239.0084
+  },
+  "borc|akim|uc|0.5": {
+   "F": 2420.24,
+   "acildi": false,
+   "batik": 3,
+   "batik_ad": [
+    "D",
+    "E",
+    "S"
+   ],
+   "kilitli": 12,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "Q",
+    "R"
+   ],
+   "kopru": 164.2782,
+   "temerrut": 4,
+   "zarar": 149.0753
+  },
+  "borc|stok|on|0.0": {
+   "F": 0.0,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 443.8682,
+   "temerrut": 7,
+   "zarar": 355.7383
+  },
+  "borc|stok|on|0.1": {
+   "F": 1272.25,
+   "acildi": false,
+   "batik": 5,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "S"
+   ],
+   "kilitli": 11,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R"
+   ],
+   "kopru": 278.241,
+   "temerrut": 5,
+   "zarar": 233.0224
+  },
+  "borc|stok|on|0.25": {
+   "F": 3180.62,
+   "acildi": false,
+   "batik": 3,
+   "batik_ad": [
+    "D",
+    "E",
+    "S"
+   ],
+   "kilitli": 12,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "Q",
+    "R"
+   ],
+   "kopru": 101.3527,
+   "temerrut": 3,
+   "zarar": 101.6041
+  },
+  "borc|stok|on|0.5": {
+   "F": 6361.25,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 14,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "M",
+    "N",
+    "Q",
+    "R",
+    "S"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  },
+  "borc|stok|uc|0.0": {
+   "F": 0.0,
+   "acildi": false,
+   "batik": 6,
+   "batik_ad": [
+    "A",
+    "D",
+    "E",
+    "I",
+    "R",
+    "S"
+   ],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "J",
+    "M",
+    "N",
+    "P",
+    "Q"
+   ],
+   "kopru": 443.8682,
+   "temerrut": 7,
+   "zarar": 355.7383
+  },
+  "borc|stok|uc|0.1": {
+   "F": 1936.19,
+   "acildi": false,
+   "batik": 3,
+   "batik_ad": [
+    "D",
+    "E",
+    "S"
+   ],
+   "kilitli": 12,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "Q",
+    "R"
+   ],
+   "kopru": 208.1343,
+   "temerrut": 4,
+   "zarar": 179.2945
+  },
+  "borc|stok|uc|0.25": {
+   "F": 4840.48,
+   "acildi": false,
+   "batik": 2,
+   "batik_ad": [
+    "D",
+    "S"
+   ],
+   "kilitli": 13,
+   "kilitli_ad": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "M",
+    "N",
+    "Q",
+    "R"
+   ],
+   "kopru": 1.8726,
+   "temerrut": 2,
+   "zarar": 1.8909
+  },
+  "borc|stok|uc|0.5": {
+   "F": 9680.95,
+   "acildi": true,
+   "batik": 0,
+   "batik_ad": [],
+   "kilitli": 10,
+   "kilitli_ad": [
+    "A",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "I",
+    "N",
+    "Q",
+    "S"
+   ],
+   "kopru": 0.0,
+   "temerrut": 0,
+   "zarar": 0.0
+  }
+ },
+ "tam_min_F": {
+  "acik|birlikte": null,
+  "acik|kilit": null,
+  "acik|kopru": 443.87,
+  "borc|birlikte": 15649.24,
+  "borc|kilit": 15649.24,
+  "borc|kopru": 5362.42
+ }
+}
