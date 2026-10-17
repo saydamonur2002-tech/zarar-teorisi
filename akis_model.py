@@ -31,6 +31,12 @@ BK_DUZELTME = _os.environ.get("ZT_BK_DUZELTME", "alt")
 LM_SECIM = _os.environ.get("ZT_LM", "orantili")
 NAKIT_SECIM = _os.environ.get("ZT_NAKIT", "S1")
 _SON_DONEM = [None]
+_AKIM_IDS = set()  # akım tablolarının kimliği: B' düzeltmesi akımda ΔX olarak girer
+
+
+def _onceki(p):
+    y, q = int(p[:4]), int(p[-1])
+    return f"{y - 1}-Q4" if q == 1 else f"{y}-Q{q - 1}"
 STOCK_GRP = {"H": "71014", "NPISH": "71015", "F": "71011", "B": "71012", "K": "71013", "D": "7102"}
 
 
@@ -57,7 +63,9 @@ def load():
     def tc(df):
         return {(r.Donem, r.zp): r.Deger for r in df.itertuples()}
 
-    return table(stock), table(flow), tc(tc_st), tc(tc_fl)
+    ft = table(flow)
+    _AKIM_IDS.add(id(ft))
+    return table(stock), ft, tc(tc_st), tc(tc_fl)
 
 
 def panel(tab, tcmb, period, flip_d=True, move_tcmb=True):
@@ -87,6 +95,8 @@ def panel(tab, tcmb, period, flip_d=True, move_tcmb=True):
             if BK_DUZELTME != "yok" and name in ("para_mevduat", "kredi"):
                 import tcmb_bacak as _tb
                 x = _tb.x_bk(name, period, BK_DUZELTME)
+                if id(tab) in _AKIM_IDS:  # akım: işlem = ΔX (değerleme ayrılamadı; tamamı işlem sayılır, aday)
+                    x = x - _tb.x_bk(name, _onceki(period), BK_DUZELTME)
                 A[k, IDX["B"]] += x
                 Y[k, IDX["B"]] += x
     return A, Y
