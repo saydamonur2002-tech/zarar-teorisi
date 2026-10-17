@@ -1,0 +1,1326 @@
+{
+  "kriter_sha256": "3310adf8cd50840919cd59473919b4ba9f3e94f61ea15ef978aff99cfee8a1f5",
+  "cumle": "Modelde enflasyon dışsaldır; bu hesap model dışı bir köprüdür, sonuç modele geri beslenmez",
+  "dissallik": {
+    "enflasyon": true,
+    "faiz": true,
+    "kur": true,
+    "geri_besleme": false,
+    "tek_yon_bant": "bes_yil_senaryo enflasyon model etkisi −7,62…0 varsayım; faiz ve döviz modellenmedi. Bu bant r_t, kur ve ihracı güncellemez.",
+    "gsyh_pay": "gsyh_pay.py enflasyon senaryosunu yalnız GSYH paydasını büyütür. O payda I_t'ye girmez."
+  },
+  "m1": 10306.1137,
+  "m2": 25196.3912,
+  "vadesiz_yp": 7144.0995,
+  "yp_stok_2026_03": 6639.4263739,
+  "kredi_stok_milyar": 27020.922512,
+  "kredi_stok_tarih": "2026-08",
+  "gsyh_2025": 63240.5,
+  "para": {
+    "durum": "olculdu",
+    "yillar": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "n": 16,
+    "b1": {
+      "coef": 1.00661639,
+      "se": 0.1075142,
+      "aralik": [
+        0.79588855,
+        1.21734423
+      ],
+      "sifir_icerir": false,
+      "nokta": 1.00661639,
+      "etiket": "aday"
+    },
+    "b2": {
+      "coef": 1.61458671,
+      "se": 0.18920559,
+      "aralik": [
+        1.24374375,
+        1.98542967
+      ],
+      "sifir_icerir": false,
+      "nokta": 1.61458671,
+      "etiket": "aday"
+    },
+    "sabit": -0.03307898,
+    "r2": 0.8932273,
+    "denklem": "dlog TÜFE = a + b1 dlog M1 + b2 dlog(M2/M1)",
+    "dlog_m2_min": 0.11262979,
+    "dlog_m2_max": 0.50555119,
+    "cov": [
+      [
+        0.00094751,
+        -0.00289693,
+        -0.00136301
+      ],
+      [
+        -0.00289693,
+        0.0115593,
+        0.00979463
+      ],
+      [
+        -0.00136301,
+        0.00979463,
+        0.03579876
+      ]
+    ]
+  },
+  "kredi_model": {
+    "durum": "olculdu",
+    "yillar": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "n": 16,
+    "buyume_n": 16,
+    "d": {
+      "coef": -0.97844643,
+      "se": 0.27084492,
+      "aralik": [
+        -1.50930248,
+        -0.44759039
+      ],
+      "sifir_icerir": false,
+      "nokta": -0.97844643,
+      "etiket": "aday"
+    },
+    "r2": 0.48245269,
+    "h": {
+      "coef": 0.09293777,
+      "se": 0.06706247,
+      "aralik": [
+        -0.03850467,
+        0.22438021
+      ],
+      "sifir_icerir": true,
+      "nokta": 0.0,
+      "etiket": "aday"
+    },
+    "buyume_r2": 0.12063335,
+    "buyume_durum": "olculdu"
+  },
+  "kur_model": {
+    "durum": "tahmin_edilemedi",
+    "n": 1,
+    "yillar": [
+      2025
+    ],
+    "neden": "tek tanımda yıl sonu farkı 8'den az"
+  },
+  "senaryo": [
+    {
+      "ad": "dusuk",
+      "theta": 0.1,
+      "chi": 0.0,
+      "adim4_tepe": 1272.25,
+      "adim4_kalici": 0.0,
+      "adim12_m2": 0.0,
+      "ikinci_tur_tepe": 101.78,
+      "ikinci_tur_kalici": 0.0,
+      "dm1_tepe": [
+        0.0,
+        663.94
+      ],
+      "dm1_kalici": [
+        0.0,
+        0.0
+      ],
+      "para_tepe": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": -0.05181274,
+          "nokta": -8.36561561,
+          "merkez": -8.36561561,
+          "aralik": [
+            -10.28705446,
+            -6.44417676
+          ],
+          "etiket": "aday",
+          "dm1": 0.0,
+          "dm2": 1272.25
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": -0.06659071,
+          "dlog_oran": 0.01477797,
+          "nokta": -4.31709801,
+          "merkez": -4.31709801,
+          "aralik": [
+            -5.5535832,
+            -3.08061281
+          ],
+          "etiket": "aday",
+          "dm1": 663.94,
+          "dm2": 1272.25
+        }
+      },
+      "para_geri": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": 0.05181274,
+          "nokta": 8.36561561,
+          "merkez": 8.36561561,
+          "aralik": [
+            6.44417676,
+            10.28705446
+          ],
+          "etiket": "aday",
+          "dm1_bas": 0.0,
+          "dm2_bas": 1272.25,
+          "dm1_son": 0.0,
+          "dm2_son": 0.0
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": 0.06659071,
+          "dlog_oran": -0.01477797,
+          "nokta": 4.31709801,
+          "merkez": 4.31709801,
+          "aralik": [
+            3.08061281,
+            5.5535832
+          ],
+          "etiket": "aday",
+          "dm1_bas": 663.94,
+          "dm2_bas": 1272.25,
+          "dm1_son": 0.0,
+          "dm2_son": 0.0
+        }
+      },
+      "para_net": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": 0.0,
+          "nokta": 0.0,
+          "merkez": 0.0,
+          "aralik": [
+            0.0,
+            0.0
+          ],
+          "etiket": "aday"
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": 0.0,
+          "nokta": 0.0,
+          "merkez": 0.0,
+          "aralik": [
+            0.0,
+            0.0
+          ],
+          "etiket": "aday"
+        }
+      },
+      "kur_tepe": {
+        "durum": "tahmin_edilemedi",
+        "dlog_yp": -0.10536007,
+        "alt_de": 0.0,
+        "alt_puan": 0.0
+      },
+      "kur_geri": {
+        "durum": "tahmin_edilemedi",
+        "dlog_yp": 0.10536007,
+        "alt_de": 0.0,
+        "alt_puan": 0.0
+      },
+      "maliyet": {
+        "alfa0": 0.0,
+        "alfa1": -1.90953582,
+        "I": 1207.6,
+        "etiket": "aday"
+      },
+      "kira": {
+        "kapsama": 0.2,
+        "puan": [
+          -0.56496481,
+          -0.21483472
+        ],
+        "yil": null,
+        "etiket": "aday"
+      },
+      "kredi": {
+        "tepe": {
+          "durum": "olculdu",
+          "dlog": -0.00377382,
+          "nokta": 0.36924834,
+          "merkez": 0.36924834,
+          "aralik": [
+            0.16891268,
+            0.56958399
+          ],
+          "etiket": "aday",
+          "akim": 101.78,
+          "oran": 0.00376671
+        },
+        "kalici": {
+          "durum": "olculdu",
+          "dlog": 0.0,
+          "nokta": -0.0,
+          "merkez": -0.0,
+          "aralik": [
+            -0.0,
+            0.0
+          ],
+          "etiket": "aday",
+          "akim": 0.0,
+          "oran": 0.0
+        }
+      },
+      "buyume": {
+        "tepe": {
+          "durum": "olculdu",
+          "dlog": -0.00377382,
+          "nokta": -0.0,
+          "merkez": -0.03507307,
+          "aralik": [
+            -0.08467711,
+            0.01453098
+          ],
+          "etiket": "aday"
+        },
+        "kalici": {
+          "durum": "olculdu",
+          "dlog": 0.0,
+          "nokta": 0.0,
+          "merkez": 0.0,
+          "aralik": [
+            0.0,
+            0.0
+          ],
+          "etiket": "aday"
+        }
+      },
+      "yil": {
+        "2027": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            0.0
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            0.0,
+            0.0
+          ],
+          "toplam_kredisiz": [
+            0.0,
+            0.0
+          ]
+        },
+        "2028": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            0.0
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            0.0,
+            0.0
+          ],
+          "toplam_kredisiz": [
+            0.0,
+            0.0
+          ]
+        },
+        "2029": {
+          "para_alt": -8.36561561,
+          "para_ust": -4.31709801,
+          "para_alt_aralik": [
+            -10.28705446,
+            -6.44417676
+          ],
+          "para_ust_aralik": [
+            -5.5535832,
+            -3.08061281
+          ],
+          "kur": 0.0,
+          "kur_durum": "tahmin_edilemedi",
+          "maliyet": [
+            0.0,
+            -1.90953582
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            -10.27515143,
+            -4.31709801
+          ],
+          "toplam_kredisiz": [
+            -10.27515143,
+            -4.31709801
+          ]
+        },
+        "2030": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            -1.90953582
+          ],
+          "kredi": 0.36924834,
+          "kredi_aralik": [
+            0.16891268,
+            0.56958399
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            -1.54028748,
+            0.36924834
+          ],
+          "toplam_kredisiz": [
+            -1.90953582,
+            0.0
+          ]
+        },
+        "2031": {
+          "para_alt": 8.36561561,
+          "para_ust": 4.31709801,
+          "para_alt_aralik": [
+            6.44417676,
+            10.28705446
+          ],
+          "para_ust_aralik": [
+            3.08061281,
+            5.5535832
+          ],
+          "kur": 0.0,
+          "kur_durum": "tahmin_edilemedi",
+          "maliyet": [
+            0.0,
+            -1.90953582
+          ],
+          "kredi": -0.0,
+          "kredi_aralik": [
+            -0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            2.40756219,
+            8.36561561
+          ],
+          "toplam_kredisiz": [
+            2.40756219,
+            8.36561561
+          ]
+        }
+      },
+      "hiz": {
+        "tepe": -0.05049334,
+        "kalici": -0.0,
+        "fiyata_eklendi": false
+      }
+    },
+    {
+      "ad": "orta",
+      "theta": 0.25,
+      "chi": 0.5,
+      "adim4_tepe": 4769.15,
+      "adim4_kalici": 2384.575,
+      "adim12_m2": 0.0,
+      "ikinci_tur_tepe": 381.532,
+      "ikinci_tur_kalici": 190.766,
+      "dm1_tepe": [
+        0.0,
+        1659.85
+      ],
+      "dm1_kalici": [
+        0.0,
+        829.925
+      ],
+      "para_tepe": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": -0.20983141,
+          "nokta": -33.87910138,
+          "merkez": -33.87910138,
+          "aralik": [
+            -41.66055162,
+            -26.09765113
+          ],
+          "etiket": "aday",
+          "dm1": 0.0,
+          "dm2": 4769.15
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": -0.17561,
+          "dlog_oran": -0.03422142,
+          "nokta": -23.20253482,
+          "merkez": -23.20253482,
+          "aralik": [
+            -27.65533416,
+            -18.74973548
+          ],
+          "etiket": "aday",
+          "dm1": 1659.85,
+          "dm2": 4769.15
+        }
+      },
+      "para_geri": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": 0.11040929,
+          "nokta": 17.82653772,
+          "merkez": 17.82653772,
+          "aralik": [
+            13.73208685,
+            21.9209886
+          ],
+          "etiket": "aday",
+          "dm1_bas": 0.0,
+          "dm2_bas": 4769.15,
+          "dm1_son": 0.0,
+          "dm2_son": 2384.575
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": 0.09165491,
+          "dlog_oran": 0.01875438,
+          "nokta": 12.254191,
+          "merkez": 12.254191,
+          "aralik": [
+            9.9073472,
+            14.6010348
+          ],
+          "etiket": "aday",
+          "dm1_bas": 1659.85,
+          "dm2_bas": 4769.15,
+          "dm1_son": 829.925,
+          "dm2_son": 2384.575
+        }
+      },
+      "para_net": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": -0.09942212,
+          "nokta": -16.05256365,
+          "merkez": -16.05256365,
+          "aralik": [
+            -19.73956302,
+            -12.36556428
+          ],
+          "etiket": "aday"
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": -0.08395508,
+          "dlog_oran": -0.01546704,
+          "nokta": -10.94834382,
+          "merkez": -10.94834382,
+          "aralik": [
+            -13.05456172,
+            -8.84212593
+          ],
+          "etiket": "aday"
+        }
+      },
+      "kur_tepe": {
+        "durum": "tahmin_edilemedi",
+        "dlog_yp": -0.28768075,
+        "alt_de": 0.0,
+        "alt_puan": 0.0
+      },
+      "kur_geri": {
+        "durum": "tahmin_edilemedi",
+        "dlog_yp": 0.15414992,
+        "alt_de": 0.0,
+        "alt_puan": 0.0
+      },
+      "maliyet": {
+        "alfa0": 0.0,
+        "alfa1": -3.81970415,
+        "I": 2415.6,
+        "etiket": "aday"
+      },
+      "kira": {
+        "kapsama": 0.5,
+        "puan": [
+          -1.41241203,
+          -0.5370868
+        ],
+        "yil": null,
+        "etiket": "aday"
+      },
+      "kredi": {
+        "tepe": {
+          "durum": "olculdu",
+          "dlog": -0.01422051,
+          "nokta": 1.39140044,
+          "merkez": 1.39140044,
+          "aralik": [
+            0.63649623,
+            2.14630465
+          ],
+          "etiket": "aday",
+          "akim": 381.532,
+          "oran": 0.01411987
+        },
+        "kalici": {
+          "durum": "olculdu",
+          "dlog": -0.00708498,
+          "nokta": 0.69322694,
+          "merkez": 0.69322694,
+          "aralik": [
+            0.31711671,
+            1.06933716
+          ],
+          "etiket": "aday",
+          "akim": 190.766,
+          "oran": 0.00705994
+        }
+      },
+      "buyume": {
+        "tepe": {
+          "durum": "olculdu",
+          "dlog": -0.01422051,
+          "nokta": -0.0,
+          "merkez": -0.13216222,
+          "aralik": [
+            -0.31908004,
+            0.05475559
+          ],
+          "etiket": "aday"
+        },
+        "kalici": {
+          "durum": "olculdu",
+          "dlog": -0.00708498,
+          "nokta": -0.0,
+          "merkez": -0.06584619,
+          "aralik": [
+            -0.15897284,
+            0.02728046
+          ],
+          "etiket": "aday"
+        }
+      },
+      "yil": {
+        "2027": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            0.0
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            0.0,
+            0.0
+          ],
+          "toplam_kredisiz": [
+            0.0,
+            0.0
+          ]
+        },
+        "2028": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            0.0
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            0.0,
+            0.0
+          ],
+          "toplam_kredisiz": [
+            0.0,
+            0.0
+          ]
+        },
+        "2029": {
+          "para_alt": -33.87910138,
+          "para_ust": -23.20253482,
+          "para_alt_aralik": [
+            -41.66055162,
+            -26.09765113
+          ],
+          "para_ust_aralik": [
+            -27.65533416,
+            -18.74973548
+          ],
+          "kur": 0.0,
+          "kur_durum": "tahmin_edilemedi",
+          "maliyet": [
+            0.0,
+            -3.81970415
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            -37.69880552,
+            -23.20253482
+          ],
+          "toplam_kredisiz": [
+            -37.69880552,
+            -23.20253482
+          ]
+        },
+        "2030": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            -3.81970415
+          ],
+          "kredi": 1.39140044,
+          "kredi_aralik": [
+            0.63649623,
+            2.14630465
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            -2.42830371,
+            1.39140044
+          ],
+          "toplam_kredisiz": [
+            -3.81970415,
+            0.0
+          ]
+        },
+        "2031": {
+          "para_alt": 17.82653772,
+          "para_ust": 12.254191,
+          "para_alt_aralik": [
+            13.73208685,
+            21.9209886
+          ],
+          "para_ust_aralik": [
+            9.9073472,
+            14.6010348
+          ],
+          "kur": 0.0,
+          "kur_durum": "tahmin_edilemedi",
+          "maliyet": [
+            0.0,
+            -3.81970415
+          ],
+          "kredi": 0.69322694,
+          "kredi_aralik": [
+            0.31711671,
+            1.06933716
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            9.12771379,
+            18.51976466
+          ],
+          "toplam_kredisiz": [
+            8.43448685,
+            17.82653772
+          ]
+        }
+      },
+      "hiz": {
+        "tepe": -0.18927909,
+        "kalici": -0.09463955,
+        "fiyata_eklendi": false
+      }
+    },
+    {
+      "ad": "yuksek",
+      "theta": 0.5,
+      "chi": 0.5,
+      "adim4_tepe": 9538.3,
+      "adim4_kalici": 4769.15,
+      "adim12_m2": 13967.0,
+      "ikinci_tur_tepe": 763.064,
+      "ikinci_tur_kalici": 381.532,
+      "dm1_tepe": [
+        0.0,
+        3319.7
+      ],
+      "dm1_kalici": [
+        0.0,
+        1659.85
+      ],
+      "para_tepe": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": -0.47571298,
+          "nokta": -76.80798631,
+          "merkez": -76.80798631,
+          "aralik": [
+            -94.44946733,
+            -59.16650528
+          ],
+          "etiket": "aday",
+          "dm1": 0.0,
+          "dm2": 9538.3
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": -0.38876992,
+          "dlog_oran": -0.08694307,
+          "nokta": -53.17192918,
+          "merkez": -53.17192918,
+          "aralik": [
+            -63.31828848,
+            -43.02556987
+          ],
+          "etiket": "aday",
+          "dm1": 3319.7,
+          "dm2": 9538.3
+        }
+      },
+      "para_geri": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": 0.26588157,
+          "nokta": 42.92888493,
+          "merkez": 42.92888493,
+          "aralik": [
+            33.06885415,
+            52.78891571
+          ],
+          "etiket": "aday",
+          "dm1_bas": 0.0,
+          "dm2_bas": 9538.3,
+          "dm1_son": 0.0,
+          "dm2_son": 4769.15
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": 0.21315992,
+          "dlog_oran": 0.05272165,
+          "nokta": 29.96939436,
+          "merkez": 29.96939436,
+          "aralik": [
+            24.2723181,
+            35.66647061
+          ],
+          "etiket": "aday",
+          "dm1_bas": 3319.7,
+          "dm2_bas": 9538.3,
+          "dm1_son": 1659.85,
+          "dm2_son": 4769.15
+        }
+      },
+      "para_net": {
+        "alt": {
+          "durum": "olculdu",
+          "dlog_m1": 0.0,
+          "dlog_oran": -0.20983141,
+          "nokta": -33.87910138,
+          "merkez": -33.87910138,
+          "aralik": [
+            -41.66055162,
+            -26.09765113
+          ],
+          "etiket": "aday"
+        },
+        "ust": {
+          "durum": "olculdu",
+          "dlog_m1": -0.17561,
+          "dlog_oran": -0.03422142,
+          "nokta": -23.20253482,
+          "merkez": -23.20253482,
+          "aralik": [
+            -27.65533416,
+            -18.74973548
+          ],
+          "etiket": "aday"
+        }
+      },
+      "kur_tepe": {
+        "durum": "tahmin_edilemedi",
+        "dlog_yp": -0.69314321,
+        "alt_de": 0.0,
+        "alt_puan": 0.0
+      },
+      "kur_geri": {
+        "durum": "tahmin_edilemedi",
+        "dlog_yp": 0.40546246,
+        "alt_de": 0.0,
+        "alt_puan": 0.0
+      },
+      "maliyet": {
+        "alfa0": 0.0,
+        "alfa1": -7.63877578,
+        "I": 4830.8,
+        "etiket": "aday"
+      },
+      "kira": {
+        "kapsama": 1.0,
+        "puan": [
+          -2.82482406,
+          -1.0741736
+        ],
+        "yil": null,
+        "etiket": "aday"
+      },
+      "kredi": {
+        "tepe": {
+          "durum": "olculdu",
+          "dlog": -0.02864616,
+          "nokta": 2.80287308,
+          "merkez": 2.80287308,
+          "aralik": [
+            1.28217449,
+            4.32357167
+          ],
+          "etiket": "aday",
+          "akim": 763.064,
+          "oran": 0.02823975
+        },
+        "kalici": {
+          "durum": "olculdu",
+          "dlog": -0.01422051,
+          "nokta": 1.39140044,
+          "merkez": 1.39140044,
+          "aralik": [
+            0.63649623,
+            2.14630465
+          ],
+          "etiket": "aday",
+          "akim": 381.532,
+          "oran": 0.01411987
+        }
+      },
+      "buyume": {
+        "tepe": {
+          "durum": "olculdu",
+          "dlog": -0.02864616,
+          "nokta": -0.0,
+          "merkez": -0.26623101,
+          "aralik": [
+            -0.64276309,
+            0.11030107
+          ],
+          "etiket": "aday"
+        },
+        "kalici": {
+          "durum": "olculdu",
+          "dlog": -0.01422051,
+          "nokta": -0.0,
+          "merkez": -0.13216222,
+          "aralik": [
+            -0.31908004,
+            0.05475559
+          ],
+          "etiket": "aday"
+        }
+      },
+      "yil": {
+        "2027": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            0.0
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            0.0,
+            0.0
+          ],
+          "toplam_kredisiz": [
+            0.0,
+            0.0
+          ]
+        },
+        "2028": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            0.0
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            0.0,
+            0.0
+          ],
+          "toplam_kredisiz": [
+            0.0,
+            0.0
+          ]
+        },
+        "2029": {
+          "para_alt": -76.80798631,
+          "para_ust": -53.17192918,
+          "para_alt_aralik": [
+            -94.44946733,
+            -59.16650528
+          ],
+          "para_ust_aralik": [
+            -63.31828848,
+            -43.02556987
+          ],
+          "kur": 0.0,
+          "kur_durum": "tahmin_edilemedi",
+          "maliyet": [
+            0.0,
+            -7.63877578
+          ],
+          "kredi": 0.0,
+          "kredi_aralik": [
+            0.0,
+            0.0
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            -84.44676209,
+            -53.17192918
+          ],
+          "toplam_kredisiz": [
+            -84.44676209,
+            -53.17192918
+          ]
+        },
+        "2030": {
+          "para_alt": 0.0,
+          "para_ust": 0.0,
+          "para_alt_aralik": [
+            0.0,
+            0.0
+          ],
+          "para_ust_aralik": [
+            0.0,
+            0.0
+          ],
+          "kur": 0.0,
+          "kur_durum": "alt_sinir",
+          "maliyet": [
+            0.0,
+            -7.63877578
+          ],
+          "kredi": 2.80287308,
+          "kredi_aralik": [
+            1.28217449,
+            4.32357167
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            -4.8359027,
+            2.80287308
+          ],
+          "toplam_kredisiz": [
+            -7.63877578,
+            0.0
+          ]
+        },
+        "2031": {
+          "para_alt": 42.92888493,
+          "para_ust": 29.96939436,
+          "para_alt_aralik": [
+            33.06885415,
+            52.78891571
+          ],
+          "para_ust_aralik": [
+            24.2723181,
+            35.66647061
+          ],
+          "kur": 0.0,
+          "kur_durum": "tahmin_edilemedi",
+          "maliyet": [
+            0.0,
+            -7.63877578
+          ],
+          "kredi": 1.39140044,
+          "kredi_aralik": [
+            0.63649623,
+            2.14630465
+          ],
+          "adim45": 0.0,
+          "toplam": [
+            23.72201901,
+            44.32028537
+          ],
+          "toplam_kredisiz": [
+            22.33061857,
+            42.92888493
+          ]
+        }
+      },
+      "hiz": {
+        "tepe": -0.37855818,
+        "kalici": -0.18927909,
+        "fiyata_eklendi": false
+      }
+    }
+  ],
+  "birlesik_2028": {
+    "durum": "olculdu",
+    "dlog_m1": 0.0,
+    "dlog_oran": -0.80816622,
+    "nokta": -130.48544421,
+    "merkez": -130.48544421,
+    "aralik": [
+      -160.45571941,
+      -100.515169
+    ],
+    "etiket": "aday",
+    "dm1": 0.0,
+    "dm2": 13967.0,
+    "yil": 2028,
+    "skora_girer": false
+  },
+  "tutarlilik": [
+    {
+      "senaryo": "dusuk",
+      "yil": 2029,
+      "kose": "kredi_dahil",
+      "delta_pi": -10.27515143,
+      "nominal_fazla_milyar": 233.27109774,
+      "reel_oran": 0.07920413
+    },
+    {
+      "senaryo": "dusuk",
+      "yil": 2029,
+      "kose": "kredi_haric",
+      "delta_pi": -10.27515143,
+      "nominal_fazla_milyar": 233.27109774,
+      "reel_oran": 0.07920413
+    },
+    {
+      "senaryo": "dusuk",
+      "yil": 2030,
+      "kose": "kredi_dahil",
+      "delta_pi": -1.54028748,
+      "nominal_fazla_milyar": 34.96829751,
+      "reel_oran": 0.01187302
+    },
+    {
+      "senaryo": "dusuk",
+      "yil": 2030,
+      "kose": "kredi_haric",
+      "delta_pi": -1.90953582,
+      "nominal_fazla_milyar": 43.3511389,
+      "reel_oran": 0.01471931
+    },
+    {
+      "senaryo": "orta",
+      "yil": 2029,
+      "kose": "kredi_dahil",
+      "delta_pi": -37.69880552,
+      "nominal_fazla_milyar": 1711.99388295,
+      "reel_oran": 0.29059435
+    },
+    {
+      "senaryo": "orta",
+      "yil": 2029,
+      "kose": "kredi_haric",
+      "delta_pi": -37.69880552,
+      "nominal_fazla_milyar": 1711.99388295,
+      "reel_oran": 0.29059435
+    },
+    {
+      "senaryo": "orta",
+      "yil": 2030,
+      "kose": "kredi_dahil",
+      "delta_pi": -2.42830371,
+      "nominal_fazla_milyar": 110.27514086,
+      "reel_oran": 0.01871814
+    },
+    {
+      "senaryo": "orta",
+      "yil": 2030,
+      "kose": "kredi_haric",
+      "delta_pi": -3.81970415,
+      "nominal_fazla_milyar": 173.46199809,
+      "reel_oran": 0.02944349
+    },
+    {
+      "senaryo": "yuksek",
+      "yil": 2029,
+      "kose": "kredi_dahil",
+      "delta_pi": -84.44676209,
+      "nominal_fazla_milyar": 7669.22814881,
+      "reel_oran": 0.65094243
+    },
+    {
+      "senaryo": "yuksek",
+      "yil": 2029,
+      "kose": "kredi_haric",
+      "delta_pi": -84.44676209,
+      "nominal_fazla_milyar": 7669.22814881,
+      "reel_oran": 0.65094243
+    },
+    {
+      "senaryo": "yuksek",
+      "yil": 2030,
+      "kose": "kredi_dahil",
+      "delta_pi": -4.8359027,
+      "nominal_fazla_milyar": 439.18369667,
+      "reel_oran": 0.03727667
+    },
+    {
+      "senaryo": "yuksek",
+      "yil": 2030,
+      "kose": "kredi_haric",
+      "delta_pi": -7.63877578,
+      "nominal_fazla_milyar": 693.7331026,
+      "reel_oran": 0.05888211
+    }
+  ],
+  "adim45": 0.0,
+  "gecis": [
+    0.26,
+    0.38,
+    0.4
+  ],
+  "kira_agirlik": 0.068028
+}
