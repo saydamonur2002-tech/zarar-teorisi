@@ -16,11 +16,11 @@
 | FR | bilinmiyor | -1.003 | 0.891 | 0.112 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -1.211 (bilinmeyen kayıp=0 (yalnız modelli)) | — | — | — |
 | EU | bilinmiyor | -10.465 | 7.223 | 3.242 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -7.969 (bilinmeyen kayıp=0 (yalnız modelli)) | — | — | — |
 | GR | bilinmiyor | -0.407 | 0.431 | -0.024 | belirsiz_bant_ici | belirsiz_bant_ici, cevre_entegre_kaybeden | HAYIR | -0.388 (bilinmeyen kayıp=en yüksek referans oran) | — | — | — |
-| RS | modelli | -0.228 | 0.064 | 0.164 | cevre_entegre_kaybeden | belirsiz_bant_ici, cevre_entegre_kaybeden | HAYIR | -0.012 (kazanç×1.5) | — | — | 1.13 / 1.256 / 1.003 |
-| BA | modelli | 0.069 | 0.194 | -0.125 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.062 (kazanç×1.5) | — | — | 0.555 / 0.907 / 0.203 |
-| BG | modelli | -0.209 | 0.194 | 0.015 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -0.173 (kazanç×1.5) | — | — | 1.059 / 1.411 / 0.707 |
-| AL | modelli | 0.12 | 0.194 | -0.074 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.113 (kazanç×1.5) | — | — | 0.462 / 0.814 / 0.11 |
-| MK | modelli | 0.123 | 0.194 | -0.071 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.116 (kazanç×1.5) | — | — | 0.457 / 0.809 / 0.105 |
+| RS | modelli | -0.277 | 0.071 | 0.206 | cevre_entegre_kaybeden | cevre_entegre_kaybeden | evet | 0.055 (kazanç×1.5) | — | — | 1.315 / 1.477 / 1.152 |
+| BA | modelli | 0.016 | 0.194 | -0.178 | belirsiz_bant_ici | belirsiz_bant_ici | evet | 0.017 (kazanç×1.5) | — | — | 0.646 / 1.056 / 0.236 |
+| BG | modelli | -0.262 | 0.194 | 0.068 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -0.093 (kazanç×1.5) | — | — | 1.233 / 1.643 / 0.824 |
+| AL | modelli | 0.067 | 0.194 | -0.127 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.034 (kazanç×1.5) | — | — | 0.538 / 0.948 / 0.129 |
+| MK | modelli | 0.07 | 0.194 | -0.124 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.037 (kazanç×1.5) | — | — | 0.532 / 0.942 / 0.122 |
 | CY | modelli | -0.104 | 0.194 | -0.09 | belirsiz_bant_ici | belirsiz_bant_ici | evet | 0.041 (kayıp×1.25) | — | — | — |
 
 ## Senaryo B (AB→Balkan bölünme payı p = 0.68, kısmi bant medyanı 0.212; kaybı modelde olmayan aktörlere ana modelde atanan referans kayıp/kazanç oranı medyan/maks (referans: IR, IL, EG) = [0.686, 2.524])
@@ -37,11 +37,11 @@
 | FR | bilinmiyor | -1.798 | 1.91 | -0.112 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -2.374 (bilinmeyen kayıp=en yüksek referans oran) | — | — | — |
 | EU | bilinmiyor | -18.091 | 15.961 | 2.13 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -16.953 (bilinmeyen kayıp=0 (yalnız modelli)) | — | — | — |
 | GR | bilinmiyor | -0.759 | 0.907 | -0.148 | belirsiz_bant_ici | belirsiz_bant_ici, cevre_entegre_kaybeden | HAYIR | -0.971 (bilinmeyen kayıp=en yüksek referans oran) | — | — | — |
-| RS | modelli | -0.472 | 0.072 | 0.4 | cevre_entegre_kaybeden | cevre_entegre_kaybeden | evet | 0.172 (kayıp×0.75) | — | — | 1.427 / 1.541 / 1.313 |
-| BA | modelli | -0.023 | 0.212 | -0.189 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -0.045 (kazanç×0.5) | — | — | 0.713 / 1.022 / 0.405 |
-| BG | modelli | -0.447 | 0.212 | 0.235 | entegre_kaybeden | entegre_kaybeden | evet | 0.002 (kazanç×1.5) | — | — | 1.331 / 1.64 / 1.022 |
-| AL | modelli | 0.051 | 0.212 | -0.161 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.072 (kazanç×1.5) | — | — | 0.606 / 0.914 / 0.297 |
-| MK | modelli | 0.058 | 0.212 | -0.154 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.079 (kazanç×1.5) | — | — | 0.596 / 0.904 / 0.287 |
+| RS | modelli | -0.508 | 0.076 | 0.432 | cevre_entegre_kaybeden | cevre_entegre_kaybeden | evet | 0.204 (kayıp×0.75) | — | — | 1.556 / 1.687 / 1.425 |
+| BA | modelli | -0.061 | 0.212 | -0.151 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -0.063 (kazanç×0.5) | — | — | 0.777 / 1.113 / 0.441 |
+| BG | modelli | -0.485 | 0.212 | 0.273 | entegre_kaybeden | entegre_kaybeden | evet | 0.045 (kayıp×0.75) | — | — | 1.449 / 1.785 / 1.113 |
+| AL | modelli | 0.013 | 0.212 | -0.199 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.015 (kazanç×1.5) | — | — | 0.659 / 0.996 / 0.323 |
+| MK | modelli | 0.02 | 0.212 | -0.192 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.022 (kazanç×1.5) | — | — | 0.648 / 0.984 / 0.312 |
 | CY | modelli | -0.272 | 0.212 | 0.06 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -0.043 (kayıp×0.75) | — | — | — |
 
 ## Senaryo C (AB→Balkan bölünme payı p = 0.68, kısmi bant medyanı 0.143; kaybı modelde olmayan aktörlere ana modelde atanan referans kayıp/kazanç oranı medyan/maks (referans: IR, IL, EG) = [0.326, 1.572])
@@ -58,15 +58,15 @@
 | FR | bilinmiyor | -0.625 | 0.468 | 0.157 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -0.696 (bilinmeyen kayıp=0 (yalnız modelli)) | — | — | — |
 | EU | bilinmiyor | -6.663 | 3.585 | 3.078 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -4.142 (bilinmeyen kayıp=0 (yalnız modelli)) | — | — | — |
 | GR | bilinmiyor | -0.246 | 0.231 | 0.015 | cevre_entegre_kaybeden | belirsiz_bant_ici, cevre_entegre_kaybeden | HAYIR | -0.324 (bilinmeyen kayıp=0 (yalnız modelli)) | — | — | — |
-| RS | modelli | -0.115 | 0.053 | 0.062 | cevre_entegre_kaybeden | belirsiz_bant_ici, cevre_entegre_kaybeden | HAYIR | -0.077 (kazanç×1.5) | — | — | 0.966 / 1.098 / 0.834 |
-| BA | modelli | 0.089 | 0.143 | -0.054 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.095 (kazanç×1.5) | — | — | 0.476 / 0.804 / 0.149 |
-| BG | modelli | -0.105 | 0.143 | -0.038 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -0.111 (p=0.34) | — | — | 0.92 / 1.248 / 0.593 |
-| AL | modelli | 0.124 | 0.143 | -0.019 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.13 (kazanç×1.5) | — | — | 0.396 / 0.723 / 0.069 |
-| MK | modelli | 0.128 | 0.143 | -0.015 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.134 (kazanç×1.5) | — | — | 0.387 / 0.714 / 0.06 |
+| RS | modelli | -0.168 | 0.062 | 0.106 | cevre_entegre_kaybeden | belirsiz_bant_ici, cevre_entegre_kaybeden | HAYIR | -0.006 (kazanç×1.5) | — | — | 1.197 / 1.387 / 1.006 |
+| BA | modelli | 0.033 | 0.143 | -0.11 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.011 (kazanç×1.5) | — | — | 0.587 / 0.99 / 0.184 |
+| BG | modelli | -0.161 | 0.143 | 0.018 | entegre_kaybeden | belirsiz_bant_ici, entegre_kaybeden | HAYIR | -0.103 (kazanç×1.5) | — | — | 1.134 / 1.537 / 0.731 |
+| AL | modelli | 0.068 | 0.143 | -0.075 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.046 (kazanç×1.5) | — | — | 0.488 / 0.892 / 0.085 |
+| MK | modelli | 0.072 | 0.143 | -0.071 | belirsiz_bant_ici | belirsiz_bant_ici, entegre_kazanan | HAYIR | -0.05 (kazanç×1.5) | — | — | 0.477 / 0.88 / 0.074 |
 | CY | modelli | -0.046 | 0.143 | -0.097 | belirsiz_bant_ici | belirsiz_bant_ici | evet | 0.067 (kazanç×0.5) | — | — | — |
 
 ## Okuma
 
 - `En kötü marj`: taban sınıfın yönünde, bütün varyantlar içinde bandı en az aşan değer; > 0 ise sınıf o varyantta da bantla destekleniyor, < 0 ise o varyantta bant içine düşüyor. `k*`: kazancın bu çarpanın altına inmesi, aktörü bant dışı kazanan olmaktan çıkarır (yalnız kazananlar).
-- `p*` (net=0): Balkan ülkesinin net'i sıfırlayan AB→Balkan bölünme payı. Taban p = 0,68; p* bunun altındaysa ülke p'nin makul aralığında kazanan, üstündeyse kaybeden. Kazanan sınıf için p'nin `kazanan başlar` değerini aşması gerekir.
+- `p*` (net=0): Balkan ülkesinin net'i sıfırlayan AB→Balkan bölünme payı; sürdürme oranı (κ·pol) payın içinde. Taban p = 0,68; p* bunun altındaysa ülke p'nin makul aralığında kazanan, üstündeyse kaybeden. Kazanan sınıf için p'nin `kazanan başlar` değerini aşması gerekir.
 - 'Dayanıklı = HAYIR': sınıf, atanmış bir parametrenin tek başına ±%25–50 salınımıyla değişiyor; bu aktör hakkında 'kazanan/kaybeden' iddiası kurulamaz.

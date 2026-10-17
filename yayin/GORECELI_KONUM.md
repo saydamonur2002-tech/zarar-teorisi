@@ -6,29 +6,29 @@ Yerel iç elit katmanı modelde yok; ülke düzeyi. Elit sorusu ölçülmez, anc
 
 ### Senaryo A
 - Net kaybeden aktör: 28 · kaybeden medyan net -0.444
-- Σ kaybeden net -31.18 · Σ diğer kazanan net +2.12 · MFIN net +3.29 (kaybedenlerin |toplamının| 0.105 katı)
-- Mutlak olarak bant dışı kaybeden: BG, RS, EG, TN, TJ, KG, AM, TM, AZ, GE, DZ, UZ, KZ, UA, LY, MA, SO, SY, LB, FR, GCC, IQ, AE, EU
-- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY, RS
+- Σ kaybeden net -31.29 · Σ diğer kazanan net +1.96 · MFIN net +3.29 (kaybedenlerin |toplamının| 0.105 katı)
+- Mutlak olarak bant dışı kaybeden: EG, TN, TJ, BG, KG, RS, AM, TM, AZ, GE, DZ, UZ, KZ, UA, LY, MA, SO, SY, LB, FR, GCC, IQ, AE, EU
+- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY
 
 | En geç batan | Net | Medyana göre | Ortak bant | Ayırt edilebilir | Mutlak sınıf |
 | --- | ---: | ---: | ---: | --- | --- |
 | CY | -0.104 | +0.340 | 0.274 | evet | bant_ici |
-| BG | -0.209 | +0.235 | 0.274 | hayır | kaybeden |
-| RS | -0.228 | +0.216 | 0.204 | evet | kaybeden |
 | EG | -0.236 | +0.208 | 0.287 | hayır | kaybeden |
 | TN | -0.238 | +0.206 | 0.274 | hayır | kaybeden |
+| TJ | -0.258 | +0.186 | 0.274 | hayır | kaybeden |
+| BG | -0.262 | +0.182 | 0.274 | hayır | kaybeden |
 - En çok batan: EU -10.46, CN -2.91, RU -2.48
 
 ### Senaryo B
 - Net kaybeden aktör: 30 · kaybeden medyan net -0.742
-- Σ kaybeden net -55.42 · Σ diğer kazanan net +1.97 · MFIN net +4.07 (kaybedenlerin |toplamının| 0.073 katı)
-- Mutlak olarak bant dışı kaybeden: CY, TN, TJ, BG, KG, RS, EG, AM, TM, AZ, GE, DZ, UZ, KZ, UA, MA, LY, SO, SY, LB, GCC, IQ, EU
+- Σ kaybeden net -55.54 · Σ diğer kazanan net +1.89 · MFIN net +4.07 (kaybedenlerin |toplamının| 0.073 katı)
+- Mutlak olarak bant dışı kaybeden: CY, TN, TJ, KG, EG, BG, AM, RS, TM, AZ, GE, DZ, UZ, KZ, UA, MA, LY, SO, SY, LB, GCC, IQ, EU
 - Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): BA, CY, TN, TJ, RS
 
 | En geç batan | Net | Medyana göre | Ortak bant | Ayırt edilebilir | Mutlak sınıf |
 | --- | ---: | ---: | ---: | --- | --- |
 | US | -0.013 | +0.729 | 2.139 | hayır | bant_ici |
-| BA | -0.023 | +0.719 | 0.300 | evet | bant_ici |
+| BA | -0.061 | +0.681 | 0.300 | evet | bant_ici |
 | CY | -0.272 | +0.470 | 0.300 | evet | kaybeden |
 | TN | -0.404 | +0.338 | 0.300 | evet | kaybeden |
 | TJ | -0.433 | +0.309 | 0.300 | evet | kaybeden |
@@ -36,17 +36,17 @@ Yerel iç elit katmanı modelde yok; ülke düzeyi. Elit sorusu ölçülmez, anc
 
 ### Senaryo C
 - Net kaybeden aktör: 28 · kaybeden medyan net -0.290
-- Σ kaybeden net -19.47 · Σ diğer kazanan net +1.80 · MFIN net +1.90 (kaybedenlerin |toplamının| 0.097 katı)
-- Mutlak olarak bant dışı kaybeden: RS, TN, TJ, KG, AM, TM, AZ, GE, GR, DZ, UZ, KZ, UA, LY, MA, SO, LB, SY, FR, GCC, AE, IQ, EU
-- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY, RS
+- Σ kaybeden net -19.58 · Σ diğer kazanan net +1.63 · MFIN net +1.90 (kaybedenlerin |toplamının| 0.097 katı)
+- Mutlak olarak bant dışı kaybeden: TN, BG, RS, TJ, KG, AM, TM, AZ, GE, GR, DZ, UZ, KZ, UA, LY, MA, SO, LB, SY, FR, GCC, AE, IQ, EU
+- Göreceli kazanan (kayıp medyanından ayırt edilebilir iyi): CY
 
 | En geç batan | Net | Medyana göre | Ortak bant | Ayırt edilebilir | Mutlak sınıf |
 | --- | ---: | ---: | ---: | --- | --- |
 | CY | -0.046 | +0.244 | 0.202 | evet | bant_ici |
-| BG | -0.105 | +0.185 | 0.202 | hayır | bant_ici |
-| RS | -0.115 | +0.175 | 0.153 | evet | kaybeden |
 | EG | -0.135 | +0.155 | 0.204 | hayır | bant_ici |
 | TN | -0.155 | +0.135 | 0.202 | hayır | kaybeden |
+| BG | -0.161 | +0.129 | 0.202 | hayır | kaybeden |
+| RS | -0.168 | +0.122 | 0.156 | hayır | kaybeden |
 - En çok batan: EU -6.66, CN -1.64, RU -1.45
 
 ## 2. Seçenek 1: alternatif direnç (rant kaybı − net kazanç)
@@ -92,9 +92,9 @@ Kayıp/kazanç oranı r. r_net_sıfır: net 0'a ininceye kadar katlanılabilir o
 
 | Senaryo | Σ net (tüm aktörler) | Σ pozitif | Σ negatif |
 | --- | ---: | ---: | ---: |
-| A | -50.69 | +5.41 | -56.10 |
-| B | -89.28 | +6.04 | -95.32 |
-| C | -32.96 | +3.69 | -36.66 |
+| A | -50.96 | +5.25 | -56.21 |
+| B | -89.48 | +5.96 | -95.44 |
+| C | -33.24 | +3.53 | -36.77 |
 
 Büyük aktörlerin net'i (maliyetli, kayıp vekilli):
 

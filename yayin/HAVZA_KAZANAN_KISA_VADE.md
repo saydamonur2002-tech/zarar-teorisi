@@ -12,9 +12,9 @@ GSYH 2024'te sabit (büyüme yok); rezerv brüt (altın dahil), net rezerv deği
 
 | Senaryo | Merkez (MFİN, ABD, AB, Fransa) brüt / net | Dış rakip güçler (Çin, Rusya) brüt / net | Bölge brüt / net | Bant dışı kazananlar |
 | --- | --- | --- | --- | --- |
-| A | 11.09 (%50) / -7.92 | 4.51 (%20) / -5.40 | 6.36 (%29) / -12.46 | IR, IL, MK, AL, BA |
-| B | 21.86 (%61) / -15.83 | 5.72 (%16) / -10.63 | 8.35 (%23) / -22.93 | IR, IL, MK, AL |
-| C | 6.41 (%43) / -5.11 | 3.53 (%24) / -3.09 | 4.85 (%33) / -7.57 | IR, IL, SA, MK, AL, BA |
+| A | 11.09 (%50) / -7.92 | 4.51 (%20) / -5.40 | 6.36 (%29) / -12.73 | IR, IL, MK, AL |
+| B | 21.86 (%61) / -15.83 | 5.72 (%16) / -10.63 | 8.35 (%23) / -23.12 | IR, IL |
+| C | 6.41 (%43) / -5.11 | 3.53 (%24) / -3.09 | 4.85 (%33) / -7.85 | IR, IL, SA, MK, AL |
 
 ## 2. Kısa vade (2027–2029): TR kayıp hızı → bölgeye parasal akış
 

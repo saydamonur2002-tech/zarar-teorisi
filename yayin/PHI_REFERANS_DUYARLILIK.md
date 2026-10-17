@@ -12,7 +12,7 @@ Ayrı nesne: `REFERANS_ORAN = ("IR","IL","EG")` (`:637`). MFİN kayıp vekili, k
 
 Sınıf: net − bant > 0 kazanan, net + bant < 0 kaybeden, aksi halde bant içi; bant içinde rant farkı > 400 mn $ ise ham etiket `rant_kanali_bosluk_taraftari` (`bolge_stok_akis.py:65-77`). Sistem toplamı defter `net_maliyetli` toplamıdır (`goreceli_konum.py:147-155`). Karar skoru ve E[TR net] bu φ’yi okumaz (`senaryo_uygulanabilirlik.py:100-105`; `SENARYO_UYGULANABILIRLIK.json:2` ve `:48`).
 
-Taban (3 aktör, kanıt — yayımlı sistemle aynı): A −50.694, B −89.283, C −32.964. Halka çevre IR, IL. Skor 47.7. E[TR net 10y] −23.117.
+Taban (3 aktör, kanıt — bu φ koşusunun yayımlı sistemi): A −50.694, B −89.283, C −32.964. Halka çevre IR, IL. Skor 47.7. E[TR net 10y] −23.117. Bu mutlak sistem, Balkan sürdürme düzeltmesinden öncedir. Düzeltme sonrası sistem A −50.96, B −89.477, C −33.245 (`ANOMALI_DUZELTMELERI.md`). φ farkları aynı kalır: maliyet κ·pol’dür, φ’ye bağlı değildir.
 
 | | A φ min / med / maks | B | C |
 | --- | --- | --- | --- |
