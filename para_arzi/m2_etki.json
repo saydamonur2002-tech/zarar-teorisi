@@ -1,0 +1,183 @@
+{
+  "kriter_sha256": "86b007ac48ec1c2895306b693547278dd5601a2076ca516cbda9e70b3c3395fd",
+  "hafta": "27-03-2026",
+  "birim": "ham bin TL; milyar = ham/1e6",
+  "birim_capasi": {
+    "ham_bin_tl": {
+      "TP.KM.E041": 7577422615.0,
+      "TP.KB.FON033": 459667168.0
+    },
+    "milyar": 8037.0898,
+    "repo_karsilik": 8037.1,
+    "fark": -0.0102
+  },
+  "m2": {
+    "milyar": {
+      "dolasim": 879.7844,
+      "vadesiz_tl": 2282.2298,
+      "vadesiz_yp": 7144.0995,
+      "vadeli_tl": 12127.6068,
+      "vadeli_yp": 2762.6707,
+      "tl": 15289.6209,
+      "yp": 9906.7702,
+      "m1": 10306.1137,
+      "m2": 25196.3912,
+      "m3": 27699.7309,
+      "repo": 893.7354,
+      "ppf": 1484.9752,
+      "menkul": 124.6292
+    },
+    "yp_m2_icinde": true,
+    "menkul_m2_icinde": false
+  },
+  "tl_para_stoku": {
+    "tl_para_stoku": 16472.8,
+    "m2": 25196.3912,
+    "fark": 8723.5912,
+    "esitlik": "dustu",
+    "etiket": "kanıt"
+  },
+  "senet_m2_disinda": true,
+  "senet_etiket": "kanıt",
+  "dibs_milyar": 10339.8,
+  "menkul_dibs_degil": true,
+  "adim12": {
+    "ayri": {
+      "mevduat_ayak": 0.0,
+      "m2": 0.0,
+      "etiket": "kanıt"
+    },
+    "mahsup_0421": {
+      "mevduat_ayak": 0.0,
+      "m2": 0.0,
+      "etiket": "kanıt"
+    },
+    "birlesik": {
+      "ciftler": [
+        {
+          "cift": "PFK–F",
+          "silinen": 7195.0,
+          "mevduat_ayak": 7195.0,
+          "yurtici": 7195.0,
+          "yurtdisi": 0.0
+        },
+        {
+          "cift": "H–PFK",
+          "silinen": 6772.0,
+          "mevduat_ayak": 6772.0,
+          "yurtici": 6772.0,
+          "yurtdisi": 0.0
+        },
+        {
+          "cift": "PFK–ROW",
+          "silinen": 4033.0,
+          "mevduat_ayak": 4033.0,
+          "yurtici": 0.0,
+          "yurtdisi": 4033.0
+        }
+      ],
+      "silinen": 18000.0,
+      "mevduat_ayak_yurtici": 13967.0,
+      "mevduat_ayak_yurtdisi": 4033.0,
+      "m2_aday": 13967.0,
+      "etiket_ayak": "kanıt",
+      "etiket_m2": "aday"
+    }
+  },
+  "adim345": {
+    "adim3": 0.0,
+    "adim45": 0.0,
+    "adim5": 0.0,
+    "etiket": "kanıt"
+  },
+  "senaryo": [
+    {
+      "ad": "dusuk",
+      "theta": 0.1,
+      "chi": 0.0,
+      "adres": 12722.5,
+      "adim12_sutun": "ayri",
+      "adim12_m2": 0.0,
+      "adim12_etiket": "kanıt",
+      "adim3_m2": 0.0,
+      "adim45_m2": 0.0,
+      "adim5_m2": 0.0,
+      "adim4_tepe": 1272.25,
+      "adim4_kalici": 0.0,
+      "ikinci_tur_tepe_yillik": 101.78,
+      "ikinci_tur_kalici_yillik": 0.0,
+      "baslik_stok": 0.0,
+      "baslik_yuzde": 0.0,
+      "tepe_stok": 1272.25,
+      "tepe_yuzde": 5.0493,
+      "etiket_adim4": "aday",
+      "etiket_345": "kanıt"
+    },
+    {
+      "ad": "orta",
+      "theta": 0.25,
+      "chi": 0.5,
+      "adres": 19076.6,
+      "adim12_sutun": "ayri",
+      "adim12_m2": 0.0,
+      "adim12_etiket": "kanıt",
+      "adim3_m2": 0.0,
+      "adim45_m2": 0.0,
+      "adim5_m2": 0.0,
+      "adim4_tepe": 4769.15,
+      "adim4_kalici": 2384.575,
+      "ikinci_tur_tepe_yillik": 381.532,
+      "ikinci_tur_kalici_yillik": 190.766,
+      "baslik_stok": 2384.575,
+      "baslik_yuzde": 9.464,
+      "tepe_stok": 4769.15,
+      "tepe_yuzde": 18.9279,
+      "etiket_adim4": "aday",
+      "etiket_345": "kanıt"
+    },
+    {
+      "ad": "yuksek",
+      "theta": 0.5,
+      "chi": 0.5,
+      "adres": 19076.6,
+      "adim12_sutun": "birlesik",
+      "adim12_m2": 13967.0,
+      "adim12_etiket": "aday",
+      "adim3_m2": 0.0,
+      "adim45_m2": 0.0,
+      "adim5_m2": 0.0,
+      "adim4_tepe": 9538.3,
+      "adim4_kalici": 4769.15,
+      "ikinci_tur_tepe_yillik": 763.064,
+      "ikinci_tur_kalici_yillik": 381.532,
+      "baslik_stok": 18736.15,
+      "baslik_yuzde": 74.3605,
+      "tepe_stok": 23505.3,
+      "tepe_yuzde": 93.2884,
+      "etiket_adim4": "aday",
+      "etiket_345": "kanıt"
+    }
+  ],
+  "ad": {
+    "TP.HPBITABLO1.2": "1.M1",
+    "TP.HPBITABLO1.3": "1.1.Dolaşımdaki Para",
+    "TP.HPBITABLO1.4": "1.2.Vadesiz Mevduat (TL)",
+    "TP.HPBITABLO1.5": "1.2.1.Bankalar",
+    "TP.HPBITABLO1.6": "1.2.2.Elektronik Para Kuruluşları",
+    "TP.HPBITABLO1.7": "1.2.3.TCMB",
+    "TP.HPBITABLO1.8": "1.3.Vadesiz Mevduat (YP)",
+    "TP.HPBITABLO1.9": "1.3.1.Bankalar",
+    "TP.HPBITABLO1.10": "1.3.2.TCMB",
+    "TP.HPBITABLO1.11": "2.M2",
+    "TP.HPBITABLO1.12": "2.1.Vadeli Mevduat (TL)",
+    "TP.HPBITABLO1.13": "2.1.1.Bankalar",
+    "TP.HPBITABLO1.14": "2.1.2.TCMB",
+    "TP.HPBITABLO1.15": "2.2.Vadeli Mevduat (YP)",
+    "TP.HPBITABLO1.16": "2.2.1.Bankalar",
+    "TP.HPBITABLO1.17": "2.2.2.TCMB",
+    "TP.HPBITABLO1.18": "3.M3",
+    "TP.HPBITABLO1.19": "3.1.Repo",
+    "TP.HPBITABLO1.20": "3.2.Para Piyasası Fonları",
+    "TP.HPBITABLO1.21": "3.3.İhraç Edilen Menkul Kıymetler"
+  }
+}
