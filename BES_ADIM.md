@@ -29,7 +29,7 @@ Son satır (`bes_adim_sonuc.json` `son`) koşudan gelmez; `python3 test_bes_adim
 
 - `eski_tavan` 0.0728: stok_silim.py, her tek yön bacağa aynı araçta EVDS üst sınırı; aynı EVDS stoku birden çok satırda; metindeki ters bacak (başka araç) görülmez. Durur, silinmez.
 - `yeni_tavan` 0.2582: çift düzeyi; iki yön metinden (araçlar toplanır), ters yön metinde yoksa EVDS konsolide olmayan aynı-araç üst sınırı; ortak = min; Σortak 20,363.4 / Σbrüt 78,870.4; 6/6 çift dolu. Yalnız metin iki yön: 0.3175.
-- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yaklaşık yüzde 20' bu kuralla çıkmadı; bulunamadı.
+- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yüzde 20' kaldırıldı; yerine rev_adim1 bandı (ADIM1_NACE.md (e)).
 
 ## Kilit dışı yan dosyalar (Faz 1–6; girdi, sonuç değil)
 

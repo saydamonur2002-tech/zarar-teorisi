@@ -51,17 +51,17 @@ Sektör içi fark, firmaların birbirine olan alacak/borcudur; ZP22 ile ZP44 far
 
 - 39,928.6 × 0.9139 = **36,490.7 milyar** üst sınır (`varsayim_oran_tasima`). 2024 NACE oranı 2026-Q1 EVDS stokuna taşındı; iki kaynak, iki dönem. Varsayım.
 
-## (e) Varsayım: silinen oranı yüzde 20 olursa (koşu)
+## (e) Ölçülen bant (rev C; eski 'yüzde 20' koşusu kaldırıldı)
 
-| taban | brüt (milyar) | yüzde 20 silinen | üst sınır oranı | üst sınır (milyar) | içinde mi | üst sınıra oranı |
-| --- | --- | --- | --- | --- | --- | --- |
-| NACE Σ ticari borç (Sektör Bilançoları 2024) | 14,335.4 | 2,867.1 | 0.9139 | 13,101.1 | evet | 0.22 |
-| EVDS F içi diğer borç ZP44 (2026-Q1) | 39,928.6 | 7,985.7 | 0.9139 | 36,490.7 | evet | 0.22 |
-| Hazneler arası brüt (adim1_stok.csv TOPLAM) | 78,870.4 | 15,774.1 | 0.2582 | 20,364.3 | evet | 0.78 |
-
-- Oran varsayım; üç tabanda sayı. Üst sınır içinde kalması olabilirliği gösterir, gerçekleştiğini değil. adim1_stok.csv silinen boş. Çekim/RAS koşusu 90.5% verir; yüzde 20 onun altında, yani tam graf varsayımına göre temkinli.
+- Tam graf oranı 2009–2024: [0.665, 0.925], 2024: 0.914 (`ust_sinir_nace`).
+- Seyrek ağ 2024 (çekim+RAS, rastgele kenar alt kümesi, LP en iyi mahsup; `varsayim_yogunluk`):
+  - yoğunluk 0.25: min 0.124 / medyan 0.265 / max 0.843
+  - yoğunluk 0.5: min 0.274 / medyan 0.563 / max 0.908
+  - yoğunluk 0.75: min 0.492 / medyan 0.896 / max 0.907
+  - yoğunluk 1.0: min 0.905 / medyan 0.905 / max 0.905
+- 2026Ç1 taşıma (`varsayim_oran_tasima`): tam graf 26,556.5–36,945.9 milyar; seyrek alt uç 4,939.2 milyar.
 
 ## Ne denmez
 
-- 'Stok yüzde X silindi' denmez; (b) ve (c) üst sınır, (d) ve (e) varsayım. Gerçek silinen için firma düzeyi kimden-kime gerekir (depoda yok).
+- 'Stok yüzde X silindi' denmez; (b) ve (c) üst sınır, (d) varsayım, (e) bant (yoğunluk varsayımlı). Gerçek silinen için firma düzeyi kimden-kime gerekir (depoda yok).
 - Hazneler arası `yeni_tavan` 0,2582 ile bu oran toplanmaz; biri hazneler arası, biri F içi.

@@ -287,7 +287,7 @@ def md(son: dict) -> str:
               f"- `yeni_tavan` {f(x['yeni_tavan'], 4)}: çift düzeyi; iki yön metinden (araçlar toplanır), ters yön metinde yoksa EVDS konsolide olmayan "
               f"aynı-araç üst sınırı; ortak = min; Σortak {f(x['ortak_milyar'])} / Σbrüt {f(x['brut_milyar'])}; {x['dolu_cift']}/{x['cift']} çift dolu. "
               f"Yalnız metin iki yön: {f(x['yeni_tavan_yalniz_metin'], 4)}.",
-              "- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yaklaşık yüzde 20' bu kuralla çıkmadı; bulunamadı.", ""]
+              "- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yüzde 20' kaldırıldı; yerine rev_adim1 bandı (ADIM1_NACE.md (e)).", ""]
     yan = yan_dosyalar()
     if yan:
         s += ["## Kilit dışı yan dosyalar (Faz 1–6; girdi, sonuç değil)", "",
