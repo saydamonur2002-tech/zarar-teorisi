@@ -1,0 +1,952 @@
+From acb25828cf53f6c9b3a82933e9722d6b57de8130 Mon Sep 17 00:00:00 2001
+From: Onur <saydamonur2002-tech@users.noreply.github.com>
+Date: Sun, 4 Oct 2026 14:08:31 +0000
+Subject: [PATCH] =?UTF-8?q?Mahsup=20modeli:=20ad=C4=B1m=201-3=20sim=C3=BCl?=
+ =?UTF-8?q?asyonu=20(mahsup/)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ README.md                      |   2 +
+ mahsup/.gitignore              |   5 +
+ mahsup/README.md               | 108 ++++++++++++++++++++++
+ mahsup/mahsuplasma/__init__.py |   9 ++
+ mahsup/mahsuplasma/ag.py       |  92 ++++++++++++++++++
+ mahsup/mahsuplasma/mahsup.py   | 109 ++++++++++++++++++++++
+ mahsup/mahsuplasma/model.py    | 164 +++++++++++++++++++++++++++++++++
+ mahsup/mahsuplasma/odeme.py    | 108 ++++++++++++++++++++++
+ mahsup/mahsuplasma/rapor.py    |  42 +++++++++
+ mahsup/mahsuplasma/senaryo.py  |  69 ++++++++++++++
+ mahsup/ornekler/calistir.py    |  27 ++++++
+ mahsup/pyproject.toml          |  16 ++++
+ mahsup/tests/test_model.py     |  67 ++++++++++++++
+ model/OKU.md                   |   2 +
+ 14 files changed, 820 insertions(+)
+ create mode 100644 mahsup/.gitignore
+ create mode 100644 mahsup/README.md
+ create mode 100644 mahsup/mahsuplasma/__init__.py
+ create mode 100644 mahsup/mahsuplasma/ag.py
+ create mode 100644 mahsup/mahsuplasma/mahsup.py
+ create mode 100644 mahsup/mahsuplasma/model.py
+ create mode 100644 mahsup/mahsuplasma/odeme.py
+ create mode 100644 mahsup/mahsuplasma/rapor.py
+ create mode 100644 mahsup/mahsuplasma/senaryo.py
+ create mode 100644 mahsup/ornekler/calistir.py
+ create mode 100644 mahsup/pyproject.toml
+ create mode 100644 mahsup/tests/test_model.py
+
+diff --git a/README.md b/README.md
+index 930dd20..8f55941 100644
+--- a/README.md
++++ b/README.md
+@@ -6,6 +6,8 @@ Borç akışla ödenir, servet üretime bağlanır.
+ 
+ Tam metin: [RAPOR.md](RAPOR.md)
+ 
++Mahsup modeli (adım 1-3, çalışan kod): [mahsup/](mahsup/)
++
+ ## Beş adım
+ 
+ 1. Lira alacak ve borç e-fatura üzerinden eşleşir. Kapalı döngü nakit dolaşmadan kapanır.
+diff --git a/mahsup/.gitignore b/mahsup/.gitignore
+new file mode 100644
+index 0000000..6fecb2b
+--- /dev/null
++++ b/mahsup/.gitignore
+@@ -0,0 +1,5 @@
++__pycache__/
++*.pyc
++.pytest_cache/
++*.egg-info/
++.venv/
+diff --git a/mahsup/README.md b/mahsup/README.md
+new file mode 100644
+index 0000000..f60a883
+--- /dev/null
++++ b/mahsup/README.md
+@@ -0,0 +1,108 @@
++# Çoklu Mahsuplaşma Modeli
++
++Firmalar arası TL borç zincirlerini **çok taraflı mahsuplaşma** ile çözen,
++kalan borcu **yukarıdan aşağıya nakit akışıyla** ödeten ve sonunda
++**kimin kilitli, kimin gerçekten batık olduğunu** ayıran bir mekanizma modeli.
++
++> Bu bir öngörü modeli değil, bir **mekanizma laboratuvarıdır**. Sentetik
++> veriyle çalışır. Asıl çıktısı rakamlar değil, zincirin hangi halkasının
++> hangi koşulda koptuğudur.
++
++## Fikir, tek paragrafta
++
++A, B'ye 100 borçlu; B, C'ye 100; C de A'ya 100. Kimse aslında net borçlu
++değil, ama herkes "önce alacağımı tahsil edeyim" diye beklediği için üçü de
++nakit sıkışıklığına düşer ve krediye koşar. Mahsuplaşma bu döngüyü kâğıt
++üzerinde kapatır. Geriye kalan borç **gürültüden arınmış** borçtur: onu
++ödeyemeyen firma kilitli değil, gerçekten batıktır. Model bu ayrımı yapar.
++
++## Zincir (modelin aşamaları)
++
++| # | Aşama | Ne yapıyor | Kod |
++|---|-------|-----------|-----|
++| 1 | Brüt durum | Mahsup yok, herkes vadesi gelince elindeki nakitle öder | `sirali_odeme` |
++| 2 | Mahsup | Döngüler silinir, **net pozisyonlar korunur** | `optimal_mahsup`, `dongu_iptali` |
++| 3 | Akışla ödeme | Kalan borç tur tur, yukarıdan aşağı ödenir (tasfiye değil) | `sirali_odeme` |
++| 4 | Şart kaldıracı | Holdingin ödemesi vergi yapılandırma/teşvik/ihale şartına bağlanır | `holding_odeme_orani → 1` |
++| 5 | Teşhis | kilitli / batık / sağlam; gerçek zarar | `eisenberg_noe`, `teshis` |
++| 6 | Ücret kanalı | Serbest kalan likiditenin ücrete geçişi (β) + asgari ücret | `Parametreler` |
++| 7 | Döviz kanalı | TL açığından doğan döviz talebi düşer, ithal girdi talebi **düşmez** | `_doviz_talebi` |
++
++### Teknik çekirdek
++
++- **Optimal mahsup:** Fleischman, Dini & Littera (2020) yaklaşımı. Var olan
++  ticari kenarlar üzerinde, her firmanın net pozisyonu sabit tutularak toplam
++  brüt borcu en aza indiren **minimum maliyetli akış** problemi.
++- **Ödeme kapasitesi:** Eisenberg & Noe (2001) takas vektörü. Tam
++  koordinasyonla eşzamanlı ödemede bile ödenemeyen kısım = **gerçek zarar**.
++- **Kilitli firma** = sıralı ödemede temerrüde düşen ama Eisenberg-Noe'da
++  ödeme gücü yeten firma. Sorunu ödeme gücü değil, sıra ve koordinasyon.
++
++## Tek sistemle bağlantı
++
++Bu klasör RAPOR.md'deki beş adımın ilk üçünü modeller:
++
++| Rapordaki adım | Modeldeki karşılığı |
++|---|---|
++| 1. E-fatura eşleşmesi, kapalı döngü kapanır | `optimal_mahsup` (aşama 2) |
++| 2. Kalan net borç üstten alta akışla ödenir | `sirali_odeme` + şart kaldıracı (aşama 3-4) |
++| 3. Akış banka kredisiyle çevrilmez | Model kredi kullanmaz; "kredi ihtiyacı" sütunu, kredi olmadan açıkta kalan tutarı gösterir |
++| 4. Hedef primli endeksli senet | Modellenmedi |
++| 5. Konut / kira kolu | Modellenmedi |
++
++## Kurulum ve çalıştırma
++
++```bash
++cd mahsup
++pip install networkx pytest
++python ornekler/calistir.py
++python -m pytest -q
++```
++
++```python
++from mahsuplasma import calistir, Parametreler, rapor_yaz
++from mahsuplasma.senaryo import turkiye_tipi
++
++s = calistir(turkiye_tipi(), Parametreler(asgari_ucret_artisi=0.25))
++print(rapor_yaz(s))
++```
++
++## Örnek çıktı (sentetik ağ, 3 holding + 40 aracı, tohum=42)
++
++| Aşama | Temerrüt | Ücretini ödeyemeyen | Kredisiz açık |
++|---|---|---|---|
++| Brüt (mahsupsuz) | 39 | 15 | 1.740 |
++| Mahsup + akış | 9 | 9 | 241 |
++| + Şart kaldıracı | 9 | 7 | 218 |
++
++Brüt borcun %46'sı silindi. 40 aracıdan 32'si **kilitli**, 7'si **batık**.
++Mekanizma sonunda ücretini ödeyemeyen firma sayısı batık firma sayısına
++iniyor: yani mekanizma gürültüyü temizliyor, gerçek zararı bırakıyor.
++
++**Sıralama testi (%25 asgari ücret artışı):** artış tahsilattan *sonra*
++gelirse 7 aracı ücretini ödeyemiyor; *önce* gelirse 24. Aynı politika,
++farklı sıra, üç kat fark.
++
++## Modelin söylemediği şeyler (bilinçli sınırlar)
++
++1. **Net borçluyu silmez.** Mahsup döngüleri kapatır; holdingin net borcu
++   yerinde kalır. Onu ödeten şey mahsup değil, şart kaldıracıdır (4. aşama).
++2. **Enflasyon aracı değildir.** Model para yaratmaz, var olanı yeniden
++   dağıtır. Kredi talebini azaltır; bunun enflasyona dolaylı etkisi ayrıca
++   ve ampirik olarak test edilmelidir.
++3. **Ücret aktarımı varsayımdır.** β < 1 varsayılır; serbest kalan
++   likiditenin ücrete geçmesi mekanizmanın değil, pazarlık gücünün ve idari
++   asgari ücretin sonucudur. Savunması en kolay iddia "istihdamın ve ödeme
++   zincirinin korunması"dır.
++4. **İthal girdi kaynaklı döviz ihtiyacına dokunmaz.**
++5. **Sentetik veri.** Gerçek uygulamada ağ GİB e-fatura verisinden kurulmalı.
++6. **Tek dönem ve tek seferlik.** Tekrarlanan mahsupta ahlaki tehlike
++   (Rusya 1992: "nasılsa silinir" gecikmesi) modellenmemiştir.
++
++## Kaynaklar
++
++- Fleischman, T., Dini, P., Littera, G. (2020). *Liquidity-Saving through
++  Obligation-Clearing and Mutual Credit.* Journal of Risk and Financial Management.
++- Eisenberg, L., Noe, T. H. (2001). *Systemic Risk in Financial Systems.* Management Science.
++- Ickes, B. W., Ryterman, R. (1992). *The Interenterprise Arrears Crisis in Russia.* Post-Soviet Affairs.
++- Stodder, J. (2009). *Complementary Credit Networks and Macroeconomic Stability: Switzerland's Wirtschaftsring.*
+diff --git a/mahsup/mahsuplasma/__init__.py b/mahsup/mahsuplasma/__init__.py
+new file mode 100644
+index 0000000..5d509a7
+--- /dev/null
++++ b/mahsup/mahsuplasma/__init__.py
+@@ -0,0 +1,9 @@
++"""Çoklu Mahsuplaşma Modeli: kilitli borç zincirlerini çözen ve gerçek zararı
++görünür kılan mekanizma laboratuvarı."""
++from .ag import BorcAgi, Firma, Borc
++from .mahsup import dongu_iptali, optimal_mahsup, mahsup_ozeti
++from .odeme import eisenberg_noe, sirali_odeme
++from .model import Parametreler, calistir
++from .rapor import rapor_yaz
++
++__version__ = "0.1.0"
+diff --git a/mahsup/mahsuplasma/ag.py b/mahsup/mahsuplasma/ag.py
+new file mode 100644
+index 0000000..feedfd2
+--- /dev/null
++++ b/mahsup/mahsuplasma/ag.py
+@@ -0,0 +1,92 @@
++"""Borç ağı: kim kime ne kadar TL borçlu.
++
++Düğümler üç katmandan birindedir:
++    "holding"  -> zincirin tepesi, vadeyi uzatan taraf
++    "araci"    -> KOBİ / tedarikçi, konkordato zincirinin kırılgan halkası
++    "hane"     -> ücretliler (ücret alacağı olan taraf)
++
++Kenarlar (borclu -> alacakli, tutar, vade) biçimindedir. Vade, ödemenin
++hangi turda istendiğini gösterir; sıralama senaryoları bunun üzerinden kurulur.
++"""
++from __future__ import annotations
++
++from dataclasses import dataclass, field
++import copy
++
++KATMANLAR = ("holding", "araci", "hane")
++
++
++@dataclass
++class Firma:
++    ad: str
++    katman: str
++    nakit: float = 0.0          # dışsal likidite (e_i)
++    doviz_borcu: float = 0.0    # mevcut döviz borcu (TL karşılığı)
++    ithal_girdi_ihtiyaci: float = 0.0  # mahsuplaşmayla azalmayan döviz ihtiyacı
++    calisan: int = 0
++
++    def __post_init__(self):
++        if self.katman not in KATMANLAR:
++            raise ValueError(f"Bilinmeyen katman: {self.katman}")
++
++
++@dataclass
++class Borc:
++    borclu: str
++    alacakli: str
++    tutar: float
++    vade: int = 1
++    ucret: bool = False  # ücret borcu mu (firma -> hane)
++
++
++@dataclass
++class BorcAgi:
++    firmalar: dict[str, Firma] = field(default_factory=dict)
++    borclar: list[Borc] = field(default_factory=list)
++
++    # ---- kurulum ----
++    def firma_ekle(self, firma: Firma) -> None:
++        self.firmalar[firma.ad] = firma
++
++    def borc_ekle(self, borclu: str, alacakli: str, tutar: float,
++                  vade: int = 1, ucret: bool = False) -> None:
++        if borclu == alacakli or tutar <= 0:
++            return
++        for ad in (borclu, alacakli):
++            if ad not in self.firmalar:
++                raise KeyError(f"Ağda olmayan düğüm: {ad}")
++        self.borclar.append(Borc(borclu, alacakli, float(tutar), vade, ucret))
++
++    def kopya(self) -> "BorcAgi":
++        return copy.deepcopy(self)
++
++    # ---- özet büyüklükler ----
++    def matris(self) -> dict[tuple[str, str], float]:
++        """Aynı yöndeki borçları toplar: (i, j) -> L_ij."""
++        m: dict[tuple[str, str], float] = {}
++        for b in self.borclar:
++            m[(b.borclu, b.alacakli)] = m.get((b.borclu, b.alacakli), 0.0) + b.tutar
++        return m
++
++    def brut_borc(self) -> float:
++        return sum(b.tutar for b in self.borclar)
++
++    def toplam_yukumluluk(self) -> dict[str, float]:
++        out = {ad: 0.0 for ad in self.firmalar}
++        for b in self.borclar:
++            out[b.borclu] += b.tutar
++        return out
++
++    def toplam_alacak(self) -> dict[str, float]:
++        out = {ad: 0.0 for ad in self.firmalar}
++        for b in self.borclar:
++            out[b.alacakli] += b.tutar
++        return out
++
++    def net_pozisyon(self) -> dict[str, float]:
++        """Alacak - borç. Mahsuplaşma bunu DEĞİŞTİREMEZ (temel kısıt)."""
++        y, a = self.toplam_yukumluluk(), self.toplam_alacak()
++        return {ad: a[ad] - y[ad] for ad in self.firmalar}
++
++    def katmana_gore(self, katman: str) -> list[str]:
++        return [ad for ad, f in self.firmalar.items() if f.katman == katman]
+diff --git a/mahsup/mahsuplasma/mahsup.py b/mahsup/mahsuplasma/mahsup.py
+new file mode 100644
+index 0000000..21e552d
+--- /dev/null
++++ b/mahsup/mahsuplasma/mahsup.py
+@@ -0,0 +1,109 @@
++"""Çok taraflı mahsuplaşma (multilateral netting).
++
++İki yöntem:
++
++1) dongu_iptali  : Ağdaki borç döngülerini (A->B->C->A) bulur, döngünün en
++   küçük kenarı kadar her kenardan düşer. Elle yapılabilecek, şeffaf yöntem.
++   Sonuç her zaman döngüsüz bir ağdır ama küresel en iyi olmayabilir.
++
++2) optimal_mahsup: Fleischman-Dini-Littera (2020) yaklaşımı. Var olan
++   kenarlar üzerinde, her firmanın net pozisyonunu koruyarak toplam brüt
++   borcu en aza indiren minimum maliyetli akış problemi.
++
++Her iki yöntemin de değiştiremeyeceği tek şey NET POZİSYONDUR. Yani
++mahsuplaşma net borçluyu (çoğunlukla holding) borçtan kurtarmaz; yalnızca
++"kilitli" borçları siler. Modelin bütün mantığı bu kısıtın üzerine kuruludur.
++"""
++from __future__ import annotations
++
++import networkx as nx
++
++from .ag import BorcAgi, Borc
++
++_OLCEK = 100  # kuruş hassasiyeti (min-cost flow tamsayı ister)
++
++
++def _matristen_agi_kur(eski: BorcAgi, yeni_m: dict[tuple[str, str], float]) -> BorcAgi:
++    """Toplu matristeki azalmayı orijinal borç kalemlerine orantılı dağıtır.
++    Böylece vade ve ücret bilgisi korunur."""
++    eski_m = eski.matris()
++    ag = eski.kopya()
++    ag.borclar = []
++    for b in eski.borclar:
++        anahtar = (b.borclu, b.alacakli)
++        oran = yeni_m.get(anahtar, 0.0) / eski_m[anahtar] if eski_m[anahtar] else 0.0
++        kalan = b.tutar * oran
++        if kalan > 1e-9:
++            ag.borclar.append(Borc(b.borclu, b.alacakli, kalan, b.vade, b.ucret))
++    return ag
++
++
++def dongu_iptali(ag: BorcAgi) -> tuple[BorcAgi, list[dict]]:
++    """Döngüleri tek tek kapatır. İkinci çıktı, kapatılan döngülerin günlüğü
++    (teşhis için: hangi firmalar birbirini kilitliyordu?)."""
++    m = {k: v for k, v in ag.matris().items() if not _ucret_kenari(ag, k)}
++    ucret_m = {k: v for k, v in ag.matris().items() if _ucret_kenari(ag, k)}
++    G = nx.DiGraph()
++    for (i, j), v in m.items():
++        G.add_edge(i, j, w=v)
++    gunluk = []
++    while True:
++        try:
++            dongu = nx.find_cycle(G)
++        except nx.NetworkXNoCycle:
++            break
++        en_kucuk = min(G[u][v]["w"] for u, v in dongu)
++        for u, v in dongu:
++            G[u][v]["w"] -= en_kucuk
++            if G[u][v]["w"] <= 1e-9:
++                G.remove_edge(u, v)
++        gunluk.append({"dongu": [u for u, _ in dongu], "silinen": en_kucuk})
++    yeni_m = {(u, v): d["w"] for u, v, d in G.edges(data=True)}
++    yeni_m.update(ucret_m)
++    return _matristen_agi_kur(ag, yeni_m), gunluk
++
++
++def optimal_mahsup(ag: BorcAgi) -> BorcAgi:
++    """Var olan ticari ilişkiler üzerinde en fazla borcu silen çözüm.
++    Ücret borçları mahsuba sokulmaz (hane kimseye borç vermiyor)."""
++    tum = ag.matris()
++    m = {k: v for k, v in tum.items() if not _ucret_kenari(ag, k)}
++    ucret_m = {k: v for k, v in tum.items() if _ucret_kenari(ag, k)}
++
++    G = nx.DiGraph()
++    talep: dict[str, int] = {}
++    for (i, j), v in m.items():
++        kap = int(round(v * _OLCEK))
++        if kap <= 0:
++            continue
++        G.add_edge(i, j, capacity=kap, weight=1)
++        talep[i] = talep.get(i, 0) - kap
++        talep[j] = talep.get(j, 0) + kap
++    for n in G.nodes:
++        G.nodes[n]["demand"] = talep.get(n, 0)
++
++    akis = nx.min_cost_flow(G) if G.number_of_edges() else {}
++    yeni_m = {}
++    for i, hedefler in akis.items():
++        for j, x in hedefler.items():
++            if x > 0:
++                yeni_m[(i, j)] = x / _OLCEK
++    yeni_m.update(ucret_m)
++    return _matristen_agi_kur(ag, yeni_m)
++
++
++def mahsup_ozeti(once: BorcAgi, sonra: BorcAgi) -> dict:
++    b0, b1 = once.brut_borc(), sonra.brut_borc()
++    alt_sinir = sum(v for v in once.net_pozisyon().values() if v > 0)
++    return {
++        "brut_once": b0,
++        "brut_sonra": b1,
++        "silinen": b0 - b1,
++        "silinen_oran": (b0 - b1) / b0 if b0 else 0.0,
++        # Merkezi takas odası olsaydı inilebilecek teorik taban:
++        "teorik_taban": alt_sinir,
++    }
++
++
++def _ucret_kenari(ag: BorcAgi, anahtar: tuple[str, str]) -> bool:
++    return ag.firmalar[anahtar[1]].katman == "hane"
+diff --git a/mahsup/mahsuplasma/model.py b/mahsup/mahsuplasma/model.py
+new file mode 100644
+index 0000000..d523e4b
+--- /dev/null
++++ b/mahsup/mahsuplasma/model.py
+@@ -0,0 +1,164 @@
++"""Çoklu Mahsuplaşma Modeli — ana boru hattı.
++
++Zincir (önceki tartışmadaki sırayla):
++
++  1. Brüt durum      : kimse mahsuplaşmıyor, herkes sırayla ödüyor.
++  2. Mahsup          : döngüler silinir, net pozisyonlar korunur.
++  3. Akışla ödeme    : kalan borç, YUKARIDAN AŞAĞIYA nakit akışıyla ödenir.
++  4. Şart kaldıracı  : holdingin ödemesi devlet avantajlarına bağlanır
++                       (holding_odeme_orani -> 1).
++  5. Teşhis          : kilitli / batık / sağlam ayrımı; gerçek zarar.
++  6. Ücret kanalı    : serbest kalan likiditenin ücrete geçişi (beta) +
++                       asgari ücret artışı (idari kanal).
++  7. Döviz kanalı    : TL likidite açığından doğan döviz talebi azalır;
++                       ithal girdi kaynaklı talep AZALMAZ.
++
++Model bir öngörü makinesi değil, bir MEKANİZMA LABORATUVARIDIR. Sayılar
++parametrelere bağlıdır; asıl çıktı, hangi halkanın hangi koşulda koptuğudur.
++"""
++from __future__ import annotations
++
++from dataclasses import dataclass, asdict
++
++from .ag import BorcAgi
++from .mahsup import dongu_iptali, optimal_mahsup, mahsup_ozeti
++from .odeme import eisenberg_noe, sirali_odeme
++
++
++@dataclass
++class Parametreler:
++    mahsup_yontemi: str = "optimal"      # "optimal" | "dongu"
++    holding_odeme_orani: float = 0.5     # şart yokken holdingin tur başına ödediği pay
++    sart_kaldiraci: bool = True          # devlet ödemeyi avantajlara bağlıyor mu
++    ucret_gecis_beta: float = 0.3        # serbest likiditenin ücrete geçen payı (<1)
++    asgari_ucret_artisi: float = 0.0     # ücret borçlarına uygulanan oran (0.25 = %25)
++    asgari_ucret_once_mi: bool = False   # True: ücret artışı tahsilattan ÖNCE gelir
++    dovize_kacis: float = 0.4            # TL açığının dövize yönelen payı
++    doviz_tavani: float | None = None    # ikame döviz borçlanmasına tavan (firma başına)
++
++
++def _asgari_ucret_uygula(ag: BorcAgi, p: Parametreler) -> BorcAgi:
++    if p.asgari_ucret_artisi == 0:
++        return ag
++    ag = ag.kopya()
++    for b in ag.borclar:
++        if b.ucret:
++            b.tutar *= 1 + p.asgari_ucret_artisi
++            # Sıralama: artış tahsilattan önce gelirse ücret vadesi 1. tura çekilir
++            # (holding ödemesi t2'de, tahsilat t3'te nakde döner)
++            b.vade = 1 if p.asgari_ucret_once_mi else max(b.vade, 3)
++    return ag
++
++
++def teshis(ag: BorcAgi, sirali: dict, en: dict) -> dict[str, str]:
++    """Firmaları sınıflar.
++    batik   : tam koordinasyonda bile ödeyemiyor -> gerçek zarar
++    kilitli : kapasitesi var ama sıralama/gecikme yüzünden temerrüde düşüyor
++    saglam  : sorun yok
++    """
++    sinif = {}
++    for ad, f in ag.firmalar.items():
++        if f.katman == "hane":
++            continue
++        if ad in en["batik"]:
++            sinif[ad] = "batik"
++        elif ad in sirali["temerrut"]:
++            sinif[ad] = "kilitli"
++        else:
++            sinif[ad] = "saglam"
++    return sinif
++
++
++def _doviz_talebi(ag: BorcAgi, kredi: dict[str, float], p: Parametreler) -> dict:
++    ithal, ikame = 0.0, 0.0
++    for ad, f in ag.firmalar.items():
++        if f.katman == "hane":
++            continue
++        ithal += f.ithal_girdi_ihtiyaci
++        x = p.dovize_kacis * kredi.get(ad, 0.0)
++        if p.doviz_tavani is not None:
++            x = min(x, p.doviz_tavani)
++        ikame += x
++    return {"ithal_girdi": ithal, "likidite_kaynakli": ikame, "toplam": ithal + ikame}
++
++
++def _istihdam(ag: BorcAgi, sirali: dict) -> int:
++    return sum(f.calisan for ad, f in ag.firmalar.items()
++               if f.katman != "hane" and ad not in sirali["ucret_temerrut"])
++
++
++def calistir(ag: BorcAgi, p: Parametreler | None = None) -> dict:
++    p = p or Parametreler()
++    ag = _asgari_ucret_uygula(ag, p)
++
++    # 1. Brüt durum
++    brut_sirali = sirali_odeme(ag, tur=_tur(ag), holding_odeme_orani=p.holding_odeme_orani)
++    en = eisenberg_noe(ag)
++
++    # 2. Mahsup
++    if p.mahsup_yontemi == "dongu":
++        net_ag, gunluk = dongu_iptali(ag)
++    else:
++        net_ag, gunluk = optimal_mahsup(ag), []
++    ozet = mahsup_ozeti(ag, net_ag)
++
++    # 3. Akışla ödeme (şartsız)
++    net_sirali = sirali_odeme(net_ag, tur=_tur(ag), holding_odeme_orani=p.holding_odeme_orani)
++
++    # 4. Şart kaldıracı
++    oran = 1.0 if p.sart_kaldiraci else p.holding_odeme_orani
++    sartli_sirali = sirali_odeme(net_ag, tur=_tur(ag), holding_odeme_orani=oran)
++
++    # 5. Teşhis (brüt duruma göre)
++    sinif = teshis(ag, brut_sirali, en)
++    gercek_zarar = sum(v for ad, v in en["acik"].items()
++                       if ag.firmalar[ad].katman != "hane")
++
++    # 6. Ücret kanalı: aracının serbest kalan likiditesi
++    serbest = 0.0
++    for ad in ag.katmana_gore("araci"):
++        serbest += max(0.0, sartli_sirali["son_nakit"][ad] - brut_sirali["son_nakit"][ad])
++    ucret_piyasa = p.ucret_gecis_beta * serbest
++    ucret_idari = sum(b.tutar for b in ag.borclar if b.ucret) * (
++        p.asgari_ucret_artisi / (1 + p.asgari_ucret_artisi)) if p.asgari_ucret_artisi else 0.0
++
++    # 7. Döviz
++    dv_once = _doviz_talebi(ag, brut_sirali["kredi_ihtiyaci"], p)
++    dv_sonra = _doviz_talebi(ag, sartli_sirali["kredi_ihtiyaci"], p)
++
++    def asamalar(s):
++        return {
++            "temerrut_sayisi": len([a for a in s["temerrut"] if ag.firmalar[a].katman != "hane"]),
++            "ucret_temerrut_sayisi": len(s["ucret_temerrut"]),
++            "kredi_ihtiyaci": sum(s["kredi_ihtiyaci"].values()),
++            "istihdam_korunan": _istihdam(ag, s),
++            "holding_gecikmesi": s["holding_gecikmesi"],
++        }
++
++    return {
++        "parametreler": asdict(p),
++        "mahsup": ozet,
++        "dongu_gunlugu": gunluk,
++        "asamalar": {
++            "1_brut": asamalar(brut_sirali),
++            "3_mahsup_sonrasi_akis": asamalar(net_sirali),
++            "4_sart_kaldiraci": asamalar(sartli_sirali),
++        },
++        "teshis": {
++            "siniflar": sinif,
++            "kilitli": sorted(a for a, s in sinif.items() if s == "kilitli"),
++            "batik": sorted(a for a, s in sinif.items() if s == "batik"),
++            "gercek_zarar": gercek_zarar,
++        },
++        "ucret": {
++            "serbest_likidite": serbest,
++            "piyasa_kanali": ucret_piyasa,
++            "idari_kanal_asgari_ucret": ucret_idari,
++        },
++        "doviz": {"once": dv_once, "sonra": dv_sonra},
++        "toplam_istihdam": sum(f.calisan for f in ag.firmalar.values()),
++    }
++
++
++def _tur(ag: BorcAgi) -> int:
++    return max((b.vade for b in ag.borclar), default=1) + 2
+diff --git a/mahsup/mahsuplasma/odeme.py b/mahsup/mahsuplasma/odeme.py
+new file mode 100644
+index 0000000..bd647a9
+--- /dev/null
++++ b/mahsup/mahsuplasma/odeme.py
+@@ -0,0 +1,108 @@
++"""Ödeme akışı.
++
++İki farklı soru, iki farklı algoritma:
++
++eisenberg_noe   -> "Herkes aynı anda, tam koordinasyonla ödese kim batar?"
++                   Bu, ağın ÖDEME KAPASİTESİDİR. Döngüler burada sorun
++                   yaratmaz; çünkü eşzamanlı takas döngüyü kendiliğinden çözer.
++                   Burada batan firma gerçekten batıktır.
++
++sirali_odeme    -> "Herkes elindeki nakitle, vadesi gelince, 'önce alacağımı
++                   tahsil edeyim' diye beklerse ne olur?" Gerçek hayat budur.
++                   Burada batan ama yukarıda batmayan firma KİLİTLİDİR:
++                   sorun ödeme gücü değil, koordinasyon ve sıralamadır.
++
++İkisinin farkı, mahsuplaşmanın ve "akışla ödeme"nin çözebileceği alanı verir.
++"""
++from __future__ import annotations
++
++from .ag import BorcAgi
++
++
++def eisenberg_noe(ag: BorcAgi, tol: float = 1e-9, maks_iter: int = 10_000) -> dict:
++    """Eisenberg & Noe (2001) takas vektörü (en büyük sabit nokta).
++    p_i = min( L_i , e_i + sum_j Pi_ji * p_j )"""
++    L = ag.toplam_yukumluluk()
++    m = ag.matris()
++    e = {ad: f.nakit for ad, f in ag.firmalar.items()}
++    p = dict(L)
++    for _ in range(maks_iter):
++        gelen = {ad: 0.0 for ad in ag.firmalar}
++        for (i, j), lij in m.items():
++            if L[i] > 0:
++                gelen[j] += lij / L[i] * p[i]
++        yeni = {ad: min(L[ad], e[ad] + gelen[ad]) for ad in ag.firmalar}
++        fark = max(abs(yeni[k] - p[k]) for k in p) if p else 0.0
++        p = yeni
++        if fark < tol:
++            break
++    acik = {ad: L[ad] - p[ad] for ad in ag.firmalar}
++    return {
++        "odeme": p,
++        "acik": acik,
++        "batik": sorted(ad for ad, v in acik.items() if v > 1e-6),
++    }
++
++
++def sirali_odeme(ag: BorcAgi, tur: int | None = None,
++                 holding_odeme_orani: float = 1.0) -> dict:
++    """Tur tur ödeme simülasyonu.
++
++    - Her tur başında firma elindeki nakitle, vadesi gelmiş ve ödenmemiş
++      borçlarını orantılı öder.
++    - Bu turda gelen para ancak bir sonraki tura yetişir (tahsilat gecikmesi).
++    - Holdingler, nakitleri yetse bile vadesi gelen borcun yalnızca
++      `holding_odeme_orani` kadarını öder (vade uzatma davranışı).
++      Devletin "şarta bağlama" kaldıracı bu oranı 1'e çeker.
++    - Vadesinde tam ödenemeyen borç = temerrüt. Ücret borcunda temerrüt
++      ayrıca işaretlenir: aracının asıl batma anı budur.
++    """
++    if tur is None:
++        tur = max((b.vade for b in ag.borclar), default=1)
++    nakit = {ad: f.nakit for ad, f in ag.firmalar.items()}
++    kalan = [b.tutar for b in ag.borclar]
++    temerrut: dict[str, int] = {}
++    ucret_temerrut: dict[str, int] = {}
++    kredi_ihtiyaci = {ad: 0.0 for ad in ag.firmalar}
++
++    for t in range(1, tur + 1):
++        gelen = {ad: 0.0 for ad in ag.firmalar}
++        # firma bazında vadesi gelmiş borçlar
++        vadeli: dict[str, list[int]] = {}
++        for k, b in enumerate(ag.borclar):
++            if b.vade <= t and kalan[k] > 1e-12:
++                vadeli.setdefault(b.borclu, []).append(k)
++        for ad, idx in vadeli.items():
++            istenen = sum(kalan[k] for k in idx)
++            oran_ust = holding_odeme_orani if ag.firmalar[ad].katman == "holding" else 1.0
++            odenebilir = min(nakit[ad], istenen * oran_ust)
++            pay = odenebilir / istenen if istenen else 0.0
++            for k in idx:
++                o = kalan[k] * pay
++                kalan[k] -= o
++                gelen[ag.borclar[k].alacakli] += o
++            nakit[ad] -= odenebilir
++            acik = istenen - odenebilir
++            # gecikme davranışı (holding) temerrüt değil, tercih: ayrı tutulur
++            gercek_acik = istenen * oran_ust - odenebilir
++            if gercek_acik > 1e-6:
++                temerrut.setdefault(ad, t)
++                kredi_ihtiyaci[ad] = max(kredi_ihtiyaci[ad], gercek_acik)
++                if any(ag.borclar[k].ucret and kalan[k] > 1e-6 for k in idx):
++                    ucret_temerrut.setdefault(ad, t)
++            elif acik > 1e-6 and ag.firmalar[ad].katman != "holding":
++                temerrut.setdefault(ad, t)
++        for ad, v in gelen.items():
++            nakit[ad] += v
++
++    odenmemis = {ad: 0.0 for ad in ag.firmalar}
++    for k, b in enumerate(ag.borclar):
++        odenmemis[b.borclu] += kalan[k]
++    return {
++        "son_nakit": nakit,
++        "odenmemis": odenmemis,
++        "temerrut": temerrut,               # firma -> ilk temerrüt turu
++        "ucret_temerrut": ucret_temerrut,   # işçisini ödeyemeyenler
++        "kredi_ihtiyaci": kredi_ihtiyaci,   # temerrüdü önlemek için gereken köprü kredi
++        "holding_gecikmesi": sum(odenmemis[a] for a in ag.katmana_gore("holding")),
++    }
+diff --git a/mahsup/mahsuplasma/rapor.py b/mahsup/mahsuplasma/rapor.py
+new file mode 100644
+index 0000000..b69b398
+--- /dev/null
++++ b/mahsup/mahsuplasma/rapor.py
+@@ -0,0 +1,42 @@
++"""Sonuçları okunabilir Türkçe rapora çevirir."""
++from __future__ import annotations
++
++
++def _tl(x: float) -> str:
++    return f"{x:,.1f}".replace(",", "X").replace(".", ",").replace("X", ".")
++
++
++def rapor_yaz(s: dict) -> str:
++    m, a, t = s["mahsup"], s["asamalar"], s["teshis"]
++    satir = []
++    satir.append("=== ÇOKLU MAHSUPLAŞMA MODELİ ===")
++    satir.append(f"Brüt borç           : {_tl(m['brut_once'])} -> {_tl(m['brut_sonra'])}"
++                 f"  (silinen %{100*m['silinen_oran']:.1f})")
++    satir.append(f"Teorik taban        : {_tl(m['teorik_taban'])}  (net borçluların toplamı;"
++                 " mahsup buranın altına inemez)")
++    satir.append("")
++    satir.append(f"{'Aşama':<26}{'Temerrüt':>9}{'Ücret tem.':>11}{'Kredi ihtiyacı':>16}{'İstihdam':>10}")
++    for ad, k in [("1. Brüt (mahsupsuz)", "1_brut"),
++                  ("3. Mahsup + akış", "3_mahsup_sonrasi_akis"),
++                  ("4. + Şart kaldıracı", "4_sart_kaldiraci")]:
++        x = a[k]
++        satir.append(f"{ad:<26}{x['temerrut_sayisi']:>9}{x['ucret_temerrut_sayisi']:>11}"
++                     f"{_tl(x['kredi_ihtiyaci']):>16}{x['istihdam_korunan']:>10}")
++    satir.append(f"(toplam istihdam: {s['toplam_istihdam']})")
++    satir.append("")
++    satir.append("TEŞHİS")
++    satir.append(f"  Kilitli firmalar  : {len(t['kilitli'])}  (ödeme gücü var, sıra/gecikme yüzünden batıyor)")
++    satir.append(f"  Batık firmalar    : {len(t['batik'])}  {', '.join(t['batik']) or '-'}")
++    satir.append(f"  Gerçek zarar      : {_tl(t['gercek_zarar'])}")
++    u = s["ucret"]
++    satir.append("")
++    satir.append("ÜCRET KANALI")
++    satir.append(f"  Aracıda serbest kalan likidite : {_tl(u['serbest_likidite'])}")
++    satir.append(f"  Piyasa kanalı (beta ile)       : {_tl(u['piyasa_kanali'])}")
++    satir.append(f"  İdari kanal (asgari ücret)     : {_tl(u['idari_kanal_asgari_ucret'])}")
++    d = s["doviz"]
++    satir.append("")
++    satir.append("DÖVİZ TALEBİ")
++    satir.append(f"  Likidite kaynaklı : {_tl(d['once']['likidite_kaynakli'])} -> {_tl(d['sonra']['likidite_kaynakli'])}")
++    satir.append(f"  İthal girdi       : {_tl(d['once']['ithal_girdi'])} -> {_tl(d['sonra']['ithal_girdi'])}  (mahsup buna dokunmaz)")
++    return "\n".join(satir)
+diff --git a/mahsup/mahsuplasma/senaryo.py b/mahsup/mahsuplasma/senaryo.py
+new file mode 100644
+index 0000000..66e8366
+--- /dev/null
++++ b/mahsup/mahsuplasma/senaryo.py
+@@ -0,0 +1,69 @@
++"""Sentetik borç ağı üretici.
++
++UYARI: Bu veriler gerçek değildir. Gerçek uygulamada ağ e-fatura (GİB)
++verisinden kurulmalıdır. Buradaki amaç mekanizmanın davranışını görmek.
++
++Yapı (önceki tartışmadaki tipoloji):
++  - Holdingler aracılardan alım yapar ve vadeyi uzatır (vade = 2).
++  - Aracılar birbirine ve holdinglere borçludur (vade = 1) -> döngüler.
++  - Aracılar işçilerine ücret borçludur (varsayılan vade = 3: ay sonu).
++  Zaman çizelgesi: t1 aracı borçları, t2 holding ödemesi, t3 ücret.
++  Tahsilat bir tur gecikmeli nakde döner; yani t2'de holdingden gelen
++  para ancak t3'teki ücrete yetişir.
++  - Holdinglerin nakdi bol, aracılarınki kıt.
++"""
++from __future__ import annotations
++
++import random
++
++from .ag import BorcAgi, Firma
++
++
++def uc_firma_dongusu() -> BorcAgi:
++    """Ders kitabı örneği: A->B->C->A, her biri 100. Kimse net borçlu değil,
++    kimsenin nakdi yok. Mahsupsuz herkes batar; mahsupla kimse batmaz."""
++    ag = BorcAgi()
++    for ad in "ABC":
++        ag.firma_ekle(Firma(ad, "araci", nakit=0.0, calisan=10))
++    ag.borc_ekle("A", "B", 100)
++    ag.borc_ekle("B", "C", 100)
++    ag.borc_ekle("C", "A", 100)
++    return ag
++
++
++def turkiye_tipi(n_holding: int = 3, n_araci: int = 40, tohum: int = 42,
++                 ucret_vadesi: int = 3) -> BorcAgi:
++    r = random.Random(tohum)
++    ag = BorcAgi()
++    H = [f"H{i+1}" for i in range(n_holding)]
++    A = [f"A{i+1:02d}" for i in range(n_araci)]
++
++    for h in H:
++        ag.firma_ekle(Firma(h, "holding", nakit=r.uniform(800, 1500),
++                            doviz_borcu=r.uniform(300, 600),
++                            ithal_girdi_ihtiyaci=r.uniform(100, 200),
++                            calisan=r.randint(400, 900)))
++    for a in A:
++        ag.firma_ekle(Firma(a, "araci", nakit=r.uniform(20, 70),
++                            doviz_borcu=r.uniform(0, 40),
++                            ithal_girdi_ihtiyaci=r.uniform(0, 15),
++                            calisan=r.randint(5, 60)))
++        ag.firma_ekle(Firma(f"hane_{a}", "hane"))
++
++    # Holding -> aracı (geç ödenen alımlar)
++    for h in H:
++        for a in r.sample(A, k=n_araci // 2):
++            ag.borc_ekle(h, a, r.uniform(20, 80), vade=2)
++    # Aracı -> aracı (yatay ticaret, döngü kaynağı)
++    for a in A:
++        for b in r.sample([x for x in A if x != a], k=3):
++            ag.borc_ekle(a, b, r.uniform(5, 40), vade=1)
++    # Aracı -> holding (holdingden hammadde/ürün alımı)
++    for a in A:
++        ag.borc_ekle(a, r.choice(H), r.uniform(5, 30), vade=1)
++    # Aracı -> hane (ücret)
++    for a in A:
++        f = ag.firmalar[a]
++        ag.borc_ekle(a, f"hane_{a}", f.calisan * r.uniform(0.6, 1.0),
++                     vade=ucret_vadesi, ucret=True)
++    return ag
+diff --git a/mahsup/ornekler/calistir.py b/mahsup/ornekler/calistir.py
+new file mode 100644
+index 0000000..79978df
+--- /dev/null
++++ b/mahsup/ornekler/calistir.py
+@@ -0,0 +1,27 @@
++"""Örnek çalıştırma: python ornekler/calistir.py"""
++import sys, pathlib
++sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
++
++from mahsuplasma import calistir, Parametreler, rapor_yaz
++from mahsuplasma.senaryo import uc_firma_dongusu, turkiye_tipi
++
++print(">>> Senaryo 0: Üç firma döngüsü (A->B->C->A)\n")
++print(rapor_yaz(calistir(uc_firma_dongusu(), Parametreler(sart_kaldiraci=False))))
++
++print("\n\n>>> Senaryo 1: Türkiye tipi ağ, temel parametreler\n")
++print(rapor_yaz(calistir(turkiye_tipi())))
++
++print("\n\n>>> Senaryo 2: Sıralama testi — %25 asgari ücret artışı")
++for once in (False, True):
++    s = calistir(turkiye_tipi(), Parametreler(asgari_ucret_artisi=0.25, asgari_ucret_once_mi=once))
++    x = s["asamalar"]["4_sart_kaldiraci"]
++    etiket = "ÖNCE ücret, sonra tahsilat" if once else "ÖNCE tahsilat, sonra ücret"
++    print(f"  {etiket:<28}: ücretini ödeyemeyen aracı = {x['ucret_temerrut_sayisi']}, "
++          f"korunan istihdam = {x['istihdam_korunan']}")
++
++print("\n>>> Senaryo 3: Şart kaldıracının tek başına etkisi (holding ödeme oranı taraması)")
++for theta in (0.2, 0.5, 0.8, 1.0):
++    s = calistir(turkiye_tipi(), Parametreler(holding_odeme_orani=theta, sart_kaldiraci=False))
++    x = s["asamalar"]["3_mahsup_sonrasi_akis"]
++    print(f"  holding_odeme_orani={theta:.1f}: temerrüt={x['temerrut_sayisi']:>3}, "
++          f"kredi ihtiyacı={x['kredi_ihtiyaci']:>8.1f}")
+diff --git a/mahsup/pyproject.toml b/mahsup/pyproject.toml
+new file mode 100644
+index 0000000..3ff09a0
+--- /dev/null
++++ b/mahsup/pyproject.toml
+@@ -0,0 +1,16 @@
++[project]
++name = "mahsuplasma"
++version = "0.1.0"
++description = "Çoklu mahsuplaşma modeli: kilitli borç zincirlerini çözen ve gerçek zararı görünür kılan mekanizma laboratuvarı"
++requires-python = ">=3.10"
++dependencies = ["networkx>=3.0"]
++
++[project.optional-dependencies]
++test = ["pytest"]
++
++[build-system]
++requires = ["setuptools>=61"]
++build-backend = "setuptools.build_meta"
++
++[tool.setuptools]
++packages = ["mahsuplasma"]
+diff --git a/mahsup/tests/test_model.py b/mahsup/tests/test_model.py
+new file mode 100644
+index 0000000..3a7b643
+--- /dev/null
++++ b/mahsup/tests/test_model.py
+@@ -0,0 +1,67 @@
++import pytest
++from mahsuplasma import (BorcAgi, Firma, calistir, Parametreler, dongu_iptali,
++                         optimal_mahsup, eisenberg_noe, sirali_odeme)
++from mahsuplasma.senaryo import uc_firma_dongusu, turkiye_tipi
++
++
++def _yakin(a, b, tol=0.05):
++    return all(abs(a[k] - b[k]) < tol for k in a)
++
++
++@pytest.mark.parametrize("tohum", [1, 7, 42])
++def test_net_pozisyon_korunur(tohum):
++    ag = turkiye_tipi(tohum=tohum)
++    assert _yakin(ag.net_pozisyon(), optimal_mahsup(ag).net_pozisyon())
++    assert _yakin(ag.net_pozisyon(), dongu_iptali(ag)[0].net_pozisyon())
++
++
++@pytest.mark.parametrize("tohum", [1, 7, 42])
++def test_optimal_dongu_iptalinden_kotu_degil(tohum):
++    ag = turkiye_tipi(tohum=tohum)
++    assert optimal_mahsup(ag).brut_borc() <= dongu_iptali(ag)[0].brut_borc() + 0.05
++    assert optimal_mahsup(ag).brut_borc() <= ag.brut_borc()
++
++
++def test_ucret_borclari_mahsuba_girmez():
++    ag = turkiye_tipi()
++    once = sum(b.tutar for b in ag.borclar if b.ucret)
++    sonra = sum(b.tutar for b in optimal_mahsup(ag).borclar if b.ucret)
++    assert abs(once - sonra) < 1e-6
++
++
++def test_uc_firma_dongusu_tamamen_silinir():
++    ag = uc_firma_dongusu()
++    assert optimal_mahsup(ag).brut_borc() == 0
++    # mahsupsuz sıralı ödemede herkes kilitli
++    assert len(sirali_odeme(ag)["temerrut"]) == 3
++    # ama tam koordinasyonda kimse batık değil
++    assert eisenberg_noe(ag)["batik"] == []
++
++
++def test_gercek_batik_tespit_edilir():
++    ag = BorcAgi()
++    ag.firma_ekle(Firma("A", "araci", nakit=0))
++    ag.firma_ekle(Firma("B", "araci", nakit=0))
++    ag.borc_ekle("A", "B", 100)          # A'nın hiç geliri yok
++    s = calistir(ag)
++    assert s["teshis"]["batik"] == ["A"]
++    assert abs(s["teshis"]["gercek_zarar"] - 100) < 1e-6
++
++
++def test_mekanizma_temerrudu_azaltir():
++    s = calistir(turkiye_tipi())
++    a = s["asamalar"]
++    assert a["4_sart_kaldiraci"]["temerrut_sayisi"] <= a["1_brut"]["temerrut_sayisi"]
++    assert a["4_sart_kaldiraci"]["kredi_ihtiyaci"] <= a["1_brut"]["kredi_ihtiyaci"]
++
++
++def test_siralama_onemli():
++    sonra = calistir(turkiye_tipi(), Parametreler(asgari_ucret_artisi=0.25, asgari_ucret_once_mi=False))
++    once = calistir(turkiye_tipi(), Parametreler(asgari_ucret_artisi=0.25, asgari_ucret_once_mi=True))
++    k = "4_sart_kaldiraci"
++    assert once["asamalar"][k]["ucret_temerrut_sayisi"] >= sonra["asamalar"][k]["ucret_temerrut_sayisi"]
++
++
++def test_ithal_girdi_doviz_talebi_degismez():
++    d = calistir(turkiye_tipi())["doviz"]
++    assert d["once"]["ithal_girdi"] == d["sonra"]["ithal_girdi"]
+diff --git a/model/OKU.md b/model/OKU.md
+index 7ed990b..2a3a025 100644
+--- a/model/OKU.md
++++ b/model/OKU.md
+@@ -10,3 +10,5 @@ Depoya hesaplanmış değerler gitti. Excel formülü yerel dosyada duruyor; bu
+ - pasta/C1C2.csv: maaş artı yeni kredi
+ 
+ 2025 kopma payı yüzde 22,2. Özel net ile sepet farkı 2024 artı 13,6 puan, 2025 Ağustos eksi 6,6 puan.
++
++Mahsup mekanizmasının simülasyon modeli ayrı klasörde: ../mahsup/
+-- 
+2.43.0
+
