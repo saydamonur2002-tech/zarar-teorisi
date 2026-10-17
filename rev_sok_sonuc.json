@@ -3410,11 +3410,12 @@
   },
   "adim2": {
    "kosul_bozulur": true,
+   "karar": "kırılgan / koşullu yapılabilir (koşul: YP maruziyeti korunmuş ya da kurla değerlenen yükümlülük karşılanmış; firma ağı yoğun ya da merkezi takas var; köprü tesisi şok eşiğine göre boyutlanmış)",
    "kopru_lambda1_yuzde": 1,
    "temerrut_lambda1_yuzde": 3,
    "seyrek_0_25_kosulsuz": true,
    "yogunluk_1_kilit": true,
-   "neden": "Koşul, çeyreklik köprünün yayımlanmış üst ucu ve 3 kısım temerrüttür. Tablo cümlesi koşullu kalır; eşik aşılınca koşul tutmaz."
+   "neden": "Eşikler kararı kırılgan yapar. Tam ağda köprü kur %1, temerrüt kur %3; λ* üst uç %3/%4. Yoğunluk 0,25 kur yokken koşulu bozar. Kırılganlık hükmü bu kanıta dayanır (aday)."
   },
   "adim3": {
    "kosul_bozulur_stres": true,

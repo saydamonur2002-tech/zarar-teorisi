@@ -6,13 +6,25 @@
 | Adım | Karar | Temel gerekçe |
 | --- | --- | --- |
 | 1 Mahsup | koşullu yapılabilir (koşul: firma ağı yoğunluğu yüksek / merkezi takas) | Tam graf oranı 2011–2024 arasında 0,886–0,925 (kanıt, SB). Seyrek ağda 0,12–0,91 (aday, yoğunluk varsayımı). |
-| 2 Ağ/likidite | koşullu yapılabilir (koşul: çeyreklik köprü ~45–52 milyar TL, 3 kısım temerrüdü çözülür) | β etkisiz; λ* 5 çapada dar banttadır (0,89–0,92 stok, 1,02–1,05 akım). |
+| 2 Ağ/likidite | kırılgan / koşullu yapılabilir (koşul: YP maruziyeti korunmuş ya da kurla değerlenen yükümlülük karşılanmış; firma ağı yoğun ya da merkezi takas var; köprü tesisi şok eşiğine göre boyutlanmış) | Şoksuz tam ağda çeyreklik köprü ~45–52 milyar TL, temerrüt 3 (kanıt). Köprü bandı kur %1'de aşılır (55,5); temerrüt 3'ü kur %3 geçer. λ* üst uçta eşikler %3 ve %4 (kanıt). Yoğunluk 0,25, kur yok: temerrüt 4–15 (ortanca 11), köprü ortancası 3.786,8 milyar TL (kanıt). Kısım payı ve vade aday. β köprüyü değiştirmez; λ* beş çapada dar (kanıt). |
 | 3 Faiz durması | koşullu yapılabilir (koşul: κ küçük + faiz düşüş patikası; ödeyen hazne açıkça seçilir) | Transfer ΣNL=0 (kanıt). κ=1'de 2029 tutarı FG2024'ün 1,4–9,9 katı (aday). |
 | 4 Adres yönlendirme | bu veriyle karar verilemez (kredi katsayısı 0,08 ile 0,79 arasında; çift sayım düzeltildi) | Hane DİBS payı %4,6 (kanıt). Kredi tepkisi 7–10 kat belirsiz. |
 | 4.5 Birim | yapılabilir (etkisiz: plasebo) | 898,3 = A17 Emisyon (kanıt). |
 | 5 Kira | yapılabilir (H içi transfer; tutar bandı geniş) | N doğrulandı; kiracı oranı TÜİK fert %27 (hane bazlı yok). |
 
-Ayrıntı: rev_adim{1,2,3,4,45}_sonuc.json, adim5_kira_aralik.csv.
+Ayrıntı: rev_adim{1,2,3,4,45}_sonuc.json, adim5_kira_aralik.csv, rev_sok_sonuc.json.
+
+## Zincir kararı
+
+Zincir, adımların en sıkı koşuluna bağlıdır. Adım 2 kırılgandır; aşağıdaki koşullar tutmadan zincir yapılabilir sayılmaz.
+
+- Adım 1. Firma ağı yoğun ya da merkezi takas var. Seyrek bant 0,12–0,91 (aday, yoğunluk).
+- Adım 2. Üç koşul birden: YP maruziyeti korunmuş ya da kurla değerlenen yükümlülük karşılanmış; firma ağı yoğun ya da merkezi takas var; köprü tesisi şok eşiğine göre boyutlanmış. Eşikler kanıttır (`rev_sok`): tam ağ λ=1'de köprü kur %1'de 52,4'ün üstüne çıkar (55,5), temerrüt kur %3'te 3'ü geçer; λ* üst uçta eşikler %3 ve %4'tür. Yoğunluk 0,25, kur şoku yokken temerrüt 4–15 (ortanca 11), köprü ortancası 3.786,8 milyar TL. Kısım payı ve vadenin bu çeyrekte istenmesi adaydır.
+- Adım 3. κ küçük, faiz düşüş patikasında; ödeyen hazne seçili.
+- Adım 4. Bu veriyle karar yok.
+- Adım 4.5 ve 5. Kendi satırlarındaki anlamda yapılabilir. Adım 2 koşullarını gevşetmez.
+
+Zincir kararı: kırılgan / koşullu yapılabilir.
 
 ## Şok testleri
 
@@ -34,4 +46,4 @@ Seyrek ağ Adım 2'de koşulur: Adım 1 ile aynı kenar maskesi ve `rev_adim1.ra
 
 Birleşik stres (kur %30, faiz %55, azami büyüme): κ=1 için 2029 faizi 32.568,5 milyar TL, FG2024'ün 10,36 katı, 2029 GSYH'sinin %23,07'i; 2031'de 81.318,5 (%45,43). κ=0,25'te 2029 8.142,1 (%5,77), FG katı 2,59. κ=1 ve azami büyüme, kur sıfırken FG katı yayımlanmış üst uçtur (9,93). Bu uç, kur %1 iken aşılır.
 
-Karar cümleleri tabloda durur; bu şoklar onları 'yapılamaz' diye yeniden yazmaz. Adım 2'nin koşulu tam ağda kur eşiğinde, seyrek ağda kur olmadan bozulur. Adım 3'ün koşulu (küçük κ ve düşüş patikası) birleşik streste tutmaz; κ=1 tavan hücresi kur eşiğinde yayımlanmış FG bandının dışına çıkar. Adım 1 kararı zaten yoğunluğa bağlıdır. Adım 4, 4.5 ve 5 için bu şokların kanalı yoktur.
+Adım 2 kararı tabloda ve zincir koşul listesinde güncellendi: kırılgan / koşullu yapılabilir. Koşul: YP maruziyeti korunmuş ya da kurla değerlenen yükümlülük karşılanmış; firma ağı yoğun ya da merkezi takas var; köprü tesisi şok eşiğine göre boyutlanmış. Tam ağda köprü kur %1, temerrüt kur %3; λ* üst uç %3/%4 (kanıt). Yoğunluk 0,25, kur yokken temerrüt 4–15 (ortanca 11), köprü ortancası 3.786,8 (kanıt). Kırılganlık hükmü bu eşiklere dayanır (aday). Adım 3'ün koşulu (küçük κ ve düşüş patikası) birleşik streste tutmaz; o satırın karar cümlesi değişmedi. Adım 1 kararı zaten yoğunluğa bağlıdır. Adım 4, 4.5 ve 5 için bu şokların kanalı yoktur.

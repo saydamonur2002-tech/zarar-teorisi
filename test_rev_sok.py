@@ -93,5 +93,10 @@ def test_seyrek_yogunluk_ve_esik():
     k1 = s["stres"]["hucre"]["k1"]
     assert k1["oran_FG_2029"] > s["girdi"]["fg_ust_yayin"]
     assert s["karar"]["adim2"]["kosul_bozulur"] is True
+    assert s["karar"]["adim2"]["karar"].startswith("kırılgan / koşullu yapılabilir")
     assert s["karar"]["adim4"]["kanal"] is False
-    assert "## Şok testleri" in (K / "YAPILABILIRLIK.md").read_text(encoding="utf-8")
+    md = (K / "YAPILABILIRLIK.md").read_text(encoding="utf-8")
+    assert s["karar"]["adim2"]["karar"] in md
+    assert "Zincir kararı: kırılgan / koşullu yapılabilir." in md
+    assert "3 kısım temerrüdü çözülür" not in md
+    assert "## Şok testleri" in md

@@ -319,11 +319,12 @@ def _karar(esik, seyrek, stres, girdi, faiz_esik, tavan) -> dict:
         "adim1": {"cevirme": False,
                   "neden": "Karar zaten yoğunluğa koşullu. Kur ve stok büyümesi Adım 1 mahsup oranına girmez."},
         "adim2": {"kosul_bozulur": True,
+                  "karar": "kırılgan / koşullu yapılabilir (koşul: YP maruziyeti korunmuş ya da kurla değerlenen yükümlülük karşılanmış; firma ağı yoğun ya da merkezi takas var; köprü tesisi şok eşiğine göre boyutlanmış)",
                   "kopru_lambda1_yuzde": esik["olcum"]["kopru_yuzde"],
                   "temerrut_lambda1_yuzde": esik["olcum"]["temerrut_yuzde"],
                   "seyrek_0_25_kosulsuz": s25["temerrut_min"] > 3 or s25["kredi_min"] > girdi["kopru_kilit"][0]["kredi"] + 0.05,
                   "yogunluk_1_kilit": s1["temerrut_medyan"] == 3 and abs(s1["kredi_medyan"] - girdi["kopru_kilit"][0]["kredi"]) < 0.05,
-                  "neden": "Koşul, çeyreklik köprünün yayımlanmış üst ucu ve 3 kısım temerrüttür. Tablo cümlesi koşullu kalır; eşik aşılınca koşul tutmaz."},
+                  "neden": "Eşikler kararı kırılgan yapar. Tam ağda köprü kur %1, temerrüt kur %3; λ* üst uç %3/%4. Yoğunluk 0,25 kur yokken koşulu bozar. Kırılganlık hükmü bu kanıta dayanır (aday)."},
         "adim3": {"kosul_bozulur_stres": True,
                   "faiz_fg_ust_yuzde": faiz_esik,
                   "stres_k1_oran_FG": k1["oran_FG_2029"],
@@ -403,9 +404,14 @@ def _bolum(s: dict) -> str:
          f"κ=0,25'te 2029 {_tr(st['k025']['I_2029'])} (%{_tr(st['k025']['pay_2029'], 2)}), FG katı {_tr(st['k025']['oran_FG_2029'], 2)}. "
          f"κ=1 ve azami büyüme, kur sıfırken FG katı yayımlanmış üst uçtur ({_tr(s['stres']['k1_delta0_oran_FG'], 2)}). "
          f"Bu uç, kur %{_tr(s['esik_faiz_fg_ust_yuzde'], 0)} iken aşılır.", "",
-         "Karar cümleleri tabloda durur; bu şoklar onları 'yapılamaz' diye yeniden yazmaz. "
-         "Adım 2'nin koşulu tam ağda kur eşiğinde, seyrek ağda kur olmadan bozulur. "
-         "Adım 3'ün koşulu (küçük κ ve düşüş patikası) birleşik streste tutmaz; κ=1 tavan hücresi kur eşiğinde yayımlanmış FG bandının dışına çıkar. "
+         "Adım 2 kararı tabloda ve zincir koşul listesinde güncellendi: kırılgan / koşullu yapılabilir. "
+         "Koşul: YP maruziyeti korunmuş ya da kurla değerlenen yükümlülük karşılanmış; firma ağı yoğun ya da merkezi takas var; "
+         f"köprü tesisi şok eşiğine göre boyutlanmış. Tam ağda köprü kur %{_tr(e['kopru_yuzde'], 0)}, temerrüt kur %{_tr(e['temerrut_yuzde'], 0)}; "
+         f"λ* üst uç %{_tr(em['kopru_yuzde'], 0)}/%{_tr(em['temerrut_yuzde'], 0)} (kanıt). "
+         f"Yoğunluk 0,25, kur yokken temerrüt {sy[0.25]['temerrut_min']}–{sy[0.25]['temerrut_max']} "
+         f"(ortanca {sy[0.25]['temerrut_medyan']}), köprü ortancası {_tr(sy[0.25]['kredi_medyan'])} (kanıt). "
+         "Kırılganlık hükmü bu eşiklere dayanır (aday). "
+         "Adım 3'ün koşulu (küçük κ ve düşüş patikası) birleşik streste tutmaz; o satırın karar cümlesi değişmedi. "
          "Adım 1 kararı zaten yoğunluğa bağlıdır. Adım 4, 4.5 ve 5 için bu şokların kanalı yoktur.", ""]
     return "\n".join(L)
 
