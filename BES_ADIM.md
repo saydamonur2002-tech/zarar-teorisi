@@ -42,7 +42,7 @@ Adım dosyalarına ve kapılara yazılmaz; etiketiyle okunur. Harita: `GIRDI_HAR
 | 3 | `adim3_faiz_durma_sonuc.json` | `adim3_faiz_durma.py` | ψ etkin faiz payı: 0.3584 | `olcum_turevi` |
 | 4 | `adim4_adres_yonlendirme_sonuc.json` | `adim4_adres_yonlendirme.py` | adres toplamı milyar: 19361.9 | `olcum` |
 | kapı | `gecis_payi_band_sonuc.json` | `gecis_payi_band.py` | geçiş payı nokta tahmini: 0.9389 | `tahmin_ols` |
-| 5 | `adim5_kira_sonuc.json` | `adim5_kira.py` | birim kira TL/m²/ay: 258.45 | `olcum` |
+| 5 | `adim5_kira_sonuc.json` | `adim5_kira.py` | birim kira TL/m²/ay: 275.37 | `olcum` |
 
 ## Maliyet ve yürütme maliyeti
 

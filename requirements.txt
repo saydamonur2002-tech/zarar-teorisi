@@ -7,3 +7,4 @@ matplotlib
 python-docx
 xlrd
 pytest
+pdfplumber

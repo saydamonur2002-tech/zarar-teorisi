@@ -63,21 +63,21 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 
 ## Adım 5: kira
 
-- **maliyet: Ho→Ha transferi, kapsama %20**: 51.6 – 160.2 milyar TL/yıl (`band_varsayim`). H içi aktarım; H toplam NL 0.
-- **maliyet: Ho→Ha transferi, kapsama %50**: 129.1 – 400.6 milyar TL/yıl (`band_varsayim`).
-- **maliyet: Ho→Ha transferi, kapsama %100**: 258.2 – 801.1 milyar TL/yıl (`band_varsayim`).
-- **yürütme ρ=0.4% (alt), kapsama %20**: 0.2 – 0.6 milyar TL/yıl (`modellendi_band`). Transfer × ρ.
-- **yürütme ρ=9% (orta), kapsama %20**: 4.6 – 14.4 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=25% (pilot payı), kapsama %20**: 12.9 – 40.0 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=29% (üst), kapsama %20**: 15.0 – 46.5 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=0.4% (alt), kapsama %50**: 0.5 – 1.6 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=9% (orta), kapsama %50**: 11.6 – 36.1 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=25% (pilot payı), kapsama %50**: 32.3 – 100.2 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=29% (üst), kapsama %50**: 37.4 – 116.2 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=0.4% (alt), kapsama %100**: 1.0 – 3.2 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=9% (orta), kapsama %100**: 23.2 – 72.1 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=25% (pilot payı), kapsama %100**: 64.5 – 200.3 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=29% (üst), kapsama %100**: 74.9 – 232.3 milyar TL/yıl (`modellendi_band`).
+- **maliyet: Ho→Ha transferi, kapsama %20**: 75.8 – 195.6 milyar TL/yıl (`band_varsayim`). H içi aktarım; H toplam NL 0.
+- **maliyet: Ho→Ha transferi, kapsama %50**: 189.4 – 489.0 milyar TL/yıl (`band_varsayim`).
+- **maliyet: Ho→Ha transferi, kapsama %100**: 378.8 – 978.0 milyar TL/yıl (`band_varsayim`).
+- **yürütme ρ=0.4% (alt), kapsama %20**: 0.3 – 0.8 milyar TL/yıl (`modellendi_band`). Transfer × ρ.
+- **yürütme ρ=9% (orta), kapsama %20**: 6.8 – 17.6 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), kapsama %20**: 18.9 – 48.9 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=29% (üst), kapsama %20**: 22.0 – 56.7 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=0.4% (alt), kapsama %50**: 0.8 – 2.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=9% (orta), kapsama %50**: 17.0 – 44.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), kapsama %50**: 47.4 – 122.2 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=29% (üst), kapsama %50**: 54.9 – 141.8 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=0.4% (alt), kapsama %100**: 1.5 – 3.9 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=9% (orta), kapsama %100**: 34.1 – 88.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), kapsama %100**: 94.7 – 244.5 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=29% (üst), kapsama %100**: 109.9 – 283.6 milyar TL/yıl (`modellendi_band`).
 
 ## Ne denmez
 

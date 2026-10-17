@@ -38,7 +38,7 @@
       "H": 256.21,
       "F": 1445.96,
       "B": 1598.88,
-      "K": 1048.0
+      "K": 1152.8
     }
   },
   "satirlar": [
@@ -91,12 +91,12 @@
       "senaryo": "mevcut",
       "aktor": "K",
       "durum": "senaryo",
-      "rant_gelir_yillik_baseline_milyar": 1048.0,
+      "rant_gelir_yillik_baseline_milyar": 1152.8,
       "rant_kayip_ufuk_milyar": 0.0,
-      "rant_gelir_yillik_sonra_milyar": 1048.0,
-      "faaliyet_proxy_milyar": 6952.0,
-      "kar_amorti_yuzde_once": 13.1,
-      "kar_amorti_yuzde_sonra": 13.1,
+      "rant_gelir_yillik_sonra_milyar": 1152.8,
+      "faaliyet_proxy_milyar": 6847.2,
+      "kar_amorti_yuzde_once": 14.41,
+      "kar_amorti_yuzde_sonra": 14.41,
       "kar_amorti_dusus_puan": 0.0,
       "rant_direnci_yuzde": 0.0,
       "payda_NFP_delta_milyar": 0.0,
@@ -121,7 +121,7 @@
       "kar_amorti_yuzde_sonra": 9.19,
       "kar_amorti_dusus_puan": 0.8,
       "rant_direnci_yuzde": 2.12,
-      "payda_NFP_delta_milyar": 5371.8,
+      "payda_NFP_delta_milyar": 5371.4,
       "finansman_faaliyet_ref_F": ""
     },
     {
@@ -136,7 +136,7 @@
       "kar_amorti_yuzde_sonra": 27.37,
       "kar_amorti_dusus_puan": 0.48,
       "rant_direnci_yuzde": 0.88,
-      "payda_NFP_delta_milyar": -19311.8,
+      "payda_NFP_delta_milyar": -19311.6,
       "finansman_faaliyet_ref_F": 0.839
     },
     {
@@ -151,19 +151,19 @@
       "kar_amorti_yuzde_sonra": 73.78,
       "kar_amorti_dusus_puan": 0.29,
       "rant_direnci_yuzde": 1.49,
-      "payda_NFP_delta_milyar": -967.8,
+      "payda_NFP_delta_milyar": -968.2,
       "finansman_faaliyet_ref_F": ""
     },
     {
       "senaryo": "uc_kural_kilitli",
       "aktor": "K",
       "durum": "senaryo",
-      "rant_gelir_yillik_baseline_milyar": 1048.0,
+      "rant_gelir_yillik_baseline_milyar": 1152.8,
       "rant_kayip_ufuk_milyar": 17.03,
-      "rant_gelir_yillik_sonra_milyar": 1044.59,
-      "faaliyet_proxy_milyar": 6952.0,
-      "kar_amorti_yuzde_once": 13.1,
-      "kar_amorti_yuzde_sonra": 13.06,
+      "rant_gelir_yillik_sonra_milyar": 1149.39,
+      "faaliyet_proxy_milyar": 6847.2,
+      "kar_amorti_yuzde_once": 14.41,
+      "kar_amorti_yuzde_sonra": 14.37,
       "kar_amorti_dusus_puan": 0.04,
       "rant_direnci_yuzde": 0.29,
       "payda_NFP_delta_milyar": 5909.4,
@@ -188,7 +188,7 @@
       "kar_amorti_yuzde_sonra": 7.91,
       "kar_amorti_dusus_puan": 2.08,
       "rant_direnci_yuzde": 22.64,
-      "payda_NFP_delta_milyar": 759.4,
+      "payda_NFP_delta_milyar": 759.2,
       "finansman_faaliyet_ref_F": ""
     },
     {
@@ -203,7 +203,7 @@
       "kar_amorti_yuzde_sonra": 27.64,
       "kar_amorti_dusus_puan": 0.21,
       "rant_direnci_yuzde": 1.03,
-      "payda_NFP_delta_milyar": 1211.1,
+      "payda_NFP_delta_milyar": 1211.2,
       "finansman_faaliyet_ref_F": 0.839
     },
     {
@@ -218,21 +218,21 @@
       "kar_amorti_yuzde_sonra": 73.95,
       "kar_amorti_dusus_puan": 0.12,
       "rant_direnci_yuzde": 0.66,
-      "payda_NFP_delta_milyar": 22.0,
+      "payda_NFP_delta_milyar": 21.9,
       "finansman_faaliyet_ref_F": ""
     },
     {
       "senaryo": "maliyet_ucuz_revize",
       "aktor": "K",
       "durum": "senaryo",
-      "rant_gelir_yillik_baseline_milyar": 1048.0,
+      "rant_gelir_yillik_baseline_milyar": 1152.8,
       "rant_kayip_ufuk_milyar": 86.23,
-      "rant_gelir_yillik_sonra_milyar": 1030.75,
-      "faaliyet_proxy_milyar": 6952.0,
-      "kar_amorti_yuzde_once": 13.1,
-      "kar_amorti_yuzde_sonra": 12.91,
-      "kar_amorti_dusus_puan": 0.19,
-      "rant_direnci_yuzde": 1.65,
+      "rant_gelir_yillik_sonra_milyar": 1135.55,
+      "faaliyet_proxy_milyar": 6847.2,
+      "kar_amorti_yuzde_once": 14.41,
+      "kar_amorti_yuzde_sonra": 14.23,
+      "kar_amorti_dusus_puan": 0.18,
+      "rant_direnci_yuzde": 1.5,
       "payda_NFP_delta_milyar": -20.4,
       "finansman_faaliyet_ref_F": ""
     },
@@ -240,7 +240,7 @@
       "senaryo": "maliyet_ucuz_revize",
       "aktor": "TOPLAM",
       "durum": "senaryo",
-      "rant_direnci_yuzde": 9.66,
+      "rant_direnci_yuzde": 9.65,
       "agirlik_not": "H40 F30 B20 K10 varsayılan"
     }
   ],
@@ -249,63 +249,63 @@
       "ho_varlik_payi": 0.7,
       "kira_elastikiyet": 0.8,
       "H_rant_direnci": 29.73,
-      "toplam_rant_direnci": 12.5,
+      "toplam_rant_direnci": 12.48,
       "H_amorti_dusus_puan": 2.18
     },
     {
       "ho_varlik_payi": 0.7,
       "kira_elastikiyet": 1.0,
       "H_rant_direnci": 25.14,
-      "toplam_rant_direnci": 10.66,
+      "toplam_rant_direnci": 10.65,
       "H_amorti_dusus_puan": 2.13
     },
     {
       "ho_varlik_payi": 0.7,
       "kira_elastikiyet": 1.2,
       "H_rant_direnci": 21.77,
-      "toplam_rant_direnci": 9.31,
+      "toplam_rant_direnci": 9.3,
       "H_amorti_dusus_puan": 2.07
     },
     {
       "ho_varlik_payi": 0.8,
       "kira_elastikiyet": 0.8,
       "H_rant_direnci": 26.92,
-      "toplam_rant_direnci": 11.37,
+      "toplam_rant_direnci": 11.36,
       "H_amorti_dusus_puan": 2.15
     },
     {
       "ho_varlik_payi": 0.8,
       "kira_elastikiyet": 1.0,
       "H_rant_direnci": 22.64,
-      "toplam_rant_direnci": 9.66,
+      "toplam_rant_direnci": 9.65,
       "H_amorti_dusus_puan": 2.08
     },
     {
       "ho_varlik_payi": 0.8,
       "kira_elastikiyet": 1.2,
       "H_rant_direnci": 19.53,
-      "toplam_rant_direnci": 8.42,
+      "toplam_rant_direnci": 8.4,
       "H_amorti_dusus_puan": 2.02
     },
     {
       "ho_varlik_payi": 0.9,
       "kira_elastikiyet": 0.8,
       "H_rant_direnci": 24.59,
-      "toplam_rant_direnci": 10.44,
+      "toplam_rant_direnci": 10.43,
       "H_amorti_dusus_puan": 2.12
     },
     {
       "ho_varlik_payi": 0.9,
       "kira_elastikiyet": 1.0,
       "H_rant_direnci": 20.59,
-      "toplam_rant_direnci": 8.84,
+      "toplam_rant_direnci": 8.83,
       "H_amorti_dusus_puan": 2.04
     },
     {
       "ho_varlik_payi": 0.9,
       "kira_elastikiyet": 1.2,
       "H_rant_direnci": 17.71,
-      "toplam_rant_direnci": 7.69,
+      "toplam_rant_direnci": 7.68,
       "H_amorti_dusus_puan": 1.97
     }
   ]
