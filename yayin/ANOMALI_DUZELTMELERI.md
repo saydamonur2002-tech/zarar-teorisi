@@ -4,7 +4,7 @@
 
 **Etiket.** **Kanıt:** dosyadaki formülün yeniden hesabı veya dosyadaki ölçülmüş satır. **Aday:** yıl uyumsuz köprü, yeniden kurulumun kendi defter tanımı, ya da φ=1’in ticaret dışı kanalı dışarıda bırakması.
 
-**Commit.** `COMMIT_SHA_BURAYA` (`cursor/phi-referans-duyarlilik-d2fe`). PR #33 birleştirilmedi.
+**Commit.** `a1fec7d3ca2f3f4d3310bcfafe7caffd4cad37bc` (`cursor/phi-referans-duyarlilik-d2fe`). PR #33 birleştirilmedi.
 
 **Test.** Depo pytest: 130 geçti (kök 30, `hekis_model` ve `mahsup` 100). Etki paketi (`yayin/etki-cephesi-model.zip`, `_incoming` çalışma kopyasına bağlanarak): 77 geçti, 1 kaldı. Kalan `test_simulate_toplami_korur`: `akis_model.simulate` toplamı 1e9 şokta 104894 sapar, tolerans 1e5. Bu test defteri ve Balkan maliyetini okumaz. Zip `_incoming` taşımaz; bağ olmadan aynı test dosyayı bulamaz.
 
