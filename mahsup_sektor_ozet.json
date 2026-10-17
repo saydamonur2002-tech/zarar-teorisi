@@ -10,16 +10,16 @@
   "donem_ozet": [
     {
       "donem": "2025-Q4",
-      "brut_once_trilyon_ay": 2.899699252881205,
-      "brut_sonra_trilyon_ay": 1.68,
-      "silinen_oran": 0.42062957103888793,
+      "brut_once_trilyon_ay": 2.9300888521618984,
+      "brut_sonra_trilyon_ay": 1.71,
+      "silinen_oran": 0.4163999502136886,
       "en_cok_silinen_sektor": "B"
     },
     {
       "donem": "2026-Q1",
-      "brut_once_trilyon_ay": 3.0876847912349548,
-      "brut_sonra_trilyon_ay": 1.77,
-      "silinen_oran": 0.4267549572985822,
+      "brut_once_trilyon_ay": 3.1602224867923003,
+      "brut_sonra_trilyon_ay": 1.83,
+      "silinen_oran": 0.42092684687605875,
       "en_cok_silinen_sektor": "B"
     }
   ],
@@ -27,14 +27,14 @@
     {
       "sektor": "B",
       "sektor_ad": "Bankalar (TCMB ayrılmış)",
-      "silinen_cikis": 0.4245990008655917,
-      "silinen_cikis_oran": 0.9550156433976191
+      "silinen_cikis": 0.44713669642293713,
+      "silinen_cikis_oran": 0.8646392714263098
     },
     {
       "sektor": "F",
       "sektor_ad": "Finansal olmayan kuruluşlar",
-      "silinen_cikis": 0.30245210489413976,
-      "silinen_cikis_oran": 0.18084350757134768
+      "silinen_cikis": 0.2924521048941402,
+      "silinen_cikis_oran": 0.1748642631010658
     },
     {
       "sektor": "D",
@@ -45,14 +45,14 @@
     {
       "sektor": "K",
       "sektor_ad": "Bankacılık dışı finansal",
-      "silinen_cikis": 0.245437136300955,
+      "silinen_cikis": 0.24543713630095498,
       "silinen_cikis_oran": 1.0
     },
     {
       "sektor": "H",
       "sektor_ad": "Hane (+NPISH)",
-      "silinen_cikis": 0.08950864918479995,
-      "silinen_cikis_oran": 0.1906432380749797
+      "silinen_cikis": 0.0895086491848,
+      "silinen_cikis_oran": 0.19064323807497985
     }
   ]
 }

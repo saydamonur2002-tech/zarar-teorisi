@@ -29,7 +29,7 @@ Faiz yükünün faaliyet kârını ne kadar yediği. Senaryo maliyet/kar ile **k
 
 ## Duyarlılık özeti
 
-- yaşam düşüş `0.03`: maliyet/kar=12.16, Δkapsama=0.244
+- yaşam düşüş `0.03`: maliyet/kar=12.15, Δkapsama=0.244
 - yaşam düşüş `0.04`: maliyet/kar=10.87, Δkapsama=0.287
 - yaşam düşüş `0.05`: maliyet/kar=9.86, Δkapsama=0.323
 

@@ -25,18 +25,18 @@
 4.5,fayda,plasebo,0,0,milyar TL,adim45_maliyet.py,"TL bileşen payları λ'dan bağımsız (aritmetik gereği); repo tanımı: ADIM45_BIRIM.md, λ=1 parite."
 4.5,yürütme A: basım + yazılım,modellendi_band,0.59,5.40,"milyar TL (tek sefer, 2030 penceresi)",adim45_maliyet.py,"Basım ≈ 10 milyon $ × 49,1274 (sabit çapa) + kurum başı yazılım 20-100 bin $ × N (100-1.000, varsayım)."
 4.5,"yürütme B: tam yeni birim (GSYH %0,3-1,0), üst referans",modellendi_band,189.7,632.4,milyar TL (tek sefer),adim45_maliyet.py,"GSYH 2025 63,240.5 milyar TL (tavan_akis.csv); aralık ikincil kaynak."
-5,"maliyet: Ho→Ha transferi, kapsama %20",band_varsayim,75.8,195.6,milyar TL/yıl,adim5_kira_aralik.csv,H içi aktarım; H toplam NL 0.
-5,"maliyet: Ho→Ha transferi, kapsama %50",band_varsayim,189.4,489.0,milyar TL/yıl,adim5_kira_aralik.csv,
-5,"maliyet: Ho→Ha transferi, kapsama %100",band_varsayim,378.8,978.0,milyar TL/yıl,adim5_kira_aralik.csv,
+5,"maliyet: Ho→Ha transferi, kapsama %20",band_varsayim,77.4,199.9,milyar TL/yıl,adim5_kira_aralik.csv,H içi aktarım; H toplam NL 0.
+5,"maliyet: Ho→Ha transferi, kapsama %50",band_varsayim,193.6,499.7,milyar TL/yıl,adim5_kira_aralik.csv,
+5,"maliyet: Ho→Ha transferi, kapsama %100",band_varsayim,387.1,999.4,milyar TL/yıl,adim5_kira_aralik.csv,
 5,"yürütme ρ=0.4% (alt), kapsama %20",modellendi_band,0.3,0.8,milyar TL/yıl,yurutme_maliyet.py,Transfer × ρ.
-5,"yürütme ρ=9% (orta), kapsama %20",modellendi_band,6.8,17.6,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=25% (pilot payı), kapsama %20",modellendi_band,18.9,48.9,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=29% (üst), kapsama %20",modellendi_band,22.0,56.7,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=9% (orta), kapsama %20",modellendi_band,7.0,18.0,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=25% (pilot payı), kapsama %20",modellendi_band,19.4,50.0,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=29% (üst), kapsama %20",modellendi_band,22.4,58.0,milyar TL/yıl,yurutme_maliyet.py,
 5,"yürütme ρ=0.4% (alt), kapsama %50",modellendi_band,0.8,2.0,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=9% (orta), kapsama %50",modellendi_band,17.0,44.0,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=25% (pilot payı), kapsama %50",modellendi_band,47.4,122.2,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=29% (üst), kapsama %50",modellendi_band,54.9,141.8,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=0.4% (alt), kapsama %100",modellendi_band,1.5,3.9,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=9% (orta), kapsama %100",modellendi_band,34.1,88.0,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=25% (pilot payı), kapsama %100",modellendi_band,94.7,244.5,milyar TL/yıl,yurutme_maliyet.py,
-5,"yürütme ρ=29% (üst), kapsama %100",modellendi_band,109.9,283.6,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=9% (orta), kapsama %50",modellendi_band,17.4,45.0,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=25% (pilot payı), kapsama %50",modellendi_band,48.4,124.9,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=29% (üst), kapsama %50",modellendi_band,56.1,144.9,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=0.4% (alt), kapsama %100",modellendi_band,1.5,4.0,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=9% (orta), kapsama %100",modellendi_band,34.8,89.9,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=25% (pilot payı), kapsama %100",modellendi_band,96.8,249.8,milyar TL/yıl,yurutme_maliyet.py,
+5,"yürütme ρ=29% (üst), kapsama %100",modellendi_band,112.3,289.8,milyar TL/yıl,yurutme_maliyet.py,
