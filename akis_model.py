@@ -155,10 +155,29 @@ def Lm(A, Y):
 
 
 # ------------------------------------------------------------------ simülatör
+# CSV 4 ondalığa yuvarlanır (L_v2, G_v2). Beş payın yuvarlama artığı satır toplamını 1'den en çok ~2.5e-4 kaydırır.
+# Bunun üstündeki sapma yuvarlama değil, eksik satırdır (ör. L_cift e0<1); o satır ölçeklenmez.
+_SATIR_YUVARLAMA = 5e-4
+
+
+def _stokastik_satir(row, atla=None):
+    """Dağıtım payları. Köşegen (atla) karşı taraf değildir. Toplam 1'e yakınsa 1'e çekilir;
+    böylece yuvarlanmış matris şok toplamını düşürmez."""
+    w = np.asarray(row, float).copy()
+    if atla is not None:
+        w[atla] = 0.0
+    s = w.sum()
+    if s > 0.0 and abs(s - 1.0) <= _SATIR_YUVARLAMA:
+        w /= s
+    return w
+
+
 def simulate(L, G, nfp, x, lam=0.5, kappa=0.1, hops=80):
     """x: sektör sonuç vektörü (+kâr, -zarar, bin TL). Zarar L ile, kâr G ile yayılır.
     Her adımda zararın yerleşik alacaklıya geçen kısmı lam, (1-lam) tamponda emilir; kendi payı
-    min(1, kappa*max(NFP_j,0)/|x_j|) kadarı sahibinde kalır. Dönüş: sektör etkisi (bin TL), D payı."""
+    min(1, kappa*max(NFP_j,0)/|x_j|) kadarı sahibinde kalır. L ve G satırları stokastik kabul edilir;
+    4 ondalık yuvarlamanın 1'den küçük artığı paylara oranlanır, toplam x korunur.
+    Dönüş: sektör etkisi (bin TL), D payı."""
     nfp = np.asarray(nfp, float)
     x = np.asarray(x, float)
     impact = np.zeros(5)
@@ -172,17 +191,19 @@ def simulate(L, G, nfp, x, lam=0.5, kappa=0.1, hops=80):
                 own = min(1.0, kappa * max(nfp[j], 0) / abs(cur[j])) if h == 0 else 0.0
                 impact[j] += own * cur[j]
                 rest = (1 - own) * cur[j]
+                w = _stokastik_satir(L[j], atla=j)
                 for i in range(5):
-                    if i == j or L[j, i] == 0:
+                    if w[i] == 0:
                         continue
                     if i == IDX["D"]:
-                        impact[i] += L[j, i] * rest  # D soğurucu
+                        impact[i] += w[i] * rest  # D soğurucu
                     else:
-                        nxt[i] += lam * L[j, i] * rest
-                        impact[i] += (1 - lam) * L[j, i] * rest
+                        nxt[i] += lam * w[i] * rest
+                        impact[i] += (1 - lam) * w[i] * rest
             else:  # kâr: sahiplerine
+                gw = _stokastik_satir(G[j])
                 for i in range(5):
-                    impact[i] += G[j, i] * cur[j]
+                    impact[i] += gw[i] * cur[j]
         cur = nxt
     return impact
 

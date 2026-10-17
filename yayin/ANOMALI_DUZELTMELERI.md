@@ -6,7 +6,7 @@
 
 **Commit.** `a1fec7d3ca2f3f4d3310bcfafe7caffd4cad37bc` (`cursor/phi-referans-duyarlilik-d2fe`). PR #33 birleştirilmedi.
 
-**Test.** Depo pytest: 130 geçti (kök 30, `hekis_model` ve `mahsup` 100). Etki paketi (`yayin/etki-cephesi-model.zip`, `_incoming` çalışma kopyasına bağlanarak): 77 geçti, 1 kaldı. Kalan `test_simulate_toplami_korur`: `akis_model.simulate` toplamı 1e9 şokta 104894 sapar, tolerans 1e5. Bu test defteri ve Balkan maliyetini okumaz. Zip `_incoming` taşımaz; bağ olmadan aynı test dosyayı bulamaz.
+**Test.** Depo pytest: 130 geçti (kök 30, `hekis_model` ve `mahsup` 100). Etki paketi (`yayin/etki-cephesi-model.zip`, `_incoming` çalışma kopyasına bağlanarak): 78 geçti. `test_simulate_toplami_korur` bu daldaki Balkan commit’inden ve `main`’den önce de düşüyordu: `akis_model.py` ile `L_v2_2026-Q1.csv` / `G_v2_2026-Q1.csv` bu işten önce `main` ile aynıydı. Kök neden kayan nokta birikimi değil. `mat()` satırı 1’e böler; CSV 4 ondalığa yuvarlanınca F satırı 0,9999 kalır. 1e9 şokun ilk adımı tam 100 000 düşer, sonraki adımlar sapmayı 104 894’e taşır (tolerans 1e5). `simulate` yuvarlama artığı 5e-4 içindeyse payları yeniden 1’e oranlar. Bilinçli eksik satır (L_cift, toplam ≈0,83) ölçeklenmez. Düzeltmeden sonra aynı şokta sapma en çok 5e-7. Testin toleransı değiştirilmedi. Zip `_incoming` taşımaz; bağ olmadan aynı test dosyayı bulamaz.
 
 ## 1. ABD sınıfı
 
