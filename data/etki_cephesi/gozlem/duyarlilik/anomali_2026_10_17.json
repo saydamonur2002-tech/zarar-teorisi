@@ -1,0 +1,29 @@
+{
+  "not": "Anomali düzeltmesi ve 2026-10-17 oturum sınamalarının ham dökümü. Ana model bu klasörü okumaz (projeksiyon._dis_veri yalnız gozlem/dis_ticaret_gsyh_2023.json).",
+  "etiket": "kanit_ve_aday",
+  "sistem_oncesi": {"A": -50.694, "B": -89.283, "C": -32.964},
+  "sistem_sonrasi": {"A": -50.96, "B": -89.477, "C": -33.245},
+  "yeni_surdurme_C": {"RS": 0.053, "BA": 0.056, "BG": 0.056, "AL": 0.056, "MK": 0.056, "AZ": 0.004},
+  "abd_C": {
+    "phi1_net": 0.923,
+    "phi1_bant_phi_haric": 0.2,
+    "phi1_sinif": "kazanan",
+    "medyan_net": 0.281,
+    "tam_bant": 0.512,
+    "medyan_sinif": "bant_ici",
+    "phi_haric_bantla_hala_kazanan": true
+  },
+  "bosluk_tutarli_C": {
+    "kural": "mevcut kazanc tavandan duser",
+    "pay_V": {"TR": 0.9572, "IR": 0.2677, "EG": 0.1529, "IL": 0.0225},
+    "tr_net": -0.684,
+    "havza_pay_geri_alma": 0.1455
+  },
+  "yeniden_kurulum_C_pay_V": {"TR": 0.9572, "IR": 0.3573, "EG": 0.1862, "IL": 0.0444, "tr_net": -0.538},
+  "iran_fazla_vekil_akranda": "B rant köprüsü, IQ oranı: 0.018 vekil; f 3 hanede değişmez. Diğer akran ve senaryolarda tavan bağlanmaz.",
+  "tampon_R0_mn_usd": 155548.683,
+  "tampon_s_yildiz_bop": {
+    "havza": {"A": 0.7742, "B": 1.2713, "C": 0.5208},
+    "cekimli": {"A": 1.2255, "B": 2.0437, "C": 0.8102}
+  }
+}

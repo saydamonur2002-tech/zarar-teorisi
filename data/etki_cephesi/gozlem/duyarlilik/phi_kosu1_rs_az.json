@@ -1,0 +1,1964 @@
+{
+  "not": "DUYARLILIK. Ana model bu dosyayı okumaz. projeksiyon._dis_veri yalnız gozlem/dis_ticaret_gsyh_2023.json kullanır (yayin/etki-cephesi-model.zip içinde). Buradaki sayılar 2026-10-17 salt-okunur koşularının dökümüdür.",
+  "kosu": "1_rs_az_ve_phi1_toplu",
+  "varyant": {
+    "baz": "kalibrasyon IR IL EG",
+    "a5": "kalibrasyon kümesine RS ve AZ eklendi; ihracat bloğu ve kazanç olmadığı için küme tabanla özdeş",
+    "b": "Mısır kalibrasyondan ve kayıp/kazanç referansından düşüldü; n=2 kod medyanı İsrail",
+    "c": "phi=1, kayıtlı AB vektörü, CN→KG hub düşüldü; üye ayrımı yok (o ayrım kosu 3)"
+  },
+  "sonuc": {
+    "baz": {
+      "A": {
+        "phi": {
+          "min": 1.463,
+          "medyan": 3.244,
+          "maks": 5.641
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.417,
+            "kazanc": 1.438,
+            "cekim": 0.2851,
+            "blok": true,
+            "phi": 1.4628,
+            "oran": 0.29
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.232,
+            "kazanc": 0.527,
+            "cekim": 0.0411,
+            "blok": true,
+            "phi": 5.6408,
+            "oran": 0.4402
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.505,
+            "kazanc": 0.271,
+            "cekim": 0.1557,
+            "blok": true,
+            "phi": 3.2437,
+            "oran": 1.8635
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.579,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.384,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 7.825,
+          "kayip": 3.445,
+          "bel": 6.156,
+          "maliyet": 1.096,
+          "net_projeksiyon": 3.284,
+          "oran": {
+            "min": 0.29,
+            "medyan": 0.44,
+            "maks": 1.863
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 3.443,
+          "net": 3.286,
+          "bant": 6.192,
+          "bel": 6.154
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 4.974,
+            "net": -2.914,
+            "bant": 3.488,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 4.301,
+            "net": -2.485,
+            "bant": 3.098,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 1.479,
+            "net": 0.266,
+            "bant": 0.977,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 11.211,
+            "net": -10.465,
+            "bant": 7.223,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 2.927,
+            "net": -2.148,
+            "bant": 1.896,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.338,
+            "net": 0.244,
+            "bant": 0.252,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 1.323,
+            "net": -1.003,
+            "bant": 0.891,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.558,
+            "net": -0.407,
+            "bant": 0.431,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -50.694,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.194,
+        "n": 37
+      },
+      "B": {
+        "phi": {
+          "min": 1.451,
+          "medyan": 3.376,
+          "maks": 7.098
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.674,
+            "kazanc": 1.715,
+            "cekim": 0.4644,
+            "blok": true,
+            "phi": 1.4514,
+            "oran": 0.393
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.487,
+            "kazanc": 0.71,
+            "cekim": 0.0686,
+            "blok": true,
+            "phi": 7.0978,
+            "oran": 0.6859
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.891,
+            "kazanc": 0.353,
+            "cekim": 0.264,
+            "blok": true,
+            "phi": 3.3756,
+            "oran": 2.5241
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.913,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.641,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 17.539,
+          "kayip": 12.03,
+          "bel": 18.688,
+          "maliyet": 1.438,
+          "net_projeksiyon": 4.071,
+          "oran": {
+            "min": 0.393,
+            "medyan": 0.686,
+            "maks": 2.524
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 12.032,
+          "net": 4.069,
+          "bant": 18.71,
+          "bel": 18.688
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 8.576,
+            "net": -5.81,
+            "bant": 7.339,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 7.301,
+            "net": -4.817,
+            "bant": 6.307,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 2.534,
+            "net": -0.013,
+            "bant": 2.128,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 19.083,
+            "net": -18.091,
+            "bant": 15.961,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 5.057,
+            "net": -4.021,
+            "bant": 4.235,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.583,
+            "net": 0.203,
+            "bant": 0.502,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 2.254,
+            "net": -1.798,
+            "bant": 1.91,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 1.015,
+            "net": -0.759,
+            "bant": 0.907,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -89.283,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.212,
+        "n": 37
+      },
+      "C": {
+        "phi": {
+          "min": 1.441,
+          "medyan": 3.095,
+          "maks": 4.511
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.277,
+            "kazanc": 1.139,
+            "cekim": 0.1922,
+            "blok": true,
+            "phi": 1.4413,
+            "oran": 0.2432
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.124,
+            "kazanc": 0.38,
+            "cekim": 0.0275,
+            "blok": true,
+            "phi": 4.5107,
+            "oran": 0.3263
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.316,
+            "kazanc": 0.201,
+            "cekim": 0.1021,
+            "blok": true,
+            "phi": 3.0946,
+            "oran": 1.5721
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.392,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.249,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 3.918,
+          "kayip": 1.279,
+          "bel": 2.603,
+          "maliyet": 0.744,
+          "net_projeksiyon": 1.895,
+          "oran": {
+            "min": 0.243,
+            "medyan": 0.326,
+            "maks": 1.572
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 1.277,
+          "net": 1.897,
+          "bant": 2.645,
+          "bel": 2.604
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 3.171,
+            "net": -1.641,
+            "bant": 1.944,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 2.781,
+            "net": -1.452,
+            "bant": 1.79,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 0.949,
+            "net": 0.281,
+            "bant": 0.512,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 7.22,
+            "net": -6.663,
+            "bant": 3.585,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 1.857,
+            "net": -1.277,
+            "bant": 0.935,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.215,
+            "net": 0.212,
+            "bant": 0.142,
+            "sinif": "kazanan",
+            "ham": "merkez_entegre_kazanan",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 0.853,
+            "net": -0.625,
+            "bant": 0.468,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.339,
+            "net": -0.246,
+            "bant": 0.231,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -32.964,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.143,
+        "n": 37
+      }
+    },
+    "a5": {
+      "A": {
+        "phi": {
+          "min": 1.463,
+          "medyan": 3.244,
+          "maks": 5.641
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.417,
+            "kazanc": 1.438,
+            "cekim": 0.2851,
+            "blok": true,
+            "phi": 1.4628,
+            "oran": 0.29
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.232,
+            "kazanc": 0.527,
+            "cekim": 0.0411,
+            "blok": true,
+            "phi": 5.6408,
+            "oran": 0.4402
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.505,
+            "kazanc": 0.271,
+            "cekim": 0.1557,
+            "blok": true,
+            "phi": 3.2437,
+            "oran": 1.8635
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.579,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.384,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 7.825,
+          "kayip": 3.445,
+          "bel": 6.156,
+          "maliyet": 1.096,
+          "net_projeksiyon": 3.284,
+          "oran": {
+            "min": 0.29,
+            "medyan": 0.44,
+            "maks": 1.863
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 3.443,
+          "net": 3.286,
+          "bant": 6.192,
+          "bel": 6.154
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 4.974,
+            "net": -2.914,
+            "bant": 3.488,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 4.301,
+            "net": -2.485,
+            "bant": 3.098,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 1.479,
+            "net": 0.266,
+            "bant": 0.977,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 11.211,
+            "net": -10.465,
+            "bant": 7.223,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 2.927,
+            "net": -2.148,
+            "bant": 1.896,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.338,
+            "net": 0.244,
+            "bant": 0.252,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 1.323,
+            "net": -1.003,
+            "bant": 0.891,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.558,
+            "net": -0.407,
+            "bant": 0.431,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -50.694,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.194,
+        "n": 37
+      },
+      "B": {
+        "phi": {
+          "min": 1.451,
+          "medyan": 3.376,
+          "maks": 7.098
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.674,
+            "kazanc": 1.715,
+            "cekim": 0.4644,
+            "blok": true,
+            "phi": 1.4514,
+            "oran": 0.393
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.487,
+            "kazanc": 0.71,
+            "cekim": 0.0686,
+            "blok": true,
+            "phi": 7.0978,
+            "oran": 0.6859
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.891,
+            "kazanc": 0.353,
+            "cekim": 0.264,
+            "blok": true,
+            "phi": 3.3756,
+            "oran": 2.5241
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.913,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.641,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 17.539,
+          "kayip": 12.03,
+          "bel": 18.688,
+          "maliyet": 1.438,
+          "net_projeksiyon": 4.071,
+          "oran": {
+            "min": 0.393,
+            "medyan": 0.686,
+            "maks": 2.524
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 12.032,
+          "net": 4.069,
+          "bant": 18.71,
+          "bel": 18.688
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 8.576,
+            "net": -5.81,
+            "bant": 7.339,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 7.301,
+            "net": -4.817,
+            "bant": 6.307,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 2.534,
+            "net": -0.013,
+            "bant": 2.128,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 19.083,
+            "net": -18.091,
+            "bant": 15.961,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 5.057,
+            "net": -4.021,
+            "bant": 4.235,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.583,
+            "net": 0.203,
+            "bant": 0.502,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 2.254,
+            "net": -1.798,
+            "bant": 1.91,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 1.015,
+            "net": -0.759,
+            "bant": 0.907,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -89.283,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.212,
+        "n": 37
+      },
+      "C": {
+        "phi": {
+          "min": 1.441,
+          "medyan": 3.095,
+          "maks": 4.511
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.277,
+            "kazanc": 1.139,
+            "cekim": 0.1922,
+            "blok": true,
+            "phi": 1.4413,
+            "oran": 0.2432
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.124,
+            "kazanc": 0.38,
+            "cekim": 0.0275,
+            "blok": true,
+            "phi": 4.5107,
+            "oran": 0.3263
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.316,
+            "kazanc": 0.201,
+            "cekim": 0.1021,
+            "blok": true,
+            "phi": 3.0946,
+            "oran": 1.5721
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.392,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.249,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 3.918,
+          "kayip": 1.279,
+          "bel": 2.603,
+          "maliyet": 0.744,
+          "net_projeksiyon": 1.895,
+          "oran": {
+            "min": 0.243,
+            "medyan": 0.326,
+            "maks": 1.572
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 1.277,
+          "net": 1.897,
+          "bant": 2.645,
+          "bel": 2.604
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 3.171,
+            "net": -1.641,
+            "bant": 1.944,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 2.781,
+            "net": -1.452,
+            "bant": 1.79,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 0.949,
+            "net": 0.281,
+            "bant": 0.512,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 7.22,
+            "net": -6.663,
+            "bant": 3.585,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 1.857,
+            "net": -1.277,
+            "bant": 0.935,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.215,
+            "net": 0.212,
+            "bant": 0.142,
+            "sinif": "kazanan",
+            "ham": "merkez_entegre_kazanan",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 0.853,
+            "net": -0.625,
+            "bant": 0.468,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.339,
+            "net": -0.246,
+            "bant": 0.231,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -32.964,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.143,
+        "n": 37
+      }
+    },
+    "b": {
+      "A": {
+        "phi": {
+          "min": 1.463,
+          "medyan": 5.641,
+          "maks": 5.641
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.417,
+            "kazanc": 1.438,
+            "cekim": 0.2851,
+            "blok": true,
+            "phi": 1.4628,
+            "oran": 0.29
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.232,
+            "kazanc": 0.527,
+            "cekim": 0.0411,
+            "blok": true,
+            "phi": 5.6408,
+            "oran": 0.4402
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.505,
+            "kazanc": 0.271,
+            "cekim": 0.1557,
+            "blok": true,
+            "phi": 3.2437,
+            "oran": 1.8635
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.579,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.384,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 7.825,
+          "kayip": 3.445,
+          "bel": 0.588,
+          "maliyet": 1.096,
+          "net_projeksiyon": 3.284,
+          "oran": {
+            "min": 0.29,
+            "medyan": 0.44,
+            "maks": 0.44
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 3.443,
+          "net": 3.286,
+          "bant": 0.902,
+          "bel": 0.587
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 8.65,
+            "net": -6.59,
+            "bant": 3.488,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 7.479,
+            "net": -5.663,
+            "bant": 3.098,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 2.572,
+            "net": -0.827,
+            "bant": 0.977,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 19.496,
+            "net": -18.75,
+            "bant": 7.223,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 5.09,
+            "net": -4.311,
+            "bant": 1.896,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.587,
+            "net": -0.005,
+            "bant": 0.252,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 2.3,
+            "net": -1.98,
+            "bant": 0.891,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.971,
+            "net": -0.82,
+            "bant": 0.431,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -70.728,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.194,
+        "n": 37
+      },
+      "B": {
+        "phi": {
+          "min": 1.451,
+          "medyan": 7.098,
+          "maks": 7.098
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.674,
+            "kazanc": 1.715,
+            "cekim": 0.4644,
+            "blok": true,
+            "phi": 1.4514,
+            "oran": 0.393
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.487,
+            "kazanc": 0.71,
+            "cekim": 0.0686,
+            "blok": true,
+            "phi": 7.0978,
+            "oran": 0.6859
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.891,
+            "kazanc": 0.353,
+            "cekim": 0.264,
+            "blok": true,
+            "phi": 3.3756,
+            "oran": 2.5241
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.913,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.641,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 17.539,
+          "kayip": 12.03,
+          "bel": 2.569,
+          "maliyet": 1.438,
+          "net_projeksiyon": 4.071,
+          "oran": {
+            "min": 0.393,
+            "medyan": 0.686,
+            "maks": 0.686
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 12.032,
+          "net": 4.069,
+          "bant": 2.722,
+          "bel": 2.569
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 18.033,
+            "net": -15.267,
+            "bant": 7.339,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 15.351,
+            "net": -12.867,
+            "bant": 6.307,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 5.328,
+            "net": -2.807,
+            "bant": 2.128,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 40.125,
+            "net": -39.133,
+            "bant": 15.961,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 10.634,
+            "net": -9.598,
+            "bant": 4.235,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 1.226,
+            "net": -0.44,
+            "bant": 0.502,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 4.74,
+            "net": -4.284,
+            "bant": 1.91,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 2.134,
+            "net": -1.878,
+            "bant": 0.907,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -140.451,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.212,
+        "n": 37
+      },
+      "C": {
+        "phi": {
+          "min": 1.441,
+          "medyan": 4.511,
+          "maks": 4.511
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.277,
+            "kazanc": 1.139,
+            "cekim": 0.1922,
+            "blok": true,
+            "phi": 1.4413,
+            "oran": 0.2432
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.124,
+            "kazanc": 0.38,
+            "cekim": 0.0275,
+            "blok": true,
+            "phi": 4.5107,
+            "oran": 0.3263
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.316,
+            "kazanc": 0.201,
+            "cekim": 0.1021,
+            "blok": true,
+            "phi": 3.0946,
+            "oran": 1.5721
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.392,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.249,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 3.918,
+          "kayip": 1.279,
+          "bel": 0.163,
+          "maliyet": 0.744,
+          "net_projeksiyon": 1.895,
+          "oran": {
+            "min": 0.243,
+            "medyan": 0.326,
+            "maks": 0.326
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 1.277,
+          "net": 1.897,
+          "bant": 0.493,
+          "bel": 0.163
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 4.622,
+            "net": -3.092,
+            "bant": 1.944,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 4.054,
+            "net": -2.725,
+            "bant": 1.79,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 1.383,
+            "net": -0.153,
+            "bant": 0.512,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 10.524,
+            "net": -9.967,
+            "bant": 3.585,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 2.707,
+            "net": -2.127,
+            "bant": 0.935,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.314,
+            "net": 0.113,
+            "bant": 0.142,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 1.243,
+            "net": -1.015,
+            "bant": 0.468,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.495,
+            "net": -0.402,
+            "bant": 0.231,
+            "sinif": "kaybeden",
+            "ham": "cevre_entegre_kaybeden",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -40.921,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.143,
+        "n": 37
+      }
+    },
+    "c": {
+      "A": {
+        "phi": {
+          "min": 1.0,
+          "medyan": 1.0,
+          "maks": 1.0
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.417,
+            "kazanc": 1.438,
+            "cekim": 0.2851,
+            "blok": true,
+            "phi": 1.4628,
+            "oran": 0.29
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.232,
+            "kazanc": 0.527,
+            "cekim": 0.0411,
+            "blok": true,
+            "phi": 5.6408,
+            "oran": 0.4402
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.505,
+            "kazanc": 0.271,
+            "cekim": 0.1557,
+            "blok": true,
+            "phi": 3.2437,
+            "oran": 1.8635
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.579,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.384,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 7.825,
+          "kayip": 3.445,
+          "bel": 6.156,
+          "maliyet": 1.096,
+          "net_projeksiyon": 3.284,
+          "oran": {
+            "min": 0.29,
+            "medyan": 0.44,
+            "maks": 1.863
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 3.443,
+          "net": 3.286,
+          "bant": 6.192,
+          "bel": 6.154
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 1.533,
+            "net": 0.527,
+            "bant": 1.378,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 1.326,
+            "net": 0.49,
+            "bant": 1.388,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 0.456,
+            "net": 1.289,
+            "bant": 0.22,
+            "sinif": "kazanan",
+            "ham": "merkez_entegre_kazanan",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 3.456,
+            "net": -2.71,
+            "bant": 0.209,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 0.902,
+            "net": -0.123,
+            "bant": 0.2,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.104,
+            "net": 0.478,
+            "bant": 0.127,
+            "sinif": "kazanan",
+            "ham": "merkez_entegre_kazanan",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 0.408,
+            "net": -0.088,
+            "bant": 0.261,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.172,
+            "net": -0.021,
+            "bant": 0.237,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -31.94,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.194,
+        "n": 37
+      },
+      "B": {
+        "phi": {
+          "min": 1.0,
+          "medyan": 1.0,
+          "maks": 1.0
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.674,
+            "kazanc": 1.715,
+            "cekim": 0.4644,
+            "blok": true,
+            "phi": 1.4514,
+            "oran": 0.393
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.487,
+            "kazanc": 0.71,
+            "cekim": 0.0686,
+            "blok": true,
+            "phi": 7.0978,
+            "oran": 0.6859
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.891,
+            "kazanc": 0.353,
+            "cekim": 0.264,
+            "blok": true,
+            "phi": 3.3756,
+            "oran": 2.5241
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.913,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.641,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 17.539,
+          "kayip": 12.03,
+          "bel": 18.688,
+          "maliyet": 1.438,
+          "net_projeksiyon": 4.071,
+          "oran": {
+            "min": 0.393,
+            "medyan": 0.686,
+            "maks": 2.524
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 12.032,
+          "net": 4.069,
+          "bant": 18.71,
+          "bel": 18.688
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 2.541,
+            "net": 0.225,
+            "bant": 1.552,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 2.163,
+            "net": 0.321,
+            "bant": 1.581,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 0.751,
+            "net": 1.77,
+            "bant": 0.191,
+            "sinif": "kazanan",
+            "ham": "merkez_entegre_kazanan",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 5.653,
+            "net": -4.661,
+            "bant": 0.219,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 1.498,
+            "net": -0.462,
+            "bant": 0.205,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.173,
+            "net": 0.613,
+            "bant": 0.117,
+            "sinif": "kazanan",
+            "ham": "merkez_entegre_kazanan",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 0.668,
+            "net": -0.212,
+            "bant": 0.302,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.301,
+            "net": -0.045,
+            "bant": 0.318,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -56.628,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.212,
+        "n": 37
+      },
+      "C": {
+        "phi": {
+          "min": 1.0,
+          "medyan": 1.0,
+          "maks": 1.0
+        },
+        "refs": [
+          {
+            "iso": "IR",
+            "model_kayip": 0.277,
+            "kazanc": 1.139,
+            "cekim": 0.1922,
+            "blok": true,
+            "phi": 1.4413,
+            "oran": 0.2432
+          },
+          {
+            "iso": "IL",
+            "model_kayip": 0.124,
+            "kazanc": 0.38,
+            "cekim": 0.0275,
+            "blok": true,
+            "phi": 4.5107,
+            "oran": 0.3263
+          },
+          {
+            "iso": "EG",
+            "model_kayip": 0.316,
+            "kazanc": 0.201,
+            "cekim": 0.1021,
+            "blok": true,
+            "phi": 3.0946,
+            "oran": 1.5721
+          },
+          {
+            "iso": "RS",
+            "model_kayip": 0.392,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          },
+          {
+            "iso": "AZ",
+            "model_kayip": 0.249,
+            "kazanc": 0.0,
+            "cekim": null,
+            "blok": false,
+            "phi": null,
+            "oran": null
+          }
+        ],
+        "mfin_proj": {
+          "kazanc": 3.918,
+          "kayip": 1.279,
+          "bel": 2.603,
+          "maliyet": 0.744,
+          "net_projeksiyon": 1.895,
+          "oran": {
+            "min": 0.243,
+            "medyan": 0.326,
+            "maks": 1.572
+          },
+          "yontem": "referans_oran"
+        },
+        "mfin_defter": {
+          "kayip": 1.277,
+          "net": 1.897,
+          "bant": 2.645,
+          "bel": 2.604
+        },
+        "aktor": [
+          {
+            "iso": "CN",
+            "kayip": 1.025,
+            "net": 0.505,
+            "bant": 1.142,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "RU",
+            "kayip": 0.899,
+            "net": 0.43,
+            "bant": 1.142,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "US",
+            "kayip": 0.307,
+            "net": 0.923,
+            "bant": 0.2,
+            "sinif": "kazanan",
+            "ham": "merkez_entegre_kazanan",
+            "rol": "merkez_vekil",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "EU",
+            "kayip": 2.333,
+            "net": -1.776,
+            "bant": 0.168,
+            "sinif": "kaybeden",
+            "ham": "entegre_kaybeden",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "AE",
+            "kayip": 0.6,
+            "net": -0.02,
+            "bant": 0.16,
+            "sinif": "bant içi",
+            "ham": "rant_kanali_bosluk_taraftari",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "SA",
+            "kayip": 0.07,
+            "net": 0.357,
+            "bant": 0.093,
+            "sinif": "kazanan",
+            "ham": "merkez_entegre_kazanan",
+            "rol": "rant_havza",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "FR",
+            "kayip": 0.275,
+            "net": -0.047,
+            "bant": 0.2,
+            "sinif": "bant içi",
+            "ham": "belirsiz_bant_ici",
+            "rol": "merkez_yakin",
+            "kapsam": "tam"
+          },
+          {
+            "iso": "GR",
+            "kayip": 0.11,
+            "net": -0.017,
+            "bant": 0.158,
+            "sinif": "bant içi",
+            "ham": "belirsiz_bant_ici",
+            "rol": "rakip_yaricevre",
+            "kapsam": "tam"
+          }
+        ],
+        "sistem": -21.198,
+        "halka": [
+          "IR",
+          "IL"
+        ],
+        "bant_med": 0.143,
+        "n": 37
+      }
+    }
+  }
+}

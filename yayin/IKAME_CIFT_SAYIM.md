@@ -10,6 +10,6 @@ K1 uygulandı: ikame aktör kazancından düşüldü, havza girişi korundu. Akt
 
 | Senaryo | Ölü ağırlık | Σ net (tüm aktörler) |
 | --- | ---: | ---: |
-| A | 20.217 | -50.694 |
-| B | 34.041 | -89.283 |
-| C | 13.406 | -32.964 |
+| A | 20.217 | -50.96 |
+| B | 34.041 | -89.477 |
+| C | 13.406 | -33.245 |

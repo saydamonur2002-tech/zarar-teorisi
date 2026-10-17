@@ -1,0 +1,1038 @@
+{
+  "not": "DUYARLILIK. Ana model bu dosyayı okumaz. projeksiyon._dis_veri yalnız gozlem/dis_ticaret_gsyh_2023.json kullanır (yayin/etki-cephesi-model.zip içinde). Buradaki sayılar 2026-10-17 salt-okunur koşularının dökümüdür. Koşu 3: aktör başına φ=1, AB 25 üye, GCC 6 ülke. Çin kaybında KG hub düşülmemiş ham çekim bu dosyada; rapordaki sistem toplamı KG düşülmüş halidir.",
+  "kosu": "3_phi1_uye",
+  "uyeler": {
+    "A": {
+      "AT": 0.0903,
+      "BE": 0.168,
+      "BG": 0.1062,
+      "CY": 0.0293,
+      "CZ": 0.1299,
+      "DE": 1.0339,
+      "DK": 0.0428,
+      "EE": 0.0116,
+      "ES": 0.3159,
+      "FI": 0.0401,
+      "HR": 0.0542,
+      "HU": 0.1235,
+      "IE": 0.0296,
+      "IT": 0.5822,
+      "LT": 0.0363,
+      "LU": 0.0064,
+      "LV": 0.0122,
+      "MT": 0.003,
+      "NL": 0.2665,
+      "PL": 0.2197,
+      "PT": 0.0347,
+      "RO": 0.142,
+      "SE": 0.0651,
+      "SI": 0.0481,
+      "SK": 0.0543
+    },
+    "B": {
+      "AT": 0.1463,
+      "BE": 0.2759,
+      "BG": 0.1728,
+      "CY": 0.0544,
+      "CZ": 0.2108,
+      "DE": 1.6833,
+      "DK": 0.0717,
+      "EE": 0.019,
+      "ES": 0.517,
+      "FI": 0.0653,
+      "HR": 0.0873,
+      "HU": 0.1991,
+      "IE": 0.049,
+      "IT": 0.9649,
+      "LT": 0.0597,
+      "LU": 0.0104,
+      "LV": 0.02,
+      "MT": 0.0055,
+      "NL": 0.4369,
+      "PL": 0.3559,
+      "PT": 0.0568,
+      "RO": 0.23,
+      "SE": 0.1064,
+      "SI": 0.0776,
+      "SK": 0.0882
+    },
+    "C": {
+      "AT": 0.0612,
+      "BE": 0.1132,
+      "BG": 0.0718,
+      "CY": 0.0176,
+      "CZ": 0.088,
+      "DE": 0.7013,
+      "DK": 0.0284,
+      "EE": 0.0078,
+      "ES": 0.2134,
+      "FI": 0.0272,
+      "HR": 0.0367,
+      "HU": 0.0838,
+      "IE": 0.0198,
+      "IT": 0.3891,
+      "LT": 0.0243,
+      "LU": 0.0043,
+      "LV": 0.0082,
+      "MT": 0.0019,
+      "NL": 0.1798,
+      "PL": 0.1487,
+      "PT": 0.0234,
+      "RO": 0.0962,
+      "SE": 0.044,
+      "SI": 0.0325,
+      "SK": 0.0367
+    }
+  },
+  "aktor": {
+    "A": {
+      "SA": {
+        "kayip": 0.1041,
+        "hub": [],
+        "kazanc": 0.677,
+        "maliyet": 0.095,
+        "net": 0.478,
+        "bant": 0.128,
+        "sinif": "kazanan",
+        "phi_kayip": 0.338,
+        "phi_net": 0.244,
+        "phi_bant": 0.252,
+        "kapsam": "tam"
+      },
+      "AE": {
+        "kayip": 0.9024,
+        "hub": [],
+        "kazanc": 0.906,
+        "maliyet": 0.127,
+        "net": -0.123,
+        "bant": 0.2,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 2.927,
+        "phi_net": -2.148,
+        "phi_bant": 1.896,
+        "kapsam": "tam"
+      },
+      "CN": {
+        "kayip": 1.8881,
+        "hub": [
+          [
+            "KG",
+            1.299
+          ]
+        ],
+        "kazanc": 2.395,
+        "maliyet": 0.335,
+        "net": 0.172,
+        "bant": 1.379,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 4.974,
+        "phi_net": -2.914,
+        "phi_bant": 3.488,
+        "kapsam": "tam"
+      },
+      "RU": {
+        "kayip": 1.3259,
+        "hub": [],
+        "kazanc": 2.112,
+        "maliyet": 0.296,
+        "net": 0.49,
+        "bant": 1.388,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 4.301,
+        "phi_net": -2.485,
+        "phi_bant": 3.098,
+        "kapsam": "tam"
+      },
+      "US": {
+        "kayip": 0.4559,
+        "hub": [],
+        "kazanc": 2.029,
+        "maliyet": 0.284,
+        "net": 1.289,
+        "bant": 0.22,
+        "sinif": "kazanan",
+        "phi_kayip": 1.479,
+        "phi_net": 0.266,
+        "phi_bant": 0.977,
+        "kapsam": "tam"
+      },
+      "FR": {
+        "kayip": 0.4175,
+        "hub": [],
+        "kazanc": 0.372,
+        "maliyet": 0.052,
+        "net": -0.098,
+        "bant": 0.262,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 1.323,
+        "phi_net": -1.003,
+        "phi_bant": 0.891,
+        "kapsam": "tam"
+      },
+      "GR": {
+        "kayip": 0.2124,
+        "hub": [],
+        "kazanc": 0.176,
+        "maliyet": 0.025,
+        "net": -0.061,
+        "bant": 0.238,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 0.558,
+        "phi_net": -0.407,
+        "phi_bant": 0.431,
+        "kapsam": "tam"
+      }
+    },
+    "B": {
+      "SA": {
+        "kayip": 0.1727,
+        "hub": [],
+        "kazanc": 0.856,
+        "maliyet": 0.07,
+        "net": 0.613,
+        "bant": 0.117,
+        "sinif": "kazanan",
+        "phi_kayip": 0.583,
+        "phi_net": 0.203,
+        "phi_bant": 0.502,
+        "kapsam": "tam"
+      },
+      "AE": {
+        "kayip": 1.4982,
+        "hub": [],
+        "kazanc": 1.129,
+        "maliyet": 0.093,
+        "net": -0.462,
+        "bant": 0.205,
+        "sinif": "kaybeden",
+        "phi_kayip": 5.057,
+        "phi_net": -4.021,
+        "phi_bant": 4.235,
+        "kapsam": "tam"
+      },
+      "CN": {
+        "kayip": 3.1408,
+        "hub": [
+          [
+            "KG",
+            1.299
+          ]
+        ],
+        "kazanc": 3.013,
+        "maliyet": 0.247,
+        "net": -0.375,
+        "bant": 1.552,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 8.576,
+        "phi_net": -5.81,
+        "phi_bant": 7.339,
+        "kapsam": "tam"
+      },
+      "RU": {
+        "kayip": 2.1628,
+        "hub": [],
+        "kazanc": 2.706,
+        "maliyet": 0.222,
+        "net": 0.321,
+        "bant": 1.581,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 7.301,
+        "phi_net": -4.817,
+        "phi_bant": 6.307,
+        "kapsam": "tam"
+      },
+      "US": {
+        "kayip": 0.7507,
+        "hub": [],
+        "kazanc": 2.746,
+        "maliyet": 0.225,
+        "net": 1.77,
+        "bant": 0.19,
+        "sinif": "kazanan",
+        "phi_kayip": 2.534,
+        "phi_net": -0.013,
+        "phi_bant": 2.128,
+        "kapsam": "tam"
+      },
+      "FR": {
+        "kayip": 0.6842,
+        "hub": [],
+        "kazanc": 0.497,
+        "maliyet": 0.041,
+        "net": -0.228,
+        "bant": 0.302,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 2.254,
+        "phi_net": -1.798,
+        "phi_bant": 1.91,
+        "kapsam": "tam"
+      },
+      "GR": {
+        "kayip": 0.3736,
+        "hub": [],
+        "kazanc": 0.279,
+        "maliyet": 0.023,
+        "net": -0.118,
+        "bant": 0.318,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 1.015,
+        "phi_net": -0.759,
+        "phi_bant": 0.907,
+        "kapsam": "tam"
+      }
+    },
+    "C": {
+      "SA": {
+        "kayip": 0.0695,
+        "hub": [],
+        "kazanc": 0.527,
+        "maliyet": 0.1,
+        "net": 0.357,
+        "bant": 0.093,
+        "sinif": "kazanan",
+        "phi_kayip": 0.215,
+        "phi_net": 0.212,
+        "phi_bant": 0.142,
+        "kapsam": "tam"
+      },
+      "AE": {
+        "kayip": 0.6001,
+        "hub": [],
+        "kazanc": 0.716,
+        "maliyet": 0.136,
+        "net": -0.02,
+        "bant": 0.16,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 1.857,
+        "phi_net": -1.277,
+        "phi_bant": 0.935,
+        "kapsam": "tam"
+      },
+      "CN": {
+        "kayip": 1.2572,
+        "hub": [
+          [
+            "KG",
+            1.299
+          ]
+        ],
+        "kazanc": 1.889,
+        "maliyet": 0.359,
+        "net": 0.273,
+        "bant": 1.142,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 3.171,
+        "phi_net": -1.641,
+        "phi_bant": 1.944,
+        "kapsam": "tam"
+      },
+      "RU": {
+        "kayip": 0.8987,
+        "hub": [],
+        "kazanc": 1.641,
+        "maliyet": 0.312,
+        "net": 0.43,
+        "bant": 1.141,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 2.781,
+        "phi_net": -1.452,
+        "phi_bant": 1.79,
+        "kapsam": "tam"
+      },
+      "US": {
+        "kayip": 0.3067,
+        "hub": [],
+        "kazanc": 1.518,
+        "maliyet": 0.288,
+        "net": 0.923,
+        "bant": 0.2,
+        "sinif": "kazanan",
+        "phi_kayip": 0.949,
+        "phi_net": 0.281,
+        "phi_bant": 0.512,
+        "kapsam": "tam"
+      },
+      "FR": {
+        "kayip": 0.2819,
+        "hub": [],
+        "kazanc": 0.281,
+        "maliyet": 0.053,
+        "net": -0.054,
+        "bant": 0.2,
+        "sinif": "bant içi",
+        "phi_kayip": 0.853,
+        "phi_net": -0.625,
+        "phi_bant": 0.468,
+        "kapsam": "tam"
+      },
+      "GR": {
+        "kayip": 0.1345,
+        "hub": [],
+        "kazanc": 0.115,
+        "maliyet": 0.022,
+        "net": -0.041,
+        "bant": 0.158,
+        "sinif": "bant içi",
+        "phi_kayip": 0.339,
+        "phi_net": -0.246,
+        "phi_bant": 0.231,
+        "kapsam": "tam"
+      }
+    }
+  },
+  "gcc": {
+    "A": {
+      "SA": {
+        "kayip": 0.1041,
+        "hub": [],
+        "kazanc": 0.677,
+        "maliyet": 0.095,
+        "net": 0.478,
+        "bant": 0.128,
+        "sinif": "kazanan",
+        "phi_kayip": 0.338,
+        "phi_net": 0.244,
+        "phi_bant": 0.252,
+        "kapsam": "tam"
+      },
+      "AE": {
+        "kayip": 0.9024,
+        "hub": [],
+        "kazanc": 0.906,
+        "maliyet": 0.127,
+        "net": -0.123,
+        "bant": 0.2,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 2.927,
+        "phi_net": -2.148,
+        "phi_bant": 1.896,
+        "kapsam": "tam"
+      },
+      "QA": {
+        "kayip": 0.0157,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "KW": {
+        "kayip": 0.0056,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "BH": {
+        "kayip": 0.0135,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "OM": {
+        "kayip": 0.0269,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      }
+    },
+    "B": {
+      "SA": {
+        "kayip": 0.1727,
+        "hub": [],
+        "kazanc": 0.856,
+        "maliyet": 0.07,
+        "net": 0.613,
+        "bant": 0.117,
+        "sinif": "kazanan",
+        "phi_kayip": 0.583,
+        "phi_net": 0.203,
+        "phi_bant": 0.502,
+        "kapsam": "tam"
+      },
+      "AE": {
+        "kayip": 1.4982,
+        "hub": [],
+        "kazanc": 1.129,
+        "maliyet": 0.093,
+        "net": -0.462,
+        "bant": 0.205,
+        "sinif": "kaybeden",
+        "phi_kayip": 5.057,
+        "phi_net": -4.021,
+        "phi_bant": 4.235,
+        "kapsam": "tam"
+      },
+      "QA": {
+        "kayip": 0.0262,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "KW": {
+        "kayip": 0.0095,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "BH": {
+        "kayip": 0.0223,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "OM": {
+        "kayip": 0.0446,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      }
+    },
+    "C": {
+      "SA": {
+        "kayip": 0.0695,
+        "hub": [],
+        "kazanc": 0.527,
+        "maliyet": 0.1,
+        "net": 0.357,
+        "bant": 0.093,
+        "sinif": "kazanan",
+        "phi_kayip": 0.215,
+        "phi_net": 0.212,
+        "phi_bant": 0.142,
+        "kapsam": "tam"
+      },
+      "AE": {
+        "kayip": 0.6001,
+        "hub": [],
+        "kazanc": 0.716,
+        "maliyet": 0.136,
+        "net": -0.02,
+        "bant": 0.16,
+        "sinif": "bant içi (rant kanalı)",
+        "phi_kayip": 1.857,
+        "phi_net": -1.277,
+        "phi_bant": 0.935,
+        "kapsam": "tam"
+      },
+      "QA": {
+        "kayip": 0.0104,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "KW": {
+        "kayip": 0.0036,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "BH": {
+        "kayip": 0.0091,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      },
+      "OM": {
+        "kayip": 0.018,
+        "hub": [],
+        "net": "bilinmiyor",
+        "sinif": "bilinmiyor"
+      }
+    }
+  },
+  "nettam": {
+    "A": {
+      "IR": {
+        "model_kayip": 0.417,
+        "ticaret_kayip": 0.2851,
+        "top": [
+          [
+            0.1599,
+            "TR"
+          ],
+          [
+            0.0913,
+            "IQ"
+          ],
+          [
+            0.0063,
+            "AM"
+          ]
+        ],
+        "kazanc": 1.652,
+        "model_net": 1.004,
+        "model_bant": 0.24,
+        "ticaret_net": 1.136,
+        "ticaret_bant": 0.24
+      },
+      "IL": {
+        "model_kayip": 0.232,
+        "ticaret_kayip": 0.0411,
+        "top": [
+          [
+            0.0334,
+            "TR"
+          ],
+          [
+            0.0042,
+            "CY"
+          ],
+          [
+            0.0009,
+            "AZ"
+          ]
+        ],
+        "kazanc": 0.614,
+        "model_net": 0.296,
+        "model_bant": 0.178,
+        "ticaret_net": 0.487,
+        "ticaret_bant": 0.179
+      },
+      "EG": {
+        "model_kayip": 0.505,
+        "ticaret_kayip": 0.1557,
+        "top": [
+          [
+            0.0824,
+            "TR"
+          ],
+          [
+            0.0234,
+            "LY"
+          ],
+          [
+            0.0206,
+            "LB"
+          ]
+        ],
+        "kazanc": 0.313,
+        "model_net": -0.236,
+        "model_bant": 0.211,
+        "ticaret_net": 0.113,
+        "ticaret_bant": 0.211
+      },
+      "RS": {
+        "model_kayip": 0.579,
+        "ticaret_kayip": 0.0672,
+        "top": [
+          [
+            0.0236,
+            "BA"
+          ],
+          [
+            0.0164,
+            "MK"
+          ],
+          [
+            0.0136,
+            "TR"
+          ]
+        ],
+        "kazanc": 0.351,
+        "model_net": -0.228,
+        "model_bant": 0.064,
+        "ticaret_net": 0.284,
+        "ticaret_bant": 0.064
+      },
+      "AZ": {
+        "model_kayip": 0.384,
+        "ticaret_kayip": 0.1374,
+        "top": [
+          [
+            0.1213,
+            "TR"
+          ],
+          [
+            0.0092,
+            "GE"
+          ],
+          [
+            0.0028,
+            "BG"
+          ]
+        ],
+        "kazanc": 0.035,
+        "model_net": -0.349,
+        "model_bant": 0.0,
+        "ticaret_net": -0.102,
+        "ticaret_bant": 0.0
+      },
+      "TR": {
+        "model_kayip": 25.822,
+        "ticaret_kayip": 0.5143,
+        "top": [
+          [
+            0.0968,
+            "IQ"
+          ],
+          [
+            0.0671,
+            "SY"
+          ],
+          [
+            0.0623,
+            "LB"
+          ]
+        ],
+        "kazanc": 0.905,
+        "model_net": -24.917,
+        "model_bant": 0.0,
+        "ticaret_net": 0.391,
+        "ticaret_bant": 0.0
+      }
+    },
+    "B": {
+      "IR": {
+        "model_kayip": 0.674,
+        "ticaret_kayip": 0.4644,
+        "top": [
+          [
+            0.2586,
+            "TR"
+          ],
+          [
+            0.148,
+            "IQ"
+          ],
+          [
+            0.0104,
+            "SY"
+          ]
+        ],
+        "kazanc": 2.157,
+        "model_net": 1.306,
+        "model_bant": 0.235,
+        "ticaret_net": 1.516,
+        "ticaret_bant": 0.235
+      },
+      "IL": {
+        "model_kayip": 0.487,
+        "ticaret_kayip": 0.0686,
+        "top": [
+          [
+            0.054,
+            "TR"
+          ],
+          [
+            0.0088,
+            "CY"
+          ],
+          [
+            0.0016,
+            "AZ"
+          ]
+        ],
+        "kazanc": 0.912,
+        "model_net": 0.35,
+        "model_bant": 0.205,
+        "ticaret_net": 0.768,
+        "ticaret_bant": 0.205
+      },
+      "EG": {
+        "model_kayip": 0.891,
+        "ticaret_kayip": 0.2639,
+        "top": [
+          [
+            0.1333,
+            "TR"
+          ],
+          [
+            0.0402,
+            "LB"
+          ],
+          [
+            0.0397,
+            "LY"
+          ]
+        ],
+        "kazanc": 0.449,
+        "model_net": -0.479,
+        "model_bant": 0.267,
+        "ticaret_net": 0.148,
+        "ticaret_bant": 0.267
+      },
+      "RS": {
+        "model_kayip": 0.913,
+        "ticaret_kayip": 0.1086,
+        "top": [
+          [
+            0.0378,
+            "BA"
+          ],
+          [
+            0.0267,
+            "MK"
+          ],
+          [
+            0.0219,
+            "TR"
+          ]
+        ],
+        "kazanc": 0.441,
+        "model_net": -0.472,
+        "model_bant": 0.072,
+        "ticaret_net": 0.332,
+        "ticaret_bant": 0.072
+      },
+      "AZ": {
+        "model_kayip": 0.641,
+        "ticaret_kayip": 0.223,
+        "top": [
+          [
+            0.1961,
+            "TR"
+          ],
+          [
+            0.0152,
+            "GE"
+          ],
+          [
+            0.0043,
+            "BG"
+          ]
+        ],
+        "kazanc": 0.07,
+        "model_net": -0.571,
+        "model_bant": 0.0,
+        "ticaret_net": -0.153,
+        "ticaret_bant": 0.0
+      },
+      "TR": {
+        "model_kayip": 41.76,
+        "ticaret_kayip": 0.8881,
+        "top": [
+          [
+            0.1569,
+            "IQ"
+          ],
+          [
+            0.1273,
+            "SY"
+          ],
+          [
+            0.1216,
+            "LB"
+          ]
+        ],
+        "kazanc": 1.864,
+        "model_net": -39.896,
+        "model_bant": 0.0,
+        "ticaret_net": 0.976,
+        "ticaret_bant": 0.0
+      }
+    },
+    "C": {
+      "IR": {
+        "model_kayip": 0.277,
+        "ticaret_kayip": 0.1922,
+        "top": [
+          [
+            0.1096,
+            "TR"
+          ],
+          [
+            0.0609,
+            "IQ"
+          ],
+          [
+            0.0042,
+            "AM"
+          ]
+        ],
+        "kazanc": 1.26,
+        "model_net": 0.744,
+        "model_bant": 0.207,
+        "ticaret_net": 0.829,
+        "ticaret_bant": 0.207
+      },
+      "IL": {
+        "model_kayip": 0.124,
+        "ticaret_kayip": 0.0275,
+        "top": [
+          [
+            0.0229,
+            "TR"
+          ],
+          [
+            0.0023,
+            "CY"
+          ],
+          [
+            0.0006,
+            "AZ"
+          ]
+        ],
+        "kazanc": 0.424,
+        "model_net": 0.219,
+        "model_bant": 0.126,
+        "ticaret_net": 0.316,
+        "ticaret_bant": 0.126
+      },
+      "EG": {
+        "model_kayip": 0.316,
+        "ticaret_kayip": 0.1021,
+        "top": [
+          [
+            0.0565,
+            "TR"
+          ],
+          [
+            0.0154,
+            "LY"
+          ],
+          [
+            0.0116,
+            "LB"
+          ]
+        ],
+        "kazanc": 0.223,
+        "model_net": -0.135,
+        "model_bant": 0.145,
+        "ticaret_net": 0.079,
+        "ticaret_bant": 0.145
+      },
+      "RS": {
+        "model_kayip": 0.392,
+        "ticaret_kayip": 0.0455,
+        "top": [
+          [
+            0.016,
+            "BA"
+          ],
+          [
+            0.011,
+            "MK"
+          ],
+          [
+            0.0093,
+            "TR"
+          ]
+        ],
+        "kazanc": 0.277,
+        "model_net": -0.115,
+        "model_bant": 0.053,
+        "ticaret_net": 0.232,
+        "ticaret_bant": 0.053
+      },
+      "AZ": {
+        "model_kayip": 0.249,
+        "ticaret_kayip": 0.0937,
+        "top": [
+          [
+            0.0831,
+            "TR"
+          ],
+          [
+            0.006,
+            "GE"
+          ],
+          [
+            0.0019,
+            "BG"
+          ]
+        ],
+        "kazanc": 0.02,
+        "model_net": -0.229,
+        "model_bant": 0.0,
+        "ticaret_net": -0.074,
+        "ticaret_bant": 0.0
+      },
+      "TR": {
+        "model_kayip": 17.7,
+        "ticaret_kayip": 0.3276,
+        "top": [
+          [
+            0.0645,
+            "IQ"
+          ],
+          [
+            0.0383,
+            "SY"
+          ],
+          [
+            0.0353,
+            "LB"
+          ]
+        ],
+        "kazanc": 0.509,
+        "model_net": -17.191,
+        "model_bant": 0.0,
+        "ticaret_net": 0.181,
+        "ticaret_bant": 0.0
+      }
+    }
+  },
+  "sistem": {
+    "A": {
+      "baz_phi": -50.694,
+      "phi1": -32.535,
+      "delta": 18.159
+    },
+    "B": {
+      "baz_phi": -89.283,
+      "phi1": -57.627,
+      "delta": 31.656
+    },
+    "C": {
+      "baz_phi": -32.964,
+      "phi1": -21.587,
+      "delta": 11.377
+    }
+  },
+  "eu_rebuilt": {
+    "A": {
+      "kayip": 3.6458,
+      "kazanc": 0.868,
+      "maliyet": 0.122,
+      "net": -2.9,
+      "bant": 0.209,
+      "sinif": "kaybeden",
+      "phi_kayip": 11.211,
+      "phi_net": -10.465,
+      "phi_bant": 7.223
+    },
+    "B": {
+      "kayip": 5.9642,
+      "kazanc": 1.081,
+      "maliyet": 0.089,
+      "net": -4.972,
+      "bant": 0.218,
+      "sinif": "kaybeden",
+      "phi_kayip": 19.083,
+      "phi_net": -18.091,
+      "phi_bant": 15.961
+    },
+    "C": {
+      "kayip": 2.4593,
+      "kazanc": 0.688,
+      "maliyet": 0.131,
+      "net": -1.902,
+      "bant": 0.167,
+      "sinif": "kaybeden",
+      "phi_kayip": 7.22,
+      "phi_net": -6.663,
+      "phi_bant": 3.585
+    }
+  },
+  "mfin": {
+    "A": {
+      "kayip_proxy": 3.443,
+      "net": 3.286,
+      "bant": 6.192,
+      "kazanc": 7.825,
+      "yontem": "referans_oran IR/IL/EG"
+    },
+    "B": {
+      "kayip_proxy": 12.032,
+      "net": 4.069,
+      "bant": 18.71,
+      "kazanc": 17.539,
+      "yontem": "referans_oran IR/IL/EG"
+    },
+    "C": {
+      "kayip_proxy": 1.277,
+      "net": 1.897,
+      "bant": 2.645,
+      "kazanc": 3.918,
+      "yontem": "referans_oran IR/IL/EG"
+    }
+  }
+}

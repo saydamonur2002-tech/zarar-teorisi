@@ -51,14 +51,14 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
-| Üretim iç akış TR net | -13.32 | -24.82 | -4.383 |
-| Üretim: sıfır yılı tahmini | 2065 | 2087 | 2044 |
-| Finans katmanı TR net | -7.707 | -32.16 | -1.23 |
-| Finans: sıfır üstü takvim yılı | 2050 | — | 2040 |
+| Üretim iç akış TR net | -13.49 | -25.001 | -4.622 |
+| Üretim: sıfır yılı tahmini | 2067 | 2088 | 2045 |
+| Finans katmanı TR net | -7.87 | -32.349 | -1.46 |
+| Finans: sıfır üstü takvim yılı | 2050 | — | 2041 |
 | Üretime bağlanma gerçekleşmesi g_u (bağ kullanımı / C) | 0.423 | 0.269 | 1 |
 | Finans dış koşul gerçekleşmesi g_f (politika / C; < 0: ters çevrilmiş) | 0.737 | -0.432 | 1 |
 | Finans ters çevrildi (araçsallaşma) | hayır | evet | hayır |
-| Finans TR net: çevrilmemiş olsaydı (varsayım bandı üstü) | — | -17.48 | — |
+| Finans TR net: çevrilmemiş olsaydı (varsayım bandı üstü) | — | -17.653 | — |
 | Finans etiketi | varsayim_carpanli_ham | varsayim_carpanli_ham | varsayim_carpanli_ham |
 
 ## 6. Stok-akış (SFC, tr TL)
@@ -79,9 +79,9 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
-| TR net son (kalibre) | -16.755 | -43.277 | -11.377 |
-| GSYH % | 5.009 | 12.938 | 3.401 |
-| TR net 10. yıl yolu | -19.355 | -37.975 | -13.415 |
+| TR net son (kalibre) | -16.809 | -43.348 | -11.433 |
+| GSYH % | 5.025 | 12.96 | 3.418 |
+| TR net 10. yıl yolu | -19.368 | -37.993 | -13.429 |
 | Yol modu (finans üretimle eşzamanlı mı) | uretimle_es_zamanli | uretimle_es_zamanli | uretimle_es_zamanli |
 | Finans kalibre gerçekleşme r_f (tersse harm: tavan yok) | 0.209 | 0.95 | 0.219 |
 | Gerçekleşme: zarar / üretim / finans | 0.49 / 0.237 / 0.209 | 0.287 / 0.237 / 0.95 | 0.665 / 0.237 / 0.219 |
@@ -111,10 +111,10 @@ Aynı alanlar, aynı sıra. Her sütun ilgili `SENARYO_RAPOR_{X}.md` ile birebir
 | Alan | A | B | C |
 | --- | ---: | ---: | ---: |
 | Maliyet katsayısı κ × TR karşı-hamle gücü pol | 0.2 × 0.7 | 0.2 × 0.41 | 0.2 × 0.95 |
-| Σ sürdürme maliyeti (TR, MFIN hariç) | 1.716 | 1.315 | 1.782 |
+| Σ sürdürme maliyeti (TR, MFIN hariç) | 1.982 | 1.509 | 2.063 |
 | Σ dış kazanç (TR, MFIN hariç) | 14.14 | 18.394 | 10.867 |
-| Maliyet / kazanç | 0.121 | 0.071 | 0.164 |
-| Kazançtan maliyet düşülünce Σ dış net | 12.424 | 17.079 | 9.085 |
+| Maliyet / kazanç | 0.14 | 0.082 | 0.19 |
+| Kazançtan maliyet düşülünce Σ dış net | 12.158 | 16.885 | 8.804 |
 
 ## 11. Merkez finans (MFIN) ayrı pay (kayıp = referans vekil)
 
