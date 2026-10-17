@@ -230,7 +230,7 @@ def rapor(rows: list[dict], hip: dict, veri: dict) -> str:
           "", "## Sınır", "",
           "- GY toplamı yan sütundur, lider değildir. Resmî kuruluşlar (banka) GY kapsamıdır.",
           "- TCMB P311 = P3111 nakit + P3112 altın; merkez_banka satırı yalnız nakittir. Finansal hesaplarda altın F.1'dir, VF.2'ye girmez.",
-          "- Hane 15.357 ve firma stokları lider sütununa girmez. Stok silimi tavanı ve akış %42,7 bu dosyada yok.",
+          "- Hane 15.357 ve firma stokları lider sütununa girmez. Stok silimi tavanı ve akış %42,1 bu dosyada yok.",
           "", "## Arama günlüğü", "", "| Grup | Sonuç | Not |", "| --- | --- | --- |"]
     s += [f"| `{g['grup']}` | {g['sonuc']} | {g['not']} |" for g in arama_gunlugu()]
     s += ["", "Tekrar: `python3 lider_mevduat.py`. Dosyalar: `lider_mevduat.csv`, `lider_mevduat_sonuc.json`."]

@@ -72,7 +72,7 @@ Hukuki araç: Türk Borçlar Kanunu temliki (alacağın devri) + e-imza. Yani ç
 | Faizin durması (adım 3) | evet | yok | yok |
 | Endeksli senet (adım 4) | evet | yok | yok |
 | Kira (adım 5) | evet | yok | yok |
-| Ölçülmüş sonuç | yok (akış 0,4270 `baska_nesne`) | yok (hacim bulunamadı) | ikisi de boş |
+| Ölçülmüş sonuç | yok (akış 0,4210 `baska_nesne`) | yok (hacim bulunamadı) | ikisi de boş |
 
 ## 5. Okuma (yorum; ölçüm değil)
 

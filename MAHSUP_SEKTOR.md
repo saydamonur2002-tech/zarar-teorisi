@@ -19,7 +19,7 @@ Girdi yalnızca EVDS (`evds_cek.fetch_group`). Çıktılar: `mahsup_evds_ham.csv
 | Dönem | Brüt (TL/ay) | Mahsup sonrası | Silinen |
 | --- | ---: | ---: | ---: |
 | 2025-Q4 | 2,90 | 1,68 | %42,1 |
-| 2026-Q1 | 3,09 | 1,77 | %42,7 |
+| 2026-Q1 | 3,09 | 1,77 | %42,1 |
 
 **2026-Q2:** EVDS finansal hesaplarda henüz yok (son gözlem 2026-Q1).
 

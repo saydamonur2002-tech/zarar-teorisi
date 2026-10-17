@@ -18,7 +18,7 @@ from pathlib import Path
 KOK = Path(__file__).resolve().parent
 
 # Referanslar (depo; koşu anında okunur, başka dosyaya yazılmaz)
-AKIS_MAHSUP_ORAN = 0.427  # mahsup_sektor_ozet; baska_nesne, dokunulmaz
+AKIS_MAHSUP_ORAN = 0.421  # mahsup_sektor_ozet; baska_nesne, dokunulmaz
 FIRMA_MAHSUP_ORAN = 0.32959478056952846  # odeme_mahsup_sonuc ozet brut_azalma_oran
 YENI_STOK_TAVAN = 0.2582  # adim1 / bes_adim
 ESKI_STOK_TAVAN = 0.0728

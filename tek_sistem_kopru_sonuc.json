@@ -171,7 +171,7 @@
     "H-N1": "temiz",
     "H-N1_not": "durum `baska_nesne`, KAP sıfır notu var",
     "H-N2": "temiz",
-    "H-N2_not": "değer 0.4270 (kilit 0.4270)"
+    "H-N2_not": "değer 0.4210 (kilit 0.4210)"
   },
   "mutabakat": [
     {
@@ -743,10 +743,10 @@
       "katman": "mahsup_sektor_evds.py",
       "nesne": "sektör akış ağı, optimal_mahsup, brüt çıkış silinen oranı",
       "donem": "2026-Q1",
-      "deger": 0.427,
+      "deger": 0.421,
       "birim": "oran",
       "durum": "baska_nesne",
-      "not": "Sektör düzeyi akış. Bilateral e-fatura eşleşmesi değil. Firma çifti yok. KAP kenarı sıfır (nace_kap_sonuc.json kap_kenar_sayisi 0). L^m ile türetilmiş aylık brüt servis, beş hazne. Yüzde 42,7 sektör servisi; adım 1'in nesnesi değil. tek-sistem mahsuplasma paketi (mahsup/) aynı kod.",
+      "not": "Sektör düzeyi akış. Bilateral e-fatura eşleşmesi değil. Firma çifti yok. KAP kenarı sıfır (nace_kap_sonuc.json kap_kenar_sayisi 0). L^m ile türetilmiş aylık brüt servis, beş hazne. Yüzde 42,1 sektör servisi; adım 1'in nesnesi değil. tek-sistem mahsuplasma paketi (mahsup/) aynı kod.",
       "dosya": "mahsup_sektor_ozet.json"
     },
     {

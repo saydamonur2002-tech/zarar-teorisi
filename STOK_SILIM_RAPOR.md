@@ -7,7 +7,7 @@
 | **arac_ayri** | Muhasebe: kredi, mevduat, senet ayrı mahsup |
 | **arac_birlesik** | Model tercihi: aynı çiftte üç araç tek havuz |
 
-Akış mahsupu (~42,7% brüt servis) bu tabloda **yok**.
+Akış mahsupu (~42,1% brüt servis) bu tabloda **yok**.
 
 ## 2. Kaynak sınırı
 
@@ -22,7 +22,7 @@ Akış mahsupu (~42,7% brüt servis) bu tabloda **yok**.
 
 ## 4. H-S
 
-**test_edilemez** — H-S yalnız araç ayrı ile skorlanır; araç ayrı boş. Akış 42.7% stok dosyasında yok. Birleşik oran “karışım var/yok” kanıtı değildir.
+**test_edilemez** — H-S yalnız araç ayrı ile skorlanır; araç ayrı boş. Akış 42.1% stok dosyasında yok. Birleşik oran “karışım var/yok” kanıtı değildir.
 
 ## 5. Girmeyen kalemler (F yükümlülük)
 
@@ -53,7 +53,7 @@ Ters bacak = borçlu→alacaklı **aynı araçta**. Tavan = min(borçlunun o ara
 | ROW→GY · borclanma_senedi | 2639 | 388.0 | evds_konsolide_olmayan | `TP.FINHESTNKS13.ZP9 | TP.FINHESTNKS2.ZP9` |
 
 - Yapısal sıfır (EVDS büyüklüğünden bağımsız): H–PFK·mevduat, F–PFK·mevduat. Firma ve hane mevduat yükümlülüğü yok; firma bankaya kredi vermez.
-- Tavan toplamı 6003; araç ayrı payda alt sınırı (tek yön bacaklar) 76507 → araç ayrı oran üst sınırı **7.3%** < eşik 27.7%. Birleşik payda 56.696 burada kullanılmaz.
+- Tavan toplamı 6003; araç ayrı payda alt sınırı (tek yön bacaklar) 76507 → araç ayrı oran üst sınırı **7.3%** < eşik 27.1%. Birleşik payda 56.696 burada kullanılmaz.
 - Sonuç: `hipotez_duser` **olanaksız** (olasılık değil, üst sınır). Açılırsa yön `stok_ayri`; `stok_dar` koşulu (%81,4) yanında. Bugün açılmaz: xls yok.
 - Stok kıyası: EVDS konsolide olmayan F.0 **141473.5** (TP.FINHESTNKS11.ZP45) = rapor 141.474. Konsolide 71011 toplam ≈ 50.777 **aynı stok değil** (sektör içi hisse/diğer borç netleşmiş). Tavan konsolide olmayan seriden.
 

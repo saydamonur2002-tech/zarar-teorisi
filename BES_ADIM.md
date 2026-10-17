@@ -2,7 +2,7 @@
 
 Ön kayıt `87f0317`. Çalıştır: `python3 bes_adim.py`. Çıktı: `adim1_stok.csv`, `adim2.csv`, `adim3.csv`, `adim4.csv`, `adim5.csv`, `bes_adim_sonuc.json`.
 
-Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` ise durur. Önceki katman sayıları taşınmaz. Adım 1 akış satırı (0,4270, `baska_nesne`) dokunulmadı.
+Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` ise durur. Önceki katman sayıları taşınmaz. Adım 1 akış satırı (0,4210, `baska_nesne`) dokunulmadı.
 
 ## Etiketler
 

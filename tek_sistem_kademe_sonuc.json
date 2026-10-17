@@ -12,7 +12,7 @@
         "uzunluk_ceyrek": 4,
         "katman": "mahsup_sektor_evds.py; odeme_mahsup.py",
         "ref_etiket": "sektor_brut_silinen_oran",
-        "ref_deger": 0.427,
+        "ref_deger": 0.421,
         "ref_birim": "oran"
       },
       {
@@ -56,16 +56,16 @@
       "k2_f4_stoka_dogrudan_girmez": true,
       "kilometre": {
         "2027-Q4": {
-          "f4_fark_milyar": 1286.4,
-          "k1_itis_azalt_yillik": 2058.5
+          "f4_fark_milyar": 1268.4,
+          "k1_itis_azalt_yillik": 2029.6
         },
         "2029-Q4": {
-          "f4_fark_milyar": 6371.2,
-          "k1_itis_azalt_yillik": 2058.5
+          "f4_fark_milyar": 6295.6,
+          "k1_itis_azalt_yillik": 2029.6
         },
         "2031-Q4": {
-          "f4_fark_milyar": 13585.6,
-          "k1_itis_azalt_yillik": 2058.5
+          "f4_fark_milyar": 13452.4,
+          "k1_itis_azalt_yillik": 2029.6
         }
       }
     }

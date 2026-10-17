@@ -2,7 +2,7 @@
 
 Rol: Titiz veri araştırmacısı. Kuramı doğrulama. Ölç. Yalnız kamuya açık kayıt. Alıntı 15 kelimeyi geçmesin. Uydurma kenar yazma. Bulamadığını "bulunamadı, X sorgu denendi" diye yaz. Birincil: TCMB Finansal Hesaplar Raporu 2026-I, kimden-kime tabloları. Haber ikincil.
 
-Ön kayıt: `cursor/odeme-zinciri-kalicilik-f01a`. Akış mahsubu ayrı durur. 2026-Q1 brüt servis 3,09 trilyon TL/ay, mahsup sonrası 1,77, silinen yüzde 42,7. Birim trilyon TL/ay. O yüzde stoka taşınmaz. Stok birimi milyar TL, dönem sonu.
+Ön kayıt: `cursor/odeme-zinciri-kalicilik-f01a`. Akış mahsubu ayrı durur. 2026-Q1 brüt servis 3,09 trilyon TL/ay, mahsup sonrası 1,77, silinen yüzde 42,1. Birim trilyon TL/ay. O yüzde stoka taşınmaz. Stok birimi milyar TL, dönem sonu.
 
 ## Ne ölçülür
 
@@ -34,12 +34,12 @@ Silinen = min(bacak, karşı bacak). Karşı bacak yoksa silinen boş. Sıfır y
 
 Kendi içi mevduat (10.258 milyar TL) karşı bacak raporda yoksa aday satırdır. Silinen boş kalır. Sıfırlamak uydurmadır.
 
-Akış sonucu bu dosyaya sütun olarak girmez. Yüzde 42,7 burada yok.
+Akış sonucu bu dosyaya sütun olarak girmez. Yüzde 42,1 burada yok.
 
 ## Yanlışlayıcı
 
 H-S Stok, akışın aynı işi değildir.
-- Araç ayrı silinen / ilgili stok, akıştaki yüzde 42,7'nin 15 puan yakınındaysa `hipotez_duser`. İki ölçüm karışmış olabilir.
+- Araç ayrı silinen / ilgili stok, akıştaki yüzde 42,1'nin 15 puan yakınındaysa `hipotez_duser`. İki ölçüm karışmış olabilir.
 - Araç ayrı silinen belirgin düşükse `stok_ayri`. Stok silimi akış siliminden küçük kalır.
 - Karşı tarafı olmayan hisse ve diğer borç, firma yükümlülüğünün yarısından fazlaysa `stok_dar`. Silinen, firma borcunun gövdesine değmez.
 - Kendi içi mevduatta karşı bacak yoksa o satır skora girmez.

@@ -95,7 +95,7 @@ def build() -> Document:
     doc.add_paragraph(
         "Bu belge politika reçetesi değildir. Ölçüm, üst sınır, varsayım, tahmin ve senaryo ayrı durur. "
         "Bir katmanın sonucu diğerinin sonuç sütununa yazılmaz; yalnız etiketiyle girdi olur. "
-        "Kilitli dosyalar (adim1_stok silinen, adim4 senet, üç kapı, akış 0,4270) boş/modellenmedi kalır. "
+        "Kilitli dosyalar (adim1_stok silinen, adim4 senet, üç kapı, akış 0,4210) boş/modellenmedi kalır. "
         "Sayılar 12 Ekim 2026 koşusuna bağlıdır; yenilemek için adim1_nace.py … test_bes_adim.py sırasına bakın."
     )
 

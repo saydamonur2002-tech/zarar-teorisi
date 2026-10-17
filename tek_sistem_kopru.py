@@ -326,7 +326,7 @@ def esleme(ev: dict) -> list[dict]:
         "donem": ms_son.get("donem"), "deger": _r(ms_son.get("silinen_oran"), 3), "birim": "oran",
         "durum": "baska_nesne",
         "not": "Sektör düzeyi akış. Bilateral e-fatura eşleşmesi değil. Firma çifti yok. KAP kenarı sıfır (nace_kap_sonuc.json kap_kenar_sayisi 0). "
-               "L^m ile türetilmiş aylık brüt servis, beş hazne. Yüzde 42,7 sektör servisi; adım 1'in nesnesi değil. "
+               "L^m ile türetilmiş aylık brüt servis, beş hazne. Yüzde 42,1 sektör servisi; adım 1'in nesnesi değil. "
                "tek-sistem mahsuplasma paketi (mahsup/) aynı kod.",
         "dosya": "mahsup_sektor_ozet.json",
     })
@@ -396,7 +396,7 @@ def esleme(ev: dict) -> list[dict]:
     return rows
 
 
-ADIM1_SAYI = 0.427  # kilitli; 0,4270 değişirse H-N2 ihlal
+ADIM1_SAYI = 0.421  # kilitli; 0,4210 değişirse H-N2 ihlal
 
 
 def adim1_kontrol(esl: list[dict]) -> dict:

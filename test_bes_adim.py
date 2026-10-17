@@ -5,7 +5,7 @@ Okur, yazmaz (iki sonuç dosyası dışında). Beş kontrol:
   2. Silinen boş: adim1_stok.csv her satır, eşleme satırı.
   3. Senet kilidi: senet_kilit.txt `modellenmedi`; adim4.csv senet satırı `modellenmedi`, ihraç/prim/çıkış boş; kod yok.
   4. Üç kapı boş: kapi_kilit.txt üç satır `bos`; tavan_akis.csv gecis/tavan, vadeli_kalicilik.csv vade/emir/gün boş.
-  5. Akış satırı 0,4270 `baska_nesne` durur.
+  5. Akış satırı 0,4210 `baska_nesne` durur.
 Beşi geçerse `bitti`, biri düşerse `durdu`. bes_adim_sonuc.json `son` bu testten yazılır; koşunun sözü (`kosu`) ayrı durur.
 
 Çalıştır: `python3 test_bes_adim.py` (pytest de toplar). Çıktı: kapanis_sonuc.json; bes_adim_sonuc.json `son`, `son_kaynak`.
@@ -35,7 +35,7 @@ def _eski_tavan() -> float:
 
 
 ESKI_TAVAN = _eski_tavan()
-AKIS = (0.427, "baska_nesne")
+AKIS = (0.421, "baska_nesne")
 KAPILAR = ("vade_dilimi", "odenmeyen_emir", "gecis_payi")
 KOD_HARIC = ("hekis_model", "model", "mahsup", ".git")  # vendor; HEKİS senedi başka nesne
 
@@ -120,7 +120,7 @@ def kontrol_akis() -> dict:
     r = next((x for x in _csv("tek_sistem_esleme.csv") if x["adim"] == "1" and x["dosya"] == "mahsup_sektor_ozet.json"), None)
     ok = r is not None and _f(r["deger"]) is not None and abs(_f(r["deger"]) - AKIS[0]) < 5e-5 and r["durum"] == AKIS[1]
     return {"etiket": "temiz" if ok else "ihlal", "deger": _f(r["deger"]) if r else None, "durum": r["durum"] if r else None,
-            "not": "0,4270 baska_nesne durur" if ok else "akış satırı değişmiş"}
+            "not": "0,4210 baska_nesne durur" if ok else "akış satırı değişmiş"}
 
 
 def main() -> dict:

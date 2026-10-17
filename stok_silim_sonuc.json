@@ -12,7 +12,7 @@
     "silinen_iki_bacak_brut_oran": 0.31748271482997037,
     "not": "model tercihi; kısmi çiftler; H-S'ye girmez"
   },
-  "akis_oran_kiyaslama_disinda": 0.427,
+  "akis_oran_kiyaslama_disinda": 0.421,
   "karsi_bacak_tavan_kapi": {
     "tanim": "üst sınır; dağılım/olasılık değil; skor değil",
     "seri_turu": "EVDS konsolide olmayan stok (bie_finhestnks11/14/12t/13/2), 2026-Q1",
@@ -23,7 +23,7 @@
     "tavan_toplam_milyar": 6002.6,
     "arac_ayri_payda_alt_sinir_milyar": 76507.0,
     "arac_ayri_oran_ust_sinir": 0.0728,
-    "hipotez_duser_esik": 0.277,
+    "hipotez_duser_esik": 0.271,
     "sonuc": "hipotez_duser olanaksız (üst sınır < eşik); açılırsa stok_ayri + stok_dar koşulu birlikte",
     "kosul": "seri tam ise geçerli; seri alt küme ise tavan delinir",
     "stok_kiyas": {

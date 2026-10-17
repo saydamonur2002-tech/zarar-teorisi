@@ -2,7 +2,7 @@
 
 Çalıştır: `python3 girdi_haritasi.py`. Çıktı: `girdi_haritasi.csv`.
 
-Kural: katman sonuçları birbirine taşınmaz. Bir sayı başka adıma yalnız girdi olarak, kendi etiketiyle girer; hedef adımın sonuç sütununa yazılmaz; hedefin etiketi kaynağınkinden iyi olamaz. Kilitler (`test_bes_adim.py`) olduğu gibi durur: silinen boş, senet `modellenmedi`, üç kapı boş, akış 0,4270 `baska_nesne`.
+Kural: katman sonuçları birbirine taşınmaz. Bir sayı başka adıma yalnız girdi olarak, kendi etiketiyle girer; hedef adımın sonuç sütununa yazılmaz; hedefin etiketi kaynağınkinden iyi olamaz. Kilitler (`test_bes_adim.py`) olduğu gibi durur: silinen boş, senet `modellenmedi`, üç kapı boş, akış 0,4210 `baska_nesne`.
 
 ## Faz özeti: şu an ne var / ne eklendi / ne eksik
 

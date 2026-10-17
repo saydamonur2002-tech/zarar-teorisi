@@ -59,14 +59,14 @@ Rejim sınavında 2025-Q2 tahmini ölçülenin 5,6 puan altındadır. Bu sütun 
 | Yıl | Açık adım | Adımın kendi sayısı | Birim | Etiket |
 | --- | --- | ---: | --- | --- |
 | 2026 | hiçbiri | 0 | — | ölçüm |
-| 2027 | 1 akış ve 2, K1 | 2058 | milyar TL/yıl, yıl sonu itiş temposu | senaryo takvimi |
+| 2027 | 1 akış ve 2, K1 | 2030 | milyar TL/yıl, yıl sonu itiş temposu | senaryo takvimi |
 | 2028 | 1 stok tavanı, K2; adım 3 | 755 | milyar TL/yıl, duran firma faizi, κ=0,25 | varsayım |
 | 2029 | 4, K3 | 36–91 | milyar TL, prim, θ=0,25 | band varsayım |
 | 2027–2029 | 5 | — | kira satırı | ölçülmedi |
 
-2027 yıl sonu K1 itiş temposu 2058. Yıl içinde biriken F.4 farkı 1286. Bu, stoktan silinen tutar değildir. `silinen` boş kalır. Akış satırı 0,427 `baska_nesne` olarak durur.
+2027 yıl sonu K1 itiş temposu 2030. Yıl içinde biriken F.4 farkı 1268. Bu, stoktan silinen tutar değildir. `silinen` boş kalır. Akış satırı 0,421 `baska_nesne` olarak durur.
 
-2028 yıl sonu K2 brüt üst sınır 14623. Adım 3’ün duran faizi 755. Bunu banka yazar. Hazine faiz satırından düşülmez. ΣNL = 0. K1 aynı yılda açık kalır; itiş temposu 2.058,5.
+2028 yıl sonu K2 brüt üst sınır 14623. Adım 3’ün duran faizi 755. Bunu banka yazar. Hazine faiz satırından düşülmez. ΣNL = 0. K1 aynı yılda açık kalır; itiş temposu 2.029,6.
 
 2029 prim bandı 36–91. Aynı yıl adım 3 tam yıldır: duran faiz 1208. Prim ile duran faiz toplanmaz. İhraççı varsayımı K′. Senet satırı `modellenmedi` kalır. Adım 5’in orta vadede penceresi yoktur. Ho→Ha bandı (yüzde 20 kapsama, 52–160) bu tabloya yazılmaz.
 

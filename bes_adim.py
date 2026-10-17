@@ -4,7 +4,7 @@
 Girdi yalnız bu depodaki dosyalar: stok_silim.csv, odeme_mahsup_sonuc.json, tek_sistem_kopru.csv,
 tek_sistem_esleme.csv, diger_repo_kopru.csv, tavan_akis.csv, vadeli_kalicilik.csv.
 
-Taşınmaz: akış 0,4270 (`baska_nesne`, dokunulmaz), MY 2.933,6, kalan 0,893, BDDK–akım 387,1, geçiş 0/1/3/1.
+Taşınmaz: akış 0,4210 (`baska_nesne`, dokunulmaz), MY 2.933,6, kalan 0,893, BDDK–akım 387,1, geçiş 0/1/3/1.
 Kilitli üç kapı (vade dilimi, ödenmeyen emir, geçiş payı) boş kalır; biri dolu çıkarsa `ihlal`, koşu düşer.
 
 Adım 1 stok: eski_tavan 0,0728 (stok_silim.py arac_ayri_oran_ust_sinir; her tek yön bacağa aynı araçta EVDS üst
@@ -44,7 +44,7 @@ def _eski_tavan() -> float:
 
 ESKI_TAVAN = _eski_tavan()
 XLS_VAR = False
-AKIS_SATIRI = {"deger": 0.427, "durum": "baska_nesne"}  # dokunulmaz; yalnız okunur
+AKIS_SATIRI = {"deger": 0.421, "durum": "baska_nesne"}  # dokunulmaz; yalnız okunur
 
 
 def _csv(ad: str) -> list[dict]:
@@ -252,7 +252,7 @@ def md(son: dict) -> str:
     s = ["# Beş adım, sırayla, tek koşu", "",
          f"Ön kayıt `{ON_KAYIT}`. Çalıştır: `python3 bes_adim.py`. Çıktı: `adim1_stok.csv`, `adim2.csv`, `adim3.csv`, `adim4.csv`, `adim5.csv`, `bes_adim_sonuc.json`.", "",
          "Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` ise durur. Önceki katman sayıları taşınmaz. "
-         "Adım 1 akış satırı (0,4270, `baska_nesne`) dokunulmadı.", "",
+         "Adım 1 akış satırı (0,4210, `baska_nesne`) dokunulmadı.", "",
          "## Etiketler", "", "| Adım | Dosya | Yanlışlayıcı | Etiket | Sayı |", "| --- | --- | --- | --- | --- |"]
     if "1" in a:
         x = a["1"]

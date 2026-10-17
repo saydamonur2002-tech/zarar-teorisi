@@ -34,7 +34,7 @@ Yürütme rolünün tuttuğu nakit. Kişi, hane, firma mevduatı değildir. Akı
 
 - GY toplamı yan sütundur, lider değildir. Resmî kuruluşlar (banka) GY kapsamıdır.
 - TCMB P311 = P3111 nakit + P3112 altın; merkez_banka satırı yalnız nakittir. Finansal hesaplarda altın F.1'dir, VF.2'ye girmez.
-- Hane 15.357 ve firma stokları lider sütununa girmez. Stok silimi tavanı ve akış %42,7 bu dosyada yok.
+- Hane 15.357 ve firma stokları lider sütununa girmez. Stok silimi tavanı ve akış %42,1 bu dosyada yok.
 
 ## Arama günlüğü
 

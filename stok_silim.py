@@ -1,6 +1,6 @@
 """Stok silimi — TCMB Finansal Hesaplar 2026-I kimden-kime (metin + EVDS pay).
 
-Akış mahsupu (yüzde 42,7) bu dosyaya girmez. Birim: rapor milyar TL (2026-Q1 dönem sonu).
+Akış mahsupu (yüzde 42,1) bu dosyaya girmez. Birim: rapor milyar TL (2026-Q1 dönem sonu).
 
 Çalıştırma: python3 stok_silim.py
 """
@@ -24,7 +24,7 @@ PDF_URL = (
     "VII.+Kimden-Kime+Tablolar%C4%B1.pdf?CACHEID=ROOTWORKSPACE-bf500c17-e3d5-40bd-8475-370caca9c6fd-p-TY4sh&MOD=AJPERES"
 )
 PDF_KOK = KOK / "tcmb_kimden_kime_2026Q1.pdf"
-AKIS_ORAN_REF = 0.427  # yalnız H-S kıyası; stok_silim.csv'ye yazılmaz
+AKIS_ORAN_REF = 0.421  # yalnız H-S kıyası; stok_silim.csv'ye yazılmaz
 HS_ESIK = 0.15
 FIRMALAR_PDF_URL = (
     "https://www.tcmb.gov.tr/wps/wcm/connect/44363718-828b-4c6a-95e8-066078e93247/"
@@ -542,7 +542,7 @@ def main() -> None:
 | **arac_ayri** | Muhasebe: kredi, mevduat, senet ayrı mahsup |
 | **arac_birlesik** | Model tercihi: aynı çiftte üç araç tek havuz |
 
-Akış mahsupu (~42,7% brüt servis) bu tabloda **yok**.
+Akış mahsupu (~42,1% brüt servis) bu tabloda **yok**.
 
 ## 2. Kaynak sınırı
 

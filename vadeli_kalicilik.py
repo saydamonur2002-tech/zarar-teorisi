@@ -3,7 +3,7 @@
 Kalıcılık: ödeme emri günü ile nakdin 102 hesaba geçtiği gün arasındaki süre.
 Hazine vadeli mevduatı: merkezi yönetim (S.1311) VF.2 vadeli bakiyesi (TP.FINHESTNKS1311.ZP8).
 Üç kapı: (1) MY vadeli vade kırılımı, (2) THKH ayrımı, (3) ödenmeyen ödeme emri tutarı ve gün sayısı.
-Akış %42,7, stok tavanı 18.846 ve lider mevduat 2.933,6 bu teste girmez.
+Akış %42,1, stok tavanı 18.846 ve lider mevduat 2.933,6 bu teste girmez.
 Birim milyar TL, dönem sonu. Boş hücre boş kalır.
 Çıktı: vadeli_kalicilik.csv, vadeli_kalicilik_sonuc.json, VADELI_KALICILIK.md
 """
