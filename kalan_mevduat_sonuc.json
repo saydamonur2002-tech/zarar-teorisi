@@ -1,7 +1,7 @@
 {
-  "birim": "milyar TL, dönem sonu",
+  "birim": "milyar TL, donem sonu",
   "skor_payda": "H+F+GY",
-  "butun_payda": "brüt kapı; PFK kalan sayılmaz; skor değil",
+  "butun_payda": "brut kapi, skor degil",
   "ozet": {
     "2025-Q2": {
       "payda_butun": 39963.2,
@@ -12,10 +12,17 @@
       "kalan_butun": 0.953,
       "kalan_hfg": 0.916,
       "yuzde70": "70in_ustunde",
-      "yuzde70_not": "eşitlik değil; kalan HFG 70'in 22 puan üstü; kullanıcı 70 eksik tahmin",
+      "yuzde70_not": "esitlik degil; skor HFG; butun payda brut, skor degil",
       "H_pay_hfg": 0.585,
       "F_pay_hfg": 0.309,
-      "GY_disi_MY_pay_hfg": 0.022
+      "GY_disi_MY_pay_hfg": 0.022,
+      "payda_disi": {
+        "HHKAOK": 295.9,
+        "diger_finansal_S12_eksi_PFK": 2398.6,
+        "S1_toplam_ekonomi": 37635.3
+      },
+      "cift_sayim_notu": "PFK VF.2 bankalararasi ve kendi icini tutar; butun payda brut, skor degil.",
+      "kimden_kime_banka_bacagi": {}
     },
     "2025-Q3": {
       "payda_butun": 44253.4,
@@ -26,10 +33,17 @@
       "kalan_butun": 0.938,
       "kalan_hfg": 0.889,
       "yuzde70": "70in_ustunde",
-      "yuzde70_not": "eşitlik değil; kalan HFG 70'in 19 puan üstü",
+      "yuzde70_not": "esitlik degil; skor HFG; butun payda brut, skor degil",
       "H_pay_hfg": 0.563,
       "F_pay_hfg": 0.311,
-      "GY_disi_MY_pay_hfg": 0.015
+      "GY_disi_MY_pay_hfg": 0.015,
+      "payda_disi": {
+        "HHKAOK": 332.8,
+        "diger_finansal_S12_eksi_PFK": 2807.7,
+        "S1_toplam_ekonomi": 42066.7
+      },
+      "cift_sayim_notu": "PFK VF.2 bankalararasi ve kendi icini tutar; butun payda brut, skor degil.",
+      "kimden_kime_banka_bacagi": {}
     },
     "2026-Q1": {
       "payda_butun": 48516.5,
@@ -40,17 +54,35 @@
       "kalan_butun": 0.94,
       "kalan_hfg": 0.893,
       "yuzde70": "70in_ustunde",
-      "yuzde70_not": "eşitlik değil; kalan HFG 70'in 19 puan üstü",
+      "yuzde70_not": "esitlik degil; skor HFG; butun payda brut, skor degil",
       "H_pay_hfg": 0.562,
       "F_pay_hfg": 0.314,
-      "GY_disi_MY_pay_hfg": 0.017
+      "GY_disi_MY_pay_hfg": 0.017,
+      "payda_disi": {
+        "HHKAOK": 425.1,
+        "diger_finansal_S12_eksi_PFK": 3505.9,
+        "S1_toplam_ekonomi": 46531.4
+      },
+      "cift_sayim_notu": "PFK VF.2 bankalararasi ve kendi icini tutar; butun payda brut, skor degil.",
+      "kimden_kime_banka_bacagi": {
+        "H": 15361.0,
+        "F": 7195.0
+      }
     }
   },
   "hipotez": {
     "H-P": "olculdu",
-    "H-P_not": "Skor H+F+GY paydasında MY dışı pay. 2026-Q1 kalan 0,893. Bütün paydadaki 0,94 skor değil.",
+    "H-P_not": "Skor H+F+GY paydasinda MY disi pay. Butun paydadaki kalan skor degil.",
     "H-P2": "ayri",
-    "H-P2_not": "2025-Q2→Q3 vadeli: MY +239,5%, H +3,3%, F +9,0%. Eşik ±10 puan. Aynı çeyrek, aynı oran değil.",
-    "vade_dilimi": "ayrılmadı; kalıcılık cümlesi yok; H-K1 kapalı"
+    "H-P2_not": "2025-Q2->Q3 vadeli: MY +239.5%, H +3.3%, F +9.0%, GY +134.9%, PFK +20.9%, ROW -0.0%. Esik +-10%. H ve F vadelisi MY ile ayni oranda degil.",
+    "vadeli_oransal_degisim_Q2_Q3": {
+      "MY": 2.395,
+      "H": 0.033,
+      "F": 0.09,
+      "GY": 1.349,
+      "PFK": 0.209,
+      "ROW": -0.0
+    },
+    "vade_dilimi": "ayrilmadi; kalicilik cumlesi yok; H-K1 kapali"
   }
 }

@@ -1,3 +1,9 @@
 {"islem": "basla", "kilit": "kap_universe_kilit.json"}
 {"kaynak": "TÜİK", "islem": "github_xls", "dosya": "Ekonomik faaliyetlere göre temel göstergeler, 2024.xls"}
-{"kaynak": "KAP", "islem": "atla", "dosya": "kap_kenar.csv"}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2025-10-01", "to": "2025-10-31", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2025-11-01", "to": "2025-11-30", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2025-12-01", "to": "2025-12-31", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2026-01-01", "to": "2026-01-31", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2026-02-01", "to": "2026-02-28", "adet": 2000}
+{"kaynak": "KAP", "islem": "byCriteria", "from": "2026-03-01", "to": "2026-03-31", "adet": 2000}
+{"kaynak": "KAP", "islem": "ozet", "benzersiz_bildirim": 12000, "ilisikli_taraf_baslik": 26}

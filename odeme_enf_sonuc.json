@@ -133,8 +133,8 @@
   "soksuz_erime": 0.0,
   "soksuz_yerel": 0.0,
   "soksuz_yerel_erime": 0.0,
-  "n_mc": 50,
-  "tohum": 20261010,
   "tikanma_metin": "Kötü köşe, birincil valf. Ortalama yeni tahsil kapalı 0.41, açık 0.57. Hacim eşiğinin altında kalan periyot 16.08 ve 16.06. Kilit payı eşiğinin üstünde kalan periyot 17.46 ve 17.46. Bloke sayımı bu ikisinin birleşimidir. Ortalama tahsil yükselir, 0,70 eşiğinin altında kalır. Hacim sayacı ve kilit sayacı kısalmaz.",
-  "izgara_metin": "Birincil kötü köşe α = 0,60 kısalmaz. Aynı eşik ve π ile banka 0'da iki hücre pratik eşiği geçer: kilit 0,99 / süre 8 ve α = 0, kısalma ortalama 3,58, medyan 3, p = 3,53e-8; kilit orta ve α = 0,15, kısalma ortalama 2,98, medyan 3, p = 3,72e-7."
+  "izgara_metin": "Birincil kötü köşe α = 0,60 kısalmaz. Aynı eşik ve π ile pratik eşiği geçen diğer hücreler: kilit 0.85 / süre 3, α 0.15, banka 0.0, kısalma ortalama 2.98, medyan 3.00, p = 3.72e-07; kilit 0.99 / süre 8, α 0.00, banka 0.0, kısalma ortalama 3.58, medyan 3.00, p = 3.53e-08.",
+  "n_mc": 50,
+  "tohum": 20261010
 }
