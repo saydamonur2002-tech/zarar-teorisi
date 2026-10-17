@@ -27,7 +27,22 @@ from pathlib import Path
 
 KOK = Path(__file__).resolve().parent
 ON_KAYIT = "87f0317"
-ESKI_TAVAN = 0.0728
+def _eski_tavan() -> float:
+    """stok_silim_sonuc.json'dan her koşuda okunur (eski: sabit 0.0728)."""
+    import json as _j
+    from pathlib import Path as _P
+    d = _j.loads((_P(__file__).resolve().parent / "stok_silim_sonuc.json").read_text(encoding="utf-8"))
+    def _bul(o):
+        if isinstance(o, dict):
+            if "arac_ayri_oran_ust_sinir" in o: return o["arac_ayri_oran_ust_sinir"]
+            for v in o.values():
+                r = _bul(v)
+                if r is not None: return r
+        return None
+    return float(_bul(d))
+
+
+ESKI_TAVAN = _eski_tavan()
 XLS_VAR = False
 AKIS_SATIRI = {"deger": 0.427, "durum": "baska_nesne"}  # dokunulmaz; yalnız okunur
 
