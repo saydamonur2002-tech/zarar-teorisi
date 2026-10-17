@@ -36,6 +36,10 @@ pip install -r requirements.txt
 
 `evds_cek.py` ağı kullanır; repodaki `*_ham.csv` dosyaları 7 Ekim 2026 çekimidir, yeniden çekmeden de sonraki adımlar çalışır.
 
+## Haftalık veri güncellemesi
+
+`haftalik_guncelle.py` sekiz EVDS ham dosyasını (37 grup) yeniden çeker, `veri_canli/` altındaki canlı kopyayla karşılaştırır; değişiklik varsa kopyayı ve `SON_GUNCELLEME.md` özetini yazar. Dondurulmuş `*_ham.csv` dosyalarına dokunmaz ve model çıktılarını yeniden hesaplamaz. GitHub Actions ile her Pazartesi 05:17 UTC çalışır (`.github/workflows/haftalik-veri.yml`; zamanlama yalnızca `main` dalındaki dosyayla işler). Ayrıntı ve doğrulama durumu: [`veri_canli/OKU.md`](veri_canli/OKU.md).
+
 ## Ana çıktılar
 
 | Dosya | Ne |
