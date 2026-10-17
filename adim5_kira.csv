@@ -1,7 +1,7 @@
 ﻿yol,birim_kira_tl_m2_ay,donem,m2,hane_sayisi,kiraci_orani,kiraci_hane,aylik_kira_tl,kira_yillik_milyar,durum,etiket
-A,275.37,2026-Q3,90.0,26400000,0.25,6600000,24783,1962.8,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
-A,275.37,2026-Q3,90.0,26400000,0.3,7920000,24783,2355.4,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
-A,275.37,2026-Q3,110.0,26400000,0.25,6600000,30291,2399.0,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
-A,275.37,2026-Q3,110.0,26400000,0.3,7920000,30291,2878.8,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
+A,275.37,2026-Q3,90.0,26977795,0.25,6744448,24783,2005.8,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
+A,275.37,2026-Q3,90.0,26977795,0.3,8093338,24783,2407.0,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
+A,275.37,2026-Q3,110.0,26977795,0.25,6744448,30291,2451.5,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
+A,275.37,2026-Q3,110.0,26977795,0.3,8093338,30291,2941.8,band_varsayim,b ölçüm; m² varsayım; N dis_kaynak_elle; κ varsayım
 B,,2026-Q1,,,,,,254.8,varsayim_proxy,"konut_stok 7278.6 (H varlık × 0,25) × 0.035; direnc_yuzdesi proxy"
 karsilastirma,,2026-Q3,,,,,27537,,karsilastirma,"HEKİS havuz kirası 20,000 TL/ay / piyasa 100 m² 27,537 TL/ay = 0.73"

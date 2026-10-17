@@ -18,12 +18,12 @@
     "durum": "olcum"
   },
   "yol_A_band_milyar": [
-    1962.8,
-    2878.8
+    2005.8,
+    2941.8
   ],
   "yol_B_proxy_milyar": 254.8,
   "hekis_bolu_piyasa_100m2": 0.726,
-  "hane_sayisi": 26400000,
+  "hane_sayisi": 26977795,
   "m2": [
     90.0,
     110.0
@@ -67,16 +67,16 @@
     },
     {
       "nesne": "kiracı hane sayısı",
-      "alt": 6600000,
-      "ust": 7920000,
+      "alt": 6744448,
+      "ust": 8093338,
       "birim": "hane",
       "durum": "dis_kaynak_elle",
-      "not": "N 26,400,000 × κ"
+      "not": "N 26,977,795 × κ"
     },
     {
       "nesne": "kira akışı yıllık (yol A)",
-      "alt": 1962.8,
-      "ust": 2878.8,
+      "alt": 2005.8,
+      "ust": 2941.8,
       "birim": "milyar TL/yıl",
       "durum": "band_varsayim",
       "not": "b × m² × N × κ × 12"
@@ -107,24 +107,24 @@
     },
     {
       "nesne": "Ho→Ha yıllık transfer, kapsama payı 20%",
-      "alt": 75.8,
-      "ust": 195.6,
+      "alt": 77.4,
+      "ust": 199.9,
       "birim": "milyar TL/yıl",
       "durum": "band_varsayim",
       "not": "fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
     },
     {
       "nesne": "Ho→Ha yıllık transfer, kapsama payı 50%",
-      "alt": 189.4,
-      "ust": 489.0,
+      "alt": 193.6,
+      "ust": 499.7,
       "birim": "milyar TL/yıl",
       "durum": "band_varsayim",
       "not": "fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
     },
     {
       "nesne": "Ho→Ha yıllık transfer, kapsama payı 100%",
-      "alt": 378.8,
-      "ust": 978.0,
+      "alt": 387.1,
+      "ust": 999.4,
       "birim": "milyar TL/yıl",
       "durum": "band_varsayim",
       "not": "fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
