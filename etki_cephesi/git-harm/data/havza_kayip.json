@@ -1,0 +1,491 @@
+{
+  "kaynak": "PROJEKSIYON.json bolgesel_net",
+  "pay": "mutlak net / otuz havzanın net toplamının mutlak değeri",
+  "toplam_net": {
+    "A": -15.247,
+    "B": -25.727,
+    "C": -9.899
+  },
+  "havzalar": [
+    {
+      "bolge": "korfez",
+      "ad": "Körfez bağlantı hattı",
+      "A": {
+        "net": -1.645,
+        "pay": 10.79
+      },
+      "B": {
+        "net": -2.606,
+        "pay": 10.13
+      },
+      "C": {
+        "net": -1.114,
+        "pay": 11.25
+      }
+    },
+    {
+      "bolge": "karadeniz",
+      "ad": "Karadeniz çeperi",
+      "A": {
+        "net": -1.227,
+        "pay": 8.05
+      },
+      "B": {
+        "net": -1.925,
+        "pay": 7.48
+      },
+      "C": {
+        "net": -0.832,
+        "pay": 8.4
+      }
+    },
+    {
+      "bolge": "irak_bagdat",
+      "ad": "Fırat — Irak merkez",
+      "A": {
+        "net": -1.141,
+        "pay": 7.48
+      },
+      "B": {
+        "net": -1.838,
+        "pay": 7.14
+      },
+      "C": {
+        "net": -0.764,
+        "pay": 7.72
+      }
+    },
+    {
+      "bolge": "irak_krg",
+      "ad": "Fırat — KRG",
+      "A": {
+        "net": -0.899,
+        "pay": 5.9
+      },
+      "B": {
+        "net": -1.469,
+        "pay": 5.71
+      },
+      "C": {
+        "net": -0.596,
+        "pay": 6.02
+      }
+    },
+    {
+      "bolge": "lubnan",
+      "ad": "Levant — Lübnan kıyı",
+      "A": {
+        "net": -0.778,
+        "pay": 5.1
+      },
+      "B": {
+        "net": -1.52,
+        "pay": 5.91
+      },
+      "C": {
+        "net": -0.441,
+        "pay": 4.45
+      }
+    },
+    {
+      "bolge": "suriye_kuzey",
+      "ad": "Levant — Suriye tampon",
+      "A": {
+        "net": -0.776,
+        "pay": 5.09
+      },
+      "B": {
+        "net": -1.473,
+        "pay": 5.73
+      },
+      "C": {
+        "net": -0.443,
+        "pay": 4.48
+      }
+    },
+    {
+      "bolge": "somali_afrika",
+      "ad": "Afrika Boynu",
+      "A": {
+        "net": -0.652,
+        "pay": 4.28
+      },
+      "B": {
+        "net": -1.079,
+        "pay": 4.19
+      },
+      "C": {
+        "net": -0.436,
+        "pay": 4.4
+      }
+    },
+    {
+      "bolge": "balkan_bg",
+      "ad": "Balkan — Bulgaristan",
+      "A": {
+        "net": -0.584,
+        "pay": 3.83
+      },
+      "B": {
+        "net": -0.914,
+        "pay": 3.55
+      },
+      "C": {
+        "net": -0.402,
+        "pay": 4.06
+      }
+    },
+    {
+      "bolge": "dogu_akdeniz_gaz",
+      "ad": "Doğu Akdeniz — gaz/LNG",
+      "A": {
+        "net": -0.58,
+        "pay": 3.8
+      },
+      "B": {
+        "net": -1.223,
+        "pay": 4.75
+      },
+      "C": {
+        "net": -0.308,
+        "pay": 3.11
+      }
+    },
+    {
+      "bolge": "kuzeyafrika_ma",
+      "ad": "Kuzey Afrika — Fas",
+      "A": {
+        "net": -0.569,
+        "pay": 3.73
+      },
+      "B": {
+        "net": -0.909,
+        "pay": 3.53
+      },
+      "C": {
+        "net": -0.388,
+        "pay": 3.92
+      }
+    },
+    {
+      "bolge": "libya",
+      "ad": "Kuzey Afrika — Libya",
+      "A": {
+        "net": -0.559,
+        "pay": 3.67
+      },
+      "B": {
+        "net": -0.95,
+        "pay": 3.69
+      },
+      "C": {
+        "net": -0.368,
+        "pay": 3.72
+      }
+    },
+    {
+      "bolge": "dogu_akdeniz_kefalet",
+      "ad": "Doğu Akdeniz — KÖİ/kefalet",
+      "A": {
+        "net": -0.464,
+        "pay": 3.04
+      },
+      "B": {
+        "net": -0.962,
+        "pay": 3.74
+      },
+      "C": {
+        "net": -0.252,
+        "pay": 2.55
+      }
+    },
+    {
+      "bolge": "ortasya_kz",
+      "ad": "Orta Asya — Kazakistan",
+      "A": {
+        "net": -0.461,
+        "pay": 3.02
+      },
+      "B": {
+        "net": -0.775,
+        "pay": 3.01
+      },
+      "C": {
+        "net": -0.302,
+        "pay": 3.05
+      }
+    },
+    {
+      "bolge": "ortasya_uz",
+      "ad": "Orta Asya — Özbekistan",
+      "A": {
+        "net": -0.427,
+        "pay": 2.8
+      },
+      "B": {
+        "net": -0.724,
+        "pay": 2.81
+      },
+      "C": {
+        "net": -0.278,
+        "pay": 2.81
+      }
+    },
+    {
+      "bolge": "kuzeyafrika_dz",
+      "ad": "Kuzey Afrika — Cezayir",
+      "A": {
+        "net": -0.413,
+        "pay": 2.71
+      },
+      "B": {
+        "net": -0.688,
+        "pay": 2.67
+      },
+      "C": {
+        "net": -0.273,
+        "pay": 2.76
+      }
+    },
+    {
+      "bolge": "kafkasya_az",
+      "ad": "Kafkasya — Azerbaycan",
+      "A": {
+        "net": -0.384,
+        "pay": 2.52
+      },
+      "B": {
+        "net": -0.641,
+        "pay": 2.49
+      },
+      "C": {
+        "net": -0.249,
+        "pay": 2.52
+      }
+    },
+    {
+      "bolge": "kafkasya_ge",
+      "ad": "Kafkasya — Gürcistan",
+      "A": {
+        "net": -0.371,
+        "pay": 2.43
+      },
+      "B": {
+        "net": -0.615,
+        "pay": 2.39
+      },
+      "C": {
+        "net": -0.243,
+        "pay": 2.45
+      }
+    },
+    {
+      "bolge": "ortasya_tm",
+      "ad": "Orta Asya — Türkmenistan",
+      "A": {
+        "net": -0.343,
+        "pay": 2.25
+      },
+      "B": {
+        "net": -0.57,
+        "pay": 2.22
+      },
+      "C": {
+        "net": -0.227,
+        "pay": 2.29
+      }
+    },
+    {
+      "bolge": "balkan_rs",
+      "ad": "Balkan — Sırbistan",
+      "A": {
+        "net": -0.334,
+        "pay": 2.19
+      },
+      "B": {
+        "net": -0.528,
+        "pay": 2.05
+      },
+      "C": {
+        "net": -0.226,
+        "pay": 2.28
+      }
+    },
+    {
+      "bolge": "misir",
+      "ad": "Kuzey Afrika — Mısır (Nil)",
+      "A": {
+        "net": -0.331,
+        "pay": 2.17
+      },
+      "B": {
+        "net": -0.527,
+        "pay": 2.05
+      },
+      "C": {
+        "net": -0.223,
+        "pay": 2.25
+      }
+    },
+    {
+      "bolge": "kafkasya_am",
+      "ad": "Kafkasya — Ermenistan",
+      "A": {
+        "net": -0.31,
+        "pay": 2.03
+      },
+      "B": {
+        "net": -0.503,
+        "pay": 1.96
+      },
+      "C": {
+        "net": -0.204,
+        "pay": 2.06
+      }
+    },
+    {
+      "bolge": "balkan_ba",
+      "ad": "Balkan — Bosna-Hersek",
+      "A": {
+        "net": -0.306,
+        "pay": 2.01
+      },
+      "B": {
+        "net": -0.49,
+        "pay": 1.9
+      },
+      "C": {
+        "net": -0.208,
+        "pay": 2.1
+      }
+    },
+    {
+      "bolge": "ortasya_kg",
+      "ad": "Orta Asya — Kırgızistan",
+      "A": {
+        "net": -0.273,
+        "pay": 1.79
+      },
+      "B": {
+        "net": -0.462,
+        "pay": 1.8
+      },
+      "C": {
+        "net": -0.179,
+        "pay": 1.81
+      }
+    },
+    {
+      "bolge": "ortasya_tj",
+      "ad": "Orta Asya — Tacikistan",
+      "A": {
+        "net": -0.258,
+        "pay": 1.69
+      },
+      "B": {
+        "net": -0.433,
+        "pay": 1.68
+      },
+      "C": {
+        "net": -0.169,
+        "pay": 1.71
+      }
+    },
+    {
+      "bolge": "balkan_al",
+      "ad": "Balkan — Arnavutluk",
+      "A": {
+        "net": -0.255,
+        "pay": 1.67
+      },
+      "B": {
+        "net": -0.416,
+        "pay": 1.62
+      },
+      "C": {
+        "net": -0.173,
+        "pay": 1.75
+      }
+    },
+    {
+      "bolge": "balkan_mk",
+      "ad": "Balkan — Kuzey Makedonya",
+      "A": {
+        "net": -0.252,
+        "pay": 1.65
+      },
+      "B": {
+        "net": -0.409,
+        "pay": 1.59
+      },
+      "C": {
+        "net": -0.169,
+        "pay": 1.71
+      }
+    },
+    {
+      "bolge": "kuzeyafrika_tn",
+      "ad": "Kuzey Afrika — Tunus",
+      "A": {
+        "net": -0.238,
+        "pay": 1.56
+      },
+      "B": {
+        "net": -0.404,
+        "pay": 1.57
+      },
+      "C": {
+        "net": -0.155,
+        "pay": 1.57
+      }
+    },
+    {
+      "bolge": "iran_guney",
+      "ad": "İran — Körfez/güney",
+      "A": {
+        "net": -0.159,
+        "pay": 1.04
+      },
+      "B": {
+        "net": -0.251,
+        "pay": 0.98
+      },
+      "C": {
+        "net": -0.105,
+        "pay": 1.06
+      }
+    },
+    {
+      "bolge": "iran_dogu",
+      "ad": "İran — Doğu/Orta Asya kapısı",
+      "A": {
+        "net": -0.156,
+        "pay": 1.02
+      },
+      "B": {
+        "net": -0.27,
+        "pay": 1.05
+      },
+      "C": {
+        "net": -0.1,
+        "pay": 1.01
+      }
+    },
+    {
+      "bolge": "iran_bati",
+      "ad": "İran — Irak/Suriye hattı",
+      "A": {
+        "net": -0.102,
+        "pay": 0.67
+      },
+      "B": {
+        "net": -0.153,
+        "pay": 0.59
+      },
+      "C": {
+        "net": -0.072,
+        "pay": 0.73
+      }
+    }
+  ]
+}
