@@ -74,6 +74,12 @@ def build() -> Document:
     bk = _al(a5, "birim_kira") or {}
     band_a = _al(a5, "yol_A_band_milyar") or [None, None]
 
+    def _band(ad):
+        for x in a5.get("araliklar") or []:
+            if x.get("nesne") == ad:
+                return x
+        return {}
+
     doc = Document()
     sec = doc.sections[0]
     sec.top_margin = Cm(2)
@@ -163,9 +169,10 @@ def build() -> Document:
 
     doc.add_heading("1.6 Parça 5 — Kira ve yaşam maliyeti", level=2)
     doc.add_paragraph(
-        f"TCMB birim kira (değerlemesi yapılan konut, 2026-Q2): {_f(bk.get('tl_m2_ay'), 2)} TL/m²/ay; "
+        f"TCMB birim kira (değerlemesi yapılan konut, {bk.get('donem') or '—'}): {_f(bk.get('tl_m2_ay'), 2)} TL/m²/ay; "
         f"yıllık değişim {_f((bk.get('yoy') or 0) * 100) if bk.get('yoy') is not None else '—'} yüzde. "
-        "90–110 m² için kiracı başına piyasa 23.260–28.430 TL/ay. HEKİS havuz kirası 20.000 TL/ay (modellendi). "
+        f"90–110 m² için kiracı başına piyasa {_f(_band('aylık piyasa kirası (kiracı başına)').get('alt'), 0)}–{_f(_band('aylık piyasa kirası (kiracı başına)').get('ust'), 0)} TL/ay. "
+        f"HEKİS havuz kirası {_f(_band('HEKİS havuz kirası').get('alt'), 0)} TL/ay (modellendi). "
         "Tek sistem kira kolu birincil ölçülmedi (kiracı hane × ödenen kira); satır olculmedi durur. "
         "TÜFE yıllık 2026-09: yüzde 29,73."
     )
@@ -187,7 +194,7 @@ def build() -> Document:
             ["3 Faiz", "TP.KTF17 2026-09", "yüzde 53,19", "ölçüm"],
             ["4 Adres", "Üç mevduat stoku", f"{_f(a4.get('adres_toplam_milyar'))} mr", "ölçüm"],
             ["4 İtiş", "F.4 akım / GSYH 2025", "yüzde 7,62", "ölçüm"],
-            ["5 Birim kira", "TP.BK.TR 2026-Q2", f"{_f(bk.get('tl_m2_ay'), 2)} TL/m²/ay", "ölçüm"],
+            ["5 Birim kira", f"{bk.get('seri') or 'TP.BK.TR'} {bk.get('donem') or '—'}", f"{_f(bk.get('tl_m2_ay'), 2)} TL/m²/ay", "ölçüm"],
             ["5 TÜFE", "2026-09 yıllık", "yüzde 29,73", "ölçüm"],
         ],
     )
@@ -333,7 +340,7 @@ def build() -> Document:
         "Konut topluma açılırsa (HEKİS) politika kirası piyasanın altına iner. Kiracı (Ha) kazanır, ev sahibi (Ho) "
         "kaybeder; hane toplam NL değişmez. Kurumsal ev sahibi (F) payı ölçülmedi. "
         f"Birim kira ölçüm: {_f(bk.get('tl_m2_ay'), 2)} TL/m²/ay. Alan 90–110 m² ve kiracı oranı 0,25–0,30 varsayım; "
-        "hane sayısı 26,4 milyon elle (doğrulanmadı). Yol A yıllık kira akışı "
+        f"hane sayısı {_f(a5.get('hane_sayisi'), 0)} elle (doğrulanmadı). Yol A yıllık kira akışı "
         f"{_f(band_a[0]) if len(band_a) > 0 else '—'}–{_f(band_a[1]) if len(band_a) > 1 else '—'} milyar. "
         "Depodaki konut_stok proxy’si 255 milyar: finansal varlık payıdır, yol A ile toplanmaz."
     )
@@ -342,18 +349,18 @@ def build() -> Document:
         ["Nesne", "Alt", "Üst", "Etiket"],
         [
             ["Birim kira (TL/m²/ay)", _f(bk.get("tl_m2_ay"), 2), _f(bk.get("tl_m2_ay"), 2), "ölçüm"],
-            ["Aylık piyasa kirası (kiracı)", "23.260", "28.430", "band, varsayım"],
-            ["HEKİS havuz kirası (TL/ay)", "20.000", "20.000", "modellendi"],
-            ["Kiracı başına fark (TL/ay)", "3.260", "8.430", "band, varsayım"],
+            ["Aylık piyasa kirası (kiracı)", _f(_band("aylık piyasa kirası (kiracı başına)").get("alt"), 0), _f(_band("aylık piyasa kirası (kiracı başına)").get("ust"), 0), "band, varsayım"],
+            ["HEKİS havuz kirası (TL/ay)", _f(_band("HEKİS havuz kirası").get("alt"), 0), _f(_band("HEKİS havuz kirası").get("ust"), 0), "modellendi"],
+            ["Kiracı başına fark (TL/ay)", _f(_band("kiracı başına aylık fark (piyasa − HEKİS)").get("alt"), 0), _f(_band("kiracı başına aylık fark (piyasa − HEKİS)").get("ust"), 0), "band, varsayım"],
             ["Kira akışı yıllık, yol A (mr)", _f(band_a[0]) if band_a else "—", _f(band_a[1]) if len(band_a) > 1 else "—", "band, varsayım"],
-            ["Ho→Ha transfer, kapsama %20 (mr/yıl)", "51,6", "160,2", "band, varsayım"],
-            ["Ho→Ha transfer, kapsama %50 (mr/yıl)", "129,1", "400,6", "band, varsayım"],
-            ["Ho→Ha transfer, kapsama %100 (mr/yıl)", "258,2", "801,1", "band, varsayım"],
+            ["Ho→Ha transfer, kapsama %20 (mr/yıl)", _f(_band("Ho→Ha yıllık transfer, kapsama payı 20%").get("alt")), _f(_band("Ho→Ha yıllık transfer, kapsama payı 20%").get("ust")), "band, varsayım"],
+            ["Ho→Ha transfer, kapsama %50 (mr/yıl)", _f(_band("Ho→Ha yıllık transfer, kapsama payı 50%").get("alt")), _f(_band("Ho→Ha yıllık transfer, kapsama payı 50%").get("ust")), "band, varsayım"],
+            ["Ho→Ha transfer, kapsama %100 (mr/yıl)", _f(_band("Ho→Ha yıllık transfer, kapsama payı 100%").get("alt")), _f(_band("Ho→Ha yıllık transfer, kapsama payı 100%").get("ust")), "band, varsayım"],
         ],
     )
     doc.add_paragraph(
         "Yüzde 20 burada kiracı kapsamasıdır (adım 1’deki silinen oranından başka nesne). "
-        "Kiracıların beşte biri girerse ev sahibinden kiracıya yılda 52–160 milyar geçer. "
+        f"Kiracıların beşte biri girerse ev sahibinden kiracıya yılda {_f(_band('Ho→Ha yıllık transfer, kapsama payı 20%').get('alt'))}–{_f(_band('Ho→Ha yıllık transfer, kapsama payı 20%').get('ust'))} milyar geçer. "
         "adim5.csv kira satırı olculmedi kalır."
     )
 

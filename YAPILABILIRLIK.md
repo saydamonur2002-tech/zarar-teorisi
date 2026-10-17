@@ -26,6 +26,18 @@ Zincir, adımların en sıkı koşuluna bağlıdır. Adım 2 kırılgandır; aş
 
 Zincir kararı: kırılgan / koşullu yapılabilir.
 
+Kapsamdaki diğer parçalar bu cümleyi ayrıca çevirmez:
+
+- Üç kural maliyeti: `uc_kural_kilitli` kümülatif 18.345,7 milyar TL (kanıt, `maliyet_kar_orani`; senaryo). Adım tablosunun girdisi değildir.
+- K1/K2/K3 takvimi: K1 2027, K2 2028, K3 2029 (kanıt, `tek_sistem_kademe` takvimi; senaryo). K2 penceresi Adım 3 faizinde kullanılır. Betik zincir listesinde yoktur.
+- Matrisler: `akis_model` (varsayılan `ZT_BK_DUZELTME=alt`, `ZT_LM=orantili`), `bilateral_D`, `L_cift_kayit`, `kalibre_lambda` zincirdedir (kanıt). Şok modülü onları yazmaz.
+- Şok modülü: `rev_sok` Adım 2 kararının girdisidir. Eşikler kanıt; kur ızgarası, vade ve kısım payı aday.
+- Seçici kredi: ayrı model. Tablo paritesi testte (kanıt, `test_secici_kredi`). Kalibrasyon ayardır (aday, `SECICI_KREDI.md`). Üç kural senaryosundaki “seçici kredi” etiketi bu modülün çıktısı değildir.
+- GSYH paydası: 2025 ölçüm (kanıt, `gsyh_pay`). 2026 sonrası reel %3 yolu aday.
+- Yürütme maliyeti: ρ bandı varsayım (aday); `test_yurutme_maliyet` kilitleri tutar.
+- Ödeme zinciri: sentetik Monte Carlo, SFC matrisine bağlı değil (aday). Çevrimdışı anlık görüntüsü olmayan EVDS çekimleri bu değerlendirmede yok.
+- HEKİS: başka nesne (`baska_nesne`). Kendi testleri geçer; beş adım kararına girmez.
+
 ## Şok testleri
 
 Çalıştır: `python3 rev_sok.py` (zincire bağlı). Çıktı: `rev_sok_sonuc.json`, `rev_sok_sonuc.csv`. Kilitli formül ve kilitli dosya değişmez. `kanıt` ölçülen veya mevcut formülün bu girdilerle ürettiği sayıdır; `aday` şok büyüklüğü, vade veya kapsam taşımasıdır.

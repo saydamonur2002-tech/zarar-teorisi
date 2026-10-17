@@ -30,6 +30,6 @@ Kalemler (yıl, senaryo bazında):
 - yüksek 2030: adım 3 1400.9; adım 4 140.4; adım 4.5 632.4
 - yüksek 2031: adım 3 1400.9; adım 4 114.1
 
-**Adım 5 (toplama girmedi).** Kira transferi (kapsama %50) 2026 fiyatıyla ve yılı belirsiz; yürütme maliyeti düşük/orta/yüksek = 0.5 / 23.8 / 116.2 mlr TL/yıl = GSYH 2026'nın %0.001 / %0.028 / %0.138'i.
+**Adım 5 (toplama girmedi).** Kira transferi (kapsama %50) 2026 fiyatıyla ve yılı belirsiz; yürütme maliyeti düşük/orta/yüksek = 0.8 / 31.2 / 144.9 mlr TL/yıl = GSYH 2026'nın %0.001 / %0.037 / %0.172'i.
 
 **Sınırlar.** Adım 3 ve 4 maliyeti, ρ ile çarpılmış akıştır; ρ dayanağı zayıf (BES_ADIM_MALIYET.md). Üç senaryo tutarlı bir tahmin değil, bant uçlarıdır. Payda yolu tahmin değil; reel büyüme ve 2029-2030 TÜFE'si benim varsayımım.

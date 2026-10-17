@@ -34,8 +34,8 @@ Kural: katman sonuçları birbirine taşınmaz. Bir sayı başka adıma yalnız 
 | `adim4_adres_yonlendirme_sonuc.json` | senaryolar/th0.25_chi0.0_pi0.02/tepe_stok | Faz 4 | Adım 4 (band) | `band_varsayim` | 4840.5 | İhraç/stok bandı; senet satırına yazılmaz | adim4.csv senet satırı; senet_kilit.txt |
 | `gecis_payi_band_sonuc.json` | ana/LR_gecis_payi | Faz 5 | Geçiş payı kapısı (yorum) | `tahmin_ols` | 0.9389 | Nokta tahmin ve bandlar; kapı birincil ölçüm ister | tavan_akis.csv gecis/tavan; kapi_kilit.txt |
 | `gecis_payi_band_sonuc.json` | ana/bes_yil_enflasyon_puan_68 | Faz 5 | bes_yil_senaryo enflasyon bandı | `tahmin_ols` | [-7.62, -1.5] | [0, −7,62] bandını daraltma önerisi; ayrı satırda durur | bes_yil_senaryo.csv |
-| `adim5_kira_sonuc.json` | birim_kira/tl_m2_ay | Faz 6 | Adım 5 (band) | `olcum` | 258.45 | TCMB birim kira; kiracı hane ve alan varsayımıyla yıllık band | adim5.csv kira satırı |
-| `adim5_kira_sonuc.json` | yol_A_band_milyar | Faz 6 | Adım 5 / HEKİS karşılaştırma | `band_varsayim` | [1842.2, 2701.9] | Kira akışı bandı; HEKİS kirası ile oran | adim5.csv; diger_repo_kopru.csv |
+| `adim5_kira_sonuc.json` | birim_kira/tl_m2_ay | Faz 6 | Adım 5 (band) | `olcum` | 275.37 | TCMB birim kira; kiracı hane ve alan varsayımıyla yıllık band | adim5.csv kira satırı |
+| `adim5_kira_sonuc.json` | yol_A_band_milyar | Faz 6 | Adım 5 / HEKİS karşılaştırma | `band_varsayim` | [2005.8, 2941.8] | Kira akışı bandı; HEKİS kirası ile oran | adim5.csv; diger_repo_kopru.csv |
 | `odeme_mahsup_sonuc.json` | ozet/temerrut_sart | Adım 2 (sentetik) | Adım 2 | `modellendi` | 0 | Sentetik; Faz 2 ile yan yana okunur, eşitlenmez | adim2_nace_ag.csv |
 
 ## Etiket sırası (iyiden kötüye)

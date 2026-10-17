@@ -3,6 +3,7 @@
 Yürütme maliyeti (tespit + tahsil + idari) yurutme_maliyet.py modeliyle: program akışı × ρ (ρ bandı varsayım). Adım 1 ve 2 akışı stok (tek sefer), adım 3 ve 5 yıllık, adım 4 toplam."""
 import collections
 import csv
+import json
 from pathlib import Path
 
 import adim45_maliyet as P45
@@ -27,6 +28,27 @@ def adim4():
 
 def adim5():
     return {x["nesne"]: (float(x["alt"]), float(x["ust"])) for x in oku("adim5_kira_aralik.csv")}
+
+
+def _tr(x, n=1):
+    return f"{float(x):,.{n}f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def _adim5_anlat(a5):
+    j = json.loads((KOK / "adim5_kira_sonuc.json").read_text(encoding="utf-8"))
+    bk = j["birim_kira"]
+    piy = a5["aylık piyasa kirası (kiracı başına)"]
+    fark = a5["kiracı başına aylık fark (piyasa − HEKİS)"]
+    hekis = a5["HEKİS havuz kirası"]
+    t20, t50, t100 = (a5[f"Ho→Ha yıllık transfer, kapsama payı {k}%"] for k in (20, 50, 100))
+    return (
+        "**Adım 5.** Akış, ev sahibinden (Ho) kiracıya (Ha) giden transferdir (`adim5_kira_aralik.csv`). "
+        f"Birim kira {_tr(bk['tl_m2_ay'], 2)} TL/m²/ay, EVDS serisi {bk['seri']}, {bk['donem']} ({bk['kapsam']}), tek ölçüm. "
+        f"Konut alanı 90–110 m², kiracı hane oranı %25–30 varsayım; toplam hane {_tr(j['hane_sayisi'], 0)} elle girilmiş dış kaynaktır. "
+        f"Piyasa kirası {_tr(piy[0], 0)} – {_tr(piy[1], 0)} TL/ay, HEKİS havuz kirası {_tr(hekis[0], 0)} TL/ay (model varsayımı) olduğundan fark {_tr(fark[0], 0)} – {_tr(fark[1], 0)} TL/ay'dır. "
+        f"Transfer = fark × kiracı hane × kapsama payı × 12: kapsama %20'de {_tr(t20[0], 1)} – {_tr(t20[1], 1)}, %50'de {_tr(t50[0], 1)} – {_tr(t50[1], 1)}, %100'de {_tr(t100[0], 1)} – {_tr(t100[1], 1)} milyar TL/yıl. "
+        "Yürütme maliyeti transferin ρ katıdır; hane içi bir aktarım olduğu için H toplamında net maliyet değil dağılımdır."
+    )
 
 
 def main():
@@ -88,7 +110,7 @@ def main():
           "**Adım 3.** Akış, duran faizdir (`adim3_faiz_durma.csv`): D = κ·u₂·S₀, I = ψ·(r/4)·D. S₀, EVDS'te firmaların kredi yükümlülüğüdür (F.4, 2026-Q1): 25.339,8 milyar TL, ölçüm. r, ticari kredi faizidir (TP.KTF17), son gözlem 2026-09'da %53,19 ve sonrası sabit tutulur (varsayım). ψ = 3.143,4 / (0,6038 × 14.527,5) = 0,3584, Sektör Bilançoları kapsamı ile EVDS arasındaki oran. κ (0,25; 0,5; 1,0) varsayımdır. 2029'da yıllık duran faiz 1.207,6 / 2.415,6 / 4.830,8 milyar TL olur ve yürütme maliyeti bunun ρ katıdır (ρ %9'da 108,7 / 217,4 / 434,8 milyar TL/yıl).", "",
           "**Adım 4.** İhraç, θ · 19.361,9 · Δu₃'tür; 19.361,9, üç ölçülmüş adres stokunun toplamıdır (hane vadeli mevduat 8.322,4 + firma vadeli mevduat 4.400,1 + gerçek kişi YP mevduat 6.639,4; 2026-Q1). θ ∈ {0,1; 0,25; 0,5}, yenileme χ ∈ {0; 0,5}, prim π ∈ {%2; %5} varsayımdır; ihraççı K′ de varsayımdır. 12 senaryoda 2029–2031 toplam prim 77,5 ile 1.058,9 milyar TL arasında, bankaların mevduat kaybından doğan yıllık kredi daralması (× 0,08) 154,9 ile 774,5 milyar TL arasındadır. Yürütme maliyeti prim toplamının ρ katıdır; ρ'nun bu adımdaki dayanağı en zayıftır, çünkü hedeflenmiş transfer idaresi için bildirilen aralık mevduat senedine taşınmıştır. Senedin endeks bacağı hesaplanmadığı için prim alt sınır olabilir.", "",
           "**Adım 4.5.** Tanım repodadır (`ADIM45_BIRIM.md`): mevcut TL'den yeni fiat TL'ye geçiş, λ = 1 parite (varsayım), yeni lira altın ya da döviz üzerinde alacak değil, kur çapası 49,1274 TL/USD (`bes_yil_senaryo.csv` taban, tüm yıllarda sabit), pencere 2030-Q1..Q4. TL para stoku 16.472,8 milyar TL (2026-Q1). Plasebo kontrolü (`ADIM45_MALIYET.md`): TL bileşen payları λ'dan bağımsız aynı kalır; bu aritmetik gereğidir, para yanılsaması ve yuvarlama enflasyonu modelde yok. Fayda sıfır; tek gerçek terim yürütme maliyeti: A (banknot basımı ≈ 10 milyon $ × 49,1274 + kurum başı yazılım 20–100 bin $ × 100–1.000 kurum, varsayım) 0,59 – 5,40 milyar TL; B (tam yeni birim, GSYH 2025'in %0,3–1,0'ı, ikincil kaynak) 189,7 – 632,4 milyar TL üst referans.", "",
-          "**Adım 5.** Akış, ev sahibinden (Ho) kiracıya (Ha) giden transferdir (`adim5_kira_aralik.csv`). Birim kira 258,45 TL/m²/ay, EVDS serisi TP.BK.TR, 2026-Q2 (değerlemesi yapılan konutlar), tek ölçüm. Konut alanı 90–110 m², kiracı hane oranı %25–30 ve toplam hane 26,4 milyon varsayım ya da elle girilmiş dış kaynaktır. Piyasa kirası 23.260 – 28.430 TL/ay, HEKİS havuz kirası 20.000 TL/ay (model varsayımı) olduğundan fark 3.260 – 8.430 TL/ay'dır. Transfer = fark × kiracı hane × kapsama payı × 12: kapsama %20'de 51,6 – 160,2, %50'de 129,1 – 400,6, %100'de 258,2 – 801,1 milyar TL/yıl. Yürütme maliyeti transferin ρ katıdır; hane içi bir aktarım olduğu için H toplamında net maliyet değil dağılımdır.", ""]
+          _adim5_anlat(a5), ""]
     for n, ad in (("1", "stok"), ("2", "temerrüt ve ücret"), ("3", "faiz durma"), ("4", "adres yönlendirme (senet)"), ("4.5", "yeni para birimi (plasebo)"), ("5", "kira")):
         L += [f"## Adım {n}: {ad}", ""]
         for r in (x for x in rows if x[0] == n):
