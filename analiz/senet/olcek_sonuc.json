@@ -1,0 +1,46 @@
+{
+ "N_FIRMA": 150,
+ "adres": {
+  "A_bant_ust": 19076.6,
+  "A_on": 12722.5,
+  "A_uc": 19361.9
+ },
+ "emme": {
+  "H": 589.3686,
+  "genis": 2322.3191,
+  "paylar": {
+   "S11": 0.0109,
+   "S121": 0.039,
+   "S122": 0.5806,
+   "S1234": 0.0593,
+   "S128": 0.0175,
+   "S129": 0.0908,
+   "S13": 0.0893,
+   "S14": 0.0461,
+   "S2": 0.0642
+  },
+  "piyasa": 10339.8
+ },
+ "etiket": "kanit: N, k, F_VF2, DIBS paylari. aday: KONS hedef paylari, sentetik lider",
+ "firma_vf2_2026q1": 8593.5447,
+ "hukum": {
+  "lider": "ODEME_ZINCIRI.md: en yuksek mevduatli sentetik dugum",
+  "ust10": "dagitim mahsup blogu kapatmaz; ust onda iddiasi elenmedi",
+  "yurutme_kasasi": "LIDER_MEVDUAT.md ayri nesne"
+ },
+ "konsantrasyon_hedef": [
+  0.1,
+  0.4,
+  0.7
+ ],
+ "kredi_bant": [
+  0.08,
+  0.787
+ ],
+ "ust_onda_adet": 15,
+ "ust_onda_nominal_aday": {
+  "0.1": 859.3545,
+  "0.4": 3437.4179,
+  "0.7": 6015.4813
+ }
+}

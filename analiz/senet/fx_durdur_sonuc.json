@@ -1,0 +1,281 @@
+{
+ "adim2_kosul_bu_taslakta": {
+  "ag_yogun_veya_merkezi_takas": false,
+  "kopru_boyutlandi": false,
+  "kur_yukumluluk_karsilanmis": false,
+  "not": "Dondurma yeni akisi keser. Mevcut yp degerlenir. Halka BANKA ayagini kapatmaz. Yogunluk 0,25 ayri kosuludur.",
+  "uc_kosul": false,
+  "yp_maruziyeti_korunmus": false
+ },
+ "artis": 2660.8843,
+ "artis_ayni": true,
+ "artis_baz": 2660.8843,
+ "brut_dis_borc_2025": [
+  {
+   "dUSD": 61.5,
+   "nesne": "Toplam",
+   "not": "yuvarlak stok farki; acilis kuru dis_borc_artisi kimligi",
+   "usd0": 461.2,
+   "usd1": 522.7,
+   "yeni_TL": 2166.03
+  },
+  {
+   "dUSD": 46.5,
+   "nesne": "Özel",
+   "not": "yuvarlak stok farki; acilis kuru dis_borc_artisi kimligi",
+   "usd0": 253.0,
+   "usd1": 299.5,
+   "yeni_TL": 1637.73
+  }
+ ],
+ "diger_mevduat_ceyrek": {
+  "gercek": {
+   "dTL": 545.5,
+   "dUSD": 7.5471,
+   "kur0": 42.5861,
+   "kur1": 44.0737,
+   "kur_TL": 212.8696,
+   "miktar_TL": 332.6304,
+   "stok0": 6093.9,
+   "stok1": 6639.4
+  },
+  "tuzel": {
+   "dTL": 22.9,
+   "dUSD": -2.1466,
+   "kur0": 42.5861,
+   "kur1": 44.0737,
+   "kur_TL": 117.5099,
+   "miktar_TL": -94.6099,
+   "stok0": 3364.0,
+   "stok1": 3386.9
+  },
+  "yurtici": {
+   "dTL": 568.4,
+   "dUSD": 5.4005,
+   "kur0": 42.5861,
+   "kur1": 44.0737,
+   "kur_TL": 330.3794,
+   "miktar_TL": 238.0206,
+   "stok0": 9457.9,
+   "stok1": 10026.3
+  }
+ },
+ "egim_ceyrek_mr_usd": 10.64,
+ "emme": {
+  "H": 589.3686,
+  "fx_H": false,
+  "fx_genis": true,
+  "fx_piyasa": true,
+  "genis": 2322.3191,
+  "piyasa": 10339.8
+ },
+ "etiket": "aday: kur/miktar ayrimi ve 2025 hizinin surmesi; degerleme vurusu kanit formulu",
+ "finans_tam": {
+  "Aon30": {
+   "atil": 3769.9753,
+   "gsyh_yuzde": 4.4655,
+   "kredi_bant": [
+    301.6,
+    2966.97
+   ]
+  },
+  "Aon30_fx": {
+   "atil": 5500.5134,
+   "gsyh_yuzde": 6.5153,
+   "kredi_bant": [
+    440.04,
+    4328.9
+   ]
+  },
+  "Auc30": {
+   "atil": 5761.7953,
+   "gsyh_yuzde": 6.8248,
+   "kredi_bant": [
+    460.94,
+    4534.53
+   ]
+  },
+  "Auc30_fx": {
+   "atil": 7492.3334,
+   "gsyh_yuzde": 8.8745,
+   "kredi_bant": [
+    599.39,
+    5896.47
+   ]
+  },
+  "fx": {
+   "atil": 1683.7634,
+   "gsyh_yuzde": 1.9944,
+   "kredi_bant": [
+    134.7,
+    1325.12
+   ]
+  }
+ },
+ "fx_akis_tl": 1730.5381,
+ "gercek_kisi_yp": [
+  {
+   "dTL": 2517.6639,
+   "dUSD": 40.6362,
+   "etiket": "aday: aylik ortalama kur ile stok miktari; faiz tahakkuku ayrilmadi",
+   "kur0": 34.9038,
+   "kur1": 42.5861,
+   "kur_TL": 787.1258,
+   "miktar_TL": 1730.5381,
+   "pencere": "2024-Q4_2025-Q4",
+   "stok0": 3576.2314,
+   "stok1": 6093.8953
+  },
+  {
+   "dTL": 545.5311,
+   "dUSD": 7.5478,
+   "etiket": "tek ceyrek, yil degil",
+   "kur0": 42.5861,
+   "kur1": 44.0737,
+   "kur_TL": 212.8694,
+   "miktar_TL": 332.6617,
+   "pencere": "2025-Q4_2026-Q1",
+   "stok0": 6093.8953,
+   "stok1": 6639.4264
+  }
+ ],
+ "halka_araci0": 14.0917,
+ "halka_banka": 336.5804,
+ "halka_cekilen": 46.7747,
+ "korunmasiz_senaryo_yillik_mr_usd": 7.308,
+ "kur_yuzde": 19.29,
+ "lam": 1.0357,
+ "s0": 25339.7608,
+ "seyrek": {
+  "artis_tek": [
+   2660.8843
+  ],
+  "batik_med": 11,
+  "kilit_med": 7,
+  "kopru_max": 8250.86,
+  "kopru_med": 4810.19,
+  "kopru_min": 472.84,
+  "n": 30,
+  "temerrut_max": 15,
+  "temerrut_med": 13,
+  "temerrut_min": 8
+ },
+ "seyrek_akis": {
+  "Aon30": {
+   "araci_med": -0.0,
+   "atil_med": 1364.47,
+   "banka_med": 453.65,
+   "butce": 3816.75,
+   "cekilen_med": 2453.78,
+   "holding_med": 0.0,
+   "kapanan": 29,
+   "n": 30
+  },
+  "Aon30_fx": {
+   "araci_med": -0.0,
+   "atil_med": 3095.01,
+   "banka_med": 390.62,
+   "butce": 5547.29,
+   "cekilen_med": 2453.78,
+   "holding_med": 0.0,
+   "kapanan": 29,
+   "n": 30
+  },
+  "Auc30": {
+   "araci_med": -0.0,
+   "atil_med": 3356.3,
+   "banka_med": 390.62,
+   "butce": 5808.57,
+   "cekilen_med": 2453.78,
+   "holding_med": 0.0,
+   "kapanan": 30,
+   "n": 30
+  },
+  "Auc30_fx": {
+   "araci_med": -0.0,
+   "atil_med": 5086.83,
+   "banka_med": 390.62,
+   "butce": 7539.11,
+   "cekilen_med": 2453.78,
+   "holding_med": 0.0,
+   "kapanan": 30,
+   "n": 30
+  },
+  "fx": {
+   "araci_med": 334.78,
+   "atil_med": 0.0,
+   "banka_med": 579.69,
+   "butce": 1730.54,
+   "cekilen_med": 1730.54,
+   "holding_med": 0.0,
+   "kapanan": 9,
+   "n": 30
+  }
+ },
+ "sfc": "Yeni akis FX mevduat yerine esit TL kagit/mevduattir; ek NFP 0. Mevcut degerleme bazdaki artis. Prim 0.",
+ "tam": {
+  "artis": 2660.8843,
+  "batik": 6,
+  "batik_ad": [
+   "A",
+   "D",
+   "E",
+   "I",
+   "R",
+   "S"
+  ],
+  "kilitli": 10,
+  "kilitli_ad": [
+   "B",
+   "C",
+   "F",
+   "G",
+   "H",
+   "J",
+   "M",
+   "N",
+   "P",
+   "Q"
+  ],
+  "kopru": 443.87,
+  "temerrut": 7
+ },
+ "tam_akis": {
+  "Aon30": {
+   "araci": 0.0,
+   "atil": 3769.9753,
+   "banka": 336.5804,
+   "butce": 3816.75,
+   "cekilen": 46.7747
+  },
+  "Aon30_fx": {
+   "araci": 0.0,
+   "atil": 5500.5134,
+   "banka": 336.5804,
+   "butce": 5547.29,
+   "cekilen": 46.7747
+  },
+  "Auc30": {
+   "araci": 0.0,
+   "atil": 5761.7953,
+   "banka": 336.5804,
+   "butce": 5808.57,
+   "cekilen": 46.7747
+  },
+  "Auc30_fx": {
+   "araci": 0.0,
+   "atil": 7492.3334,
+   "banka": 336.5804,
+   "butce": 7539.11,
+   "cekilen": 46.7747
+  },
+  "fx": {
+   "araci": 0.0,
+   "atil": 1683.7634,
+   "banka": 336.5804,
+   "butce": 1730.54,
+   "cekilen": 46.7747
+  }
+ },
+ "yp": 0.5444
+}

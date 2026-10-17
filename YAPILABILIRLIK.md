@@ -59,3 +59,7 @@ Seyrek ağ Adım 2'de koşulur: Adım 1 ile aynı kenar maskesi ve `rev_adim1.ra
 Birleşik stres (kur %30, faiz %55, azami büyüme): κ=1 için 2029 faizi 32.568,5 milyar TL, FG2024'ün 10,36 katı, 2029 GSYH'sinin %23,07'i; 2031'de 81.318,5 (%45,43). κ=0,25'te 2029 8.142,1 (%5,77), FG katı 2,59. κ=1 ve azami büyüme, kur sıfırken FG katı yayımlanmış üst uçtur (9,93). Bu uç, kur %1 iken aşılır.
 
 Adım 2 kararı tabloda ve zincir koşul listesinde güncellendi: kırılgan / koşullu yapılabilir. Koşul: YP maruziyeti korunmuş ya da kurla değerlenen yükümlülük karşılanmış; firma ağı yoğun ya da merkezi takas var; köprü tesisi şok eşiğine göre boyutlanmış. Tam ağda köprü kur %1, temerrüt kur %3; λ* üst uç %3/%4 (kanıt). Yoğunluk 0,25, kur yokken temerrüt 4–15 (ortanca 11), köprü ortancası 3.786,8 (kanıt). Kırılganlık hükmü bu eşiklere dayanır (aday). Adım 3'ün koşulu (küçük κ ve düşüş patikası) birleşik streste tutmaz; o satırın karar cümlesi değişmedi. Adım 1 kararı zaten yoğunluğa bağlıdır. Adım 4, 4.5 ve 5 için bu şokların kanalı yoktur.
+
+## Taslak işareti
+
+17.10.2026 senet bacağı taslağı [analiz/senet/SENET_ANALIZ.md](analiz/senet/SENET_ANALIZ.md) içindedir. Yukarıdaki karar cümleleri ve zincir hükmü durur. Taslak çıktısı bu değerlendirmenin girdisi değildir. `senet_kilit.txt` ve `adim4.csv` senet satırı `modellenmedi` kalır.

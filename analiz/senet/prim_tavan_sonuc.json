@@ -1,0 +1,169 @@
+{
+ "dar_2025": 7397.89,
+ "derleyen": "TÜİK, bakanlık PDF satırı",
+ "etiket": "aday: kur ortalamasi ve ara-enerji cikarma; gerceklesen R olculmedi",
+ "kaynak": "https://ticaret.gov.tr/data/5e18288613b8761dccd355ce/Ekonomik%20Görünüm%202025%20Aralık.pdf",
+ "kupon": [
+  {
+   "A": 12722.5,
+   "M": 1272.25,
+   "adres": "on",
+   "neden": "R olculmedi; endeks 1.00; Pi = tau * min(pi*M, R) = 0",
+   "nl_toplam": 0.0,
+   "odenen": 0.0,
+   "pay_dar_2025": 0.3439,
+   "pi": 0.02,
+   "tasarim_kupon": 25.45,
+   "tau": 0,
+   "theta": 0.1
+  },
+  {
+   "A": 12722.5,
+   "M": 1272.25,
+   "adres": "on",
+   "neden": "R olculmedi; endeks 1.00; Pi = tau * min(pi*M, R) = 0",
+   "nl_toplam": 0.0,
+   "odenen": 0.0,
+   "pay_dar_2025": 0.8599,
+   "pi": 0.05,
+   "tasarim_kupon": 63.61,
+   "tau": 0,
+   "theta": 0.1
+  },
+  {
+   "A": 19361.9,
+   "M": 1936.19,
+   "adres": "uc",
+   "neden": "R olculmedi; endeks 1.00; Pi = tau * min(pi*M, R) = 0",
+   "nl_toplam": 0.0,
+   "odenen": 0.0,
+   "pay_dar_2025": 0.5234,
+   "pi": 0.02,
+   "tasarim_kupon": 38.72,
+   "tau": 0,
+   "theta": 0.1
+  },
+  {
+   "A": 19361.9,
+   "M": 1936.19,
+   "adres": "uc",
+   "neden": "R olculmedi; endeks 1.00; Pi = tau * min(pi*M, R) = 0",
+   "nl_toplam": 0.0,
+   "odenen": 0.0,
+   "pay_dar_2025": 1.3086,
+   "pi": 0.05,
+   "tasarim_kupon": 96.81,
+   "tau": 0,
+   "theta": 0.1
+  },
+  {
+   "A": 12722.5,
+   "M": 3816.75,
+   "adres": "on",
+   "neden": "R olculmedi; endeks 1.00; Pi = tau * min(pi*M, R) = 0",
+   "nl_toplam": 0.0,
+   "odenen": 0.0,
+   "pay_dar_2025": 1.0318,
+   "pi": 0.02,
+   "tasarim_kupon": 76.34,
+   "tau": 0,
+   "theta": 0.3
+  },
+  {
+   "A": 12722.5,
+   "M": 3816.75,
+   "adres": "on",
+   "neden": "R olculmedi; endeks 1.00; Pi = tau * min(pi*M, R) = 0",
+   "nl_toplam": 0.0,
+   "odenen": 0.0,
+   "pay_dar_2025": 2.5796,
+   "pi": 0.05,
+   "tasarim_kupon": 190.84,
+   "tau": 0,
+   "theta": 0.3
+  },
+  {
+   "A": 19361.9,
+   "M": 5808.57,
+   "adres": "uc",
+   "neden": "R olculmedi; endeks 1.00; Pi = tau * min(pi*M, R) = 0",
+   "nl_toplam": 0.0,
+   "odenen": 0.0,
+   "pay_dar_2025": 1.5703,
+   "pi": 0.02,
+   "tasarim_kupon": 116.17,
+   "tau": 0,
+   "theta": 0.3
+  },
+  {
+   "A": 19361.9,
+   "M": 5808.57,
+   "adres": "uc",
+   "neden": "R olculmedi; endeks 1.00; Pi = tau * min(pi*M, R) = 0",
+   "nl_toplam": 0.0,
+   "odenen": 0.0,
+   "pay_dar_2025": 3.9258,
+   "pi": 0.05,
+   "tasarim_kupon": 290.43,
+   "tau": 0,
+   "theta": 0.3
+  }
+ ],
+ "kur": {
+  "2024": {
+   "n": 12,
+   "ortalama": 32.7802,
+   "son": 34.9038,
+   "son_ay": "2024-12"
+  },
+  "2025": {
+   "n": 12,
+   "ortalama": 39.4264,
+   "son": 42.5861,
+   "son_ay": "2025-12"
+  },
+  "2026": {
+   "n": 9,
+   "ortalama": 45.5643,
+   "son": 48.5187,
+   "son_ay": "2026-09"
+  }
+ },
+ "sfc": {
+  "havadan": "K' primi R'siz oderse toplam NL yine 0; RAPOR 'Prim havadan gelmez' bozulur",
+  "tau0": "NL hepsi 0, toplam 0",
+  "tau1_R_yeterli": "yalniz kupon kadar ikame yazilir: NL_H = +Pi, NL_D = -Pi, toplam 0"
+ },
+ "tavan_milyar_tl": {
+  "2024": {
+   "ara": 7809.98,
+   "ara_arti_sermaye": 9469.74,
+   "ara_eksi_enerji": 5659.93,
+   "enerji": 2150.05,
+   "kur_ortalama": 32.7802,
+   "musd": {
+    "ara": 238253.0,
+    "enerji": 65590.0,
+    "sermaye": 50633.0,
+    "toplam": 344010.0,
+    "tuketim": 54469.0
+   },
+   "toplam": 11276.72
+  },
+  "2025": {
+   "ara": 9865.59,
+   "ara_arti_sermaye": 12029.78,
+   "ara_eksi_enerji": 7397.89,
+   "enerji": 2467.7,
+   "kur_ortalama": 39.4264,
+   "musd": {
+    "ara": 250228.0,
+    "enerji": 62590.0,
+    "sermaye": 54892.0,
+    "toplam": 365524.0,
+    "tuketim": 59237.0
+   },
+   "toplam": 14411.3
+  }
+ }
+}

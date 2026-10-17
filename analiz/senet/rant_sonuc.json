@@ -1,0 +1,534 @@
+{
+ "A_on": 12722.5,
+ "A_uc": 19361.9,
+ "beta": 0.0439,
+ "etiket": "aday: e-fatura eslesmesi ve Sayistay emri olculmedi; halka yercekimi agi vekili",
+ "k5_not": "VADELI_KALICILIK odenmeyen emir bulunamadi; NACE_KAP ilgili taraf tutari yok. Siki okuma uygun pay 0.",
+ "k5_siki_uygun_pay": 0.0,
+ "kur": 19.29,
+ "lam": 1.0357,
+ "seyrek": {
+  "baz_med": {
+   "banka": 380.88,
+   "holding": 0.0,
+   "ticari": 2679.18,
+   "ucret": 288.77
+  },
+  "izgara": {
+   "on|akim|0.1": {
+    "butce": 318.06,
+    "halka": {
+     "araci_kapanan": 3,
+     "araci_med": 1562.71,
+     "banka_med": 599.67,
+     "cekilen_med": 318.06,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 3,
+     "uretim_med": 2085.26
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 1506.87,
+     "banka_med": 599.67,
+     "cekilen_med": 318.06,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1980.56
+    }
+   },
+   "on|akim|0.25": {
+    "butce": 795.16,
+    "halka": {
+     "araci_kapanan": 6,
+     "araci_med": 1108.35,
+     "banka_med": 599.67,
+     "cekilen_med": 795.16,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 5,
+     "uretim_med": 1797.17
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 1013.55,
+     "banka_med": 599.67,
+     "cekilen_med": 795.16,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1523.31
+    }
+   },
+   "on|akim|0.5": {
+    "butce": 1590.31,
+    "halka": {
+     "araci_kapanan": 9,
+     "araci_med": 417.67,
+     "banka_med": 579.69,
+     "cekilen_med": 1590.31,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 8,
+     "uretim_med": 1273.0
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 544.36,
+     "banka_med": 569.92,
+     "cekilen_med": 1264.35,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1118.27
+    }
+   },
+   "on|stok|0.1": {
+    "butce": 1272.25,
+    "halka": {
+     "araci_kapanan": 7,
+     "araci_med": 726.28,
+     "banka_med": 586.51,
+     "cekilen_med": 1272.25,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 6,
+     "uretim_med": 1485.36
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 576.96,
+     "banka_med": 599.67,
+     "cekilen_med": 1264.35,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1403.76
+    }
+   },
+   "on|stok|0.25": {
+    "butce": 3180.62,
+    "halka": {
+     "araci_kapanan": 23,
+     "araci_med": -0.0,
+     "banka_med": 482.28,
+     "cekilen_med": 2453.78,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 12,
+     "uretim_med": 756.94
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 544.36,
+     "banka_med": 569.92,
+     "cekilen_med": 1264.35,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1118.27
+    }
+   },
+   "on|stok|0.5": {
+    "butce": 6361.25,
+    "halka": {
+     "araci_kapanan": 30,
+     "araci_med": -0.0,
+     "banka_med": 390.62,
+     "cekilen_med": 2453.78,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 12,
+     "uretim_med": 756.94
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 544.36,
+     "banka_med": 569.92,
+     "cekilen_med": 1264.35,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1118.27
+    }
+   },
+   "uc|akim|0.1": {
+    "butce": 484.05,
+    "halka": {
+     "araci_kapanan": 3,
+     "araci_med": 1404.63,
+     "banka_med": 599.67,
+     "cekilen_med": 484.05,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 3,
+     "uretim_med": 1985.03
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 1319.65,
+     "banka_med": 599.67,
+     "cekilen_med": 484.05,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1825.68
+    }
+   },
+   "uc|akim|0.25": {
+    "butce": 1210.12,
+    "halka": {
+     "araci_kapanan": 7,
+     "araci_med": 768.1,
+     "banka_med": 599.67,
+     "cekilen_med": 1210.12,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 6,
+     "uretim_med": 1546.58
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 598.59,
+     "banka_med": 599.67,
+     "cekilen_med": 1210.12,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1403.76
+    }
+   },
+   "uc|akim|0.5": {
+    "butce": 2420.24,
+    "halka": {
+     "araci_kapanan": 12,
+     "araci_med": 10.05,
+     "banka_med": 512.39,
+     "cekilen_med": 2420.24,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 10,
+     "uretim_med": 1014.8
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 544.36,
+     "banka_med": 569.92,
+     "cekilen_med": 1264.35,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1118.27
+    }
+   },
+   "uc|stok|0.1": {
+    "butce": 1936.19,
+    "halka": {
+     "araci_kapanan": 11,
+     "araci_med": 213.22,
+     "banka_med": 568.08,
+     "cekilen_med": 1936.19,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 9,
+     "uretim_med": 1114.44
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 544.36,
+     "banka_med": 569.92,
+     "cekilen_med": 1264.35,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1118.27
+    }
+   },
+   "uc|stok|0.25": {
+    "butce": 4840.48,
+    "halka": {
+     "araci_kapanan": 29,
+     "araci_med": -0.0,
+     "banka_med": 453.65,
+     "cekilen_med": 2453.78,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 12,
+     "uretim_med": 756.94
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 544.36,
+     "banka_med": 569.92,
+     "cekilen_med": 1264.35,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1118.27
+    }
+   },
+   "uc|stok|0.5": {
+    "butce": 9680.95,
+    "halka": {
+     "araci_kapanan": 30,
+     "araci_med": -0.0,
+     "banka_med": 390.62,
+     "cekilen_med": 2453.78,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 12,
+     "uretim_med": 756.94
+    },
+    "yogun": {
+     "araci_kapanan": 1,
+     "araci_med": 544.36,
+     "banka_med": 569.92,
+     "cekilen_med": 1264.35,
+     "holding_med": 0.0,
+     "n": 30,
+     "uretim_kapanan": 1,
+     "uretim_med": 1118.27
+    }
+   }
+  },
+  "min_araci": {
+   "max": 5661.94,
+   "med": 2453.4,
+   "min": 45.34,
+   "n": 30,
+   "yok": 0
+  },
+  "min_araci_yogun": {
+   "max": 223.81,
+   "med": 223.81,
+   "min": 223.81,
+   "n": 30,
+   "yok": 29
+  },
+  "min_uretim": {
+   "max": 2438.6,
+   "med": 1333.72,
+   "min": 45.34,
+   "n": 30,
+   "yok": 18
+  },
+  "n": 30
+ },
+ "tam": {
+  "artis": 2660.8843,
+  "batik": 6,
+  "batik_ad": [
+   "A",
+   "D",
+   "E",
+   "I",
+   "R",
+   "S"
+  ],
+  "baz_sinif": {
+   "banka": 192.4962,
+   "holding": 0.0,
+   "ticari": 112.1983,
+   "ucret": 45.9776
+  },
+  "bol_butce": {
+   "araci": 0.0,
+   "atil": 999999953.2253,
+   "banka": 336.5804,
+   "cekilen": 46.7747,
+   "holding": 0.0,
+   "kopru": 336.5804,
+   "ticari": 0.0,
+   "ucret": 0.0,
+   "uretim_kalan": 0.0
+  },
+  "butce0": {
+   "araci": 14.0917,
+   "atil": 0.0,
+   "banka": 336.5804,
+   "cekilen": 0.0,
+   "holding": 0.0,
+   "kopru": 350.6721,
+   "ticari": 3.9192,
+   "ucret": 10.1725,
+   "uretim_kalan": 14.0917
+  },
+  "izgara": {
+   "on|akim|0.1": {
+    "araci": 0.0,
+    "atil": 271.2878,
+    "banka": 336.5804,
+    "butce": 318.06,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 137.9369,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "on|akim|0.25": {
+    "araci": 0.0,
+    "atil": 748.3815,
+    "banka": 336.5804,
+    "butce": 795.16,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "on|akim|0.5": {
+    "araci": 0.0,
+    "atil": 1543.5378,
+    "banka": 336.5804,
+    "butce": 1590.31,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "on|stok|0.1": {
+    "araci": 0.0,
+    "atil": 1225.4753,
+    "banka": 336.5804,
+    "butce": 1272.25,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "on|stok|0.25": {
+    "araci": 0.0,
+    "atil": 3133.8503,
+    "banka": 336.5804,
+    "butce": 3180.62,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "on|stok|0.5": {
+    "araci": 0.0,
+    "atil": 6314.4753,
+    "banka": 336.5804,
+    "butce": 6361.25,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "uc|akim|0.1": {
+    "araci": 0.0,
+    "atil": 437.2728,
+    "banka": 336.5804,
+    "butce": 484.05,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "uc|akim|0.25": {
+    "araci": 0.0,
+    "atil": 1163.344,
+    "banka": 336.5804,
+    "butce": 1210.12,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "uc|akim|0.5": {
+    "araci": 0.0,
+    "atil": 2373.4628,
+    "banka": 336.5804,
+    "butce": 2420.24,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "uc|stok|0.1": {
+    "araci": 0.0,
+    "atil": 1889.4153,
+    "banka": 336.5804,
+    "butce": 1936.19,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "uc|stok|0.25": {
+    "araci": 0.0,
+    "atil": 4793.7003,
+    "banka": 336.5804,
+    "butce": 4840.48,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   },
+   "uc|stok|0.5": {
+    "araci": 0.0,
+    "atil": 9634.1753,
+    "banka": 336.5804,
+    "butce": 9680.95,
+    "cekilen": 46.7747,
+    "holding": 0.0,
+    "kayis": 192.4962,
+    "uretim_kalan": 0.0,
+    "yogun_araci": 3.6809,
+    "yogun_cekilen": 13.1623
+   }
+  },
+  "kilitli": 10,
+  "kilitli_ad": [
+   "B",
+   "C",
+   "F",
+   "G",
+   "H",
+   "J",
+   "M",
+   "N",
+   "P",
+   "Q"
+  ],
+  "kopru": 443.87,
+  "min_araci": 46.61,
+  "min_araci_yogun": null,
+  "min_uretim": 46.61,
+  "min_uretim_yogun": null,
+  "temerrut": 7,
+  "yogun_butce": {
+   "araci": 3.6809,
+   "atil": 999999986.8377,
+   "banka": 336.5804,
+   "cekilen": 13.1623,
+   "holding": 0.0,
+   "kopru": 340.2614,
+   "ticari": 1.072,
+   "ucret": 2.609,
+   "uretim_kalan": 3.681
+  }
+ }
+}

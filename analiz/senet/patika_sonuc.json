@@ -1,0 +1,1927 @@
+{
+ "A": {
+  "H": 589.3686,
+  "genis": 2322.3191,
+  "on": 12722.5,
+  "piyasa": 10339.8,
+  "uc": 19361.9
+ },
+ "artis_banka": 2660.8843,
+ "c_bant": [
+  0.08,
+  0.787
+ ],
+ "etiket": "aday: yillik theta stokun yuzdesi; takvim 2026'dan; acik tek sefer",
+ "gsyh_2026": 84425.0,
+ "kupon_tasarim": [
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 1272.25,
+   "tasarim_kupon": 25.45,
+   "theta": 0.1,
+   "yil_sira": 1
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 1272.25,
+   "tasarim_kupon": 63.61,
+   "theta": 0.1,
+   "yil_sira": 1
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 2544.5,
+   "tasarim_kupon": 50.89,
+   "theta": 0.1,
+   "yil_sira": 2
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 2544.5,
+   "tasarim_kupon": 127.23,
+   "theta": 0.1,
+   "yil_sira": 2
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 3816.75,
+   "tasarim_kupon": 76.34,
+   "theta": 0.1,
+   "yil_sira": 3
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 3816.75,
+   "tasarim_kupon": 190.84,
+   "theta": 0.1,
+   "yil_sira": 3
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 5089.0,
+   "tasarim_kupon": 101.78,
+   "theta": 0.1,
+   "yil_sira": 4
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 5089.0,
+   "tasarim_kupon": 254.45,
+   "theta": 0.1,
+   "yil_sira": 4
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 6361.25,
+   "tasarim_kupon": 127.23,
+   "theta": 0.1,
+   "yil_sira": 5
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 6361.25,
+   "tasarim_kupon": 318.06,
+   "theta": 0.1,
+   "yil_sira": 5
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 7633.5,
+   "tasarim_kupon": 152.67,
+   "theta": 0.1,
+   "yil_sira": 6
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 7633.5,
+   "tasarim_kupon": 381.68,
+   "theta": 0.1,
+   "yil_sira": 6
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 8905.75,
+   "tasarim_kupon": 178.12,
+   "theta": 0.1,
+   "yil_sira": 7
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 8905.75,
+   "tasarim_kupon": 445.29,
+   "theta": 0.1,
+   "yil_sira": 7
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 10178.0,
+   "tasarim_kupon": 203.56,
+   "theta": 0.1,
+   "yil_sira": 8
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 10178.0,
+   "tasarim_kupon": 508.9,
+   "theta": 0.1,
+   "yil_sira": 8
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 11450.25,
+   "tasarim_kupon": 229.0,
+   "theta": 0.1,
+   "yil_sira": 9
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 11450.25,
+   "tasarim_kupon": 572.51,
+   "theta": 0.1,
+   "yil_sira": 9
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 12722.5,
+   "tasarim_kupon": 254.45,
+   "theta": 0.1,
+   "yil_sira": 10
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 12722.5,
+   "tasarim_kupon": 636.12,
+   "theta": 0.1,
+   "yil_sira": 10
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 1936.19,
+   "tasarim_kupon": 38.72,
+   "theta": 0.1,
+   "yil_sira": 1
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 1936.19,
+   "tasarim_kupon": 96.81,
+   "theta": 0.1,
+   "yil_sira": 1
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 3872.38,
+   "tasarim_kupon": 77.45,
+   "theta": 0.1,
+   "yil_sira": 2
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 3872.38,
+   "tasarim_kupon": 193.62,
+   "theta": 0.1,
+   "yil_sira": 2
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 5808.57,
+   "tasarim_kupon": 116.17,
+   "theta": 0.1,
+   "yil_sira": 3
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 5808.57,
+   "tasarim_kupon": 290.43,
+   "theta": 0.1,
+   "yil_sira": 3
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 7744.76,
+   "tasarim_kupon": 154.9,
+   "theta": 0.1,
+   "yil_sira": 4
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 7744.76,
+   "tasarim_kupon": 387.24,
+   "theta": 0.1,
+   "yil_sira": 4
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 9680.95,
+   "tasarim_kupon": 193.62,
+   "theta": 0.1,
+   "yil_sira": 5
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 9680.95,
+   "tasarim_kupon": 484.05,
+   "theta": 0.1,
+   "yil_sira": 5
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 11617.14,
+   "tasarim_kupon": 232.34,
+   "theta": 0.1,
+   "yil_sira": 6
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 11617.14,
+   "tasarim_kupon": 580.86,
+   "theta": 0.1,
+   "yil_sira": 6
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 13553.33,
+   "tasarim_kupon": 271.07,
+   "theta": 0.1,
+   "yil_sira": 7
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 13553.33,
+   "tasarim_kupon": 677.67,
+   "theta": 0.1,
+   "yil_sira": 7
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 15489.52,
+   "tasarim_kupon": 309.79,
+   "theta": 0.1,
+   "yil_sira": 8
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 15489.52,
+   "tasarim_kupon": 774.48,
+   "theta": 0.1,
+   "yil_sira": 8
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 17425.71,
+   "tasarim_kupon": 348.51,
+   "theta": 0.1,
+   "yil_sira": 9
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 17425.71,
+   "tasarim_kupon": 871.29,
+   "theta": 0.1,
+   "yil_sira": 9
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 19361.9,
+   "tasarim_kupon": 387.24,
+   "theta": 0.1,
+   "yil_sira": 10
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 19361.9,
+   "tasarim_kupon": 968.1,
+   "theta": 0.1,
+   "yil_sira": 10
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 76.34,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 3816.75,
+   "tasarim_kupon": 76.34,
+   "theta": 0.3,
+   "yil_sira": 1
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 190.84,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 3816.75,
+   "tasarim_kupon": 190.84,
+   "theta": 0.3,
+   "yil_sira": 1
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 76.34,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 7633.5,
+   "tasarim_kupon": 152.67,
+   "theta": 0.3,
+   "yil_sira": 2
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 190.84,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 7633.5,
+   "tasarim_kupon": 381.68,
+   "theta": 0.3,
+   "yil_sira": 2
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 76.34,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 11450.25,
+   "tasarim_kupon": 229.0,
+   "theta": 0.3,
+   "yil_sira": 3
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 190.84,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 11450.25,
+   "tasarim_kupon": 572.51,
+   "theta": 0.3,
+   "yil_sira": 3
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 25.45,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 12722.5,
+   "tasarim_kupon": 254.45,
+   "theta": 0.3,
+   "yil_sira": 4
+  },
+  {
+   "adres": "on",
+   "akis_kupon": 63.61,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 12722.5,
+   "tasarim_kupon": 636.12,
+   "theta": 0.3,
+   "yil_sira": 4
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 116.17,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 5808.57,
+   "tasarim_kupon": 116.17,
+   "theta": 0.3,
+   "yil_sira": 1
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 290.43,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 5808.57,
+   "tasarim_kupon": 290.43,
+   "theta": 0.3,
+   "yil_sira": 1
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 116.17,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 11617.14,
+   "tasarim_kupon": 232.34,
+   "theta": 0.3,
+   "yil_sira": 2
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 290.43,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 11617.14,
+   "tasarim_kupon": 580.86,
+   "theta": 0.3,
+   "yil_sira": 2
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 116.17,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 17425.71,
+   "tasarim_kupon": 348.51,
+   "theta": 0.3,
+   "yil_sira": 3
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 290.43,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 17425.71,
+   "tasarim_kupon": 871.29,
+   "theta": 0.3,
+   "yil_sira": 3
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 38.72,
+   "odenen": 0.0,
+   "pi": 0.02,
+   "stok": 19361.9,
+   "tasarim_kupon": 387.24,
+   "theta": 0.3,
+   "yil_sira": 4
+  },
+  {
+   "adres": "uc",
+   "akis_kupon": 96.81,
+   "odenen": 0.0,
+   "pi": 0.05,
+   "stok": 19361.9,
+   "tasarim_kupon": 968.1,
+   "theta": 0.3,
+   "yil_sira": 4
+  }
+ ],
+ "not": "Katman sonuclari tasinmaz (TEK_SISTEM_KADEME.md). Bu patika Adim 2 hukumune yazilmaz.",
+ "tam_banka_halka": 336.5804,
+ "tam_cekilen": 46.7747,
+ "yillar": [
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": 1.4516,
+   "TCMB_atil_tek_sefer": 1225.48,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": 84425.0,
+   "kalan_stok": 11450.25,
+   "kredi_bant_atil": [
+    98.04,
+    964.45
+   ],
+   "kumulatif": 1272.25,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2026,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 1
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": 1.2307,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": 103375.4,
+   "kalan_stok": 10178.0,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 2544.5,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2027,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 2
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": 1.0435,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": 121926.4,
+   "kalan_stok": 8905.75,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 3816.75,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2028,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 3
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": 0.901,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": 141198.5,
+   "kalan_stok": 7633.5,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 5089.0,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2029,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 4
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": 0.7927,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": 160496.6,
+   "kalan_stok": 6361.25,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 6361.25,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2030,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 5
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": 0.7108,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": 178999.3,
+   "kalan_stok": 5089.0,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 7633.5,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2031,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 6
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": null,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": null,
+   "kalan_stok": 3816.75,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 8905.75,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2032,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 7
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": null,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": null,
+   "kalan_stok": 2544.5,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 10178.0,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2033,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 8
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": null,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": null,
+   "kalan_stok": 1272.25,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 11450.25,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2034,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 9
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": null,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": null,
+   "kalan_stok": 0.0,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 12722.5,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2035,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 10
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": 2.238,
+   "TCMB_atil_tek_sefer": 1889.42,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": 84425.0,
+   "kalan_stok": 17425.71,
+   "kredi_bant_atil": [
+    151.15,
+    1486.97
+   ],
+   "kumulatif": 1936.19,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2026,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 1
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": 1.873,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": 103375.4,
+   "kalan_stok": 15489.52,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 3872.38,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2027,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 2
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": 1.588,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": 121926.4,
+   "kalan_stok": 13553.33,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 5808.57,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2028,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 3
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": 1.3713,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": 141198.5,
+   "kalan_stok": 11617.14,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 7744.76,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2029,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 4
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": 1.2064,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": 160496.6,
+   "kalan_stok": 9680.95,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 9680.95,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2030,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 5
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": 1.0817,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": 178999.3,
+   "kalan_stok": 7744.76,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 11617.14,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2031,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 6
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": null,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": null,
+   "kalan_stok": 5808.57,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 13553.33,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2032,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 7
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": null,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": null,
+   "kalan_stok": 3872.38,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 15489.52,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2033,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 8
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": null,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": null,
+   "kalan_stok": 1936.19,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 17425.71,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2034,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 9
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": null,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": null,
+   "kalan_stok": 0.0,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 19361.9,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2035,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.1,
+   "yil_sira": 10
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 3816.75,
+   "TCMB_atil_gsyh": 4.4655,
+   "TCMB_atil_tek_sefer": 3769.98,
+   "adres": "on",
+   "akis": 3816.75,
+   "ceyrek": 954.19,
+   "emme_H": {
+    "akis": 3816.75,
+    "alir": false,
+    "oran": 6.476,
+    "sure_yil": 0.1544,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 3816.75,
+    "alir": false,
+    "oran": 1.6435,
+    "sure_yil": 0.6085,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 3816.75,
+    "alir": true,
+    "oran": 0.3691,
+    "sure_yil": 2.7091,
+    "tavan": 10339.8
+   },
+   "gsyh": 84425.0,
+   "kalan_stok": 8905.75,
+   "kredi_bant_atil": [
+    301.6,
+    2966.97
+   ],
+   "kumulatif": 3816.75,
+   "seyrek_ceyrek_araci_med": 956.89,
+   "seyrek_ceyrek_cekilen_med": 954.19,
+   "seyrek_ceyrek_kapanan": 7,
+   "seyrek_n": 30,
+   "takvim_aday": 2026,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 907.4128,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.3,
+   "yil_sira": 1
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 3816.75,
+   "TCMB_atil_gsyh": 3.6921,
+   "TCMB_atil_tek_sefer": 3816.75,
+   "adres": "on",
+   "akis": 3816.75,
+   "ceyrek": 954.19,
+   "emme_H": {
+    "akis": 3816.75,
+    "alir": false,
+    "oran": 6.476,
+    "sure_yil": 0.1544,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 3816.75,
+    "alir": false,
+    "oran": 1.6435,
+    "sure_yil": 0.6085,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 3816.75,
+    "alir": true,
+    "oran": 0.3691,
+    "sure_yil": 2.7091,
+    "tavan": 10339.8
+   },
+   "gsyh": 103375.4,
+   "kalan_stok": 5089.0,
+   "kredi_bant_atil": [
+    305.34,
+    3003.78
+   ],
+   "kumulatif": 7633.5,
+   "seyrek_ceyrek_araci_med": 956.89,
+   "seyrek_ceyrek_cekilen_med": 954.19,
+   "seyrek_ceyrek_kapanan": 7,
+   "seyrek_n": 30,
+   "takvim_aday": 2027,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 907.4128,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.3,
+   "yil_sira": 2
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 3816.75,
+   "TCMB_atil_gsyh": 3.1304,
+   "TCMB_atil_tek_sefer": 3816.75,
+   "adres": "on",
+   "akis": 3816.75,
+   "ceyrek": 954.19,
+   "emme_H": {
+    "akis": 3816.75,
+    "alir": false,
+    "oran": 6.476,
+    "sure_yil": 0.1544,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 3816.75,
+    "alir": false,
+    "oran": 1.6435,
+    "sure_yil": 0.6085,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 3816.75,
+    "alir": true,
+    "oran": 0.3691,
+    "sure_yil": 2.7091,
+    "tavan": 10339.8
+   },
+   "gsyh": 121926.4,
+   "kalan_stok": 1272.25,
+   "kredi_bant_atil": [
+    305.34,
+    3003.78
+   ],
+   "kumulatif": 11450.25,
+   "seyrek_ceyrek_araci_med": 956.89,
+   "seyrek_ceyrek_cekilen_med": 954.19,
+   "seyrek_ceyrek_kapanan": 7,
+   "seyrek_n": 30,
+   "takvim_aday": 2028,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 907.4128,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.3,
+   "yil_sira": 3
+  },
+  {
+   "A": 12722.5,
+   "TCMB_akis": 1272.25,
+   "TCMB_atil_gsyh": 0.901,
+   "TCMB_atil_tek_sefer": 1272.25,
+   "adres": "on",
+   "akis": 1272.25,
+   "ceyrek": 318.06,
+   "emme_H": {
+    "akis": 1272.25,
+    "alir": false,
+    "oran": 2.1587,
+    "sure_yil": 0.4632,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.5478,
+    "sure_yil": 1.8254,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1272.25,
+    "alir": true,
+    "oran": 0.123,
+    "sure_yil": 8.1272,
+    "tavan": 10339.8
+   },
+   "gsyh": 141198.5,
+   "kalan_stok": 0.0,
+   "kredi_bant_atil": [
+    101.78,
+    1001.26
+   ],
+   "kumulatif": 12722.5,
+   "seyrek_ceyrek_araci_med": 1562.71,
+   "seyrek_ceyrek_cekilen_med": 318.06,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2029,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 271.2878,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.3,
+   "yil_sira": 4
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 5808.57,
+   "TCMB_atil_gsyh": 6.8248,
+   "TCMB_atil_tek_sefer": 5761.8,
+   "adres": "uc",
+   "akis": 5808.57,
+   "ceyrek": 1452.14,
+   "emme_H": {
+    "akis": 5808.57,
+    "alir": false,
+    "oran": 9.8556,
+    "sure_yil": 0.1015,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 5808.57,
+    "alir": false,
+    "oran": 2.5012,
+    "sure_yil": 0.3998,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 5808.57,
+    "alir": true,
+    "oran": 0.5618,
+    "sure_yil": 1.7801,
+    "tavan": 10339.8
+   },
+   "gsyh": 84425.0,
+   "kalan_stok": 13553.33,
+   "kredi_bant_atil": [
+    460.94,
+    4534.53
+   ],
+   "kumulatif": 5808.57,
+   "seyrek_ceyrek_araci_med": 550.36,
+   "seyrek_ceyrek_cekilen_med": 1452.14,
+   "seyrek_ceyrek_kapanan": 9,
+   "seyrek_n": 30,
+   "takvim_aday": 2026,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 1405.3678,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.3,
+   "yil_sira": 1
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 5808.57,
+   "TCMB_atil_gsyh": 5.6189,
+   "TCMB_atil_tek_sefer": 5808.57,
+   "adres": "uc",
+   "akis": 5808.57,
+   "ceyrek": 1452.14,
+   "emme_H": {
+    "akis": 5808.57,
+    "alir": false,
+    "oran": 9.8556,
+    "sure_yil": 0.1015,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 5808.57,
+    "alir": false,
+    "oran": 2.5012,
+    "sure_yil": 0.3998,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 5808.57,
+    "alir": true,
+    "oran": 0.5618,
+    "sure_yil": 1.7801,
+    "tavan": 10339.8
+   },
+   "gsyh": 103375.4,
+   "kalan_stok": 7744.76,
+   "kredi_bant_atil": [
+    464.69,
+    4571.34
+   ],
+   "kumulatif": 11617.14,
+   "seyrek_ceyrek_araci_med": 550.36,
+   "seyrek_ceyrek_cekilen_med": 1452.14,
+   "seyrek_ceyrek_kapanan": 9,
+   "seyrek_n": 30,
+   "takvim_aday": 2027,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 1405.3678,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.3,
+   "yil_sira": 2
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 5808.57,
+   "TCMB_atil_gsyh": 4.764,
+   "TCMB_atil_tek_sefer": 5808.57,
+   "adres": "uc",
+   "akis": 5808.57,
+   "ceyrek": 1452.14,
+   "emme_H": {
+    "akis": 5808.57,
+    "alir": false,
+    "oran": 9.8556,
+    "sure_yil": 0.1015,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 5808.57,
+    "alir": false,
+    "oran": 2.5012,
+    "sure_yil": 0.3998,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 5808.57,
+    "alir": true,
+    "oran": 0.5618,
+    "sure_yil": 1.7801,
+    "tavan": 10339.8
+   },
+   "gsyh": 121926.4,
+   "kalan_stok": 1936.19,
+   "kredi_bant_atil": [
+    464.69,
+    4571.34
+   ],
+   "kumulatif": 17425.71,
+   "seyrek_ceyrek_araci_med": 550.36,
+   "seyrek_ceyrek_cekilen_med": 1452.14,
+   "seyrek_ceyrek_kapanan": 9,
+   "seyrek_n": 30,
+   "takvim_aday": 2028,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 1405.3678,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.3,
+   "yil_sira": 3
+  },
+  {
+   "A": 19361.9,
+   "TCMB_akis": 1936.19,
+   "TCMB_atil_gsyh": 1.3713,
+   "TCMB_atil_tek_sefer": 1936.19,
+   "adres": "uc",
+   "akis": 1936.19,
+   "ceyrek": 484.05,
+   "emme_H": {
+    "akis": 1936.19,
+    "alir": false,
+    "oran": 3.2852,
+    "sure_yil": 0.3044,
+    "tavan": 589.3686
+   },
+   "emme_genis": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.8337,
+    "sure_yil": 1.1994,
+    "tavan": 2322.3191
+   },
+   "emme_piyasa": {
+    "akis": 1936.19,
+    "alir": true,
+    "oran": 0.1873,
+    "sure_yil": 5.3403,
+    "tavan": 10339.8
+   },
+   "gsyh": 141198.5,
+   "kalan_stok": 0.0,
+   "kredi_bant_atil": [
+    154.9,
+    1523.78
+   ],
+   "kumulatif": 19361.9,
+   "seyrek_ceyrek_araci_med": 1404.63,
+   "seyrek_ceyrek_cekilen_med": 484.05,
+   "seyrek_ceyrek_kapanan": 3,
+   "seyrek_n": 30,
+   "takvim_aday": 2029,
+   "tam_ceyrek_araci": 0.0,
+   "tam_ceyrek_atil": 437.2728,
+   "tam_ceyrek_banka": 336.5804,
+   "tam_ceyrek_cekilen": 46.7747,
+   "theta": 0.3,
+   "yil_sira": 4
+  }
+ ]
+}
