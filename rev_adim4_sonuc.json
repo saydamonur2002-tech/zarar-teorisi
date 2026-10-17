@@ -1,0 +1,71 @@
+{
+ "faz": "rev F",
+ "cift_sayim": {
+  "H_VF2_ZP8": 8322.4,
+  "hane_TL_tum_mevduat_2026_03": 8037.1,
+  "YP_gercek_kisi": 6639.4,
+  "ortusme_alt": 285.3,
+  "ortusme_ust": 6639.4,
+  "adres_toplam_eski": 19361.9,
+  "adres_toplam_yeni_bandi": [
+   12722.5,
+   19076.6
+  ],
+  "onerilen": 12722.5,
+  "etiket": "kanıt (alt sınır: ZP8 > tüm hane TL mevduatı → ZP8 YP içerir); üst sınır mantıksal"
+ },
+ "dibs_elinde_tutan": {
+  "2026-Q1_hafta": "2026-03-27",
+  "paylar_q1": {
+   "S11": 0.0109,
+   "S121": 0.039,
+   "S122": 0.5806,
+   "S1234": 0.0593,
+   "S128": 0.0175,
+   "S129": 0.0908,
+   "S13": 0.0893,
+   "S14": 0.0461,
+   "S2": 0.0642,
+   "toplam_milyar": 10339.8
+  },
+  "son_hafta": "2026-10-09",
+  "paylar_son": {
+   "S11": 0.0111,
+   "S121": 0.0404,
+   "S122": 0.5721,
+   "S1234": 0.0585,
+   "S128": 0.0182,
+   "S129": 0.0832,
+   "S13": 0.0922,
+   "S14": 0.0541,
+   "S2": 0.0679,
+   "toplam_milyar": 12336.4
+  },
+  "etiket": "kanıt (EVDS Menkul Kıymet, piyasa değeri; ihraççı Hazine=K′)"
+ },
+ "kredi_katsayisi": {
+  "eski": 0.08,
+  "donemler": {
+   "2011-2026": {
+    "dK_dM_egimi": 0.787,
+    "log_esneklik": 0.697,
+    "kredi_mevduat_orani": 0.985
+   },
+   "2018-2026": {
+    "dK_dM_egimi": 0.777,
+    "log_esneklik": 0.76,
+    "kredi_mevduat_orani": 0.908
+   },
+   "2022-2026": {
+    "dK_dM_egimi": 0.546,
+    "log_esneklik": 0.327,
+    "kredi_mevduat_orani": 0.805
+   }
+  },
+  "bant": [
+   0.08,
+   0.787
+  ],
+  "etiket": "aday: tarihsel eş-hareket nedensellik değil (ikisi de kurla/enflasyonla büyür); 0,08 alt uç (tam ikame), üst uç ölçülen eğim (ikame yok)"
+ }
+}
