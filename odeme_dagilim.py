@@ -62,6 +62,7 @@ from odeme_gercek import (
     ISARET,
     KISA_AY,
     UZUN_AY,
+    bolumu_guncelle,
     kisa_pay,
     tufe_yoy,
 )
@@ -301,7 +302,7 @@ def grafik(tablo: pd.DataFrame, dosya: Path) -> None:
     ax[1].legend(frameon=False, fontsize=8)
     fig.suptitle("Ölçülmüş toplam stok. Mevduat dağılımı varsayım.", fontsize=11)
     fig.tight_layout()
-    fig.savefig(dosya, dpi=120)
+    fig.savefig(dosya, dpi=120, metadata={"Creation Time": None})
     plt.close(fig)
 
 
@@ -554,10 +555,7 @@ def main_dagilim() -> None:
     (KOK / "odeme_dagilim_sonuc.json").write_text(
         json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    eski = (KOK / "ODEME_ZINCIRI.md").read_text(encoding="utf-8")
-    if eski.startswith("# Ödeme zinciri, dağılım") and ISARET in eski:
-        eski = eski.split(ISARET, 1)[1]
-    (KOK / "ODEME_ZINCIRI.md").write_text(rapor_metni(sonuc, tablo) + ISARET + eski, encoding="utf-8")
+    bolumu_guncelle(KOK / "ODEME_ZINCIRI.md", "# Ödeme zinciri, dağılım", rapor_metni(sonuc, tablo))
     print(ozet_metin)
 
 

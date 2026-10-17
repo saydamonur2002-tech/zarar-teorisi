@@ -6,8 +6,8 @@
       "n": 30,
       "beta": -0.0033,
       "t_NW": -1.0,
-      "theta=beta/L_FB": -0.0056,
-      "L_FB_ort": 0.588,
+      "theta=beta/L_FB": -0.0055,
+      "L_FB_ort": 0.602,
       "y_ort/GSYH": 0.00738,
       "x_ort/GSYH": 0.08021
     },
@@ -15,8 +15,8 @@
       "n": 29,
       "beta": -0.0061,
       "t_NW": -1.26,
-      "theta=beta/L_FB": -0.0103,
-      "L_FB_ort": 0.59,
+      "theta=beta/L_FB": -0.0101,
+      "L_FB_ort": 0.603,
       "y_ort/GSYH": 0.01522,
       "x_ort/GSYH": 0.07936
     },
@@ -24,8 +24,8 @@
       "n": 28,
       "beta": -0.0082,
       "t_NW": -0.94,
-      "theta=beta/L_FB": -0.0139,
-      "L_FB_ort": 0.592,
+      "theta=beta/L_FB": -0.0136,
+      "L_FB_ort": 0.605,
       "y_ort/GSYH": 0.02363,
       "x_ort/GSYH": 0.07887
     },
@@ -33,8 +33,8 @@
       "n": 27,
       "beta": -0.0096,
       "t_NW": -0.9,
-      "theta=beta/L_FB": -0.0162,
-      "L_FB_ort": 0.594,
+      "theta=beta/L_FB": -0.0158,
+      "L_FB_ort": 0.606,
       "y_ort/GSYH": 0.03262,
       "x_ort/GSYH": 0.0652
     },
@@ -42,8 +42,8 @@
       "n": 26,
       "beta": -0.0149,
       "t_NW": -1.26,
-      "theta=beta/L_FB": -0.0251,
-      "L_FB_ort": 0.595,
+      "theta=beta/L_FB": -0.0246,
+      "L_FB_ort": 0.606,
       "y_ort/GSYH": 0.04205,
       "x_ort/GSYH": 0.06399
     }
@@ -71,7 +71,7 @@
     }
   },
   "oneri": {
-    "theta_F_to_B": -0.0251,
+    "theta_F_to_B": -0.0246,
     "yorum": "θ, F zararının B'de gerçekleşen (provizyon) kesri / matris payı. Küçükse F zararının büyük kısmı gerçekleşmiyor (F'de kalıyor ya da çözülüyor); simülatörde F->B kenarı θ ile ölçeklenmeli.",
     "uyari": "Örneklem küçük (n~30), provizyon gideri nominal şoklara ve düzenleyici kurallara (BDDK) duyarlı; seri 2022-08'de bitiyor."
   }

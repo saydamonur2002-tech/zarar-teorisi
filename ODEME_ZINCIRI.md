@@ -4,7 +4,7 @@ Stoklar TCMB finansal hesapları, 2026-Q1, milyar TL biriminden trilyona çevril
 
 ## Hüküm
 
-Şoksuz patika bloke üretmiyor. Firma mevduatının ölçülmüş en büyük çeyreklik düşüşü kalıcılığı 0 periyotta bırakıyor. Döviz kredisinin çevrilmediği patikada kalıcılık 0, reel kayıp 0.454. Valf açıkken 0 ve 0.454. π aylık 0.0225. Valf periyodu 0: zincir bloke olmayınca valf açılmıyor, erime 0. FX çevirmeme şokunda valf kalıcılığı 2 periyottan az değiştiriyor ve reel kaybı 5 puandan az düşürüyor. Ölçülmüş aylık enflasyon bu kısıtı kapatmıyor. Kenar, finansal hesap stokunun orantılı karşı taraf dağılımıdır; firma faturası değildir. Aynı ağda firma mevduatını × 0,30 kesmek, ölçülmüş düşüş değildir: kalıcılık 0.
+Şoksuz patika bloke üretmiyor. Firma mevduatının ölçülmüş en büyük çeyreklik düşüşü kalıcılığı 0 periyotta bırakıyor. Döviz kredisinin çevrilmediği patikada kalıcılık 0, reel kayıp 0.445. Valf açıkken 0 ve 0.445. π aylık 0.0225. Valf periyodu 0: zincir bloke olmayınca valf açılmıyor, erime 0. FX çevirmeme şokunda valf kalıcılığı 2 periyottan az değiştiriyor ve reel kaybı 5 puandan az düşürüyor. Ölçülmüş aylık enflasyon bu kısıtı kapatmıyor. Kenar, finansal hesap stokunun orantılı karşı taraf dağılımıdır; firma faturası değildir. Aynı ağda firma mevduatını × 0,30 kesmek, ölçülmüş düşüş değildir: kalıcılık 0.
 
 ## Ne ölçülmüş, ne varsayım
 
@@ -28,14 +28,14 @@ Monte Carlo yok. Matris tek. Kısalma eşiği 2 bloke periyot, reel kayıp eşi�
 | soksuz | açık | 0 | 0.000 | 0.000 | 0 |
 | mevduat | kapalı | 0 | 0.000 | 0.000 | 0 |
 | mevduat | açık | 0 | 0.000 | 0.000 | 0 |
-| fx | kapalı | 0 | 0.454 | 0.000 | 0 |
-| fx | açık | 0 | 0.454 | 0.000 | 0 |
-| iki | kapalı | 0 | 0.454 | 0.000 | 0 |
-| iki | açık | 0 | 0.454 | 0.000 | 0 |
+| fx | kapalı | 0 | 0.445 | 0.000 | 0 |
+| fx | açık | 0 | 0.445 | 0.000 | 0 |
+| iki | kapalı | 0 | 0.445 | 0.000 | 0 |
+| iki | açık | 0 | 0.445 | 0.000 | 0 |
 | asiri | kapalı | 0 | 0.000 | 0.000 | 0 |
 | asiri | açık | 0 | 0.000 | 0.000 | 0 |
 
-FX çevirmemede hane, alacaklı olarak reel kaybın 0.021 kadarını taşır. Hane defter payı 0.028.
+FX çevirmemede hane, alacaklı olarak reel kaybın 0.021 kadarını taşır. Hane defter payı 0.027.
 
 Tekrar: `python3 odeme_zinciri.py`.
 
@@ -60,15 +60,15 @@ Stoklar TCMB 2026-Q1. Firma haznesi 150 alt düğüme bölündü. Toplam mevduat
 
 TÜFE 2025-01–2026-01: yıllık 0.306, aylık π = 0.0225. Monte Carlo 50. Tohum 20261010+9000.
 
-Eşit paylaşım, FX çevrilemez, valf kapalı: kalıcılık 0.00, reel kayıp 0.454. Agregat hedef 0,454. Sapma 0.000.
+Eşit paylaşım, FX çevrilemez, valf kapalı: kalıcılık 0.00, reel kayıp 0.445. Agregat hedef 0,454. Sapma -0.009.
 
 Yüksek konsantrasyon, eşit servis, çizgi yok, FX yok: kalıcılık farkı 0.00 (p = 1), reel fark 0.000 (p = 1), küçük firma yavaşlık farkı 0.177 (p = 3.772e-10).
 
-Aynı hücre, FX çevrilemez: kalıcılık 0.00, reel kayıp 0.558. Valf açık: kalıcılık 0.00, reel 0.558, kısalma 0.00 (p = 1), reel düşüş 0.000.
+Aynı hücre, FX çevrilemez: kalıcılık 0.00, reel kayıp 0.547. Valf açık: kalıcılık 0.00, reel 0.547, kısalma 0.00 (p = 1), reel düşüş 0.000.
 
-Küçük firma reel payı 0.080, defter payı 0.047, fazla medyan 0.033.
+Küçük firma reel payı 0.080, defter payı 0.046, fazla medyan 0.034.
 
-Eşleşen kontrol, yüksek konsantrasyon, FX çevrilemez: kalıcılık 0.00, reel kayıp 0.454, fazla medyan 0.004.
+Eşleşen kontrol, yüksek konsantrasyon, FX çevrilemez: kalıcılık 0.00, reel kayıp 0.445, fazla medyan 0.004.
 
 Varsayılmış bir aylık çizgi, yüksek konsantrasyon, p0 = 0,50 eksi p0 = 0: kalıcılık farkı 0.00 (p = 1), yavaşlık farkı 0.177 (p = 3.772e-10).
 
@@ -77,21 +77,21 @@ Varsayılmış bir aylık çizgi, yüksek konsantrasyon, p0 = 0,50 eksi p0 = 0: 
 | Üst %10 | Servis | Çizgi | p0 | FX | Kalıcılık | Reel | Küçük yavaşlık | Fazla |
 | ---: | --- | ---: | ---: | --- | ---: | ---: | ---: | ---: |
 | 0.10 | eşit | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
-| 0.10 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.454 | 0.000 | 0.022 |
+| 0.10 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.445 | 0.000 | 0.023 |
 | 0.40 | eşit | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
-| 0.40 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.490 | 0.000 | 0.035 |
+| 0.40 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.480 | 0.000 | 0.036 |
 | 0.70 | eşit | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.177 | — |
-| 0.70 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.558 | 0.000 | 0.033 |
+| 0.70 | eşit | 0 | 0.00 | çevrilemez | 0.00 | 0.547 | 0.001 | 0.034 |
 | 0.10 | eşleşen | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
-| 0.10 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.454 | 0.000 | 0.022 |
+| 0.10 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.445 | 0.000 | 0.023 |
 | 0.40 | eşleşen | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
-| 0.40 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.454 | 0.000 | 0.010 |
+| 0.40 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.445 | 0.000 | 0.010 |
 | 0.70 | eşleşen | 0 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
-| 0.70 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.454 | 0.000 | 0.004 |
+| 0.70 | eşleşen | 0 | 0.00 | çevrilemez | 0.00 | 0.445 | 0.000 | 0.004 |
 | 0.70 | eşit | 1 | 0.00 | çevrilebilir | 0.00 | 0.000 | 0.000 | — |
-| 0.70 | eşit | 1 | 0.00 | çevrilemez | 0.00 | 0.558 | 0.000 | 0.033 |
+| 0.70 | eşit | 1 | 0.00 | çevrilemez | 0.00 | 0.547 | 0.000 | 0.034 |
 | 0.70 | eşit | 1 | 0.50 | çevrilebilir | 0.00 | 0.000 | 0.177 | — |
-| 0.70 | eşit | 1 | 0.50 | çevrilemez | 0.00 | 0.558 | 0.000 | 0.033 |
+| 0.70 | eşit | 1 | 0.50 | çevrilemez | 0.00 | 0.547 | 0.001 | 0.034 |
 
 Tekrar: `python3 odeme_zinciri.py`.
 

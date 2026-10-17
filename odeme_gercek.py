@@ -30,6 +30,25 @@ UZUN_AY = 60.0
 DIGER_AY = 12.0
 ESIK_VALF = 0.25
 ISARET = "\n\n<!-- ONCEKI -->\n\n"
+
+
+def bolumu_guncelle(yol: Path, baslik: str, metin: str) -> None:
+    """Kendi başlıklı blok varsa yerinde yazar; yoksa bir kez başa ekler.
+
+    Dosya bu başlıkla başlamıyorsa her koşu yeni kopya eklemez.
+    """
+    eski = yol.read_text(encoding="utf-8") if yol.exists() else ""
+    parca = eski.split(ISARET) if eski else []
+    govde = metin if metin.endswith("\n") else metin + "\n"
+    for i, p in enumerate(parca):
+        if p.lstrip().startswith(baslik):
+            parca[i] = govde
+            yol.write_text(ISARET.join(parca), encoding="utf-8")
+            return
+    if parca:
+        yol.write_text(govde + ISARET + ISARET.join(parca), encoding="utf-8")
+    else:
+        yol.write_text(govde, encoding="utf-8")
 F_KREDI = 0.5962755835053216
 F_MEV = 0.5801292831604365
 
@@ -205,7 +224,7 @@ def grafik(paket, dosya: Path) -> None:
     ax[1].legend(frameon=False, fontsize=8)
     fig.suptitle("TCMB 2026-Q1 stokları. Bilateral kenar orantılı dağıtımdır.", fontsize=11)
     fig.tight_layout()
-    fig.savefig(dosya, dpi=120)
+    fig.savefig(dosya, dpi=120, metadata={"Creation Time": None})
     plt.close(fig)
 
 
@@ -365,10 +384,7 @@ def main_gercek() -> None:
     (KOK / "odeme_gercek_sonuc.json").write_text(
         json.dumps(sonuc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    eski = (KOK / "ODEME_ZINCIRI.md").read_text(encoding="utf-8")
-    if eski.startswith("# Ödeme zinciri, ölçülmüş") and ISARET in eski:
-        eski = eski.split(ISARET, 1)[1]
-    (KOK / "ODEME_ZINCIRI.md").write_text(rapor(sonuc) + ISARET + eski, encoding="utf-8")
+    bolumu_guncelle(KOK / "ODEME_ZINCIRI.md", "# Ödeme zinciri, ölçülmüş", rapor(sonuc))
     print(ozet)
 
 
