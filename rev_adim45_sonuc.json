@@ -1,0 +1,11 @@
+{
+ "faz": "rev G",
+ "A17_emisyon_2026_03": 898.3,
+ "repo_tcmb_nakit": 898.3,
+ "fark": 0.0,
+ "banka_kasasi_T01": 66.9,
+ "banka_disi_nakit": 831.4,
+ "TL_para_stoku_repo": 16472.8,
+ "TL_para_stoku_banka_disi": 16405.9,
+ "etiket": "kanıt: 898,3 = A17 Emisyon; Emisyon banka kasasını içerir → banka dışı tanımda para stoku %0,4 düşer (aday düzeltme)"
+}
