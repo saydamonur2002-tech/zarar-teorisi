@@ -1,0 +1,63 @@
+name: Haftalık EVDS veri güncellemesi
+
+on:
+  schedule:
+    - cron: "17 5 * * 1" # Pazartesi 05:17 UTC (08:17 TSİ)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: haftalik-veri
+  cancel-in-progress: false
+
+jobs:
+  guncelle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Veriyi çek ve karşılaştır
+        id: cek
+        continue-on-error: true
+        env:
+          OZET_DOSYASI: ${{ runner.temp }}/ozet.txt
+        run: python haftalik_guncelle.py
+
+      - name: Değişiklik varsa commit et ve gönder
+        env:
+          OZET_DOSYASI: ${{ runner.temp }}/ozet.txt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add veri_canli
+          if [ -f SON_GUNCELLEME.md ]; then git add SON_GUNCELLEME.md; fi
+          if git diff --cached --quiet; then
+            echo "Değişiklik yok."
+            exit 0
+          fi
+          mesaj="Veri güncellemesi $(date -u +%F)"
+          if [ -s "$OZET_DOSYASI" ]; then mesaj="$(cat "$OZET_DOSYASI")"; fi
+          git commit -m "$mesaj"
+          for deneme in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then
+              exit 0
+            fi
+            sleep $((deneme * 5))
+          done
+          echo "Gönderilemedi." >&2
+          exit 1
+
+      - name: Çekim hatası varsa işi başarısız say
+        if: steps.cek.outcome == 'failure'
+        run: |
+          echo "haftalik_guncelle.py hata verdi; Actions günlüğüne ve SON_GUNCELLEME.md dosyasına bakın." >&2
+          exit 1
