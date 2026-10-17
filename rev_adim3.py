@@ -1,6 +1,6 @@
 """Revizyon E — Adım 3: duran faiz, nominal büyüyen stok, TL/YP ayrımı, r senaryo bantları, ψ yeniden.
 Kaynaklar (dondurulmuş): tavan_akis_ham.csv ZP34 (F.4 stok), faiz_ham.csv TP.BKR.TRY.1 / TP.BKR.USD.1 (stok faizleri, ticari),
-faiz_kur_ham.csv usd (aylık), /workspace/aktarim_matrisi/tcmb/FKDFDVY2026-07.xlsx 'Nakdi Krediler' (milyon USD; yurtiçi+yurtdışı),
+faiz_kur_ham.csv usd (aylık), veri/aktarim_matrisi/tcmb/FKDFDVY2026-07.xlsx 'Nakdi Krediler' (milyon USD; yurtiçi+yurtdışı),
 rev_veri Sektör Bilançoları 2023–2024 (finansman gideri, banka kredileri).
 Etiketler: YP payı olcum_turevi (FKDFDVY×kur / ZP34; kapsam farkı olabilir), g olcum_turevi bandı, r_TL patikaları VARSAYIM, κ VARSAYIM.
 """
@@ -11,7 +11,12 @@ import tek_sistem_kademe as tk
 import adim3_faiz_durma as a3
 import rev_veri as rv
 KOK = Path(__file__).resolve().parent
-FKD = Path("/workspace/aktarim_matrisi/tcmb/FKDFDVY2026-07.xlsx")
+
+def _aktarim(*parca):
+    yerel = KOK.joinpath("veri", *parca)
+    return yerel if yerel.exists() else Path("/workspace").joinpath(*parca)
+
+FKD = _aktarim("aktarim_matrisi", "tcmb", "FKDFDVY2026-07.xlsx")
 
 def fkd():
     x = pd.read_excel(FKD, header=None); i = next(k for k in range(len(x)) if str(x.iloc[k, 1]).strip() == "Nakdi Krediler")

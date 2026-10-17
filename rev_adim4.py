@@ -1,11 +1,17 @@
 """Revizyon F — Adım 4: (1) VF.2 ZP8 ile gerçek kişi YP mevduat çift sayımı; (2) gözlenen ihraççı/elinde tutan dağılımı
 (EVDS Menkul Kıymet haftalık, DİBS piyasa değeri, ESA sektörleri); (3) 0,08 mevduat→kredi katsayısının kalibrasyonu (para-banka T18/V01).
-Kaynaklar: /workspace/aktarim_matrisi/evds/evds_b_para_banka_aylik.csv, evds_c_menkul_kiymet_haftalik.csv, adim4_adres_yonlendirme_sonuc.json.
+Kaynaklar: veri/aktarim_matrisi/evds/evds_b_para_banka_aylik.csv, evds_c_menkul_kiymet_haftalik.csv, adim4_adres_yonlendirme_sonuc.json.
 """
 import json, csv
 from pathlib import Path
 import numpy as np, pandas as pd
-KOK = Path(__file__).resolve().parent; EV = Path("/workspace/aktarim_matrisi/evds")
+KOK = Path(__file__).resolve().parent
+
+def _aktarim(*parca):
+    yerel = KOK.joinpath("veri", *parca)
+    return yerel if yerel.exists() else Path("/workspace").joinpath(*parca)
+
+EV = _aktarim("aktarim_matrisi", "evds")
 
 def pb():
     d = pd.read_csv(EV / "evds_b_para_banka_aylik.csv", usecols=["Donem", "Seri", "Deger"])
