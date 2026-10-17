@@ -2,7 +2,7 @@
 
 Rol: Titiz veri araştırmacısı. Kuramı doğrulama. Ölç. Yalnız kamuya açık kayıt. Alıntı 15 kelimeyi geçmesin. Uydurma satır yazma. Bulamadığını "bulunamadı, X sorgu denendi" diye yaz. Haber ikincil. Birincil: data.tuik.gov.tr bülten tablosu, TCMB Sektör Bilançoları metaverisi.
 
-Ön kayıt: `cursor/odeme-zinciri-kalicilik-f01a`. 2026-Q1 yoğun silme yüzde 42,7, trilyon TL/ay. NACE bölüm tablosu yok. EVDS istihdam ve sanayi grupları yanlış raftı. Bu tur yalnız TÜİK birincil.
+Ön kayıt: `cursor/odeme-zinciri-kalicilik-f01a`. 2026-Q1 yoğun silme yüzde 42,1, trilyon TL/ay. NACE bölüm tablosu yok. EVDS istihdam ve sanayi grupları yanlış raftı. Bu tur yalnız TÜİK birincil.
 
 ## Alma
 

@@ -1,31 +1,31 @@
 {
   "R2_havuz": {
-    "orantili": 0.868,
-    "fx_agirlikli": 0.565
+    "orantili": 0.866,
+    "fx_agirlikli": 0.569
   },
   "R2_olcek_bagimsiz": {
-    "orantili": 0.683,
-    "fx_agirlikli": 0.356
+    "orantili": 0.673,
+    "fx_agirlikli": 0.363
   },
   "MAE_trilyonTL_D": {
-    "orantili": 0.183,
+    "orantili": 0.185,
     "fx_agirlikli": 0.393
   },
   "sektor_korelasyon_fx": {
-    "H": 0.921,
-    "F": 0.987,
-    "B": 0.331,
-    "K": 0.561,
-    "D": 0.254
+    "H": 0.919,
+    "F": 0.988,
+    "B": 0.314,
+    "K": 0.564,
+    "D": 0.252
   },
   "D_2025Q4": {
     "gozlenen": 1.916,
-    "orantili": 0.992,
-    "fx": 0.369
+    "orantili": 0.972,
+    "fx": 0.362
   },
   "D_2023Q2": {
     "gozlenen": 0.62,
-    "orantili": -0.23,
-    "fx": 0.204
+    "orantili": -0.263,
+    "fx": 0.2
   }
 }

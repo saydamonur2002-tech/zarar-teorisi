@@ -10,7 +10,7 @@
 
 ## 2. Yanlışlayıcılar
 
-- **H-M:** `test_edilemez`. Yoğun L^m üst sınır (2026-Q1): 42.7. Seyrek KAP: yok. Fark (yoğun−seyrek): —. Etiket kümesi: test_edilemez | matris_eseri | hipotez_duser | ters_yon.
+- **H-M:** `test_edilemez`. Yoğun L^m üst sınır (2026-Q1): 42.1. Seyrek KAP: yok. Fark (yoğun−seyrek): —. Etiket kümesi: test_edilemez | matris_eseri | hipotez_duser | ters_yon.
 - **H-N:** `test_edilemez`. Bölüm silinen_oran ölçülmedi; F/B hazne farkı H-N değil. TÜİK: `NACE_TUIK_RAPOR.md`.
 - **H-K:** `test_edilemez`.
 

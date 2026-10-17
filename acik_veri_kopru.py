@@ -211,7 +211,6 @@ def derle() -> dict:
     }
 
     meta = {
-        "uretim": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "taban_girdi": taban,
         "olcumler": {
             "kart_13h": asdict(kart),

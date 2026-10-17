@@ -1,13 +1,13 @@
 ﻿nesne,alt,ust,birim,durum,not
-birim kira (TL/m²/ay),258.45,258.45,TL/m²/ay,olcum,TP.BK.TR 2026-Q2; tek nokta
+birim kira (TL/m²/ay),275.37,275.37,TL/m²/ay,olcum,TP.BK.TR 2026-Q3; tek nokta
 konut alanı,90.0,110.0,m²,varsayim,
-aylık piyasa kirası (kiracı başına),23260,28430,TL/ay,band_varsayim,b × m²
+aylık piyasa kirası (kiracı başına),24783,30291,TL/ay,band_varsayim,b × m²
 kiracı hane oranı,0.25,0.3,oran,varsayim,TÜİK GYKA civarı; depoda yok
-kiracı hane sayısı,6600000,7920000,hane,dis_kaynak_elle,"N 26,400,000 × κ"
-kira akışı yıllık (yol A),1842.2,2701.9,milyar TL/yıl,band_varsayim,b × m² × N × κ × 12
+kiracı hane sayısı,6744448,8093338,hane,dis_kaynak_elle,"N 26,977,795 × κ"
+kira akışı yıllık (yol A),2005.8,2941.8,milyar TL/yıl,band_varsayim,b × m² × N × κ × 12
 kira akışı yıllık (yol B proxy),254.8,254.8,milyar TL/yıl,varsayim_proxy,A ile toplanmaz
 HEKİS havuz kirası,20000.0,20000.0,TL/ay,modellendi,hekis-model; politika kirası
-kiracı başına aylık fark (piyasa − HEKİS),3260,8430,TL/ay,band_varsayim,HEKİS kirası piyasa altında kaldığı sürece
-"Ho→Ha yıllık transfer, kapsama payı 20%",51.6,160.2,milyar TL/yıl,band_varsayim,"fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
-"Ho→Ha yıllık transfer, kapsama payı 50%",129.1,400.6,milyar TL/yıl,band_varsayim,"fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
-"Ho→Ha yıllık transfer, kapsama payı 100%",258.2,801.1,milyar TL/yıl,band_varsayim,"fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
+kiracı başına aylık fark (piyasa − HEKİS),4783,10291,TL/ay,band_varsayim,HEKİS kirası piyasa altında kaldığı sürece
+"Ho→Ha yıllık transfer, kapsama payı 20%",77.4,199.9,milyar TL/yıl,band_varsayim,"fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
+"Ho→Ha yıllık transfer, kapsama payı 50%",193.6,499.7,milyar TL/yıl,band_varsayim,"fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"
+"Ho→Ha yıllık transfer, kapsama payı 100%",387.1,999.4,milyar TL/yıl,band_varsayim,"fark × kiracı hane × pay × 12; H içi dağılım, H toplam NL 0; Ho kaybı = Ha kazancı"

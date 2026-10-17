@@ -1,5 +1,4 @@
 {
-  "uretim": "2026-10-12T13:33:26Z",
   "taban_girdi": {
     "tufe_yillik_2026": 30.65,
     "kart_buyume_13h_yillik": 45.88,
@@ -38,10 +37,10 @@
       "not_": "Merkezi yönetim; K′ tam değil"
     },
     "tga_tuketici_oran_yuzde": {
-      "deger": 13.0,
+      "deger": 13.3,
       "durum": "olculdu",
       "seri": "Takip/Tüketici stok",
-      "tarih": "2026-10-02",
+      "tarih": "2026-10-09",
       "not_": "EVDS; BDDK %2,90 vs EVDS %3,13 kapsam farkı olabilir"
     },
     "bekar_yasam": {

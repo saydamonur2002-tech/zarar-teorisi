@@ -18,7 +18,7 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 
 **Adım 4.5.** Tanım repodadır (`ADIM45_BIRIM.md`): mevcut TL'den yeni fiat TL'ye geçiş, λ = 1 parite (varsayım), yeni lira altın ya da döviz üzerinde alacak değil, kur çapası 49,1274 TL/USD (`bes_yil_senaryo.csv` taban, tüm yıllarda sabit), pencere 2030-Q1..Q4. TL para stoku 16.472,8 milyar TL (2026-Q1). Plasebo kontrolü (`ADIM45_MALIYET.md`): TL bileşen payları λ'dan bağımsız aynı kalır; bu aritmetik gereğidir, para yanılsaması ve yuvarlama enflasyonu modelde yok. Fayda sıfır; tek gerçek terim yürütme maliyeti: A (banknot basımı ≈ 10 milyon $ × 49,1274 + kurum başı yazılım 20–100 bin $ × 100–1.000 kurum, varsayım) 0,59 – 5,40 milyar TL; B (tam yeni birim, GSYH 2025'in %0,3–1,0'ı, ikincil kaynak) 189,7 – 632,4 milyar TL üst referans.
 
-**Adım 5.** Akış, ev sahibinden (Ho) kiracıya (Ha) giden transferdir (`adim5_kira_aralik.csv`). Birim kira 258,45 TL/m²/ay, EVDS serisi TP.BK.TR, 2026-Q2 (değerlemesi yapılan konutlar), tek ölçüm. Konut alanı 90–110 m², kiracı hane oranı %25–30 ve toplam hane 26,4 milyon varsayım ya da elle girilmiş dış kaynaktır. Piyasa kirası 23.260 – 28.430 TL/ay, HEKİS havuz kirası 20.000 TL/ay (model varsayımı) olduğundan fark 3.260 – 8.430 TL/ay'dır. Transfer = fark × kiracı hane × kapsama payı × 12: kapsama %20'de 51,6 – 160,2, %50'de 129,1 – 400,6, %100'de 258,2 – 801,1 milyar TL/yıl. Yürütme maliyeti transferin ρ katıdır; hane içi bir aktarım olduğu için H toplamında net maliyet değil dağılımdır.
+**Adım 5.** Akış, ev sahibinden (Ho) kiracıya (Ha) giden transferdir (`adim5_kira_aralik.csv`). Birim kira 275,37 TL/m²/ay, EVDS serisi TP.BK.TR, 2026-Q3 (değerlemesi yapılan konutlar (kredili alım ağırlıklı); tüm kiralık stok değil), tek ölçüm. Konut alanı 90–110 m², kiracı hane oranı %25–30 varsayım; toplam hane 26.977.795 elle girilmiş dış kaynaktır. Piyasa kirası 24.783 – 30.291 TL/ay, HEKİS havuz kirası 20.000 TL/ay (model varsayımı) olduğundan fark 4.783 – 10.291 TL/ay'dır. Transfer = fark × kiracı hane × kapsama payı × 12: kapsama %20'de 77,4 – 199,9, %50'de 193,6 – 499,7, %100'de 387,1 – 999,4 milyar TL/yıl. Yürütme maliyeti transferin ρ katıdır; hane içi bir aktarım olduğu için H toplamında net maliyet değil dağılımdır.
 
 ## Adım 1: stok
 
@@ -63,21 +63,21 @@ Yürütme maliyeti = tespit + tahsil + idari maliyet. Model (`yurutme_maliyet.py
 
 ## Adım 5: kira
 
-- **maliyet: Ho→Ha transferi, kapsama %20**: 51.6 – 160.2 milyar TL/yıl (`band_varsayim`). H içi aktarım; H toplam NL 0.
-- **maliyet: Ho→Ha transferi, kapsama %50**: 129.1 – 400.6 milyar TL/yıl (`band_varsayim`).
-- **maliyet: Ho→Ha transferi, kapsama %100**: 258.2 – 801.1 milyar TL/yıl (`band_varsayim`).
-- **yürütme ρ=0.4% (alt), kapsama %20**: 0.2 – 0.6 milyar TL/yıl (`modellendi_band`). Transfer × ρ.
-- **yürütme ρ=9% (orta), kapsama %20**: 4.6 – 14.4 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=25% (pilot payı), kapsama %20**: 12.9 – 40.0 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=29% (üst), kapsama %20**: 15.0 – 46.5 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=0.4% (alt), kapsama %50**: 0.5 – 1.6 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=9% (orta), kapsama %50**: 11.6 – 36.1 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=25% (pilot payı), kapsama %50**: 32.3 – 100.2 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=29% (üst), kapsama %50**: 37.4 – 116.2 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=0.4% (alt), kapsama %100**: 1.0 – 3.2 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=9% (orta), kapsama %100**: 23.2 – 72.1 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=25% (pilot payı), kapsama %100**: 64.5 – 200.3 milyar TL/yıl (`modellendi_band`).
-- **yürütme ρ=29% (üst), kapsama %100**: 74.9 – 232.3 milyar TL/yıl (`modellendi_band`).
+- **maliyet: Ho→Ha transferi, kapsama %20**: 77.4 – 199.9 milyar TL/yıl (`band_varsayim`). H içi aktarım; H toplam NL 0.
+- **maliyet: Ho→Ha transferi, kapsama %50**: 193.6 – 499.7 milyar TL/yıl (`band_varsayim`).
+- **maliyet: Ho→Ha transferi, kapsama %100**: 387.1 – 999.4 milyar TL/yıl (`band_varsayim`).
+- **yürütme ρ=0.4% (alt), kapsama %20**: 0.3 – 0.8 milyar TL/yıl (`modellendi_band`). Transfer × ρ.
+- **yürütme ρ=9% (orta), kapsama %20**: 7.0 – 18.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), kapsama %20**: 19.4 – 50.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=29% (üst), kapsama %20**: 22.4 – 58.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=0.4% (alt), kapsama %50**: 0.8 – 2.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=9% (orta), kapsama %50**: 17.4 – 45.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), kapsama %50**: 48.4 – 124.9 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=29% (üst), kapsama %50**: 56.1 – 144.9 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=0.4% (alt), kapsama %100**: 1.5 – 4.0 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=9% (orta), kapsama %100**: 34.8 – 89.9 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=25% (pilot payı), kapsama %100**: 96.8 – 249.8 milyar TL/yıl (`modellendi_band`).
+- **yürütme ρ=29% (üst), kapsama %100**: 112.3 – 289.8 milyar TL/yıl (`modellendi_band`).
 
 ## Ne denmez
 

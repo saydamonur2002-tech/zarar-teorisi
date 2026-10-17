@@ -10,18 +10,18 @@ F referans (ölçüm, senaryo değil): finansman/faaliyet kârı **0.839** (3143
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | uc_kural_kilitli | H | 113.8 | 2.12 | 9.99 | 9.19 | 0.8 |
 | uc_kural_kilitli | F | 170.33 | 0.88 | 27.85 | 27.37 | 0.48 |
-| uc_kural_kilitli | B | 119.23 | 1.49 | 74.07 | 73.78 | 0.29 |
+| uc_kural_kilitli | B | 119.23 | 1.26 | 74.07 | 73.83 | 0.24 |
 | uc_kural_kilitli | K | 17.03 | 0.29 | 14.41 | 14.37 | 0.04 |
 | maliyet_ucuz_revize | H | 289.98 | 22.64 | 9.99 | 7.91 | 2.08 |
 | maliyet_ucuz_revize | F | 74.81 | 1.03 | 27.85 | 27.64 | 0.21 |
-| maliyet_ucuz_revize | B | 52.37 | 0.66 | 74.07 | 73.95 | 0.12 |
+| maliyet_ucuz_revize | B | 52.37 | 0.56 | 74.07 | 73.97 | 0.1 |
 | maliyet_ucuz_revize | K | 86.23 | 1.5 | 14.41 | 14.23 | 0.18 |
 
 ## Toplam ağırlıklı rant direnci
 
 - **mevcut**: 0.0%
-- **uc_kural_kilitli**: 1.44%
-- **maliyet_ucuz_revize**: 9.65%
+- **uc_kural_kilitli**: 1.39%
+- **maliyet_ucuz_revize**: 9.63%
 
 ## Duyarlılık (revize, H)
 

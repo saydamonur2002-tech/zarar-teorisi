@@ -2,7 +2,7 @@
 
 Ön kayıt `87f0317`. Çalıştır: `python3 bes_adim.py`. Çıktı: `adim1_stok.csv`, `adim2.csv`, `adim3.csv`, `adim4.csv`, `adim5.csv`, `bes_adim_sonuc.json`.
 
-Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` ise durur. Önceki katman sayıları taşınmaz. Adım 1 akış satırı (0,4270, `baska_nesne`) dokunulmadı.
+Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` ise durur. Önceki katman sayıları taşınmaz. Adım 1 akış satırı (0,4210, `baska_nesne`) dokunulmadı.
 
 ## Etiketler
 
@@ -29,7 +29,7 @@ Son satır (`bes_adim_sonuc.json` `son`) koşudan gelmez; `python3 test_bes_adim
 
 - `eski_tavan` 0.0728: stok_silim.py, her tek yön bacağa aynı araçta EVDS üst sınırı; aynı EVDS stoku birden çok satırda; metindeki ters bacak (başka araç) görülmez. Durur, silinmez.
 - `yeni_tavan` 0.2582: çift düzeyi; iki yön metinden (araçlar toplanır), ters yön metinde yoksa EVDS konsolide olmayan aynı-araç üst sınırı; ortak = min; Σortak 20,363.4 / Σbrüt 78,870.4; 6/6 çift dolu. Yalnız metin iki yön: 0.3175.
-- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yaklaşık yüzde 20' bu kuralla çıkmadı; bulunamadı.
+- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yüzde 20' kaldırıldı; yerine rev_adim1 bandı (ADIM1_NACE.md (e)).
 
 ## Kilit dışı yan dosyalar (Faz 1–6; girdi, sonuç değil)
 
@@ -42,7 +42,7 @@ Adım dosyalarına ve kapılara yazılmaz; etiketiyle okunur. Harita: `GIRDI_HAR
 | 3 | `adim3_faiz_durma_sonuc.json` | `adim3_faiz_durma.py` | ψ etkin faiz payı: 0.3584 | `olcum_turevi` |
 | 4 | `adim4_adres_yonlendirme_sonuc.json` | `adim4_adres_yonlendirme.py` | adres toplamı milyar: 19361.9 | `olcum` |
 | kapı | `gecis_payi_band_sonuc.json` | `gecis_payi_band.py` | geçiş payı nokta tahmini: 0.9389 | `tahmin_ols` |
-| 5 | `adim5_kira_sonuc.json` | `adim5_kira.py` | birim kira TL/m²/ay: 258.45 | `olcum` |
+| 5 | `adim5_kira_sonuc.json` | `adim5_kira.py` | birim kira TL/m²/ay: 275.37 | `olcum` |
 
 ## Maliyet ve yürütme maliyeti
 

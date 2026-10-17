@@ -5,3 +5,6 @@ networkx
 scipy
 matplotlib
 python-docx
+xlrd
+pytest
+pdfplumber

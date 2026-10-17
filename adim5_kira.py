@@ -7,7 +7,7 @@ Yol A (birim kira × alan × kiracı hane):
   b   = TP.BK.TR Türkiye konut birim kirası (TL/m²/ay, TCMB değerleme raporları, çeyrek)          → ölçüm (kapsam: değerlemesi yapılan konut)
   m²  ∈ {90, 110}                                                                                   → varsayım
   N   = hane sayısı (TÜİK ADNKS 2024; depoda yok, elle)                                             → dis_kaynak_elle
-  κ   = kiracı hane oranı ∈ {0,25; 0,30} (TÜİK GYKA ~%27 civarı; depoda yok)                        → varsayım
+  κ   = kiracı hane oranı ∈ {0,25; 0,30} (TÜİK GYKA 2025 fert %27,0; hane bazlı yok)                        → varsayım
   Kira_yıllık = b · m² · N · κ · 12
 Yol B (depodaki proxy): konut_stok_milyarTL (direnc_yuzdesi: H varlık × 0,25) × kira getirisi 0,035 → varsayım; A ile karşılaştırılır.
 Karşılaştırma: HEKİS havuz kirası 20.000 TL/ay (modellendi) / piyasa 100 m² kirası (b × 100).
@@ -32,8 +32,8 @@ from evds_cek import BASE, get_json  # noqa: E402
 HAM = KOK / "adim5_kira_ham.csv"
 S_BK, S_YKKE = "TP.BK.TR", "TP.YKKE.TR"
 M2 = (90.0, 110.0)
-KIRACI_ORANI = (0.25, 0.30)
-HANE_SAYISI = 26_400_000  # TÜİK ADNKS 2024 hane sayısı; depoda yok, elle; doğrulanmadı
+KIRACI_ORANI = (0.25, 0.30)  # TÜİK GYKA: kiracı FERT payı 2024 %28,0, 2025 %27,0 (bant içinde); hane bazlı oran yayımlanmadı → bant korunur
+HANE_SAYISI = 26_977_795  # TÜİK ADNKS 2025 hanehalkı sayısı (DF_ADNKS_T07; bülten 53899, 09.02.2026); web ile doğrulandı 17.10.2026 (ikincil aktarım). 2024: 26.599.261
 KIRA_GETIRI_PROXY = 0.035  # direnc_yuzdesi.py varsayımı
 KAPSAMA_PAYI = (0.20, 0.50, 1.00)  # tek sisteme giren kiracı payı; varsayım (yüzde 20 koşusu dahil)
 

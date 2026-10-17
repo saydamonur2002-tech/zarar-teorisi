@@ -25,6 +25,18 @@ DIR = Path(__file__).parent
 SEC = ["H", "F", "B", "K", "D"]
 ALL = SEC + ["U"]
 IDX = {s: i for i, s in enumerate(SEC)}
+import os as _os
+# Revizyon B seçenekleri: ZT_BK_DUZELTME = yok | alt | ust ; ZT_LM = orantili | olcum_alt | olcum_ust ; ZT_NAKIT = none | S1 | H<pay>
+BK_DUZELTME = _os.environ.get("ZT_BK_DUZELTME", "alt")
+LM_SECIM = _os.environ.get("ZT_LM", "orantili")
+NAKIT_SECIM = _os.environ.get("ZT_NAKIT", "S1")
+_SON_DONEM = [None]
+_AKIM_IDS = set()  # akım tablolarının kimliği: B' düzeltmesi akımda ΔX olarak girer
+
+
+def _onceki(p):
+    y, q = int(p[:4]), int(p[-1])
+    return f"{y - 1}-Q4" if q == 1 else f"{y}-Q{q - 1}"
 STOCK_GRP = {"H": "71014", "NPISH": "71015", "F": "71011", "B": "71012", "K": "71013", "D": "7102"}
 
 
@@ -51,10 +63,13 @@ def load():
     def tc(df):
         return {(r.Donem, r.zp): r.Deger for r in df.itertuples()}
 
-    return table(stock), table(flow), tc(tc_st), tc(tc_fl)
+    ft = table(flow)
+    _AKIM_IDS.add(id(ft))
+    return table(stock), ft, tc(tc_st), tc(tc_fl)
 
 
 def panel(tab, tcmb, period, flip_d=True, move_tcmb=True):
+    _SON_DONEM[0] = period
     """-> A[m,s], Y[m,s] (5 hazne, U hariç). A = varlık, Y = yükümlülük, enstrüman satırları INSTR sırası."""
     m = len(INSTR)
     A, Y = np.zeros((m, 5)), np.zeros((m, 5))
@@ -76,6 +91,14 @@ def panel(tab, tcmb, period, flip_d=True, move_tcmb=True):
                 Y[k, IDX["B"]] -= ty
                 A[k, IDX["K"]] += ta
                 Y[k, IDX["K"]] += ty
+            # B' konsolidasyon düzeltmesi (revizyon B): banka↔TCMB bacakları B' varlık ve yükümlülüğüne geri eklenir.
+            if BK_DUZELTME != "yok" and name in ("para_mevduat", "kredi"):
+                import tcmb_bacak as _tb
+                x = _tb.x_bk(name, period, BK_DUZELTME)
+                if id(tab) in _AKIM_IDS:  # akım: işlem = ΔX (değerleme ayrılamadı; tamamı işlem sayılır, aday)
+                    x = x - _tb.x_bk(name, _onceki(period), BK_DUZELTME)
+                A[k, IDX["B"]] += x
+                Y[k, IDX["B"]] += x
     return A, Y
 
 
@@ -87,9 +110,28 @@ def close_with_U(A, Y):
 
 
 # ------------------------------------------------------------------ matrisler
+def _E(A, Y, n):
+    """Enstrüman maruziyeti. Varsayılan orantılı; ZT_LM=olcum_* iken mevduat/kredi için TCMB FH kimden-kime (B'/K' uyumlu, tcmb_bacak.E_bk)
+    dağılımı, depo ölçeği (orantılı sütun toplamı) korunarak kullanılır. Ölçüm yoksa (2017 öncesi) orantılıya döner."""
+    k = list(INSTR).index(n)
+    Ep = exposure(A[k], Y[k])
+    if LM_SECIM == "orantili" or n not in ("para_mevduat", "kredi"):
+        return Ep
+    import tcmb_bacak as _tb
+    nk = None if NAKIT_SECIM == "none" else ("S1" if NAKIT_SECIM == "S1" else ("H", float(NAKIT_SECIM[1:])))
+    Eo, _ = _tb.E_bk(n, _SON_DONEM[0], LM_SECIM.split("_")[1], nk if n == "para_mevduat" else None, A_repo=A[k])
+    if Eo is None:
+        return Ep
+    cp, co = Ep.sum(axis=0), Eo.sum(axis=0)
+    for j in range(5):
+        if co[j] > 0:
+            Ep[:, j] = Eo[:, j] / co[j] * cp[j]
+    return Ep
+
+
 def mat(A, Y, names):
     """E toplamı -> satır = borçlu j, sütun = alacaklı i (satır normalize)."""
-    E = sum(exposure(A[list(INSTR).index(n)], Y[list(INSTR).index(n)]) for n in names)
+    E = sum(_E(A, Y, n) for n in names)
     col = E.sum(axis=0)
     M = np.zeros_like(E)
     for j in range(5):

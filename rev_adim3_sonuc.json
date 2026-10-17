@@ -1,0 +1,43 @@
+{
+ "faz": "rev E",
+ "yp_payi": {
+  "2023-Q4": 0.5049,
+  "2024-Q4": 0.5481,
+  "2025-Q4": 0.5522,
+  "2026-Q1": 0.5444
+ },
+ "r_son": {
+  "TL_stok": 46.79,
+  "USD_stok": 7.71,
+  "ay": "2026-08"
+ },
+ "psi": {
+  "eski_repo": 0.3584,
+  "evds_tl_yp": 0.773,
+  "sb_ayni_kapsam": 1.112,
+  "not": "Finansman gideri kur farkı zararını ve banka dışı borç faizini içerir → ψ>1 mümkün; oran eşitlik değil (olcum_turevi)."
+ },
+ "g_ceyreklik": {
+  "sifir": 0.0,
+  "medyan": 0.0851,
+  "min": 0.0485,
+  "max": 0.1212
+ },
+ "kappa1_I_2029_bandi_milyar": [
+  4527.2,
+  31224.7
+ ],
+ "kappa1_oran_FG2024_2029_bandi": [
+  1.44,
+  9.93
+ ],
+ "eski_kappa1_2029": 4830.8,
+ "eski_oran": 1.54,
+ "etiketler": {
+  "yp_payi": "olcum_turevi",
+  "g": "olcum_turevi bandı (2024-Q1..2026-Q1)",
+  "r_TL": "varsayim patika (düşüş→%30, sabit, %55)",
+  "kappa": "varsayim",
+  "I": "sözleşme faizi (ψ uygulanmadı; ψ>1 çıktığı için ψ ile ölçek küçültmek savunulamaz)"
+ }
+}

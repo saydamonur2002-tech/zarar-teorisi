@@ -2,69 +2,69 @@
   "n_ceyrek": 45,
   "dis_borc/D_borc_benzeri_varlik_ortanca_oran": 1.124,
   "R2_havuz": {
-    "orantili": 0.868,
-    "bilateral": 0.856
+    "orantili": 0.866,
+    "bilateral": 0.852
   },
   "R2_olcek_bagimsiz": {
-    "orantili": 0.683,
-    "bilateral": 0.631
+    "orantili": 0.673,
+    "bilateral": 0.625
   },
   "MAE_trilyonTL": {
     "H": {
-      "orantili": 0.12,
-      "bilateral": 0.137
+      "orantili": 0.11,
+      "bilateral": 0.13
     },
     "F": {
-      "orantili": 0.064,
-      "bilateral": 0.071
+      "orantili": 0.07,
+      "bilateral": 0.073
     },
     "B": {
-      "orantili": 0.125,
-      "bilateral": 0.143
+      "orantili": 0.141,
+      "bilateral": 0.153
     },
     "K": {
-      "orantili": 0.146,
-      "bilateral": 0.15
+      "orantili": 0.145,
+      "bilateral": 0.149
     },
     "D": {
-      "orantili": 0.183,
-      "bilateral": 0.183
+      "orantili": 0.185,
+      "bilateral": 0.189
     }
   },
   "korelasyon_bilateral": {
-    "H": 0.928,
+    "H": 0.929,
     "F": 0.99,
-    "B": 0.675,
-    "K": 0.629,
-    "D": 0.938
+    "B": 0.652,
+    "K": 0.63,
+    "D": 0.935
   },
   "isaret_dogrulugu_bilateral_yuzde": {
     "H": 88.9,
     "F": 97.8,
-    "B": 86.7,
+    "B": 80.0,
     "K": 75.6,
     "D": 88.9
   },
   "D_ornekler": {
     "2018-Q3": {
       "gozlenen": 0.22,
-      "orantili": 0.113,
-      "bilateral": 0.049
+      "orantili": 0.102,
+      "bilateral": 0.031
     },
     "2021-Q4": {
       "gozlenen": 0.771,
-      "orantili": 0.393,
-      "bilateral": 0.257
+      "orantili": 0.368,
+      "bilateral": 0.198
     },
     "2023-Q2": {
       "gozlenen": 0.62,
-      "orantili": -0.23,
-      "bilateral": -0.398
+      "orantili": -0.263,
+      "bilateral": -0.449
     },
     "2025-Q4": {
       "gozlenen": 1.916,
-      "orantili": 0.992,
-      "bilateral": 1.119
+      "orantili": 0.972,
+      "bilateral": 1.076
     }
   }
 }

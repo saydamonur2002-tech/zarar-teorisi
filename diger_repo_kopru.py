@@ -1,6 +1,6 @@
 """Diğer repo köprüsü: hekis-model (HEKİS) ve modeller deposu → bu modelin yanına, içine değil.
 
-Kural: sayı kaynak commit'ten; revizyon gelmeden "güncel" yazılmaz. Akış %42,7, stok tavanı, MY 2.933,6,
+Kural: sayı kaynak commit'ten; revizyon gelmeden "güncel" yazılmaz. Akış %42,1, stok tavanı, MY 2.933,6,
 kalan %89,3 ve tek-sistem köprüsü bu dosyaya taşınmaz. HEKİS TÜFE puanı, Gini, yerleşen hane zarar-teorisi
 serisine yapıştırılmaz; yan yana durur. tek-sistem a9344f1 ile bağlı, yeniden kopyalanmaz; adım 1 etiketi
 bu turda düzeltilmez.

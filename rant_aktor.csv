@@ -1,16 +1,16 @@
 ﻿agirlik_not,aktor,durum,faaliyet_proxy_milyar,finansman_faaliyet_ref_F,kar_amorti_dusus_puan,kar_amorti_yuzde_once,kar_amorti_yuzde_sonra,payda_NFP_delta_milyar,rant_direnci_yuzde,rant_gelir_yillik_baseline_milyar,rant_gelir_yillik_sonra_milyar,rant_kayip_ufuk_milyar,senaryo
 ,H,senaryo,2307.81,,0.0,9.99,9.99,0.0,0.0,256.21,256.21,0.0,mevcut
 ,F,senaryo,3746.2,0.839,0.0,27.85,27.85,0.0,0.0,1445.96,1445.96,0.0,mevcut
-,B,senaryo,559.61,,0.0,74.07,74.07,0.0,0.0,1598.88,1598.88,0.0,mevcut
+,B,senaryo,660.51,,0.0,74.07,74.07,0.0,0.0,1887.17,1887.17,0.0,mevcut
 ,K,senaryo,6847.2,,0.0,14.41,14.41,0.0,0.0,1152.8,1152.8,0.0,mevcut
 H40 F30 B20 K10 varsayılan,TOPLAM,senaryo,,,,,,,0.0,,,,mevcut
-,H,senaryo,2307.81,,0.8,9.99,9.19,5371.4,2.12,256.21,233.45,113.8,uc_kural_kilitli
-,F,senaryo,3746.2,0.839,0.48,27.85,27.37,-19311.6,0.88,1445.96,1411.89,170.33,uc_kural_kilitli
-,B,senaryo,559.61,,0.29,74.07,73.78,-968.2,1.49,1598.88,1575.03,119.23,uc_kural_kilitli
-,K,senaryo,6847.2,,0.04,14.41,14.37,5909.4,0.29,1152.8,1149.39,17.03,uc_kural_kilitli
-H40 F30 B20 K10 varsayılan,TOPLAM,senaryo,,,,,,,1.44,,,,uc_kural_kilitli
-,H,senaryo,2307.81,,2.08,9.99,7.91,759.2,22.64,256.21,198.21,289.98,maliyet_ucuz_revize
+,H,senaryo,2307.81,,0.8,9.99,9.19,5371.9,2.12,256.21,233.45,113.8,uc_kural_kilitli
+,F,senaryo,3746.2,0.839,0.48,27.85,27.37,-19311.8,0.88,1445.96,1411.89,170.33,uc_kural_kilitli
+,B,senaryo,660.51,,0.24,74.07,73.83,-1006.6,1.26,1887.17,1863.32,119.23,uc_kural_kilitli
+,K,senaryo,6847.2,,0.04,14.41,14.37,5912.8,0.29,1152.8,1149.39,17.03,uc_kural_kilitli
+H40 F30 B20 K10 varsayılan,TOPLAM,senaryo,,,,,,,1.39,,,,uc_kural_kilitli
+,H,senaryo,2307.81,,2.08,9.99,7.91,759.3,22.64,256.21,198.21,289.98,maliyet_ucuz_revize
 ,F,senaryo,3746.2,0.839,0.21,27.85,27.64,1211.2,1.03,1445.96,1431.0,74.81,maliyet_ucuz_revize
-,B,senaryo,559.61,,0.12,74.07,73.95,21.9,0.66,1598.88,1588.41,52.37,maliyet_ucuz_revize
-,K,senaryo,6847.2,,0.18,14.41,14.23,-20.4,1.5,1152.8,1135.55,86.23,maliyet_ucuz_revize
-H40 F30 B20 K10 varsayılan,TOPLAM,senaryo,,,,,,,9.65,,,,maliyet_ucuz_revize
+,B,senaryo,660.51,,0.1,74.07,73.97,19.5,0.56,1887.17,1876.7,52.37,maliyet_ucuz_revize
+,K,senaryo,6847.2,,0.18,14.41,14.23,-20.2,1.5,1152.8,1135.55,86.23,maliyet_ucuz_revize
+H40 F30 B20 K10 varsayılan,TOPLAM,senaryo,,,,,,,9.63,,,,maliyet_ucuz_revize

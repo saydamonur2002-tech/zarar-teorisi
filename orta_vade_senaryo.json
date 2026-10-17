@@ -276,28 +276,28 @@
       "K1": 1.0,
       "K2": 0.0,
       "K3": 0.0,
-      "k1_itis_tempo_yil": 2058.5,
+      "k1_itis_tempo_yil": 2029.6,
       "k2_brut_ust": 0.0,
       "k3_kredi_tempo_yil": 0.0,
-      "f4_fark_kumul": 1286.4
+      "f4_fark_kumul": 1268.4
     },
     "2028": {
       "K1": 1.0,
       "K2": 1.0,
       "K3": 0.0,
-      "k1_itis_tempo_yil": 2058.5,
+      "k1_itis_tempo_yil": 2029.6,
       "k2_brut_ust": 14622.6,
       "k3_kredi_tempo_yil": 0.0,
-      "f4_fark_kumul": 3344.8
+      "f4_fark_kumul": 3298.0
     },
     "2029": {
       "K1": 1.0,
       "K2": 1.0,
       "K3": 1.0,
-      "k1_itis_tempo_yil": 2058.5,
+      "k1_itis_tempo_yil": 2029.6,
       "k2_brut_ust": 14622.6,
       "k3_kredi_tempo_yil": 1549.0,
-      "f4_fark_kumul": 6371.2
+      "f4_fark_kumul": 6295.6
     }
   },
   "duran_faiz_kappa_025": {
@@ -399,11 +399,11 @@
       "kur_adim_rejim_yil_sonu": 66.14,
       "acik_adim": "1 akis + 2",
       "adim_nesne": "K1 itis freni, yil sonu tempo",
-      "adim_sayi": 2058.5,
+      "adim_sayi": 2029.6,
       "adim_birim": "milyar TL/yil",
       "adim_etiket": "senaryo_takvimi",
       "k2_brut_ust": 0.0,
-      "f4_fark_kumul": 1286.4,
+      "f4_fark_kumul": 1268.4,
       "duran_faiz_kappa_025": 0.0,
       "prim_alt": 0.0,
       "prim_ust": 0.0
@@ -438,7 +438,7 @@
       "adim_birim": "milyar TL/yil",
       "adim_etiket": "varsayim_kappa",
       "k2_brut_ust": 14622.6,
-      "f4_fark_kumul": 3344.8,
+      "f4_fark_kumul": 3298.0,
       "duran_faiz_kappa_025": 754.8,
       "prim_alt": 0.0,
       "prim_ust": 0.0
@@ -473,7 +473,7 @@
       "adim_birim": "milyar TL/yil",
       "adim_etiket": "band_varsayim",
       "k2_brut_ust": 14622.6,
-      "f4_fark_kumul": 6371.2,
+      "f4_fark_kumul": 6295.6,
       "duran_faiz_kappa_025": 1207.6,
       "prim_alt": 36.4,
       "prim_ust": 90.8

@@ -3,6 +3,6 @@ kart_13h,45.88,olculdu,TP.HPBITABLO6.16,2026-09-25 vs 2025-08-22,"BDDK tablo 6/2
 tuketici_13h,43.28,olculdu,TP.HPBITABLO6.2,2026-09-25 vs 2025-08-22,"BDDK tablo 6/2 stok bin TL; BDDK tanımı, finansal hesap F.4 ile aynı değil"
 tufe,30.65,olculdu,TP.FG.J0,2026-01,EVDS aylık TÜFE yıllık değişim
 butce_faiz_harcama_pay,0.1441,olculdu,MV bütce ham,2026,Merkezi yönetim; K′ tam değil
-tga_tuketici_oran_yuzde,13.0,olculdu,Takip/Tüketici stok,2026-10-02,"EVDS; BDDK %2,90 vs EVDS %3,13 kapsam farkı olabilir"
-bekar_yasam,48885.0,olculdu,TÜRK-İŞ bekar yaşam sınırı (Eylül 2026 — kullanıcı/rapor; EVDS değil),2026-09,Resmi TÜRK-İŞ duyurusundan doğrulanıp güncellenmeli
+tga_tuketici_oran_yuzde,13.3,olculdu,Takip/Tüketici stok,2026-10-09,"EVDS; BDDK %2,90 vs EVDS %3,13 kapsam farkı olabilir"
+bekar_yasam,48885.0,dis_veri,TÜRK-İŞ bekar yaşam sınırı (Eylül 2026 — kullanıcı/rapor; EVDS değil),2026-09,Resmi TÜRK-İŞ duyurusundan doğrulanıp güncellenmeli
 kapsama,0.5743,olculdu,net_asgari/bekar_yasam,,ASGARI=28075.5

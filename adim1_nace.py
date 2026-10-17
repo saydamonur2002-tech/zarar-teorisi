@@ -222,6 +222,21 @@ def _md_table(baslik: list[str], satirlar: list[list]) -> str:
     return "\n".join(s)
 
 
+
+def _rev_bant_md():
+    import json as _j
+    p = KOK / "rev_adim1_sonuc.json"
+    if not p.exists():
+        return ["- rev_adim1_sonuc.json yok; önce `python rev_adim1.py`."]
+    r = _j.loads(p.read_text(encoding="utf-8")); z = r["zaman_istikrari"]; t = r["tasima_2026Q1_milyar"]
+    sat = [f"- Tam graf oranı 2009–2024: [{z['tam_graf_oran_min']:.3f}, {z['tam_graf_oran_max']:.3f}], 2024: {z['tam_graf_oran_2024']:.3f} (`ust_sinir_nace`).",
+           "- Seyrek ağ 2024 (çekim+RAS, rastgele kenar alt kümesi, LP en iyi mahsup; `varsayim_yogunluk`):"]
+    for d, v in r["seyrek_ag_2024"].items():
+        sat.append(f"  - yoğunluk {d}: min {v['min']:.3f} / medyan {v['median']:.3f} / max {v['max']:.3f}")
+    sat.append(f"- 2026Ç1 taşıma (`varsayim_oran_tasima`): tam graf {t['tam_graf_bandi'][0]:,.1f}–{t['tam_graf_bandi'][1]:,.1f} milyar; seyrek alt uç {t['seyrek_alt_uc']:,.1f} milyar.")
+    return sat
+
+
 def main() -> dict:
     b = bilanco()
     pm = personel_maliyeti()
@@ -301,14 +316,10 @@ def main() -> dict:
           "## (d) Varsayım: oranı EVDS stokuna taşıma", "",
           f"- {f(birlesik['evds_sektor_ici_zp44_milyar'])} × {birlesik['nace_silinen_max_oran']:.4f} = **{f(birlesik['silinen_ust_milyar'])} milyar** üst sınır "
           f"(`{birlesik['durum']}`). {birlesik['not']}", "",
-          f"## (e) Varsayım: silinen oranı yüzde {int(SENARYO_SILINEN_ORAN * 100)} olursa (koşu)", "",
-          _md_table(["taban", "brüt (milyar)", "yüzde 20 silinen", "üst sınır oranı", "üst sınır (milyar)", "içinde mi", "üst sınıra oranı"],
-                    [[t["taban"], f(t["brut_milyar"]), f(t["silinen_milyar"]), "" if t["ust_sinir_oran"] is None else f"{t['ust_sinir_oran']:.4f}",
-                      f(t["ust_sinir_milyar"]), "" if t["ust_sinir_icinde"] is None else ("evet" if t["ust_sinir_icinde"] else "HAYIR"),
-                      "" if t["ust_sinira_oran"] is None else f"{t['ust_sinira_oran']:.2f}"] for t in yuzde["satirlar"]]), "",
-          f"- {yuzde['not']} Çekim/RAS koşusu {yuzde['cekim_sonucu_oran']:.1%} verir; yüzde 20 onun altında, yani tam graf varsayımına göre temkinli.", "",
+          "## (e) Ölçülen bant (rev C; eski 'yüzde 20' koşusu kaldırıldı)", "",
+          *_rev_bant_md(), "",
           "## Ne denmez", "",
-          "- 'Stok yüzde X silindi' denmez; (b) ve (c) üst sınır, (d) ve (e) varsayım. Gerçek silinen için firma düzeyi kimden-kime gerekir (depoda yok).",
+          "- 'Stok yüzde X silindi' denmez; (b) ve (c) üst sınır, (d) varsayım, (e) bant (yoğunluk varsayımlı). Gerçek silinen için firma düzeyi kimden-kime gerekir (depoda yok).",
           "- Hazneler arası `yeni_tavan` 0,2582 ile bu oran toplanmaz; biri hazneler arası, biri F içi.", ""]
     (KOK / "ADIM1_NACE.md").write_text("\n".join(md), encoding="utf-8")
     print(f"(a) F içi ZP44 {fark['ZP44']['sektor_ici']:,.1f} | (b) silinen_max {taban['silinen_max_oran']:.1%} "

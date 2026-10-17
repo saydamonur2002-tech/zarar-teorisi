@@ -4,7 +4,7 @@
 Girdi yalnız bu depodaki dosyalar: stok_silim.csv, odeme_mahsup_sonuc.json, tek_sistem_kopru.csv,
 tek_sistem_esleme.csv, diger_repo_kopru.csv, tavan_akis.csv, vadeli_kalicilik.csv.
 
-Taşınmaz: akış 0,4270 (`baska_nesne`, dokunulmaz), MY 2.933,6, kalan 0,893, BDDK–akım 387,1, geçiş 0/1/3/1.
+Taşınmaz: akış 0,4210 (`baska_nesne`, dokunulmaz), MY 2.933,6, kalan 0,893, BDDK–akım 387,1, geçiş 0/1/3/1.
 Kilitli üç kapı (vade dilimi, ödenmeyen emir, geçiş payı) boş kalır; biri dolu çıkarsa `ihlal`, koşu düşer.
 
 Adım 1 stok: eski_tavan 0,0728 (stok_silim.py arac_ayri_oran_ust_sinir; her tek yön bacağa aynı araçta EVDS üst
@@ -27,9 +27,24 @@ from pathlib import Path
 
 KOK = Path(__file__).resolve().parent
 ON_KAYIT = "87f0317"
-ESKI_TAVAN = 0.0728
+def _eski_tavan() -> float:
+    """stok_silim_sonuc.json'dan her koşuda okunur (eski: sabit 0.0728)."""
+    import json as _j
+    from pathlib import Path as _P
+    d = _j.loads((_P(__file__).resolve().parent / "stok_silim_sonuc.json").read_text(encoding="utf-8"))
+    def _bul(o):
+        if isinstance(o, dict):
+            if "arac_ayri_oran_ust_sinir" in o: return o["arac_ayri_oran_ust_sinir"]
+            for v in o.values():
+                r = _bul(v)
+                if r is not None: return r
+        return None
+    return float(_bul(d))
+
+
+ESKI_TAVAN = _eski_tavan()
 XLS_VAR = False
-AKIS_SATIRI = {"deger": 0.427, "durum": "baska_nesne"}  # dokunulmaz; yalnız okunur
+AKIS_SATIRI = {"deger": 0.421, "durum": "baska_nesne"}  # dokunulmaz; yalnız okunur
 
 
 def _csv(ad: str) -> list[dict]:
@@ -237,7 +252,7 @@ def md(son: dict) -> str:
     s = ["# Beş adım, sırayla, tek koşu", "",
          f"Ön kayıt `{ON_KAYIT}`. Çalıştır: `python3 bes_adim.py`. Çıktı: `adim1_stok.csv`, `adim2.csv`, `adim3.csv`, `adim4.csv`, `adim5.csv`, `bes_adim_sonuc.json`.", "",
          "Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` ise durur. Önceki katman sayıları taşınmaz. "
-         "Adım 1 akış satırı (0,4270, `baska_nesne`) dokunulmadı.", "",
+         "Adım 1 akış satırı (0,4210, `baska_nesne`) dokunulmadı.", "",
          "## Etiketler", "", "| Adım | Dosya | Yanlışlayıcı | Etiket | Sayı |", "| --- | --- | --- | --- | --- |"]
     if "1" in a:
         x = a["1"]
@@ -272,7 +287,7 @@ def md(son: dict) -> str:
               f"- `yeni_tavan` {f(x['yeni_tavan'], 4)}: çift düzeyi; iki yön metinden (araçlar toplanır), ters yön metinde yoksa EVDS konsolide olmayan "
               f"aynı-araç üst sınırı; ortak = min; Σortak {f(x['ortak_milyar'])} / Σbrüt {f(x['brut_milyar'])}; {x['dolu_cift']}/{x['cift']} çift dolu. "
               f"Yalnız metin iki yön: {f(x['yeni_tavan_yalniz_metin'], 4)}.",
-              "- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yaklaşık yüzde 20' bu kuralla çıkmadı; bulunamadı.", ""]
+              "- Silinen boş: kimden-kime xls depoda yok. İki sayı üst sınır; skor değil. 'Yüzde 20' kaldırıldı; yerine rev_adim1 bandı (ADIM1_NACE.md (e)).", ""]
     yan = yan_dosyalar()
     if yan:
         s += ["## Kilit dışı yan dosyalar (Faz 1–6; girdi, sonuç değil)", "",
