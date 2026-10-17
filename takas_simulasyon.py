@@ -19,7 +19,8 @@ import openpyxl
 from akis_model import IDX, SEC, L_G, load, panel, simulate
 from hekis_enflasyon import load_obs, inflation_paths, nfp_2026q1, reel_degisim
 
-XLSX = Path(r"c:\Users\asayd\Downloads\sektor_makro_simulasyon.xlsx")
+import os as _os
+XLSX = Path(_os.environ.get("SEKTOR_MAKRO_XLSX", "sektor_makro_simulasyon.xlsx"))  # eski: Windows yerel yolu; depoda yok
 
 
 def stoklar():
@@ -120,4 +121,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if not XLSX.exists():
+        print(f"takas_simulasyon atlandı: {XLSX} yok (depoda değil; SEKTOR_MAKRO_XLSX ile ver)"); raise SystemExit(0)
     main()
