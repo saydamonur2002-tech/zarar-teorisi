@@ -40,6 +40,10 @@ pip install -r requirements.txt
 
 `haftalik_guncelle.py` sekiz EVDS ham dosyasını (37 grup) yeniden çeker, `veri_canli/` altındaki canlı kopyayla karşılaştırır; değişiklik varsa kopyayı ve `SON_GUNCELLEME.md` özetini yazar. Dondurulmuş `*_ham.csv` dosyalarına dokunmaz ve model çıktılarını yeniden hesaplamaz. GitHub Actions ile her Pazartesi 05:17 UTC çalışır (`.github/workflows/haftalik-veri.yml`; zamanlama yalnızca `main` dalındaki dosyayla işler). Ayrıntı ve doğrulama durumu: [`veri_canli/OKU.md`](veri_canli/OKU.md).
 
+## Fisher ayrışması (adım 3 ve 4)
+
+`fisher_ayrisma.py` iki Fisher denklemini repodaki verilere uygular: nominal faizi reel faiz ve enflasyon telafisine ayırır; faiz farkından ima edilen değer kaybını gerçekleşenle karşılaştırır. Adım 3'ün duran faizini TL/YP ve reel/enflasyon parçalarına böler, adım 4'ün "hesaplanmadı" yazan `endeks_bacagi`ni TÜFE varsayımıyla hesaplar. Mevcut çıktılara yazmaz, ağ kullanmaz. Rapor: [`FISHER_AYRISMA.md`](FISHER_AYRISMA.md).
+
 ## Ana çıktılar
 
 | Dosya | Ne |
