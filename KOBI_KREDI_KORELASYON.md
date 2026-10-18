@@ -1,5 +1,30 @@
 # KOBİ kredi artışı ve geç ödeme
 
+## Özet
+
+**Stok büyümesi**
+
+- 2016 Aralık – 2025 Aralık: nominal stok 14,79 kat, reel stok 1,23 kat (yıllık bileşik reel artış %2,3).
+- 2023 Aralık – 2026 Ağustos: nominal 2,34 kat, reel 1,01 kat.
+- Nominal yıllık artış ile TÜFE yıllık artışı: Pearson 0,85 (p < 0,001), Spearman 0,85 (p = 0,001), n = 11.
+
+**Geç ödeme ile korelasyon**
+
+- Atradius vadesi geçmiş B2B fatura değeri ile reel kredi büyümesi: Haziran eşlemesi Pearson -0,32 (p = 0,595), Aralık eşlemesi Pearson 0,10 (p = 0,868). Nokta sayısı 5. İşaret, stokun hangi aya yazıldığına bağlıdır.
+
+**Granger (takip stoku ve reel kredi)**
+
+- Takip stoku büyümesi → reel kredi büyümesi: gecikme 1 katsayı toplamı -0,172 (p = 0,028), gecikme 3 -0,132 (p = 0,040).
+- Reel kredi büyümesi → takip stoku: gecikme 3 katsayı toplamı -0,294 (p = 0,013).
+- Katsayı toplamları negatiftir. Takip stoku hızlanınca sonraki reel kredi büyümesi yavaşlar. Dört birincil p değeri Bonferroni eşiği 0,0125'in üstündedir.
+
+**Yorum**
+
+- Nominal yıllık artış TÜFE ile birlikte gider.
+- 2016-2025 reel stok %23,1 artar. Takip stoku ile reel kredi arasındaki Granger işareti negatiftir.
+- Fatura payı ile reel büyüme, bu örneklemde bir nedensellik testi değildir. Banka takip stoku ticari alacak gecikmesi değildir. Geç ödeme ile reel kredi arasında bu veriyle desteklenen bir nedensellik çıkmaz.
+- Firma düzeyinde vade aşımı ve yeni kullandırım gerekir. Eldeki nesne stoktur; brüt kullandırım ile itfa birbirini götürebilir.
+
 BDDK Aylık Bülten tablo 6, nakdi KOBİ kredisi, sektör toplamı. Son gözlem 2026-08: stok 7.498,7 milyar TL, takip 289,6 milyar TL, takip oranı %3,86 (mikro %3,97, küçük %4,29, orta %3,58). 2026 Eylül bültende yok. Ekim için %4,2 takip oranı bu tabloda yok.
 
 Reel stok = nakdi / TÜFE (`TP.FG.J0`, 2003=100). 2026-02 .. 2026-08 endeksi, bir önceki yılın aynı ayı çarpı `TP.TUKFIY2025.GENEL_3` yıllık değişimdir. 2026-01'de bu kural EVDS endeksinden binde 0,03 sapar.

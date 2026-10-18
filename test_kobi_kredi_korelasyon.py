@@ -58,3 +58,6 @@ def test_json_hamdan_yeniden():
     metin = Path("KOBI_KREDI_KORELASYON.md").read_text(encoding="utf-8")
     assert "2026 Eylül bültende yok" in metin
     assert "n küçüktür" in metin
+    assert metin.split("## Nominal", 1)[0].count("## Özet") == 1
+    assert "Spearman 0,85 (p = 0,001)" in metin
+    assert "desteklenen bir nedensellik çıkmaz" in metin

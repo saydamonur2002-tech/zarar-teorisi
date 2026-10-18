@@ -366,7 +366,33 @@ def rapor(s: dict) -> str:
         f"| {g['yil']} | {_tr(g['vadesi_gecmis_%'], 1)} | {'türetilen' if g['turetilen'] else 'metin'} | {_tr(g['reel_yillik_%'])} | {_tr(g['nominal_yillik_%'])} | {_tr(g['npl_%'], 2)} |"
         for g in s["fatura"]["gozlem_haziran"]
     )
+    tufe_k = yb["nominal_artis_ile_tufe"]
     return f"""# KOBİ kredi artışı ve geç ödeme
+
+## Özet
+
+**Stok büyümesi**
+
+- 2016 Aralık – 2025 Aralık: nominal stok {_tr(a['nominal_kat'], 2)} kat, reel stok {_tr(a['reel_kat'], 2)} kat (yıllık bileşik reel artış %{_tr(a['reel_bilesik_%'], 1)}).
+- 2023 Aralık – 2026 Ağustos: nominal {_tr(b['nominal_kat'], 2)} kat, reel {_tr(b['reel_kat'], 2)} kat.
+- Nominal yıllık artış ile TÜFE yıllık artışı: Pearson {_tr(tufe_k['pearson'], 2)} ({_p(tufe_k['pearson_p'])}), Spearman {_tr(tufe_k['spearman'], 2)} ({_p(tufe_k['spearman_p'])}), n = {tufe_k['n']}.
+
+**Geç ödeme ile korelasyon**
+
+- Atradius vadesi geçmiş B2B fatura değeri ile reel kredi büyümesi: Haziran eşlemesi Pearson {_tr(fh['pearson'], 2)} ({_p(fh['pearson_p'])}), Aralık eşlemesi Pearson {_tr(fa['pearson'], 2)} ({_p(fa['pearson_p'])}). Nokta sayısı {fh['n']}. İşaret, stokun hangi aya yazıldığına bağlıdır.
+
+**Granger (takip stoku ve reel kredi)**
+
+- Takip stoku büyümesi → reel kredi büyümesi: gecikme 1 katsayı toplamı {_tr(g1[0]['katsayi_toplami'], 3)} ({_p(g1[0]['p'])}), gecikme 3 {_tr(g1[1]['katsayi_toplami'], 3)} ({_p(g1[1]['p'])}).
+- Reel kredi büyümesi → takip stoku: gecikme 3 katsayı toplamı {_tr(g2[1]['katsayi_toplami'], 3)} ({_p(g2[1]['p'])}).
+- Katsayı toplamları negatiftir. Takip stoku hızlanınca sonraki reel kredi büyümesi yavaşlar. Dört birincil p değeri Bonferroni eşiği 0,0125'in üstündedir.
+
+**Yorum**
+
+- Nominal yıllık artış TÜFE ile birlikte gider.
+- 2016-2025 reel stok %{_tr(100 * (a['reel_kat'] - 1))} artar. Takip stoku ile reel kredi arasındaki Granger işareti negatiftir.
+- Fatura payı ile reel büyüme, bu örneklemde bir nedensellik testi değildir. Banka takip stoku ticari alacak gecikmesi değildir. Geç ödeme ile reel kredi arasında bu veriyle desteklenen bir nedensellik çıkmaz.
+- Firma düzeyinde vade aşımı ve yeni kullandırım gerekir. Eldeki nesne stoktur; brüt kullandırım ile itfa birbirini götürebilir.
 
 BDDK Aylık Bülten tablo 6, nakdi KOBİ kredisi, sektör toplamı. Son gözlem {son['donem']}: stok {_tr(son['nakdi_milyar'])} milyar TL, takip {_tr(son['takip_milyar'])} milyar TL, takip oranı %{_tr(son['npl_%'], 2)} (mikro %{_tr(son['mikro_npl_%'], 2)}, küçük %{_tr(son['kucuk_npl_%'], 2)}, orta %{_tr(son['orta_npl_%'], 2)}). 2026 Eylül bültende yok. Ekim için %4,2 takip oranı bu tabloda yok.
 
