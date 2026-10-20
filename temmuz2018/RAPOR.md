@@ -8,7 +8,7 @@ Mayıs–Eylül 2018 içinde 24 ay sonrası TÜFE beklentisi ile yüzde 5 hedefi
 
 Dört kur çubuğunu birden tutan tek pencere 7 Ağustos 2018 OFAC duyurusudur. Gün, çıpa ayının içindedir. **H-yaptırım Ayakta.** Ayakta, kilitli eşiklerin tuttuğunu söyler. Neden cümlesi kurulmaz. 15 Ağustos çelik belgesinin ±3 farkı daha büyüktür (9,28’e karşı 6,89) ve kalıcılık çubuğu tutmaz. İki pencere aynı Ağustos günlerini paylaşır. 13–14 Ağustos’taki en büyük kur sıçraması, OFAC’ın ±3 penceresinin dışında, çelik belgesinin gün 0’ından öncedir.
 
-**H-kurum Belirsiz.** 10 Temmuz kümesinin emsal farkı kurulamadı. Kararname maddesi okunamadı. 2019, Kasım 2020 ve Mart 2021 karşılaştırma günleri dizinde başkan adıyla bulunamadı.
+**H-kurum Belirsiz.** Düzeltme ekinde 10 Temmuz gün 0 Türkiye’ye özgü getiri +4,52’dir ve iki plasebo havuzunda da büyüktür. Aynı sayıda kabine ataması vardır; mevzuattan ayrılmaz. Çıpa ayı Ağustos’tur. Ayrıntı aşağıdaki ektedir.
 
 **H-faiz Belirsiz.** 24 Temmuz’da eşit ağırlık farkı +1,06, sentetik fark −0,35. İşaretler ayrışır. Yüzdelik 65. Gün Temmuz’dadır.
 
@@ -137,3 +137,100 @@ Medya manşeti ve haber rakamı kullanılmadı.
 ## Veri
 
 `EVDS_API_KEY` okunmadı. Aylık beklenti ve günlük dolar satışı, anahtarsız EVDS3 ucundan alındı: `https://evds3.tcmb.gov.tr/igmevdsms-dis`. Seriler `TP.PKAUO.S01.F.U` ve `TP.DK.USD.S.YTL`. Karar metinleri TCMB basın duyuruları, gazete metni Resmî Gazete, emsal kurlar Fed H.10, yaptırım metinleri Federal Register. Sertifika doğrulaması açık kaldı. Site reddi aşılmadı.
+
+Zayıf noktalar 4, 5 ve 6 ilk turun kaydıdır. Ek tur onları düzeltir.
+
+## Ek — 10 Temmuz çelişkisi ve görevden alma metinleri
+
+Ön kayıt eki 2026-10-20T17:18:44Z, bu hesabın öncesindedir. Bu ekte EVDS3 yeniden çağrılmadı. Yeni TRY, TCMB kurlar XML satış kurudur. Emsal, eldeki Fed H.10 dosyalarıdır.
+
+### Çelişki nereden geliyor
+
+İki sonuç farklı güne bakıyordu.
+
+EVDS serisi `TP.DK.USD.S.YTL`, tarihi bir iş günü ileri kaymıştır. Kurlar XML bülteninin satış kuru, EVDS’de ertesi iş gününün kurudur. [VERİ]
+
+| Bülten günü | XML satış | EVDS’de göründüğü gün |
+| --- | ---: | --- |
+| 9 Temmuz 2018 | 4,5385 | 10 Temmuz |
+| 10 Temmuz 2018 | 4,7134 | 11 Temmuz |
+| 6 Temmuz 2018 | 4,6087 | 9 Temmuz |
+
+İlk tur, 10 Temmuz etiketli EVDS kurunu (4,5385) 10 Temmuz olayı sandı. O kur, 9 Temmuz 15:30 bültenidir. ±3’ün sol ucu bu kaymış takvimde 4 Temmuz’a denk geldi. Fed H.10’ta 4 Temmuz yoktur. Pencere, kural gereği boş kaldı. Boşluk, 10 Temmuz getirisinin sıfır olduğu anlamına gelmez.
+
+Ekli test, bülten gününü kullanır. 10 Temmuz bülteni 4,7050 alış / 4,7134 satıştır. Önceki bülten 9 Temmuz’dur. Aynı takvim gününde H.10 ile Türkiye’ye özgü gün 0, satışta ve alışta **+4,52**’dir. Ekli +4,52, 0,15 puan içinde yeniden üretildi. İşaret eksi değildir. [HESAP]
+
+Düzeltilmiş gün 0, kaydırmasız bülten günüdür. İstanbul 15:30, aynı takvim gününde New York öğleninden öncedir. Sabah gazetesi hem 15:30 göstergeye hem o günün New York öğlen kuruna girer.
+
+### Düzeltilmiş sonuç
+
+Pozitif, doların yerel para karşısında değer kazanmasıdır. Emsal BRL, MXN, ZAR. p = (1 + en az bu kadar büyük gün) / (1 + N). [HESAP]
+
+| Gün | TRY | Emsaller (BRL, MXN, ZAR) | Türkiye’ye özgü | p, 2018 (n=228) | p, 2016–17 ve 2019 (n=685) |
+| --- | ---: | --- | ---: | ---: | ---: |
+| 9 Temmuz | −1,53 | −0,94, +0,52, −0,82 | −1,12 | 0,87 | 0,92 |
+| 10 Temmuz | +3,78 | −1,13, −0,78, −0,32 | +4,52 | 0,022 | 0,0015 |
+
+10 Temmuz saat kaydırması: emsal +1 iş günü +3,12, emsal −1 iş günü +4,19. İşaret durur. Dört emsalle (INR ekli) +4,30. [HESAP]
+
+Birikimli ±1, ekli testle aynıdır: 9 Temmuz +3,15, 10 Temmuz +3,67. Birikimli ±3, doldurma yok: 9 Temmuz +6,01 (2018 p 0,098), 10 Temmuz +6,05 (2018 p 0,094). Ekli 8,70 ve 6,21 bu toplam değildir. 4 Temmuz’da H.10 yoktur; 5 Temmuz’un emsal ucu da 4 Temmuz’dur. İki gün toplama girmez. Tatil doldurulmadı.
+
+Uçtan uca ±3: 10 Temmuz hâlâ boştur (sol uç 4 Temmuz). Ham TRY +3,01. 9 Temmuz’un uçları 3–12 Temmuz’dur, dört emsal de vardır, üç emsalle Türkiye’ye özgü +6,17. İlk turun ham +3,41’i bu 9 Temmuz penceresidir; EVDS kayması onu 10 Temmuz diye etiketlemişti. [HESAP]
+
+### Ayrılır mı
+
+Ayrılmaz.
+
+9 Temmuz gün 0, −1,12’dir. Büyük değildir. O günün gazetesi 30473 sayılı 3. mükerrer sayıdır; dizinde 703 sayılı KHK’nin yayımlandığı yazar. Metin bu turda madde madde yeniden okunmadı.
+
+10 Temmuz gün 0 büyüktür. Aynı sayıda, sayı 30474, iki metin birden vardır: 3 sayılı Cumhurbaşkanlığı Kararnamesi ve 2018/1 sayılı atama kararı. Karar 9 Temmuz tarihlidir, 10 Temmuz’da yayımlanmıştır. Dayanağı Anayasa’nın 104 ve 106. maddeleridir. Listede Fuat Oktay Cumhurbaşkanı yardımcısı, Berat Albayrak Hazine ve Maliye bakanıdır. [VERİ] Kararname ile atama aynı yayımlanma günündedir. Gün 0 bunları ayırmaz. ±1 ve ±3 pencereleri zaten komşu günü içine alır.
+
+### Karar metinleri
+
+Görevden alma ve atama cümleleri Resmî Gazete tarama sayfasından okundu. Üç karar da cumartesidir. Gün 0, gazete gününden sonraki ilk kur bültenidir. İlk turun “iş günü değilse sonraki iş günü” kuralı. Kur büyüklüğüne bakılarak gün seçilmedi.
+
+| Karar | Gazete | Karar no ve tarihi | Dayanak | İlk bülten | Türkiye’ye özgü | Aynı yıl p |
+| --- | --- | --- | --- | --- | ---: | ---: |
+| Çetinkaya görevden, Uysal atanır | 6 Temmuz 2019, sayı 30823 | 2019/159, 5 Temmuz 2019 | Görevden alma: 375 sayılı KHK ek md. 35 ve 3 sayılı CBK md. 2. Atama: 1211 md. 25 ve 3 sayılı CBK md. 2, 3, 7 | 8 Temmuz 2019 | +2,64 | 0,022 (n=225) |
+| Uysal görevden, Ağbal atanır | 7 Kasım 2020, sayı 31207 | 2020/495, 6 Kasım 2020 | Aynı dayanak | 9 Kasım 2020 | −1,94 | 0,94 (n=232) |
+| Ağbal görevden, Kavcıoğlu atanır | 20 Mart 2021, sayı 31429 | 2021/152, 19 Mart 2021 | Aynı dayanak | 22 Mart 2021 | +7,97 | 0,009 (n=225) |
+
+Alıntılar. [VERİ]
+
+6 Temmuz 2019, karar 2019/159: “Türkiye Cumhuriyet Merkez Bankası Başkanı (Guvernörü) Murat Çetinkaya, 375 sayılı Kanun Hükmünde Kararnamenin ek 35 inci maddesi ile 3 sayılı Cumhurbaşkanlığı Kararnamesinin 2 nci maddesi gereğince görevden alınmış ve bu suretle boşalan Türkiye Cumhuriyet Merkez Bankası Başkanlığına (Guvernörlüğüne), 1211 sayılı Kanunun 25 inci maddesi ile 3 sayılı Cumhurbaşkanlığı Kararnamesinin 2, 3 ve 7 nci maddeleri gereğince aynı yer Başkan (Guvernör) Yardımcısı Murat Uysal atanmıştır.”
+
+7 Kasım 2020, karar 2020/495: aynı kalıp. Murat Uysal görevden alınmış, Naci Ağbal atanmıştır. Tarih 6 Kasım 2020.
+
+20 Mart 2021, karar 2021/152: aynı kalıp. Naci Ağbal görevden alınmış, Prof. Dr. Şahap Kavcıoğlu atanmıştır. Tarih 19 Mart 2021.
+
+Üç metin de madde 4’ü anmaz. Anılanlar madde 2, atamada ayrıca 3 ve 7, ve 375 sayılı KHK’nin ek 35. maddesidir. 375 ek 35’in bugünkü mevzuat metni 2024 ve 2025’te değişmiştir. 2019–2021’de yürürlükteki fıkra bu turda ayrıca çıkarılmadı. **DOĞRULANMADI.**
+
+8 Temmuz +2,64, 9 Kasım −1,94 ve 22 Mart +7,97, ekli testin üç sayısıyla aynıdır. Onların tarih etiketi gazete cumartesidir. Getiri, sonraki bültenin getirisidir. [HESAP]
+
+Saat kaydırması: 8 Temmuz’da geri kaydırma 4 Temmuz tatili yüzünden boştur, ileri kaydırma +2,15’tir. 9 Kasım’da iki kaydırma da eksidir (−3,96 ve −2,10). 22 Mart’ta iki kaydırma da artıdır (+8,61 ve +8,77). İşaret dönmez.
+
+### 3 sayılı kararname md. 4 ve cetvel
+
+10 Temmuz 2018, sayı 30474, sayfa 198. Tarama sayfasının metin katmanı yalnız üst bilgidir. Sayfa görüntüsünden okunan madde 4, birinci fıkra:
+
+“Bu Cumhurbaşkanlığı Kararnamesine ekli (I) sayılı cetvelde yer alanların görev süresi, atandıkları tarihte görevde bulunan Cumhurbaşkanının görev süresini geçemez. Cumhurbaşkanının görevi sona erdiğinde, bunların görevi de sona erer. Ancak bunlar, yerlerine atama yapılıncaya kadar görevlerine devam eder. Görev süreleri sona erenler, yeniden atanabilir. Bunlar, görev süreleri sona ermeden de Cumhurbaşkanınca görevden alınabilir.”
+
+Aynı cümle, mevzuat.gov.tr’nin işlenmiş metnindedir ve madde 4 için “Değişik” kaydı yoktur. Yürürlük tablosu madde 4’ü değişen maddeler arasında saymaz. [VERİ]
+
+Aynı sayının sayfa 201’indeki (I) sayılı cetvelde, süreli olanlar: Türkiye Cumhuriyet Merkez Bankası Başkanı 4 yıl, başkan yardımcıları 4 yıl, Para Politikası Kurulu üyesi 5 yıl. Kurum adı tarama metninde de okunur. Süre rakamı tablo görüntüsündendir; karakter okuyucu süre sütununu çözmedi. [VERİ]
+
+Cetvelin mevzuat.gov.tr’deki bugünkü hali 19 Şubat 2026 değişikliğidir. 4 yıl ibaresi oradan alınmadı.
+
+### 1211 md. 25 ve md. 29
+
+Güncel 1211 metni, mevzuat.gov.tr: “Madde 25 – (Değişik: 25/10/1990 - 3670/10 md.) (Mülga birinci fıkra: 2/7/2018-KHK-703/151 md.)” Eski birinci fıkranın tam cümlesi bu sayfada yoktur. 3670 sayılı Kanun’un mevzuat metni, madde 10’u “yerine işlenmiştir” diye bırakır, yeni fıkrayı yazmaz. 28 Ekim 1990 tarihli 20679 sayılı Resmî Gazete bu turda madde metni olarak çıkarılmadı. **1211 md. 25/1’in KHK 703 öncesi tam metni DOĞRULANMADI.**
+
+Madde 29’un güncel metninde çıkarılan ibareler dipnot 20’dedir. [VERİ] 2/7/2018 tarihli 703 sayılı KHK’nin 151. maddesi, “ve meslekleri ile ilgili olarak en az on yıl çalışmış” ibaresi ile “Başkan (Guvernör) ın önerisi üzerine müşterek kararla beş yıl süre ile” ibaresini madde metninden çıkarmıştır. Üçüncü cümle kaldırılmıştır. Üçüncü cümlenin eski tam metni dipnotta yoktur. **DOĞRULANMADI.**
+
+### H-kurum
+
+Belirsiz kalır. Ayakta olmaz. Çıpa ayı Ağustos’tur; bu ek onu açmaz.
+
+10 Temmuz gün 0 pozitiftir, iki havuzda da p 0,10’un altındadır, saat kaydırmasında işaret aynıdır, 9 Temmuz gün 0 büyük değildir. Ön kayıt bu durumda şunu yazdırır: Temmuz kümesinin kur izi 10 Temmuz gün 0’dadır, mevzuat ile atama ayrılamaz. “10 Temmuz gün 0 büyük” cümlesi budur. Neden cümlesi değildir. Emsal farkı karşı-olgudur. Kararname, atamayı o günden ayırmaz.
+
+İlk turun boş ±3’ü, kaymış EVDS tarihi ile 4 Temmuz ucunun doğru uygulanmasıdır. Düzeltilmiş bülten gününde de 10 Temmuz’un uçtan uca ±3’ü boştur. Gün 0 boş değildir.

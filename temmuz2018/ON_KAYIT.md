@@ -115,3 +115,83 @@ Yazım: 2026-10-20T16:16:55Z. Çubuklar ve hipotez tanımları yukarıdaki metin
 SAPMA-plasebo. Ön kayıt paydası 1+2000 idi. Çekirdek 20180724 ile 2000 iş günü çekildi. Bunların 823’ünde ±3 eşit ağırlık farkı kurulabildi. p = (1 + en az bu kadar büyük plasebo sayısı) / (1 + 823). Bu dağılımın yüzde 90 eşiği 3,06’dır. Yüzde 90 ve Holm sonrası p < 0,10 şartı kaymadı.
 
 SAPMA-arama. Karşılaştırma kodu, kilitli pencerelerde sayfanın tüm metninde “merkez bank” ve “atan” aradı. Bu eşleşme, döviz kuru ekinin bulunduğu günleri de tuttu. Aynı pencerelerin dizin bağlantıları yeniden okundu. Merkez Bankası başkanını adlandıran bağlantı yok. Bu günler karşılaştırma günü sayılmadı. `sonuclar.json` içindeki karşılaştırma kur sayıları hükme girmez. Sayfa düzeyi eşleşmeler, plasebo havuzundan ±5 iş günü düşmüştü. 2018 olay pencereleri bu günlere uzaktır. Havuz yeniden çekilmedi.
+
+## Ek — 10 Temmuz çelişkisi ve görevden alma metinleri
+
+Yazım zamanı (UTC): 2026-10-20T17:18:44Z
+
+Bu ek, yeni kur hesabı ve yeni plasebo çekilmeden önce yazıldı. Aşağıdaki eşikler skor görüldükten sonra değiştirilmez. Ayrılış SAPMA diye yazılır. İlk turun çubukları ve H-yaptırım / H-faiz / H-seçim hükümleri bu ekle yeniden açılmaz.
+
+### Karşılaştırılan iki sonuç
+
+İki sayı farklı tahmindir. Biri diğerinin işaret çevrilmiş hali diye baştan kabul edilmez.
+
+Bu dalın ilk turu, 10 Temmuz 2018 için ±3 eşit ağırlık penceresini boş bıraktı. Uç, TCMB iş günüyle 4 Temmuz 2018’dir. Fed H.10’ta o gün kur yoktur. Ham TRY ±3, 100 × ln(E_{+3} / E_{−4}) = +3,41’dir. Gün 0’ın emsal farkı yayınlanmadı. ±1 eşit ağırlık +1,74’tür. Seri, EVDS3 satış kuru `TP.DK.USD.S.YTL`. Emsal: BRL, ZAR, MXN, INR. Pozitif, doların yerel para karşısında değer kazanmasıdır.
+
+Ekli bağımsız test şunu yazar: anormal getiri = Δlog USD/TRY − ort(Δlog BRL, MXN, ZAR). USD/TRY, TCMB kurlar XML, ForexBuying, 15:30. Emsal, FRED H.10. Plasebo, aynı takvim yılının günleri, tek yön. 10 Temmuz 2018 gün 0: +4,52, p = 0,017. 9 Temmuz ±3 birikimli: +8,70, p = 0,035. 10 Temmuz ±3 birikimli: +6,21, p = 0,078. Bu sayılar iddiadır. Bu tur yeniden üretmeden hüküm sayısı olmaz.
+
+### Satır satır karşılaştırma
+
+Hesap bitince dört satır yazılır. Eşik kaymaz.
+
+1. Veri kaynağı. Aynı takvim gününde üç TRY kuru yan yana: kurlar XML ForexBuying, kurlar XML ForexSelling, eldeki EVDS3 satış serisi. Fark 0,15 puandan küçükse alış/satış ayrımı çelişkinin kaynağı değildir.
+2. Tarih hizası. İstanbul 15:30, yaz saatinde New York öğleninden önce gelir (aynı takvim günü, yaklaşık altı buçuk saat). Aynı takvim günü eşlemesi, Türk sabah olayını hem 15:30 göstergeye hem o günün New York öğlen kuruna koyar. Kaydırma, robustness’tır: TRY günü sabit, emsal getirisi +1 ve −1 TCMB iş günü kayar. Düzeltilmiş gün 0, kaydırmasız eşlemedir.
+3. Tatil. İlk kural durur: uçta emsal yoksa o uçtan uca pencere boştur, kur uydurulmaz. Ekli testin birikimli getirisi ayrı tahmin olarak kurulur: −3’ten +3’e TCMB iş günlerinin günlük anormal getirileri toplanır. Bir gün, o gün ve önceki günde TRY varsa ve BRL, MXN, ZAR üçlüsünden en az ikisinin iki ucu da varsa toplama girer. 4 Temmuz, emsali yoksa toplama girmez. Doldurulmaz.
+4. Pencere. Gün 0 = 100 × ln(E_t / E_{t−1}), ardışık TCMB iş günleri. ±1 ve ±3 uçtan uca, ilk turdaki tanım. Birikimli ±1 ve ±3, yukarıdaki günlük toplam. Dört sayı birden yazılır. Biri diğerinin yerine geçmez.
+
+### Hangisi doğru
+
+Kural, skor öncesi:
+
+- Aynı takvim günü, ForexSelling, emsal BRL+MXN+ZAR, gün 0 formülü ekli +4,52’yi 0,15 puan içinde verirse, ekli gün 0 o tahmin için doğru aritmetiktir. İlk turun boş ±3’ü bununla çelişmez: o tur gün 0 emsal farkı yayınlamadı, ±3’ü 4 Temmuz ucu boş olduğu için boş bıraktı.
+- +4,52 yalnız +1 veya −1 kaydırmayla 0,15 içine girerse, fark tarih hizasındadır. Düzeltilmiş sonuç kaydırmasız olandır.
+- Alış, satış ve kaydırma hiçbirinde 0,30 puan içine girmezse ekli +4,52 bu dosyalardan **DOĞRULANMADI**. Düzeltilmiş sonuç, bu turda kurlar XML satış kuruyla kurulan gündür.
+- İşaret, TRY getirisi eksi emsal ortalamasıdır. Ters çıkarma yapılmaz.
+
+Düzeltilmiş tek sonuç, 9 Temmuz ve 10 Temmuz için kaydırmasız gün 0’dır. Kurlar XML satış kuru, emsal BRL+MXN+ZAR, tatilde doldurma yok. Yanında birikimli ±3 ve ilk turun boş uçtan uca ±3’ü durur.
+
+### Sağlamlık
+
+Üçü de düzeltilmiş gün 0 ve birikimli ±3 için, skor öncesi kilitli:
+
+- R-emsal. Aynı hesap, eşit ağırlık {BRL, MXN, ZAR, INR}, o günde en az üçü varsa. INR dosyası eldeki H.10’dur. Yeni indirme gerekmez.
+- R-saat. Emsal +1 ve −1 iş günü kayar. Kaydırmasız gün 0’ın işareti bu ikisinden birinde ters dönerse, o günün gün 0’ı H-kurum için Belirsizdir.
+- R-plasebo. Tek yön p = (1 + en az gözlenen kadar büyük gün sayısı) / (1 + N). İki havuz: 2018’in geçerli günleri; 2016, 2017 ve 2019’un geçerli günleri (2018 yok). İkisi de p < 0,10 ise büyük. Yalnız 2018 küçükse “yalnız kriz yılı havuzunda” yazılır. Havuz örneklem değildir. Tüm geçerli günler girer. Çekirdek yok.
+
+### Ayrılma
+
+9 Temmuz KHK 703 ile 10 Temmuz 3 sayılı kararname ve 2018/1 atama kararı, kur etkisinde ayrılır, yalnız şu üçü birden olursa: kaydırmasız gün 0’lardan biri R-plasebo’nun iki havuzunda da büyüktür, diğeri değildir, ve birincil metin iki işlemi farklı yayımlanma günlerine koyar. Gün 0 pencereleri çakışmaz. ±1 pencereleri komşu günde çakışır. ±1 ile ayrılma iddiası kurulmaz.
+
+Metin aynı sayıda ise ayrılma yok diye yazılır. Kur büyük olsa da kabine veya Hazine ve Maliye ataması, mevzuattan ayrılmaz.
+
+### H-kurum güncellemesi
+
+İlk hüküm Belirsizdir. Bu ek onu yalnız şöyle taşır.
+
+- 3 sayılı kararname md.4’ün 10 Temmuz 2018 sayfasındaki aslı okunursa, kurum cümlesi o alıntıyla yazılır. Okunamazsa o cümle DOĞRULANMADI kalır. Metin tek başına Ayakta yapmaz.
+- H-kurum Ayakta olmaz. İlk turda çıpa ayı Ağustos’tur ve bu ek çıpa ayını açmaz. Temmuz kümesi çıpa sürücüsü değildir.
+- Düzeltilmiş 10 Temmuz gün 0 pozitif, iki plasebo havuzunda da p < 0,10, saat kaydırmasında işaret aynı ve 9 Temmuz gün 0 büyük değilse: Temmuz kümesinin kur izi 10 Temmuz gün 0’dadır, mevzuat ile atama yine ayrılamaz, H-kurum **Belirsiz** kalır. “10 Temmuz gün 0 büyük” cümlesi yazılır.
+- Düzeltilmiş gün 0 iki havuzda da büyük değilse: ekli testin “10 Temmuz gün 0 anlamlı” cümlesi bu tanımda **Yanlışlandı**. H-kurum Belirsiz kalır. Boş ±3 ilk kuralın doğru uygulanmasıdır. O boşluk, gün 0’ın sıfır olduğu anlamına gelmez.
+- Saat kaydırması işareti çevirirse gün 0 Belirsizdir.
+
+Karşı-olgu, emsal farkıdır. Emsal farkı yoksa nedensel cümle yok.
+
+### Görevden alma metinleri
+
+Aranacak birincil sayfa: resmigazete.gov.tr. Tarih, gazete sayısı, karar sayısı, kararın görevden alma ve atama cümleleri, dayanak hüküm. Aday günler, ekli tablodaki 6 Temmuz 2019, 7 Kasım 2020 ve 20 Mart 2021’dir. Bunlar iddiadır. Metin o günde yoksa o ayın mükerrer sayıları da bakılır: 1–15 Temmuz 2019, 1–15 Kasım 2020, 15–25 Mart 2021. Metin yoksa o karar **DOĞRULANMADI**. Kur sayısına bakılarak gün seçilmez.
+
+Ayrıca: 10 Temmuz 2018, sayı 30474, 3 sayılı Cumhurbaşkanlığı Kararnamesi md.4’ün o sayıdaki aslı. KHK 703 öncesi 1211 sayılı Kanun md.25 birinci fıkra ve md.29’un eski metni, mevzuat.gov.tr veya o maddeleri yayımlayan Resmî Gazete. Bulunamazsa DOĞRULANMADI. Haber metni kullanılmaz.
+
+Ekli testin görevden alma kur sayıları (+2,64, −1,94, +7,97) yeniden üretilmeden hüküm sayısı olmaz. Metin bulunursa, düzeltilmiş gün 0 formülü o gün için de kurulur. Bu, H-kurum’un Ayakta şartına girmez. İlk turda H-kurum, gazete kümesinin çıpa sürücüsü olmasını ister. Bu ek çıpa ayını açmaz.
+
+## SAPMA — ek tur, eşik değişmedi
+
+Yazım: 2026-10-20T18:05:00Z.
+
+SAPMA-kapsam. Kurlar XML ilk indirme 2016–2019’du. Görevden alma gazeteleri 2020 ve 2021’dedir. Aynı satış kuru formülüyle 2020 ve 2021 bültenleri eklendi. Gün 0 tanımı ve p formülü kaymadı.
+
+SAPMA-p. Ekli testin 10 Temmuz gün 0’ı +4,52, bu turda da +4,52’dir. Onların p’si 0,017, bu turun 2018 havuzu p’si 0,022’dir (228 geçerli gün). Fark, geçerli gün sayısındadır. İkisi de 0,10’un altındadır. Eşik kaymadı. 9 Temmuz birikimli ±3 için ekli 8,70 bu turda çıkmadı. Doldurmasız toplam 6,01’dir. 8,70 hüküm sayısı yapılmadı.
+
+### Veri
+
+`EVDS_API_KEY` okunmaz. Yeni TRY, kurlar XML. EVDS3 bu ekte yeniden çağrılırsa raporda yazılır. Sertifika doğrulaması atlanmaz. Site reddi aşılmaz. Reddedilirse o parça DOĞRULANMADI.
