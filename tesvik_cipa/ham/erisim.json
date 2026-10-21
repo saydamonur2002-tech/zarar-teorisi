@@ -1,0 +1,61 @@
+[
+ {
+  "ad": "stb_tesvik",
+  "url": "https://www.sanayi.gov.tr/istatistikler/yatirim-tesvik-istatistikleri",
+  "son_url": "https://www.sanayi.gov.tr/istatistikler/yatirim-tesvik-istatistikleri",
+  "status": 200,
+  "bayt": 2496,
+  "engel": false,
+  "bas": "<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\">   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />   <meta http-equiv=\"X-UA-Compa"
+ },
+ {
+  "ad": "stb_ana",
+  "url": "https://www.sanayi.gov.tr/",
+  "son_url": "https://www.sanayi.gov.tr/",
+  "status": 200,
+  "bayt": 2496,
+  "engel": false,
+  "bas": "<!DOCTYPE html> <html> <head>   <meta charset=\"UTF-8\">   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />   <meta http-equiv=\"X-UA-Compa"
+ },
+ {
+  "ad": "hmb_vergi",
+  "url": "https://www.hmb.gov.tr/bumko-vergi-harcamalari",
+  "son_url": "https://www.hmb.gov.tr/bumko-vergi-harcamalari",
+  "status": 200,
+  "bayt": 5089,
+  "engel": false,
+  "bas": "<!doctype html><html translate=\"no\"><head><title>T.C. Hazine ve Maliye Bakanlığı</title><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width"
+ },
+ {
+  "ad": "hmb_ana",
+  "url": "https://www.hmb.gov.tr/",
+  "son_url": "https://www.hmb.gov.tr/",
+  "status": 200,
+  "bayt": 5089,
+  "engel": false,
+  "bas": "<!doctype html><html translate=\"no\"><head><title>T.C. Hazine ve Maliye Bakanlığı</title><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width"
+ },
+ {
+  "ad": "kgf",
+  "url": "https://www.kgf.com.tr/",
+  "son_url": "https://www.kgf.com.tr/index.php/tr/",
+  "status": 200,
+  "bayt": 10366,
+  "engel": false,
+  "bas": "\u001f�\b\u0000\u0000\u0000\u0000\u0000\u0000\u0003�=�r\u001b9�g)b�\u0001��h�1*R�-��W�ܒm���d�z&&\u0014 \t�P=�\u001e�(oG��`\"6b�}�}��o�o�\u0015�%�\t�\u001ed=X�X���I\u0016�Df\"�H$P��[������O��������7��W�!�O\u000e��ÿ�,la\tisw�f�n�\u0018��n�|W�\u001f-�z\u001e\u0016h�=\"�"
+ },
+ {
+  "ad": "comtrade",
+  "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&period=2019&cmdCode=84&flowCode=M&partnerCode=0",
+  "son_url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&period=2019&cmdCode=84&flowCode=M&partnerCode=0",
+  "status": 200,
+  "bayt": 959,
+  "engel": false,
+  "bas": "{\"elapsedTime\":\"0.44 secs\",\"count\":1,\"data\":[{\"typeCode\":\"C\",\"freqCode\":\"A\",\"refPeriodId\":20190101,\"refYear\":2019,\"refMonth\":52,\"period\":\"2019\",\"reporterCode\":7"
+ },
+ {
+  "ad": "tuik",
+  "url": "https://data.tuik.gov.tr/",
+  "hata": "TimeoutError: The read operation timed out"
+ }
+]

@@ -144,3 +144,13 @@ EVDS_API_KEY okunmaz. Günlük kur ve aylık beklenti EVDS3 `igmevdsms-dis` ile 
 ## Hükümden önce yapılmayacaklar
 
 Eşik, pencere veya aile, sonuca bakılarak değiştirilmez. Boş eş günü doldurulmaz. Engel sayfası ikinci bir aynadan alınmaz. Karşı-olgusal yokken sebep fiili yazılmaz.
+
+## SAPMA
+
+2026-10-21T05:16:00Z. Kur getirisi ve beklenti farkı henüz hesaplanmadı. Eşik, pencere ve p formülü duruyor.
+
+1. 2012/3305 birleşik metni mevzuat.gov.tr başlık aramasında yok. Değişiklik listesi, Resmi Gazete başlık aramasından "Yatırımlarda Devlet Yardımları Hakkında Kararda Değişiklik Yapılmasına Dair Karar" ile kuruldu. Kurucu proje bazlı karar 2016/9495 ve 2025 tarihli 9903 aynı aramayla eklendi. Liste, pencerede durup durmadığına göre elenmedi.
+
+2. Holm birimi gündür. Aynı bülten gününe düşen birden fazla karar tek kur gözlemidir. 22 Haziran 2018'de 2018/11816 ve 2018/11930 bu yüzden tek gözlem. Kararlar zaman çizelgesinde ayrı yazılır.
+
+3. 2026-10-21T05:25:00Z, hesap bittikten sonra. Duyarlılık penceresi 2014-01…2016-09 boş kaldı. Bülten örneği ön kayıttaki gibi 2016-01-04'te başlar; 24 aylık kayan eğim o aralıkta dolmaz. Eğim uydurulmadı, eşik değişmedi.

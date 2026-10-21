@@ -1,0 +1,55 @@
+[
+ {
+  "grup": "bie_ppkfaiz",
+  "n": 0,
+  "ornek": []
+ },
+ {
+  "grup": "bie_apifon",
+  "n": 12,
+  "ornek": [
+   [
+    "TP.APIFON1.TOP",
+    "A.Toplam Fonlama (A1+A2)"
+   ],
+   [
+    "TP.APIFON1.IHA",
+    "A1.İhale Yoluyla Fonlama"
+   ],
+   [
+    "TP.APIFON1.KOT.T",
+    "A2.Toplam Kotasyon Yoluyla Fonlama"
+   ],
+   [
+    "TP.APIFON1.KOT.A",
+    "A2a.BİST O/N Repo, Kotasyon Repo, Piyasa Yapıcı Repo"
+   ],
+   [
+    "TP.APIFON1.KOT.B",
+    "A2b.TL Depo"
+   ],
+   [
+    "TP.APIFON1.KOT.C",
+    "A2c.GLP Depo, GLP Repo"
+   ],
+   [
+    "TP.APIFON2.TOP",
+    "B.Toplam Sterilizasyon (B1+B2+B3)"
+   ],
+   [
+    "TP.APIFON2.IHA",
+    "B1.İhale Yoluyla Sterilizasyon"
+   ]
+  ]
+ },
+ {
+  "grup": "bie_faizorani",
+  "n": 0,
+  "ornek": []
+ },
+ {
+  "grup": "bie_pyfaiz",
+  "n": 0,
+  "ornek": []
+ }
+]
