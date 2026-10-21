@@ -213,3 +213,9 @@ Hükmü değiştirmez.
 ## SAPMA
 
 Hesaptan önce kayıtlı sapma yok.
+
+## SAPMA (hesap sonrası, 2026-10-21T07:12:37Z)
+
+- Nokta hedef belgesi inip yıl yılı 5'ten farklı bir sayı vermedi. Bütün aylar 5. Etiket DOĞRULANMADI. Eşik kaymadı.
+- Bir hafta repo tablosu hüküm serisi olacak biçimde inmedi. Hüküm faizi TP.APIFON4, ağırlıklı ortalama fonlama maliyeti [VEKİL]. Eşik kaymadı.
+- İlk kod, sabit terim sütununun varyansı sıfır diye geçiş, faiz, kur ve rezerv denklemlerini kurmuyordu. Sabit terim tanımlama koşulu değildir; eğim sütunları denetlenir. Düzeltme senaryo hükmünden önce yapıldı. Eşik kaymadı.
