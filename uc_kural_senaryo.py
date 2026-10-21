@@ -9,6 +9,8 @@ Hane alt: Ha/Hm/Ho (hane_alt.py); Ha borç payı varsayımdır (D_A_BASE=0,40).
 
 Çalıştır: python3 uc_kural_senaryo.py
 Çıktı: uc_kural_senaryo.csv, uc_kural_senaryo_sonuc.json, UC_KURAL_SENARYO.md
+
+Çıpalı varyant bu üç senaryonun csv'sini yazmaz: cipali_uc_kural (ön kayıt orada).
 """
 
 from __future__ import annotations
@@ -623,6 +625,13 @@ def main():
     (KOK / "UC_KURAL_SENARYO.md").write_text(_md(meta), encoding="utf-8")
     print("=== uc_kural_senaryo (senaryo; ölçüm değil) ===")
     print(json.dumps(meta["karsilastirma_2031Q4"], ensure_ascii=False, indent=2))
+
+
+def cipali_varyant():
+    """Çıpalı varyant. Kilitli üç senaryonun çıktısını değiştirmez."""
+    from cipali_uc_kural.kosu import main as cipali_main
+
+    return cipali_main()
 
 
 if __name__ == "__main__":
