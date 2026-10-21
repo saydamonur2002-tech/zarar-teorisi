@@ -1,0 +1,13 @@
+stok 19361 mlr TL
+kaydırma %2 = 387 mlr; prim %0.5 → yıllık 1.9 mlr TL
+kaydırma %2 = 387 mlr; prim %1 → yıllık 3.9 mlr TL
+kaydırma %2 = 387 mlr; prim %2 → yıllık 7.7 mlr TL
+kaydırma %5 = 968 mlr; prim %0.5 → yıllık 4.8 mlr TL
+kaydırma %5 = 968 mlr; prim %1 → yıllık 9.7 mlr TL
+kaydırma %5 = 968 mlr; prim %2 → yıllık 19.4 mlr TL
+kaydırma %10 = 1936 mlr; prim %0.5 → yıllık 9.7 mlr TL
+kaydırma %10 = 1936 mlr; prim %1 → yıllık 19.4 mlr TL
+kaydırma %10 = 1936 mlr; prim %2 → yıllık 38.7 mlr TL
+ρ_son 0.59: 2031 enf 12.9
+ρ_son 0.55: 2031 enf 11.7
+ρ_son 0.45: 2031 enf 9.4
