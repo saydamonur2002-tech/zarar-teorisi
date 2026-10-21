@@ -1,0 +1,50 @@
+birlikte {'belirsiz': 262, 'kaldi': 170}
+birlikte_alt {'kaldi': 330, 'gecti': 102}
+birlikte_alt_etkin {'kaldi': 352, 'gecti': 80}
+K1 {'gecti': 262, 'kaldi': 170}
+K1etkin {'kaldi': 239, 'gecti': 193}
+K2 {'gecti': 432}
+K3 {'sinanmadi': 432}
+K3alt {'kaldi': 330, 'gecti': 102}
+ALT-etkin geçen 80
+alfa_pass  lam   kappa  mu    K2tavan
+0.0        0.16  0.00   0.00  acik       6
+                              kapali     6
+                        0.05  acik       6
+                              kapali     6
+                        0.10  acik       6
+                              kapali     6
+                 0.25   0.00  acik       6
+                              kapali     4
+                        0.05  acik       6
+                              kapali     2
+                        0.10  acik       6
+                              kapali     2
+                 0.50   0.00  acik       6
+                        0.05  acik       6
+                        0.10  acik       6
+K1etkin farklı hücre 71
+                                           K1        K1etkin        etkin2031        kap2031        pi2031       
+K2tavan                                  acik kapali    acik kapali      acik kapali    acik kapali   acik kapali
+w   alfa_pass lam   kappa mu   faiz                                                                              
+0.0 0.0       0.160 0.5   0.00 sabit    gecti  gecti   gecti  kaldi     0.790  0.498   0.798  0.798    3.4    3.4
+                               tepkili  gecti  gecti   gecti  kaldi     0.788  0.498   0.796  0.796    4.1    4.1
+                          0.05 sabit    gecti  gecti   gecti  kaldi     0.791  0.496   0.798  0.791    3.4    5.7
+                               tepkili  gecti  gecti   gecti  kaldi     0.789  0.497   0.796  0.789    4.1    6.4
+                          0.10 sabit    gecti  gecti   gecti  kaldi     0.791  0.498   0.798  0.786    3.4    8.2
+                               tepkili  gecti  gecti   gecti  kaldi     0.789  0.499   0.797  0.785    4.1    8.8
+              0.409 0.5   0.00 sabit    gecti  gecti   gecti  kaldi     0.776  0.495   0.782  0.782    8.9    8.9
+                               tepkili  gecti  gecti   gecti  kaldi     0.772  0.495   0.778  0.778   10.2   10.2
+                          0.05 sabit    gecti  gecti   gecti  kaldi     0.776  0.500   0.782  0.778    8.9   11.4
+                               tepkili  gecti  gecti   gecti  kaldi     0.773  0.500   0.779  0.776   10.2   12.5
+                          0.10 sabit    gecti  gecti   gecti  kaldi     0.777  0.508   0.783  0.778    8.9   14.1
+                               tepkili  gecti  gecti   gecti  kaldi     0.773  0.508   0.779  0.776   10.2   14.8
+K1 farklı 8
+                etkin     kap     pi
+K2tavan kappa                       
+acik    0.00   0.6970  0.6970  19.85
+        0.25   0.6910  0.6945  19.85
+        0.50   0.6845  0.6915  19.85
+kapali  0.00   0.6970  0.6970  19.85
+        0.25   0.4495  0.6430  22.75
+        0.50   0.1875  0.5990  26.80
