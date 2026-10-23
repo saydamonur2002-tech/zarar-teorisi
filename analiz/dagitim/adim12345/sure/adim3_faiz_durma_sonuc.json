@@ -1,0 +1,87 @@
+{
+  "faz": 3,
+  "adim": 3,
+  "adim3_csv": "yazilmadi (H-A3 kilidi durur; 'modellenmedi' metni orada kalır, kural burada)",
+  "kural": "D_t = κ·u2_t·S₀; I_t = ψ·(r_t/4)·D_t; F NL += I_t, ödeyen hazne NL −= I_t; ΣNL = 0",
+  "S0_milyar": 25339.8,
+  "S0_kaynak": "tek_sistem_kopru.csv 2026-Q1 F_F4_yuk (olculdu)",
+  "faiz_seri": "TP.KTF17",
+  "faiz_son": {
+    "2026-09": 53.1925
+  },
+  "psi": {
+    "finansman_gideri_2024": 3143.4,
+    "r_bar_2024": 0.6038,
+    "s_bar_2024": 14527.5,
+    "nominal_faiz_2024": 8771.8,
+    "psi": 0.3584,
+    "durum": "olcum_turevi",
+    "not": "Sektör Bilançoları kapsamı (bilanço veren firmalar) ve döviz kredisi karışımı; EVDS F.4 tüm firmalar. Oran, eşitlik değil."
+  },
+  "kappa": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "K2_pencere": [
+    "2028-Q1",
+    "2028-Q4"
+  ],
+  "donem": [
+    "2026-Q4",
+    "2031-Q4"
+  ],
+  "yillik_duran_faiz_etkin_milyar": {
+    "0.25": {
+      "2027": 0.0,
+      "2028": 754.8,
+      "2029": 1207.7,
+      "2030": 1207.7,
+      "2031": 1207.7
+    },
+    "0.5": {
+      "2027": 0.0,
+      "2028": 1509.6,
+      "2029": 2415.4,
+      "2030": 2415.4,
+      "2031": 2415.4
+    },
+    "1.0": {
+      "2027": 0.0,
+      "2028": 3019.3,
+      "2029": 4830.8,
+      "2030": 4830.8,
+      "2031": 4830.8
+    }
+  },
+  "yillik_bolu_finansman_gideri_2024": {
+    "0.25": {
+      "2027": 0.0,
+      "2028": 0.24,
+      "2029": 0.384,
+      "2030": 0.384,
+      "2031": 0.384
+    },
+    "0.5": {
+      "2027": 0.0,
+      "2028": 0.48,
+      "2029": 0.768,
+      "2030": 0.768,
+      "2031": 0.768
+    },
+    "1.0": {
+      "2027": 0.0,
+      "2028": 0.961,
+      "2029": 1.537,
+      "2030": 1.537,
+      "2031": 1.537
+    }
+  },
+  "etiketler": {
+    "S0": "olcum",
+    "r_t": "olcum (2026-09'a kadar) + sabit varsayım",
+    "psi": "olcum_turevi",
+    "kappa": "varsayim",
+    "u2": "kademe kurgusu"
+  }
+}
