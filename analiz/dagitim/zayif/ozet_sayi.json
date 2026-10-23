@@ -1,0 +1,100 @@
+{
+  "transfer_gsyh": {
+    "2014": 0.163,
+    "2015": 0.2464,
+    "2016": 0.3537,
+    "2017": 0.2034,
+    "2018": 0.3246,
+    "2019": 1.7785,
+    "2020": 0.8647,
+    "2021": 0.4814,
+    "2022": 0.3546,
+    "2023": 0.1478,
+    "2024": 0.0,
+    "2025": 0.0
+  },
+  "transfer_eski_2019_21": {
+    "2019": 1.7785,
+    "2020": 0.8647,
+    "2021": 0.4814
+  },
+  "transfer_toplam_yeni": 4.9181,
+  "transfer_toplam_eski": 3.1245,
+  "buyuk_2014_23": 0.6898,
+  "kobi_2014_23": 0.3102,
+  "buyuk_2024": 0.7972,
+  "buyuk_2025": 0.8165,
+  "buyuk_2024_25": 0.8123,
+  "uyp": -0.7494,
+  "usd_stok_akim_gsyh_toplam": 36.2105,
+  "dy_stok_akim_gsyh": -7.5806,
+  "hisse_stok_akim_gsyh": -2.1432,
+  "kalan_k2_uyp": 6.4534,
+  "fark_model_uyp_orta": 3.7531,
+  "sifir": {
+    "S1_yeni": {
+      "dusuk(simetrik,k=1)": -0.001,
+      "orta(asimetrik,k=.5)": -0.001,
+      "yuksek(asimetrik,k=1)": -0.001
+    },
+    "S2_yeni": {
+      "dusuk(simetrik,k=1)": -0.001,
+      "orta(asimetrik,k=.5)": -0.001,
+      "yuksek(asimetrik,k=1)": -0.001
+    }
+  },
+  "kar_gsyh_toplam": 18.2932,
+  "S1_yeni_orta": {
+    "Hane_alt": 0.128,
+    "Hane_orta": 0.454,
+    "Hane_ust": 9.738,
+    "Firma_KOBI": -1.921,
+    "Firma_BUYUK": -4.9,
+    "Banka": -1.077,
+    "Hazine": -1.986,
+    "TCMB": -3.441,
+    "Yurtdisi+artik": 3.004
+  },
+  "S1_eski_orta": {
+    "Hane_alt": 0.128,
+    "Hane_orta": 0.454,
+    "Hane_ust": 9.738,
+    "Firma_KOBI": -1.921,
+    "Firma_BUYUK": -4.9,
+    "Banka": -1.077,
+    "Hazine": -3.78,
+    "TCMB": -1.647,
+    "Yurtdisi+artik": 3.004
+  },
+  "S1S2_yeni_orta": {
+    "Hane_alt": -0.265,
+    "Hane_orta": -0.575,
+    "Hane_ust": -3.608,
+    "Firma_KOBI": 4.576,
+    "Firma_BUYUK": 9.545,
+    "Banka": -1.175,
+    "Hazine": 8.886,
+    "TCMB": -11.188,
+    "Yurtdisi+artik": -6.198
+  },
+  "S1S2_eski_orta": {
+    "Hane_alt": -0.265,
+    "Hane_orta": -0.575,
+    "Hane_ust": -3.608,
+    "Firma_KOBI": 4.576,
+    "Firma_BUYUK": 9.545,
+    "Banka": -1.175,
+    "Hazine": 8.886,
+    "TCMB": -11.188,
+    "Yurtdisi+artik": -6.198
+  },
+  "gizli_dusuk(simetrik,k=1)": 8.867,
+  "gorunur_dusuk(simetrik,k=1)": 5.958,
+  "ekkur_dusuk(simetrik,k=1)": -0.002,
+  "gizli_orta(asimetrik,k=.5)": 8.867,
+  "gorunur_orta(asimetrik,k=.5)": 2.746,
+  "ekkur_orta(asimetrik,k=.5)": 0.408,
+  "gizli_yuksek(asimetrik,k=1)": 8.867,
+  "gorunur_yuksek(asimetrik,k=1)": 2.208,
+  "ekkur_yuksek(asimetrik,k=1)": 0.816
+}

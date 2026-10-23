@@ -1,0 +1,12 @@
+soru,olcut,pct_gsyh_kumulatif,havuz_payi_pct,formul
+alt40,"a nötr: gelir payı %16,7",2.49,16.7,"P×0,167 [VERİ TÜİK 2018 İKİNCİL]"
+alt40,b nüfus payı %40,5.96,40.0,"P×0,40"
+alt40,c telafi: senyoraj+TL erimesi+Hazine zararının tüketim payı,2.41,16.2,"0,845+0,077+6,904×0,215 [HESAP/VEKİL]"
+alt40,d alt-40 gelir payını 2013 düzeyinde tutmak,7.01,47.0,"Σ(s40_2013−s40_t)×özel tüketim/GSYH [VERİ WB, 2024-25 VARSAYIM]"
+alt40,e WB paylaşılan refah (alt40 büyümesi ≥ ort.),7.01,47.0,"≥ max(a,d)"
+alt40,fiili (ANA anahtar),0.13,0.9,hane3 [HESAP]
+uretim,"a makine stoku/GSYH 2014 düzeyine (22,6→19,4, 2021)",3.19,21.4,"panel net defter değeri [VEKİL, 2023 kırılması öncesi]"
+uretim,a2 toplam yatırımı emsal ortalamasına,0.0,0.0,"TR GSCF/GSYH 29,8 > emsal 22,6 [VERİ WB] → açık yok"
+uretim,b firmaların net kaybını kapatmak,6.82,45.8,eksik tablosu [HESAP]
+uretim,c 2004-13 büyümesine dönmek: ICOR×Δg×12,92.1,618.1,"ICOR 6,24, Δg 1,23 puan [HESAP]"
+uretim,d fiili teşvik: kurumlar vergi harcaması,7.76,52.1,[İKİNCİL]

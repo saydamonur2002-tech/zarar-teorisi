@@ -1,0 +1,14 @@
+kod,sonuc,s1_etkisi,not
+C_Z1,kismi,banka satiri ayni,"net kar 12 yil VERİ; NIM ve KKM komisyonu DOĞRULANMADI"
+C_Z2,kapandi,Hazine -3.78ten -1.99; TCMB -1.65ten -3.44,"2014-25 nakit aktarim; 2024-25 sifir VERİ"
+C_Z3,anahtar kapandi,firma bolusumu ayni,"2014-23 buyuk pay 0.6898; 2024-25 olculdu S1e yazilmadi"
+C_Z4,acik,yok,servet beslisi birincil tablo yok
+C_Z5,acik,yok,"kalan k2-UYP 6.45 puan; USD stok-akim ayri"
+C_Z6,kapandi,aktor S1-S2 faizden kaymadi,"phi ve gamma tabloda; buyume aktore yazilmadi"
+C_Z7a,acik,yok,hane altin stogu DOĞRULANMADI
+C_Z7b,acik,yok,oturan konut imputasyonu DOĞRULANMADI
+C_Z7c,acik,yok,KKM gelir grubu yok; yuzde 90 IKINCIL durur
+C_Z7d,acik,yok,goc x egitim en az 3 yil okunmadi
+C_Z7e,acik,yok,reel yaslilik ayligi 8 yil okunmadi
+C_Z7f,acik,yok,asgari ucret 1.2 kati alti pay yok
+C_Z7g,acik,1.24ten dusulmedi,"sektor net faizi VEKIL +2.99 puan, firma faizi degil"

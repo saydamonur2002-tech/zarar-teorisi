@@ -1,0 +1,1296 @@
+                                           İÇİNDEKİLER
+  Banka, Şube ve Personel Sayıları ..........................................                   1
+  Seçilmiş Bilanço Kalemleri ....................................................               2
+  Bilanço İçi Büyüklükler..........................................................             4
+  Bilanço Dışı Büyüklükler……………………………………………………..                                                5
+  Temel Büyüklüklere İlişkin Gelişim……………………………………...                                           7
+  Kârlılık...................................................................................   8
+  Krediler..................................................................................    10
+  Takipteki Krediler .................................................................          14
+  Menkul Kıymetler .................................................................            16
+  Mevduat................................................................................       17
+  Bankalara Borçlar ve Repo………............................................                      19
+  Sermaye Yeterliliği ...............................................................           20
+  Açıklamalar...........................................................................        22
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                       2
+                          Banka, Şube ve Personel Sayıları
+
+                                   Banka Sayıları
+   Adet
+   40                                                                              Türk
+                                                                                     rk Bankacılık Sektöründe
+                 34                                                                Aralık 2016 itibarıyla ;
+   35
+
+   30                                                                              •34 adet Mevduat,
+
+   25                                                                              •13 adet Kalkınma Yatırım ve
+   20                                                                              •5 adet Katılım Bankası olmak
+   15                                   13                                         üzere
+
+   10                                                                              toplam 52 banka faaliyet
+    5                                                           5                  göstermektedir.
+
+    0
+               MEVDUAT          KALKINMA VE YATIRIM        KATILIM
+
+
+
+
+                               Banka Şube Sayıları
+        Adet                         YERLİ ÖZEL
+    4.500             KAMU             4.143          YABANCI
+                      3.799                            3.805
+    4.000
+    3.500
+    3.000                                                            KAMU
+    2.500
+                                                                     YERLİ ÖZEL
+    2.000
+                                                                     YABANCI
+    1.500
+    1.000                                                                          Bankacılık sektörünün bir
+      500                                                                          önceki çeyreğe göre (Eylül
+        0                                                                          2016) şube sayısı 179 adet,
+                                   Aralık 2016                                     personel sayısı 764 kişi
+                                                                                   azalmıştır.
+   Adet                          Personel Sayısı
+                                      YERLİ ÖZEL       YABANCI                     Aralık 2016 dönemi itibarıyla
+80.000                                  74.850          73.355
+                                                                                   şube sayısı 11.747
+                                                                                               1      adet ve
+                      KAMU
+70.000                62.705                                                       personel sayısı 210.910
+60.000                                                                             kişidir.
+50.000
+                                                                      KAMU
+40.000
+                                                                      YERLİ ÖZEL
+30.000
+                                                                      YABANCI
+20.000
+10.000
+        0
+                                   Aralık 2016
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                             1
+                                   Seçilmiş Bilanço Kalemleri
+
+
+             VARLIKLAR                                Tutar            Yüzde Değişim (%)
+                                                                    Bir Önceki Bir Önceki Yıl
+                                                    (Milyar TL)       Çeyrek        Sonu
+NAKİT VE NAKİT BENZERİ KALEMLER*                                222        16,5          47,6
+ZORUNLU KARŞILIKLAR                                             184             -6,8       -10,8
+KREDİLER                                                      1.734              7,7       16,8
+TAKİPTEKİ ALACAKLAR (Brüt)                                       58              5,1       22,1
+MENKUL DEĞERLER                                                 352              6,8        6,6
+DİĞER AKTİFLER                                                  238            15,7        28,4
+                                                                                                Türk Bankacılık Sektörünün
+TOPLAM AKTİFLER                                               2.731              7,8       15,8
+                                                                                                aktif büyüklüğü Aralık 2016
+                                                                                                döneminde bir önceki çeyreğe
+ YÜKÜMLÜLÜKLER                                                                                  göre %7,8 artarak 2.731 milyar
+MEVDUAT                                                       1.454              8,4       16,7
+                                                                                                TL olarak gerçekleşmiştir.
+BANKALARA BORÇLAR                                               418            13,2        15,6
+REPO İŞLEMLERİ                                                  138           -10,5        -12,0
+İHRAÇ EDİLEN MENKUL KIYMETLER                                   116            14,1        18,8
+ÖZKAYNAKLAR                                                     300              2,5       14,5
+DİĞER YÜKÜMLÜLÜKLER                                             305            11,0        30,5
+TOPLAM YÜKÜMLÜLÜKLER                                          2.731              7,8       15,8
+* Nakit, Merkez Bankası, Para Piyasası ve bankalardan alacaklar kalemlerinin toplamından
+oluşmaktadır.
+
+
+
+
+                                                                                                   Aralık 2016 döneminde
+          BİLANÇO DIŞI                                Tutar           Yüzde Değişim (%)
+                                                                                                   bilanço dışı kalemlerden
+                                                                                                   bir önceki çeyreğe göre;
+           KALEMLER                                               Bir Önceki Bir Önceki
+                                                    (Milyar TL)     Çeyrek    Yıl Sonu -Gayrinakdi krediler %11,1
+Gayrinakdi Kredi ve Yükümlülükler                             552        11,1       20,4 -Türev finansal varlıklar ise
+Taahhütler                                                  2.488        11,2       19,5 %14,6
+-Türev Finansal Varlıklar                                    1.971             14,6        24,4 artmıştır.
+-Diğer Taahhütler                                              518              0,0         4,0
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                         2
+                                             Aktif Büyüklüğü / GSYH
+
+    Milyar TL                                                                                           Oran
+     2.600                                                                                               1,10
+     2.400
+     2.200                                                                  1,01
+     2.000                                                      0,98                                     1,00
+                                                     0,96
+     1.800
+     1.600
+     1.400        0,87        0,87         0,87                                                          0,90
+     1.200
+     1.000
+       800
+       600                                                                                               0,80
+       400
+       200
+         0                                                                                               0,70
+                  2010        2011        2012      2013        2014        2015    Eyl.2016 Ara.2016
+
+                          GSYH             Toplam Aktifler             Toplam Aktif/GSYH (Sağ eksen)
+
+      Türk Bankacılık Sektörünün aktif büyüklüğünün GSYH'ye
+                                                    GSYH'y oranı 2015 yıl sonu itibarıyla
+                                                                               itibar
+      1,01 olarak gerçekleşmiştir.
+      * TÜİK tarafından revize edilen GSYH tutarları kullanılmıştır.
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                  3
+                                                    Bilanço İçi Büyüklükler
+
+                                                    Aktif Pasif Kalemleri
+                                                             Milyar TL
+                                        1.734
+                                                                1.750
+
+                                                                                     1.454
+                                                                1.500
+                                          603
+
+                                                                1.250
+                                                                                       609
+
+                                                                1.000
+
+
+                                                                   750
+
+                                         1.131
+                                                                   500                            418
+                352                                                                    845
+                                                                                                                                     300         305
+   222                                              238
+                111         184
+                                                     54
+                                                                   250                            381           138     116                      130
+    143                                                                                                                               301
+                240          184                     184                                                        45        87                     176
+    79                                                                                            37
+                              0                                      0                                        93           29
+  Nakit ve     Menkul      Zorunlu      Krediler    Diğer                            Mevduat   Bankalara   Repodan    İhraç Edilen Özkaynaklar   Diğer
+Nakit Benzeri Kıymetler   Karşılıklar                                                           Borçlar    Sağlanan     Menkul
+  Kalemler                                                                                                  Fonlar     Kıymetler
+                                                            Türk Parası          Yabancı Para
+
+    Bilanço içerisindeki yabancı para varlıkların
+                                      varlıkl     toplam varlıklara oranı %40, yabancı para
+    yükümlülüklerin toplam yükümlülüklere oranı %46 olarak gerçekleşmiştir.
+    Yabancı para kredilerin toplam
+                                 m krediler içerisindeki payı %35,
+                                                              %35, yabancı para mevduatın
+                                                                                mev       toplam
+    mevduata oranı %42'dir.
+
+
+                          Toplam Varlıklar                                                          Toplam Yükümlülükler
+               Diğer                                 Nakit ve                                           Diğer
+                9%                                 Nakit Benzeri                                         9%
+                                                     Kalemler
+                                                        %7                            Özkaynaklar
+                                                                                         11%
+
+
+                                                                     Menkul        İhraç Edilen
+                                                                                     Menkul
+                                                                    Kıymetler
+                                                                                    Kıymetler
+                                                                       13%             4%
+                                                                                                                                     Mevduat
+                                                                    Zorunlu           Repodan                                         53%
+                  Krediler                                         Karşılıklar        Sağlanan
+                    63%                                               7%               Fonlar
+                                                                                         5%
+                                                                                             Bankalara
+                                                                                              Borçlar
+                                                                                               18%
+
+
+   Toplam varlıklar içerisinde kredilerin payı %63,
+                                               % menkul kıymetlerin payı %13 ve zorunlu karşılıkların payı %7
+                                                                                                           %
+   olarak gerçekleşmiştir.
+
+   Mevduat %53 pay ile toplam yükümlülükler içerisinde en büyük paya sahipken, bankalara borçlar kaleminin
+   payı %18 ve repodan sağlanan fonların
+                                    arın payı %5’tir.
+                                              %
+
+   Özkaynakların toplam yükümlülükler içerisindeki payı ise %11'dir.
+                                                            %1
+
+
+          BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                                           4
+                                    Bilanço Dışı Büyüklükler
+
+
+                                         Gayrinakdi Kredi Gelişimi
+    Milyar TL
+     600                                                                                      552
+                                                                                   497
+     500                                                                 459
+
+                                                               384
+     400
+                                                     334
+
+     300
+                                          241
+                             219
+     200        164
+
+
+     100
+
+
+        0
+                2010         2011        2012        2013      2014      2015     Eyl.2016   Ara.2016
+
+                                             Türk Parası      Yabancı Para
+
+         Aralık 2016 dönemi itibarıyla gayrinakdi kredilerin büyüklüğü 552 milyar TL olarak
+         gerçekleşmiştir.
+
+
+
+
+                       Gayrinakdi Krediler
+         Diğer
+       Gayrinakdi
+        Krediler
+          9%
+                                                    Açık
+    Akreditif                                     Teminat
+      14%                                        Mektupları
+                                                    23%
+     Kabul                                                              Gayrinakdi krediler içerisinde
+    Kredileri                                                           teminat mektupları %75
+                                                                                             %7 ile en
+      3%                                                                büyük paya sahipken akreditif
+                      Diğer                  Kefalet                    kredilerin payı %14'dür.
+                                                                                        %1
+                     Teminat                 Karşılığı
+                    Mektupları               Teminat
+                       18%                  Mektupları
+                                               33%
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                           5
+                                               Türev Finansal Varlıklar
+   Milyar TL
+   1.500
+
+
+                                                                                                             989
+   1.000                                                                                          862
+                                                                                     793
+                                                                       612
+                                                         545
+    500                                  310
+                              289
+                195
+
+
+       0
+
+
+                196
+    -500                    287         311
+                                                         544
+                                                                       613
+  -1.000                                                                             791
+                                                                                                  858
+                                                                                                             982
+
+
+  -1.500
+               2010        2011         2012             2013         2014          2015        Eyl.2016   Ara.2016
+
+
+
+
+                                               Alım-TP   Alım-YP   Satım-TP   Satım-YP
+
+
+           Aralık 2016 dönemi itibarıyla türev alım tutarı 989 milyar
+                                                                ilyar TL, türev satım tutarı 982
+                                                                                             9 milyar
+           TL olarak gerçekleşmiştir.
+
+
+
+
+                           Türev İşlemler
+                                                           Vadeli Döviz
+                                                             İşlemi
+                                                               8%
+                        Diğer Türev                                                      Bilanço dışında yer alan türev
+                           İşlemi                                                        işlemlerin %49'u
+                                                                                                    %4 swap para
+                            17%                                                          işlemlerinden, %26'sı swap
+                                                                                         faiz işlemlerinden ve %8’i
+                  Swap Faiz                                                              vadeli döviz işlemlerinden
+                   İşlemi                      Swap Para                                 oluşmaktadır.
+                    26%                          İşlemi
+                                                  49%
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                            6
+                             Temel Büyüklüklere İlişkin Gelişim
+
+                                         Mevduatın Krediye Dönüşüm Oranı
+ Milyar TL                                                                                                                             Oran
+ 1.600                                                                                                                                 1,40
+                                                                     1,18            1,19             1,20           1,19
+ 1.400                                                  1,11                                                                           1,20
+                                           1,03
+                             0,98
+ 1.200
+               0,85                                                                                                                    1,00
+ 1.000
+                                                                                                                                       0,80
+                                                                                                                   1.734
+   800                                                                                             1.610
+                                                                                   1.485                                   1.454
+                                                                                                           1.341                       0,60
+   600                                                             1.241                   1.245
+                                                     1.047                 1.053
+                                                             946                                                                       0,40
+   400                                   795 772
+                     617   683 695
+             526                                                                                                                       0,20
+   200
+
+       0                                                                                                                               0,00
+               2010          2011          2012        2013          2014     2015       Eyl.2016 Ara.2016
+                              Krediler            Mevduat           Kredi/Mevduat Oranı (Sağ Eksen)
+
+       Aralık 2016 döneminde kredi tutarı 1,73 trilyon TL olurken, mevduat tutarı 1,45
+                                                                                     5 trilyon TL olarak
+       gerçekleşmiştir. Mevduatın
+                               ın krediye dönüşüm oranı Aralık 2016 dönemi itibarıyla 1,19’dur.
+                                                                                        1,19’du
+
+
+
+
+ Milyar TL                                        Yabancı Para Pozisyonu
+150
+
+
+100
+
+
+ 50                                                                                   96
+                                                        63           71                                               71
+             22             34            31                                                          26
+   0
+             -21            -33           -28                                                         -26
+                                                       -64           -77                                              -75
+ -50                                                                                 -92
+
+
+
+-100
+
+
+-150
+             2010          2011          2012         2013          2014             2015           Eyl.2016        Ara.2016
+
+                   Bilanço İçi Yabancı Para Pozisyonu                Bilanço Dışı Yabancı Para Pozisyonu
+                   YP Net Genel Pozisyon
+   Bilanço dışı yabancı para pozisyonu 71 milyar TL fazla, bilanço
+                                                               nço içi yabacı para pozisyonu 75 milyar TL açık
+   pozisyonda olup, yabancı para net pozisyonu 4 milyar TL açık pozisyondadır.
+
+
+
+    BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                                 7
+                                                    KÂRLILIK
+
+Milyar TL                                          Gelir Tablosu
+   250
+                   91
+   200
+   150
+   100            195                                       -23
+     50
+                                                             47                                       38
+      0                                -21                                       -10
+                                                             -69
+    -50           -103
+
+  -100
+  -150
+                  Faiz             Özel Karşılık        Faiz Dışı          Vergi Provizyonu      Dönem Net Karı
+              Geliri/Gideri                            Gelir/Gider                                  /Zararı
+
+                                                     Gider         Gelir
+
+   Bankacılık sektörünün  n gelir tablosunda faiz geliri 195
+                                                         195 milyar TL ve faiz gideri 103 milyar TL
+   olarak gerçekleşmiştir. Aralık 2016 dönemi itibarıyla Türk Bankacılık Sektörünün net dönem
+   kârı 38 milyar TL’dir.
+
+
+
+
+    Milyar TL                                      Dönem Kârı
+      16,00
+                                                             14,18
+      14,00                    13,50
+
+      12,00           10,72
+                                                                                              9,85
+      10,00                                          9,08
+
+       8,00                                                                                                       Ara.15
+                                                                                   6,25
+                                                                                                                  Ara.16
+       6,00
+
+       4,00
+
+       2,00
+
+       0,00
+                          KAMU                       YERLİ ÖZEL                        YABANCI
+
+     Aralık 2016 dönemi net kârı, 2015 yılının aynı dönemine göre kamu, yerli özel ve yabancı banka
+     gruplarında artış göstermiştir.
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                             8
+                                    Özkaynak Kârlılığı
+      Yüzde
+      16              15,13
+                                     14,61                           14,28
+              13,94
+      14                                                 12,85
+
+      12                                                         11,28
+                                10,33
+      10                                          9,44
+
+       8                                                                        Ara.15
+                                                                                Ara.16
+       6
+
+       4
+
+       2
+                                                                                         Bankacılık sektörünün
+       0
+                                                                                         özkaynak kârlılığı geçen yılın
+                 KAMU          YERLİ ÖZEL         YABANCI         SEKTÖR
+                                                                                         aynı dönemine göre kamu,
+                                                                                         yabancı ve yerli özel banka
+                                         Aktif Kârlılığı                                 gruplarında artış
+    Yüzde
+     2,50
+                                                                                         göstermiştir.
+                       2,10
+     2,00       1,91                    1,90                             1,89            Bankacılık sektörünün Aralık
+                                                         1,64                            2016 dönemi aktif kârlılığı
+                                                                  1,48                   geçen yılın aynı dönemine
+     1,50                        1,35
+                                                  1,18                                   göre artmıştır.
+                                                                                Ara.15
+     1,00                                                                       Ara.16
+
+
+     0,50
+
+
+     0,00
+                  KAMU          YERLİ ÖZEL         YABANCI         SEKTÖR
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                               9
+                                                         KREDİLER
+
+                                                             Krediler
+Milyar TL                                           (Türk Parası - Yabancı Para)
+   2.000
+                                                                                                       1.734
+   1.800
+                                                                                            1.610
+   1.600                                                                          1.485
+   1.400                                                                                                603
+                                                                     1.241                   521
+   1.200                                                                           472
+                                                          1.047
+                                                                      360
+   1.000
+                                           795             295
+    800                      683
+               526                          206
+    600                      198                                                                       1.131
+                                                                                  1.013     1.089
+               142                                                    881
+    400                                                    753
+                                            588
+    200                      485
+               384
+       0
+              2010           2011          2012            2013       2014        2015     Eyl.2016   Ara.2016
+                                                    Türk Parası    Yabancı Para
+
+     Aralık 2016 döneminde,
+                   öneminde, toplam kredi tutarı 1.734
+                                                  1.     milyar TLL olup, söz konusu tutarın 1.131
+     milyar TL’si
+              ’si Türk parası kredilerden, 603 milyar TL’si yabancı para kredilerden oluşmaktadır.
+
+
+
+
+                            Kredilerin Dağılımı
+
+
+                               Kobi
+                             Kredileri                                             Kredilerin içerisinde ticari
+                               24%                                                 ve kurumsal kredilerin payı
+                                                                                   %52, Kobi kredilerinin payı
+                                                                                   %24 ve tüketici kredilerinin
+                                                       Ticari ve
+                                                                                   (kredi kartları dahil) payı
+                                                       Kurumsal
+                                                                                   %24’dür.r.
+                            Tüketici                    Krediler
+                            Kredileri                     52%
+                            ve Kredi
+                            Kartları
+                              24%
+
+
+
+
+   BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                10
+                                                    Kredi Türlerinin Gelişimi
+Milyar TL
+2.000
+1.800                                                                                                                     1.734
+                                                                                                            1.610
+1.600                                                                                            1.485
+1.400
+                                                                                    1.241                                  893
+1.200                                                                                                       802
+                                                                   1.047                         711
+1.000                                                                               551
+                                                          795
+  800                                    683                           444
+  600                      526                            329                                    389        405            422
+              393                        296                                        333
+                           228                                         271
+  400                                                     200
+               179                       163
+  200                      125                                                      356          385        403            420
+               83                                         266          332
+                           173           224
+     0         130
+              2009         2010         2011              2012     2013             2014         2015      Eyl 16         Ara 16
+                Tüketici Kredileri ve Kredi Kartları             Kobi Kredileri              Ticari ve Kurumsal Kredi
+
+     Aralık 2016 döneminde; ticari ve kurumsal krediler 893 893 milyar TL, kobi kredileri 422
+     milyar TL ve tüketici kredileri ve kredi kartları 420 milyar TL olarak gerçekleşmiştir.
+
+
+
+
+                             Seçilmiş Sektörlerin Toplam Krediler İçerisindeki Payı
+
+                                          İnşaat                                                                   8,12
+
+              Toptan Ticaret ve Komisyonculuk                                                                      8,02
+
+  Elektrik, Gaz ve Su Kaynakları Ürt. Dağt. San.                                                         6,98
+
+                                          Tarım                                       4,04
+
+            Perakende Ticaret ve Kişisel Ürünler                                    3,82
+
+                 Tekstil ve Tekstil Ürünleri San.                            3,03
+         Araştırma Danışmanlık Reklam ve Diğer
+                      Faaliyetler
+                                                                             3,03
+
+  Metal Ana San. ve İşlenmiş Maden Ürt. San.                                 2,94
+
+                  Gıda, Meşrubat ve Tütün San.                               2,90
+
+                                         Oteller                        2,33
+
+                                                    0,0          2,0            4,0              6,0         8,0            10,0
+                                                                                                                                   Yüzde
+
+     Toplam krediler içerisinde, inşaat sektörünün payı %8,12, toptan ticaret ve komisyonculuk
+     sektörünün payı %8,02'dir.
+
+
+
+
+  BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                                     11
+                                             KOBİ Kredilerinin Gelişimi
+  Milyar TL
+450                        KOBİ tanımı genişletildi                                                                    422
+                                                                                                         405
+                                                                                           389
+400
+                                                                            333                                        110
+350                                                                                                       106
+                                                                                            99
+300                                                        271
+                                                                             88
+250                                                                                                                    140
+                                           200              71
+                                                                                           133            135
+200                         163                                             111
+                                            54
+150          125                                            86
+                             55
+              43                            63
+100
+                             43                                                            157            164          172
+              32                                           115              133
+  50                                        83
+              51             65
+   0
+             2010           2011           2012            2013             2014           2015         Eylül 16     Aralık 16
+                           Orta Büyüklükteki İşletmeler                 Küçük İşletmeler          Mikro İşletmeler
+
+  İşletme sınıflarına göre Kobi kredilerinde bir önceki çeyreğe göre artış gerçekleşmiştir.
+
+
+
+
+                                         Bireysel Kredilerin Gelişimi
+    Milyar TL
+     450                                                                                  420
+    Eylül 2014 döneminde bireysel kredi kartlarının toplamı bir önceki çeyreğe  403 göre düşüş
+      400
+    göstererek  75 milyar TL olarak gerçekleşmiştir. Konut356
+                                                             kredisi 385
+                                                                     ile ihtiyaç ve diğer 82
+    tüketici kredileri sırasıyla 115 milyar TL ve 139 milyar TL’dir. 79          82
+      350                                       332
+                                                                                  74
+       300                                        266             84
+
+       250                                                                                                               167
+                                   224             72                                         156
+                                                                                                            160
+
+       200                                                                        149
+                    173             55
+                                                                  129
+                                                                                                             6            7
+       150           44                           100                                            6
+                                    86                                             7
+                                                                   9
+       100           63                            8
+                                    7                                                                       154          164
+                     6                                                            125         143
+        50                                                        111
+                                    75             86
+                     61
+         0
+                    2010           2011           2012           2013         2014           2015         Eyl.16      Ara.16
+
+
+                           Konut          Taşıt          İhtiyaç ve Diğer               Bireysel Kredi Kartları
+
+  Aralık 2016 döneminde tüketici kredileri bir önceki çeyreğe göre artarak 420 milyar TL
+  olarak gerçekleşmiştir. Konut kredisi,
+                                  kredisi bireysel kredi kartları ile ihtiyaç ve diğer tüketici
+  kredileri sırasıyla 164 milyar TL,
+                                 TL 82 milyar TL ve 167 milyar TL’dir.
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                                   12
+                     Bireysel Kredilerin Dağılımı
+
+
+
+                          Bireysel
+                           Kredi
+                          Kartları
+                            20%                       Konut
+                                                       39%
+                                                                                    Bireysel krediler içerisinde
+                                                                                    ihtiyaç ve diğer tüketici
+                         İhtiyaç ve                                                 kredilerinin payı
+                                                                                                 pay %40,
+                           Diğer                                                    konut kredisinin payı %39,
+                                                                                                           %39
+                                                                                    kredi kartlarının payı ise
+                            40%
+                                                                                    %20 olarak gerçekleşmiştir.
+
+                                                                    Taşıt
+                                                                     1%
+
+
+
+
+                            Bireysel Kredi Kartlarının Gelişimi
+                                              Limit                                        Taksit
+                                                                 Taksit
+                                           Düzenlemesi                                  Düzenlemesi
+                                                              Sınırlaması
+           90                                            84                            82        82
+                                                                              79
+           80                               72                        74
+
+           70
+                                                         36
+           60                   55                                                               44
+                                                                              43       45
+                                            33                        41
+           50       44
+           40                   29
+
+           30       24
+                                                         47
+           20                               38                                36       37        39
+                                                                      34
+                                26
+           10       19
+            0
+                   2010        2011        2012        2013          2014    2015     Eyl.16   Ara.16
+                                                  Taksitli       Taksitsiz
+
+    Bireysel kredi kartı tutarı, Aralık 2016 döneminde bir önceki çeyreğe göre değişim
+    göstermemiştir.
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                               13
+                                           Takipteki Krediler
+
+
+
+  Milyar TL                 Takipteki Kredilerin (Brüt) Gelişimi
+   60                                                                                                     58
+                                                                                               55
+
+    50                                                                            48
+                                                                                                          22
+                                                                                                20
+    40                                                               36           16
+                                                            30
+    30                                                               11
+                                                  23                                            16        18
+               22                                            9                    14
+                          20          19
+    20                                             7                 13
+               7           6          5                     11
+               7           7                       9
+    10                                7                                           17            19        19
+                                                            10       12
+               8           7          7            8
+      0
+              2009       2010       2011         2012      2013     2014         2015       Eyl.2016 Ara.2016
+                          Tüketici Kredileri ve Kredi Kartları    Ticari Kredi          Kobi Kredileri
+
+      Aralık 2016 dönemi itibarıyla takipteki
+                                    takip     kredilerin (brüt) tutarı 58 milyar TL’dir.
+
+
+
+
+  Yüzde
+                                           Takibe Dönüşüm Oranı
+    8
+    7
+    6
+    5
+    4
+    3
+              5,27
+    2                   3,66
+                                    2,70         2,86      2,75     2,85         3,10         3,32       3,24
+    1
+    0
+
+
+                     Takibe Dönüşüm Oranı                                  Ticari Kr. TDO
+                     Tük. Kr. ve Kredi Kart. TDO                           Kobi Kr. TDO
+
+        Bankacılık sektöründe kredilerin Takibe
+                                         Ta     Dönüşüm Oranı (TDO) Aralık 2016
+        döneminde %3,24 olarak gerçekleşmiştir.
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                  14
+                          Seçilmiş Sektörlere İlişkin Takibe Dönüşüm Oranları
+                                               İnşaat                                                            3,69
+
+                  Toptan Ticaret ve Komisyonculuk                                                                              4,74
+
+       Elektrik, Gaz ve Su Kaynakları Ürt. Dağt. San.          0,47
+
+                                               Tarım                                              2,72
+
+               Perakende Ticaret ve Kişisel Ürünler                                                                 3,95
+
+                     Tekstil ve Tekstil Ürünleri San.                                                                   3,98
+
+ Araştırma Danışmanlık Reklam ve Diğer Faaliyetler                    0,92
+
+        Metal Ana San. ve İşlenmiş Maden Ürt. San.                                                       3,05
+
+                      Gıda, Meşrubat ve Tütün San.                                                        3,14
+
+                                             Oteller                                2,00
+
+                                                    0,00          1,00          2,00              3,00           4,00          5,00
+                                                                                                                               Yüzde
+
+ Sektörel krediler içerisindeki takibe dönüşüm oranları; toptan ticaret ve komisyonculukta
+ %4,74, tekstil ve tekstil ürünleri sanayide %3,98,
+                                             %3,98 inşaat sektöründe %3,69 gerçekleşmiştir.
+
+
+
+
+                     Tüketici Kredileri Takibe Dönüşüm Oranları
+Yüzde
+12
+
+10
+
+ 8
+ 6
+ 4
+           6,00
+ 2                       4,13                                                              4,28           4,54      4,30
+                                        2,88            2,95      2,87       3,38
+ 0
+          2009          2010           2011             2012     2013        2014      2015          Eyl.2016 Ara.2016
+             Tüketici Kredisi (Kredi Kartı Dahil) TDO                        Taşıt Kredisi TDO
+             Konut Kredisi TDO                                               İhtiyaç ve Diğer Kredi TDO
+             Bireysel Kredi Kartları TDO
+
+     Tüketici kredilerinin (bireysel kredi kartları
+                                           kartl dahil)
+                                                    il) takibe dönüşüm oranı Aralık 2016
+     döneminde %4,30 olarak gerçekleşmiştir.
+
+
+
+
+ BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                                15
+                                          Menkul Kıymetler
+
+
+                                Menkul Kıymetlerin Gelişimi
+   Milyar TL
+    400
+                                                                                              352
+    350                                                                  330        329
+                                                              302
+               288           285                     287
+    300                                   270                                                 102
+                                                                          84        85
+                                                               81
+    250                                              86
+                   95         88           66
+    200
+
+    150
+                                                                          243       240       246
+                             187          196        196       219
+    100        186
+
+      50
+
+       0           7          10            8         5         3          3         4         3
+               2010         2011         2012       2013      2014       2015      Eyl.16    Ara.16
+
+       Gerçeğe Uygun Değer Farkı K/Z Yan.             Satılmaya Hazır   Vadeye Kadar Elde Tutulacak
+
+
+Aralık 2016 döneminde menkul
+                       enkul kıymetler
+                             kıymet toplamı 352 milyar TL olarak gerçekleşmiştir.
+                                                                 gerçekleş
+
+
+
+
+                        Menkul Kıymet Dağılımı
+                           Diğer
+                            7%
+
+
+                                                                        Menkul kıymetlerin %65’i
+                                                                                             %6
+                                                                        devlet tahvili, %24’ü
+                                                                        hazinece ihraç edilmiş
+   Hazine                                        Devlet
+                                                 Tahvili                Eurobond ve %4’ü
+                                                                                       %    sukuktan
+  Eurobond
+                                                  65%                   oluşmaktadır.
+    24%
+
+
+
+
+           Sukuk
+            4%
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                         16
+                                                     Mevduat
+
+
+                                                  Mevduatın Gelişimi
+Milyar TL
+1.600
+                                                                                                   1.453
+1.400
+                                                                                       1.340            17
+                                                                          1.245          11
+                                                                            11
+1.200
+                                                               1.053                                591
+                                                      946       16                       511
+1.000                                                                      519
+                                                       21
+                                         772                    375
+  800                        695          19          331
+               617            14
+                2                         233
+  600                        221
+               181
+  400                                                                                    818        845
+                                                                661        715
+                                                      594
+                             460          520
+  200          434
+
+
+    0
+               2010          2011        2012         2013     2014        2015         Eyl.16     Ara.16
+               TP Mevduat / Katılım Fonları                    Döviz Tevdiat Hesabı / Katılım Fonları
+               Kıymetli Maden Depo Hesapları
+
+     Toplam mevduatın, 845 milyar TL’si TP Mevduat/Katılım fonlarından, 591
+                                                                          59 milyar TL’si Döviz
+     Tevdiat Hesabı/Katılım Fonlarından ve 17 milyar TL’si kıymetli maden hesaplarından
+     oluşmaktadır.
+
+
+
+
+                              Mevduatın Türlerine
+                                Göre Dağılımı
+             Ticari ve                                                            Mevduatın %60’ı gerçek kişi
+              Diğer                                                               mevduatından oluşurken,
+            Kuruluşlar
+                                                                                  ticari ve diğer kuruluşlar
+            Mevduatı
+               36%                                                                mevduatının payı %36 ve
+                                                     Gerçek                       resm kuruluşlar
+                                                                                  resmi
+                                                     Kişiler                      mevduatının payı %4’dür.
+                                                                                                     %4’dü
+                                                    Mevduatı
+                                                      60%
+                  Resmi
+                Kuruluşlar
+                Mevduatı
+                   4%
+
+
+
+
+ BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                              17
+                                             Açılış Vadelerine Göre
+                                             Mevduatın Dağılımı (%)
+                              1 Yıl Üzeri
+                                  4%
+                    6-12 Ay Arası
+                         3%
+                    3-6 Ay Arası                            Vadesiz
+                         5%                                  20%
+
+
+
+
+                                                               1 Aya Kadar
+                                                                   14%
+
+                                          1-3 Ay Arası
+                                              54%
+
+
+
+
+              Açılış vadelerine göre toplam mevduat içerisinde vadesiz mevduatın payı
+              %20 ve 1-33 ay arası mevduatın payı %54’dür.
+                                                  %5
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                          18
+                                Bankalara Borçlar ve Repo
+
+                                                   Bankalara Borçlar
+    Milyar TL
+     450                                                                                         418
+
+     400                                                                   361         369
+
+     350
+                                                                  293
+     300                                                254
+     250
+                                                                                                 381
+     200                       167          173                            325         332
+                                                                  251
+     150         122                                    219
+     100                       141          146
+                  93
+       50
+                  29           26           28           35       43           36      37        37
+        0
+                 2010         2011         2012         2013     2014      2015       Eyl.16    Ara.16
+                                                 Türk Parası    Yabancı Para
+
+      Aralık 2016 dönemi itibarıyla
+                          itibar    bankalara borçlar kalemi 37 milyar TL Türk parası, 381
+                                                                                       3
+      milyar TL yabancı
+                   ancı para olmak üzere toplam 418 milyar TL’dir.
+
+
+
+                                      Repo İşlemlerinden Sağlanan Fonlar
+     Milyar TL
+      180
+                                                                               157      154
+      160
+                                                                  137                             138
+      140
+                                                         119                    47       46
+      120                                                                                          45
+                                97                                 60
+      100
+                                             80           50
+       80                       27
+                   58
+       60                                    33
+                   12                                                          109      108
+                                                                                                   93
+       40                       70                                 78
+                                                          69
+       20          46                        47
+
+         0
+                 2010          2011         2012         2013     2014         2015    Eyl.16    Ara.16
+                                                  Türk Parası   Yabancı Para
+
+      Repo işlemlerinden
+                    nden sağlanan fon tutarı Aralık 2016 döneminde bir önceki çeyreğe göre
+      azalarak 138 milyar TL olarak gerçekleşmiştir.
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                            19
+                                            Sermaye Yeterliliği
+
+                                    Sermaye Yeterliliği Oranı Gelişimi
+   Milyar TL                                                                                                      Yüzde
+
+                 18,97                                                                                                20
+     2.000                                   17,86
+                               16,55                                  16,28                  16,03
+                                                        15,28                     15,56                   15,57
+                                                                                                                      15
+     1.500
+
+
+                                                                                              2.097           2.229   10
+     1.000                                                                          1.968
+                                                                          1.663
+                                                          1.461
+         500                                  1.099                                                                   5
+                                     954
+                      725
+                138           158           196       223           271           306       336          347
+           0                                                                                                          0
+                  2010          2011         2012       2013          2014         2015     Eyl.16       Ara.16
+
+          Yasal Özkaynak               Risk Ağırlıklı Varlıklar            Sermaye Yeterliliği Oranı (Sağ Eksen)
+
+
+    Türk Bankacılık Sektörünün sermaye yeterliliği oranı Aralık 2016 döneminde %15,57
+    olarak gerçekleşmiştir.
+
+
+
+
+  Yüzde
+                                           Sermaye Yeterliliği Oranı
+   18
+
+    16                                                                                                                    Sektör
+                                                                                                                          15,57
+    14
+
+    12
+
+    10
+
+     8                                                                                                16,80
+                            15,76
+                                                                  14,51
+     6
+
+     4
+
+     2
+
+     0
+                            Kamu                             Yerli Özel                              Yabancı
+
+     Bankacılık sektörü sahiplik grupları ayrımında kamu ve yabancı banka gruplarının
+     sermaye yeterliliği oranı sektör ortalamasının üzerindedir.
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                                            20
+         Yüzde
+                                      Sermaye Yeterliliği Oranı
+            25
+
+
+            20
+
+
+            15                                                                          Sektör
+                                                                        23,44
+                                                                                        15,57
+
+            10
+                              15,10                        16,17
+
+             5
+
+
+             0
+    Banka sahiplik grupları ayrımında kamu bankalarının sermaye yeterliliği %16,03 olarak
+                      Mevduat                Katılım           Kalkınma ve Yatırım
+    sektör ortalamasının üzerindedir.
+
+       Fonksiyon grupları ayrımında sermaye yeterlilik oranı mevduat, katılım bankaları ile
+       kalkınma ve yatırım
+                        ım bankalarında sırasıyla %15,10, %16,17
+                                                          %16 17 ve %23,44 olarak
+       gerçekleşmiştir.
+
+
+
+
+                          Risk Ağırlıklı Varlıklar
+         Operasyonel
+           Riske Esas
+             Tutar
+               7%
+        Piyasa                                                              Sermaye yeterliliği
+     Riskine Esas                                                           hesaplamasında, risk
+        Tutar
+                                                                            ağırlıklı varlıkların %91’i
+          2%
+                                                                            kredi riskine esas
+                                                                            tutardan, %7’si
+                                                                            operasyonel riske esas
+                                                                            tutardan ve %2’si piyasa
+                                           Kredi Riskine                    riskine esas tutardan
+                                            Esas Tutar                      oluşmaktadır.
+                                               91%
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                   21
+                                             AÇIKLAMALAR
+
+
+  •    Bankacılık Düzenleme ve Denetleme Kurumu (BDDK) tarafından hazırlanan Türk
+       Bankacılık Sektörü Temel Finansal Verileri yayınında, bankaların seçilmiş mali
+       tablolarına ilişkin istatistikî bilgiler, konsolide olmayan geçici mali tablolar kullanılarak
+       hazırlanmaktadır.
+
+  •    Gayri Safi Yurtiçi Hasıla (GSYH), TÜİK'in cari fiyatlarla yayımlamış olduğu verilerdir.
+
+  •    Yayımlanan bilgilerin kaynağı Banka Raporlama Sistemi aracılığıyla alınan, bankalar
+       tarafından elektronik ortamda gönderilen periyodik raporlardır. Söz konusu dönemsel
+       bilgiler, yayımı sonrasında çeşitli sebeplerle meydana gelebilecek güncellemeler
+       nedeniyle değişikliğe uğrayabilir.
+
+  •    Yayımlanan parasal tutarlar aksi belirtilmedikçe “Milyar TL” biriminde olup, bazı alt
+       gruplamalarda aritmetik toplam ve yuvarlamadan kaynaklanan farklar olabilmektedir.
+
+  •    Detaylı verilere; sektör, banka grubu ve fonksiyon grupları ayrımında Türk Bankacılık
+       Sektörü İnteraktif Aylık Bülten uygulamasından ulaşılabilinir.
+
+  •    İnteraktif Aylık Bülten'de yer alan veri ve veri kapsamına ilişkin açıklamalar bu yayında
+       yer alan veriler için de geçerlidir.
+
+
+
+
+ Veri ve Sistem Yönetimi Daire Başkanlığı
+
+ Bankacılık Düzenleme ve Denetleme Kurumu
+
+
+
+
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı                                                     22
+BDDK, Veri ve Sistem Yönetimi Daire Başkanlığı   23
+

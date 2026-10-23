@@ -1,0 +1,1047 @@
+                                                                                            Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4. Açıklamalar
+3.4.1. Finansal Raporlama Esasları
+
+TCMB, yasal defterlerini vergi mevzuatına ve 1211 sayılı TCMB Kanunu’na, yasal finansal tablolarını 6102 sayılı Türk Ticaret
+Kanunu’na (TTK) ve 1211 sayılı TCMB Kanunu’na uygun olarak hazırlamaktadır.
+
+Muhasebenin dönemsellik, tam açıklama, ihtiyatlılık, sosyal sorumluluk, kişilik, işletmenin sürekliliği, parayla ölçülme, maliyet
+esası, tarafsızlık ve belgelendirme, tutarlılık, özün önceliği ve önemlilik ilkeleri, finansal olayların kaydedilmesi ve ölçülmesinde
+TCMB muhasebe uygulamalarının temel dayanağını oluşturmaktadır.
+
+TCMB’nin gerçekleştirdiği işlemler işlem tarihindeki kurlar üzerinden Türk lirasına çevrilmektedir. Finansal tabloların
+hazırlanması sırasında, yabancı para cinsinden kayıtlara geçirilmiş olan varlık ve yükümlülük hesapları raporlama tarihindeki
+cari döviz ve efektif alış kurları esas alınarak Türk lirasına çevrilmektedir.
+
+1211 sayılı TCMB Kanunu’nun 61. maddesi gereğince, Türk parasının yabancı paralar karşısındaki değerinin ve uluslararası
+piyasalarda altın fiyatlarının değişmesi nedeniyle TCMB’nin aktifindeki ve pasifindeki dövizlerin, efektiflerin ve yabancı para
+cinsinden diğer varlık ve yükümlülükler ile altınların değerlemesi sonucu oluşan değerleme farkları ayrı bir hesapta izlenir.
+Bu değerleme farklarının ortalama maliyet yöntemine göre hesaplanan gerçekleşmiş tutarları kâr/zarar hesaplarına aktarılır.
+Ortalama maliyet sisteminde uygulanan dönem aralıkları Banka tarafından alınan karar doğrultusunda belirlenir ve ileriye
+dönük olarak uygulanır.
+
+30 Aralık 2023 tarih ve 32415 sayılı Resmi Gazete’de yayımlanan 555 sıra no.lu Vergi Usul Kanunu Genel Tebliği gereğince mali
+bilanço enflasyon düzeltmesine tabi tutulmuş olup, 31 Aralık 2024 tarihli finansal tablolar hazırlanırken enflasyon düzeltmesi
+yapılmamıştır.
+
+Finansal tablolar, Türk lirası cinsinden ifade edilmektedir.
+
+3.4.1.1. Altın Rezervi
+
+TCMB altın rezervleri, TCMB kasasında, yurt dışı bankalarda ve Borsa İstanbul (BİST) nezdinde tutulan uluslararası standartta
+olan ve uluslararası standartta olmayan altınlardan oluşmaktadır.
+
+TCMB, altın rezervlerinin yönetimine ilişkin olarak, doğrudan alım ve satım işlemleri, altın muhafaza hesapları, vadeli altın depo
+işlemleri, altın karşılığı döviz ve döviz karşılığı altın swapları, yurt içinde bankalarla yapılan altın karşılığı swap işlemleri, lokasyon
+swapları, fiziki altın nakil işlemleri ve benzeri işlemleri yapabilmektedir.
+
+Zorunlu karşılık tesisi için bankalar tarafından yatırılan altınlar yurt dışı bankalar ve BİST nezdinde takip edilmektedir.
+
+Altın, alım tarihinde geçerli fiyatlar üzerinden kayda alınmakta ve izleyen dönemlerde Gerçeğe Uygun Değer (GUD) ile
+değerlenmektedir. GUD, Londra Altın Borsasında açıklanan son gün saat 10.30’da kote edilen altın fiyatı ve 1 ons altın = 31,1035
+gram esas alınarak hesaplanmakta, bu değerleri üzerinden günlük olarak Türk lirasına çevrilerek bilançoda gösterilmektedir.
+Altının fiyat ve kur farkı değişiminden kaynaklanan GUD değişiklikleri gerçekleşmemiş kazanç ya da kayıp olarak 1211 sayılı
+TCMB Kanunu’nun 61. maddesi gereğince “Değerleme Hesabı”nda takip edilmektedir.
+
+3.4.1.2 Finansal Varlıklar ve Yükümlülükler
+
+a) GUD Farkı Kâr/Zarara Yansıtılan Finansal Varlıklar
+
+Likidite yönetimi ve rezerv yönetimi amacıyla tutulan Türk lirası ve yabancı para menkul kıymetler, GUD farkı kâr/zarara
+yansıtılan finansal varlıklardır.
+
+1211 sayılı TCMB Kanunu’nun açık piyasa işlemleri ile ilgili 52. maddesine ve altın ve dövizle ilgili işlemlere ilişkin 53. maddesine
+dayanılarak, TCMB’nin kendi nam ve hesabına satın aldığı menkul kıymetler bu grupta sınıflandırılmaktadır. GUD farkı kâr/
+zarara yansıtılan finansal varlıklar, kayda alınmalarının ardından ay sonları itibarıyla GUD’ları ile değerlemeye tâbi tutulmakta
+ve oluşan kazanç ve kayıplar, kâr/zarar hesaplarına intikal ettirilmektedir. Bu finansal varlıkların elde etme maliyeti ile GUD’ları
+arasındaki değer farkları, bilançoda “3. Yurt Dışı Bankalar” ve “5. Menkul Kıymetler” kalemlerine yansıtılmaktadır.
+
+
+
+
+                                                                                                                                               80
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+GUD, BİST’te aynı gün valörlü işlemler için oluşan ağırlıklı ortalama fiyat, bu fiyatların bulunmaması durumunda ise, ilgili
+menkul kıymetlerin TCMB’nin Resmi Gazete’de günlük olarak açıkladığı fiyatları üzerinden hesaplanmaktadır. Yabancı para
+menkul kıymetler, ay sonları itibarıyla ilgili uluslararası piyasalarda oluşan kapanış fiyatları üzerinden hesaplanan GUD’ları ile
+değerlenmektedir.
+
+GUD farkı kâr/zarara yansıtılan finansal varlıkların elde tutulması esnasında kazanılan faizler, faiz gelirleri içerisinde
+gösterilmektedir.
+
+b) Krediler
+
+TCMB tarafından verilen krediler, kredi tutarının karşı tarafa transferi ile kayıtlara yansıtılmaktadır. Krediler etkin faiz yöntemi
+kullanılarak iskonto edilmiş maliyeti üzerinden gösterilir. Etkin faiz yöntemi; finansal varlığın itfa edilmiş maliyet ile değerlenmesi
+ve ilgili faiz gelirinin ilişkili olduğu döneme dağıtılması yöntemidir. Etkin faiz oranı; finansal aracın beklenen ömrü boyunca veya
+uygun olması durumunda daha kısa bir zaman dilimi süresince tahsil edilecek tahmini nakit toplamını, ilgili finansal varlığın tam
+olarak net bugünkü değerine indirgeyen orandır.
+
+c) İştirakler
+
+İlk olarak alış maliyetleri ile kaydedilmektedir. Kayda alınmalarını takip eden dönemlerde GUD’u, piyasa fiyatları veya diğer
+değerleme yöntemleri kullanılarak belirlenmektedir. GUD değişiklikleri sebebiyle oluşan gerçekleşmemiş kazanç ve kayıplar,
+“10. Diğer Pasifler” kaleminde takip edilmektedir. İştiraklere ilişkin temettüler, temettü alma hakkının kesinleştiği dönemde kâr/
+zarar tablosuna yansıtılmaktadır.
+
+d) Geri Satım Vaadiyle Alım İşlemleri
+
+Türk lirası cinsinden menkul kıymetlerin geri satım vaadiyle alım işlemleri TCMB’nin yürüttüğü açık piyasa işlemleri çerçevesinde
+gerçekleştirilmektedir. Geri satım vaadiyle alım işlemleri, teminat karşılığı verilen kredi şeklinde muhasebeleştirilmektedir.
+Nakit alacaklar, işlem tarihinde verilen tutar kadar, aktifte “6. Para Politikası İşlemlerinden Alacaklar / 6.1 Açık Piyasa İşlemleri”
+kaleminde gösterilirken, teminat olarak alınan menkul kıymetler nazım hesaplarda takip edilmektedir. Bankalardan alınacak
+faizler etkin faiz yöntemi kullanılarak ay sonlarında tahakkuk ettirilmektedir. Vadede işlemden doğan faiz geliri kâr/zarar
+tablosuna yansıtılmaktadır.
+
+e) Finansal Varlıklarda Değer Düşüklüğü
+
+GUD farkı kâr/zarara yansıtılanlar dışındaki finansal varlıklar için beklenen kredi değer düşüklüğü modeli uygulanmaktadır.
+Beklenen kredi zararının hesaplanmasında kredi derecelendirme kuruluşlarının her yıl yayınladıkları geçiş matrisi verileri
+kullanılmaktadır. Temerrüt halinde kayıp oranı için Basel düzenlemelerinde önerilen yüzde 45 oranı temel alınmaktadır.
+Temerrüt tutarı, temerrüt olasılığı ve temerrüt halinde kayıp oranı kullanılarak beklenen kredi zararı hesaplanmaktadır.
+
+f) Finansal Varlıkların Bilanço Dışı Bırakılması
+
+TCMB, finansal varlığa ait nakit akışlarına ilişkin sözleşmeden doğan haklarının süresinin dolması veya ilgili finansal varlığı ve
+bu varlığın mülkiyetinden doğan tüm riskleri ve kazanımları başka bir tarafa devretmesi durumunda söz konusu varlığı bilanço
+dışı bırakmaktadır.
+
+g) GUD Farkı Kâr/Zarara Yansıtılan Finansal Yükümlülükler
+
+1211 sayılı TCMB Kanunu’nun 52. maddesi gereğince, para politikası hedeflerine uygun olarak para arzının ve ekonominin
+likiditesinin etkin bir şekilde düzenlenmesi amacıyla, açık piyasa işlemleri çerçevesinde TCMB’nin kendi nam ve hesabına, ikincil
+piyasada alınıp satılabilen ve vadesi 91 günü aşmayan likidite senetleri ihraçları bu grupta sınıflandırılmaktadır. TCMB, likidite
+senetlerini ihraç tutarı üzerinden muhasebeleştirmekte, ay sonları itibarıyla TCMB’nin Resmi Gazete’de günlük olarak açıkladığı
+fiyatlar üzerinden GUD’u ile göstermektedir. İhraç tutarı ile GUD’u arasındaki farklar ay sonları itibarıyla kâr/zarar tablosuna
+yansıtılmaktadır. Bilanço tarihi itibarıyla TCMB’nin likidite senedi ihracı bulunmamaktadır.
+
+h) Diğer Finansal Yükümlülükler
+
+Diğer finansal yükümlülükler etkin faiz oranı üzerinden hesaplanan faiz gideri ile birlikte itfa edilmiş maliyet bedeli esas alınarak
+muhasebeleştirilmektedir.
+
+i) Geri Alım Vaadiyle Satım İşlemleri
+
+Geri alım vaadiyle satım işlemleri, teminat karşılığı alınan mevduat şeklinde muhasebeleştirilmektedir. Teminat olarak verilen
+menkul kıymetler bilançonun aktifinde “5. Menkul Kıymetler” içerisinde gösterilirken, nakit borçlar, işlem tarihinde alınan tutar
+kadar, pasifte “2. Para Politikası İşlemlerinden Borçlar/ 2.1 Açık Piyasa İşlemleri” başlığı altında takip edilmektedir. Bankalara
+ödenecek faiz etkin faiz yöntemi kullanılarak ay sonlarında tahakkuk ettirilmektedir. Vadede işlem için ödenen faiz gideri, kâr/
+zarar tablosuna yansıtılmaktadır.
+
+
+81
+                                                                                       Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+j) Depo İşlemleri
+
+i. TL Depo Karşılığı Döviz Depo İşlemleri
+
+Verilen döviz depo bilançonun aktifinde “7. Yurt İçi Bankalar” kaleminde, alınan TL depo bilançonun pasifinde “2. Para Politikası
+İşlemlerinden Borçlar/ 2.4 Diğer” kaleminde takip edilmektedir. Döviz depolarından tahsil edilecek faiz ve TL depolara ödenecek
+faiz, etkin faiz yöntemi kullanılarak ay sonlarında tahakkuk ettirilmektedir. Vadede işlemden doğan faiz geliri ve işlem için
+ödenen faiz gideri kâr/zarar tablosuna yansıtılmaktadır.
+
+ii. Karşılıklı Depo İşlemleri
+
+Alınan döviz depo bilançonun pasifinde “3. Mevduat/ 3.2 Bankacılık Sektörü Mevduatı/ 3.2.1 Yurt İçi Bankalar/ 3.2.1.1 Nakit”
+kaleminde, verilen TL depo bilançonun aktifinde “6. Para Politikası İşlemlerinden Alacaklar/ 6.3 Diğer” kaleminde takip
+edilmektedir. TL depolardan tahsil edilecek faiz, etkin faiz yöntemi kullanılarak ay sonlarında tahakkuk ettirilmektedir. Vadede
+işlemden doğan faiz geliri kâr/zarar tablosuna yansıtılmaktadır.
+
+k) TL Uzlaşmalı Vadeli Döviz İşlemleri
+
+Valör tarihinde döviz satış taahhüdü ile TL alacaklar nazım hesaplarda muhasebeleştirilmekte, ay sonlarında GUD artışları/
+azalışları bilançoda “16. Diğer Aktifler / 16.4 Diğer” / “10. Diğer Pasifler/ 10.4 Diğer” kalemlerinde takip edilmekte, vadede
+işlemden doğan kur farkına ilişkin TL ödemeleri/tahsilatları kâr/zarar tablosuna yansıtılmaktadır. BİST VİOP nezdinde TL
+uzlaşmalı vadeli döviz işlemlerinde ise, sözleşmelerin değer artış ve azalışları günlük olarak kâr/zarar tablosuna yansıtılmaktadır.
+
+l) Para Takası İşlemleri
+
+i. Ülke Para Takası İşlemleri
+
+Para takası anlaşmasına konu olan YP borçlar ve TL alacaklar valör tarihinde nazım hesaplarda muhasebeleştirilmekte,
+bilançonun aktifinde “3. Yurt Dışı Bankalar / 3.3 Diğer” ve pasifinde “3. Mevduat/ 3.2 Bankacılık Sektörü Mevduatı / 3.2.2 Yurt
+Dışı Bankalar” kalemlerinde takip edilmektedir. Para takası anlaşması çerçevesinde yapılan kullanımlardan tahsil edilecek ve
+ödenecek faiz etkin faiz yöntemi kullanılarak ay sonlarında tahakkuk ettirilmektedir. Vadede tahsil edilen/ödenen faiz kâr/zarar
+tablosuna yansıtılmaktadır.
+
+ii. Banka Para Takası İşlemleri
+
+TCMB ve BİST nezdinde yapılan para takası işlemlerinin valör tarihinde ilgili kıymetlerin (TL, döviz, altın) alışı/satışı
+gerçekleştirilmektedir. Valör tarihinde alış/satış taahhüdü ile borçlar/alacaklar nazım hesaplarda muhasebeleştirilmektedir.
+Ay sonlarında GUD artışları/azalışları bilançoda “16. Diğer Aktifler / 16.4 Diğer” / “10. Diğer Pasifler / 10.4 Diğer” ve kâr/zarar
+tablosunda faiz gelirleri kalemlerinde takip edilmektedir. GUD artışları/azalışlarına ilişkin faiz dışı değerleme etkileri, para
+takası işlemlerine konu varlıkların değerlenmesi sonucu oluşan gerçekleşmemiş gelir veya giderlerin bilanço içinde yer alan
+değerleme etkileri ile beraber bilançoda “16. Diğer Aktifler / 16.4 Diğer” / “10. Diğer Pasifler / 10.4 Diğer” kalemlerinde, GUD
+artışları/azalışlarının faiz bileşenlerine ilişkin tutarlar kâr/zarar tablosunda takip edilmekte olup, vadede işlemden doğan faiz
+gelir/giderine ilişkin tutarlar kâr/zarar tablosuna yansıtılmaktadır.
+
+m) Kur Korumalı Mevduat İşlemleri
+
+i. Döviz Dönüşümlü Kur Korumalı Mevduat İşlemleri
+
+Türk lirası mevduat ve katılma hesaplarına dönüşüm işlemleri ile alınan kıymetler (döviz, altın) valör tarihinde ilgili hesaplara
+aktarılmak üzere “7. Yurt İçi Bankalar” kaleminde muhasebeleştirilmektedir. Ay sonlarında, Türk lirası mevduat ve katılma
+hesaplarına dönüşüm işlemleri kapsamında ödenecek kur farklarının GUD’u bilançoda “16. Diğer Aktifler/16.4 Diğer” / ”10.
+Diğer Pasifler/ 10.4 Diğer” kalemlerinde karşılıklı takip edilmekte, vadede işlemden doğan kur farkı gideri kâr/zarar tablosuna
+yansıtılmaktadır.
+
+ii. TL Dönüşümlü Kur Korumalı Mevduat İşlemleri
+
+14 Temmuz 2023 tarihli ve 7456 sayılı Kanun’un geçici 2. maddesiyle Bankamıza devredilen kur korumalı mevduat işlemlerine
+ilişkin kur farklarının GUD’u bilançoda “16. Diğer Aktifler / 16.4 Diğer” / “10. Diğer Pasifler/ 10.4 Diğer” kalemlerinde karşılıklı
+takip edilmekte, vadede işlemden doğan kur farkı gideri kâr/zarar tablosuna yansıtılmaktadır. 17 Aralık 2022 tarih ve 32046
+sayılı Resmi Gazetede yayımlanan 6563 sayılı Cumhurbaşkanlığı Kararı ile yürürlüğü 31.12.2023 tarihine uzatılan söz konusu
+işlemler, en fazla 12 ay vade ile hesap açılabildiğinden, 31.12.2024 tarihi itibarıyla sona ermiştir.
+
+
+
+                                                                                                                                          82
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.1.3. Gelirler ve Giderler
+
+a) Faiz Geliri/Gideri
+
+Dönemsellik ilkesinin gereği olarak henüz vadesi gelmemiş alacaklar ve borçlara ait faizler için ay sonlarında gelir ve gider
+reeskontları, vadesi gelen ancak tahsilatı veya ödemesi bir sonraki dönemde yapılacaklar için ise gelir ve gider tahakkukları
+yapılmaktadır.
+
+b) Komisyon ve Hizmet Geliri/Gideri
+
+TCMB’nin ticari bankalar, T.C. Hazine ve Maliye Bakanlığı, genel bütçe kapsamındaki kamu idareleri ile muhtelif kişi ve
+kuruluşlarla olan işlemlerinden dolayı ödediği ya da tahsil ettiği komisyon ve hizmet geliri ve gideri, tahsil edildiği veya ödendiği
+dönemde gelir veya gider olarak muhasebeleştirilmektedir. Tahsilatı veya ödenmesi bir sonraki dönemde gerçekleşecekler
+için gelir veya gider tahakkukları yapılmaktadır.
+
+c) Faiz Dışı Gelir/Gider
+
+GUD farkı kâr/zarara yansıtılan finansal varlıkların elde etme maliyetleri ile GUD’ları arasındaki fark, TL uzlaşmalı döviz işlemleri
+kur farkı gelir/ giderleri, kur korumalı mevduat işlemlerinin kur farkı gideri, altın ve yabancı para alım satım gelir/giderleri ile
+genel giderler bu kalem altında takip edilmektedir. Altın ve yabancı para alım satım gelir/giderlerinin hesaplanmasında ortalama
+maliyet yöntemi kullanılmaktadır. Para takası işlemlerinden doğan faiz gelir/gideri ortalama maliyete dahil edilmektedir. Peşin
+ödenen giderler dönemsellik ilkesi gereğince aylık giderleştirilmektedir.
+
+3.4.1.4. Duran Varlıklar
+
+Duran varlıklar, arsalar, binalar ve bina maliyetine giren ilave harcamalar ile demirbaşlar ve yazılım ürünlerinden oluşmaktadır.
+TCMB bilançosundaki arsalar maliyet değerleri üzerinden, binalar, demirbaşlar ve yazılımlar ise amortismanları ile
+netleştirilmiş değerleri üzerinden bilançoda gösterilmektedir. Duran varlıkların elden çıkarılması sonucunda satış bedeli ile
+varlığın netleştirilmiş değeri arasındaki fark, gelir veya gider olarak kâr/zarar tablosuna yansıtılmaktadır. Arsalar dışındaki
+duran varlıkların amortismanları Vergi Usul Kanunu (VUK) Genel Tebliğlerinde yer alan faydalı ömürleri dikkate alınarak, kıst
+amortisman yöntemine göre hesaplanmaktadır.
+
+3.4.1.5. Tedavüldeki Banknotlar
+
+1211 sayılı TCMB Kanunu ile Türkiye’de banknot ihraç etme yetkisi sadece TCMB’ye verilmiştir. Tedavüle çıkarılan banknot
+miktarı TCMB bilançosunda “1. Tedavüldeki Banknotlar” kaleminde gösterilmektedir. TCMB, tedavülde bulunan banknotları
+gerekli gördüğü zaman yeni banknotlarla değiştirebilmektedir. Tedavüldeki banknotlar, finansal tablolarda banknotların
+nominal değerleriyle gösterilmektedir.
+
+TCMB’nin banknot matbaasında üretilen yarı mamul banknot stokları “16. Diğer Aktifler” kalemi altında maliyet bedeli ile
+izlenmektedir. Banknotlar ile ilgili harcamalar aktifleştirilmekte ve banknotlar TCMB’nin yedek deposuna aktarıldığında
+giderleştirilmektedir. Mamul ve yarı mamul maliyetleri; doğrudan maliyetler ile amortisman gideri, personel gideri, banknot
+taşıma gideri ve diğer üretim giderleri gibi genel giderleri içermektedir.
+
+3.4.1.6. Karşılıklar
+
+1211 sayılı TCMB Kanunu’nun 59. maddesine göre, TCMB’nin yıllık gayri sâfi kârından ertesi yıllara has işlemler dolayısıyla
+meydana gelebilecek muayyen riskleri karşılamak üzere Banka Meclisince uygun görülebilecek tutarlarda provizyonlar
+ayrılabilmektedir.
+
+3.4.1.7. Çalışanlara Sağlanan Faydalar
+
+Emekli ikramiyesi ve kıdem tazminatı, emeklilik veya işten ayrılma durumunda ödenmektedir. Ödenecek tutar, mensubun
+unvanı ve hizmet yılına göre ilgili kanunlarda belirtilen esaslara göre hesaplanmaktadır.
+
+Emekli ikramiyesi ve kıdem tazminatı yükümlülüğü, tüm çalışanların emeklilikleri dolayısıyla ileride doğması beklenen
+yükümlülük tutarlarının net bugünkü değerine göre hesaplanmakta ve finansal tablolara yansıtılmaktadır.
+
+
+
+
+83
+                                                                                      Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.1.8. Vergiler
+
+a) Ödenecek Vergiler
+
+1211 sayılı TCMB Kanunu’nun 1. maddesi gereğince “anonim şirket” olarak kurulan TCMB, kurumlar vergisi mükellefidir.
+TCMB, 193 sayılı Gelir Vergisi Kanunu’nun 94. maddesine göre ücretler, serbest meslek işleri dolayısıyla yapılan ödemeler,
+mevduat faizleri vs. üzerinden, ayrıca 5520 sayılı Kurumlar Vergisi Kanunu’nun (KVK) 30. maddesine göre dar mükellefiyete
+tabi kurumlara yapılan gayrimenkul sermaye iratları, serbest meslek kazançları ve anılan maddede belirtilen diğer kazançlar
+dolayısıyla yapılan ödemeler üzerinden tevkifat yapmakla sorumludur.
+
+TCMB, Banka ve Sigorta Muameleleri Vergisi (BSMV) mükellefidir.
+
+1211 sayılı TCMB Kanunu’nun 61. maddesi kapsamındaki varlık ve yükümlülüklerden TCMB lehine oluşan gerçekleşmemiş
+değerleme farkları, değerlemenin yapıldığı dönem kazancına dâhil edilmemekte ve kurumlar vergisi matrahının tespitinde gelir
+olarak dikkate alınmamaktadır. TCMB aleyhine oluşan gerçekleşmemiş değerleme farkları da değerlemenin yapıldığı dönem
+kazancından düşülmemekte ve kurumlar vergisi matrahının tespitinde gider olarak dikkate alınmamaktadır.
+
+Repo-ters repo gelirleri üzerinden kesilen ve geçici vergiden mahsubu yapılan vergi tutarları ile ödenmiş olan geçici vergi
+tutarları bilançoda “16. Diğer Aktifler / 16.4 Diğer” kaleminde izlenmektedir.
+
+Cari döneme ait kurumlar vergisi, kâr/zarar tablosuna gider olarak yansıtılmaktadır. Vergi işlemlerine ilişkin düzeltmeler cari
+dönemde işlem tarihleri esas alınarak gerçekleştirilmektedir.
+
+Kurumlar vergisinin tespitinde, takip eden yıllarda kâr elde edilmesi halinde 5520 sayılı KVK’nın 9. maddesinin 1-a bendi
+uygulanır.
+
+b) Ertelenmiş Vergi
+
+Ertelenmiş vergi yükümlülüğü veya varlığı, varlıkların ve yükümlülüklerin finansal tablolarda gösterilen tutarları ile TCMB Kanunu
+ve Vergi Kanunlarına göre tutulan defter kayıtları arasındaki geçici farkların vergi etkisinden kaynaklanmaktadır. Ertelenmiş
+vergi varlığı bilançonun aktifinde, ertelenmiş vergi yükümlülüğü bilançonun pasifinde gösterilmektedir.
+
+Cari döneme ait vergi, ilgili dönemin kurumlar vergisi ile ertelenmiş vergideki değişimi içermektedir.
+
+TCMB Kanunu 61. madde gereği kurumlar vergisi matrahına konu olmayan “Değerleme Hesabı” üzerinden ertelenmiş vergi
+hesaplanmamaktadır.
+
+555 sıra no.lu VUK Genel Tebliği uyarınca enflasyona göre düzeltilmiş duran varlıklar amortismanları ile finansal tablolarda
+sunulan düzeltilmemiş amortismanlar arasındaki geçici farklardan ertelenmiş vergi varlığı hesaplanmıştır.
+
+31.12.2023 ve 31.12.2024 itibarıyla 2023 ve 2024 yılı zararları üzerinden ertelenmiş vergi varlıkları kayıtlara alınmamıştır. Bu
+hakların kullanım süreleri sırasıyla 2028 ve 2029 yıllarında sona erecektir.
+
+3.4.1.9. Karşılaştırmalı Bilgiler ve Önceki Dönem Finansal Tablolarının Düzeltilmesi
+
+Finansal durumun karşılaştırılabilmesine imkân vermek üzere, TCMB’nin cari ve önceki dönem finansal tabloları birlikte
+sunulmaktadır. Cari dönem finansal tablolarının sunumu ile uygunluk sağlanması açısından önceki dönem finansal tabloları
+gerekli görüldüğünde yeniden sınıflandırılmakta ve önemli farklılıklar açıklanmaktadır.
+
+3.4.1.10. Saklama İşlemleri
+
+Çeşitli kişi ve kuruluşlara ait emanete alınan varlıklar, saklama amacıyla elde tutulduklarından nazım hesaplarda izlenmektedir.
+
+
+
+
+                                                                                                                                         84
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2. Finansal Tablo Kalemlerine İlişkin Açıklamalar
+3.4.2.1. Altın
+
+Altın mevcudu, 766.717.431 safi gram karşılığı 2.266.929.626.009 TL tutarında uluslararası standartta olan ve 2.832.327 safi
+gram karşılığı 8.374.254.550 TL tutarında uluslararası standartta olmayan altınlardan oluşmaktadır. Uluslararası standartta
+olan altınların bir kısmı TCMB’ye ait olup, bir kısmı ise zorunlu karşılık tesisi ve serbest altın deposu olarak veren bankalara ve
+Hazine’ ye aittir. Söz konusu altınlar, TCMB kasalarında, BİST ve BoE nezdinde muhafaza edilmektedir.
+
+ Tablo 3.4.2.1.1: Altın
+                                                                                          2024                                          2023
+                                                                           Safi Gram                            TL       Safi Gram                           TL
+ Uluslararası Standartta Olan Altın                                       766.717.431        2.266.929.626.009          726.375.977        1.417.869.831.864
+     TCMB malı altın                                                      508.885.577        1.504.606.187.568          524.066.221        1.022.965.665.246
+        BoE nezdinde                                                      111.769.886          330.466.552.086          108.084.060          210.977.693.494
+        TCMB nezdinde                                                      34.015.936          100.573.862.823           34.015.936            66.398.354.905
+        BİST nezdinde                                                     363.099.755        1.073.565.772.659          381.966.224          745.589.616.847
+     Bankalar zorunlu karşılık altını                                     123.042.349          363.795.493.382          108.851.502          212.475.722.650
+        BoE nezdinde                                                       61.902.183          183.024.261.999           42.531.602            83.020.745.255
+        BİST nezdinde                                                      61.140.166          180.771.231.383           66.319.900          129.454.977.395
+     Bankalar Serbest Altın Deposu                                         73.711.999          217.941.979.174           43.347.921            84.614.182.874
+        BİST nezdinde                                                      73.711.999          217.941.979.174           43.347.921            84.614.182.874
+     Hazine Altını                                                         61.077.506          180.585.965.885           50.110.333            97.814.261.094
+        BİST nezdinde                                                      61.077.506          180.585.965.885           50.110.333            97.814.261.094
+ Uluslararası Standartta Olmayan Altın                                       2.832.327            8.374.254.550            2.832.327            5.528.640.444
+     TCMB malı altın                                                         2.832.218            8.373.930.854            2.832.218            5.528.426.742
+     Koleksiyon (TCMB malı)                                                         109                  323.696                  109                  213.703
+
+Not: Altın, 1 ons altın = 31,1035 gram esas alınarak, 2.610,85 USD/Ons fiyatı (31 Aralık 2023: 2.062,40) ve 31 Aralık 2024 tarihli ABD doları döviz alış kuru olan
+35,2233 TL (31 Aralık 2023: 29,4382 TL) kullanılarak değerlenmiştir. Buna göre 1 safi gram altın fiyatı = (2.610,85 x 35,2233) / 31,1035 = 2.956,67 TL olarak
+gerçekleşmiştir.
+
+Uluslararası standartta olan altınlar, TCMB tarafından yabancı para rezervlerinin bir parçası olarak tutulmakta ve toplam
+yabancı para rezervlerinin yüzde 41,46’sını (31 Aralık 2023: yüzde 34,19) oluşturmaktadır.
+
+Zorunlu karşılık tesisi için bankalar tarafından yatırılan 123.042.349 safi gram karşılığı 363.795.493.382 TL, serbest altın
+deposu olarak yatırılan 73.711.999 safi gram karşılığı 217.941.979.174 TL tutarındaki altınlar ile 61.077.506 safi gram karşılığı
+180.585.965.885 TL Hazine altını bu kalemde takip edilmektedir.
+
+Uluslararası standartta olmayan altınlar TCMB’ye ait olup, tamamı TCMB kasalarında muhafaza edilmektedir. Söz konusu
+altınlar, bilançonun aktifinde “16. Diğer Aktifler” kaleminin altında takip edilmektedir.
+
+
+3.4.2.2. Yabancı Para Banknotlar
+
+31 Aralık 2024 itibarıyla TCMB şubelerinin kasalarında bulunan yabancı para banknotların TL karşılığı 44.690.635.793 TL’dir.
+
+
+ Tablo 3.4.2.2.1: Yabancı Para Banknotlar
+
+                                                                                                                2024                                      2023
+ Yabancı para banknotlar                                                                          44.690.635.793                          103.684.060.153
+
+
+
+
+85
+                                                                                              Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.3. Yurt Dışı Bankalar
+
+Döviz rezervlerinin büyük bir bölümünü oluşturan ve bilançonun aktifinde yer alan “3. Yurt Dışı Bankalar” kalemi, GUD’u ile
+izlenen YP menkul kıymetler, yabancı bankalardaki depo hesapları ve cari hesaplardan oluşmaktadır.
+
+Tablo 3.4.2.3.1: Yurt Dışı Bankalar (Aktif)
+                                                               2024                                                  2023
+
+                                                              TL ABD Doları Karşılığı                               TL ABD Doları Karşılığı
+
+YP menkul kıymetler                              873.294.273.869         24.793.085.085             104.784.379.766               3.559.469.661
+
+Mevduat                                          632.403.342.531         17.954.119.646             453.568.530.466              15.407.481.791
+
+Diğer                                           1.645.262.491.639        46.709.493.195          2.062.902.114.603               70.075.687.868
+
+ Vadesiz mevduat                                1.391.538.025.168        39.506.179.863          1.844.608.041.395               62.660.354.281
+
+ SDR holding hesabı                              253.720.570.851             7.203.202.734          218.294.073.208               7.415.333.587
+
+ Diğer                                                  3.895.619                 110.598                             -                           -
+
+TOPLAM                                          3.150.960.108.039       89.456.697.926           2.621.255.024.835               89.042.639.320
+
+Bilançonun pasifinde yer alan “4. Yurt Dışı Bankalar” kaleminin 31 Aralık 2024 ve 31 Aralık 2023 itibarıyla bakiyeleri aşağıda
+yer almaktadır.
+
+
+Tablo 3.4.2.3.2: Yurt Dışı Bankalar (Pasif)
+
+                                               2024                                                        2023
+                                              TL ABD Doları Karşılığı                                     TL ABD Doları Karşılığı
+ Nakit                        350.671.792.505         9.955.676.853                          611.960.020.912     20.787.956.496
+ Altın                         88.700.065.894         2.518.221.345                           58.559.334.305      1.989.229.447
+TOPLAM                        439.371.858.399        12.473.898.198                          670.519.355.217     22.777.185.943
+
+
+
+3.4.2.4. IMF Üyeliğinden Doğan Bakiyeler
+
+Türkiye’nin IMF üyeliğinden doğan mali ilişkiler çerçevesinde, ülke kotasının altın ve yabancı para olarak ödenen kısmı
+bilançonun aktifinde yer alan “4. Rezerv Dilimi Pozisyonu” ve pasifinde yer alan “5. Rezerv Dilimi İmkanı” kalemlerinde takip
+edilmektedir. 112.889.638 SDR olan bu tutarın 37.750.000 SDR’lik kısmı altın olarak ödenmiştir. Türkiye’nin IMF kotası 18
+Şubat 2016 tarihinde 4.658 milyon SDR olmuştur.
+
+
+
+Tablo 3.4.2.4.1: IMF Üyeliğinden Doğan Bakiyeler
+
+                                                                      2024                                                2023
+                                                                        TL                   SDR                            TL               SDR
+Aktif
+   Rezerv dilimi pozisyonu                                   5.196.343.904         112.889.638                4.472.360.078         112.889.638
+   SDR tahsisatı nedeniyle Hazine yükümlülüğü              254.841.614.826        5.536.388.310            219.335.649.316        5.536.388.310
+Pasif
+   Rezerv dilimi imkânı                                      5.196.343.904         112.889.638                4.472.360.078         112.889.638
+   SDR tahsisatı                                           254.841.614.826        5.536.388.310            219.335.649.316        5.536.388.310
+
+IMF tarafından ülkemize tahsis edilmiş ve T.C. Hazine ve Maliye Bakanlığınca kullanılmış olan 112.307.000 SDR, 2009 yılında
+tahsis edilen toplam 959.022.729 SDR tutarındaki Genel ve Özel SDR Tahsisatı ve 2021 yılında tahsis edilen 4.465.058.581
+SDR tutarındaki Genel SDR Tahsisatı aktifte “10. SDR Tahsisatı Nedeniyle Hazine Yükümlülüğü”, pasifte ise “6. SDR Tahsisatı”
+kalemlerinde izlenmektedir.
+
+
+
+
+                                                                                                                                                 86
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.5. Menkul Kıymetler
+Menkul kıymetlerin 31 Aralık 2024 itibarıyla GUD’u 138.545.246.011 TL’dir.
+
+Tablo 3.4.2.5.1: Menkul Kıymetler
+
+                                                                      2024                                   2023
+                                                                Maliyet              GUD             Maliyet                GUD
+ Hazine tarafından ihraç edilen devlet tahvilleri,
+                                                         168.893.646.086 129.076.988.841 196.640.588.979 159.312.133.196
+ hazine bonoları
+
+ Hazine tarafından ihraç edilen kira sertifikaları         9.469.615.870     9.468.257.170        701.331.100         601.102.610
+
+ TOPLAM                                                  178.363.261.956 138.545.246.011 197.341.920.079 159.913.235.806
+
+3.4.2.6. Para Politikası İşlemlerinden Alacaklar ve Borçlar
+
+Bilançonun aktifinde yer alan ve TCMB’nin nakit alacaklarını gösteren “6. Para Politikası İşlemlerinden Alacaklar” kalemi,
+31 Aralık 2024 itibarıyla 4.020.035.720 TL olarak gerçekleşmiştir. Bu kaleme yansıtılan gelir reeskontları, geri satım vaadiyle
+alım işlemleri için 12.475.797 TL (31 Aralık 2023: 19.175.145 TL); Bankalararası Para Piyasası (BPP) işlemleri için 7.559.938
+TL’dir (31 Aralık 2023: 10.011.308 TL); Karşılıklı Depo İşlemleri için ise bakiye vermemektedir (31 Aralık 2023: 117.940.808 TL).
+
+Bilançonun pasifinde yer alan ve TCMB’nin nakit borçlarını gösteren “2. Para Politikası İşlemlerinden Borçlar” kalemi
+254.802.092.044 TL olarak gerçekleşmiştir. Bu kaleme yansıtılan gider reeskontları, geri alım vaadiyle satım işlemleri için ise
+bakiye vermemektedir. (31 Aralık 2023: 399.880), BPP işlemleri için 470.092.044 TL (31 Aralık 2023: 2.652.109.839 TL)’dir.
+
+Tablo 3.4.2.6.1: Para Politikası İşlemlerinden Alacaklar/Borçlar
+                                                                                                     2024                   2023
+Aktif
+Para Politikası İşlemlerinden Alacaklar                                                      4.020.035.720          9.443.643.254
+         Açık piyasa işlemleri                                                               2.979.142.450          3.519.175.138
+         Bankalararası para piyasası işlemleri                                               1.040.893.270          1.510.011.308
+         Diğer                                                                                           -          4.414.456.808
+Pasif
+Para Politikası İşlemlerinden Borçlar                                                   254.802.092.044         370.846.639.719
+         Açık piyasa işlemleri                                                                           -            119.129.880
+         Bankalararası para piyasası işlemleri                                          254.802.092.044         370.727.509.839
+Para Politikası İşlemlerinden Alacaklar (Net)                                          -250.782.056.324         -361.402.996.465
+
+3.4.2.7. Yurt İçi Bankalar
+
+“7. Yurt İçi Bankalar” kaleminde TCMB taraflı döviz depo işlemleri, karşılaşan döviz depo işlemleri, TL depoları karşılığı döviz
+depo işlemleri ve valör tarihinde ilgili hesaplara aktarılmak üzere Türk lirası mevduat ve katılma hesaplarına dönüşüm işlemleri
+gösterilmekte olup, 31 Aralık 2024 itibarıyla bakiyesi 4.456.806.422 TL’dir (31 Aralık 2023: 4.058.291.397 TL).
+
+ Tablo 3.4.2.7.1: Yurt İçi Bankalar
+                                                                                                     2024                   2023
+ Türk Lirası Mevduat ve Katılma Hesaplarına Dönüşüm İşlemleri                                4.456.806.422          4.058.291.397
+ TOPLAM                                                                                      4.456.806.422          4.058.291.397
+
+
+
+
+87
+                                                                                                           Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.8. Krediler ve Takipteki Alacaklar
+
+İç krediler reeskonta kabul edilen yabancı para üzerinden düzenlenmiş senetler karşılığında bankalara kullandırılan,
+839.770.000 ABD doları (31 Aralık 2023: 850.470.000 ABD doları), 1.460.920.000 Euro (31 Aralık 2023: 1.324.020.000 Euro),
+1.954.019.548 Çin yuanı (31 Aralık 2023: 705.374.506 Çin yuanı), 99.897.731 BAE dirhemi (31 Aralık 2023: 136.680.954)
+karşılığı 93.586.905.666 TL (31 Aralık 2023: 72.161.192.326 TL) ve Türk lirası üzerinden düzenlenmiş senetler karşılığında
+bankalara kullandırılan 495.589.558.555 TL (31 Aralık 2023: 334.000.944.390 TL) tutarındaki kredilerden ve 93.063.241.845 TL
+(31 Aralık 2023: 85.055.921.832 TL) tutarındaki yatırım taahhütlü avans kredisinden oluşmaktadır. İç kredilerin 31 Aralık 2024
+itibarıyla bakiyesi reeskontlar dahil 620.995.349.368 TL (31 Aralık 2023: 445.174.833.315 TL) olarak gerçekleşmiştir.
+
+Dış krediler, Sudan Merkez Bankasına kullandırılan krediden oluşmaktadır. Sudan Merkez Bankası ile TCMB arasında imzalanan
+bankacılık anlaşması uyarınca kullandırılan bu kredinin bakiyesi 9.061.417 ABD doları (31 Aralık 2023: 9.061.417 ABD doları)
+olup, karşılığı 319.172.997 TL (31 Aralık 2023: 266.751.796 TL)’dir.
+
+ Tablo 3.4.2.8.1: Krediler ve Takipteki Alacaklar
+
+                                                                                                                     2024                                2023
+
+ İç krediler                                                                                          620.995.349.368                     445.174.833.315
+ Dış krediler                                                                                               319.172.998                         266.751.796
+ Takipteki alacaklar (Net)
+    Takipteki alacaklar                                                                                 56.549.804.331                      47.018.242.554
+    Takipteki alacaklar karşılığı                                                                      -56.549.804.331                     -47.018.242.554
+ TOPLAM                                                                                              621.314.522.366                      445.441.585.111
+
+Not: Irak Merkez Bankasından olan kredi alacağına yıl içinde 8.281.126 ABD doları (31 Aralık 2023: 8.213.361 ABD doları) karşılığı 273.478.668 TL (31 Aralık 2023:
+198.605.130 TL) faiz tahakkuk ettirilmiştir.
+
+
+Irak Merkez Bankasından 1.512.891.348 ABD doları (31 Aralık 2023: 1.504.610.222 ABD doları) karşılığı 53.289.025.809 TL
+(31 Aralık 2023: 44.293.016.630 TL) kredi alacağı bulunmaktadır. Irak Bekhme Barajı projesi kapsamında satın alınan senetler
+karşılığı kullandırılan kredilerden ise 92.574.475 ABD doları (31 Aralık 2023: 92.574.475 ABD doları) karşılığı 3.260.778.522
+TL (31 Aralık 2023: 2.725.225.924 TL) alacak bulunmaktadır. Irak Merkez Bankasına kullandırılan kredinin anaparası ve aylık
+olarak tahakkuk ettirilen faiz tutarı günlük olarak değerlenmekte; değerleme sonucu oluşan kur farkına 213 sayılı VUK’un 323.
+maddesi ve TCMB Kanunu’nun 59. maddesi kapsamında karşılık ayrılmakta ve ayrılan karşılıklar kâr/zarar hesapları içinde
+izlenmektedir. Toplam 56.549.804.331 TL (31 Aralık 2023: 47.018.242.554 TL) olan alacak, ayrılan karşılıkla netleştirildiği için
+Takipteki Alacaklar kalemi 31 Aralık 2024 itibarıyla bakiye göstermemektedir.
+
+
+
+
+                                                                                                                                                               88
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.9. İştirakler
+
+Uluslararası Ödemeler Bankası (BIS), Dünya Bankalararası Finansal Telekomünikasyon Kuruluşu (SWIFT), Uluslararası İslami
+Likidite Yönetimi Şirketinde (IILM) ve Bankalararası Kart Merkezi A.Ş. (BKM)’de iştirakler bulunmaktadır.
+
+Merkez bankacılığı faaliyeti çerçevesinde satın alınan BIS iştiraki, net varlık değerinin yüzde 70’i olarak hesaplanan GUD’u ile
+değerlenmiştir.
+
+
+Tablo 3.4.2.9.1: İştirakler
+
+
+                                                                       2024                                         2023
+
+                                                     Hisse                                           Hisse
+İştirak Adı       Hizmet Alanı                                              TL            Döviz                         TL            Döviz
+                                                   Payı (%)                                        Payı (%)
+
+                 Bankacılık düzenleme
+BIS                                                       1,41   12.199.396.737   10.000.000 SDR       1,41   9.610.293.629   10.000.000 SDR
+                 hizmetleri
+                 Elektronik fon transfer
+SWIFT                                                    0,007        2.363.303      64.320 EUR      0,007        2.022.188      62.080 EUR
+                 hizmetleri
+IILM             Likidite yönetimi                       13,45     406.630.890 11.544.372 USD        13,33     294.382.000    10.000.000 USD
+BKM              Ödeme hizmetleri                        51,01       90.543.079                -     51,01       90.543.079                -
+TOPLAM                                                           12.698.934.009                               9.997.240.896
+
+İştiraklerin hareket tablosu aşağıda verilmiştir:
+
+Tablo 3.4.2.9.2: İştirakler Hareket Tablosu
+                                                                                                    2024                              2023
+1 Ocak bakiyesi                                                                            9.997.240.896                      5.889.960.247
+IILM sermaye artışı                                                                           49.644.157                                   -
+GUD değişiklikleri                                                                         2.652.048.956                      4.107.280.649
+Bakiye                                                                                   12.698.934.009                       9.997.240.896
+
+
+
+
+89
+                                                                                            Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.10. Duran Varlıklar (Net)
+
+TCMB duran varlıkları, arsalar, binalar, demirbaşlar ve yazılım ürünlerinden oluşmaktadır.
+
+Tablo 3.4.2.10.1: Duran Varlık Hareket Tablosu
+
+                                                                 Gayrimenkul         Demirbaş                Yazılım                  Toplam
+1 Ocak net bilanço değeri                                          774.929.113      673.300.949         53.525.715            1.501.755.778
+Alımlar                                                            239.228.925    1.413.179.480         33.886.717            1.686.295.122
+Elden çıkarılanlar (net) (*)                                        -30.594.360        -214.396                       -          -30.808.755
+Dönem içi amortisman                                                -23.242.724    -317.830.065         -45.566.665            -386.639.454
+Net bilanço değeri                                                 960.320.955    1.768.435.969         41.845.767           2.770.602.691
+
+(*) Elden çıkarılanlar, amortismanı düşülmüş değeriyle gösterilmiştir.
+
+
+2024                                                            Gayrimenkul          Demirbaş               Yazılım                   Toplam
+
+Kayıtlı değeri                                                  1.195.808.172                          236.668.387            4.027.143.338
+                                                                                  2.594.666.779
+Birikmiş amortismanlar                                            -235.487.217     -826.230.810       -194.822.620           -1.256.540.647
+Net bilanço değeri                                                 960.320.955    1.768.435.969         41.845.767            2.770.602.691
+
+
+2023                                                            Gayrimenkul          Demirbaş               Yazılım                   Toplam
+Kayıtlı değeri                                                     991.421.580    1.198.836.385        202.781.685            2.393.039.650
+Birikmiş amortismanlar                                            -216.492.467     -525.535.435       -149.255.970              -891.283.872
+Net bilanço değeri                                                 774.929.113     673.300.949          53.525.715            1.501.755.778
+
+
+
+3.4.2.11. Değerleme Hesabı
+
+Tablo 3.4.2.11.1: Değerleme
+                                                                                                    2024                                  2023
+Değerleme hesabı                                                                        491.148.756.096                    817.762.329.689
+
+Türk parasının yabancı paralar karşısındaki değerinin ve uluslararası piyasalarda altın fiyatlarının değişmesi nedeniyle
+TCMB’nin aktifindeki ve pasifindeki dövizlerin, efektiflerin ve yabancı para cinsinden diğer varlık ve yükümlülükler ile altınların
+değerlemesi sonucu oluşan aleyhte ve lehte değerleme farklarının takip edildiği bu kalemde, 31 Aralık 2024 itibarıyla aleyhte
+kur farkı olan 491.148.756.096 TL’lik tutar yer almaktadır.
+
+
+
+
+                                                                                                                                               90
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.12. Diğer Aktifler
+
+Tablo 3.4.2.12.1: Diğer Aktifler
+                                                                                                2024              2023
+Uluslararası standartta olmayan altın                                                  8.374.254.550      5.528.640.444
+Madeni para                                                                              165.656.229         89.329.230
+Gelir tahakkukları                                                                     1.948.732.854      1.998.880.085
+      Hazine'den tahsil edilecek masraf ve komisyonlar                                   238.366.645        303.084.130
+      EFT mesaj ücretleri                                                                299.859.214        178.145.623
+      Diğer                                                                             1.410.506.995     1.517.650.332
+Diğer                                                                                 66.756.613.979    281.298.569.130
+      Kurumlar vergisinden mahsup edilecek geçici vergi                                 3.467.565.011     1.460.340.421
+      Kurumlar vergisinden mahsup edilecek gelir vergisi stopajı                        6.370.880.938     2.330.139.792
+      Depolar                                                                            953.245.133        559.973.922
+      Peşin ödenen ücretler                                                              119.452.498         90.169.208
+      Diğer                                                                           55.845.470.399    276.857.945.787
+TOPLAM                                                                                77.245.257.612    288.915.418.889
+
+3.4.2.13. Tedavüldeki Banknotlar
+
+Tablo 3.4.2.13.1: Tedavüldeki Banknotlar
+
+                                                                                                2024              2023
+1 Ocak bakiyesi                                                                       448.822.892.318   341.798.643.178
+Tedavüle giren banknotlar                                                             262.996.926.785   144.158.582.105
+Tedavülden çekilen ve imha edilen banknotlar                                          -66.583.283.680   -37.134.332.965
+Bakiye                                                                               645.236.535.423 448.822.892.318
+Tedavüldeki banknotlar 31 Aralık 2024 itibarıyla 645.236.535.423 TL bakiye göstermektedir.
+
+
+
+
+91
+                                                                                    Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.14. Mevduat
+
+Tablo 3.4.2.14.1: Mevduat
+                                                                                        2024                               2023
+Kamu sektörü mevduatı                                                       1.001.301.087.684                    983.018.845.601
+ Hazine, genel ve özel bütçeli idareler                                     1.001.094.616.970                    982.800.690.002
+   Nakit                                                                      820.508.651.085                    884.986.428.907
+   Altın                                                                      180.585.965.885                     97.814.261.094
+ Diğer                                                                            206.470.714                        218.155.600
+Bankacılık sektörü mevduatı                                                 5.933.326.917.001                  4.035.132.437.335
+ Yurt içi bankalar                                                          2.859.031.135.105                  1.969.070.182.025
+   Bankalar Mevduatı                                                          337.420.000.379                    101.228.208.867
+      Nakit                                                                   167.799.441.799                     48.784.333.426
+      Teminat                                                                  40.378.645.300                     26.386.595.000
+        Nakit                                                                  40.378.645.300                     26.386.595.000
+        Altın                                                                               -                                  -
+      Altın                                                                   129.241.913.280                     26.057.280.441
+   Zorunlu karşılık serbest                                                 2.521.611.134.726                  1.867.841.973.159
+ Yurt dışı bankalar                                                           774.655.377.027                    666.678.656.337
+ Zorunlu karşılıklar bloke hesabı                                           2.299.640.404.869                  1.399.383.598.973
+   Nakit                                                                    1.935.844.911.487                  1.186.907.876.323
+   Altın                                                                      363.795.493.382                    212.475.722.650
+Diğer mevduat                                                                  14.319.759.245                     12.866.170.507
+ İşçi dövizleri                                                                 4.274.265.165                      5.181.219.360
+ Uluslararası kuruluşlar                                                          610.467.885                        417.423.702
+   IMF                                                                            502.254.882                        309.459.799
+   Diğer                                                                          108.213.003                        107.963.903
+ Fonlar                                                                           784.528.975                        179.201.429
+ Diğer                                                                          8.650.497.220                      7.088.326.016
+   Finansman şirketleri                                                         8.645.468.132                      7.080.763.532
+   Elçilikler mevduatı                                                                 28.484                             24.096
+   Diğer                                                                            5.000.604                          7.538.388
+TOPLAM                                                                      6.948.947.763.930                  5.031.017.453.443
+
+3.4.2.15. Vergi Yükümlülüğü
+Vergiye tabi kurum kazancı üzerinden tahakkuk ettirilecek kurumlar vergisi tutarı, ticari kazanca vergi matrahından
+indirilemeyen giderlerin eklenmesi ve vergiye tabi olmayan gelirler ve indirimler düşüldükten sonra kalan matrah üzerinden
+hesaplanmaktadır.
+
+
+Tablo 3.4.2.15.1: Ödenecek Vergiler
+
+                                                                                                  2024                            2023
+Kurumlar vergisi                                                                                        -                               -
+Diğer vergiler                                                                        3.016.599.941                   2.576.678.429
+    Mükellefiyetten doğan vergiler                                                      541.951.004                     617.012.867
+    Sorumlu sıfatıyla ödenecek vergiler                                               2.474.648.937                   1.959.665.561
+TOPLAM                                                                               3.016.599.941                    2.576.678.429
+
+
+2024 yılında uygulanan kurumlar vergisi oranı yüzde 30’dur (2023: yüzde 30). Türkiye’de geçici vergi üçer aylık dönemler
+itibarıyla hesaplanmakta ve tahakkuk ettirilmektedir. 2024 yılında uygulanan geçici vergi oranı yüzde 30’dur (2023/1 ve 2023/2:
+yüzde 25, diğer dönemler yüzde 30).
+
+TTK ile vergi mevzuatının farklı hükümler içerdiği konularda oluşan geçici farklar için yüzde 30 üzerinden ertelenmiş vergi
+varlığı veya yükümlülüğü hesaplanmaktadır. (2023: yüzde 30).
+
+31 Aralık 2024 itibarıyla ertelenmiş vergiye konu olan geçici farklar ve hesaplanan ertelenmiş vergi varlığı/yükümlülüğünün
+detayı aşağıdadır.
+
+
+
+
+                                                                                                                                       92
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+ Tablo 3.4.2.15.2: Geçici Farklar ve Ertelenmiş Vergi Varlığı / Yükümlülüğü
+                                                                          2024                                  2023
+                                                                                   Ertelenmiş                            Ertelenmiş
+                                                                     Toplam                               Toplam
+                                                                                 Vergi Varlığı/                        Vergi Varlığı/
+                                                               Geçici Farklar                       Geçici Farklar
+                                                                                 Yükümlülüğü                           Yükümlülüğü
+
+ Toplam varlıklar                                             12.432.803.182     3.729.840.954       8.979.039.477     2.693.711.843
+
+     Emekli ikramiyesi ve kıdem tazminatı yükümlülüğü          1.432.377.491       429.713.247        761.816.605        228.544.981
+
+     Duran varlıklar amortisman düzeltmesi                    11.000.425.691     3.300.127.707       8.217.222.872     2.465.166.862
+
+ Toplam yükümlülükler                                         -11.739.093.737    -1.760.864.060     -9.214.122.629      -691.059.197
+
+     BIS iştirakinin GUD düzeltmesi                           11.739.093.737     -1.760.864.060      9.214.122.629      -691.059.197
+
+ Net Varlık/Yükümlülük                                           693.709.445     1.968.976.894        -235.083.152     2.002.652.646
+
+
+ Tablo 3.4.2.15.3: Ertelenmiş Vergi Varlığı / Yükümlülüğü Hareketi
+                                                                                                         2024                  2023
+ 1 Ocak bakiyesi                                                                              2.002.652.646            -214.680.585
+ Gelir tablosu ile ilişkilendirilen ertelenmiş vergi (net)                                    1.036.140.912          2.573.305.061
+ Diğer pasif hesaplar ile ilişkilendirilen ertelenmiş vergi                                  -1.069.816.664            -355.971.830
+ Bakiye                                                                                       1.968.976.894          2.002.652.646
+
+
+
+3.4.2.16 Karşılıklar
+
+
+ Tablo 3.4.2.16.1: Karşılıklar
+                                                                                                        2024                   2023
+ Emekli ikramiyesi ve kıdem tazminatı karşılıkları                                           1.630.639.397             885.429.648
+ Kıymet yollaması dahili sigorta karşılığı                                                        243.056.337          243.056.337
+ TOPLAM                                                                                      1.873.695.734           1.128.485.985
+
+
+
+1211 sayılı TCMB Kanunu’nun 59. maddesi kapsamında ayrılan kıymet yollaması dahili sigorta karşılığının 31 Aralık 2024
+itibarıyla bakiyesi 243.056.337 TL’dir.
+
+5434 sayılı T.C. Emekli Sandığı Kanunu ile 1475 sayılı İş Kanunu hükümleri uyarınca, işverenler çalışanlardan emekli ikramiyesi
+ve kıdem tazminatına hak kazanacak şekilde emekli olanlara ya da iş sözleşmesi sona erenlere, hak kazandıkları yasal emekli
+ikramiyesi veya kıdem tazminatlarını ödemekle yükümlüdür.
+
+Emekli ikramiyesi ve kıdem tazminatı karşılığı, çalışanların emekli olmasından kaynaklanan gelecekteki muhtemel
+yükümlülük tutarının bugünkü değerinin tahmin edilmesi yoluyla hesaplanmaktadır. Bu doğrultuda, toplam yükümlülüklerin
+hesaplanmasında kullanılan aktüeryal varsayımlar aşağıda belirtilmiştir.
+
+Her hizmet yılına ait azami yükümlülük tutarının enflasyona paralel olarak artacak olması temel varsayım olarak hesaplamalarda
+dikkate alınmaktadır. Dolayısıyla, uygulanan iskonto oranı, gelecek enflasyon etkilerinin düzeltilmesinden sonraki beklenen reel
+oranı ifade eder. Bu nedenle, 31 Aralık 2024 itibarıyla, finansal tablolarda karşılıklar, çalışanların emekliliğinden kaynaklanacak
+geleceğe ilişkin muhtemel yükümlülüğün bugünkü değeri tahmin edilerek hesaplanmaktadır.
+
+Kıdem tazminatı tavanı altı ayda bir revize edilmekte olup, TCMB çalışanlarının kıdem tazminatı karşılığının hesaplanmasında 1
+Temmuz 2024 tarihinden itibaren geçerli olan 41.828 TL (31 Aralık 2023: 23.490 TL) tavan tutarı dikkate alınmıştır.
+
+Emekli ikramiyesi ve kıdem tazminatı yükümlülüğünün dönem içerisindeki hareketleri aşağıdaki gibidir:
+
+
+
+
+93
+                                                                                    Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+Tablo 3.4.2.16.2: Emekli İkramiyesi ve Kıdem Tazminatı Yükümlülüğü Hareketi
+
+                                                                                                   2024                           2023
+1 Ocak bakiyesi                                                                           885.429.648                   474.687.813
+Ayrılan karşılık                                                                          780.050.764                   427.268.862
+Ödenen emekli ikramiyesi ve kıdem tazminatı                                               -34.841.015                     -16.527.027
+Bakiye                                                                                1.630.639.397                     885.429.648
+
+3.4.2.17. Sermaye ve İhtiyat Akçesi
+
+25.000 TL olan TCMB’nin sermayesi, her biri 10 kuruşluk 250.000 adet hisseye ayrılmış olup, hisse senetleri nama yazılıdır.
+
+Tablo 3.4.2.17.1: Sermaye ve İhtiyat Akçesi
+                                                                                                   2024                           2023
+Ödenmiş sermaye                                                                                 25.000                          25.000
+Sermaye enflasyon düzeltme farkı                                                           46.208.524                     46.208.524
+İhtiyat akçesi                                                                            334.168.579                 9.664.248.946
+      İhtiyat akçesi                                                                                    -             9.330.080.367
+      Hususi ihtiyat akçesi                                                               334.168.579                    334.168.579
+TOPLAM                                                                                  380.402.103                   9.710.482.470
+
+1211 sayılı TCMB Kanunu’nun 22/h maddesi çerçevesinde alınan Banka Meclisi Kararı uyarınca, 2022 yılı kârından ayrılan
+ihtiyat akçesinin tamamı 9.330.080.367 TL, 2023 yılı zararından mahsup edilmiştir.
+
+31 Aralık 2024 ve 31 Aralık 2023 itibarıyla TCMB hissedar bilgilerinin dökümü aşağıdaki gibidir:
+
+
+Tablo 3.4.2.17.2: Hissedar Bilgileri
+                                                                                     2024                             2023
+                                                                               Pay (TL)       Pay (%)        Pay (TL)         Pay (%)
+T.C. Hazine ve Maliye Bakanlığı                                                  13.780          55,12          13.780           55,12
+T.C. Ziraat Bankası A.Ş. Genel Müdürlüğü                                          4.806          19,22           4.806           19,22
+Mervak İç ve Dış Ticaret A.Ş.                                                     1.280           5,12           1.280            5,12
+T. Garanti Bankası A.Ş. Genel Müdürlüğü                                             621           2,48             621            2,48
+T. İş Bankası A.Ş. Genel Müdürlüğü                                                  582           2,33             582            2,33
+T. Halk Bankası A.Ş. Genel Müdürlüğü                                                277            1,11             277            1,11
+Yapı ve Kredi Bankası A.Ş. Genel Müdürlüğü                                          139            0,56             139            0,56
+Akbank T.A.Ş. Genel Müdürlüğü                                                         8          0,03                8           0,03
+ING Bank A.Ş.                                                                         5          0,02                5           0,02
+Türk Ekonomi Bankası A.Ş. Genel Müdürlüğü                                             2          0,01                2           0,01
+Diğer                                                                             3.500         13,99            3.500          13,99
+Ödenmiş Sermaye                                                                  25.000        100,00           25.000         100,00
+
+
+
+
+                                                                                                                                       94
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.18. Diğer Pasifler
+
+
+Tablo 3.4.2.18.1: Diğer Pasifler
+                                                                                                       2024              2023
+
+Akreditifler                                                                                   4.401.054.625       560.965.114
+
+Gider tahakkukları                                                                             1.505.357.830     1.606.687.720
+Diğer                                                                                         26.421.045.908   163.238.293.613
+     Muhasebe politika değişikliklerinden oluşan fark                                          9.981.160.573     8.525.927.458
+
+     Vergi daireleri, icra memurlukları ve mahkeme kararları uyarınca tutulan bloke paralar       32.348.578        29.071.287
+
+     Gelecek yıl valörü ile yurt dışı bankalar hesaplarına gönderilecek paralar                3.021.948.492     2.130.929.496
+     Diğer                                                                                    13.385.588.265   152.552.365.372
+TOPLAM                                                                                        32.327.458.363   165.405.946.447
+
+
+
+3.4.2.19 Nazım Hesaplar
+
+31 Aralık 2024 itibarıyla, Türk lirası, yabancı para ve adet olarak takip edilen nazım hesaplar toplamı 11.832.795.765.410’dur
+(31 Aralık 2023 11.907.432.215.123).
+
+
+
+
+95
+                                                                                                        Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.20. Kâr/Zarar Hesapları
+
+Tablo 3.4.2.20.1: Kâr / Zarar Tablosu
+                                                                                                                         2024                         2023
+NET FAİZ GELİR/GİDERİ                                                                                   -261.022.874.810              153.499.067.628
+Faiz Geliri                                                                                              493.452.113.266              286.203.667.647
+     TL ve YP menkul kıymetler                                                                             48.877.097.047               42.282.547.562
+     Geri satım vaadiyle alım işlemleri                                                                    26.668.821.330               13.839.785.647
+     Bankalararası para piyasası işlemleri                                                                   2.777.594.367                6.233.483.492
+     Krediler                                                                                             127.641.345.075               40.729.024.870
+     Bankalar                                                                                             287.487.255.447              183.118.826.076
+Faiz Gideri                                                                                             -754.474.988.076             -132.704.600.019
+     İşçi dövizleri                                                                                                      -229                           -48
+     Geri alım vaadiyle satım işlemleri                                                                     -1.087.760.896                 -369.355.214
+     Bankalararası para piyasası işlemleri                                                               -110.357.455.831              -12.740.931.010
+     T.C. Hazine ve Maliye Bakanlığı hesapları                                                           -212.975.149.822              -78.603.680.861
+     IMF genel kaynak kullanım hesabı                                                                       -9.410.078.536               -7.226.046.940
+     TL zorunlu karşılıklar                                                                              -356.625.520.499                                   -
+     Bankalar                                                                                             -64.019.022.263              -33.764.585.946
+NET KOMİSYON VE HİZMET GELİRİ/GİDERİ                                                                       26.233.519.742               23.165.250.093
+Komisyon ve Hizmet Geliri                                                                                  26.654.375.896               23.406.153.797
+      EFT işlemleri komisyon ve mesaj ücretleri                                                              3.663.489.092                2.785.343.414
+      T.C. Hazine ve Maliye Bakanlığı’ndan alınan komisyonlar                                                3.380.453.481                1.845.113.350
+      Bankalardan alınan komisyon ve muhafaza ücretleri                                                    19.121.391.990               18.351.009.880
+      Havale ücretleri                                                                                           33.124.453                   20.458.251
+      Bankalardan NYS Kapsamında Tahsil Edilen Ücretler                                                        295.829.089                  214.939.406
+      Diğer                                                                                                    160.087.791                  189.289.496
+Komisyon ve Hizmet Gideri                                                                                     -420.856.154                 -240.903.704
+     Bankalara ödenen komisyon ve muhafaza ücretleri                                                          -413.930.902                 -235.398.819
+     Diğer                                                                                                       -6.925.253                    -5.504.885
+NET FAİZ DIŞI GELİR/GİDER                                                                               -466.600.900.776             -997.420.486.491
+Faiz Dışı Gelir                                                                                            68.990.987.921             244.869.771.911
+     Yabancı para ve altın alım satım kârı                                                                 54.309.555.147              239.248.921.554
+     Menkul kıymetler alım satım ve değer artışı                                                             4.383.767.658                2.810.690.572
+     İştirak geliri                                                                                            167.305.144                    74.555.979
+   Diğer                                                                                                  10.130.359.972                2.735.603.806
+Faiz Dışı Gider                                                                                         -535.591.888.697           -1.242.290.258.402
+     Yabancı para ve altın alım satım zararı                                                             -266.047.273.450             -256.135.880.299
+     Menkul kıymetler alım satım zararı ve değer azalışı                                                    -3.150.606.576             -75.865.584.929
+     Takipteki alacak karşılık gideri                                                                       -9.531.561.777             -17.307.179.824
+     Ücretler ve maaşlar                                                                                    -9.468.291.655               -4.538.937.732
+     Sosyal güvenlik gideri                                                                                 -1.463.551.112                 -722.900.769
+     Genel faaliyet gideri                                                                                  -1.494.718.725                 -701.295.942
+     Banknot kağıdı ve mürekkep gideri                                                                      -2.639.437.623               -1.014.621.829
+     Amortismanlar                                                                                            -375.577.164                 -173.246.703
+     Diğer (*)                                                                                           -241.420.870.615             -885.830.610.374
+VERGİ ÖNCESİ KÂR/ZARAR                                                                                  -701.390.255.844             -820.756.168.771
+ERTELENMİŞ VERGİ GELİRİ/GİDERİ                                                                              1.036.140.912                2.573.305.061
+RAPORLANAN DÖNEM ZARARI                                                                                 -700.354.114.932             -818.182.863.710
+(*) 14 Temmuz 2023 tarihli ve 7456 sayılı Kanun’un geçici 2. maddesi ile Bankamıza devredilen TL dönüşümlü kur korumalı mevduat işlemleri ile döviz dönüşümlü
+kur korumalı mevduat ve diğer döviz kazandırıcı işlemler (YUVAM, fiziki altın, vs.) gideri toplamı 240.166.792.451 TL’dir ( 2023: 833.419.912.761 TL).
+
+
+                                                                                                                                                           96
+Türkiye Cumhuriyet Merkez Bankası 2024 Faaliyet Raporu
+
+
+
+
+3.4.2.21. Kâr Dağıtımı
+
+6102 sayılı TTK’nın 64. maddesinin 5. fıkrasında, bu Kanuna tabi gerçek ve tüzel kişilerin, 213 sayılı VUK’un defter tutma ve
+kayıt zamanıyla ilgili hükümleri ile aynı Kanunun 175. ve mükerrer 257. maddelerinde yer alan yetkiye istinaden yapılan
+düzenlemelere uymak zorunda oldukları belirtilmiştir. Anılan fıkrada ayrıca, 6102 sayılı Kanunun defter tutma, envanter,
+mali tabloların düzenlenmesi, aktifleştirme, karşılıklar, hesaplar, değerleme, saklama ve ibraz hükümlerinin; 213 sayılı Kanun
+ile diğer vergi kanunlarının aynı hususları düzenleyen hükümlerinin uygulanmasına, vergi kanunlarına uygun olarak vergi
+matrahının tespit edilmesine ve buna yönelik mali tabloların hazırlanmasına engel teşkil etmeyeceği hükme bağlanmıştır.
+
+1211 sayılı TCMB Kanunu’nun 60. maddesi, 6102 sayılı TTK’nın 64. maddesi hükümleri dikkate alınarak, TCMB’nin 213 sayılı
+VUK hükümlerine uygun olarak tutulmakta olan defter kayıtlarında yer alan 695.678.727.620 TL’lik 2024 yılı dönem zararı
+aşağıda sunulmuştur.
+
+
+ Tablo 3.4.2.21.1: Kâr Dağıtımı (1211 sayılı Kanun Md. 60)
+                                                                                                2024                    2023
+ Raporlanan dönem zararı (6102 sayılı TTK)                                         -700.354.114.932        -818.182.863.710
+ Raporlama düzeltme farkları                                                          4.675.387.312          -2.582.219.393
+ Dönem zararı (213 sayılı VUK)                                                     -695.678.727.620        -820.765.083.103
+ Vergi karşılıkları (-)                                                                             -                       -
+     Kurumlar vergisi                                                                               -                       -
+ Vergi karşılığı sonrası kâr                                                                        -                       -
+ Diğer dağıtımlar (-)                                                                               -                       -
+     1-İhtiyat akçeleri                                                                              -                      -
+     2-Hissedarlar hissesi                                                                           -                      -
+       İlk kâr hissesi                                                                               -                      -
+       İkinci kâr hissesi                                                                            -                      -
+     3-Temettü miktarı (1211 sayılı Kanun Md.60/c)                                                   -                      -
+ T.C. Hazine ve Maliye Bakanlığına Aktarılacak Tutar                                                 -                      -
+
+
+
+3.4.2.22. Geçmiş Yıllar Zararı
+2023 yılı raporlanan dönem zararı 818.182.863.710 TL Geçmiş Yıllar Zararı kaleminde izlenmeye başlanmıştır. 1211 sayılı
+TCMB Kanunu’nun 22/h maddesi çerçevesinde alınan Banka Meclisi Kararı uyarınca, 2022 yılı kârından ayrılan ihtiyat akçesinin
+tamamı 9.330.080.367 TL bu kalemden mahsup edilmiştir. 31 Aralık 2024 itibarıyla bakiyesi 808.852.783.343 TL olan
+Geçmiş Yıllar Zararının kapanmasına kadar geçecek sürede 6102 sayılı TTK’nın 509. maddesi gereğince kâr ve ihtiyat akçesi
+dağıtılmayacaktır.
+
+
+
+
+97
+

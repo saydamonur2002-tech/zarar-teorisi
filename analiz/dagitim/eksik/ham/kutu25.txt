@@ -1,0 +1,452 @@
+                                                                          Enflasyon Raporu 2025-I | Ekonomik Görünüm 1
+
+
+
+
+    Kutu 2.5
+    Hanehalkı Varlıklarında Değerleme Etkisi
+    Hanehalkı; tasarruflarını mevduat, hisse senedi, altın, konut gibi farklı alanlarda
+    değerlendirebilmektedir. Söz konusu varlıkların toplam büyüklüğü, hanehalkının alım/satım işlemleri ile
+    mevcut varlıklarındaki değerleme etkisiyle değişmektedir. Değerleme ise temel olarak yabancı
+    para/altın cinsi varlıklardaki kur etkisi ile hisse senedi, menkul kıymet, konut gibi varlıklardaki fiyat
+    etkisinden kaynaklanmaktadır. Hanehalkının varlıklarındaki değerlenme, tüketim harcamaları kanalıyla
+    yurt içi talebi etkileyerek ekonomik büyüme ve enflasyon üzerinde etkili olabilmektedir.1 Bu çalışmada,
+    hanehalkının sahip olduğu finansal ve finansal olmayan (fiziki altın ve kiradaki konut gibi) varlıklarındaki
+    değer artışı incelenmiştir.
+    Finansal Hesaplar (FH) istatistiklerine göre, Türkiye’de hanehalkının finansal varlık ve yükümlülüklerinin
+    Gayrisafi Yurt İçi Hasıla'ya (GSYH) oranı, seçilmiş OECD ülkelerine kıyasla oldukça düşüktür (Grafik 1).
+    Bunun başlıca nedeni, hanehalkının geleneksel olarak fiziki altın ve konut gibi finansal olmayan
+    varlıklara yöneliminin ülkemizde yüksek olmasıdır. 2024 yılının üçüncü çeyreği itibarıyla, hanehalkının
+    finansal varlık stoku 505 milyar ABD doları, kiradaki konut varlıklarının değeri2 701 milyar ABD doları ve
+    yastık altı altın birikimlerinin tahmini değeri3 ise 311 milyar ABD doları olarak hesaplanmıştır (Tablo 1).
+    Hanehalkının yatırımları içinde finansal olmayan araçların payının daha yüksek oluşunun, para
+    politikasının hanehalkı tüketim eğilimi üzerine etkisini geciktiren bir unsur olarak öne çıkabileceği
+    düşünülmektedir.
+     Grafik 1: Hanehalkı Finansal Varlık ve                          Tablo 1: Hanehalkı Varlıkları (Milyar USD)
+     Yükümlülükleri, Ülke Karşılaştırması*
+     (GSYH)
+
+             Finansal Varlık / GSYH         Yükümlülük/GSYH                                                 2024Ç3
+                                                                5
+                                                                4
+                                                                3
+                                                                       Finansal Varlıklar                     505
+                                                                2
+                                                                1
+                                                                0
+                                                                       Yastık Altı Altın                      311
+                                                                -1
+       Macaristan
+            Norveç
+
+
+
+
+          Almanya
+           İspanya
+           Polonya
+           Meksika
+
+
+
+
+             Çekya
+
+
+
+
+      Euro Bölgesi
+         Romanya
+
+
+
+         Slovenya
+           Brezilya
+
+
+
+
+      Yeni Zelanda
+       Yunanistan
+
+
+
+
+              Kore
+
+
+
+               ABD
+                Şili
+
+
+
+
+            Fransa
+           Türkiye
+
+
+
+
+                                                                       Kiradaki Konut Stoku                   701
+
+
+      Kaynak: TCMB, TÜİK, OECD.                                        Kaynak: TCMB.
+      * Diğer ülke verileri 2024 II. Çeyrek itibarıyladır.
+
+
+
+
+1
+  Ando, A. and Modigliani, F. (1963) The “Life Cycle” Hypothesis of Saving Aggregate Implications and Tests. The American
+Economic Review, 53, 55-84.
+2
+  TÜİK-İstatistiklerle Aile verilerinden alınan hanehalkı sayısı ile TÜİK-Bina ve Konut Nitelikleri Araştırması İl Bazında
+verilerinden alınan kiracı oranı verileri kullanılarak il bazında kiradaki konut adedi hesaplanmıştır. TCMB-Konut Fiyat
+Endeksi verilerinden alınan il bazında medyan birim konut fiyatları kullanılarak kiradaki konut adedinin il bazında değeri
+hesaplanmıştr. Hesaplamalarda konutların 100 metrekare olduğu varsayılmıştır. İl bazındaki değerlerin toplanmasıyla ise
+çeyrekler itibarıyla Türkiye geneli için toplam kiradaki konut değeri belirlenmiştir.
+3
+  Hanehalkının elindeki fiziki altın stoku, “2012-IV Enflasyon Raporu Kutu 4.2. Türkiye’nin Altın Stokunun Hesaplanması”
+kutusunda yer alan yöntem kullanılarak hesaplanmıştır. Buna göre ilgili çeyrekteki yastık altı altın stoku; önceki dönem
+altın stoku rakamına ilgili çeyrekteki altın üretim miktarı ve altın ithalat miktarının eklenmesi, altın ihracatının ise
+düşülmesi ile hesaplanmaktadır. Altın üretim miktarı için T.C. Enerji ve Tabii Kaynaklar Bakanlığı verileri, altın ithalat ve
+ihracat rakamları için ise TÜİK-Dış Ticaret İstatistikleri kullanılmıştır. 1985 yılından başlayan seride 1984 altın stokunun
+sıfır olduğu varsayılmıştır.
+                                                                                                                                                                       Enflasyon Raporu 2025-I | Ekonomik Görünüm 2
+
+
+
+
+     Grafik 2a’da hanehalkının yurt içi finansal varlıklarındaki işlem ve değerleme kaynaklı nominal
+     büyümesinin çeyreklik GSYH içindeki payı gösterilmiştir. Grafik 2b’de ise hanehalkı finansal varlıklarının
+     kompozisyonu4 ve zaman içindeki değişimi varlık kalemlerinin kur ve fiyat değişimlerine duyarlılıklarına
+     göre dört alt kalemde gösterilmiştir. Beklendiği üzere TL’de değer kaybının yüksek olduğu dönemlerde
+     kura endeksli finansal varlıklar, borsadaki fiyat hareketlerinin yoğun olduğu dönemlerde ise fiyat
+     hareketlerine duyarlı finansal varlıklar kaynaklı olarak değerleme etkisi öne çıkmaktadır. 2021 yılı son
+     çeyreğinde, finansal varlıklardaki değerleme kaynaklı artış çeyreklik GSYH’nin yüzde 33,4’ünü
+     bulmuştur. Değerleme etkisi, takip eden dönemde de yüksek seyretmiş; 2024 yılı ikinci çeyreği ile
+     birlikte ivme kaybetmeye başlamıştır.
+
+    Grafik 2a: Hanehalkı Finansal                                                                                                                      Grafik 2b: Finansal Varlıkların
+    Varlıklarındaki Çeyreklik Değişim* (Çeyreklik                                                                                                      Kompozisyonu (Pay)
+    GSYH)
+
+                                                                                                                                                                               Kur ve Fiyat Değişimine Duyarlı Olmayan
+                                            İşlem                                                 Değerleme                                                                    Kur ve Fiyat Değişimine Duyarlı
+                                                                                                                                                                               Fiyat Değişimine Duyarlı
+                                                                                                                                                                               Kur Değişimine Duyarlı
+                                                                                                                                                %50                                                                                                                                                %100
+                                                                                                                                                %40                                                                                                                                                %80
+                                                                                                                                                %30
+                                                                                                                                                                                                                                                                                                   %60
+                                                                                                                                                %20
+                                                                                                                                                                                                                                                                                                   %40
+                                                                                                                                                %10
+                                                                                                                                                %0                                                                                                                                                 %20
+
+                                                                                                                                                -%10                                                                                                                                               %0
+    2018-I
+
+
+                        2019-I
+
+
+                                            2020-I
+
+
+                                                                2021-I
+
+
+                                                                                    2022-I
+
+
+                                                                                                        2023-I
+
+
+                                                                                                                            2024-I
+
+
+
+
+                                                                                                                                                       2018-I
+
+
+                                                                                                                                                                           2019-I
+
+
+                                                                                                                                                                                               2020-I
+
+
+                                                                                                                                                                                                                   2021-I
+
+
+                                                                                                                                                                                                                                       2022-I
+
+
+                                                                                                                                                                                                                                                           2023-I
+
+
+                                                                                                                                                                                                                                                                               2024-I
+             2018-III
+
+
+                                 2019-III
+
+
+                                                     2020-III
+
+
+                                                                         2021-III
+
+
+                                                                                             2022-III
+
+
+                                                                                                                 2023-III
+
+
+                                                                                                                                     2024-III
+
+
+
+
+                                                                                                                                                                2018-III
+
+
+                                                                                                                                                                                    2019-III
+
+
+                                                                                                                                                                                                        2020-III
+
+
+                                                                                                                                                                                                                            2021-III
+
+
+                                                                                                                                                                                                                                                2022-III
+
+
+                                                                                                                                                                                                                                                                    2023-III
+
+
+                                                                                                                                                                                                                                                                                        2024-III
+     Kaynak: TCMB, TÜİK.                                                                                                                                 Kaynak: TCMB.
+     * Değerleme hesaplamasına kur korumalı mevduat
+     hesaplarındaki değer değişimi dahil edilmiştir.
+
+     FH istatistikleri kapsamında derlenen hanehalkı finansal varlık kalemi, istatistiklere yansıyan karşı
+     sektör verilerinden derlenmekte, dolayısıyla yastık altında tutulan altın ile kiradaki konut varlığını
+     kapsamamaktadır. Çalışma kapsamında, hanehalkı varlıkları içinde önemli bir yer tuttuğu gözlemlenen
+     fiziki altın ve kiradaki konut varlıklarındaki değerleme etkisi analize dahil edilmektedir.5 Fiziki altın
+     varlıklarındaki değerleme etkisinin çeyreklik GSYH’ye oranı Grafik 3’te, kiradaki konutlardaki değerleme
+     etkisinin payı ise Grafik 4’te paylaşılmıştır. Buna göre; altındaki değerlemenin çeyreklik GSYH’ye oranı
+     yüzde 31 ile en yüksek değerine, finansal varlıklarda olduğu gibi 2021 yılının dördüncü çeyreğinde
+     ulaşmıştır. Takip eden dönemlerde, altında sürekli olarak pozitif değerleme yaşanırken TL’nin hızlı
+     değer kaybettiği 2023 yılının ikinci çeyreğinde altındaki değer artışında ikinci bir sıçrama yaşanmıştır.
+     Kura endeksli finansal varlıklardan farklı olarak, fiziki altın varlıklarındaki değerleme etkisi uluslararası
+     fiyatlardaki artışa bağlı olarak 2024 yılının ikinci ve üçüncü çeyreklerinde de yüksek gerçekleşmiştir.
+
+     Kiradaki konutların değerindeki değişimin çeyreklik GSYH’ye oranına bakıldığında ise pandemi öncesi
+     dönemde yüzde 10’un altında seyreden değerleme etkisinin, sonraki dönemde hızla yükselerek 2022
+     yılı birinci çeyreğinde yüzde 70’e kadar ulaştığı görülmektedir. 2024 yılı ile birlikte zayıflayan değer
+     artışının, 2021 yılı öncesi döneme yakınsadığı görülmektedir (Grafik 4).
+
+
+
+
+4
+  Kur ve fiyat değişimine duyarlı olmayan kalemler; TL cinsi para ve kur korumalı hariç TL mevduatlar, TL cinsi krediler ile
+diğer alacaklardan oluşmaktadır. Kur değişimlerine duyarlı kalemler olarak YP cinsi para ve mevduat, kur korumalı
+mevduatlar, türev varlıklar ile YP cinsi krediler kalemlerini içermektedir. Fiyat değişimine duyarlı kalemler ise hisse senedi
+ve yatırım fonları, TL cinsi borçlanma senetleri ile sigorta teknik rezervlerini; kur ve fiyat değişimine duyarlı kalemler ise
+YP cinsi borçlanma senetlerini kapsamaktadır.
+5
+  Kiradaki konut stokunun çeyrekler itibariyle sabit tutularak çeyreklik fiyat değişimleri kiradaki konutların değerleme
+etkisi olarak kabul edilmiştir. Ons cinsinden hesaplanan fiziki altın stokundaki değerleme, iki stok arasındaki
+değişiminden net işlem çıkarılarak hesaplanmıştır.
+                                                                                                                                                                       Enflasyon Raporu 2025-I | Ekonomik Görünüm 3
+
+
+
+
+Grafik 3: Yastık Altında Tutulan Fiziki Altın                                                                                                      Grafik 4: Kiradaki Konut Değerleme Etkisi
+Değerleme Etkisi (Çeyreklik GSYH)                                                                                                                  (Çeyreklik GSYH)
+
+                                                                                                                                            %35                                                                                                                                                %80
+                                                                                                                                            %30                                                                                                                                                %70
+                                                                                                                                            %25                                                                                                                                                %60
+                                                                                                                                            %20                                                                                                                                                %50
+                                                                                                                                            %15                                                                                                                                                %40
+                                                                                                                                            %10                                                                                                                                                %30
+                                                                                                                                            %5                                                                                                                                                 %20
+                                                                                                                                            %0                                                                                                                                                 %10
+                                                                                                                                            -%5                                                                                                                                                %0
+                                                                                                                                            -%10                                                                                                                                               -%10
+2018-I
+         2018-III
+                    2019-I
+                             2019-III
+                                        2020-I
+                                                 2020-III
+                                                            2021-I
+                                                                     2021-III
+                                                                                2022-I
+                                                                                         2022-III
+                                                                                                    2023-I
+                                                                                                             2023-III
+                                                                                                                        2024-I
+                                                                                                                                 2024-III
+
+
+
+
+                                                                                                                                                   2018-I
+                                                                                                                                                            2018-III
+                                                                                                                                                                       2019-I
+                                                                                                                                                                                2019-III
+                                                                                                                                                                                           2020-I
+                                                                                                                                                                                                    2020-III
+                                                                                                                                                                                                               2021-I
+                                                                                                                                                                                                                        2021-III
+                                                                                                                                                                                                                                   2022-I
+                                                                                                                                                                                                                                            2022-III
+                                                                                                                                                                                                                                                       2023-I
+                                                                                                                                                                                                                                                                2023-III
+                                                                                                                                                                                                                                                                           2024-I
+                                                                                                                                                                                                                                                                                    2024-III
+ Kaynak: TCMB, TÜİK.                                                                                                                                 Kaynak: TCMB, TÜİK.
+
+Hanehalkının finansal varlıkları, yastık altı altın ve kiradaki konutlardaki değerleme birlikte
+incelendiğinde; 2021 yılının dördüncü çeyreğinden başlayarak varlıklardaki değer artışının GSYH’ye
+oranının önceki dönemlere kıyasla oldukça yüksek seyrettiği ve incelenen dönemde değer artışında
+yastık altı altın ve konuttaki fiyat artışının finansal araçlardaki değer artışından daha yüksek olduğu
+görülmektedir. Varlıklardaki değerlemenin çeyreklik GSYH’ye oranı yüzde 105 ile en yüksek seviyesine
+2022 yılının birinci çeyreğinde ulaşırken; bu dönemde hanehalkı varlıklarındaki değerlemede kiradaki
+konutlardaki değer artışı baskın olmuştur. Son dönemde kur, altın ve konut fiyatlarında yaşanan
+dengelenme sonucu bireylerin değerleme kaynaklı varlık artışlarının ivme kaybederek 2021 yılı öncesi
+oranlara yakınsamaya başladığı gözlenmektedir (Grafik 5).
+
+                         Grafik 5: Hanehalkı Toplam Varlık Değerlemesi (Çeyreklik GSYH)
+
+                                                                                                                  Finansal Varlıklardaki Değerleme
+                                                                                                                  Yastık Altı Altındaki Değerleme
+                                                                                                                  Kiradaki Konutlardaki Değerleme
+                                                                                                                                                                                                                                                                 %120
+
+                                                                                                                                                                                                                                                                 %100
+
+                                                                                                                                                                                                                                                                 %80
+
+                                                                                                                                                                                                                                                                 %60
+
+                                                                                                                                                                                                                                                                 %40
+
+                                                                                                                                                                                                                                                                 %20
+
+                                                                                                                                                                                                                                                                 %0
+
+                                                                                                                                                                                                                                                                 -%20
+                              2018-II
+
+                             2018-IV
+
+                              2019-II
+
+                             2019-IV
+
+                              2020-II
+
+                             2020-IV
+
+                              2021-II
+
+                             2021-IV
+
+                              2022-II
+
+                             2022-IV
+
+                              2023-II
+
+                             2023-IV
+
+                              2024-II
+                              2018-I
+
+
+
+
+                              2019-I
+
+
+
+
+                              2020-I
+
+
+
+
+                              2021-I
+
+
+
+
+                              2022-I
+
+
+
+
+                              2023-I
+
+
+
+
+                              2024-I
+                             2018-III
+
+
+
+
+                             2019-III
+
+
+
+
+                             2020-III
+
+
+
+
+                             2021-III
+
+
+
+
+                             2022-III
+
+
+
+
+                             2023-III
+
+
+
+
+                             2024-III
+
+
+
+
+                              Kaynak: TCMB, TÜİK.
+
+Özetle, Türkiye’de hanehalkının varlıkları içinde fiziki altın ve kiradaki konutlar finansal varlıklardan
+daha yüksek paya sahip olup, fiziki varlık tutan hanehalkının bu varlıklarının stok değerinde 2021-2024
+arasında kur ve fiyat hareketleri kaynaklı olarak belirgin artış yaşanmıştır. Kalem bazında bakıldığında;
+incelenen dönemde hanehalkı varlığındaki en yüksek değer artışı kiradaki konutlardan gelirken onu
+yastık altı altın izlemektedir. Finansal varlıklar ise bu dönemde pozitif ancak nispeten daha düşük
+seviyede değerleme sağlamış durumdadır. Hanehalkı varlıklarının stok değerinde gözlenen toplam
+değerlemenin, varlık etkisi kanalı ile harcamaları artırarak talepte sıkılaşma kaynaklı yavaşlamanın geç
+gerçekleşmesinde, yani talebin dirençli olmasında etkili olduğu değerlendirilmektedir. Bununla birlikte
+2024 yılı ikinci çeyreği ile birlikte başlayan varlık değerleme etkisindeki zayıflamanın, para politikasının
+etkinliğini artırarak dezenflasyon sürecini hızlandırması beklenmektedir.
+

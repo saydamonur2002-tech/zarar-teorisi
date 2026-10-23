@@ -1,0 +1,10 @@
+kalem,kumulatif_2015_25_pctGSYH_2014e_gore,etiket,not
+firma_ucret_kazanci,10.03,HESAP(AMECO VERI),ucret payi dususu; 2020-23te yogun; 2024-25te ters
+yurtdisi_DY_geliri_odeme(kar payi+yeniden yatirilan+DY faizi),1.85,VERI/VEKIL,TCMB OD tablo 4
+yurtdisi_portfoy_geliri_odeme(hisse kar payi+tahvil faizi; kamu dahil),2.02,VERI/VEKIL,kamu tahvil faizi ayrilamadi
+yurtdisi_faiz_firma(diger sektorler UV+tum KV),1.55,VERI/VEKIL,KV banka dahil
+vergi(gelir+kurumlar),3.37,VEKIL,WB; bireysel gelir vergisi dahil; 2025=2024 VARSAYIM
+kalan(yurtici banka faizi+temettu+yatirim+olculmeyen),1.24,HESAP,ayrilamadi
+yurtdisi_faiz_banka_UV(firma degil),0.90,VERI,bilgi
+net_birincil_gelir_cikisi_toplam,4.17,VERI,K2 karsilastirma (3.85)
+emekli_harcama_kum_fark_2015_21,-0.63,VERI(OECD SOCX),negatif=2014ten fazla harcama

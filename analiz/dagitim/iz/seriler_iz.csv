@@ -1,0 +1,67 @@
+seri,yil,pct_gsyh,2014e_gore_fark
+DY_odeme,2015,0.415,0.164
+DY_odeme,2016,0.36,0.11
+DY_odeme,2017,0.381,0.131
+DY_odeme,2018,0.41,0.16
+DY_odeme,2019,0.451,0.201
+DY_odeme,2020,0.264,0.013
+DY_odeme,2021,0.53,0.279
+DY_odeme,2022,0.466,0.215
+DY_odeme,2023,0.379,0.128
+DY_odeme,2024,0.458,0.207
+DY_odeme,2025,0.493,0.242
+portfoy_odeme,2015,0.368,0.059
+portfoy_odeme,2016,0.359,0.051
+portfoy_odeme,2017,0.49,0.181
+portfoy_odeme,2018,0.544,0.235
+portfoy_odeme,2019,0.55,0.242
+portfoy_odeme,2020,0.57,0.262
+portfoy_odeme,2021,0.634,0.325
+portfoy_odeme,2022,0.439,0.13
+portfoy_odeme,2023,0.334,0.026
+portfoy_odeme,2024,0.514,0.206
+portfoy_odeme,2025,0.611,0.303
+faiz_yd_firma(diger sektor UV+KV),2015,0.39,-0.032
+faiz_yd_firma(diger sektor UV+KV),2016,0.44,0.018
+faiz_yd_firma(diger sektor UV+KV),2017,0.528,0.106
+faiz_yd_firma(diger sektor UV+KV),2018,0.692,0.269
+faiz_yd_firma(diger sektor UV+KV),2019,0.747,0.325
+faiz_yd_firma(diger sektor UV+KV),2020,0.568,0.146
+faiz_yd_firma(diger sektor UV+KV),2021,0.485,0.063
+faiz_yd_firma(diger sektor UV+KV),2022,0.432,0.009
+faiz_yd_firma(diger sektor UV+KV),2023,0.623,0.201
+faiz_yd_firma(diger sektor UV+KV),2024,0.646,0.224
+faiz_yd_firma(diger sektor UV+KV),2025,0.643,0.22
+faiz_yd_banka_UV,2015,0.13,0.028
+faiz_yd_banka_UV,2016,0.142,0.039
+faiz_yd_banka_UV,2017,0.158,0.056
+faiz_yd_banka_UV,2018,0.228,0.126
+faiz_yd_banka_UV,2019,0.24,0.137
+faiz_yd_banka_UV,2020,0.199,0.096
+faiz_yd_banka_UV,2021,0.14,0.038
+faiz_yd_banka_UV,2022,0.133,0.031
+faiz_yd_banka_UV,2023,0.221,0.119
+faiz_yd_banka_UV,2024,0.229,0.127
+faiz_yd_banka_UV,2025,0.202,0.1
+net_birincil_gelir_cikisi,2015,1.119,0.248
+net_birincil_gelir_cikisi,2016,1.054,0.183
+net_birincil_gelir_cikisi,2017,1.242,0.371
+net_birincil_gelir_cikisi,2018,1.405,0.534
+net_birincil_gelir_cikisi,2019,1.526,0.656
+net_birincil_gelir_cikisi,2020,1.179,0.308
+net_birincil_gelir_cikisi,2021,1.374,0.503
+net_birincil_gelir_cikisi,2022,0.994,0.123
+net_birincil_gelir_cikisi,2023,1.032,0.161
+net_birincil_gelir_cikisi,2024,1.36,0.489
+net_birincil_gelir_cikisi,2025,1.467,0.597
+gelir_kurumlar_vergisi,2015,5.119,-0.161
+gelir_kurumlar_vergisi,2016,5.355,0.075
+gelir_kurumlar_vergisi,2017,5.27,-0.01
+gelir_kurumlar_vergisi,2018,5.752,0.471
+gelir_kurumlar_vergisi,2019,5.492,0.212
+gelir_kurumlar_vergisi,2020,5.346,0.065
+gelir_kurumlar_vergisi,2021,6.019,0.739
+gelir_kurumlar_vergisi,2022,6.031,0.751
+gelir_kurumlar_vergisi,2023,5.913,0.633
+gelir_kurumlar_vergisi,2024,5.58,0.3
+gelir_kurumlar_vergisi,2025,5.58,0.3
