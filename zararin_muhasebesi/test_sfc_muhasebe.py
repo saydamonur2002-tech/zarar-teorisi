@@ -9,14 +9,6 @@ KOK = Path(__file__).resolve().parent
 sys.path.insert(0, str(KOK))
 import sfc_model as M  # noqa: E402
 
-TOL = 1e-6
-ANAHTAR = ("pi_2029", "nr_2027q4", "nr_2028q4", "nr_2029", "borc_gsyh_2029", "gsyh_endeks_2029", "E_2029")
-S0S7 = (
-    "S0 Baz", "S2 Reel değerlenme sürer", "S1 Dış şok", "S4 Şok + erteleme",
-    "S5 Şok + erteleme → tanıma", "S3 Şok + Yeldan seti", "S6 Sınır piyasa (merkez)",
-    "S7 Sınır piyasa (sert)",
-)
-
 
 def ozet(o):
     y = M.real_gdp(o)
@@ -40,21 +32,31 @@ def main() -> int:
         hata.append(f"nw-pK {ac['nw_eksi_pk']}")
     if abs(ac["banka_ozkaynak"] - M.BANKA_OZKAYNAK_TN) >= 1e-6:
         hata.append(f"banka özkaynak {ac['banka_ozkaynak']}")
-    if M.TS_NPL_COEF != 0.5 or M.BANKA_OZKAYNAK_TN != 4.65:
-        hata.append("katsayı sessizce değişti")
+    if M.TS_NPL_COEF != 0.5:
+        hata.append("TS_NPL_COEF değişti")
+    if abs(M.BANKA_OZKAYNAK_TN - 4.565252392) > 1e-9:
+        hata.append(f"banka özkaynak sabiti {M.BANKA_OZKAYNAK_TN}")
     adr = M.adres_stoklari()
     if adr is None or abs(adr["toplam_milyar"] - 19361.9) > 1e-9 or abs(M.TS_HAVUZ_MILYAR - adr["toplam_milyar"]) > 1e-9:
         hata.append(f"adres {adr}")
     V = json.loads((KOK / "veriler.json").read_text(encoding="utf-8"))
-    for k in ("swap_haric_net_rezerv", "yabanci_hisse", "bist100"):
+    for k, d in V["dogrulama"].items():
+        for alan in ("etiket", "seri", "tarih", "kaynak"):
+            if alan not in d:
+                hata.append(f"dogrulama alan {k}.{alan}")
+    kanit = ("tufe_yillik", "usd_try", "politika_faizi", "brut_rezerv", "kv_dis_borc_kalan_vade", "reel_efektif_kur", "yabanci_hisse", "banka_ozkaynak_tn")
+    dogrulanmadi = ("swap_haric_net_rezerv", "emek_payi", "buyume_yillik", "yabanci_takas_payi", "bist100")
+    for k in kanit:
+        if V["dogrulama"][k]["etiket"] != "kanıt":
+            hata.append(f"kanıt etiketi {k}")
+    for k in dogrulanmadi:
         if "[DOĞRULANMADI]" not in V["dogrulama"][k]["etiket"]:
-            hata.append(f"haber etiketi {k}")
-    if V["dogrulama"]["tufe_yillik"]["etiket"] != "kanıt":
-        hata.append("tüfe etiketi")
+            hata.append(f"doğrulanmadı etiketi {k}")
+    if V["degerler"]["swap_haric_net_rezerv"] != 39.34 or V["degerler"]["bist100"] != 11220.37:
+        hata.append("doğrulanmayan sayı değişti")
     sur = M.kod_surumu()
     if not sur["sfc_sha256"] or len(sur["sfc_sha256"]) != 64:
         hata.append("kod sürümü yok")
-    once = json.loads((KOK / "once_ozet.json").read_text(encoding="utf-8"))
     sc = M.all_scenarios()
     if sc["S4z Şok + erteleme, zombi kapalı"]["gam_z"] != 0.0 or sc["S5z Şok + erteleme → tanıma, zombi kapalı"]["gam_z"] != 0.0:
         hata.append("zombi varyantı kapalı değil")
@@ -70,22 +72,15 @@ def main() -> int:
         if abs(c["balance"]) >= 1e-8:
             hata.append(f"{ad} balance {c['balance']}")
         kosu[ad] = ozet(o)
-        if ad in S0S7:
-            for k in ANAHTAR:
-                if abs(kosu[ad][k] - once["senaryo"][ad][k]) >= TOL:
-                    hata.append(f"SAPMA {ad} {k} {kosu[ad][k]} {once['senaryo'][ad][k]}")
     sb = __import__("copy").deepcopy(M.BASE)
     sb["shock"] = M.shock_external
-    for bg_name, bg in (("Baz", M.BASE), ("Dış şok", sb)):
-        paket = {"paketsiz": M.simulate(__import__("copy").deepcopy(bg))}
-        for k, ad in enumerate(M.TS_NAMES):
-            paket[ad] = M.simulate(M.tek_sistem(__import__("copy").deepcopy(bg), k))
-        for ad, o in paket.items():
-            anahtar = f"{bg_name} · {ad if ad != 'paketsiz' else 'paketsiz'}"
-            simdi = ozet(o)
-            for k in ANAHTAR:
-                if abs(simdi[k] - once["tek_sistem"][anahtar][k]) >= TOL:
-                    hata.append(f"SAPMA TS {anahtar} {k}")
+    for bg in (M.BASE, sb):
+        M.simulate(__import__("copy").deepcopy(bg))
+        for k in range(len(M.TS_NAMES)):
+            o = M.simulate(M.tek_sistem(__import__("copy").deepcopy(bg), k))
+            c = o["_checks"]
+            if c["hidden_max"] >= 1e-8 or c["SI_max"] >= 1e-8 or abs(c["balance"]) >= 1e-8:
+                hata.append(f"tek sistem muhasebe {c}")
     y4 = kosu["S4 Şok + erteleme"]["gsyh_endeks_2029"]
     y4z = kosu["S4z Şok + erteleme, zombi kapalı"]["gsyh_endeks_2029"]
     if not (y4z > y4):

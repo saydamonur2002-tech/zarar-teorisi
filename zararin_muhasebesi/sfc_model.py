@@ -63,9 +63,9 @@ INIT = dict(
 )
 S0_ST = 248.1   # kalan vadeye göre KV dış borç (mlr $)
 
-# Açılış banka net serveti. Sayfa bunu «BDDK Temmuz 2026 özkaynak» diye yazar.
-# Repoda birincil kayıt Haziran 2026: 4,530 tn TL (L_cift_kayit.E_TOT). Temmuz 4,65 bu depoda yok.
-# [DOĞRULANMADI]. Sayı değiştirilmedi. Plug, VB_0 bu sabite eşitlensin diye Mb artıkına yazılır.
+# Açılış banka net serveti. Yedek 4,65, BDDK Temmuz iddiası [DOĞRULANMADI].
+# veriler.json banka_ozkaynak_tn varsa o okunur: TP.TOP.V28, 2026-07.
+# Plug, VB_0 bu sabite eşitlensin diye Mb artıkına yazılır.
 BANKA_OZKAYNAK_TN = 4.65
 
 REPO_RHO_YILLIK = 0.68       # hekis/kalibre.py, tahmin, n=10, se 0,16. a_pi yerine konmadı.
@@ -126,6 +126,8 @@ if _os.path.exists(_VP):
     S0_ST = _V.get("kv_dis_borc_kalan_vade", S0_ST)
     _yh, _tp = _V.get("yabanci_hisse", 39.36), _V.get("yabanci_takas_payi", 0.344)
     INIT.update(EqX_u=_yh * E0 / 1000, EqH_u=_yh * E0 / 1000 * (1 / _tp - 1))
+    if "banka_ozkaynak_tn" in _V:
+        BANKA_OZKAYNAK_TN = _V["banka_ozkaynak_tn"]
 
 BASE = dict(
     # dış dünya ve risk

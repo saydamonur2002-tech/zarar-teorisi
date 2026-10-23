@@ -16,7 +16,7 @@ chk = {n: M.simulate(p)["_checks"] for n, p in M.all_scenarios().items()}
 hid = max(c["hidden_max"] for c in chk.values()); bal = max(abs(c["balance"]) for c in chk.values())
 si = max(c["SI_max"] for c in chk.values())
 
-# --- bilanço matrisi (BANKA_OZKAYNAK_TN adlı plug; kaynaksız +4.65 yok)
+# --- bilanço matrisi (BANKA_OZKAYNAK_TN, veriler.json banka_ozkaynak_tn)
 _ac = M.acilis_bilanco()
 bsm = dict(rows=_ac["rows"], nw=_ac["nw"])
 json.dump(bsm, open("bsm.json", "w"), ensure_ascii=False)
@@ -51,13 +51,17 @@ labels = {"usd_try": ("USD/TL", 1, 2), "politika_faizi": ("Politika faizi", 100,
           "kv_dis_borc_kalan_vade": ("KV dış borç, kalan vade (mlr $)", 1, 1), "reel_efektif_kur": ("Reel efektif kur", 1, 2),
           "emek_payi": ("Emek payı", 100, 1), "buyume_yillik": ("Büyüme, yıllık", 100, 1),
           "yabanci_hisse": ("Yabancının pay stoku (mlr $)", 1, 2), "yabanci_takas_payi": ("Yabancı takas payı", 100, 1),
-          "bist100": ("BIST 100", 1, 0)}
+          "bist100": ("BIST 100", 1, 0), "banka_ozkaynak_tn": ("Banka özkaynağı (tn TL)", 1, 3)}
 if base:
     ch = []
     for k, (lab, mul, dg) in labels.items():
         a, b = base["girdiler"].get(k), V["degerler"].get(k)
+        if a is None and k == "banka_ozkaynak_tn":
+            a = 4.65  # önceki kayıtta anahtar yoktu; kod sabiti 4,65 idi
         if a is None or b is None or abs(a - b) < 1e-12: continue
-        ch.append(f"{lab}: {fmt(a*mul,dg)} → <b>{fmt(b*mul,dg)}</b>")
+        once, simdi = fmt(a * mul, dg), fmt(b * mul, dg)
+        if once == simdi: continue
+        ch.append(f"{lab}: {once} → <b>{simdi}</b>")
     o0, o1 = base["ozet"], entry["ozet"]
     out_ch = [f"S0 baz, 2029Q4 enflasyon: {fmt(o0['S0 Baz']['pi_end']*100)} → <b>{fmt(o1['S0 Baz']['pi_end']*100)}</b>",
               f"S0 baz, 2027Q4 net rezerv: {fmt(o0['S0 Baz']['nr_27q4'])} → <b>{fmt(o1['S0 Baz']['nr_27q4'])}</b> mlr $",
