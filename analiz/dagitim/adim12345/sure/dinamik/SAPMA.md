@@ -1,0 +1,1 @@
+SAPMA: (1) Senaryo bileşimleri (düşük/yüksek) VARSAYIM; OVP 2029 sonrası sabit. (2) Kalan finansman gideri nominal sabit tutuldu → EFK büyüdükçe oran mekanik düşüyor; Lmin=1 yıl bu yüzden iyimser (kalan borç faizi yeniden fiyatlanırsa artar). (3) Kısalmanın bir kısmı 2026-28 kâr büyümesinden (program 2029 başı); statik hesap 2025 EFK idi. (4) ABD enflasyonu %2,5 VARSAYIM.
