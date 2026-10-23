@@ -1,0 +1,1 @@
+SAPMA: Fonlama ayrımı (YP mevduat/sendikasyon) veri parçalı olduğu için hesaba bağlanmadı; paylaşım senaryosu fonlamayı mevduat faiziyle temsil ediyor. Faiz verisi ikincil derleme (TCMB kaynaklı). EUR payı hesaplanmadı (tam USD).
