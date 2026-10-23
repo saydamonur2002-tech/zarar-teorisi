@@ -1,0 +1,1 @@
+SAPMA: Repo branch yerelde yok; adım 4 kuralı sure/BES_ADIM_MALIYET.md yerel kopyasından. Mevduat verisi haber derlemesi (BDDK kaynaklı). Repo ihraç tabanı (19.361,9) yerine fonlama-eşleme kuralı M=faiz/r_mev kullanıldı. YP senedinde π>%2,58 olunca mevduat sahibi kazanır. Kredi daralması (×0,08) hesaplanmadı.

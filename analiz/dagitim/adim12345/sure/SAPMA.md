@@ -1,0 +1,1 @@
+SAPMA: (1) MC'de κ ve kobi_payi model.mc() seed'leri yeniden üretilerek alındı (çıktı dönmüyordu). (2) Anapara D, model kapsamıyla tutarlı olsun diye ψ ölçekli (etkin) alındı; EVDS tam kapsam (κ·S0) ψ=0.358'e bölünür → süre ~2,8 kat. (3) Sabit nominal; büyüme/enflasyon/2028 geçiş yılı yok.
