@@ -1,0 +1,114 @@
+<style>#charts3{grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}</style>
+<section class="col">
+  <h2><span class="sec">6C · Yeni senaryo</span>Tek Sistem paketi: iyimser, olası, kötümser</h2>
+  <p><b>Bağlam.</b> Tek Sistem, 21 Ekim 2026 tarihli raporlarda tarif edilen beş adımlık bir politika paketi: firmalar arası borcun e-faturayla mahsubu, kalan borcun yukarıdan aşağı sırayla ödenmesi, eski kredinin faizinin durması, hedefe bağlı senet ve kira havuzu (HEKİS). Altıncı bir adım, 2030'da yeni TL'ye geçiş. Raporlar paketi kendi içinde indirgenmiş bir enflasyon modeliyle değerlendiriyor. Orada adımların payı birbirinden ayrılmıyor ve bankaların sermayesine etkisi "ölçülmedi" diye işaretli. Bu model tam o iki şeyi görebildiği için paketi buraya taşıdım: bilançoda kimin neyi üstlendiğini ve kur/rezerv kanalını.</p>
+  <p><b>Nasıl çevirdim?</b> Yeni kesim eklemedim. Her adımı modelde zaten var olan bir kaldıraca bağladım. Adım 1–2 2027 boyunca, adım 3–4 2028 boyunca kademeli devreye giriyor. HEKİS 2028'den itibaren. Kaldıraçların değerleri raporlardaki aralıklardan, katsayıların bir kısmı ise benim varsayımım.</p>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Kaldıraç</th><th class="num">Kötümser</th><th class="num">Olası</th><th class="num">İyimser</th><th>Dayanak</th></tr></thead>
+<tbody>{{TS_LEVER_ROWS}}</tbody></table></div>
+<section class="col">
+  <ul class="plain">
+    <li><b>Adım 1–2 modelde yalnızca bir kanaldan giriyor.</b> Modelde firmalar arası ticari borç stoku yok. Bu yüzden mahsubun etkisini, yeni takipteki kredi oluşum hızının (1 − 0,5 × silinen pay) ile çarpılması olarak yazdım. 0,5 katsayısı benim varsayımım. Kurulum maliyetini (0,14 trilyon TL, raporun üst sınırı) 2027'nin ilk yarısında kamu harcaması olarak ekledim.</li>
+    <li><b>Adım 3.</b> Firmaların TL kredi faizinin κ kadarı duruyor. Bankanın faiz geliri aynı tutarda düşüyor, çünkü modelde aynı akım iki bilançoda da yer alıyor: para kaybolmuyor, kesim değiştiriyor. "Kredi çevrilmez" kuralının yeni kredi akışını yavaşlatması modelde yok.</li>
+    <li><b>Adım 4.</b> Senedi ayrı bir enstrüman yapmadım. Senede kayan para hanelerin döviz mevduatından TL mevduata geçiyor. Bu, net rezervi güçlendiriyor. Senedin primi (yılda 2–39 milyar TL) modelde yok. Atalet ρ, modeldeki geçmiş enflasyon ağırlığına (a<sub>π</sub> = 0,70) orantılı çevrildi: a<sub>π</sub> = 0,70 × ρ / 0,59.</li>
+    <li><b>Adım 4.5 (yeni TL) modele girmedi.</b> 2030'da, yani modelin ufkunun dışında. Raporun kendi hesabına göre de faydası sıfır.</li>
+  </ul>
+</section>
+<div class="legend" id="legend3"></div>
+<div class="charts" id="charts3"></div>
+<h3>Sonuçlar · baz arka plan, bankalar adım 3'ün bedelini üstleniyor</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Gösterge</th><th class="num">Paketsiz</th><th class="num">Kötümser</th><th class="num">Olası</th><th class="num">İyimser</th></tr></thead>
+<tbody>{{TS_MAIN_ROWS}}</tbody></table></div>
+<section class="col">
+  <p class="readas">Enflasyonu 2029Q4 tek çeyreği yerine 2028–29 ortalaması olarak veriyorum. Net rezerv taban civarına inince kur son çeyrekte sıçrıyor ve uç nokta eşiğe duyarlı oluyor. Aynı yüzden haftalık kutuda artık "en düşük net rezerv" yok. "Toplam üretim farkı" 2027'den 2029 sonuna kadarki birikimli farkı gösteriyor; kötümserde 2027'deki küçük kazanç (kurulum harcaması ve mahsup) 2028'den sonraki kredi kısıtının kaybını götürmüyor, ama birikimli fark pozitif kalıyor. Bu yüzden 2029Q4 seviyesiyle aynı yönde değil.</p>
+  <h3>Ne çıktı?</h3>
+  <ul class="plain">
+    <li><b>Başlık etkisi adımların kendisinden değil, ölçülmemiş kaldıraçlardan (mahsup payı, risk primi, atalet) geliyor.</b> 2028–29 ortalama enflasyonu paketsize göre kötümserde {{TS_PI_K}}, olasıda {{TS_PI_O}}, iyimserde {{TS_PI_I}} puan. Kötümserde atalet kırılmıyor ve risk primi düşmüyor, enflasyon etkisi sıfıra yakın. Rapor, beş adımın doğrudan etkisini 3. ve 4. yıllarda 1,1–1,7 puan veriyor. Olası senaryo aynı büyüklük sırasında, ama iki modelin baz çizgisi çok farklı (raporda 2031'de %13,9, burada 2029'da %24). Bu uyumu doğrulama saymıyorum.</li>
+    <li><b>Adım 1–2 enflasyon aracı değil, büyüme aracı.</b> Tek başına olası düzeyde reel GSYH'yi {{TS_A12}} puan artırıyor. Enflasyona etkisi ise küçük ve yönü ters: talep genişlediği için hafif artırıyor. Raporun açık sorusuna ("1 puanlık düşüşün ne kadarı adım 1–2'den geliyor?") bu modeldeki cevap: neredeyse hiçbiri. Bu sonuç %14–25 varsayımına bağlı; silinen pay yükseldikçe büyüme etkisi de büyür.</li>
+    <li><b>Adım 3 belirleyici ve bedelin kime yazıldığına bağlı.</b> Bankaların sermaye oranının en düşük değeri paketsiz %{{TS_CAR0}}. Kötümserde %{{TS_CAR_K}}'a, olasıda %{{TS_CAR_O}}'a iniyor. %14'ün altında model kredi kısıtını devreye sokuyor. Adım 3 tek başına reel GSYH'yi {{TS_A3}} puan etkiliyor. Olası pakette adım 3'ü çıkarırsam GSYH farkı {{TS_Y_NO3}}, bırakırsam {{TS_TOG}} puan: yani {{TS_A3_VERDICT}}.</li>
+    <li><b>Hazine üstlenirse sonuç değişiyor, ama bedeli kamu borcu ödüyor.</b> Olası pakette Hazine, bankaya durdurulan faizi telafi ederse banka sermaye oranı %{{TS_CAR_H}} seviyesinde kalıyor, GSYH {{TS_Y_H}} puan daha yüksek, kamu borcu/GSYH {{TS_DEBT_H}} puan daha yüksek. Raporun "para kaybolmaz, el değiştirir" cümlesi doğru. Ama sonucu, hangi bilançoya yazıldığı belirliyor.</li>
+    <li><b>Faizin tamamının durdurulması (κ = 1) yalnızca bedeli devlet üstlenirse çalışıyor.</b> Bankalar üstlenirse reel GSYH {{TS_K1}}'ye iniyor, Hazine üstlenirse {{TS_K1H}} kalıyor.</li>
+    <li><b>Adımlar toplanmıyor.</b> Olası düzeyde adımların tek başına etkilerinin toplamı {{TS_SUM}}, birlikte {{TS_TOG}} puan. Raporun "etkiler basitçe toplanamaz" uyarısını doğruluyor. Banka sermaye oranı adım 3 tek başına %{{TS_CAR_A3}}'e iniyor, tüm paketle %{{TS_CAR_O}}: diğer adımlar adım 3'ün darbesini kısmen hafifletiyor.</li>
+  </ul>
+  <h3>Daha erken yapılabilir mi? · olası düzey, baz arka plan</h3>
+  <p>Adımların başlangıcını ayrı ayrı öne çektim. Her adım yine 4 çeyrekte kademeli devreye giriyor. Son sütun, bankaların sermaye oranının %14'ün altına ilk indiği çeyrek: model kredi kısıtını bu eşikte devreye sokuyor.</p>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Takvim</th><th class="num">GSYH 2029Q4 (bankalar)</th><th class="num">GSYH 2029Q4 (Hazine)</th><th class="num">Ort. enflasyon</th><th class="num">Kamu borcu/GSYH</th><th class="num">Banka sermaye oranı, en düşük</th><th class="num">%14 altına ilk iniş</th></tr></thead>
+<tbody>{{TS_TIMING_ROWS}}</tbody></table></div>
+<section class="col">
+  <ul class="plain">
+    <li><b>Adım 1–2'nin zamanlaması sonucu değiştirmiyor</b> ({{TS_T12_D}} puan). Öne almak modelin gözünde bedava, ama bunun nedeni etkisinin küçük olması.</li>
+    <li><b>Adım 4–5 bir yıl erken yapılabilir ve kazancı var:</b> reel GSYH {{TS_T4_D}} puan, ortalama enflasyon {{TS_T4_PI}} puan. Banka sermayesine dokunmuyor. Modelin gözünde öne alınabilecek ve işe yarayan grup bu.</li>
+    <li><b>Adım 3'ü öne almak pahalı.</b> Reel GSYH {{TS_T_BASE_Y}}'den {{TS_T3_Y}}'ye iniyor. Sebep: bankaların sermaye oranı %14 eşiğini {{TS_T3_14}}'de geçiyor, mevcut takvimde {{TS_T_BASE_14}}'de. Kredi kısıtı beş çeyrek daha erken başlıyor. Bedel Hazine'ye yazılırsa aynı takvimde GSYH {{TS_T3_YH}}: sorun zamanlama değil, kimin bilançosuna yazıldığı.</li>
+    <li><b>Mevcut takvimin sonucu iyimser okunabilir.</b> Eşik 2029Q2'de aşılıyor, yani adım 3'ün asıl maliyeti ufkun son iki çeyreğine düşüyor. Ufuk 2029 sonunda bitiyor, sonrası ölçülmüyor.</li>
+    <li><b>"Adımlar birbirinden bağımsız" kısmen doğru, kısmen modelin yapısından.</b> Zamanlama bakımından bağımsız çıktı: adım 1–2'nin zamanı sonucu değiştirmiyor, adım 4–5 tek başına öne alınabiliyor. Ama iki uyarı. (a) Bu bağımsızlığı kaldıraçları ayrı kanallara bağlayarak ben kurdum. Raporlar adım 3'ün adım 1–2'ye bağlı olduğunu söylüyor: mahsup ve sıralı ödeme olmadan kredi çevrilmezse temerrüt artar. Modelde bu bağ yok, "sıra ters" satırı bu yüzden "adım 3 erken" ile aynı çıkıyor. (b) Sonuç bakımından bağımsız değiller: tek başlarına etkilerin toplamı {{TS_SUM}}, birlikte {{TS_TOG}} puan.</li>
+    <li><b>Öne alınıp alınamayacağını model söyleyemez.</b> Raporlarda hukuki dayanak, uygulayıcı kurum ve GİB kapsamı ölçülmemiş, e-fatura fiyat endeksi kurulmamış, adım 1 için firmadan firmaya fatura verisi yok. Burada yalnızca "öne alınırsa ne olur" sorusunun cevabı var.</li>
+  </ul>
+  <h3>Adım 3'ün tasarımı · olası düzey, baz arka plan</h3>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Tasarım</th><th class="num">Reel GSYH 2029Q4</th><th class="num">Kamu borcu/GSYH</th><th class="num">Banka sermaye oranı, en düşük</th><th class="num">Ort. enflasyon 2028–29</th></tr></thead>
+<tbody>{{TS_KAPPA_ROWS}}</tbody></table></div>
+<section class="col">
+  <h3>Hangi adım ne kadar? · her adım tek başına, olası düzey</h3>
+  <p class="readas">Paketsize göre fark, puan olarak. Satırlar toplanmaz (yukarıya bakın).</p>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Adım</th><th class="num">Reel GSYH 2029Q4</th><th class="num">Ort. enflasyon</th><th class="num">Banka sermaye oranı, en düşük</th><th class="num">Net rezerv 2028Q4 (mlr $)</th></tr></thead>
+<tbody>{{TS_ABL_ROWS}}</tbody></table></div>
+<section class="col">
+  <h3>Aynı paket 2027 dış şokuyla birlikte</h3>
+  <p>Şok senaryosunu (S1) arka plan alıp paketi üstüne koydum. Şok 2027'nin ikinci çeyreğinden 2028'in ilk çeyreğine kadar sürüyor, paket 2028'de tam devreye giriyor.</p>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Gösterge</th><th class="num">Paketsiz</th><th class="num">Kötümser</th><th class="num">Olası</th><th class="num">İyimser</th></tr></thead>
+<tbody>{{TS_SHOCK_ROWS}}</tbody></table></div>
+<section class="col">
+  <p>Şokta paketin üretim etkisi kötümserde {{TS_Y_SHK_K}}, olasıda {{TS_Y_SHK_O}}, iyimserde {{TS_Y_SHK_I}} puan. Bankaların sermaye oranı şok yüzünden paketsizde bile %{{TS_CAR_SHK0}}'e iniyor, bu yüzden adım 3'ün darbesi daha erken ve daha sert geliyor. Olası paketin etkisi şoksuz arka planda {{TS_Y_O}} puan iken şokta {{TS_Y_SHK_O}} puan.</p>
+  <h3>Hazine bedeli üstlenirse · baz arka plan</h3>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Gösterge</th><th class="num">Paketsiz</th><th class="num">Kötümser</th><th class="num">Olası</th><th class="num">İyimser</th></tr></thead>
+<tbody>{{TS_HAZ_ROWS}}</tbody></table></div>
+<section class="col">
+  <div class="callout"><strong>Kendime itiraz.</strong> (1) Raporlar ρ'yu düşürüyor, ama adım 1–3'ün hiçbiri ρ'yu düşürmüyor. Yalnızca ücret ve kiraları hedefe bağlayan bir kural düşürebilir. Burada da a<sub>π</sub>'yi elle indirdim. İyimserdeki kazancın büyük kısmı iki ölçülmemiş varsayımdan geliyor: atalet ve risk primi düşüşü (raporda "ölçülmedi" etiketli). (2) Mahsup → takip katsayısını (0,5) ben koydum ve modelde ticari kredi yok. Adım 1–2'nin asıl kanalı, yani geç ödeme zincirinin kendisi, eksik. Bu yüzden adım 1–2 etkisi alt sınır olabilir. (3) Banka sermayesi → kredi kısıtı kanalı güçlü tepki veriyor (γ<sub>cr</sub> = 1,5) ve model kriz büyüklüklerini zaten üst sınırda veriyor (bölüm 8). κ = 1 sonucunu tahmin olarak değil, bedelin kime yazıldığının ne kadar belirleyici olduğunun göstergesi olarak okuyun. (4) Senet burada TL mevduat gibi davranıyor. Enflasyon endeksi, prim ve Hazine'nin ek yükümlülüğü modelde yok. (5) Ufuk 2029 sonunda bitiyor ve adım 3'ün maliyeti son çeyreklere düşüyor, bu yüzden mevcut takvimin sonuçları olduğundan iyi görünebilir. (6) Katılım ve hukuki risk (HEKİS bedelinin iptali, firmaların katılmaması) senaryolara girmedi. Raporlarda bunlar sonucu değiştiren unsurlar olarak işaretli.</div>
+</section>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+  const TSD={{TS_DATA}};
+  const fmt=(x,d=1)=>(x==null||isNaN(x))?"—":x.toFixed(d).replace(".",",").replace("-","−");
+  const L=TSD.labels,names=TSD.names,colors=["var(--axis)","var(--s2)","var(--s4)","var(--s3)"];
+  const lg=document.getElementById("legend3");
+  names.forEach((n,k)=>{const s=document.createElement("span");s.innerHTML=`<i class="sw" style="background:${colors[k]}"></i>${n}`;lg.appendChild(s);});
+  const specs=[{key:"pi",title:"Enflasyon",unit:"yıllık, %",d:1},
+    {key:"y",title:"Reel GSYH",unit:"2026Q3 = 100",d:1,ref:100},
+    {key:"NR",title:"Swap hariç net rezerv",unit:"mlr $, kesikli: taban 15",d:1,floor:15,zero:true},
+    {key:"car",title:"Bankaların düzeltilmiş sermaye oranı",unit:"%, kesikli: 14 (kredi kısıtı eşiği)",d:1,floor:14}];
+  const host=document.getElementById("charts3");const W=340,H=200,m={l:38,r:10,t:10,b:24};
+  function niceStep(r){const p=Math.pow(10,Math.floor(Math.log10(r)));const f=r/p;return (f<1.5?1:f<3?2:f<7?5:10)*p;}
+  specs.forEach(sp=>{
+    const div=document.createElement("div");div.className="chart";div.innerHTML=`<h4>${sp.title}</h4><p class="unit">${sp.unit}</p>`;
+    const series=TSD[sp.key];
+    let all=series.flat().filter(x=>!isNaN(x));if(sp.zero)all.push(0);if(sp.floor)all.push(sp.floor);if(sp.ref)all.push(sp.ref);
+    let lo=Math.min(...all),hi=Math.max(...all);const pad=(hi-lo)*0.08||1;lo-=pad;hi+=pad;const step=niceStep((hi-lo)/4);lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;
+    const x=i=>m.l+i*(W-m.l-m.r)/(L.length-1),y=v=>m.t+(hi-v)*(H-m.t-m.b)/(hi-lo);
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${sp.title}">`;
+    for(let v=lo;v<=hi+1e-9;v+=step){svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/>`;svg+=`<text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end">${fmt(v,step<1?1:0)}</text>`;}
+    if(sp.zero&&lo<0)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(0)}" y2="${y(0)}" stroke="var(--axis)"/>`;
+    if(sp.ref)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(sp.ref)}" y2="${y(sp.ref)}" stroke="var(--axis)"/>`;
+    if(sp.floor)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(sp.floor)}" y2="${y(sp.floor)}" stroke="var(--crit)" stroke-dasharray="3 3"/>`;
+    [0,5,9,13].forEach(i=>{svg+=`<text x="${x(i)}" y="${H-6}" text-anchor="${i===0?'start':i===13?'end':'middle'}">${L[i]}</text>`;});
+    series.forEach((s,k)=>{const pts=s.map((v,i)=>isNaN(v)?null:[x(i),y(v)]).filter(Boolean);svg+=`<polyline fill="none" stroke="${colors[k]}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="${pts.map(p=>p.join(',')).join(' ')}"/>`;const lp=pts[pts.length-1];svg+=`<circle cx="${lp[0]}" cy="${lp[1]}" r="3" fill="${colors[k]}" stroke="var(--ground)" stroke-width="1.5"/>`;});
+    svg+=`<line class="xh" x1="0" x2="0" y1="${m.t}" y2="${H-m.b}" stroke="var(--axis)" visibility="hidden"/><rect x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg>`;
+    div.insertAdjacentHTML("beforeend",svg);const tip=document.createElement("div");tip.className="tip";tip.hidden=true;div.appendChild(tip);
+    const el=div.querySelector("svg"),xh=el.querySelector(".xh");
+    function showTip(ev){const r=el.getBoundingClientRect();const px=(ev.clientX-r.left)*W/r.width;let i=Math.round((px-m.l)/((W-m.l-m.r)/(L.length-1)));i=Math.max(0,Math.min(L.length-1,i));
+      xh.setAttribute("x1",x(i));xh.setAttribute("x2",x(i));xh.setAttribute("visibility","visible");let h=`<b>${L[i]}</b>`;names.forEach((n,k)=>{h+=`<div class="r"><span><i style="background:${colors[k]}"></i>${n}</span><span>${fmt(series[k][i],sp.d)}</span></div>`;});
+      tip.innerHTML=h;tip.hidden=false;const dr=div.getBoundingClientRect();let left=ev.clientX-dr.left+14;if(left+tip.offsetWidth>dr.width)left=ev.clientX-dr.left-tip.offsetWidth-14;tip.style.left=Math.max(0,left)+"px";tip.style.top=(el.offsetTop+10)+"px";}
+    el.addEventListener("pointermove",showTip);el.addEventListener("pointerdown",showTip);el.addEventListener("pointerleave",()=>{tip.hidden=true;xh.setAttribute("visibility","hidden");});
+    host.appendChild(div);});
+});
+</script>

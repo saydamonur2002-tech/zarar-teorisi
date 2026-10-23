@@ -1,0 +1,310 @@
+<style>
+:root{--s5:#c2527f}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--s5:#d55181}}
+:root[data-theme="dark"]{--s5:#d55181}
+td.pos{color:var(--tag-veri)} td.neg{color:var(--tag-var)}
+td.zero{color:var(--ink-3)}
+.bsm td.num{min-width:64px}
+.bsm tr.nw td{border-top:2px solid var(--rule);font-weight:600}
+.rev td:first-child{font-family:var(--sans);font-weight:600;white-space:nowrap}
+.dbar{display:inline-flex;align-items:center;width:120px;height:10px;position:relative;vertical-align:middle;margin-right:8px}
+.dbar::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--axis)}
+.dbar i{position:absolute;top:0;height:10px;display:block}
+.dbar i.n{background:var(--s2);right:50%;border-radius:2px 0 0 2px}
+.dbar i.p{background:var(--s1);left:50%;border-radius:0 2px 2px 0}
+.pill{display:inline-block;font-family:var(--sans);font-size:12px;font-weight:600;padding:1px 8px;border-radius:10px;background:var(--eq-bg);color:var(--ink-2);white-space:nowrap}
+.pill.bad{background:var(--tag-var-bg);color:var(--tag-var)}
+</style>
+
+<div class="wrap">
+<header class="mast">
+  <div class="kicker">Stok–akım tutarlı model · Dağıtılmış Zarar Teorisi, revize</div>
+  <h1>Zarar kaybolmaz, <em>adres değiştirir</em></h1>
+  <p class="lede">Yeldan çekirdeğini altı kesimli, iki para birimli stok–akım tutarlı (SFC) bir modele genişlettim. Dağıtılmış Zarar Teorisi'ni de bu muhasebenin diliyle yeniden yazdım. Sonuç: teorinin ana tezi, muhasebenin bir özdeşliğine dönüşüyor. Ama en iddialı yan sonucu tek bir varsayıma bağlı.</p>
+  <div class="meta"><span>Veri kesimi: 22 Eylül 2026</span><span>6 kesim · 2 para birimi · 16 enstrüman</span><span>Tutarlılık hatası &lt; 10⁻¹¹ trilyon TL</span></div>
+</header>
+
+<section class="col">
+  <h2><span class="sec">Özet</span>Dört bulgu</h2>
+</section>
+<div class="findings">
+  <div class="finding"><div class="n">{{S4_DOM}}<small>GSYH puanı</small></div><div class="l">Aynı dış şok ve kötü krediler yapılandırılıp ertelenirse yurt içi kesimlerin reel net serveti 2029 sonunda bazın bu kadar altında kalıyor. Zararlar tanınırsa fark <b>{{S5_DOM}}</b>.</div></div>
+  <div class="finding"><div class="n">{{S4_B}} / {{S4_LAM}}<small>puan</small></div><div class="l">Ertelemede bankalar görünürde <em>kazançlı</em> (net servet {{S4_B}} puan), ama gizli zarar stoku {{S4_LAM}} puan büyüyor. Teorideki "görünmezleştirme" böyle ölçülüyor.</div></div>
+  <div class="finding"><div class="n">%{{S4_DEBT}} vs %{{S5_DEBT}}</div><div class="l">2029 sonunda kamu borcu/GSYH: erteleme ile tanıma. Ertelemek bedava değil. Kamunun hiçbir sermaye aktarımı yapmadığı senaryoda borç daha çok artıyor.</div></div>
+  <div class="finding"><div class="n">{{DY_Z}} → {{DY_NZ}}<small>GSYH puanı</small></div><div class="l">Tanımanın üretim avantajı, zombi kredi kanalı kapatılınca bu kadar küçülüyor. Bulgunun büyüklüğü bu tek kanala bağlı.</div></div>
+</div>
+
+<section class="col">
+  <h2><span class="sec">1 · Neden SFC?</span>Her kuruşun iki adresi var</h2>
+  <p>Stok–akım tutarlılığı (SFC, Godley &amp; Lavoie geleneği) basit bir kurala dayanıyor: <b>her ödemenin bir ödeyeni, bir de alıcısı vardır. Her varlık da başka birinin yükümlülüğüdür.</b> Halk diliyle: para bir cepten çıkıyorsa başka bir cebe giriyor, yoksa muhasebe tutmuyor. Bu kural modele dışarıdan konan bir varsayım değil, modelin iskeleti.</p>
+  <p>Önceki Yeldan modelinin iki büyük açığı vardı: bankalar yoktu, yurt içi yerleşiklerin dövize kaçışı da yoktu. SFC ikisini birlikte zorunlu kılıyor. Hanehalkı dolar aldığında o doların <em>kimden</em> geldiğini göstermek zorundasınız. Modelde cevap şu: bankalar dövizi TCMB'den alır ve TCMB'ye geri yatırır. Sonuçta <b>brüt rezerv değişmez, net rezerv düşer</b>. Türkiye'nin son on yıldaki rezerv tartışmasının özü tam olarak bu.</p>
+  <div class="callout"><strong>Tutarlılık testi.</strong> Modelde bankaların TCMB'deki net pozisyonu iki ayrı yoldan hesaplanıyor: bankanın bütçesinden ve TCMB'nin bütçesinden. Bu ikisinin eşit çıkması, Godley'in "gizli denklemi". Altı senaryonun 78 çeyreğinin tamamında fark 10⁻¹² trilyon TL'nin altında. Kesimlerin tasarruf toplamı da her dönemde yatırıma eşit (fark &lt; 10⁻¹²). Kesimlerin net servetlerinin toplamı da sabit sermayeye eşit (fark &lt; 10⁻¹¹).</div>
+</section>
+
+<section class="col">
+  <h2><span class="sec">2 · Teori</span>Dağıtılmış Zarar Teorisi: yedi revizyon</h2>
+  <p>Önce bir uyarı: metnin tamamı elimde değil. Revizyonu, daha önce anlattığınız ana tez, kavramlar (MAK, Edinilmiş Karar Yükü, Risk Doygunluğu), üç rejim evresi ve transfer ile net kayıp arasındaki ayrım üzerinden yapıyorum. Metni paylaşırsanız bölüm bölüm eşleştirebilirim.</p>
+</section>
+<div class="tablewrap"><table class="rev">
+<thead><tr><th>Kavram</th><th>Önceki hali</th><th>Revize hali</th><th>Neden</th></tr></thead>
+<tbody>
+<tr><td>R1 · Ana tez</td><td>Riskin dağıtılması riskin yok edilmesi değildir.</td><td>Bir <b>özdeşlik</b>: yurt içi kesimlerin reel servet kaybı = reel sermaye kaybı + yurt dışına aktarılan kısım. İç transferler toplamda sıfırlanır (D1–D2).</td><td>Tez artık yanlışlanamaz bir iddia değil, muhasebe zorunluluğu. Tartışılabilir olan kısım, zararın <em>dağılımı</em> ve <em>büyüklüğü</em>.</td></tr>
+<tr><td>R2 · Dağıtım zararı büyütür</td><td>(Örtük) Dağıtım zararın toplamını değiştirmez, sadece yerini değiştirir.</td><td>Dağıtımın <b>yolu</b>, reel kaybın kendisini değiştirir. Aynı şok, erteleme yoluyla {{S4_Q}}, tanıma yoluyla {{S5_Q}} GSYH puanı üretim kaybı yaratıyor.</td><td>Zarar kimin bilançosuna yazılırsa o kesimin davranışı değişir: zombi krediler, kredi daralması, bilanço etkisi. Transfer tarafsız değil.</td></tr>
+<tr><td>R3 · Görünür ve gizli zarar</td><td>Maliyet haneler, firmalar, bankalar, bütçe ve gelecek dönemler arasında bölünür.</td><td>Beşinci bir "adres" daha var: <b>gizli zarar stoku</b> Λ. Yapılandırılmış kötü krediler, TCMB'nin negatif özkaynağı ve dövize endeksli koşullu yükümlülükler (KÖİ garantileri) bu stoğa girer (D4).</td><td>"Gelecek dönemler" bir kesim değil, bir bilanço kalemi olarak ölçülmeli. KKM bunun canlı örneği: 2021–2026 arasında birikip Hazine ve TCMB bilançolarında ~60 milyar dolar olarak gerçekleşti.</td></tr>
+<tr><td>R4 · MAK</td><td>Maliyet absorpsiyon kapasitesi.</td><td>Her kesim için ayrı bir tampon ölçüsü, bugün = 1, tükenmiş = 0: hane net TL+YP varlığı/gelir, firma faiz karşılama oranı, bankada gizli zarardan arındırılmış sermaye oranı, kamuda faiz/gelir, TCMB'de swap hariç net rezerv (D5).</td><td>Toplam MAK yanıltıcı olur, çünkü doygunluk ortalamada değil <b>en zayıf halkada</b> başlıyor. Modelde bu halka her senaryoda TCMB'nin net rezervi.</td></tr>
+<tr><td>R5 · Risk doygunluğu</td><td>2036 evresi: donukluk ya da yeniden yapılandırma.</td><td>Bir durum göstergesi: en az bir kesimin MAK'ı sıfıra indiğinde. Takvime bağlı bir evre değil.</td><td>Evreleri tarihlere bağlamak yerine eşik aşımına bağlamak, teoriyi test edilebilir kılıyor.</td></tr>
+<tr><td>R6 · Edinilmiş Karar Yükü</td><td>Fiilî liderlik kapasitesi = biçimsel yetki − geçmiş karar yükü.</td><td>EKY = Λ / GSYH. Politika alanı = 1 − EKY/EKY<sub>maks</sub> (D6).</td><td>Bu sürümde EKY sadece ölçülüyor, politikaya geri beslenmiyor. Bir sonraki adım bu geri beslemeyi eklemek.</td></tr>
+<tr><td>R7 · "Önce vasatlaşır"</td><td>Sistem çökmez, önce vasatlaşır.</td><td><b>Koşullu</b> hale getirildi. İçeride biriken risk için doğru: baz senaryo ve erteleme senaryosu durgunlukla ilerliyor. Dış şokta ise vasatlaşma aşaması atlanabiliyor, kriz doğrudan geliyor.</td><td>Model tezi kısmen doğruluyor. Tezin genel hali, dış şokla gelen krizleri açıklamıyor.</td></tr>
+</tbody></table></div>
+
+<section class="col">
+  <h3>Revize teorinin denklemleri</h3>
+  <div class="eqblock">
+    <div class="eqrow"><span class="eqno">(D1)</span><div class="tex">\[\sum_{i\in\{H,F,B,G,CB\}}\Delta\tilde V_i \;+\; \Delta\tilde V_X \;=\; \Delta\widetilde{pK}\]</div></div>
+    <div class="eqrow"><span class="eqno">(D2)</span><div class="tex">\[\underbrace{-\sum_{i}\Delta\tilde V_i}_{\text{yurt içi zarar}} \;=\; \underbrace{-\Delta\widetilde{pK}}_{\text{reel kayıp}} \;+\; \underbrace{\Delta\tilde V_X}_{\text{dışa aktarılan}}\]</div></div>
+    <div class="eqrow"><span class="eqno">(D3)</span><div class="tex">\[Q^s = \frac{1}{Y_0}\sum_{t}\big(y^{0}_t - y^{s}_t\big)\Delta t\qquad\text{(akım kaybı: vasatlaşmanın ölçüsü)}\]</div></div>
+    <div class="eqrow"><span class="eqno">(D4)</span><div class="tex">\[\Lambda_t = \Lambda^{TGA}_t + \max(0,-V^{CB}_t) + E_t K^{\$},\qquad \Lambda^{TGA}_{t+1} = \Lambda^{TGA}_t + (1-\varphi)\,n_t L_t\Delta t - \mathcal{R}_t\]</div></div>
+    <div class="eqrow"><span class="eqno">(D5)</span><div class="tex">\[MAK_{i,t} = \frac{m_{i,t}-\underline m_i}{m_{i,0}-\underline m_i},\qquad RD_t = 1 \iff \min_i MAK_{i,t}\le 0\]</div></div>
+    <div class="eqrow"><span class="eqno">(D6)</span><div class="tex">\[EKY_t = \Lambda_t / Y_t,\qquad PS_t = 1 - EKY_t / EKY^{\max}\]</div></div>
+    <div class="eqrow"><span class="eqno">(D7)</span><div class="tex">\[g^k_t \;\ni\; -\gamma_z\,\frac{\Lambda^{TGA}_t}{L_t}\qquad\text{(zombi kanalı: erteleme reel kayıp üretir)}\]</div></div>
+  </div>
+  <p class="readas">Tilde (~), fiyat endeksiyle reel değere çevrilmiş büyüklük demek. Δ burada <em>senaryo eksi baz</em> farkı. \(\varphi\), her dönem oluşan takipteki alacakların (TGA) tanınan payı: tanıma rejiminde 1, erteleme rejiminde 0,2. \(\mathcal R_t\) toplu tanıma: Hazine, gizli TGA stoğunu bankalara DİBS vererek sermayelendirir. \(K^{\$}\) dövize endeksli koşullu yükümlülükler. (D1) her dönem bilanço matrisinden sağlanıyor. Bu yüzden R1 artık bir hipotez değil, bir kontrol.</p>
+</section>
+
+<section class="col">
+  <h2><span class="sec">3 · Model</span>Altı kesim, on altı enstrüman</h2>
+  <p>Bilanço matrisi, 2026Q3 başlangıç değerleriyle (trilyon TL). Artı işareti varlık, eksi işareti yükümlülük demek. Her satır sıfıra toplanıyor, çünkü bir kesimin varlığı mutlaka başka bir kesimin yükümlülüğü. Sütunların toplamı ise o kesimin net serveti.</p>
+</section>
+<div class="tablewrap"><table class="bsm" id="bsm"></table></div>
+
+<section class="col">
+  <h3>Kapanış: modeli "tutarlı" yapan denklemler</h3>
+  <div class="eqblock">
+    <div class="eqrow"><span class="eqno">(M1)</span><div class="tex">\[\Delta M^{B}_t = S^B_t + \mathcal R_t + \Delta D_t + E_t\Delta D^{\$}_t + E_t\Delta X^{\$}_{b,t} - \Delta L^{net}_t - E_t\Delta L^{\$,net}_{f,t} - \Delta B^B_t - E_t\Delta FXL^{\$}_t\]</div></div>
+    <div class="eqrow"><span class="eqno">(M2)</span><div class="tex">\[\Delta M^{CB}_t = E_t\Delta R^{\$}_t - E_t\Delta FXL^{\$}_t + \Delta B^{CB}_t - \Delta Cu_t - S^{CB}_t - \mathcal R^{CB}_t\]</div></div>
+    <div class="eqrow"><span class="eqno">(M3)</span><div class="tex">\[\Delta M^{B}_t \equiv \Delta M^{CB}_t\qquad\text{(gizli denklem: ayrıca hesaplanır, eşitliği test edilir)}\]</div></div>
+    <div class="eqrow"><span class="eqno">(M4)</span><div class="tex">\[\Delta R^{\$}_t = CA^{\$}_t + F^h_t + \Delta X^{\$}_{f,t} + \Delta X^{\$}_{b,t} + FDI_t + \Delta B^{\$}_{f,t}\]</div></div>
+    <div class="eqrow"><span class="eqno">(M5)</span><div class="tex">\[\Delta FXL^{\$}_t = \Delta D^{\$}_{h,t} + \Delta D^{\$}_{f,t} + \Delta X^{\$}_{b,t} - \Delta L^{\$}_{f,t}\qquad\text{(bankalar döviz pozisyonunu kapalı tutar)}\]</div></div>
+    <div class="eqrow"><span class="eqno">(M6)</span><div class="tex">\[NR^{\$}_t = R^{\$}_t - FXL^{\$}_t\quad\Rightarrow\quad \text{dolarizasyon: } \Delta R^{\$}=0,\ \Delta NR^{\$} = -\Delta D^{\$}_h\]</div></div>
+  </div>
+  <p class="readas">(M5) ile (M6) birlikte modelin en öğretici sonucunu veriyor: yerleşiklerin döviz talebi brüt rezervi değiştirmiyor, net rezervi bire bir eritiyor. Hanehalkının dövizi, kendi maliyet absorpsiyon kapasitesi. Aynı zamanda zararı TCMB'ye aktaran bir kanal.</p>
+
+  <h3>Davranış denklemleri</h3>
+  <div class="eqblock">
+    <div class="eqrow"><span class="eqno">(B1)</span><div class="tex">\[C_t = \tfrac12 P_t\tfrac{C_{t-1}}{P_{t-1}}(1+g_n\Delta t) + \tfrac12\Big[c_1\big(YD_t - \pi_t\Delta t\,NFW^{TL}_{t-1}\big) + c_2 V^{fin}_{H,t-1}\Delta t\Big]\]</div></div>
+    <div class="eqrow"><span class="eqno">(B2)</span><div class="tex">\[g^k_t = 0{,}6\,g^k_{t-1} + 0{,}4\Big[g^k_0 - \gamma_r(r^l_t-\bar r^l) - \gamma_z\tfrac{\Lambda^{TGA}}{L} - \gamma_{cr}\max(0,\,0{,}14-CAR^{adj}) - \gamma_{fx}\,\text{bilanço şoku}\Big]\]</div></div>
+    <div class="eqrow"><span class="eqno">(B3)</span><div class="tex">\[\Delta D^{\$}_{h,t} = s_{adj}\Big[-s_i(\Delta\text{getiri farkı}) + s_e\max(0,\hat e_{t-1}-\hat e^{\,e}_{t-1}) + s_r\max(0,\rho_t-\hat\rho)\Big]W^{fin}_{H}\]</div></div>
+    <div class="eqrow"><span class="eqno">(B4)</span><div class="tex">\[n_t = n_0 + n_r\max(0,r^l_t-0{,}08) + n_e\max(0,\hat e_t-\hat e^{\,e}_t)\tfrac{E L^{\$}_f}{L}\qquad\text{(takibe düşme oranı)}\]</div></div>
+    <div class="eqrow"><span class="eqno">(B5)</span><div class="tex">\[\hat e_t = \hat e^{\,e}_t + \psi(1-\text{kapasite}_t)\frac{-4\Delta NR^{\$}}{Y^{\$}} + \psi_j\frac{4\,U_t}{Y^{\$}}\qquad U_t:\ \text{karşılanamayan döviz talebi}\]</div></div>
+  </div>
+  <p class="readas">Enflasyon, emek payı, politika faizi ve sıcak para denklemleri önceki Yeldan modelinden aynen alındı. Yeni olan tek bağ, enflasyona çıktı açığı yoluyla talebin eklenmesi. Kamunun reel alımları ve transferleri potansiyel büyümeyle artıyor. Kamu açığı DİBS ile finanse ediliyor, DİBS'in artık alıcısı da bankalar.</p>
+</section>
+
+<section class="col">
+  <h2><span class="sec">4 · Kalibrasyon</span>Yeni veriler</h2>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Kalem</th><th class="num">Değer</th><th>Tür</th><th>Kaynak / gerekçe</th></tr></thead>
+<tbody>
+<tr><td>Banka aktifi / kredi / mevduat / özkaynak</td><td class="num">53,8 / 27,4 / 30,9 / 4,65</td><td><span class="tag var">doğrulanmadı</span></td><td>Özkaynak 4,65 tn TL sayfada BDDK Temmuz 2026 diye duruyor. Repoda birincil kayıt Haziran 2026 özkaynak 4,530 tn TL. Temmuz rakamı yok: [DOĞRULANMADI]. Kodda BANKA_OZKAYNAK_TN; açılış banka net serveti bu sabite eşitlenir, artık M_b'ye yazılır. Sayı değiştirilmedi.</td></tr>
+<tr><td>TL mevduat payı</td><td class="num">%61,5</td><td><span class="tag veri">veri</span></td><td>OVP 2027–2029, 28 Ağustos 2026. YP mevduat ≈ 244 mlr $</td></tr>
+<tr><td>Firmaların net döviz açığı</td><td class="num">−210,8 mlr $</td><td><span class="tag veri">veri</span></td><td>TCMB, Temmuz 2026. Varlık/yükümlülük kırılımı: <span class="tag tah">tahmin</span></td></tr>
+<tr><td>YP kredi (firma), firma dış borcu</td><td class="num">200 / 164 mlr $</td><td><span class="tag tah">tahmin</span></td><td>Net açığı ve toplam kredi büyüklüğünü tutturacak biçimde bölündü</td></tr>
+<tr><td>Bankaların dış borcu</td><td class="num">120 mlr $</td><td><span class="tag var">varsayım</span></td><td>KV banka borcu 77,8 mlr $ (TCMB) + uzun vadeli kısım tahmini</td></tr>
+<tr><td>Bankaların TCMB'deki dövizi</td><td class="num">128,7 mlr $</td><td><span class="tag tah">tahmin</span></td><td>Brüt rezerv − swap hariç net rezerv. Bankaların kapalı döviz pozisyonuyla tutarlı</td></tr>
+<tr><td>KKM</td><td class="num">0</td><td><span class="tag veri">veri</span></td><td>Bakiye Ağustos 2026'da sıfırlandı. Toplam maliyeti ~60 mlr $ (Hazine + TCMB)</td></tr>
+<tr><td>Dövize endeksli koşullu yükümlülük \(K^{\$}\)</td><td class="num">30 mlr $</td><td><span class="tag var">varsayım</span></td><td>KÖİ garantileri için yer tutucu. Resmi bir stok rakamı bulamadım</td></tr>
+<tr><td>Sabit sermaye / GSYH</td><td class="num">2,4</td><td><span class="tag var">varsayım</span></td><td>Literatürdeki aralığın ortası</td></tr>
+<tr><td>Tanıma oranı φ (baz / erteleme)</td><td class="num">0,6 / 0,2</td><td><span class="tag var">varsayım</span></td><td>Oluşan TGA'nın dönem içinde karşılık ayrılıp silinen payı</td></tr>
+<tr><td>Zombi kanalı γ<sub>z</sub></td><td class="num">0,8</td><td><span class="tag var">varsayım</span></td><td>Sonuçları en çok belirleyen parametre. Ayrıntısı 7. bölümde</td></tr>
+</tbody></table></div>
+
+<section class="col">
+  <h2><span class="sec">5 · Senaryolar</span>Aynı şok, farklı muhasebe</h2>
+  <ul class="plain">
+    <li><b>S0 Baz.</b> OVP'ye yakın bir yol: TL yılda %2 reel değer kazanıyor, dış koşullar sakin.</li>
+    <li><b>S1 Dış şok.</b> 2027Q2–2028Q1 arasında dış faiz +100, ülke risk primi +400 baz puan. Kötü kredilerin %60'ı tanınıyor.</li>
+    <li><b>S4 Şok + erteleme.</b> S1'in aynısı, ama oluşan takipteki alacakların sadece %20'si tanınıyor, kalanı yapılandırılıp bilançoda bekletiliyor.</li>
+    <li><b>S5 Erteleme → tanıma.</b> S4 gibi başlıyor. 2028Q2'de gizli TGA stoğunun tamamı tanınıyor, Hazine bankaları DİBS ile sermayelendiriyor, sonrasında tam tanıma rejimine geçiliyor.</li>
+    <li><b>S3 Şok + Yeldan seti.</b> S1'e sermaye akımı yönetimi, rekabetçi reel kur, vergi kaydırma ve kamu yatırımı ekleniyor.</li>
+    <li><b>S4z / S5z, zombi kapalı.</b> S4 ve S5'in yapısal kopyası: γ_z = 0, başka katsayı yok. Monte Carlo çekilişi değil. Modelin kendi karşı-olgusudur; Türkiye için nedensel zombi tahmini değildir.</li>
+  </ul>
+  <p>Grafiklerde yer almayan bir senaryo daha var: <b>S2</b>, reel değerlenmenin yılda %5 hızla sürdüğü baz. Bu senaryoda dış şok olmadan da swap hariç net rezerv 2029 sonunda {{S2_NR}} milyar dolara iniyor. İçeride biriken risk tek başına doygunluğa ulaşıyor.</p>
+</section>
+<div class="legend" id="legend"></div>
+<div class="charts" id="charts"></div>
+
+<h3>Özet tablo · 2026Q4–2029Q4</h3>
+<div class="tablewrap"><table id="sumtable"></table></div>
+
+<section class="col">
+  <h2><span class="sec">6 · Zarar dağılım matrisi</span>Zarar kimin bilançosuna yazıldı?</h2>
+  <p>Tablo 2029Q4'te, bazla karşılaştırıldığında kesimlerin reel net servet farklarını gösteriyor. Rakamlar başlangıç yıllık GSYH'sinin yüzdesi. "Kontrol" sütunu (D1) özdeşliğinin sağlandığını gösteriyor: yurt içi toplam + yurt dışı − sermaye = 0. Akım kaybı (D3) stok farkından ayrı bir ölçü: vasatlaşmanın toplam bedeli.</p>
+</section>
+<div class="tablewrap"><table id="dectable"></table></div>
+<section class="col">
+  <p>Tablodan dört sonuç çıkıyor:</p>
+  <ul class="plain">
+    <li><b>Zararı en çok kamu ve firmalar taşıyor.</b> Hanehalkının zararı görece küçük kalıyor, çünkü döviz mevduatı onları kurdan koruyor. Yeldan'ın "devlet bölüştürücü" tezi burada "devlet emici" haline geliyor: sonunda zararın muhasebesini kamu bilançosu tutuyor.</li>
+    <li><b>Yurt dışı kesim, zararı taşımıyor, paylaşıyor.</b> Dış şokta yurt dışının net serveti de düşüyor: TL varlık tutan carry yatırımcısı kurdan kaybediyor. Şok senaryolarında yurt dışının kaybı {{X_MIN}}–{{X_MAX}} puan: zararın küçük bir kısmı yurt dışına aktarılabiliyor. S2'de ise yurt dışının serveti {{S2_X}} puan değişiyor: süren reel değerlenme, carry yatırımcısına yarıyor.</li>
+    <li><b>Ertelemede bankalar kârlı görünüyor.</b> S4'te bankaların net serveti bazın üstünde ({{S4_B}} puan). Aynı dönemde gizli zarar stoku {{S4_LAM}} puan büyüyor. Bilanço sağlıklı görünürken zarar bilanço dışında birikiyor.</li>
+    <li><b>Tanımanın bedeli kamuya yazılıyor.</b> S5'te kamunun serveti {{S5_G}} puan azalıyor. Ertelemede ise {{S4_G}} puan. Kamu, zararı tanıyınca daha az kaybediyor, çünkü ekonomi daha hızlı toparlanıyor ve vergi tabanı korunuyor.</li>
+  </ul>
+</section>
+
+<section class="col">
+  <h3>Maliyet absorpsiyon kapasitesi: en zayıf halka</h3>
+  <p>Tablo, her kesimin MAK'ının ilk kez 0,05'in altına indiği çeyreği gösteriyor. Tire, 2029 sonuna kadar tükenmediği anlamına geliyor.</p>
+</section>
+<div class="tablewrap"><table id="maktable"></table></div>
+<section class="col">
+  <p>Her senaryoda ilk tükenen tampon TCMB'nin swap hariç net rezervi. Kamunun kapasitesi yalnızca erteleme senaryosunda tükeniyor ({{S4_GMAK}}). Bu, R4'ü destekliyor: doygunluk ortalamada değil en zayıf halkada başlıyor. Türkiye'de o halka döviz tamponu. Ama en ağır kaybı üstlenen kesim, ilk doyan kesim değil. İlk doyan TCMB, en çok kaybeden kamu ve firmalar. Teori bu ikisini ayrı tutmalı: <em>doygunluk</em> bir likidite olayı, <em>zarar</em> ise bir servet olayı.</p>
+</section>
+
+{{MSCI_SECTION}}
+{{TS_SECTION}}
+<section class="col">
+  <h2><span class="sec">7 · Duyarlılık</span>Bulgu hangi varsayıma dayanıyor?</h2>
+  <p>On parametreyi (γ<sub>z</sub>, n<sub>r</sub>, n<sub>e</sub>, γ<sub>cr</sub>, β<sub>e</sub>, γ<sub>r</sub>, κ, ψ, s<sub>r</sub>, c<sub>1</sub>) ±%40 aralığında rastgele çektim. Çekilişlerin yarısında zombi kanalını tamamen kapattım (γ<sub>z</sub> = 0). Her çekilişte S4 ile S5'i karşılaştırdım. Ayrı olarak, aynı kanal S4z ve S5z adıyla tek noktada kapatıldı; o satır çekiliş değildir.</p>
+  <p>{{YAPI_NOT}}</p>
+</section>
+<div class="tablewrap"><table id="senstable"></table></div>
+<section class="col">
+  <div class="callout"><strong>Kendime itiraz.</strong> "Ertelemek tanımaktan pahalıdır" sonucunun <em>yönü</em> sağlam: tanıma her çekilişte daha fazla üretim sağlıyor. Ama <em>büyüklüğü</em> neredeyse tamamen zombi kanalına bağlı. Bu kanal kapatılınca tanımanın avantajı {{DY_Z}} puandan {{DY_NZ}} puana iniyor. Kamu borcu da çekilişlerin %{{DEBT_HI}} kadarında tanıma altında <em>daha yüksek</em> çıkıyor. Yani bu modelde erteleme, ancak zombi krediler yatırımı gerçekten boğuyorsa pahalı. Bu da bir teori sorusu değil, ampirik bir soru. Japonya için cevap evet (Caballero, Hoshi, Kashyap 2008). Türkiye için bu tahmini yapılmış bir çalışma bilmiyorum.</div>
+  <h3>Teoriye eklenecek yanlışlanabilir hipotezler</h3>
+  <ul class="plain">
+    <li><b>H7 (zombi kanalı).</b> Yapılandırılmış kredilerin sektör kredilerine oranı arttıkça, o sektördeki sağlıklı firmaların yatırım ve istihdam büyümesi düşer. Veri: BDDK sektörel yapılandırma + SGK sektörel istihdam. Test: sektör × dönem panel regresyonu.</li>
+    <li><b>H8 (dolarizasyon aktarımı).</b> Yerleşiklerin döviz mevduatındaki artış, brüt rezervi değil swap hariç net rezervi bire yakın oranda düşürür. Veri: TCMB haftalık. Test: ΔNR üzerine ΔYP mevduat regresyonu, katsayının −1'e yakınlığı.</li>
+    <li><b>H9 (görünmezleştirme).</b> Yapılandırma dönemlerinde bankaların raporlanan sermaye oranı ile piyasa değeri/defter değeri oranı birbirinden ayrışır. Ayrışma, gizli zarar stoğunun bir göstergesidir.</li>
+  </ul>
+</section>
+
+<section class="col">
+  <h2><span class="sec">8 · Sınırlar</span>Modelin söyleyemedikleri</h2>
+  <ol class="crit">
+    <li><b>Kalibrasyon kaba.</b> Kesim bilançolarının bir kısmı toplulaştırılmış verilerden bölünerek türetildi (firma YP kredi/dış borç kırılımı, banka dış borcu). Tablodaki etiketler hangi rakamın ne kadar sağlam olduğunu gösteriyor.</li>
+    <li><b>Baz senaryoda büyüme OVP'nin çok altında.</b> 2027–28'de reel GSYH yıllık bazda en fazla %{{S0_YOY}} daralıyor. Bunun üç kaynağı var: yüksek reel kredi faizi, TL servetinin enflasyon kaybı ve reel değerlenme. Bu bir uyarı mı, yoksa kalibrasyon hatası mı? Şu an ayırt edemiyorum.</li>
+    <li><b>Kriz büyüklükleri üst sınırda.</b> Erteleme senaryosundaki yıllık daralma (%{{S4_YOY}}) Türkiye'nin yaşadığı hiçbir krize benzemiyor (2001'de −%5,7). Zombi kanalı ile kredi kısıtı birlikte çalışınca etki büyüyor.</li>
+    <li><b>Hisse senedi ve konut yok.</b> Sıcak paranın hisse kısmı ve hanelerin konut serveti modelde yer almıyor. Türkiye'de hanelerin en büyük MAK'ı muhtemelen konut ve altın. İkisi de modelin dışında kaldı.</li>
+    <li><b>EKY geri beslenmiyor.</b> Edinilmiş Karar Yükü ölçülüyor ama politika kurallarını değiştirmiyor. Teorinin "fiilî kapasite" iddiası bu yüzden henüz test edilmiş değil.</li>
+    <li><b>Kamu sermayelendirmesi anlık ve kusursuz.</b> S5'te tanıma tek çeyrekte, sürtünmesiz gerçekleşiyor. Gerçekte bu siyasi bir karar ve maliyeti modelin gösterdiğinden yüksek olabilir.</li>
+  </ol>
+</section>
+
+<footer>
+  <b>Kaynaklar</b>
+  <ol>
+    <li>Godley, W. &amp; Lavoie, M. (2007). <i>Monetary Economics: An Integrated Approach to Credit, Money, Income, Production and Wealth</i>. Palgrave Macmillan.</li>
+    <li>Caballero, R., Hoshi, T. &amp; Kashyap, A. (2008). Zombie Lending and Depressed Restructuring in Japan. <i>American Economic Review</i> 98(5).</li>
+    <li>Kornai, J. (1986). The Soft Budget Constraint. <i>Kyklos</i> 39(1).</li>
+    <li>Yeldan (1995, 1997, 1998) ve Adelman &amp; Yeldan (2000): önceki sayfadaki künyeler.</li>
+    <li>2026 verileri: <a href="https://www.ekoturk.com/haberler/bddk-acikladi-bankacilik-sektorunun-aktifleri-538-trilyon-tl-oldu/">BDDK Temmuz 2026</a> · <a href="https://www.apara.com.tr/ekonomi/2026/09/22/firmalarin-net-doviz-acigi-bir-ayda-5-milyar-dolar-artti">Firmaların döviz pozisyonu</a> · <a href="https://www.trtv.net/2026/09/08/kkm-bakiyesi-sifirlandi-tl-mevduat-payi-artti/">KKM ve TL mevduat payı (OVP)</a> · <a href="https://medyascope.tv/2026/09/01/kur-korumali-mevduat-sistemi-sona-erdi-peki-maliyeti-ne-oldu/">KKM'nin maliyeti</a> · <a href="https://www.tcmb.gov.tr/wps/wcm/connect/2d8fcd41-aef8-4282-af32-59df600a0360/KVDB_AylikGelismeler.pdf?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-2d8fcd41-aef8-4282-af32-59df600a0360-phP3YN8">KV dış borç</a> · <a href="https://www.bloomberght.com/tcmb-rezervlerinde-gerileme-surdu-3788661">Rezervler</a> · <a href="https://www.alomaliye.com/2026/09/22/merkezi-yonetim-borc-stoku-agustos-2026da-15-9-trilyon-tl-oldu/">Borç stoku</a> · <a href="https://www.ekointernethaber.com/tcmb-eylul-2026-faiz-karari-belli-oldu-faiz-yuzde-37de-sabit/">TCMB faiz kararı</a> · <a href="https://www.alomaliye.com/2026/09/03/enflasyon-rakamlari-tufe-agustos-2026/">TÜFE</a></li>
+  </ol>
+</footer>
+</div>
+
+<script>
+const DATA = __DATA__;
+const BSM = __BSM__;
+const SENS = __SENS__;
+</script>
+<script>
+(function(){
+  const fmt=(x,d=1)=>(x==null||isNaN(x))?"—":x.toFixed(d).replace(".",",").replace("-","−");
+  const L=DATA.labels, R=DATA.results;
+  const show=["S0 Baz","S1 Dış şok","S4 Şok + erteleme","S5 Şok + erteleme → tanıma","S3 Şok + Yeldan seti"];
+  const nice={"S0 Baz":"S0 Baz","S1 Dış şok":"S1 Dış şok","S4 Şok + erteleme":"S4 Erteleme","S4z Şok + erteleme, zombi kapalı":"S4z Zombi kapalı","S5 Şok + erteleme → tanıma":"S5 Tanıma","S5z Şok + erteleme → tanıma, zombi kapalı":"S5z Zombi kapalı","S3 Şok + Yeldan seti":"S3 Yeldan seti","S2 Reel değerlenme sürer":"S2 Reel değerlenme","S6 Sınır piyasa (merkez)":"S6 Sınır piyasa","S7 Sınır piyasa (sert)":"S7 Sınır piyasa sert"};
+  const colors=["var(--s1)","var(--s2)","var(--s3)","var(--s4)","var(--s5)"];
+  // balance sheet matrix
+  const secs=["Haneler","Firmalar","Bankalar","Kamu","TCMB","Dış dünya"];
+  let b=`<thead><tr><th>Enstrüman</th>${secs.map(s=>`<th class="num">${s}</th>`).join("")}<th class="num">Σ</th></tr></thead><tbody>`;
+  BSM.rows.forEach(([n,v,sum])=>{ b+=`<tr><td>${n}</td>${v.map(x=>`<td class="num ${x>0?'pos':x<0?'neg':'zero'}">${x===0?'·':(x>0?'+':'')+fmt(x,2)}</td>`).join("")}<td class="num zero">${fmt(Math.abs(sum)<0.005?0:sum,1)}</td></tr>`; });
+  const tot=BSM.nw.reduce((a,c)=>a+c,0);
+  b+=`<tr class="nw"><td>Net servet</td>${BSM.nw.map(x=>`<td class="num">${(x>0?'+':'')+fmt(x,2)}</td>`).join("")}<td class="num">${fmt(tot,1)} = pK</td></tr></tbody>`;
+  document.getElementById("bsm").innerHTML=b;
+  // legend
+  const lg=document.getElementById("legend");
+  show.forEach((n,k)=>{const s=document.createElement("span"); s.innerHTML=`<i class="sw" style="background:${colors[k]}"></i>${nice[n]}`; lg.appendChild(s);});
+  const specs=[
+    {key:"ylevel",title:"Reel GSYH",unit:"endeks, 2026Q3 = 100",mul:1,d:1,ref:100},
+    {key:"pi",title:"Enflasyon",unit:"yıllık %",mul:100,d:1,zero:true},
+    {key:"NR",title:"Swap hariç net rezerv",unit:"mlr $, kesikli: taban 15",mul:1,d:1,floor:15,zero:true},
+    {key:"Lam",title:"Gizli zarar stoku Λ",unit:"GSYH %'si",mul:100,d:1},
+    {key:"debt",title:"Kamu borcu",unit:"GSYH %'si",mul:100,d:1},
+    {key:"CARadj",title:"Gizli zarardan arındırılmış SYR",unit:"%, kesikli: %12",mul:100,d:1,floor:12},
+  ];
+  const host=document.getElementById("charts"); const W=340,H=200,m={l:38,r:10,t:10,b:24};
+  function niceStep(r){const p=Math.pow(10,Math.floor(Math.log10(r)));const f=r/p;return (f<1.5?1:f<3?2:f<7?5:10)*p;}
+  specs.forEach(sp=>{
+    const div=document.createElement("div"); div.className="chart";
+    div.innerHTML=`<h4>${sp.title}</h4><p class="unit">${sp.unit}</p>`;
+    const series=show.map(n=>R[n][sp.key].map(x=>x==null?NaN:x*sp.mul));
+    let all=series.flat().filter(x=>!isNaN(x)); if(sp.zero)all.push(0); if(sp.floor)all.push(sp.floor); if(sp.ref)all.push(sp.ref);
+    let lo=Math.min(...all),hi=Math.max(...all);const pad=(hi-lo)*0.08||1;lo-=pad;hi+=pad;
+    const step=niceStep((hi-lo)/4);lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;
+    const x=i=>m.l+i*(W-m.l-m.r)/(L.length-1), y=v=>m.t+(hi-v)*(H-m.t-m.b)/(hi-lo);
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${sp.title}">`;
+    for(let v=lo;v<=hi+1e-9;v+=step){svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/>`;svg+=`<text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end">${fmt(v,step<1?1:0)}</text>`;}
+    if(sp.zero&&lo<0)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(0)}" y2="${y(0)}" stroke="var(--axis)"/>`;
+    if(sp.ref)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(sp.ref)}" y2="${y(sp.ref)}" stroke="var(--axis)"/>`;
+    if(sp.floor)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(sp.floor)}" y2="${y(sp.floor)}" stroke="var(--crit)" stroke-dasharray="3 3"/>`;
+    [0,5,9,13].forEach(i=>{svg+=`<text x="${x(i)}" y="${H-6}" text-anchor="${i===0?'start':i===13?'end':'middle'}">${L[i]}</text>`;});
+    series.forEach((s,k)=>{const pts=s.map((v,i)=>isNaN(v)?null:[x(i),y(v)]).filter(Boolean);
+      svg+=`<polyline fill="none" stroke="${colors[k]}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="${pts.map(p=>p.join(',')).join(' ')}"/>`;
+      const lp=pts[pts.length-1];svg+=`<circle cx="${lp[0]}" cy="${lp[1]}" r="3" fill="${colors[k]}" stroke="var(--ground)" stroke-width="1.5"/>`;});
+    svg+=`<line class="xh" x1="0" x2="0" y1="${m.t}" y2="${H-m.b}" stroke="var(--axis)" visibility="hidden"/><rect x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg>`;
+    div.insertAdjacentHTML("beforeend",svg);
+    const tip=document.createElement("div");tip.className="tip";tip.hidden=true;div.appendChild(tip);
+    const el=div.querySelector("svg"),xh=el.querySelector(".xh");
+    function showTip(ev){const r=el.getBoundingClientRect();const px=(ev.clientX-r.left)*W/r.width;
+      let i=Math.round((px-m.l)/((W-m.l-m.r)/(L.length-1)));i=Math.max(0,Math.min(L.length-1,i));
+      xh.setAttribute("x1",x(i));xh.setAttribute("x2",x(i));xh.setAttribute("visibility","visible");
+      let h=`<b>${L[i]}</b>`;show.forEach((n,k)=>{h+=`<div class="r"><span><i style="background:${colors[k]}"></i>${nice[n]}</span><span>${fmt(series[k][i],sp.d)}</span></div>`;});
+      tip.innerHTML=h;tip.hidden=false;const dr=div.getBoundingClientRect();let left=ev.clientX-dr.left+14;if(left+tip.offsetWidth>dr.width)left=ev.clientX-dr.left-tip.offsetWidth-14;
+      tip.style.left=Math.max(0,left)+"px";tip.style.top=(el.offsetTop+10)+"px";}
+    el.addEventListener("pointermove",showTip);el.addEventListener("pointerdown",showTip);
+    el.addEventListener("pointerleave",()=>{tip.hidden=true;xh.setAttribute("visibility","hidden");});
+    host.appendChild(div);
+  });
+  // summary table
+  const all=Object.keys(R);
+  const yoymin=o=>Math.min(...o.yoy.filter(v=>v!=null&&!isNaN(v)));
+  const rows=[
+    ["En düşük yıllık reel büyüme (%)",o=>fmt(yoymin(o)*100)],
+    ["Reel GSYH, 2029Q4 (2026Q3=100)",o=>fmt(o.ylevel[13])],
+    ["Enflasyon zirvesi (%)",o=>fmt(Math.max(...o.pi)*100)],
+    ["Enflasyon, 2029Q4 (%)",o=>fmt(o.pi[13]*100)],
+    ["USD/TL, 2029Q4",o=>fmt(o.E[13])],
+    ["En düşük net rezerv (mlr $)",o=>fmt(Math.min(...o.NR))],
+    ["Kamu borcu/GSYH, 2029Q4 (%)",o=>fmt(o.debt[13]*100)],
+    ["Gizli zarar Λ/GSYH, 2029Q4 (%)",o=>fmt(o.Lam[13]*100)],
+    ["Arındırılmış SYR, en düşük (%)",o=>fmt(Math.min(...o.CARadj)*100)],
+  ];
+  let t=`<thead><tr><th>Gösterge</th>${all.map(n=>`<th class="num">${nice[n]}</th>`).join("")}</tr></thead><tbody>`;
+  rows.forEach(([lab,f])=>{t+=`<tr><td>${lab}</td>${all.map(n=>`<td class="num">${f(R[n])}</td>`).join("")}</tr>`;});
+  document.getElementById("sumtable").innerHTML=t+"</tbody>";
+  // decomposition
+  const D=DATA.dec_end; const dk=["S1 Dış şok","S4 Şok + erteleme","S4z Şok + erteleme, zombi kapalı","S5 Şok + erteleme → tanıma","S5z Şok + erteleme → tanıma, zombi kapalı","S3 Şok + Yeldan seti","S2 Reel değerlenme sürer","S6 Sınır piyasa (merkez)","S7 Sınır piyasa (sert)"];
+  const cols=[["H","Haneler"],["F","Firmalar"],["B","Bankalar"],["G","Kamu"],["CB","TCMB"],["yurtici_toplam","Yurt içi Σ"],["X","Dış dünya"],["pK","Reel sermaye"],["kontrol","Kontrol"],["gizli_zarar","ΔΛ (gizli)"],["kumulatif_uretim_kaybi","Akım kaybı"]];
+  let d=`<thead><tr><th>Senaryo (− baz)</th>${cols.map(c=>`<th class="num">${c[1]}</th>`).join("")}</tr></thead><tbody>`;
+  dk.forEach(n=>{const o=D[n];d+=`<tr><td>${nice[n]}</td>${cols.map(([k])=>{const v=o[k]*100;const bad=(k==="gizli_zarar"||k==="kumulatif_uretim_kaybi");const cls=k==="kontrol"?"zero":(v>0.05?(bad?"neg":"pos"):v<-0.05?(bad?"pos":"neg"):"zero");return `<td class="num ${cls}">${k==="kontrol"?"0,00":fmt(v,1)}</td>`;}).join("")}</tr>`;});
+  document.getElementById("dectable").innerHTML=d+"</tbody>";
+  // MAK first exhaustion
+  const secsM=[["H","Haneler"],["F","Firmalar"],["B","Bankalar"],["G","Kamu"],["CB","TCMB"]];
+  let mk=`<thead><tr><th>Senaryo</th>${secsM.map(s=>`<th class="num">${s[1]}</th>`).join("")}</tr></thead><tbody>`;
+  all.forEach(n=>{mk+=`<tr><td>${nice[n]}</td>${secsM.map(([k])=>{const arr=R[n]["MAK_"+k];const i=arr.findIndex(v=>v<=0.05);return `<td class="num">${i<0?"—":`<span class="pill bad">${L[i]}</span>`}</td>`;}).join("")}</tr>`;});
+  document.getElementById("maktable").innerHTML=mk+"</tbody>";
+  // sensitivity
+  const S=SENS;
+  document.getElementById("senstable").innerHTML=`<thead><tr><th>Çekiliş grubu</th><th class="num">Tanıma daha fazla üretim sağlıyor</th><th class="num">Medyan üretim farkı (GSYH puanı)</th><th class="num">Tanımada kamu borcu daha düşük</th></tr></thead><tbody>
+  <tr><td>Zombi kanalı açık (γ<sub>z</sub> > 0)</td><td class="num">%${fmt(S.out_z*100,0)}</td><td class="num">${fmt(S.dy_med_z*100,1)}</td><td class="num">—</td></tr>
+  <tr><td>Zombi kanalı kapalı (γ<sub>z</sub> = 0)</td><td class="num">%${fmt(S.out_nz*100,0)}</td><td class="num">${fmt(S.dy_med_nz*100,1)}</td><td class="num">%${fmt(S.debt_nz*100,0)}</td></tr>
+  <tr><td>Tümü (N = ${S.N})</td><td class="num">%${fmt(S.out_all*100,0)}</td><td class="num">—</td><td class="num">%${fmt(S.debt_all*100,0)}</td></tr>
+  ${S.yapi?`<tr><td>Yapısal nokta, zombi açık (S5−S4)</td><td class="num">—</td><td class="num">${fmt(S.yapi.dy_acik*100,1)}</td><td class="num">—</td></tr>
+  <tr><td>Yapısal nokta, zombi kapalı (S5z−S4z)</td><td class="num">—</td><td class="num">${fmt(S.yapi.dy_kapali*100,1)}</td><td class="num">—</td></tr>`:""}</tbody>`;
+})();
+</script>
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},options:{enableMenu:false}};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>

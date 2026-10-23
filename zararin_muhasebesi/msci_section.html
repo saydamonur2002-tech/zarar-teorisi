@@ -1,0 +1,79 @@
+<style>#charts2{grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}</style>
+<section class="col">
+  <h2><span class="sec">6B · Yeni senaryo</span>Sınır piyasaya düşürülme şoku ve paylara etkisi</h2>
+  <p><b>Bağlam.</b> MSCI Haziran 2026'daki piyasa sınıflandırma incelemesinde Türkiye'yi uyardı: küçük şirketlere bağlı fon varlıklarında "koordineli işlem" şüphesi, bu yüzden halka açıklık oranının güvenilmez olması. Kasım 2026 incelemesine kadar "somut ve güvenilir ilerleme" görülmezse Türkiye'nin gelişmekte olan piyasa (EM) statüsü için danışma süreci başlayabilir. S&amp;P Dow Jones da Temmuz 2026'da Türkiye'yi sınır piyasaya (FM) düşürme izleme listesine aldı. Eylül'ün ikinci yarısında buna yurt içi bir fon krizi eklendi: bir portföy şirketi geri ödeme taleplerini karşılayamadığını açıkladı, SPK 131 fonu tasfiyeye aldı, BIST 100 18 Eylül haftasında %8,2 düştü. Yabancıların pay senedi stoku bir haftada 42,4 milyar dolardan 39,4 milyar dolara indi. Aynı hafta Fed 2023'ten beri ilk kez faiz artırdı.</p>
+  <p><b>Modele ne eklendi?</b> Bilanço matrisine yeni bir enstrüman: halka açık pay senetleri. Başlangıçta yabancıların payı %{{TAKAS}}, stoku {{EQX0}} milyar dolar. Payı firmalar ihraç ediyor, haneler ve yabancılar tutuyor. Yabancı sattığında payı yerli yatırımcı mevduatıyla alıyor, yabancı TL'yi dövize çeviriyor. Yani pay satışı, ödemeler dengesinde bir sermaye çıkışı ve net rezerv kaybı demek. Fiyat üç şeyle hareket ediyor: nominal büyüme, yabancı akımının fiyat baskısı ve duyuru şokları. Fiyat da üç kanaldan ekonomiye dönüyor: hanelerin servet etkisi, yatırımda Tobin q etkisi ve kur/rezerv.</p>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Aşama</th><th>Zaman</th><th>Merkez senaryo (S6)</th><th>Sert senaryo (S7)</th></tr></thead>
+<tbody>
+<tr><td>Danışma süreci duyurusu</td><td class="num">2026Q4</td><td>Fiyat −%8, aktif fonlar çeyrekte yabancı stokunun %4'ünü satıyor, risk primi +100 baz puan</td><td>Aynısının 1,6 katı</td></tr>
+<tr><td>Karar</td><td class="num">2027Q2</td><td>Fiyat −%8</td><td>Fiyat −%12,8</td></tr>
+<tr><td>Uygulama</td><td class="num">2027Q4</td><td>Pasif EM fonları çıkıyor (FM fon girişi düşüldükten sonra stokun %12'si), prim +100 baz puan daha</td><td>Stokun %19'u, prim +160</td></tr>
+<tr><td>Sonrası</td><td class="num">2028–29</td><td>Kalıcı +50 baz puan likidite ve risk primi</td><td>+80 baz puan</td></tr>
+</tbody></table></div>
+<section class="col">
+  <p class="readas">Bu kalibrasyon benim varsayımım. Pakistan 2021'de EM'den FM'ye indirildiğinde endeksteki ağırlığı %0,02'ydi ve pasif çıkış 150 milyon dolar civarında tahmin edilmişti. Türkiye çok daha büyük (MSCI Türkiye endeksi ~45,6 milyar dolar), bu yüzden mekanik çıkış da daha büyük olur. Ama FM fonlarının toplam büyüklüğü küçük olduğu için içeri girecek para, çıkanın ancak bir kısmını karşılar.</p>
+</section>
+<div class="legend" id="legend2"></div>
+<div class="charts" id="charts2"></div>
+<h3>Paylara ve makroya etkisi · 2026Q4–2029Q4</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Gösterge</th><th class="num">S0 Baz</th><th class="num">S6 Merkez</th><th class="num">S7 Sert</th></tr></thead>
+<tbody>{{MSCI_ROWS}}</tbody></table></div>
+<section class="col">
+  <h3>Hangi kanal ne kadar?</h3>
+  <p>Merkez şoku parçalarına ayırıp her birini tek başına çalıştırdım. Rakamlar 2029 sonuna kadarki toplam üretim kaybı (başlangıç yıllık GSYH'sinin %'si).</p>
+</section>
+<div class="tablewrap"><table>
+<thead><tr><th>Kanal</th><th class="num">Toplam üretim kaybı</th><th class="num">2029Q4 GSYH, baza göre %</th><th class="num">En düşük net rezerv</th><th class="num">Yabancı satışı (mlr $)</th></tr></thead>
+<tbody>{{DECOMP_ROWS}}</tbody></table></div>
+<section class="col">
+  <p>Bu tablodan çıkan en önemli ders: <b>{{CHANNEL_LEAD}}</b> Asıl hasar, yabancının sattığı payın karşılığını dövize çevirmesinden ve risk priminin yükselmesinden geliyor. İkisi de ödemeler dengesi üzerinden net rezervi eritiyor. Net rezerv tabana yaklaşınca kur ve enflasyon devreye giriyor. Üç kanalın birlikte etkisi, tek tek toplamlarından büyük. Yani sınır piyasa şoku, borsa haberi gibi görünse de modelde asıl bir <em>döviz tamponu</em> olayı.</p>
+  <h3>Dağıtılmış zarar açısından okuma</h3>
+  <ul class="plain">
+    <li><b>Pay düşüşünün muhasebesi yanıltıcı.</b> SFC'de pay senedi firmanın yükümlülüğü. Fiyat düşünce pay sahipleri (haneler ve yabancılar) kaybediyor, firmanın muhasebe net serveti ise aynı tutarda "artıyor". Bu kağıt üzerinde bir transfer, reel bir kazanç değil. Zarar dağılım matrisinde firma satırını bu yüzden dikkatli okumak gerekiyor.</li>
+    <li><b>Risk yer değiştiriyor.</b> Yabancı çıkarken sattığı payı yerli yatırımcı alıyor. Merkez senaryoda yabancının payı %{{TAKAS}}'ten %{{TAKAS_S6}}'e iniyor. Düşen fiyattan artan payı hanelerin bilançosu taşıyor. DZT'nin ana tezinin küçük ölçekli bir örneği: risk yok olmuyor, yabancıdan yerli yatırımcıya geçiyor.</li>
+    <li><b>Zararın bir kısmı dışarıya yazılıyor.</b> Yabancı, TL cinsinden pay tuttuğu için kur ve fiyat düşüşünün bir kısmını üstleniyor. Ama çıkarken net rezervi eritmesi, bu kazancı fazlasıyla geri alıyor.</li>
+    <li><b>Eş zamanlı fon krizi modelde yok.</b> Tasfiye edilen fonların yatırımcılarının kaybı, DZT'nin tam olarak ilgilendiği türden bir zarar: dağınık, küçük yatırımcılara yayılmış ve geç tanınmış. Modelde fonlar ayrı bir kesim olmadığı için bu kısmı ölçemiyorum.</li>
+  </ul>
+  <div class="callout"><strong>Kendime itiraz.</strong> Üç şeye dikkat: (1) Fiyat etkisi ve akım büyüklükleri benim varsayımım, bu tür bir sınıflandırma şokunun Türkiye için yayımlanmış bir tahmini yok. (2) Modelde firmalar pay ihraç etmiyor, bu yüzden sermaye maliyeti kanalı eksik. Gerçekte düşük değerleme halka arzları ve yatırım finansmanını da vurur. (3) Buna karşılık reel etkinin büyük kısmı net rezerv tabanına yakınlıktan geliyor ve model eşiğe yakınken abartılı tepki veriyor. Toplam üretim kaybını bir tahmin olarak değil, yönü ve kanal sıralaması güvenilir bir büyüklük sırası olarak okuyun.</div>
+</section>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+  const fmt=(x,d=1)=>(x==null||isNaN(x))?"—":x.toFixed(d).replace(".",",").replace("-","−");
+  const L=DATA.labels,R=DATA.results;
+  const show=["S0 Baz","S6 Sınır piyasa (merkez)","S7 Sınır piyasa (sert)"];
+  const nice=["S0 Baz","S6 Merkez","S7 Sert"];
+  const colors=["var(--s1)","var(--s2)","var(--s3)"];
+  const lg=document.getElementById("legend2");
+  show.forEach((n,k)=>{const s=document.createElement("span");s.innerHTML=`<i class="sw" style="background:${colors[k]}"></i>${nice[k]}`;lg.appendChild(s);});
+  const specs=[{key:"q_real",title:"Pay endeksi, reel",unit:"2026Q3 = 100",mul:1,d:1,ref:100},
+    {key:"EqX_usd",title:"Yabancının pay stoku",unit:"mlr $",mul:1,d:1},
+    {key:"NR",title:"Swap hariç net rezerv",unit:"mlr $, kesikli: taban 15",mul:1,d:1,floor:15,zero:true},
+    {key:"ylevel",title:"Reel GSYH",unit:"2026Q3 = 100",mul:1,d:1,ref:100}];
+  const host=document.getElementById("charts2");const W=340,H=200,m={l:38,r:10,t:10,b:24};
+  function niceStep(r){const p=Math.pow(10,Math.floor(Math.log10(r)));const f=r/p;return (f<1.5?1:f<3?2:f<7?5:10)*p;}
+  specs.forEach(sp=>{
+    const div=document.createElement("div");div.className="chart";div.innerHTML=`<h4>${sp.title}</h4><p class="unit">${sp.unit}</p>`;
+    const series=show.map(n=>R[n][sp.key].map(x=>x==null?NaN:x*sp.mul));
+    let all=series.flat().filter(x=>!isNaN(x));if(sp.zero)all.push(0);if(sp.floor)all.push(sp.floor);if(sp.ref)all.push(sp.ref);
+    let lo=Math.min(...all),hi=Math.max(...all);const pad=(hi-lo)*0.08||1;lo-=pad;hi+=pad;const step=niceStep((hi-lo)/4);lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;
+    const x=i=>m.l+i*(W-m.l-m.r)/(L.length-1),y=v=>m.t+(hi-v)*(H-m.t-m.b)/(hi-lo);
+    let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${sp.title}">`;
+    for(let v=lo;v<=hi+1e-9;v+=step){svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/>`;svg+=`<text x="${m.l-6}" y="${y(v)+3.5}" text-anchor="end">${fmt(v,step<1?1:0)}</text>`;}
+    if(sp.zero&&lo<0)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(0)}" y2="${y(0)}" stroke="var(--axis)"/>`;
+    if(sp.ref)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(sp.ref)}" y2="${y(sp.ref)}" stroke="var(--axis)"/>`;
+    if(sp.floor)svg+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(sp.floor)}" y2="${y(sp.floor)}" stroke="var(--crit)" stroke-dasharray="3 3"/>`;
+    [0,5,9,13].forEach(i=>{svg+=`<text x="${x(i)}" y="${H-6}" text-anchor="${i===0?'start':i===13?'end':'middle'}">${L[i]}</text>`;});
+    series.forEach((s,k)=>{const pts=s.map((v,i)=>isNaN(v)?null:[x(i),y(v)]).filter(Boolean);svg+=`<polyline fill="none" stroke="${colors[k]}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="${pts.map(p=>p.join(',')).join(' ')}"/>`;const lp=pts[pts.length-1];svg+=`<circle cx="${lp[0]}" cy="${lp[1]}" r="3" fill="${colors[k]}" stroke="var(--ground)" stroke-width="1.5"/>`;});
+    svg+=`<line class="xh" x1="0" x2="0" y1="${m.t}" y2="${H-m.b}" stroke="var(--axis)" visibility="hidden"/><rect x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg>`;
+    div.insertAdjacentHTML("beforeend",svg);const tip=document.createElement("div");tip.className="tip";tip.hidden=true;div.appendChild(tip);
+    const el=div.querySelector("svg"),xh=el.querySelector(".xh");
+    function showTip(ev){const r=el.getBoundingClientRect();const px=(ev.clientX-r.left)*W/r.width;let i=Math.round((px-m.l)/((W-m.l-m.r)/(L.length-1)));i=Math.max(0,Math.min(L.length-1,i));
+      xh.setAttribute("x1",x(i));xh.setAttribute("x2",x(i));xh.setAttribute("visibility","visible");let h=`<b>${L[i]}</b>`;show.forEach((n,k)=>{h+=`<div class="r"><span><i style="background:${colors[k]}"></i>${nice[k]}</span><span>${fmt(series[k][i],sp.d)}</span></div>`;});
+      tip.innerHTML=h;tip.hidden=false;const dr=div.getBoundingClientRect();let left=ev.clientX-dr.left+14;if(left+tip.offsetWidth>dr.width)left=ev.clientX-dr.left-tip.offsetWidth-14;tip.style.left=Math.max(0,left)+"px";tip.style.top=(el.offsetTop+10)+"px";}
+    el.addEventListener("pointermove",showTip);el.addEventListener("pointerdown",showTip);el.addEventListener("pointerleave",()=>{tip.hidden=true;xh.setAttribute("visibility","hidden");});
+    host.appendChild(div);});
+});
+</script>
