@@ -1,0 +1,37 @@
+GİDER (mlr TL/yıl) kaydırma×prim → toplam
+ %2×%0.5: 1.9
+ %2×%1.0: 3.9
+ %2×%2.0: 7.7
+ %5×%0.5: 4.8
+ %5×%1.0: 9.7
+ %5×%2.0: 19.4
+ %10×%0.5: 9.7
+ %10×%1.0: 19.4
+ %10×%2.0: 38.7
+
+GELİR (reel, mlr TL/yıl, hedef tutarsa; r=risk primi düşüşü puan)
+ r=0 NPLdüşüş=0: Hazine 0 | firma 0 | banka 0
+ r=0 NPLdüşüş=0.25: Hazine 0 | firma 0 | banka 53
+ r=0 NPLdüşüş=0.5: Hazine 0 | firma 0 | banka 106
+ r=0.5 NPLdüşüş=0: Hazine 39 | firma 56 | banka 0
+ r=0.5 NPLdüşüş=0.25: Hazine 39 | firma 56 | banka 53
+ r=0.5 NPLdüşüş=0.5: Hazine 39 | firma 56 | banka 106
+ r=1 NPLdüşüş=0: Hazine 77 | firma 113 | banka 0
+ r=1 NPLdüşüş=0.25: Hazine 77 | firma 113 | banka 53
+ r=1 NPLdüşüş=0.5: Hazine 77 | firma 113 | banka 106
+ r=2 NPLdüşüş=0: Hazine 155 | firma 225 | banka 0
+ r=2 NPLdüşüş=0.25: Hazine 155 | firma 225 | banka 53
+ r=2 NPLdüşüş=0.5: Hazine 155 | firma 225 | banka 106
+
+NET (gider üst uç 38,7; r=0,5, NPL 0,25) devlet/firma/banka
+ 1/3 r=0 npl=0: -12.9 / -12.9 / -12.9
+ 1/3 r=0.5 npl=0.25: 25.8 / 43.4 / 40.3
+ 20-40-40 r=0 npl=0: -7.7 / -15.5 / -15.5
+ 20-40-40 r=0.5 npl=0.25: 31.0 / 40.8 / 37.7
+ 50-25-25 r=0 npl=0: -19.4 / -9.7 / -9.7
+ 50-25-25 r=0.5 npl=0.25: 19.4 / 46.6 / 43.5
+ 40-30-30 r=0 npl=0: -15.5 / -11.6 / -11.6
+ 40-30-30 r=0.5 npl=0.25: 23.3 / 44.7 / 41.6
+
+Banka yansıtma: borçluya düşen = banka payı×yansıtma; 40-30-30, 38,7 üst uç: %0→0.0 mlr; kredi faizine 0.0 bp, %50→5.8 mlr; kredi faizine 2.0 bp, %100→11.6 mlr; kredi faizine 4.1 bp
+Kısmi tutma (gelir ve prim yarıya): netler yarıya, işaret aynı. Tutmazsa: prim 0, gelir 0, net 0 (senet TÜFE+kupon maliyeti ayrı, nominal DİBS ile Fisher altında nötr).

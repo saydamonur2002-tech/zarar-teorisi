@@ -1,0 +1,33 @@
+NPL: 1 puan enflasyon ↑ → NPL -0.068 puan [%95 -0.089; -0.047], n=18
+  2006-2021: +0.119 puan/puan
+Hazine yeniden fiyatlama faktörü 5 yıl ort. 0.93
+
+Yol −1.2 puan: NPL +0.08 puan → banka gelir -17 mlr [-23;-12]
+  r=0 1/3: devlet -12.9 / firma -12.9 / banka -30.3
+  r=0 20-40-40: devlet -7.7 / firma -15.5 / banka -32.9
+  r=0 50-25-25: devlet -19.4 / firma -9.7 / banka -27.1
+  r=0 40-30-30: devlet -15.5 / firma -11.6 / banka -29.0
+  r=0.2 1/3: devlet 1.5 / firma 9.6 / banka -30.3
+  r=0.2 20-40-40: devlet 6.7 / firma 7.0 / banka -32.9
+  r=0.2 50-25-25: devlet -4.9 / firma 12.8 / banka -27.1
+  r=0.2 40-30-30: devlet -1.0 / firma 10.9 / banka -29.0
+  r=0.5 1/3: devlet 23.2 / firma 43.4 / banka -30.3
+  r=0.5 20-40-40: devlet 28.4 / firma 40.8 / banka -32.9
+  r=0.5 50-25-25: devlet 16.8 / firma 46.6 / banka -27.1
+  r=0.5 40-30-30: devlet 20.6 / firma 44.7 / banka -29.0
+  bankayı başabaşa getiren devlet transferi (40-30-30): 29 mlr TL/yıl
+
+Yol −3.5 puan: NPL +0.24 puan → banka gelir -51 mlr [-67;-35]
+  r=0 1/3: devlet -12.9 / firma -12.9 / banka -63.7
+  r=0 20-40-40: devlet -7.7 / firma -15.5 / banka -66.3
+  r=0 50-25-25: devlet -19.4 / firma -9.7 / banka -60.5
+  r=0 40-30-30: devlet -15.5 / firma -11.6 / banka -62.5
+  r=0.2 1/3: devlet 1.5 / firma 9.6 / banka -63.7
+  r=0.2 20-40-40: devlet 6.7 / firma 7.0 / banka -66.3
+  r=0.2 50-25-25: devlet -4.9 / firma 12.8 / banka -60.5
+  r=0.2 40-30-30: devlet -1.0 / firma 10.9 / banka -62.5
+  r=0.5 1/3: devlet 23.2 / firma 43.4 / banka -63.7
+  r=0.5 20-40-40: devlet 28.4 / firma 40.8 / banka -66.3
+  r=0.5 50-25-25: devlet 16.8 / firma 46.6 / banka -60.5
+  r=0.5 40-30-30: devlet 20.6 / firma 44.7 / banka -62.5
+  bankayı başabaşa getiren devlet transferi (40-30-30): 62 mlr TL/yıl
