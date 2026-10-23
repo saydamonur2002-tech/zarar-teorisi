@@ -1,0 +1,653 @@
+{
+  "tanim": {
+    "stok": "BDDK Aylık Bülten tablo 6, Toplam KOBİ Kredileri, nakdi, milyon TL, sektör (taraf 10001)",
+    "aralik": "2014-01 .. 2026-08",
+    "tufe": "EVDS TP.FG.J0 (2003=100). 2026-02 .. 2026-08: önceki yılın aynı ayı x (1 + TP.TUKFIY2025.GENEL_3 / 100)",
+    "toplam_kredi": "EVDS TP.KREHACBS.A1 bin TL. BDDK temel göstergeler toplamından farklıdır; pay hesabında kullanılmadı.",
+    "gec_odeme": "Fatura değeri payı ile şirket oranı ayrıdır. Banka takip oranı ticari alacak gecikmesi değildir."
+  },
+  "son_gozlem": {
+    "donem": "2026-08",
+    "nakdi_milyar": 7498.671,
+    "takip_milyar": 289.597,
+    "npl_%": 3.861977675777481,
+    "mikro_npl_%": 3.965094118621892,
+    "kucuk_npl_%": 4.287576498695937,
+    "orta_npl_%": 3.5758326484862817
+  },
+  "yillik": [
+    {
+      "yil": 2014,
+      "donem": "2014-12",
+      "nakdi_milyar": 333.278,
+      "takip_milyar": 11.272,
+      "npl_%": 3.382161438798841,
+      "mikro_pay_%": 26.528603748222206,
+      "kucuk_pay_%": 33.43845078282995,
+      "orta_pay_%": 40.032945468947844,
+      "musteri": 2523344,
+      "tufe": 247.72
+    },
+    {
+      "yil": 2015,
+      "donem": "2015-12",
+      "nakdi_milyar": 388.749,
+      "takip_milyar": 15.872,
+      "npl_%": 4.082840084476102,
+      "mikro_pay_%": 25.54810430380528,
+      "kucuk_pay_%": 34.1106986770384,
+      "orta_pay_%": 40.34093978376793,
+      "musteri": 2669063,
+      "tufe": 269.54,
+      "nominal_artis_%": 16.6440629144438,
+      "reel_artis_%": 7.201407083052658,
+      "takip_artis_%": 40.80908445706175,
+      "npl_fark_puan": 0.7006786456772609,
+      "tufe_artis_%": 8.80833198772808
+    },
+    {
+      "yil": 2016,
+      "donem": "2016-12",
+      "nakdi_milyar": 420.539,
+      "takip_milyar": 21.653,
+      "npl_%": 5.148868475932078,
+      "mikro_pay_%": 26.078675223938802,
+      "kucuk_pay_%": 33.32699226468889,
+      "orta_pay_%": 40.59433251137231,
+      "musteri": 2907722,
+      "tufe": 292.54,
+      "nominal_artis_%": 8.177512996817992,
+      "reel_artis_%": -0.32758989142571693,
+      "takip_artis_%": 36.4226310483871,
+      "npl_fark_puan": 1.0660283914559763,
+      "tufe_artis_%": 8.533056318171695
+    },
+    {
+      "yil": 2017,
+      "donem": "2017-12",
+      "nakdi_milyar": 513.222,
+      "takip_milyar": 25.35,
+      "npl_%": 4.9393829570829,
+      "mikro_pay_%": 26.037660115895264,
+      "kucuk_pay_%": 32.416381215146664,
+      "orta_pay_%": 41.54595866895807,
+      "musteri": 3319246,
+      "tufe": 327.41,
+      "nominal_artis_%": 22.039097443994482,
+      "reel_artis_%": 9.041622327559185,
+      "takip_artis_%": 17.073846580150565,
+      "npl_fark_puan": -0.20948551884917777,
+      "tufe_artis_%": 11.91973747179873
+    },
+    {
+      "yil": 2018,
+      "donem": "2018-12",
+      "nakdi_milyar": 611.342,
+      "takip_milyar": 43.859,
+      "npl_%": 7.17421672320894,
+      "mikro_pay_%": 28.28923908385159,
+      "kucuk_pay_%": 31.910452741673236,
+      "orta_pay_%": 39.80030817447517,
+      "musteri": 3120687,
+      "tufe": 393.88,
+      "nominal_artis_%": 19.11843217944671,
+      "reel_artis_%": -0.9836349145103895,
+      "takip_artis_%": 73.0138067061144,
+      "npl_fark_puan": 2.23483376612604,
+      "tufe_artis_%": 20.30176231636174
+    },
+    {
+      "yil": 2019,
+      "donem": "2019-12",
+      "nakdi_milyar": 615.36,
+      "takip_milyar": 62.436,
+      "npl_%": 10.14625585023401,
+      "mikro_pay_%": 29.284971398855955,
+      "kucuk_pay_%": 31.356441757670307,
+      "orta_pay_%": 39.35842433697348,
+      "musteri": 3104157,
+      "tufe": 440.5,
+      "nominal_artis_%": 0.6572425908901947,
+      "reel_artis_%": -9.99574412780968,
+      "takip_artis_%": 42.356186871565704,
+      "npl_fark_puan": 2.9720391270250692,
+      "tufe_artis_%": 11.836092210825644
+    },
+    {
+      "yil": 2020,
+      "donem": "2020-12",
+      "nakdi_milyar": 848.83,
+      "takip_milyar": 58.466,
+      "npl_%": 6.887833841876465,
+      "mikro_pay_%": 30.831850900651485,
+      "kucuk_pay_%": 32.118445389536184,
+      "orta_pay_%": 37.04958590059258,
+      "musteri": 3829138,
+      "tufe": 504.81,
+      "nominal_artis_%": 37.94039261570463,
+      "reel_artis_%": 20.367550062831352,
+      "takip_artis_%": -6.358511115382148,
+      "npl_fark_puan": -3.2584220083575444,
+      "tufe_artis_%": 14.599318955732121
+    },
+    {
+      "yil": 2021,
+      "donem": "2021-12",
+      "nakdi_milyar": 1074.213,
+      "takip_milyar": 59.514,
+      "npl_%": 5.5402420190409165,
+      "mikro_pay_%": 29.407203226920547,
+      "kucuk_pay_%": 31.986579942711547,
+      "orta_pay_%": 38.606216830367906,
+      "musteri": 4144611,
+      "tufe": 686.95,
+      "nominal_artis_%": 26.55219537481004,
+      "reel_artis_%": -7.002236338659518,
+      "takip_artis_%": 1.792494783292864,
+      "npl_fark_puan": -1.3475918228355486,
+      "tufe_artis_%": 36.08090172540164
+    },
+    {
+      "yil": 2022,
+      "donem": "2022-12",
+      "nakdi_milyar": 2028.55,
+      "takip_milyar": 58.534,
+      "npl_%": 2.885509353972049,
+      "mikro_pay_%": 29.237731384486455,
+      "kucuk_pay_%": 33.53513593453452,
+      "orta_pay_%": 37.227132680979025,
+      "musteri": 4520014,
+      "tufe": 1128.45,
+      "nominal_artis_%": 88.84057444845668,
+      "reel_artis_%": 14.957714225147178,
+      "takip_artis_%": -1.64667137144201,
+      "npl_fark_puan": -2.6547326650688676,
+      "tufe_artis_%": 64.26959749617876
+    },
+    {
+      "yil": 2023,
+      "donem": "2023-12",
+      "nakdi_milyar": 3206.661,
+      "takip_milyar": 57.136,
+      "npl_%": 1.781791090483216,
+      "mikro_pay_%": 30.368442439035494,
+      "kucuk_pay_%": 31.74227023062307,
+      "orta_pay_%": 37.88928733034144,
+      "musteri": 4525077,
+      "tufe": 1859.38,
+      "nominal_artis_%": 58.076507850435036,
+      "reel_artis_%": -4.0640238768711034,
+      "takip_artis_%": -2.3883554857006217,
+      "npl_fark_puan": -1.103718263488833,
+      "tufe_artis_%": 64.77291860516638
+    },
+    {
+      "yil": 2024,
+      "donem": "2024-12",
+      "nakdi_milyar": 4285.659,
+      "takip_milyar": 86.522,
+      "npl_%": 2.018872710124627,
+      "mikro_pay_%": 30.08659811711571,
+      "kucuk_pay_%": 29.810444554734755,
+      "orta_pay_%": 40.1029339945152,
+      "musteri": 4558006,
+      "tufe": 2684.55,
+      "nominal_artis_%": 33.64864574085007,
+      "reel_artis_%": -7.4319275418145425,
+      "takip_artis_%": 51.43167180061607,
+      "npl_fark_puan": 0.23708161964141117,
+      "tufe_artis_%": 44.37877141842981
+    },
+    {
+      "yil": 2025,
+      "donem": "2025-12",
+      "nakdi_milyar": 6218.077,
+      "takip_milyar": 200.472,
+      "npl_%": 3.2240192586872114,
+      "mikro_pay_%": 26.784020204317187,
+      "kucuk_pay_%": 27.070989953968084,
+      "orta_pay_%": 46.14500592385717,
+      "musteri": 4967836,
+      "tufe": 3513.87,
+      "nominal_artis_%": 45.090334998654825,
+      "reel_artis_%": 10.847088486665356,
+      "takip_artis_%": 131.70060793786553,
+      "npl_fark_puan": 1.2051465485625843,
+      "tufe_artis_%": 30.89232832318265
+    }
+  ],
+  "pencere": {
+    "2016_2025": {
+      "bas": "2016-12",
+      "son": "2025-12",
+      "ay": 108,
+      "nominal_kat": 14.785969910044015,
+      "reel_kat": 1.2309754309306482,
+      "nominal_bilesik_%": 34.891105243146804,
+      "reel_bilesik_%": 2.335828386833061,
+      "npl_bas_%": 5.148868475932078,
+      "npl_son_%": 3.2240192586872114,
+      "takip_bas_milyar": 21.653,
+      "takip_son_milyar": 200.472
+    },
+    "2016_2019": {
+      "bas": "2016-12",
+      "son": "2019-12",
+      "ay": 36,
+      "nominal_kat": 1.4632650003923535,
+      "reel_kat": 0.9717674079790674,
+      "nominal_bilesik_%": 13.529221981310524,
+      "reel_bilesik_%": -0.9500844179235024,
+      "npl_bas_%": 5.148868475932078,
+      "npl_son_%": 10.14625585023401,
+      "takip_bas_milyar": 21.653,
+      "takip_son_milyar": 62.436
+    },
+    "2019_2021": {
+      "bas": "2019-12",
+      "son": "2021-12",
+      "ay": 24,
+      "nominal_kat": 1.7456659516380655,
+      "reel_kat": 1.1193912973237758,
+      "nominal_bilesik_%": 32.12365237299737,
+      "reel_bilesik_%": 5.801290035791906,
+      "npl_bas_%": 10.14625585023401,
+      "npl_son_%": 5.5402420190409165,
+      "takip_bas_milyar": 62.436,
+      "takip_son_milyar": 59.514
+    },
+    "2021_2023": {
+      "bas": "2021-12",
+      "son": "2023-12",
+      "ay": 24,
+      "nominal_kat": 2.9851258549282127,
+      "reel_kat": 1.1028580527073195,
+      "nominal_bilesik_%": 72.77516762915359,
+      "reel_bilesik_%": 5.017048744826158,
+      "npl_bas_%": 5.5402420190409165,
+      "npl_son_%": 1.781791090483216,
+      "takip_bas_milyar": 59.514,
+      "takip_son_milyar": 57.136
+    },
+    "2023_2026_08": {
+      "bas": "2023-12",
+      "son": "2026-08",
+      "ay": 32,
+      "nominal_kat": 2.3384670222390205,
+      "reel_kat": 1.013684312956081,
+      "nominal_bilesik_%": 37.51472942801737,
+      "reel_bilesik_%": 0.5109833992138935,
+      "npl_bas_%": 1.781791090483216,
+      "npl_son_%": 3.861977675777481,
+      "takip_bas_milyar": 57.136,
+      "takip_son_milyar": 289.597
+    },
+    "2025_2026_08": {
+      "bas": "2025-12",
+      "son": "2026-08",
+      "ay": 8,
+      "nominal_kat": 1.2059469511233136,
+      "reel_kat": 0.9879096206661424,
+      "nominal_bilesik_%": 32.43180726674122,
+      "reel_bilesik_%": -1.8080641561098898,
+      "npl_bas_%": 3.2240192586872114,
+      "npl_son_%": 3.861977675777481,
+      "takip_bas_milyar": 200.472,
+      "takip_son_milyar": 289.597
+    }
+  },
+  "esik_2025": {
+    "karar": "7 Ağustos 2025, Cumhurbaşkanı Kararı 10182: KOBİ net satış veya bilanço üst sınırı 500 milyondan 1 milyara",
+    "agustos_2025_nominal_artis_%": 8.646658145895136,
+    "diger_2025_aylari_ortalama_artis_%": 2.6870394100940853,
+    "orta_pay_temmuz_%": 42.822329840782835,
+    "orta_pay_agustos_%": 45.887991548908154,
+    "musteri_temmuz": 4624371,
+    "musteri_agustos": 4820929,
+    "reel_2025_%": 10.847088486665356,
+    "reel_2025_agustos_ortalamaya_cekilirse_%": 4.766769067479548,
+    "uyari": "Ağustos sıçramasının tamamı sınıflama değildir; aynı ayda kullandırım da vardır. Karşı olgu üst sınır diye okunmaz."
+  },
+  "fatura": {
+    "esleme": "Anket yılı Haziran stoku ve Haziran/Haziran artış. 2018 raporu Eylül'de, 2023 ve 2025 saha işi ilk yarıda.",
+    "haziran_hepsi": {
+      "reel_yillik": {
+        "n": 5,
+        "pearson": -0.32367333207871407,
+        "pearson_p": 0.5951996629947145,
+        "spearman": -0.3,
+        "spearman_p": 0.623837664781073
+      },
+      "nominal_yillik": {
+        "n": 5,
+        "pearson": -0.9019412603223743,
+        "pearson_p": 0.036313661422315,
+        "spearman": -0.7,
+        "spearman_p": 0.1881204043741873
+      },
+      "nakdi_duzey": {
+        "n": 5,
+        "pearson": 0.07887585193358958,
+        "pearson_p": 0.8996763772305313,
+        "spearman": 0.09999999999999999,
+        "spearman_p": 0.8728885715695384
+      },
+      "npl": {
+        "n": 5,
+        "pearson": 0.3924578309435878,
+        "pearson_p": 0.513448546258646,
+        "spearman": 0.3,
+        "spearman_p": 0.623837664781073
+      }
+    },
+    "haziran_turetilen_2022_haric": {
+      "reel_yillik": {
+        "n": 4,
+        "pearson": -0.879770271954791,
+        "pearson_p": 0.12022972804520915,
+        "spearman": -0.7999999999999999,
+        "spearman_p": 0.2000000000000001
+      },
+      "nominal_yillik": {
+        "n": 4,
+        "pearson": -0.895209249099966,
+        "pearson_p": 0.10479075090003409,
+        "spearman": -0.39999999999999997,
+        "spearman_p": 0.6
+      },
+      "nakdi_duzey": {
+        "n": 4,
+        "pearson": -0.01397152336466627,
+        "pearson_p": 0.9860284766353338,
+        "spearman": 0.39999999999999997,
+        "spearman_p": 0.6
+      },
+      "npl": {
+        "n": 4,
+        "pearson": 0.5820429317954264,
+        "pearson_p": 0.41795706820457346,
+        "spearman": 0.19999999999999998,
+        "spearman_p": 0.8
+      }
+    },
+    "aralik_hepsi": {
+      "reel_yillik": {
+        "n": 5,
+        "pearson": 0.10383659693022454,
+        "pearson_p": 0.8680291045051868,
+        "spearman": 0.3,
+        "spearman_p": 0.623837664781073
+      },
+      "nominal_yillik": {
+        "n": 5,
+        "pearson": -0.752167992055162,
+        "pearson_p": 0.14247119791710003,
+        "spearman": -0.6,
+        "spearman_p": 0.28475697986529386
+      },
+      "nakdi_duzey": {
+        "n": 5,
+        "pearson": 0.09676778286353131,
+        "pearson_p": 0.8769839907792868,
+        "spearman": 0.09999999999999999,
+        "spearman_p": 0.8728885715695384
+      },
+      "npl": {
+        "n": 5,
+        "pearson": 0.697938652147779,
+        "pearson_p": 0.1899973826850243,
+        "spearman": 0.7,
+        "spearman_p": 0.1881204043741873
+      }
+    },
+    "gozlem_haziran": [
+      {
+        "yil": 2017,
+        "vadesi_gecmis_%": 55.9,
+        "turetilen": false,
+        "reel_yillik_%": 8.364182025019629,
+        "nominal_yillik_%": 20.177053333729212,
+        "npl_%": 4.882628334726449,
+        "nakdi_milyar": 485.722
+      },
+      {
+        "yil": 2018,
+        "vadesi_gecmis_%": 59.9,
+        "turetilen": false,
+        "reel_yillik_%": 16.420551831364104,
+        "nominal_yillik_%": 34.33198413907543,
+        "npl_%": 4.738995831289848,
+        "nakdi_milyar": 652.48
+      },
+      {
+        "yil": 2022,
+        "vadesi_gecmis_%": 45.0,
+        "turetilen": true,
+        "reel_yillik_%": -6.780947428858974,
+        "nominal_yillik_%": 66.5063774189355,
+        "npl_%": 4.055483695957815,
+        "nakdi_milyar": 1511.435
+      },
+      {
+        "yil": 2023,
+        "vadesi_gecmis_%": 43.0,
+        "turetilen": false,
+        "reel_yillik_%": 35.55121288956498,
+        "nominal_yillik_%": 87.35010106289718,
+        "npl_%": 1.8421605586799332,
+        "nakdi_milyar": 2831.675
+      },
+      {
+        "yil": 2025,
+        "vadesi_gecmis_%": 61.0,
+        "turetilen": false,
+        "reel_yillik_%": -2.8447386314053302,
+        "nominal_yillik_%": 31.206875811507473,
+        "npl_%": 2.6260762885758724,
+        "nakdi_milyar": 4864.634
+      }
+    ]
+  },
+  "sirket_orani": [
+    {
+      "yil": 2018,
+      "oran_%": 91.7,
+      "tanim": "sık geç ödeme bildiren katılımcı payı",
+      "url": "https://www.lemoci.com/wp-content/uploads/2018/09/Atradius-Payment-Practices-Barometer-Eastern-Europe-2018.pdf"
+    },
+    {
+      "yil": 2026,
+      "oran_%": 86.0,
+      "tanim": "müşteriden gecikme bildiren şirket payı; fatura değer payı 'üçte birin üzerinde' diye yazılmış, nokta tahmin yok",
+      "url": "https://group.atradius.com/knowledge-and-research/reports/b2b-payment-practices-trends-in-turkey-2026"
+    }
+  ],
+  "yillik_banka": {
+    "reel_artis_ile_npl_farki": {
+      "n": 11,
+      "pearson": -0.5596418230676447,
+      "pearson_p": 0.07342025331253625,
+      "spearman": -0.44545454545454555,
+      "spearman_p": 0.16973260492681186
+    },
+    "reel_artis_ile_takip_artisi": {
+      "n": 11,
+      "pearson": -0.07420883550651754,
+      "pearson_p": 0.8283317444847297,
+      "spearman": -0.3181818181818182,
+      "spearman_p": 0.34029761418190335
+    },
+    "nominal_artis_ile_tufe": {
+      "n": 11,
+      "pearson": 0.8478536377151804,
+      "pearson_p": 0.0009776825586988239,
+      "spearman": 0.8454545454545455,
+      "spearman_p": 0.0010451821458586875
+    }
+  },
+  "granger": {
+    "takip_stogu_reel_krediye": [
+      {
+        "gecikme": 1,
+        "T": 150,
+        "F": 4.929491207939545,
+        "p": 0.027932599540283154,
+        "katsayi_toplami": -0.1717383521504057,
+        "durbin_watson": 1.9574746386261108
+      },
+      {
+        "gecikme": 3,
+        "T": 148,
+        "F": 2.8496040503446376,
+        "p": 0.039682006970272576,
+        "katsayi_toplami": -0.13206817857851594,
+        "durbin_watson": 2.006083321689795
+      },
+      {
+        "gecikme": 6,
+        "T": 145,
+        "F": 2.075874950488749,
+        "p": 0.060202517083816076,
+        "katsayi_toplami": -0.054996912863377975,
+        "durbin_watson": 1.9897092310824431
+      },
+      {
+        "gecikme": 12,
+        "T": 139,
+        "F": 1.2199136996532072,
+        "p": 0.27803760159928914,
+        "katsayi_toplami": -0.02222382571464189,
+        "durbin_watson": 1.9699571150392534
+      }
+    ],
+    "reel_kredi_takip_stoguna": [
+      {
+        "gecikme": 1,
+        "T": 150,
+        "F": 2.642782768425388,
+        "p": 0.10616318624657206,
+        "katsayi_toplami": -0.11924400029817692,
+        "durbin_watson": 2.2577584097229213
+      },
+      {
+        "gecikme": 3,
+        "T": 148,
+        "F": 3.7017771758867184,
+        "p": 0.013296041219533872,
+        "katsayi_toplami": -0.29412731247350055,
+        "durbin_watson": 2.023294032184388
+      },
+      {
+        "gecikme": 6,
+        "T": 145,
+        "F": 3.1073795934588677,
+        "p": 0.0070279621569464545,
+        "katsayi_toplami": -0.05984864205761911,
+        "durbin_watson": 1.974889198449614
+      },
+      {
+        "gecikme": 12,
+        "T": 139,
+        "F": 2.197855463453629,
+        "p": 0.016118021442930508,
+        "katsayi_toplami": -0.22329193894908683,
+        "durbin_watson": 1.972541324605085
+      }
+    ],
+    "npl_orani_reel_krediye": [
+      {
+        "gecikme": 1,
+        "T": 150,
+        "F": 0.1671998231791054,
+        "p": 0.6832076018512855,
+        "katsayi_toplami": 0.04871931059221485,
+        "durbin_watson": 2.0018067888125706
+      },
+      {
+        "gecikme": 3,
+        "T": 148,
+        "F": 0.9351438866942614,
+        "p": 0.4255299562434144,
+        "katsayi_toplami": 0.048335070891694865,
+        "durbin_watson": 2.000795885139131
+      },
+      {
+        "gecikme": 6,
+        "T": 145,
+        "F": 0.8847776633940959,
+        "p": 0.5080739718991194,
+        "katsayi_toplami": 0.0230268164739158,
+        "durbin_watson": 1.9779817374352597
+      },
+      {
+        "gecikme": 12,
+        "T": 139,
+        "F": 0.3729087368934143,
+        "p": 0.9705770447053852,
+        "katsayi_toplami": -0.017239465373148466,
+        "durbin_watson": 1.9731664355850158
+      }
+    ],
+    "reel_kredi_npl_oranina": [
+      {
+        "gecikme": 1,
+        "T": 150,
+        "F": 7.3133214116289675,
+        "p": 0.007652345913006453,
+        "katsayi_toplami": -0.014266301957414778,
+        "durbin_watson": 0.8451482689455241
+      },
+      {
+        "gecikme": 3,
+        "T": 148,
+        "F": 1.7839301809745243,
+        "p": 0.15297967906802346,
+        "katsayi_toplami": 0.0117657101422874,
+        "durbin_watson": 2.029176639764708
+      },
+      {
+        "gecikme": 6,
+        "T": 145,
+        "F": 1.6326857196639366,
+        "p": 0.14295385143725436,
+        "katsayi_toplami": 0.025495500822002415,
+        "durbin_watson": 1.9777848886586664
+      },
+      {
+        "gecikme": 12,
+        "T": 139,
+        "F": 0.7855085524382871,
+        "p": 0.6643217612200125,
+        "katsayi_toplami": 0.023956032866017895,
+        "durbin_watson": 1.9862320716813233
+      }
+    ]
+  },
+  "aylik_korelasyon": {
+    "npl_reel_buyume": {
+      "n": 151,
+      "pearson": -0.018337861408637295,
+      "pearson_p": 0.8231575351810337,
+      "spearman": -0.08726036946671313,
+      "spearman_p": 0.28669647338111187
+    },
+    "npl_nominal_buyume": {
+      "n": 151,
+      "pearson": -0.22422910273704333,
+      "pearson_p": 0.005643414431976037,
+      "spearman": -0.378177065179505,
+      "spearman_p": 1.68854663812958e-06
+    },
+    "takip_buyume_reel_buyume": {
+      "n": 151,
+      "pearson": 0.1485943800408683,
+      "pearson_p": 0.06862091433130942,
+      "spearman": 0.04306727082607179,
+      "spearman_p": 0.5995376786740625
+    }
+  },
+  "birincil": [
+    "Fatura payı ile Haziran/Haziran reel artış: Pearson ve Spearman, n=5 ve n=4.",
+    "Aylık dlog(takip) ile dlog(reel kredi): Granger gecikme 1 ve 3, iki yön."
+  ]
+}
