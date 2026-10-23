@@ -1,0 +1,29 @@
+{
+  "tanim": "2017 net yabancı para pozisyonu/satış < 0 ise kısa. Fark = 2018+2021+2022 ortalaması eksi 2016+2017+2019+2020 ortalaması, satışa oran, yüzde puan.",
+  "kaynak": "XI_29 kalem 4BE Net Yabancı Para Pozisyonu. İthalat miktarı değil.",
+  "ilk100": {
+    "grup": "ilk100",
+    "n": 99,
+    "n_kisa_2017": 71,
+    "n_uzun_2017": 28,
+    "med_d_net_diger_kisa_pp": -0.4163440313426696,
+    "med_d_net_diger_uzun_pp": 0.2486448180344097,
+    "med_d_fin_kisa_pp": 0.9144890133320198,
+    "med_d_fin_uzun_pp": -0.7112656637500986,
+    "med_d_brut_kisa_pp": 1.1281946104848266,
+    "med_d_brut_uzun_pp": 1.2116666539191574
+  },
+  "holding": {
+    "grup": "holding",
+    "n": 25,
+    "n_kisa_2017": 17,
+    "n_uzun_2017": 8,
+    "med_d_net_diger_kisa_pp": -0.5911987320328845,
+    "med_d_net_diger_uzun_pp": -5.376365110561488,
+    "med_d_fin_kisa_pp": -1.935846610041355,
+    "med_d_fin_uzun_pp": 3.264866410319399,
+    "med_d_brut_kisa_pp": 0.8112903483476028,
+    "med_d_brut_uzun_pp": -1.095262042215601
+  },
+  "kapsam_disi": 1
+}
