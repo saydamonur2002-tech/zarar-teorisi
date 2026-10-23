@@ -1,0 +1,4 @@
+- Hazine döviz/kura endeksli borç stoku çekilmedi; "tanınacak zarar" değil kur riski olduğu için stoka eklenmedi.
+- TCMB swap düşülmüş net pozisyon güncel değeri çekilmedi; stok olarak IFRS negatif öz sermaye kullanıldı.
+- K_gelir ile ücret açığı dağıtımı her grupta aynı %'yi verdiğinden, ek olarak "tamamı alt40'a" senaryosu eklendi.
+- (2) ölçütü: sermaye payı 2025'te 2018'in ALTINDA → geri dönüş büyüklüğü 0 (ters yön); yerine 2019-23 birikmiş açık raporlandı.
