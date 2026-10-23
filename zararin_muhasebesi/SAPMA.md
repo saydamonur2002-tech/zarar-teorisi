@@ -2,6 +2,8 @@
 
 Ön kayıt `ON_KAYIT.md`. Koşu: `python3 zararin_muhasebesi/test_sfc_muhasebe.py` geçti. `python3 zararin_muhasebesi/build_page.py` geçti.
 
+Haftalık logun son kaydı `kod_surumu.git = a3fdf4bccdef9f2f9ca4c807e8872b266d381739`, `kirli = true`. Bu, koşu anındaki HEAD'dir; entegrasyon commit'i ondan sonradır. Model dosyası `sfc_sha256 = 77950381a702f00331e2cd0b60a5074f98829b83055277bd51b69bfc067b04cf` ile kilitlidir.
+
 ## Sayısal kriter
 
 S0–S7 ve Tek Sistem paketi (kötümser / olası / iyimser, baz ve dış şok) `once_ozet.json` ile mutlak fark `< 1e-6`. **SAPMA yok.**
