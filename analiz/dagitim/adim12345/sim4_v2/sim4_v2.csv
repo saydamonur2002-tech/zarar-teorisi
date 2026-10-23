@@ -1,0 +1,66 @@
+kalem,adim,grup,c,P10,P50,P90
+oran,önce,G,,77.7,77.7,77.7
+oran,A1,G,,65.7,69.56,72.69
+oran,A2,G,,65.7,69.56,72.69
+oran,A3,G,,22.45,24.67,27.18
+oran,A4(eski: etkisiz),G,,22.45,24.67,27.18
+oran,A4(yeni: daralma yeniden finansman),G,,28.53,30.75,33.26
+sure_TL,yok,G,1,1.35,1.61,1.99
+sure_YP,yok,G,1,1.35,1.61,1.99
+sure_TL,yok,G,0.5,1.6,1.98,2.56
+sure_YP,yok,G,0.5,1.6,1.98,2.56
+sure_TL,refi,G,1,1.38,1.64,2.02
+sure_YP,refi,G,1,1.38,1.64,2.02
+sure_TL,refi,G,0.5,1.64,2.02,2.61
+sure_YP,refi,G,0.5,1.64,2.02,2.61
+sure_TL,erisim,G,1,1.51,1.82,2.29
+sure_YP,erisim,G,1,1.51,1.82,2.29
+sure_TL,erisim,G,0.5,1.82,2.27,3.05
+sure_YP,erisim,G,0.5,1.82,2.27,3.05
+oran,önce,K,,66.8,66.8,66.8
+oran,A1,K,,55.27,58.97,61.97
+oran,A2,K,,55.27,58.97,61.97
+oran,A3,K,,13.8,15.93,18.34
+oran,A4(eski: etkisiz),K,,13.8,15.93,18.34
+oran,A4(yeni: daralma yeniden finansman),K,,19.63,21.76,24.17
+sure_TL,yok,K,1,1.11,1.32,1.64
+sure_YP,yok,K,1,1.11,1.32,1.64
+sure_TL,yok,K,0.5,1.3,1.61,2.1
+sure_YP,yok,K,0.5,1.3,1.61,2.1
+sure_TL,refi,K,1,1.14,1.35,1.67
+sure_YP,refi,K,1,1.14,1.35,1.67
+sure_TL,refi,K,0.5,1.33,1.64,2.14
+sure_YP,refi,K,0.5,1.33,1.64,2.14
+sure_TL,erisim,K,1,1.23,1.48,1.89
+sure_YP,erisim,K,1,1.23,1.48,1.89
+sure_TL,erisim,K,0.5,1.47,1.85,2.48
+sure_YP,erisim,K,0.5,1.47,1.85,2.48
+oran,önce,B,,84.8,84.8,84.8
+oran,A1,B,,72.21,76.26,79.53
+oran,A2,B,,72.21,76.26,79.53
+oran,A3,B,,26.93,29.26,31.89
+oran,A4(eski: etkisiz),B,,26.93,29.26,31.89
+oran,A4(yeni: daralma yeniden finansman),B,,33.3,35.62,38.25
+sure_TL,yok,B,1,1.52,1.8,2.22
+sure_YP,yok,B,1,1.52,1.8,2.22
+sure_TL,yok,B,0.5,1.82,2.23,2.89
+sure_YP,yok,B,0.5,1.82,2.23,2.89
+sure_TL,refi,B,1,1.56,1.84,2.25
+sure_YP,refi,B,1,1.56,1.84,2.25
+sure_TL,refi,B,0.5,1.87,2.28,2.95
+sure_YP,refi,B,0.5,1.87,2.28,2.95
+sure_TL,erisim,B,1,1.7,2.05,2.56
+sure_YP,erisim,B,1,1.7,2.05,2.56
+sure_TL,erisim,B,0.5,2.08,2.58,3.44
+sure_YP,erisim,B,0.5,2.08,2.58,3.44
+firma_mevduat_kaybi,pi0.02,TL/YP/toplam,,-232.5,-2.7,-235.2
+firma_mevduat_kaybi,pi0.05,TL/YP/toplam,,-215.6,11.4,-204.2
+tasiyan,banka,A1 net faiz kaybı,275.87,448.02,660.72,44.2,1.56
+tasiyan,banka,A2 doğrudan yük,0,0,0,0,0
+tasiyan,banka,A2 köprü kredi fırsat geliri,2392.02,3083.98,3809.45,304.0,
+tasiyan,banka,A3 marj,604.7,604.7,604.7,59.6,2.1
+tasiyan,banka,A4 kredi daralması faiz geliri,334.9,334.9,334.9,33.0,
+tasiyan,kamu,A1/A2,0,0,0,,
+tasiyan,kamu,A4 prim π2/π5,157.4,,393.5,0.18,0.46
+tasiyan,mevduat sahibi,A4 net kayıp π2/π5,1697.2,,1461.1,,
+tasiyan,banka,TOPLAM doğrudan (A1+A3) P50,1052.7,,,103.8,3.66
