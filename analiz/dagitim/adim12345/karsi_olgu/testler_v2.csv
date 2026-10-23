@@ -1,0 +1,7 @@
+kosu,sonuc,n,R2_R1R2,R2_artis_H,kismi_r,not_
+q>0,enf_sonra,10,0.91,0.0,-0.14,H yönü r<0; enf log1p
+q>0,d_faiz_gelir,6,0.91,0.06,0.77,H yönü r<0; enf log1p
+q>0,d_npl,7,0.79,0.01,-0.21,H yönü r<0; enf log1p
+q>1,enf_sonra,7,0.96,0.01,-0.61,H yönü r<0; enf log1p
+q>1,d_faiz_gelir,5,0.93,0.04,0.73,H yönü r<0; enf log1p
+q>1,d_npl,5,0.83,0.02,0.32,H yönü r<0; enf log1p

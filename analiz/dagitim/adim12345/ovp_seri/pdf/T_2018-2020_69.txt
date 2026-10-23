@@ -1,0 +1,45 @@
+Ek Tablo 3: Program Tanımlı Kamu Kesimi Genel Dengesi (1)
+YO ETE YO
+GN 7
+Kamu Kesimi -16,9 -45,8 -33,8 -16,5 10,3
+Genel Devlet -24,8 -48,4 -28,5 -13,7 13,8
+Merkezi Yönetim Bütçesi -13,6 -30,9 -19,1 -8,8 3,8
+Mahalli İdareler -9,1 -11,6 -13,3 -8,7 6,3
+Bütçe Dışı Fonlar -2,9 -7,2 0,5 0,6 0,6
+İşsizlik Sigortası Fonu (2) 2,1 2,8 5,0 5,0 4,9
+Sosyal Güvenlik Kuruluşları -18,6 -19,6 -22,8 -24,4 -27,7
+Genel Sağlık Sigortası 17,7 19,6 22,8 24,4 27,7
+Döner Sermayeli Kuruluşlar -0,4 -1,5 -1,6 -1,7 -1,8
+KİT'ler 8,0 2,6 -,3 -2,8 3,5
+| Ş  esviye ren Yüze
+Kamu Kesimi -0,6 -1,5 -1,0 -0,4 0,2
+Genel Devlet -1,0 -1,6 -,8 -0,4 0,3
+Merkezi Yönetim Bütçesi -0,5 -1,0 -0,6 -0,2 0,1
+Mahalli İdareler -0,4 -0,4 -0,4 -0,2 0,1
+Bütçe Dışı Fonlar -0,1 -0,2 0,0 0,0 0,0
+İşsizlik Sigortası Fonu (2) 0,1 0,1 0,1 0,1 0,1
+Sosyal Güvenlik Kuruluşları -0,7 -0,6 -0,7 -0,6 -0,6
+Genel Sağlık Sigortası 0,7 0,6 0,7 0,6 0,6
+Döner Sermayeli Kuruluşlar 0,0 0,0 0,0 0,0 0,0
+KİT'ler 0,3 0,1 -,2 -0,1 -0,1
+(1) Faiz gelirleri ve giderleri, özelleştirme gelirleri, kamu bankaları kâr payları ve bazı özellikli gelirler ile giderler hariç tutularak
+hesaplanmaktadır.
+(2) Esnaf Ahilik Sandığı dâhildir.
+GT: Gerçekleşme tahmini
+P: Program
+Ek Tablo 4: Kamu Kesimine İlişkin Diğer Göstergeler
+Teme Tenren Tes Ters Tai |
+NN 7
+İKamu Harcanabilir Geliri 13,7 12,3 12,0 11,6 11,6
+Kamu Tüketimi -11,0 -10,7 -10,6 -10,3 -9,9
+Kamu Tasarrufu 2,7 1,6 1,4 1,4 1,7
+Kamu Yatırımı -4,1 -4,1 -4,1 -3,9 -3,6
+İKamu Tasarruf Yatırım Farkı -1,4 -2,5 -2,7 -2,5 -2,0
+Kamu Kesimi Özelleştirme Geliri 0,4 0,2 0,3 0,2 0,2
+'ergi Yükü (Sos. Güv. Primleri Dâhil) (1) 25,4 24,7 24,8 24,3 24,0
+'ergi Yükü (Sos. Güv. Primleri Hariç) (1) 18,1 17,6 17,9 17,7 17,4
+AB Tanımlı Genel Devlet Borç Stoku 28,1 28,5 28,5 28,0 27,5
+(1) Red ve iadeler hariçtir.
+GT: Gerçekleşme tahmini
+P: Program
+64

@@ -1,0 +1,40 @@
+blok,kalem,deger,etiket
+ÖİB yıllık mlr$,1986-2003 toplam,8.2,İKİNCİL
+ÖİB yıllık mlr$,2005,3.04,İKİNCİL
+ÖİB yıllık mlr$,2008,1.341,İKİNCİL
+ÖİB yıllık mlr$,2013,12.4,İKİNCİL
+ÖİB yıllık mlr$,2017,0.751,İKİNCİL
+ÖİB yıllık mlr$,2018,1.3,İKİNCİL
+ÖİB yıllık mlr$,2019,0.116,İKİNCİL
+ÖİB yıllık mlr$,2020,0.022,İKİNCİL
+ÖİB yıllık mlr$,2021,0.413,İKİNCİL
+ÖİB yıllık mlr$,2022,0.504,İKİNCİL
+ÖİB yıllık mlr$,2023,0.181,İKİNCİL
+ÖİB yıllık mlr$,2024,0.122,İKİNCİL
+ÖİB yıllık mlr$,2025,1.9,"HESAP: 73,5−71,6"
+kırılım/KÖİ,enerji üretim+dağıtım (2008–2025),28.3,mlr$ İKİNCİL
+kırılım/KÖİ,limanlar (1997–2025),3.5,mlr$ İKİNCİL
+kırılım/KÖİ,KÖİ yatırım: karayolu,41.85,mlr$ VERİ SBB
+kırılım/KÖİ,KÖİ yatırım: havalimanı,25.78,mlr$ VERİ SBB
+kırılım/KÖİ,KÖİ yatırım: enerji,22.93,mlr$ VERİ SBB
+kırılım/KÖİ,"KÖİ yatırım: sağlık (YKD, şehir hastanesi)",13.8,mlr$ VERİ SBB
+KÖİ ödemesi mlrTL,2025,196.2,"KGM+ulaştırma 85.1, hastane 111.1; gerçekleşme İKİNCİL"
+KÖİ ödemesi mlrTL,2026,253.2,"KGM+ulaştırma 103.2, hastane 150.0; KGM beklenti; hastane 150 TAHMİN (basın)"
+KÖİ ödemesi mlrTL,2027,296.6,"KGM+ulaştırma 136.1, hastane 160.5; bütçe teklifi İKİNCİL"
+KÖİ ödemesi mlrTL,2028,354.5,"KGM+ulaştırma 167.4, hastane 187.1; bütçe tahmini"
+KÖİ ödemesi mlrTL,2029,381.7,"KGM+ulaştırma 170.4, hastane 211.3; bütçe tahmini"
+kamu açığı (oran−20)×gelir,2026,0,"oran 17.4, gelir 16266 [HESAP]"
+kapsama oranı,"2026 2025 gerçekleşme 74,4",açık yok,HESAP
+kapsama oranı,2026 OVP 2026 hedefi 185,açık yok,HESAP
+kamu açığı (oran−20)×gelir,2027,0,"oran 19.6, gelir 21146 [HESAP]"
+kapsama oranı,"2027 2025 gerçekleşme 74,4",açık yok,HESAP
+kapsama oranı,2027 OVP 2026 hedefi 185,açık yok,HESAP
+kamu açığı (oran−20)×gelir,2028,440,"oran 21.6, gelir 27490 [HESAP]"
+kapsama oranı,"2028 2025 gerçekleşme 74,4",0.17,HESAP
+kapsama oranı,2028 OVP 2026 hedefi 185,0.42,HESAP
+kamu açığı (oran−20)×gelir,2029,1287,"oran 23.6, gelir 35737 [HESAP]"
+kapsama oranı,"2029 2025 gerçekleşme 74,4",0.06,HESAP
+kapsama oranı,2029 OVP 2026 hedefi 185,0.14,HESAP
+kamu açığı (oran−20)×gelir,2030,2555,"oran 25.5, gelir 46458 [HESAP]"
+kapsama oranı,"2030 2025 gerçekleşme 74,4",0.03,HESAP
+kapsama oranı,2030 OVP 2026 hedefi 185,0.07,HESAP
