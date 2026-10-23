@@ -1,0 +1,70 @@
+senaryo,plan,esik,ilk_asim
+düşük,S1 erteleme,TCMB<-3%,2030Q1
+düşük,S1 erteleme,TCMB<-5%,2030Q4 sonrası/yok
+düşük,S1 erteleme,firma Büyük>100,2030Q4 sonrası/yok
+düşük,S1 erteleme,firma Genel>100,2030Q4 sonrası/yok
+düşük,S1 erteleme,firma KOBİ>100,2030Q4 sonrası/yok
+düşük,S1 erteleme,SYR<12,2030Q4 sonrası/yok
+düşük,S1 erteleme,SYR<8,2030Q4 sonrası/yok
+düşük,S1 erteleme,kamu>20,2029Q2
+düşük,S1 erteleme,kamu>25,2030Q4 sonrası/yok
+düşük,S1 erteleme,KVdış/rezerv>1,2026Q4
+düşük,S1 erteleme,reel mevduat<0,2030Q4 sonrası/yok
+düşük,5 adım,TCMB<-3%,2030Q4 sonrası/yok
+düşük,5 adım,TCMB<-5%,2030Q4 sonrası/yok
+düşük,5 adım,firma Büyük>100,2030Q4 sonrası/yok
+düşük,5 adım,firma Genel>100,2030Q4 sonrası/yok
+düşük,5 adım,firma KOBİ>100,2030Q4 sonrası/yok
+düşük,5 adım,SYR<12,2027Q3
+düşük,5 adım,SYR<8,2028Q3
+düşük,5 adım,kamu>20,2026Q4
+düşük,5 adım,kamu>25,2028Q4
+düşük,5 adım,KVdış/rezerv>1,2026Q4
+düşük,5 adım,reel mevduat<0,2030Q4 sonrası/yok
+düşük,5 adım,reel senet<0,2026Q4
+orta,S1 erteleme,TCMB<-3%,2028Q3
+orta,S1 erteleme,TCMB<-5%,2030Q4 sonrası/yok
+orta,S1 erteleme,firma Büyük>100,2030Q4 sonrası/yok
+orta,S1 erteleme,firma Genel>100,2030Q4 sonrası/yok
+orta,S1 erteleme,firma KOBİ>100,2030Q4 sonrası/yok
+orta,S1 erteleme,SYR<12,2030Q4 sonrası/yok
+orta,S1 erteleme,SYR<8,2030Q4 sonrası/yok
+orta,S1 erteleme,kamu>20,2028Q1
+orta,S1 erteleme,kamu>25,2030Q3
+orta,S1 erteleme,KVdış/rezerv>1,2026Q4
+orta,S1 erteleme,reel mevduat<0,2030Q4 sonrası/yok
+orta,5 adım,TCMB<-3%,2030Q4 sonrası/yok
+orta,5 adım,TCMB<-5%,2030Q4 sonrası/yok
+orta,5 adım,firma Büyük>100,2030Q4 sonrası/yok
+orta,5 adım,firma Genel>100,2030Q4 sonrası/yok
+orta,5 adım,firma KOBİ>100,2030Q4 sonrası/yok
+orta,5 adım,SYR<12,2027Q3
+orta,5 adım,SYR<8,2028Q2
+orta,5 adım,kamu>20,2026Q4
+orta,5 adım,kamu>25,2027Q3
+orta,5 adım,KVdış/rezerv>1,2026Q4
+orta,5 adım,reel mevduat<0,2030Q4 sonrası/yok
+orta,5 adım,reel senet<0,2026Q4
+yüksek,S1 erteleme,TCMB<-3%,2028Q2
+yüksek,S1 erteleme,TCMB<-5%,2030Q4 sonrası/yok
+yüksek,S1 erteleme,firma Büyük>100,2028Q1
+yüksek,S1 erteleme,firma Genel>100,2029Q3
+yüksek,S1 erteleme,firma KOBİ>100,2030Q4 sonrası/yok
+yüksek,S1 erteleme,SYR<12,2028Q4
+yüksek,S1 erteleme,SYR<8,2030Q4 sonrası/yok
+yüksek,S1 erteleme,kamu>20,2027Q4
+yüksek,S1 erteleme,kamu>25,2029Q3
+yüksek,S1 erteleme,KVdış/rezerv>1,2026Q4
+yüksek,S1 erteleme,reel mevduat<0,2028Q1
+yüksek,5 adım,TCMB<-3%,2030Q4 sonrası/yok
+yüksek,5 adım,TCMB<-5%,2030Q4 sonrası/yok
+yüksek,5 adım,firma Büyük>100,2030Q4 sonrası/yok
+yüksek,5 adım,firma Genel>100,2030Q4 sonrası/yok
+yüksek,5 adım,firma KOBİ>100,2030Q4 sonrası/yok
+yüksek,5 adım,SYR<12,2027Q2
+yüksek,5 adım,SYR<8,2028Q1
+yüksek,5 adım,kamu>20,2026Q4
+yüksek,5 adım,kamu>25,2027Q1
+yüksek,5 adım,KVdış/rezerv>1,2026Q4
+yüksek,5 adım,reel mevduat<0,2028Q1
+yüksek,5 adım,reel senet<0,2026Q4

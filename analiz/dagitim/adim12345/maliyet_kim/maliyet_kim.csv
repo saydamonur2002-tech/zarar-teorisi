@@ -1,0 +1,27 @@
+kalem,tasiyici,aciklama,tutar,birim,etiket
+şehir hastaneleri,(a) bütçe,2025 kira+hizmet ödemesi,111.1,mlr TL,İKİNCİL (Sağlık Bak. bütçe aktarımı)
+şehir hastaneleri,(a) bütçe,"2027 teklif: kira 82,2 + hizmet 78,3",160.5,mlr TL,İKİNCİL (bütçe teklifi aktarımı)
+şehir hastaneleri,(a) bütçe,KÖİ sağlık yatırım tutarı,13.8,mlr $,VERİ SBB
+şehir hastaneleri,(a) bütçe,18 hastane 25 yıl kira toplamı (Kalkınma Bak. 2016),30.2,mlr $,İKİNCİL
+şehir hastaneleri,(b) kullanıcı,katkı payı/fark ücreti,,,ÖLÇÜLMEDİ
+şehir hastaneleri,(c) çalışan,hizmet alımı personeli ücret/istihdam,,,ÖLÇÜLMEDİ
+şehir hastaneleri,(d) şirket,kullanım bedeli talepten bağımsız → talep riski kamuda,,,VERİ (Sayıştay: kullanım bedeli; eksik iş indirimi yapılmadı)
+şehir hastaneleri,(e) döviz,kullanım bedeli enflasyon+döviz bileşenli formül; bazı sözleşmelerde döviz taban/tavan → yabancı para borcu niteliği,,,VERİ Sayıştay Sağlık Bak.
+otoyol/köprü,(a) bütçe,2025 KGM geçiş garantisi ödemesi,85.1,mlr TL,İKİNCİL (KGM mali durum raporu aktarımı)
+otoyol/köprü,(a) bütçe,2026 KGM beklenti,103.2,mlr TL,İKİNCİL
+otoyol/köprü,(a) bütçe,"2027 teklif KGM 134,1 + UAB 2,0",136.1,mlr TL,İKİNCİL
+otoyol/köprü,(a) bütçe,KGM garanti ödemeleri 2018–2024 toplam,186.6,mlr TL,"İKİNCİL (TBMM önergesi, Sayıştay atfı)"
+otoyol/köprü,(a) bütçe,KÖİ karayolu yatırım tutarı,41.85,mlr $,VERİ SBB
+otoyol/köprü,(b) kullanıcı,geçiş ücreti tahsilatı (şirkete),,,ÖLÇÜLMEDİ (Bakanlık rakam vermiyor)
+otoyol/köprü,(d) şirket,araç geçiş garantisi → talep riski kamuda; Avrasya 2023Q4 sonrası garanti üstü,,,VERİ Sayıştay KGM/ İKİNCİL
+otoyol/köprü,(e) döviz,"Osmangazi 35 $/araç, ABD TÜFE endeksli (2025: 55 $), 40 bin araç/gün",,,İKİNCİL (sözleşme aktarımı)
+havalimanları,(a) bütçe,DHMİ YİD garanti ödemesi 2018–2025,1.475,mlr $,"İKİNCİL (önerge, ""iddia"")"
+havalimanları,(a) kamu GELİRİ,İHD bedeli toplamı (KDV dahil),83.47,mlr $,VERİ SBB (kamuya ödenen kira; net ters yönde)
+havalimanları,(b) kullanıcı,yolcu servis/dış hat ücretleri,,,ÖLÇÜLMEDİ
+havalimanları,(e) döviz,yolcu garantisi ve İHD bedeli euro bazlı,,,DOĞRULANMADI
+enerji özelleştirmesi,(a) kamu GELİRİ,üretim+dağıtım satış bedeli 2008–2025,28.3,mlr $,İKİNCİL (ÖİB aktarımı)
+enerji özelleştirmesi,(b) kullanıcı,tarife artışı/kayıp-kaçak bedeli,,,ÖLÇÜLMEDİ (EPDK tarife serisi çekilmedi)
+enerji özelleştirmesi,(c) çalışan,istihdam değişimi,,,ÖLÇÜLMEDİ
+enerji özelleştirmesi,(d) şirket,KÖİ enerji İHD bedeli,23.99,mlr $,VERİ SBB
+limanlar,(a) kamu GELİRİ,TDİ+TCDD liman satış/İHD 1997–2025,3.5,mlr $,İKİNCİL
+limanlar,(b) kullanıcı,liman tarifeleri,,,ÖLÇÜLMEDİ
