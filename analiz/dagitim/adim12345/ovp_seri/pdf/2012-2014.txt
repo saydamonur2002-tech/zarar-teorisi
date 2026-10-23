@@ -1,0 +1,3100 @@
+ORTA VADELİ
+ PROGRAM
+ (2012-2014)
+
+
+
+                   EKİM 2011
+
+              KALKINMA BAKANLIĞI
+Necatibey Cad. No: 108 06100 Yücetepe / ANKARA
+http://www.kalkinma.gov.tr • bilgi@kalkinma.gov.tr
+Kalkınma Bakanlığınca hazırlanan Orta Vadeli Program (2012-2014)
+07/10/2011 tarihli ve 2011/2302 Sayılı Bakanlar Kurulu Kararı ile
+kabul edilerek 13/10/2011 tarihli ve 28083 mükerrer sayılı Resmi
+Gazete’de yayımlanmıştır.
+                                                    İÇİNDEKİLER
+GİRİŞ. .............................................................................................................................1
+I. DÜNYA VE TÜRKİYE EKONOMİSİNDE GELİŞMELER. ...........................................2
+   A. DÜNYA EKONOMİSİ. .............................................................................................2
+   B. TÜRKİYE EKONOMİSİ. ..........................................................................................7
+II. TEMEL AMAÇ. ........................................................................................................13
+III. MAKROEKONOMİK HEDEFLER VE POLİTİKALAR. ...........................................14
+   A. PROGRAM DÖNEMİ HEDEF VE GÖSTERGELERİ............................................14
+      1. Büyüme ve İstihdam..........................................................................................14
+      2. Kamu Maliyesi. ..................................................................................................15
+      3. Ödemeler Dengesi.............................................................................................17
+      4. Enflasyon...........................................................................................................18
+   B. MAKROEKONOMİK POLİTİKALAR....................................................................18
+      1. Büyüme ve İstihdam..........................................................................................18
+      2. Kamu Maliye Politikası.......................................................................................20
+      3. Ödemeler Dengesi.............................................................................................28
+      4. Para Politikası....................................................................................................30
+IV. PROGRAM DÖNEMİ GELİŞME EKSENLERİ........................................................32
+   A. REKABET GÜCÜNÜN ARTIRILMASI..................................................................32
+      1. İş Ortamının İyileştirilmesi..................................................................................32
+      2. Ekonomide Kayıt Dışılığın Azaltılması...............................................................33
+      3. Finansal Sistemin Geliştirilmesi.........................................................................34
+      4. Enerji ve Ulaştırma Altyapısının Geliştirilmesi. ..................................................35
+      5. Çevrenin Korunması ve Kentsel Altyapının Geliştirilmesi..................................38
+      6. Ar-Ge ve Yenilikçiliğin Geliştirilmesi...................................................................40
+      7. Bilgi ve İletişim Teknolojilerinin Yaygınlaştırılması.............................................41
+      8. Tarımsal Yapının Etkinleştirilmesi. .....................................................................43
+      9. Sanayi ve Hizmetlerde Yüksek Katma Değerli Üretim Yapısına Geçiş
+         Sağlanması........................................................................................................45
+   B. İSTİHDAMIN ARTIRILMASI. ................................................................................49
+      1. İşgücü Piyasasının Geliştirilmesi.......................................................................49
+      2. Eğitimin İşgücü Talebine Duyarlılığının Artırılması.............................................49
+      3. Aktif İşgücü Politikalarının Geliştirilmesi. ...........................................................50
+   C. BEŞERİ GELİŞME VE SOSYAL DAYANIŞMANIN GÜÇLENDİRİLMESİ...........51
+      1. Eğitim Sisteminin Geliştirilmesi..........................................................................51
+      2. Sağlık Sisteminin Geliştirilmesi..........................................................................52
+      3. Gelir Dağılımının İyileştirilmesi, Sosyal İçerme ve Yoksullukla Mücadele. ........53
+      4. Sosyal Güvenlik Sisteminin Etkinliğinin Artırılması............................................54
+      5. Kültürün Korunması, Geliştirilmesi ve Toplumsal Diyaloğun Güçlendirilmes.....55
+   D. BÖLGESEL GELİŞME VE BÖLGESEL GELİŞMİŞLİK FARKLARININ
+      AZALTILMASI. .................................................................................................... 56
+      1. Bölgesel Gelişme Politikasının Merkezi Düzeyde Etkinleştirilmesi....................56
+      2. Yerel Dinamiklere ve İçsel Potansiyele Dayalı Gelişmenin Sağlanması............57
+      3. Yerel Düzeyde Kurumsal Kapasitenin Artırılması. .............................................58
+      4. Kırsal Kesimde Kalkınmanın Sağlanması..........................................................59
+   E. KAMU HİZMETLERİNDE KALİTE VE ETKİNLİĞİN ARTIRILMASI. ...................60
+      1. Politika Oluşturma ve Uygulama Kapasitesinin Artırılması................................60
+      2. Kamu Kesiminde İnsan Kaynaklarının Geliştirilmesi. ........................................61
+      3. e-Devlet Uygulamalarının Yaygınlaştırılması.....................................................61
+      4. Adalet Sisteminin İyileştirilmesi..........................................................................62
+      5. Güvenlik Hizmetlerinin Etkinleştirilmesi.............................................................62
+      6. Doğal Afetler......................................................................................................63
+Ek Tablo 1: Temel Ekonomik Büyüklükler. ....................................................................65
+Ek Tablo 2: Kamu Finansmanına İlişkin Temel Büyüklükler..........................................66
+Ek Tablo 3: Kamu Kesimi Borçlanma Gereği................................................................67
+Ek Tablo 4: Genel Devlet Borçlanma Gereği.................................................................68
+                                    O r t a Vadel i Pr o g ra m
+
+
+
+                         GİRİŞ
+
+    Son bir yıllık dönemde dünya ekonomisinde geliş-
+miş ve gelişmekte olan ülkeler arasındaki ayrışmanın
+belirginleştiği, uluslararası ekonomik ve finansal politi-
+kalarda tam bir koordinasyonun sağlanamadığı, özellik-
+le bazı gelişmiş ülkelerde hükümetlerin gerekli kararları
+zamanında alamadığı, küresel ölçekte makroekonomik
+ve finansal istikrarın sağlanamadığı ve belirsizliklerin
+artarak sürdüğü bir süreç yaşanmıştır.
+
+    Dünya ekonomisinde artan belirsizlik ve olumsuz-
+luklar neticesinde küresel büyüme beklentileri aşağı
+yönlü revize edilmiştir. Söz konusu gelişmede özellikle
+bazı Avrupa Birliği ülkelerinin borçlarının sürdürülebilir-
+liğine ve bunun finans sektörüne olası etkilerine dair ar-
+tan kaygıların yanı sıra ABD’nin ekonomik performan-
+sının beklenenin altında kalması etkili olmuştur. Mevcut
+sorunların kısa vadede aşılabilmesine ve küresel büyü-
+menin yeniden ivme kazanmasına ilişkin belirsizlikler
+devam etmektedir.
+
+    Küresel ekonomi ile ilgili son ekonomik gelişmele-
+ri de dikkate alan Orta Vadeli Programın temel amacı,
+ülkemizde büyümeyi sürdürmek, cari işlemler açığını
+azaltmak ve böylece makroekonomik ve finansal istik-
+rarı korumaktır.
+
+   Önümüzdeki dönemde, ticaret ortağı olduğumuz ül-
+keler başta olmak üzere, dünya ekonomisindeki geliş-
+meler yakından izlenerek Orta Vadeli Programın temel
+çerçevesi korunmak şartıyla gerekli olabilecek politika
+uyarlamaları hızlı ve kararlı bir şekilde gerçekleştirile-
+cektir.
+
+
+
+
+                                                                  1
+    Orta Vadeli Pr ogr a m
+
+
+
+
+      I. DÜNYA VE TÜRKİYE EKONOMİSİNDE
+                  GELİŞMELER
+
+       A. DÜNYA EKONOMİSİ
+        2009 yılında krizin olumsuz etkilerini azaltmaya ve
+    piyasalarda tekrar güveni tesis etmeye yönelik olarak
+    hükümetlerin uygulamaya koyduğu mali teşvik prog-
+    ramları, para politikası önlemleri ve finans sektöründeki
+    tıkanıklığı gidermeye yönelik alınan tedbirlerin etkisiyle,
+    2010 yılında küresel düzeyde belirgin bir toparlanma
+    yaşanmıştır. 2009 yılında yüzde 0,7 oranında daralan
+    dünya ekonomisi 2010 yılında yüzde 5,1 oranında bü-
+    yümüştür. Bu süreçte, gelişmekte olan ülkeler gelişmiş
+    ülkelere kıyasla daha hızlı bir toparlanma kaydetmiştir.
+    2010 yılında gelişmiş ülkeler yüzde 3,1 oranında bü-
+    yürken, Çin ve Hindistan’ın etkisiyle, yükselen ve geliş-
+    mekte olan ülkeler yüzde 7,3 gibi yüksek oranlı büyü-
+    me performansı sergilemiştir1.
+
+       Dünya ticaret hacminde 2009 yılında yaşanan yüz-
+    de 10,7 oranındaki daralmanın ardından, 2010 yılında
+    ekonomik aktivitedeki büyümeye paralel olarak yüzde
+    12,8 oranında artış kaydedilmiştir. 2010 yılında dünya
+    mal ve hizmet ticareti fiyatları yüzde 5,2 oranında yük-
+    selmiştir.
+
+       Bu dönemde, gelişmekte olan ülkelerde belirgin fi-
+    yat artışları yaşanmış ve tüketici enflasyonu yüzde 6,1
+    oranında gerçekleşmiştir. Bu oran gelişmiş ülkelerde
+    yüzde 1,6 olmuştur. Krizden sonra, gelişmekte olan ül-
+    kelerde çıktı açığının kapanması ve kriz öncesi üretim
+    seviyesinin üzerine çıkılmasıyla oluşan talep baskısı
+    bu gelişmede etkili olmuştur.
+    1 IMF Dünya Ekonomik Görünüm Raporu, Eylül 2011.
+
+
+
+2
+                                        O r t a Vadel i Pr o g ra m
+
+
+   2010 yılında küresel düzeyde sağlanan ekono-
+mik toparlanmaya rağmen, işsizlik oranlarında iyileş-
+me sağlanamamış, birçok ülkede işsizlik oranları art-
+mıştır. İspanya, İrlanda, Portekiz ve Yunanistan gibi
+bazı AB ülkelerinde işsizlik oranlarında ciddi artışlar
+yaşanmıştır. İşsizlik oranı Avro Bölgesinde yüzde
+10,1’e, ABD’de yüzde 9,6’ya ve OECD genelinde ise
+yüzde 8,6’ya yükselmiştir.2
+
+    Krize kamu dengelerinde sorunla yakalanan ülke-
+lerde uygulamaya konulan genişleyici maliye politikala-
+rı ve bankacılık sektöründen gelen yükler, söz konusu
+ülkelerin bütçe dengelerinde daha fazla bozulmaya yol
+açmıştır. Güçlü Avro ve düşük faiz oranlarının yarattı-
+ğı borçlanma kolaylıklarından yararlanan bu ülkelerde
+kamu borç stoku önemli ölçüde artmıştır. 2009 yılı so-
+nunda Avro Bölgesi genelinde yüzde 79,7 olan genel
+devlet brüt borç stokunun GSYH’ya oranı, 2010 yılı so-
+nunda yüzde 85,8’e yükselmiştir. ABD’de ise bu oran
+yüzde 85,2’den yüzde 94,4’e çıkmıştır.
+
+    2011 yılının ilk yarısında ABD ekonomisinde bekle-
+nenden düşük gerçekleşen büyüme, istihdamda yeterli
+iyileşme sağlanamaması, borçlanma limitine ulaşılma-
+sı, yüksek kamu borçları ve bütçe açıkları, karar alma
+süreçlerinde yaşanan gecikmeler, bankacılık kesiminde
+yaşanan problemlerin devam etmesi, ABD’nin tarihinde
+ilk kez kredi notunun düşürülmesi ve güçlü bir orta va-
+deli mali konsolidasyon programını ortaya koyamama-
+sı gibi etkenler piyasalarda güven ortamını zedelemiş
+ve önümüzdeki döneme ilişkin büyüme beklentilerinin
+düşmesine neden olmuştur. 2011 yılı Haziran ayında
+yüzde 2,5 olan 2011 yılı ABD ekonomisi büyüme tahmi-
+ni, Eylül ayında yüzde 1,5’e, 2012 yılı büyüme tahmini
+de yüzde 2,7’den yüzde 1,8’e indirilmiştir.
+
+2 OECD, Uyumlaştırılmış İşsizlik Oranları Basın Duyurusu, Eylül
+  2011.
+
+
+
+                                                                      3
+    Orta Vadeli Pr ogr a m
+
+
+        Avrupa’da finans sektörü ile ilgili endişelerin gideri-
+    lememesi ve kamu borçlarının sürdürülebilirliği ile ilgili
+    risklerin çevre ülkelerden merkez ülkelere yayılma eği-
+    limi nedeniyle, Avro Bölgesi büyüme tahmini 2011 yılı
+    için yüzde 2’den yüzde 1,6’ya, 2012 yılı için ise yüzde
+    1,7’den yüzde 1,1’e revize edilmiştir.
+
+        Gelişmiş ülkelere ilişkin büyüme görünümünün za-
+    yıflamasının ticaret ve finansman kanalıyla yükselen ve
+    gelişmekte olan ülkelere de yansıyacağı tahmin edil-
+    mektedir. Ayrıca, emtia fiyatlarındaki artış ve dalgalı se-
+    yir ile birlikte, artan enflasyon baskısını azaltmaya yö-
+    nelik uygulanan para ve maliye politikaları gelişmekte
+    olan ülkelerde ekonomik büyümeyi 2010 yılına kıyasla
+    yavaşlatacaktır. Bu çerçevede, yükselen ve gelişmekte
+    olan ekonomilerin 2011 yılında yüzde 6,4 ve 2012 yı-
+    lında yüzde 6,1 oranında büyüyeceği tahmin edilmek-
+    tedir. 2011 ve 2012 yılları için sırasıyla Çin’in yüzde 9,5
+    ve yüzde 9, Hindistan’ın ise yüzde 7,8 ve yüzde 7,5
+    oranında büyümesi beklenmektedir.
+
+       Bu gelişmeler sonucunda Haziran ayında yapı-
+    lan tahminlerle karşılaştırıldığında, Eylül ayında dün-
+    ya ekonomisinin büyüme tahmini 2011 yılı için yüzde
+    4,3’ten yüzde 4’e, 2012 yılı için ise yüzde 4,5’ten yüzde
+    4’e inmiştir.
+
+        2010 yılında yüzde 12,8 büyüyen dünya ticaret hac-
+    minin, ekonomik aktivitede beklenen yavaşlamaya pa-
+    ralel olarak, 2011 yılında yüzde 7,5, 2012 yılında ise
+    yüzde 5,8 oranında artacağı tahmin edilmektedir.
+
+        Enerji ve gıda fiyatlarında yılın ilk aylarında yaşanan
+    yüksek oranlı artışların ve dalgalanmanın gecikmeli
+    etkileri nedeniyle gelişmiş ülkelerde tüketici enflasyo-
+    nunun 2011 yılında yüzde 2,6 olması beklenmektedir.
+    Gelişmekte olan ülkelerde ise artan talep baskısının et-
+    kisiyle tüketici enflasyonunun 2011 yılında yüzde 7,5’e
+
+
+4
+                                   O r t a Vadel i Pr o g ra m
+
+
+yükseleceği tahmin edilmektedir. Tüketici enflasyonu-
+nun 2012 yılında enerji ve gıda fiyatlarının istikrara ka-
+vuşması varsayımıyla gelişmiş ülkelerde yüzde 1,4’e,
+gelişmekte olan ülkelerde ise yüzde 5,9’a düşmesi ön-
+görülmektedir.
+
+    2011 yılına ilişkin düşük büyüme beklentisi ve yete-
+rince istihdam yaratılamaması nedeniyle işsizlik oran-
+larında belirgin bir iyileşme beklenmemektedir. 2011
+yılı işsizlik oranları ABD ve Avro Bölgesi için sırasıy-
+la yüzde 9,1 ve yüzde 9,9 olarak tahmin edilmektedir.
+2012 yılında ABD’de ve Avro Bölgesinde işsizlik oranı-
+nın aynı seviyelerde kalacağı beklenmektedir.
+   ABD’de, para politikalarında uygulanan miktarsal
+genişlemenin istenen sonucu vermemesi, maliye politi-
+kalarında ise genişlemeci tutumun hala devam etmesi
+nedeniyle kısa vadede bütçe dengesinde önemli bir iyi-
+leşme beklenmemektedir. ABD’de 2010 yılında yüzde
+10,3 olarak gerçekleşen genel devlet bütçe açığının
+GSYH’ya oranının 2016 yılında bile ancak yüzde 6’ya
+gerileyeceği tahmin edilmektedir. Genel devlet brüt
+borç stokunun GSYH’ya oranının ise artmaya devam
+ederek 2016 yılında yüzde 115,4’e ulaşacağı tahmin
+edilmektedir.
+    Başta Yunanistan, İrlanda ve İtalya olmak üzere
+AB çevre ülkelerinde yaşanan yüksek oranlı borçlar
+ve bozulan mali yapı nedeniyle Avro bölgesinde 2010
+yılında yüzde 6’ya ulaşan genel devlet bütçe açığının
+GSYH’ya oranının, alınan önlemlerin etkisiyle 2011 yı-
+lında yüzde 4,1’e, 2012 yılında yüzde 3,1’e ve 2016
+yılında yüzde 1,3’e gerileyeceği tahmin edilmektedir.
+AB ülkeleri arasında önemli farklılıklar olmakla birlikte,
+Avro Bölgesi genelinde 2011 yılında genel devlet brüt
+borç stokunun GSYH’ya oranının yüzde 88,6, 2012 yı-
+lında yüzde 90 ve 2016 yılında ise yüzde 86,6 olarak
+gerçekleşmesi öngörülmektedir.
+
+
+                                                                 5
+    Orta Vadeli Pr ogr a m
+
+
+        Krizden sonraki süreçte gelişmiş ülkelerde yurti-
+    çi talebin kamu sektöründen özel sektöre, gelişmekte
+    olan ülkelerde ise dış talebin yurtiçi talebe yönelmesi
+    ile sağlanması öngörülen büyüme dinamiği ve “küresel
+    yeniden dengelenme süreci” beklenildiği ölçüde ger-
+    çekleşmemiştir. Öte yandan, 2008 yılında krizin başlıca
+    nedeni yüksek oranlı hanehalkı ve özel sektör borçları
+    ile finansal sistemin kırılgan yapısı iken, 2011 yılında
+    hükümet borçlarının artmış olması ve finans sektörün-
+    de kırılganlıkların halen devam ediyor olması, 2008 yılı-
+    na kıyasla kamunun mali manevra ve müdahale alanını
+    oldukça sınırlandırmaktadır. Buna ek olarak, gelişmiş
+    ülkelerde siyasi karar alma süreçlerinde yaşanan zor-
+    luklar krizden çıkış sürecini olumsuz etkilemektedir.
+
+        Önümüzdeki dönemde küresel büyüme ve istikrar
+    ortamının yeniden tesis edilmesi için, ABD, Japonya ve
+    Avro Bölgesindeki mali sorunların ve yüksek borçların
+    açıklanacak mali plan çerçevesinde düşürülmesi, ihti-
+    yaç durumunda gevşek para politikasına devam edil-
+    mesi, bankaların mali yapısının güçlendirilmesi, mal ve
+    işgücü piyasaları ile finans sektöründe yapısal reform-
+    lara devam edilmesi öncelikli politika alanlarıdır.
+
+        Avro bölgesinde şimdiye kadar alınan kısa ve orta
+    vadeli tedbirlerin yetersiz kalması, finansal piyasalar
+    açısından önemli risk oluşturmaktadır. Bunun yanın-
+    da, gelişmiş ülkelerde reel sektörde yaşanan rekabet
+    kayıpları, finans ve işgücü piyasalarındaki yapısal so-
+    runlar orta ve uzun dönemde büyümenin önünde aşıl-
+    ması gereken temel zorluklardır. Gelişmiş ülkelerde
+    kriz sonrası yükselen işsizliğin kalıcı hale gelme olası-
+    lığı ve krizde yaşanan ücret ve gelir kayıplarının telafi
+    edilememesi, önümüzdeki dönemde karar alıcılar için
+    önemli bir sosyal risk unsurudur. Öte yandan, geliş-
+    mekte olan ülkelerde iç talep baskısı ile artan enflasyon
+    ve sermaye akımlarına karşı oluşan kırılganlık bir diğer
+
+
+
+6
+                                    O r t a Vadel i Pr o g ra m
+
+
+risk unsurudur. Son dönemde yaşanan dalgalanma-
+lar, arz/talep dengesizliği ve düşük büyüme beklentisi
+nedeniyle petrol, emtia ve gıda fiyatlarının gelecekteki
+seyri belirsizdir. Bu durum, Türkiye’nin de dahil olduğu
+enerji bağımlılığı yüksek ülkeler açısından önemli bir
+belirsizlik alanı oluşturmaktadır.
+
+    Küresel düzeyde artan risklere rağmen, başta ABD
+ve AB ülkeleri olmak üzere, gelişmiş ülkelerde bozulan
+güven ortamını yeniden sağlayacak yönde hızla ted-
+bir alınması durumunda 2011 yılında küresel düzey-
+de yüzde 4 büyüme mümkün olabilecektir. Ancak; AB
+ülkelerindeki borç krizinin kontrol edilememesi, finan-
+sal piyasalarda dalgalanmanın artması ve krizin Asya
+ülkelerinde varlık piyasalarına sıçraması durumunda
+dünya büyümesinin daha düşük oranda gerçekleşmesi
+ve gelişmiş ülkelerde durgunluk yaşanması ihtimali bu-
+lunmaktadır.
+
+    B. TÜRKİYE EKONOMİSİ
+    Küresel kriz döneminde ülkemizde tüm politika araç-
+ları orta vadeli bir perspektifle zamanında ve kararlı bir
+biçimde kullanılmıştır. Maliye ve para politikalarının, fi-
+nans sektörüyle ilgili kararların ve yapısal reformların
+temel amacı güven ve istikrarı güçlendirmek olmuştur.
+
+    Sağlam makroekonomik temeller ve güçlü bir orta
+vadeli programla belirsizliklerin azaltılması, sermaye
+girişinin devam etmesi, faiz oranlarının düşük seviye-
+lerde kalması ve kredi genişlemesi sonucunda Türkiye
+ekonomisi 2010 ve 2011 yıllarında yüksek bir büyüme
+performansı yakalamıştır.
+
+    GSYH büyümesi 2010 yılında yüzde 9, 2011 yılının
+ilk yarısında yüzde 10,2 oranında gerçekleşmiş ve Tür-
+kiye, dünyada büyüme hızı en yüksek ülkeler arasında
+yer almıştır. Küresel ölçekte giderek artan belirsizlikler
+
+
+
+                                                                  7
+    Orta Vadeli Pr ogr a m
+
+
+    nedeniyle 2011 yılının ikinci yarısından itibaren büyü-
+    me hızının nispi olarak yavaşlaması öngörülmektedir.
+    Bu yavaşlamaya rağmen 2011 yılının tamamında Tür-
+    kiye ekonomisinin yüzde 7,5 oranında büyümesi bek-
+    lenmektedir.
+
+       2010 ve 2011 yıllarında büyüme esas olarak özel
+    tüketim ve sabit sermaye yatırımları kaynaklı olmuştur.
+    Yurtiçi talepteki canlanma özellikle imalat sanayii, in-
+    şaat, ticaret ve ulaştırma sektörlerinde yüksek katma
+    değer artışlarını beraberinde getirmiştir.
+
+         Yüksek büyüme hızı ve işsizliğin azaltılmasına yö-
+    nelik tedbirler istihdamı önemli oranda artırmıştır. Ni-
+    san 2009 döneminde mevsimsel düzeltilmiş verilere
+    göre yüzde 14,9’a kadar yükselen işsizlik oranı 2011
+    yılı Haziran ayı itibarıyla yüzde 10,3’e kadar gerilemiş-
+    tir. İşsizlik oranındaki bu düşüş işgücüne katılım oranı-
+    nın yükseldiği bir ortamda sağlanmıştır. Ayrıca, krizle
+    birlikte yüzde 40’a kadar düşen istihdam oranı, 2011
+    yılı Haziran ayı itibarıyla yüzde 45’e kadar yükselmiştir.
+
+        Toplam istihdam, mevsimsel düzeltilmiş verilere
+    göre, 2009 yılı Nisan döneminde 20,7 milyon kişi iken,
+    2011 yılı Haziran dönemi itibarıyla 24,1 milyon kişiye
+    yükselmiştir. Net olarak 3,4 milyon vatandaşımıza ilave
+    istihdam sağlanmıştır. Uygulanan istihdam teşvik dü-
+    zenlemelerinin de katkısıyla, 2009 yılı Nisan ve 2011
+    yılı Haziran dönemleri arasında mutlak verilere göre,
+    tarım dışı istihdam 2,6 milyon kişi, kadın istihdamı 1,7
+    milyon kişi, genç nüfus istihdamı ise 794 bin kişi art-
+    mıştır. İstihdamdaki bu artış, aynı dönemler itibarıyla,
+    tarım dışı işsizlik oranında 6,3 puan azalmayla yüzde
+    11,9’a, kadın işsizlik oranında 3,4 puan azalmayla yüz-
+    de 11,2’ye, genç nüfusun işsizlik oranında ise 8,5 puan
+    azalmayla yüzde 18’e karşılık gelmektedir.
+
+
+
+
+8
+                                        O r t a Vadel i Pr o g ra m
+
+
+     Bu gelişmeler altında, küresel krizden çıkış süre-
+cinde Türkiye hızlı büyüme ve zamanında aldığı ted-
+birler sayesinde işsizlikle mücadelede OECD ülkeleri
+arasında en hızlı mesafe alan ülkelerden birisi olmuş-
+tur. OECD ortalaması olarak mevsimsel düzeltilmiş iş-
+sizlik oranı, 2011 yılı Haziran ayında 2009 yılı Nisan
+ayına göre 0,1 puan artarak yüzde 8,3’e yükselirken,
+Türkiye’de ise 4 puan azalarak yüzde 9,2’ye gerilemiş-
+tir3.
+
+    2010 yılında TÜFE yıllık artış hızı yüzde 6,4 olarak
+gerçekleşmiş ve hedefin 0,1 puan altında kalmıştır. Mal
+ve hizmet grubu fiyatları önceki yıllar ortalamalarının
+altında kalmış, çekirdek enflasyon orta vadeli hedef-
+lerle uyumlu hareket etmiştir. Gıda fiyatları yıl boyunca
+dalgalı bir seyir izlemiş ve enerji fiyatları yılın son çey-
+reğinde kayda değer artış göstermiştir. Yurtiçi talepteki
+güçlü artışa rağmen yurtiçi talep, çıktı açığının azalarak
+da olsa devam etmesi nedeniyle, enflasyon üzerinde
+yukarı yönlü baskı oluşturmamıştır. 2011 yılının Ocak-
+Eylül döneminde ise ithalat fiyatlarının birikimli yansı-
+maları, gıda fiyatlarındaki artışlar, nominal döviz ku-
+rundaki yükselme ve baz etkisiyle TÜFE yıllık artış hızı
+yüzde 6,15 olarak gerçekleşmiştir. Mevcut dinamiklerin
+TÜFE yıllık artış hızını 2011 yılı sonunda yüzde 7,8 ci-
+varına yükselteceği beklenmektedir.
+   2010 yılında ekonomide yaşanan güçlü toparlanma
+kamu kesimi gelirlerini ve kamu kesimi borçlanma ge-
+reğini olumlu yönde etkilemiştir. 2009 yılında, GSYH’ya
+oran olarak yüzde 5,1 düzeyinde gerçekleşen kamu
+kesimi borçlanma gereği, 2010 yılında tahmin edilen-
+den 1,1 puan olumlu performans göstererek yüzde
+2,3 düzeyine gerilemiştir. OVP’de yer alan tedbirlerin
+kararlılıkla uygulanmasının, bazı kamu alacaklarının
+3 OECD Uyumlaştırılmış İşsizlik Oranları Basın Duyurusu, Eylül
+  2011.
+
+
+
+
+                                                                      9
+     Orta Vadeli Pr ogr a m
+
+
+     yeniden yapılandırılmasının ve ekonominin öngörülen-
+     den daha güçlü bir biçimde toparlanmasının ve ithalat
+     üzerinden alınan vergilerdeki önemli artışın kamu gelir-
+     lerine olumlu yansıması beklenmektedir. Bu beklentiler
+     altında, kamu kesimi borçlanma gereğinin GSYH’ya
+     oran olarak 2011 yılında yüzde 1’e gerileyeceği tahmin
+     edilmektedir.
+        Benzer şekilde, özellikle vergi gelirleri performan-
+     sındaki artış ve faiz giderlerindeki düşüş sonucunda,
+     2010 yılında GSYH’ya oran olarak yüzde 3 düzeyine
+     gerileyen genel devlet açığının, 2011 yılında, yüzde 1’e
+     düşmesi beklenmektedir.
+        2010 yılında yüzde 1,9 olarak gerçekleşen faiz gi-
+     derleri ve özelleştirme gelirleri hariç kamu kesimi den-
+     gesinin GSYH’ya oranla 2011 yılında yüzde 2,2 düzeyi-
+     ne yükselmesi beklenmektedir.
+         Kamu açığındaki bu iyileşmeler sonucunda, 2010
+     yılında yüzde 42,2’ye düşen AB tanımlı genel devlet
+     borç stokunun GSYH’ya oranının düşmeye devam
+     ederek 2011 yılında yüzde 39,8 civarında gerçekleş-
+     mesi beklenmektedir.
+        Başta Euro Bölgesi ülkeleri olmak üzere, pek çok
+     ülkede kamu borçlarının sürdürülebilirliğinin gündem-
+     de olduğu bir dönemde, kamu maliyesi alanında elde
+     edilen başarılı sonuçlar, Türkiye’nin diğer ülkelerden
+     farklı bir konumda değerlendirilmesine imkan tanı-
+     maktadır. Makroekonomik göstergelerdeki iyileşmenin
+     yanı sıra Türkiye’nin krize karşı geliştirdiği politikalar ve
+     gösterdiği dayanıklılığın bir neticesi olarak, Türkiye’nin
+     TL cinsinden kredi notu “yatırım yapılabilir” seviyeye
+     (BB+’dan BBB-‘ye) yükseltilmiş ve görünümü pozitif
+     olarak tanımlanmıştır. Bununla birlikte, ülkemizin fi-
+     nansman ihtiyacının sağlıklı kaynaklardan karşılanma-
+     sı ve mevcut güven ortamının pekiştirilmesi amacıyla
+     yapısal tedbirlerin alınması ihtiyacı devam etmektedir.
+
+
+10
+                                     O r t a Vadel i Pr o g ra m
+
+
+   Son yıllarda uygulanan sıkı maliye politikası sonucu
+kamu tasarruflarındaki iyileşmeye rağmen özel kesimin
+tasarruflarının azalması sonucunda toplam tasarruflar
+düşme eğilimine girmiştir. Yurtiçi tasarruflardaki azalma
+dış kaynak ihtiyacını, dolayısıyla cari açığı artırmıştır.
+
+    Ekonomideki toparlanmayla birlikte yatırımlar artma
+eğilimine girmiş ancak yurtiçi tasarrufların artmaması
+nedeniyle 2010 ve 2011 yıllarında giderek artan oranda
+bir tasarruf yatırım açığı, diğer bir ifadeyle, cari açıkla
+karşılaşılmıştır.
+
+     Yurtiçi tüketim ve yatırım talebinin güçlü seyri ile
+üretimin aramalı ithalatına yüksek bağımlılığı nedeniy-
+le ithalatın hızlı artması, ihracat artışının ise geleneksel
+ihracat pazarlarımızdaki iç talebin zayıf seyretmesi so-
+nucunda, 2010 yılında dış ticaret açığındaki hızlı artış
+ve net turizm gelirlerindeki düşme, cari açığın GSYH’ya
+oranının yüzde 6,5 seviyesinde gerçekleşmesine ne-
+den olmuştur.
+
+    2011 yılının ilk yarısında hızlı büyüme ile birlikte dış
+ticaret açığındaki yükselme sonucunda cari açık artış
+eğilimini sürdürmüştür. Yılın ikinci yarısında, dış ta-
+lepteki daralmanın ihracatı olumsuz yönde etkilemesi,
+yurtiçi ekonomik aktivitede öngörülen yavaşlamanın ve
+döviz kurundaki artışın ithalat talebini sınırlandırması
+beklenmektedir. Buna rağmen, yılsonu itibarıyla cari
+açığın GSYH’ya oranının yüzde 9,4’e ulaşması öngö-
+rülmektedir.
+
+   Cari işlemler açığındaki artışın konjonktürel ve ya-
+pısal nedenleri bulunmaktadır. Cari açığın konjonktürel
+kaynaklarını dengelemek amacıyla 2010 yılı son çeyre-
+ğinden itibaren para politikaları ve makro ihtiyati düzen-
+lemeler alanında bir dizi adım atılmıştır.
+
+   Gelişmiş ülkelerin uyguladıkları genişletici para po-
+
+
+
+                                                                   11
+     Orta Vadeli Pr ogr a m
+
+
+     litikalarının ortaya çıkardığı finansal riskler, 2010 yılının
+     son çeyreğinde Merkez Bankasının para politikası stra-
+     tejisinde önemli değişiklikler yapmasını gerektirmiştir.
+     Bu doğrultuda oluşturulan yeni politika bileşimi kredi
+     artış hızını yavaşlatmayı hedeflemiştir. Ancak 2011 yılı-
+     nın ikinci çeyreğinden itibaren küresel büyümeye ilişkin
+     artan endişeler paralelinde küresel risk iştahı azalmış,
+     gelişmekte olan ülkelere sermaye akımları olumsuz
+     yönde etkilenmiştir. Söz konusu gelişmenin Türk Lira-
+     sında yarattığı değer kaybı, enflasyon üzerinde yukarı
+     yönlü baskıları beraberinde getirmiştir. Merkez Banka-
+     sı, dövize olan talebi dengelemek ve enflasyon riskini
+     sınırlamak amacıyla politika duruşunda değişikliğe git-
+     miştir. Bu doğrultuda Banka, döviz alım ihalelerine ara
+     vererek döviz satım ihalelerine başlamış, faiz korido-
+     runu daraltmış ve yabancı para zorunlu karşılık oran-
+     larında düşüşe gitmiştir. Ayrıca küresel ekonomideki
+     olumsuzlukların, iktisadi faaliyetin hızında yaratacağı
+     yavaşlamayı sınırlandırmak için politika faizi oranı dü-
+     şürülmüştür.
+
+
+
+
+12
+                                    O r t a Vadel i Pr o g ra m
+
+
+
+
+                   II. TEMEL AMAÇ
+
+     2012-2014 dönemini kapsayan Orta Vadeli Progra-
+mın temel amacı, ülkemizin refah seviyesinin artırılma-
+sı nihai hedefi doğrultusunda istikrarlı bir büyüme süre-
+cinde istihdamı artırmak, mali disiplini sürdürmek, yurt
+içi tasarrufları artırmak, cari açığı azaltmak ve böylece
+makroekonomik istikrarı güçlendirmektir.
+    Program döneminde maliye ve para politikaları ile
+makro ihtiyati düzenlemeler, güven, istikrar ve öngörü-
+lebilirliği güçlendirecek ve ekonominin dış şoklara karşı
+dayanıklılığını artıracak bir çerçevede uygulanacaktır.
+Orta vadeli program kapsamında cari işlemler açığına
+kalıcı olarak çözüm getirecek yapısal düzenlemelerin
+de hızlı bir şekilde uygulamaya konulmasına öncelik
+verilecektir. Bu çerçevede, yatırım ortamının iyileştiril-
+mesi ile ilgili eylem planı uygulamalarına devam edi-
+lecek, kayıt dışılıkla kararlılıkla mücadele edilecek,
+İhracata Dönük Üretim, Girdi Tedarik ve İhracat Pazar-
+larının Çeşitlendirilmesi Stratejilerine ilişkin çalışmalar
+tamamlanacak, İstanbul’un Uluslararası Finans Merke-
+zi olması çalışmalarına hız verilecek, enerjide dışa ba-
+ğımlılığı azaltacak adımlara devam edilecek ve AR-GE
+ve yenilikçiliğin geliştirilmesine yönelik programlar etkin
+bir biçimde uygulanacaktır.
+    İstihdamı artırmak için istikrarlı büyüme ortamını
+sağlayacak politikaların yanı sıra işgücünün niteliğini,
+işgücü piyasasının esnekliğini ve işgücüne katılımı ar-
+tıracak politikalara ağırlık verilecektir.
+    Ekonominin rekabet gücü, kamu harcamalarında
+etkinlik, iyi yönetişim, devlet yardımları, eğitim sistemi,
+yargı sistemi, vergi sistemi, kayıt dışılık, yerel yönetim-
+ler ve bölgesel gelişme alanlarındaki yapısal dönüşü-
+mün devam ettirilmesi programın temel öncelikleri ara-
+sında yer almaktadır.
+
+
+                                                                  13
+     Orta Vadeli Pr ogr a m
+
+
+
+
+            III. MAKROEKONOMİK HEDEFLER VE
+                       POLİTİKALAR
+
+
+
+        A. PROGRAM DÖNEMİ HEDEF VE
+           GÖSTERGELERİ
+
+         Programın makroekonomik çerçevesi oluşturu-
+     lurken; dönem içerisinde, küresel büyümenin tedrici
+     olarak artacağı, ticaret ortaklarımızın ise daha ılımlı
+     büyüyeceği, yükselen piyasa ekonomilerine sermaye
+     girişinin devam edeceği, uluslararası mal ve ham pet-
+     rol fiyatlarının yatay bir seyir izleyeceği varsayılmıştır.
+
+        1. Büyüme ve İstihdam
+
+           i) Küresel büyümeye ve bazı Avrupa ülkele-
+              rindeki kamu borçlarının sürdürülebilirliğine
+              ilişkin endişelerin giderek derinleşmesi 2012
+              yılında küresel ekonomide yeni bir yavaşla-
+              ma riskini artırmıştır. Bu çerçevede ülkemiz-
+              de GSYH büyümesinin 2012 yılında yüzde 4
+              seviyesinde gerçekleşmesi beklenmektedir.
+              2013 ve 2014 yıllarında ise büyümenin po-
+              tansiyel seviyesine yaklaşarak yüzde 5 düze-
+              yine ulaşması hedeflenmektedir. Büyümenin
+              özel tüketim ve özel yatırım kaynaklı olması
+              öngörülmektedir.
+
+           ii) Program döneminde, reel olarak yıllık orta-
+               lamada, özel tüketim harcamalarının yüzde
+               3,3, özel sabit sermaye yatırımlarının yüzde
+               8,7, kamu tüketim harcamalarının yüzde 2,9,
+               kamu sabit sermaye yatırımlarının ise yüzde
+               3,6 artması öngörülmektedir.
+
+
+
+
+14
+                              O r t a Vadel i Pr o g ra m
+
+
+  iii) Kriz döneminde Program dönemi boyunca
+       kamu ve özel kesimin tasarruflarında artış,
+       kamu ve özel kesim tasarruf yatırım açığında
+       ise azalma hedeflenmektedir.
+  iv) Ekonomik büyümenin yanı sıra, işgücü piya-
+      sasını daha esnek hale getirecek politikala-
+      rın da uygulanmasıyla Program döneminde,
+      tarım dışında 1,5 milyon kişi ilave istihdam
+      yaratılması beklenmektedir. Bu dönemde ta-
+      rım istihdamında beklenen sınırlı gerilemenin
+      etkisiyle toplam istihdam artışının 1,3 milyon
+      kişi olacağı tahmin edilmektedir.
+  v) Dönem sonunda istihdam oranının yüzde
+     44,8, işsizlik oranının ise yüzde 9,9 olması
+     beklenmektedir.
+
+2. Kamu Maliyesi
+  i) Kamu kesimi açığının GSYH’ya oranının,
+     2011 yılı için tahmin edilen yüzde 1’lik sevi-
+     yesinden Program dönemi sonunda yüzde
+     0,4’e gerileyeceği öngörülmektedir.
+  ii) Genel devlet açığının GSYH’ya oranının da
+      2011 yılı için tahmin edilen yüzde 1’lik sevi-
+      yesinden Program dönemi sonunda yüzde
+      0,4’e gerileyeceği öngörülmektedir.
+  iii) 2011 yılında GSYH’ya oran olarak yüzde 2,2
+       düzeyinde olan faiz giderleri ve özelleştirme
+       gelirleri hariç kamu kesimi fazlasının Prog-
+       ram dönemi sonunda aynı seviyede gerçek-
+       leşmesi öngörülmektedir.
+
+  iv) 2011 yılında yüzde 37,4 olarak gerçekleşece-
+      ği tahmin edilen genel devlet harcamalarının
+      GSYH’ya oranının, 2014 yılında yüzde 36,5’e
+      düşmesi beklenmektedir.
+
+
+                                                            15
+     Orta Vadeli Pr ogr a m
+
+
+           v) 2011 yılında yüzde 33,9 olacağı tahmin edi-
+              len genel devlet faiz dışı harcamalarının
+              GSYH’ya oranının, Program dönemi sonun-
+              da yüzde 33,2’ye gerilemesi beklenmektedir.
+
+           vi) 2011 yılında yüzde 36,1 olacağı tahmin edi-
+               len özelleştirme gelirleri hariç genel devlet
+               gelirlerinin GSYH’ya oranının, 2014 yılında
+               yüzde 35,4 olması beklenmektedir.
+
+           vii) 2011 yılında yüzde 27,3 olarak gerçekleşece-
+                ği tahmin edilen sosyal güvenlik primleri da-
+                hil vergi yükünün (vergi red ve iadeleri hariç)
+                GSYH’ya oranının, 2012 ve 2013 yıllarında
+                yüzde 27,1 olarak gerçekleşeceği ve Prog-
+                ram dönemi sonunda yüzde 26,9 seviyesine
+                gerileyeceği öngörülmektedir.
+
+           viii) GSYH’ya oran olarak, 2010 yılında yüzde
+                42,2 düzeyinde gerçekleşen AB tanımlı genel
+                yönetim nominal borç stokunun 2011 yılında
+                yüzde 39,8 düzeyine gerilemesi beklenmek-
+                tedir. Söz konusu oranın düzenli bir azalma
+                eğilimi göstererek, Program dönemi sonunda
+                yüzde 32 düzeyinde gerçekleşmesi öngörül-
+                mektedir.
+
+           ix) Program döneminde özelleştirmeler sonra-
+               sında küçülen KİT sisteminin, 2011 yılında
+               yüzde 0,2 olması tahmin edilen faiz dışı açı-
+               ğının GSYH’ya oranının Program dönemi so-
+               nunda kapanması beklenmektedir.
+
+
+
+
+16
+                                O r t a Vadel i Pr o g ra m
+
+
+3. Ödemeler Dengesi
+
+  i) Ticaret ortaklarımızın büyümesinin 2010 ve
+     2011 yıllarına göre nispeten daha yüksek
+     olacağı ve ihracatı artırmaya dönük politika-
+     ların etkisini göstererek, ihracatın cari fiyatlar-
+     la yıllık ortalama olarak yüzde 11,2 oranında
+     artacağı ve 2014 yılında 185,1 milyar dolara
+     ulaşması beklenmektedir.
+
+  ii) Büyüme dönemlerinde ithalatta gerçekleşen
+      yüksek artış oranlarının, program döneminde
+      alınacak politika tedbirleriyle yerini daha ılımlı
+      artışlara bırakacağı ve ithalatın yıllık ortalama
+      yüzde 7,7 artışla 2014 yılında 295,9 milyar
+      dolara ulaşacağı tahmin edilmektedir.
+
+  iii) 2011 yılı sonunda 49,6 milyar dolar olacağı
+       tahmin edilen yakıt ithalatının (27. Fasıl) dö-
+       nem sonunda 56,8 milyar dolara ulaşması
+       beklenmektedir.
+
+  iv) Turizm gelirlerinin GSYH içindeki payının
+      Program dönemi boyunca ortalama yüzde
+      3,3 seviyesinde olacağı tahmin edilmektedir.
+
+  v) Program döneminde yurtiçi tasarrufları artır-
+     maya ve ekonominin üretim yapısının ithalata
+     olan yüksek bağımlılığını azaltmaya yönelik
+     politikaların da katkısıyla, 2011 yılı sonunda
+     yüzde 9,4 olarak gerçekleşmesi beklenen
+     cari işlemler açığının GSYH’ya oranının dö-
+     nem sonunda yüzde 7’ye inmesi hedeflen-
+     mektedir.
+
+
+
+
+                                                              17
+     Orta Vadeli Pr ogr a m
+
+
+        4. Enflasyon
+
+           i) Toplam talep koşullarının enflasyona düşüş
+              yönünde yaptığı katkının Program dönemin-
+              de devam edeceği ve emtia fiyatlarının büyük
+              ölçüde yatay seyredeceği öngörülmektedir.
+              Politika faizlerinin dönem boyunca tek hane-
+              li düzeylerde kalması, gıda enflasyonunun
+              yüzde 7 seviyesinde dalgalanması ve petrol
+              fiyatlarının 100 dolar civarında seyretmesi
+              beklenmektedir. Bu çerçevede, TÜFE yıllık
+              artış hızının, 2012-2014 yıllarında orta vadeli
+              hedef olan yüzde 5’e yakın gerçekleşeceği
+              tahmin edilmektedir.
+
+        B. MAKROEKONOMİK POLİTİKALAR
+
+        1. Büyüme ve İstihdam
+
+           i) Büyümenin; istikrarlı bir biçimde devam et-
+              mesi, istihdamı desteklemesi ve potansiyel
+              hızını yakalaması amacıyla para, maliye ve
+              gelirler politikaları koordinasyon içerisinde
+              yürütülecektir.
+
+           ii) Gerek ekonominin genelinde ve hanehalkı
+               düzeyinde gelirin artırılması, gerekse tüketi-
+               min dengeli bir şekilde gelişmesi yoluyla ta-
+               sarrufların artırılması amaçlanmaktadır.
+
+           iii) Dönem içerisinde kamunun tasarruflarının
+                artırılması, bu amacın gerçekleştirilmesine
+                katkı sağlayacaktır. Ancak asıl katkı, özel ta-
+                sarruflardaki artıştan gelecektir.
+
+           iv) Gerek kamuda gerekse özel kesimde israfı
+               azaltmaya yönelik politikalar uygulanacaktır.
+
+
+
+
+18
+                               O r t a Vadel i Pr o g ra m
+
+
+v) Tasarruf bilincinin artırılmasına yönelik çalış-
+   malar düzenli biçimde yürütülecektir.
+
+vi) İstihdamın artırılması ve kayıt dışılığın azaltıl-
+    ması gelir artışı yoluyla tasarrufların artırılma-
+    sı amacına katkı sağlayacaktır.
+
+vii) Sosyal yardım sisteminden işgücü piyasası-
+     na geçişleri kolaylaştıracak ve özendirecek
+     çalışmalara hız verilecektir.
+
+viii) İstikrarlı büyüme için özel kesim yatırımlarını,
+      uluslararası doğrudan yatırımları ve ihracatı
+      artırmaya yönelik politikalara devam edile-
+      cektir.
+
+ix) Temel altyapı ve insan kaynaklarını geliştirme
+    yoluyla ekonomik büyümeyi destekleyici nite-
+    likteki kamu yatırımları sürdürülecektir.
+
+x) İşgücü piyasasının esnekliğini ve işgücünün
+   niteliğini yükseltecek düzenlemeler hayata
+   geçirilecek, aktif işgücü politikalarıyla ekono-
+   minin istihdam yaratma kapasitesi artırılacak-
+   tır.
+
+xi) Rekabet gücünü ve istihdamı artırma hedefi
+    doğrultusunda KOBİ’lerin desteklenmesine
+    devam edilecektir.
+
+xii) Bölgelerdeki potansiyelin ve dinamiklerin
+     ulusal büyümeye ve kalkınmaya sağladıkları
+     katkı artırılacaktır.
+
+xiii) Kırsal kesimde, verimliliği görece yüksek
+      ekonomik faaliyet alanlarını geliştirmek sure-
+      tiyle, istihdam ve katma değer artırılacaktır.
+
+
+
+
+                                                             19
+     Orta Vadeli Pr ogr a m
+
+
+        2. Kamu Maliye Politikası
+
+        Maliye politikası, Programda öngörülen gelir, har-
+     cama ve borç stoku büyüklükleri gözetilerek; makroe-
+     konomik istikrarın sürdürülmesine, özel sektör öncülü-
+     ğünde bir büyüme sürecinin desteklenmesine ve cari
+     açıkla mücadele edilmesine yardımcı olacak bir yakla-
+     şımla yürütülecektir.
+
+        Maliye politikasının uygulanmasında mali disiplin-
+     den taviz verilmeyecektir. Bu kapsamda, mali sonuç
+     doğuracak düzenlemelerin yapılmasında kısa, orta ve
+     uzun dönem etkilerin dikkate alınması esas olacaktır.
+
+         Politika oluşturma ve analiz sürecinde büyük önem
+     taşıyan kamu mali istatistikleri uluslararası standartlar-
+     la uyumlu olarak yayımlanacaktır.
+
+        a. Kamu Harcama Politikası
+
+        Kamu idarelerinin, kendilerine tahsis edilen öde-
+     nekleri, belirlenen politika ve öncelikler doğrultusunda,
+     etkili ve verimli bir şekilde kullanmaları esastır. Bu çer-
+     çevede;
+
+           i) Harcama programları verimlilik artışı sağ-
+              lamak amacıyla gözden geçirilecektir. Bu
+              amaçla idari bir mekanizma oluşturulacaktır.
+
+           ii) Sağlık hizmetleri ve harcamalarında etkinli-
+               ğin sağlanması amacıyla; sağlık hizmetlerinin
+               kalitesinden ödün verilmeksizin, gereksiz ilaç
+               ve hizmet kullanımını önlemek üzere ilaç ve
+               tedavi harcamaları daha akılcı hale getirile-
+               cektir.
+
+           iii) Sağlık harcamalarına ilişkin denetimlerin
+                daha etkin bir şekilde yapılabilmesi amacıyla,
+                sağlık hizmet sunucularının geçmiş davranış-
+
+
+
+20
+                             O r t a Vadel i Pr o g ra m
+
+
+   larını dikkate alan denetim modelleri gelişti-
+   rilecek, risk analizi ve veri madenciliği alan-
+   larında yazılım, donanım ve eğitim altyapısı
+   güçlendirilecektir.
+
+iv) Sağlıkta global bütçe uygulaması geliştirile-
+    rek sürdürülecektir.
+
+v) Sosyal yardımların etkinliğinin artırılması
+   amacıyla, sosyal yardımlarla istihdam ara-
+   sındaki bağlantı güçlendirilecektir. Sosyal
+   yardım sistemi bir bütün olarak ele alınacak
+   ve yardımlardan mükerrer yararlanma önle-
+   necektir.
+
+vi) Emekliler için adil bir intibak sistemi kademeli
+    bir şekilde hayata geçirilecektir.
+
+vii) İstihdama ilişkin teşvik düzenlemeleri sade
+     ve etkin bir yapıya kavuşturulacaktır.
+
+viii) Mahalli idarelerin genel bütçe vergi payların-
+     dan kamuya olan borçlarına mahsuben yapı-
+     lacak kesinti, yeni borç doğmasını engelleye-
+     cek ve borç stokunun azalmasına yardımcı
+     olacak bir oranla düzenli olarak uygulanmaya
+     devam edilecektir.
+
+ix) Özellik gösteren altyapı harcamalarının mer-
+    kezi idare tarafından desteklenmesi ve per-
+    sonel harcamalarının rasyonalize edilmesi
+    kanalıyla mahalli idarelerin mali yapısında
+    iyileşme sağlanacaktır.
+
+x) Kamu ihale sisteminin etkinliğinin artırılması
+   yönünde düzenlemeler hayata geçirilecektir.
+
+
+
+
+                                                           21
+     Orta Vadeli Pr ogr a m
+
+
+        b. Kamu Yatırım Politikası
+
+         Kamu yatırım politikasının temel amacı, öncelikli
+     sosyal ihtiyaçları gidermek, üretken faaliyetleri destek-
+     leyecek nitelikteki altyapıyı geliştirmektir. Bu çerçeve-
+     de;
+
+           i) Kamu yatırımlarının etkili, verimli ve zama-
+              nında gerçekleştirilmesi, mevcut sermaye
+              stokunun daha etkin kullanılması hedeflene-
+              cektir.
+
+           ii) Eğitim, sağlık, teknolojik araştırma, ulaştır-
+               ma, içme suyu ile bilgi ve iletişim teknolojileri-
+               nin geliştirilmesine yönelik altyapı yatırımları-
+               na öncelik verilecektir.
+
+           iii) Kamu yatırımları, başta Güneydoğu Anadolu
+                Projesi (GAP), Doğu Anadolu Projesi (DAP),
+                Konya Ovası Projesi (KOP), Doğu Karadeniz
+                Projesi (DOKAP) kapsamındaki yatırımlar ol-
+                mak üzere bölgeler arası gelişmişlik farklarını
+                azaltmayı ve bölgesel gelişme potansiyeli-
+                ni değerlendirmeyi hedefleyen ekonomik ve
+                sosyal altyapı projelerine yoğunlaştırılacaktır.
+
+           iv) Kamu altyapı yatırımlarının gerçekleştirilme-
+               sinde özel sektör katılımını artırıcı modellerin
+               kullanımı yaygınlaştırılacaktır.
+
+           v) Kamu yatırım teklif ve kararları, sorun, ihtiyaç
+              ve çözüm analizlerini içeren sektörel ve böl-
+              gesel ana plan ve stratejileri ile nitelikli yapı-
+              labilirlik etütlerine dayandırılacaktır.
+
+
+
+
+22
+                                    O r t a Vadel i Pr o g ra m
+
+
+   c. Kamu Gelir Politikası
+
+    Âdil ve etkin bir vergi sistemi oluşturma hedefi doğ-
+rultusunda, kamu gelir politikası; istihdamı ve yatırım-
+ları teşvik edecek, yurtiçi tasarrufları artıracak, bölge-
+sel gelişmişlik farklarını azaltacak, ekonomiye rekabet
+gücü kazandıracak ve kayıt dışılıkla mücadele edecek
+şekilde yürütülecektir. Bu kapsamda;
+
+      i) Vergi politikalarının uygulanmasında istikrar;
+         vergilendirmede öngörülebilirlik esas olacak-
+         tır.
+
+      ii) Ekonominin rekabet gücünü artırıcı üretim
+          yapısının oluşturulmasına, doğrudan yabancı
+          yatırımların ülkeye girişinin hızlandırılmasına
+          ve Ar-Ge faaliyetlerinin desteklenmesine yö-
+          nelik vergi politikaları uygulanacaktır.
+
+      iii) Vergi mevzuatının sadeleştirilmesi ve günü-
+           müzün ihtiyaçlarına göre yeniden yazılma-
+           sına yönelik çalışmalara devam edilecektir.
+           Bu kapsamda Gelir Vergisi Kanunu ve Vergi
+           Usul Kanunu başta olmak üzere temel vergi
+           kanunlarının gözden geçirilmesi çalışmaları
+           tamamlanacaktır.
+
+      iv) Başta yurtiçi tasarruf yetersizliği ve cari açık
+          olmak üzere, büyüme ortamının sürdürüle-
+          bilirliğini tehdit eden unsurlarla mücadelede
+          vergi politikası gerektiğinde etkin bir şekilde
+          kullanılacaktır.
+
+      v) Gelir politikalarının sosyal ve ekonomik etki-
+         lerinin daha sağlıklı bir şekilde analiz edilebil-
+         mesi amacıyla istisna, muafiyet ve indirimler
+         nedeniyle oluşan vergi harcamaları düzenli
+         olarak raporlanacaktır.
+
+
+
+                                                                  23
+     Orta Vadeli Pr ogr a m
+
+
+           vi) Vergiye uyumun artırılması ve vergi tabanı-
+               nın genişletilmesine yönelik çalışmalara de-
+               vam edilecektir.
+
+           vii) Maktu vergi ve harçlar genel ekonomik ko-
+                şullar göz önünde bulundurularak güncelle-
+                necektir.
+
+           viii) Mahalli idarelerin öz gelirlerinin artırılması-
+                na yönelik düzenlemeler hayata geçirilecek-
+                tir. Mahalli idarelerin öz gelirlerinin artırılma-
+                sında, imar ve altyapı hizmetleri sonrasında
+                varlıkların değerinde ortaya çıkan artışlardan
+                daha fazla yararlanılacaktır.
+
+           ix) Kamu taşınmazlarının etkili, ekonomik ve ve-
+               rimli bir şekilde kullanılması ve ekonomiye
+               kazandırılması için gerekli tedbirler alınacak-
+               tır.
+
+           x) Bireysel ve kurumsal tasarruflar teşvik edile-
+              cek, sermaye birikimi özendirilecektir.
+
+           xi) Vergi politikalarının belirlenmesinde ve uy-
+               gulanmasında, iklim değişikliğiyle mücade-
+               le edilmesine ve enerji tüketiminde tasarruf
+               sağlanmasına yönelik öncelikler dikkate alı-
+               nacaktır.
+
+
+
+
+24
+                                    O r t a Vadel i Pr o g ra m
+
+
+   d. Kamu Borçlanma Politikası
+
+   Kamu borç yönetiminin temel hedefi, iç ve dış piya-
+sa koşulları ile maliyet unsurları dikkate alınarak belir-
+lenen risk düzeyi çerçevesinde, finansman ihtiyacının
+orta ve uzun vadede mümkün olan en uygun maliyetle
+karşılanmasıdır. Bu hedef çerçevesinde,
+
+      i) Finansman programları, iç borçlanma strate-
+         jileri, ihale duyuruları gibi borçlanmaya ilişkin
+         bilgilerin düzenli olarak açıklanmasına de-
+         vam edilecektir.
+
+      ii) Devlet iç borçlanma senetlerinin yatırımcı ta-
+          banının genişletilmesi amacına yönelik olarak
+          yeni araçların ve satış yöntemlerinin geliştiril-
+          mesine ilişkin çalışmalara devam edilecektir.
+
+      iii) Nakit ve borç yönetiminde oluşabilecek likidi-
+           te riskinin azaltılması amacıyla yeterli düzey-
+           de rezerv tutulması politikasına devam edile-
+           cek, nakit rezervlerinin daha etkin bir şekilde
+           yönetilmesi amacıyla başlatılan çalışmalar
+           sürdürülecektir.
+
+      iv) Piyasa yapıcılığı sistemi uygulaması sürdürü-
+          lecektir.
+
+      v) İkincil piyasalarda sağlıklı bir verim eğrisinin
+         oluşturulması ve DİBS alım-satım işlemlerin-
+         de likiditenin sağlanmasına yönelik politikala-
+         ra devam edilecektir.
+
+      vi) Borçlanma, piyasa koşulları elverdiği ölçü-
+          de, ağırlıklı olarak TL cinsinden ve sabit faizli
+          enstrümanlarla yapılacaktır.
+
+
+
+
+                                                                  25
+     Orta Vadeli Pr ogr a m
+
+
+        e. Kamu Mali Yönetimi ve Denetim
+
+         Kamu Mali Yönetimi ve Kontrol Kanunu başta olmak
+     üzere, Sayıştay Kanunu ve diğer hukuki düzenleme-
+     lerle oluşturulan yeni mali yönetim ve denetim anlayı-
+     şının, tüm unsurlarıyla hayata geçirilmesi büyük önem
+     arz etmektedir. Bu kapsamda,
+
+           i) Kamu idarelerinde stratejik amaç ve hedefle-
+              rin hayata geçirilmesine yönelik olarak, iç ve
+              dış denetimin etkin ve koordineli bir şekilde
+              çalışması ve iç kontrol sisteminin sağlıklı bir
+              şekilde işletilmesi sağlanacaktır.
+
+           ii) Kamuda etkin bir dış denetimin sağlanması
+               için Sayıştay’ın uygulama altyapısı güçlendi-
+               rilerek denetim faaliyetleri yaygınlaştırılacak-
+               tır.
+
+           iii) Kamu idarelerinde yönetim sorumluluğunun
+                güçlendirilmesi için; iç kontrol ve iç denetim
+                faaliyetleri daha etkin bir şekilde yürütülecek,
+                kamu mali yönetiminin insan kaynakları altya-
+                pısı nitelik ve nicelik olarak güçlendirilecektir.
+
+           iv) Kamu idarelerinin faaliyetlerinin kamu iç kont-
+               rol ve denetim standartlarına uyum düzeyinin
+               artırılması sağlanacaktır.
+
+           v) Kamu idarelerine kaynak tahsis sürecinde
+              stratejik planlar ve performans programları
+              esas alınacaktır.
+
+
+
+
+26
+                                      O r t a Vadel i Pr o g ra m
+
+
+   f. Kamu İktisadi Teşebbüsleri ve Özelleştirme
+
+    KİT’lerin kârlılık ve verimlilik ilkelerine uygun olarak
+işletilmesi esastır. KİT’lerin belirli bir takvim ve strateji
+çerçevesinde özelleştirilme çalışmaları kararlılıkla sür-
+dürülecektir.
+
+       i) KİT’lerde; yetkilendirmeyi, hesap verebilirliği,
+          şeffaflığı, karar alma süreçlerinde etkinliği ve
+          performansa dayalı yönetimi esas alan stra-
+          tejik yönetim anlayışı yaygınlaştırılacaktır.
+
+       ii) KİT’ler tarafından hazırlanan yıllık perfor-
+           mans programları yakından izlenecek ve de-
+           ğerlendirilecektir.
+
+       iii) KİT’lerde, iç kontrol eylem planı esas alına-
+            rak, iç kontrol sistemi kurulup geliştirilecektir.
+
+       iv) KİT’lerin tüm işletmecilik politikaları; stratejik
+           planlar ile genel yatırım ve finansman karar-
+           namelerinde öngörülen hedeflere ulaşacak
+           şekilde belirlenecek ve etkin bir şekilde uy-
+           gulanacaktır.
+
+       v) KİT’lerin gayrimenkullerinin değerlendirilme-
+          sinde rayiç bedel esas alınacaktır. KİT’lerin
+          atıl olmayan gayrimenkullerinin devri, işlet-
+          menin verimliliği, bütünlüğü ve çevre sağlığı
+          gibi hususları olumsuz etkilemeyecek şekilde
+          mümkün olabilecektir.
+
+       vi) KİT’lerin sürekli zarar eden ve alınacak ted-
+           birlerle kâra geçirilmesi mümkün görülmeyen
+           işletme birimleri tasfiye edilecektir.
+
+       vii) KİT’lerde nitelikli personel ihtiyacının karşı-
+            lanması için gerekli tedbirler alınacaktır.
+
+
+
+
+                                                                    27
+     Orta Vadeli Pr ogr a m
+
+
+           viii) Kamunun elektrik dağıtımı ve şeker üretimi
+                 alanlarından tamamen çekilmesi; elektrik
+                 üretimi, şehir içi doğalgaz dağıtımı, teleko-
+                 münikasyon, liman, otoyol ve köprü işletme-
+                 ciliğindeki payının ise azaltılması hedeflen-
+                 mektedir.
+
+        3. Ödemeler Dengesi
+
+        İstikrarlı büyümeyi sağlamak amacıyla cari açığın
+     sürdürülebilir bir seviyeye indirilmesi ve uzun vadeli fi-
+     nansman kaynaklarıyla karşılanması esastır.
+
+         Yatırım ortamının iyileştirilmesiyle ilgili eylem planı
+     uygulamalarına devam edilmesi, işgücü piyasasının
+     esneklik ve etkinliğinin artırılması, kayıt dışılıkla etkin
+     mücadele edilmesi, İstanbul’un Uluslararası Finans
+     Merkezi olması çalışmaları, enerjide dışa bağımlılığı
+     azaltacak politikalar cari açıkla mücadelede önemli kat-
+     kı sağlayacaktır. Ayrıca;
+
+           i) İhracatta firmaların küresel rekabet gücünü
+              artırmak amacıyla yenilikçiliğe ve Ar-Ge’ye
+              dayalı, katma değeri yüksek, markalı ürün ve
+              hizmetlerin üretim ve pazarlama süreçlerinin
+              desteklenmesine devam edilecektir.
+
+           ii) Üretim ve ihracatın ithalata olan yüksek oranlı
+               bağımlılığını azaltmak amacıyla özellikle ara
+               malı ve yatırım malında yurtiçi üretim kapasi-
+               tesini artırıcı politikalara ve desteklere devam
+               edilecektir.
+
+           iii) Sektörel bazda oluşturulacak Türkiye Girdi
+                Tedarik Stratejisi (GİTES) çerçevesinde girdi
+                tedarikinde, ülke ve bölge bazlı bağımlılığın
+                azaltılması, belirsizliklerin ve dalgalanmaların
+                oluşturacağı risklerin giderilmesi ve gelecek-
+
+
+
+28
+                              O r t a Vadel i Pr o g ra m
+
+
+   te önem kazanacak girdilere yönelik ihtiyacın
+   karşılanması sağlanacaktır.
+
+iv) Yurtiçinde üretim yapan uluslararası firmala-
+    rın tedarik zincirlerinde yurtiçi üretimin payı-
+    nın artırılmasına yönelik olarak gerekli tedbir-
+    ler alınacaktır.
+
+v) İhracatta pazar çeşitliliğinin artırılması ama-
+   cıyla Afrika ülkeleri, Asya-Pasifik ve Latin
+   Amerika ülke gruplarıyla ticaretin geliştirilme-
+   si sağlanacaktır.
+
+vi) İhracatçıların karşılaştıkları pazara giriş en-
+    gelleri tespit edilecek ve bu engellerin ortadan
+    kaldırılmasına yönelik politika ve tedbirler ge-
+    liştirilerek daha etkin biçimde uygulanacaktır.
+
+vii) İhracata yönelik kredi ve garanti destek
+     imkânlarını iyileştirmek amacıyla Eximbank
+     kaynaklarının artırılmasına devam edilecek-
+     tir. Ayrıca, ihracatçılara yönelik finansman
+     programlarının bilinilirliği artırılacak ve yeni
+     finansman araçları oluşturulmasına yönelik
+     çalışmalar yapılacaktır.
+
+viii) İthalatta piyasa gözetimi ve denetimi sistemi-
+     nin etkinliği artırılacaktır.
+
+ix) Dahilde İşleme Rejimi, yurtiçi üretim, ihracat
+    ve dış ticaret dengesine etkisi açısından bü-
+    tüncül bir şekilde değerlendirilerek gerekli dü-
+    zenlemeler yapılacaktır.
+
+x) Yurtiçi katma değer oranı yüksek ve kaliteli
+   malları kullanma bilincinin geliştirilmesine
+   yönelik olarak etiketleme başta olmak üzere
+   özendirici tedbirler alınacaktır.
+
+
+
+                                                            29
+     Orta Vadeli Pr ogr a m
+
+
+           xi) Kamu alımlarında yerli ürünlerin tercih edil-
+               mesi sağlanacaktır.
+
+           xii) Ülkemizin, ikili ve çok taraflı işbirliği kapsa-
+                mında, ihracatının artırılması amacıyla küre-
+                sel ölçekte ve bölgesinde etkinliği güçlendi-
+                rilecek ve yakın coğrafyasında iktisadi refah
+                havzaları oluşturma girişimleri artırılacaktır.
+
+           xiii) Komşu ülkelerle geliştirilecek ikili ve çok ta-
+                 raflı işbirliği programlarının yanı sıra, bölgesel
+                 ve çok taraflı kuruluşlar bünyesinde başlatı-
+                 lacak ortak program ve projeler kapsamında
+                 üçüncü ülkelere teknik destek sağlanacaktır.
+
+        4. Para Politikası
+
+         Para politikasının, temel amacı fiyat istikrarını sağ-
+     lamak ve sürdürmektir. Destekleyici bir amaç olarak
+     finansal istikrar da gözetilmeye devam edilecektir. Bu
+     çerçevede;
+
+           i) Para politikası, enflasyon hedeflemesi çerçe-
+              vesinde yürütülecektir.
+
+           ii) Temel para politikası aracı olarak kısa vadeli
+               faiz oranları kullanılmasının yanı sıra, zorunlu
+               karşılık oranları ve faiz koridoru gibi birbirini
+               tamamlayıcı nitelikteki araçlar ile Türk Lirası
+               ve döviz cinsi likidite uygulamaları bir arada
+               kullanılmaya devam edilecektir.
+
+           iii) Enflasyon hedefleri, Hükümet ve Merkez
+                Bankası tarafından üç yıllık vadede belirlene-
+                cektir.
+
+           iv) Para politikasının hesap verebilirliğini ve şef-
+               faflığını temin etmek amacıyla, enflasyonun
+               yılsonu hedefinden belirgin olarak sapması
+
+
+
+30
+                             O r t a Vadel i Pr o g ra m
+
+
+   ya da sapma olasılığının ortaya çıkması ha-
+   linde, Merkez Bankası hedeften sapmanın
+   nedenlerini ve enflasyonun tekrar hedefe
+   yakınsaması için alınması gereken önlemleri
+   Hükümete yazılı olarak bildirecek ve kamuo-
+   yuna duyuracaktır.
+
+v) Esnek ve etkin likidite yönetimine imkân ve-
+   ren para politikasının operasyonel çerçevesi
+   önümüzdeki dönemde de sürdürülecektir.
+
+vi) Dalgalı döviz kuru rejimi uygulamasına bu
+    dönemde de devam edilecektir.
+
+vii) Piyasa derinliğinin kaybolmasına bağlı olarak
+     kurlarda sağlıksız fiyat oluşumlarının gözlen-
+     mesi veya aşırı oynaklık durumunda döviz
+     satım ihaleleri yapılabileceği gibi spekülatif
+     davranışlar gözlenmesi durumunda piyasaya
+     doğrudan müdahale edilebilecektir.
+
+viii) Piyasa koşullarının elverdiği dönemlerde,
+      rezerv biriktirme amaçlı döviz alım ihaleleri
+      önceden ilan edilen program dâhilinde yapıl-
+      maya devam edilecektir.
+
+
+
+
+                                                           31
+     Orta Vadeli Pr ogr a m
+
+
+
+
+       IV. PROGRAM DÖNEMİ GELİŞME EKSENLERİ
+
+        A. REKABET GÜCÜNÜN ARTIRILMASI
+
+        1. İş Ortamının İyileştirilmesi
+
+         İş ortamının rekabetçi bir yapıya kavuşturularak iyi-
+     leştirilmesi temel amaçtır. Bu çerçevede;
+
+           i) Bürokrasinin azaltılması, işlemlerin hızlandı-
+              rılması ve işlem maliyetlerinin düşürülmesi
+              konusundaki çalışmalar sürdürülecektir.
+
+           ii) Yatırımların ve ihracatın artırılmasına,
+               KOBİ’lerin, yeni girişimcilerin, esnaf ve
+               sanatkârların rekabet güçlerinin geliştirilme-
+               sine yönelik destek mekanizmaları çeşitlen-
+               dirilecek ve mevcut desteklerin etkinliği artı-
+               rılacaktır.
+
+           iii) Yenilik kapasitesini, verimliliği, ihracatı artıran
+                ve girişimciliği geliştiren rekabet gücü yüksek
+                kümelenme oluşumları desteklenecektir.
+
+           iv) KOBİ’lerin finansmana erişimlerinin artırıl-
+               ması amacıyla; sağlanan destekler etkinleş-
+               tirilecek, finansal araçlar çeşitlendirilecek ve
+               KOBİ’lerin muhasebe ve finansal raporlama
+               standartlarına uyum sağlamaları temin edile-
+               cektir.
+
+           v) Yargı reformu stratejisiyle bağlantılı bir şekil-
+              de yatırımlar için belirsizliği azaltıcı bir anla-
+              yışla adalet sisteminin etkinliği artırılacaktır.
+              Türk Ticaret Kanunu, Borçlar Kanunu gibi te-
+              mel kanunlarda getirilen yeniliklerin etkin bir
+              şekilde hayata geçirilmesi sağlanacaktır.
+
+
+
+32
+                                    O r t a Vadel i Pr o g ra m
+
+
+      vi) Devlet desteklerine ilişkin izleme ve değer-
+          lendirme sistemleri oluşturulacak ve kurumlar
+          arası işbirliği ve koordinasyon artırılacaktır.
+
+      vii) Gümrük altyapısının geliştirilmesi ve işlem-
+           lerin kolaylaştırılması çalışmalarına devam
+           edilecektir.
+
+     viii) Fikri mülkiyet sisteminin etkinliğini sağlamak
+           üzere; kısa, orta ve uzun vadeli stratejiler be-
+           lirlenecek, kurumsal kapasite, hukuki altyapı
+           ve kurumlar arası işbirliği güçlendirilecek,
+           toplum düzeyinde yaygın ve yerleşik fikri hak-
+           lar kültürü oluşturulacaktır.
+
+      ix) İşletmelere yönelik veri altyapıları ve bilgi sis-
+          temleri geliştirilecektir.
+
+   2. Ekonomide Kayıt Dışılığın Azaltılması
+
+   Ekonomide rekabet gücünün artırılması, haksız re-
+kabetin önlenmesi ve kamu finansmanına katkıda bu-
+lunulması hedefleri doğrultusunda, ekonomide kayıt
+dışılığın azaltılması temel amaçtır. Bu çerçevede;
+
+      i) Kayıt Dışı Ekonomiyle Mücadele Stratejisi
+         Eylem Planı güncellenecektir.
+
+      ii) Kayıt dışılığa karşı mükelleflerin gönüllü uyu-
+          munu destekleyen, yaptırımların caydırıcılığı-
+          nı artıran, kayıt dışılık konusunda toplumsal
+          farkındalığı artırmak üzere sivil toplum kuru-
+          luşlarıyla işbirliğini öngören eylemlere ağırlık
+          verilecektir.
+
+      iii) Başta vergi denetimi olmak üzere, denetim-
+           lerde etkinliğin kurumlar arası çapraz kontro-
+           lü de içerecek şekilde sağlanması amacıyla
+           kamu idarelerinin denetim ve uygulama ka-
+
+
+
+                                                                  33
+     Orta Vadeli Pr ogr a m
+
+
+               pasitesinin geliştirilmesine yönelik çalışmala-
+               ra ağırlık verilerek, idarelerin beşeri ve tekno-
+               lojik altyapısı iyileştirilecektir.
+
+           iv) e-Ticaret başta olmak üzere elektronik ortam-
+               da yapılan işlemlerden vergi kaybı doğması
+               önlenecektir.
+
+        3. Finansal Sistemin Geliştirilmesi
+
+          Finans sektöründe hukuksal altyapı geliştirilecek,
+     piyasalarda güven ve istikrar ortamı güçlendirilecek ve
+     sektörün uluslararası alanda rekabet gücü arttırılacak-
+     tır. Bu çerçevede;
+
+           i) Bankaların ve özel sektörün güçlü bir serma-
+              ye yapısıyla çalışmasını sağlayacak araçlar
+              güçlendirilecektir.
+
+           ii) Özel sektörün ve hanehalkının borçlu-
+               luk oranlarını makul düzeylerde tutmaları,
+               daha uzun vadeyi ve para birimi olarak Türk
+               Lirası’nı tercih etmeleri teşvik edilecektir.
+
+           iii) Finansal piyasaların daha etkin izlenmesi,
+                sistemik risk yönetiminin etkinliğinin artırılma-
+                sı ve yurt dışı ilgili mercilerle işbirliğinin artırıl-
+                ması sağlanacaktır.
+
+           iv) Finans sektöründeki tüketici ve yatırımcı hak-
+               larını gözeten şeffaf, adil ve teşvik edici uygu-
+               lamalar güçlendirilecektir.
+
+           v) Finans sektörünün düzenleme ve denetimi,
+              uluslararası standartlara, AB müktesebatına
+              ve G-20 platformu öncülüğünde yürütülen
+              yeni çalışmalara uyum gözetilerek geliştirile-
+              cektir.
+
+
+
+
+34
+                                     O r t a Vadel i Pr o g ra m
+
+
+      vi) İstanbul Uluslararası Finans Merkezi Stra-
+          tejisi ve Eylem Planı kapsamında yapılacak
+          çalışmalara hız kazandırılacaktır.
+
+      vii) Finansal sistemin kapasitesinin ve rekabet
+           gücünün artırılmasına yönelik politikalar ge-
+           liştirilecek, sektördeki işlem ve aracılık mali-
+           yetlerinde etkinlik düzenli olarak değerlendi-
+           rilecektir.
+
+      viii) Özel sektör tasarruflarının arttırılması ve yatı-
+            rıma yönlendirilmesi amacıyla bireysel emek-
+            lilik sistemi geliştirilecek ve özel sektör borç-
+            lanma araçları çeşitlendirilecektir.
+
+      ix) Yurtiçi tasarrufların artırılmasında finansal
+          piyasa ve araçlar etkin olarak kullanılacaktır.
+
+      x) Finansal piyasaların sağlıklı bir şekilde işle-
+         mesine, finansal ve ekonomik istikrara ve do-
+         layısıyla toplumun refahına katkısı nedeniyle
+         finansal farkındalık ve eğitime öncelik verile-
+         cektir.
+
+   4. Enerji ve Ulaştırma Altyapısının Geliştirilmesi
+
+   a. Enerji
+
+   Enerji politikasının temel amacı; artan nüfusun ve
+büyüyen ekonominin ihtiyaç duyacağı enerjinin, reka-
+betçi bir serbest piyasa ortamında, sürekli, kaliteli ve
+güvenli bir şekilde asgari maliyetle karşılanmasıdır. Bu
+çerçevede;
+
+      i) Elektrik enerjisi arz güvenliğinin sağlanması
+         ve elektrik üretim, iletim ve dağıtım yatırım-
+         larının arz-talep projeksiyonları çerçevesinde
+         gerçekleştirilmesi için gerekli tedbirler alına-
+         caktır.
+
+
+
+                                                                   35
+     Orta Vadeli Pr ogr a m
+
+
+           ii) Elektrik dağıtım ve üretim özelleştirmeleri,
+               gelir elde etmenin yanı sıra piyasada oluşa-
+               cak fiyat yapısı ve diğer sektörel öncelikler
+               göz önünde bulundurularak gerçekleştirile-
+               cektir.
+
+           iii) Elektrik arzında sağlıklı bir kaynak çeşitliliği
+                yaratmak ve arz güvenliğini artırmak ama-
+                cıyla nükleer güç santrallerinin kurulması yö-
+                nünde çalışmalar hızlandırılacaktır.
+
+           iv) Elektrik enerjisi üretiminde yerli ve yenilene-
+               bilir enerji kaynaklarının payının artırılması
+               için gerekli tedbirler alınacak ve elektrik üre-
+               timinde doğal gazın ve ithal kömürün payı
+               azaltılacaktır.
+
+           v) Yenilenebilir enerji ekipmanlarının yerli üreti-
+              minin desteklenmesine devam edilecektir.
+
+           vi) Doğal gazın elektrik üretimi haricinde kulla-
+               nımı, rekabete dayalı olarak tüm illere yay-
+               gınlaştırılacak ve mevsimsel talep değişimleri
+               de dikkate alınarak ulusal düzeyde doğal gaz
+               arz güvenliği sağlanacaktır.
+
+           vii) Elektrik üretimi, iletimi ve dağıtımında kayıp/
+                kaçakların asgari seviyeye indirilmesi; bina-
+                lar, ulaştırma ve sanayide enerji verimliliğinin
+                yükseltilmesi ve finansman imkânlarının ge-
+                liştirilmesi sağlanacaktır.
+
+           viii) Bölgemizde bulunan enerji (petrol, doğal
+                gaz ve elektrik) kaynaklarının uluslararası
+                pazarlara ulaştırılmasında Türkiye’nin transit
+                güzergâhı ve terminal ülke olması için gerekli
+                çalışmalar sürdürülecektir.
+
+
+
+
+36
+                                    O r t a Vadel i Pr o g ra m
+
+
+   b. Ulaştırma
+
+     Ulaştırma sektöründe temel amaç; taşıma türleri
+arasında dengenin ve birbirini tamamlayıcılığın sağlan-
+dığı, kombine taşımacılığın yaygınlaştığı, çağdaş tek-
+noloji ve uluslararası kurallarla uyumlu, çevreye duyar-
+lı, ekonomik, güvenli ve hızlı taşımacılığın yapıldığı bir
+ulaştırma altyapısının oluşturulmasıdır. Bu çerçevede;
+
+      i) Ulaştırmanın tüm türlerinde trafik güvenliği
+         artırılacaktır.
+
+      ii) AB kaynaklarından azami ölçüde yararlanıla-
+          rak, ulusal ulaşım ağlarımızın Trans-Avrupa
+          ulaştırma ağlarıyla bütünleşmesi, Türk liman-
+          larının AB deniz otoyollarında ana akslar üze-
+          rinde yer alması ve Avrupa Tek Hava Saha-
+          sına entegrasyonun sağlanması yönündeki
+          çalışmalara devam edilecektir.
+
+      iii) Bölünmüş yol yapımı çalışmalarına devam
+           edilecek, bitümlü sıcak karışım kaplama
+           yapım çalışmalarıyla karayolu standartları
+           iyileştirilecek, karayolları ağı ile kentiçi ula-
+           şımda akıllı ulaşım sistemlerinin kullanımı
+           yaygınlaştırılacaktır.
+
+      iv) TCDD’nin hizmet kalitesi artırılacak, hızlı tren
+          ile yolcu taşımacılığı yaygınlaştırılacaktır. De-
+          miryolu taşımacılığının sektör içindeki payını
+          artırmak ve TCDD’nin kamu üzerindeki mali
+          yükünü azaltmak amacıyla, demiryolu sektö-
+          rü ve TCDD yeniden yapılandırılacaktır.
+      v) Yük taşımacılığında demiryolu ve denizyo-
+         luna ağırlık verilecek; iç bölge bağlantıları
+         geliştirilerek limanlar kombine taşımacılık
+         yapılabilen lojistik merkezler haline getirile-
+
+
+
+                                                                  37
+     Orta Vadeli Pr ogr a m
+
+
+               cektir. Uygun liman sahaları tespit edilecek,
+               ana limanlar oluşturulacak ve limanların etkin
+               yönetimi sağlanacaktır.
+           vi) Havaalanlarında orta ve uzun vadeli kapasite
+               ihtiyaçlarının belirlenmesine yönelik çalışma-
+               lar yapılacak, bölgesel hava taşımacılığının
+               geliştirilmesine yönelik tedbirler alınacaktır.
+           vii) Lojistik sektöründe güvenli, ucuz ve hızlı hiz-
+                met sağlayan bir yapılanma geliştirilecek,
+                önemli üretim ve tüketim bölgelerinde bölge-
+                sel ve küresel ihtiyaçlara cevap verebilecek
+                lojistik merkezler oluşturulacaktır.
+           viii) Kent içi ulaşım altyapı projelerinin planlan-
+                ması, projelendirilmesi, yapımı ve işletilmesi
+                aşamalarında etkinlik ve verimlilik artırılacak-
+                tır.
+
+        5. Çevrenin Korunması ve Kentsel Altyapının
+           Geliştirilmesi
+        Kentlerin yaşam standartlarının yükseltilmesi, sür-
+     dürülebilir kentsel gelişmenin sağlanması, yaşanabilir
+     mekânların oluşturulması ve çevrenin korunması temel
+     amaçtır. Bu çerçevede;
+           i) Çevre       mevzuatının         uygulanmasında
+              etkinliği sağlamak üzere ilgili tüm kurumların
+              kapasiteleri geliştirilecektir.
+           ii) İklim değişikliğiyle mücadele kapsamındaki
+               faaliyetler Ulusal İklim Değişikliği Stratejisi
+               çerçevesinde yürütülecektir.
+           iii) Başta biyolojik çeşitlilik olmak üzere doğal
+                kaynakların korunması, geliştirilmesi ve eko-
+                nomik anlamda değer kazanmasına yönelik
+                çalışmalar yapılarak sürdürülebilir kullanımı
+                sağlanacaktır.
+
+
+38
+                              O r t a Vadel i Pr o g ra m
+
+
+iv) Su kaynaklarının etkin bir şekilde yönetimi
+    amacıyla idari, yasal ve finansal düzenleme-
+    ler gerçekleştirilecektir.
+
+v) Kentlerin yeterli sağlıklı ve temiz içme suyu-
+   na kavuşturulması, atık suların arıtılması ve
+   yağmur sularının toplanmasına yönelik çalış-
+   malar hızlandırılacaktır.
+vi) Katı atık yönetiminde kaynakta ayrıştırma,
+    toplama, taşıma, geri kazanım ve bertaraf
+    safhaları teknik ve mali yönden bir bütün ola-
+    rak değerlendirilecektir.
+vii) Çevre korumaya yönelik kentsel altyapı
+     hizmetlerinin planlanması, projelendirilmesi,
+     gerçekleştirilmesi      ve        işletilmesinde
+     belediyelerin kapasiteleri geliştirilecektir.
+viii) Alt ve orta gelir gruplarının konut ihtiyacının
+     karşılanmasına öncelik verilecek, sağlıklı ve
+     sürdürülebilir yaşam alanlarının oluşturulma-
+     sına devam edilecektir.
+ix) Kalkınma ve mekânsal gelişme politikaları
+    arasında uyum artırılarak fiziki planlama, uy-
+    gulama ve yapılaşma konularında temel ilke
+    ve stratejiler ile standartlar geliştirilecektir.
+x) Çevre ve şehircilik alanındaki yeni
+   yapılanmayla birlikte, bu alanda uygulama
+   birliği sağlanması amacıyla imar ve şehircilik
+   mevzuatı, yerindenlik ilkesi esas alınarak, et-
+   kili izleme ve denetleme mekanizmalarını da
+   içerecek şekilde gözden geçirilecektir.
+xi) Ulusal Kıyı Stratejisi ve Bütünleşik Kıyı Alanı
+    Planlama çalışmaları ile kıyıların korunması
+    ve dengeli kullanılmasına yönelik çalışmalara
+    devam edilecektir.
+
+
+
+                                                            39
+     Orta Vadeli Pr ogr a m
+
+
+           xii) Afet risklerinin azaltılması, kentsel yaşam ka-
+                litesinin artırılması ve özgün mimariye dayalı
+                kentsel estetiğin sağlanması amacıyla kent-
+                sel dönüşüm alanında kapsamlı bir çerçeve
+                mevzuat oluşturulacaktır.
+
+        6. Ar-Ge ve Yeniliğin Geliştirilmesi
+
+         Ar-Ge çalışmalarının ürüne dönüşmesi ve rekabet
+     gücüne katkısının artırılması sürecinde önemli rol üst-
+     lenen özel sektörün, yenilik yeteneğini artırmak, bilim
+     ve teknolojide yetkinleşmek ve bu yetkinliği ekonomik
+     ve sosyal faydaya dönüştürmek bilim ve teknoloji poli-
+     tikasının temel amacıdır. Ar-Ge ve yenilik kapasitesinin
+     güçlü olduğu alanlarda hedef odaklı, ivme kazanılması
+     gereken alanlarda ihtiyaç odaklı ve diğer alanlarda ya-
+     ratıcılığın destekleneceği tabandan yukarı yaklaşımlar
+     hayata geçirilerek dışa bağımlılığın azaltılmasına, yerli
+     teknolojik yeteneklerin geliştirilmesine ve bu yetenek-
+     lerin ürüne dönüştürülmesine katkı verilecektir. Bu çer-
+     çevede;
+
+           i) Ulusal yenilik sistemindeki aktörler arasın-
+              da işbirliği geliştirilecek, özel kesimin sistem
+              içerisindeki etkinliği artırılacak ve bu alanda
+              uluslararası işbirliği geliştirilecektir.
+
+           ii) Başta KOBİ’ler olmak üzere, özel kesimin Ar-
+               Ge kapasitesi ve Ar-Ge’ye olan talebinin artı-
+               rılması sağlanacak, yenilik tabanlı girişimcilik
+               desteklenecektir.
+
+           iii) Özel sektör ile üniversiteler ve araştırma
+                kurumları arasındaki işbirliğini geliştirmeye
+                yönelik programlar ve rekabet öncesi Ar-
+                Ge işbirlikleri ile yenilik tabanlı rekabetçi
+                kümelenme çalışmaları desteklenecektir.
+
+
+
+
+40
+                                     O r t a Vadel i Pr o g ra m
+
+
+       iv) Araştırmacı insan gücü, özel sektörün ihti-
+           yaçları da dikkate alınarak nitelik ve nicelik
+           yönünden geliştirilecektir.
+
+       v) Araştırma alt yapılarının etkin kullanımı sağ-
+          lanacaktır.
+
+   7. Bilgi ve İletişim Teknolojilerinin
+      Yaygınlaştırılması
+
+   Bilgi ve iletişim teknolojilerinin yaygın ve etkin kulla-
+nımıyla bilgi toplumuna dönüşüm sürecinin hızlandırıl-
+ması temel amaçtır. Bu çerçevede;
+
+       i) Bilgi toplumu politika ve stratejileri yenilene-
+          cek, bunların etkin bir şekilde koordinasyonu,
+          uygulanması ve sonuçlarının izlenmesi sağ-
+          lanacaktır.
+
+       ii) Bilgi ve iletişim teknolojileri altyapısının ge-
+           liştirilmesi amacıyla elektronik haberleşme
+           sektöründe alternatif altyapı ve hizmetlerin
+           sunumuna önem verilerek sektörde rekabet
+           ortamı geliştirilecektir.
+
+       iii) Elektronik haberleşme sektörüne ilişkin dü-
+            zenlemeler değişen teknoloji ve pazar yapısı-
+            nın ortaya çıkardığı ihtiyaçlar doğrultusunda
+            güncellenecek, düzenlemelerin zamanında
+            ve etkin şekilde uygulanması sağlanacaktır.
+
+       iv) Fiber optik şebeke altyapısının geliştirilmesi
+           amacıyla yerel yönetimler ile şebeke altyapısı
+           kuran ve işleten kuruluşların desteklenmesi
+           yönünde çalışmalar yürütülecektir.
+
+       v) Bilgi ve iletişim teknolojileri altyapısındaki
+          bölgesel farklılıklar azaltılarak, toplumun tüm
+          kesimlerinin geniş bant teknolojileri başta ol-
+
+
+
+                                                                   41
+     Orta Vadeli Pr ogr a m
+
+
+               mak üzere bilgi ve iletişim teknolojilerine uy-
+               gun maliyetlerle erişimi artırılacaktır.
+
+           vi) Bireylerin bilgi ve iletişim teknolojilerini etkin
+               kullanımını sağlamak ve sayısal uçurumu
+               azaltmak amacıyla yürütülen projelerin koor-
+               dineli bir biçimde ulusal bir program çerçeve-
+               sinde uygulanması sağlanacaktır.
+
+           vii) Uydu teknolojileri alanında ulusal yetkinliğin
+                güçlendirilmesi ve milli uydu imal edilmesine
+                yönelik çalışmalar yoğunlaştırılacaktır.
+
+           viii) Bilgi ve iletişim teknolojileri sektöründe kamu
+                alımları, sektörün gelişimini destekleyecek ve
+                yerli katma değeri artıracak bir politika aracı
+                olarak kullanılacaktır.
+
+           ix) Bilgi teknolojileri sektörünün ihtiyaç duyduğu
+               uzmanlık alanlarında nitelikli insan kaynağı
+               geliştirilecektir.
+
+           x) Bilgi ve iletişim teknolojileri sektöründe Ar-Ge
+              faaliyetlerini ve sektörün yurtdışına açılımını
+              desteklemek üzere çalışmalar yürütülecektir.
+
+           xi) Posta sektörü kalite, güvenilirlik ve erişilebilir-
+               lik esasları çerçevesinde ve rekabetçi bir an-
+               layışla yeniden yapılandırılacak ve sektörde
+               etkin düzenleme ve denetim sağlanacaktır.
+
+           xii) Uluslararası yükümlülükler dikkate alınarak
+                yayıncılık sektörü geliştirilecektir.
+
+
+
+
+42
+                                    O r t a Vadel i Pr o g ra m
+
+
+   8.Tarımsal Yapının Etkinleştirilmesi
+
+   Tarım sektöründe, gıda güvenliği ve güvenilirliğinin
+sağlanması ile doğal kaynakların sürdürülebilir kullanı-
+mı gözetilerek, örgütlü ve rekabet gücü yüksek bir yapı-
+nın oluşturulması temel amaçtır. Bu çerçevede;
+
+      i) Tarımsal destekler, alan ve ürün temelinde
+         farklılaştırılarak üretimde etkinlik, verimlilik ve
+         kaliteyi artırmaya yönelik olarak düzenlene-
+         cektir.
+
+      ii) Ürün fiyatları ile üretici gelirlerinde istikrar
+          sağlanmasına yönelik piyasa mekanizmaları
+          geliştirilecek       ve    üretici     örgütleri
+          etkinleştirilecektir.
+
+      iii) Arz açığı olan ürünlerde piyasalar izlenecek
+           ve üretimi artırmaya yönelik destekler sürdü-
+           rülecektir.
+
+      iv) Bilgi altyapıları başta olmak üzere tarım sek-
+          töründeki kurumsal ve idari yapılardaki dönü-
+          şüme öncelik verilecek, tarımsal istatistikler
+          nitelik ve nicelik olarak iyileştirilecektir.
+
+      v) Kamunun bitki ve hayvan sağlığı ile gıda gü-
+         venilirliği hizmetlerine ilişkin kapasitesi geliş-
+         tirilecek, tarım ile gıda işletmelerinin moderni-
+         zasyon faaliyetleri desteklenecektir.
+
+      vi) Tarım ürünleri ihracat desteklerinde katma
+          değeri yüksek, markalı ve nihai tüketiciye yö-
+          nelik ürünlere ağırlık verilecektir.
+
+      vii) Bitkisel üretimde verimliliği artırma amaçlı
+           uygulamalar yaygınlaştırılacak, bitki sağlığı
+           uygulamaları geliştirilecektir.
+
+
+
+
+                                                                  43
+     Orta Vadeli Pr ogr a m
+
+
+           viii) Hayvancılıkta; et ve süt piyasalarında is-
+                tikrarın sağlanması ve besi hayvancılığının
+                geliştirilmesi yönünde yapısal dönüşümü
+                sağlayacak şekilde destekler düzenlenecek,
+                ıslah çalışmalarıyla hastalık ve zararlılarla
+                mücadeleye ve kaliteli yem bitkileri üretiminin
+                artırılmasına öncelik verilecektir.
+
+           ix) Üreticilerin eğitimi ve sektördeki yayım
+               hizmetlerine ilişkin faaliyetler iyileştirilecektir.
+
+           x) Toprak ve su kaynaklarının etkin kullanılma-
+              sı ve korunmasına yönelik yöntem ve araç-
+              lara öncelik verilecek, arazi toplulaştırma ve
+              gerekli yasal düzenleme yoluyla işletme öl-
+              çekleri büyütülecek, sulama yatırımları yay-
+              gınlaştırılacak, sulama sistemleri modernize
+              edilecektir.
+
+           xi) Su ürünleri sektöründe kaynak yönetim siste-
+               mine yönelik kurumsal kapasite geliştirilecek
+               ve yetiştiriciliğin çevresel sürdürülebilirlik ilke-
+               leri çerçevesinde gerçekleştirilmesi sağlana-
+               caktır.
+
+           xii) Ormanlar; toplum sağlığı ve ihtiyaçları dik-
+                kate alınarak sürdürülebilir yönetim anlayışı
+                dâhilinde korunarak değerlendirilecek, ağaç-
+                landırma, iyileştirme ve kent ormancılığı ça-
+                lışmaları geliştirilecek, çölleşme ve erozyonla
+                mücadele faaliyetleri hızlandırılacaktır.
+
+
+
+
+44
+                                  O r t a Vadel i Pr o g ra m
+
+
+   9. Sanayi ve Hizmetlerde Yüksek Katma Değerli
+      Üretim Yapısına Geçiş Sağlanması
+
+   a. Sanayi
+
+   İmalat sanayiinde rekabet gücünü artırmak ve dün-
+ya ihracatından daha fazla pay almak üzere yüksek
+katma değerli mal üretimini artırarak, yapısal dönüşü-
+mün hızlandırılması temel amaçtır. Bu çerçevede;
+
+      i) Türkiye’nin orta ve yüksek teknolojili ürünler-
+         de üretim merkezi olmasına yönelik yapısal
+         dönüşüme katkı sağlayacak Sanayi Stratejisi
+         ve sektörel stratejilerin uygulanmasına de-
+         vam edilecektir.
+
+      ii) Girdi tedarikinde, ülke ve bölge tabanlı ba-
+          ğımlılığın azaltılması, kaynaklardaki belir-
+          sizliklerin ve dalgalanmaların oluşturacağı
+          risklerin giderilmesi, ihracatın korunması ve
+          gelecekte önem kazanacak ürünlerin üre-
+          tilmesi için Girdi Tedarik Stratejisi ve Eylem
+          Planı hazırlanarak uygulamaya konulacaktır.
+
+      iii) Dışa bağımlılığı yüksek olan sektörlerde geri
+           dönüşüm yatırımlarına özel önem verilecek,
+           Ulusal Geri Dönüşüm Stratejisi oluşturula-
+           caktır.
+
+      iv) Yüksek katma değerli mal üretimi için ürün
+          kalitesini geliştirmek ve piyasada güvenli
+          ürünlerin yer almasını sağlamak amacıyla
+          mevzuat hazırlıkları tamamlanacak, laboratu-
+          varların kurulması desteklenecek, uygunluk
+          değerlendirme ve piyasa gözetim sistemleri
+          etkinleştirilecektir.
+
+      v) Yenilikçi fikirlere ve Ar-Ge’ye dayalı katma
+         değeri yüksek ürün ve hizmetlerin ticarileşti-
+
+
+                                                                45
+     Orta Vadeli Pr ogr a m
+
+
+               rilmesi ve pazarlanma süreçleri desteklene-
+               cektir.
+
+           vi) Tekstil, hazır giyim, deri, seramik, cam, mo-
+               bilya, kuyumculuk gibi geleneksel sektörler
+               başta olmak üzere özgün tasarım faaliyetleri
+               özendirilecek, ulusal ve uluslararası marka
+               oluşturulması desteklenecektir.
+
+           vii) KOBİ’lerin büyüme ve birleşmeleri özendiri-
+                lecek, verimliliklerini artırmaya, iş kurma ve
+                geliştirmeye yönelik faaliyetleri ile bilgi ve ile-
+                tişim teknolojileri altyapıları desteklenecektir.
+
+           viii) Savunma sanayiinde, yurtiçi teknoloji ve ka-
+                biliyet edinimi artırılacaktır.
+
+           ix) Madencilik sektöründe; maden ve jeotermal
+               kaynak arama faaliyetleri ile yurtiçinde ve
+               yurtdışında petrol ve doğal gaz arama ve
+               üretim çalışmaları hızlandırılacak, madenle-
+               rin katma değeri yüksek ürünlere dönüştürül-
+               mesine önem verilecektir.
+
+        b. Hizmetler
+
+        Ekonomideki ağırlığı giderek artan hizmetler alanın-
+     da ülkemizin rekabet gücünün geliştirilmesi, katma de-
+     ğeri yüksek alanların payının ve bu alandaki istihdam
+     seviyesinin yükseltilmesi, hizmet ihracatının artırılması
+     ve çeşitlendirilmesi temel amaçtır.
+
+        Turizm
+
+         Turizm sektöründe, turist başına gelirin ve turist
+     sayısının artırılması amacıyla hizmet kalitesini artıran,
+     pazarlama kanallarını çeşitlendirerek üst gelir grupla-
+     rını hedef alan, doğal sermayeyi koruyan ve sürdürü-
+     lebilir kılan, karşılaştırmalı rekabet üstünlüğüne uygun
+
+
+
+46
+                                     O r t a Vadel i Pr o g ra m
+
+
+turizm çeşitlerini öne çıkaran bir yapının oluşturulması
+temel amaçtır. Bu çerçevede;
+
+       i) Turizm yatırımları, gelişmiş ve yoğun kullanı-
+          ma konu olan yörelerden diğer alanlara kay-
+          dırılarak çeşitlendirilecek ve turizm faaliyetle-
+          rinin tüm yıla yayılması sağlanacaktır.
+
+       ii) Turizm yatırımları yeşil büyüme yaklaşımı
+           çerçevesinde doğal, tarihi, sosyal ve kültürel
+           çevreyi koruyucu ve geliştirici bir anlayışla ele
+           alınacaktır.
+
+       iii) Uluslararası turizm pazarından alınan payın
+            artırılabilmesi için seçilmiş pazarlar başta ol-
+            mak üzere tanıtıma ve uluslararası örgütler
+            nezdinde turizm alanında işbirliğine ağırlık
+            verilecektir.
+
+       iv) İstanbul başta olmak üzere gelişme potansiyeli
+           yüksek turizm bölgelerinin kültürel, sosyal
+           ve doğal zenginlikleri sürdürülebilir turizm
+           yaklaşımıyla değerlendirilecek, ulaşım ve
+           teknik altyapı eksiklikleri hızla giderilecektir.
+
+    İnşaat, Mühendislik-Mimarlık, Teknik Müşavirlik
+    ve Müteahhitlik Hizmetleri
+
+   Kaliteye dayalı rekabet ve talep üzerine kurulu, be-
+şeri ve fiziki sermayesi gelişmiş, ileri teknoloji kullanan,
+çevreye duyarlı ve yüksek hizmet kalitesiyle uluslara-
+rası piyasalarda markalaşmış bir sektör yapısı oluştur-
+mak temel amaçtır. Bu çerçevede;
+
+       i) Uluslararası standartlarda, fen, sanat ve sağ-
+          lık kurallarına uygun imalat yapılmasını temi-
+          nen denetim etkinleştirilecek, Yapı Denetimi
+          Hakkında Kanun’un yurt genelinde etkin bir
+          şekilde uygulanması sağlanacaktır.
+
+
+                                                                   47
+     Orta Vadeli Pr ogr a m
+
+
+            ii) Ara işgücü ve yapı müteahhitliğinde belge-
+                lendirme sistemi kurularak sektör istihdamı-
+                nın kalitesi yükseltilecektir.
+
+            iii) Yurtdışı müteahhitlik hizmetlerinin akredite
+                 olmuş firmalar tarafından verilmesi sağlana-
+                 cak, finansmana erişim ve politik risk sigor-
+                 tası destekleriyle rekabet gücü artırılacaktır.
+
+            iv) Teknik müşavirlik hizmetlerine olan talebin
+                niteliği yükseltilerek bu hizmetlerin etkin bir
+                şekilde kullanılması sağlanacak, sektörün
+                tasarım kabiliyetleri geliştirilerek uluslararası
+                rekabet gücü artırılacaktır.
+
+            v) Yapı malzemesi üretiminde kalite artırılacak,
+               yurtdışı müteahhitlik hizmetlerinin yapı mal-
+               zemesi ihraç potansiyeli yükseltilecektir.
+
+        Ticaret Hizmetleri
+
+        Ticaret faaliyetlerinde yüksek katma değerli hizmet
+     üretiminin ve verimlilik artışının sağlanması, iş hacmi-
+     nin artırılması, teknoloji kullanımı ve yeniliğin özendiril-
+     mesi temel amaçtır. Bu çerçevede;
+            i) Toptan ve perakende ticaret hizmetleri sek-
+               töründe; rekabeti ve tüketiciyi koruyan, kayıt
+               dışılığı önleyen, verimlilik ve kaliteyi artıran,
+               hijyen kurallarına uyumu gözeten ve sektör
+               içi kesimler arasında dengeli gelişmeyi sağ-
+               layan bir ortam tesis edilecektir.
+            ii) Ticaret hizmetlerini destekleyen fuar alanları,
+                kongre merkezleri, kültür, turizm ve konakla-
+                ma gibi tesisler geliştirilecektir.
+            iii) Elektronik ticaretin güvenli bir biçimde yapıl-
+                 masına ve yaygınlaştırılmasına yönelik huku-
+                 ki düzenlemeler yapılacaktır.
+
+
+48
+                                    O r t a Vadel i Pr o g ra m
+
+
+   B. İSTİHDAMIN ARTIRILMASI
+
+   1. İşgücü Piyasasının Geliştirilmesi
+
+    İstihdam odaklı sürdürülebilir büyüme çerçevesinde
+rekabetçi bir ekonomik yapıda ve bilgi toplumuna dönü-
+şüm doğrultusunda istihdam imkânlarının geliştirilmesi,
+işsizliğin azaltılması ve işgücü piyasasının etkinleştiril-
+mesi temel amaçtır. Bu çerçevede;
+
+      i) Kayıt dışı istihdamı önlemeye ve ilave istihda-
+         mı teşvik etmeye yönelik tedbirler alınacaktır.
+
+      ii) Kıdem tazminatı sorunu sosyal taraflarla is-
+          tişare içinde kazanılmış hakları koruyan ve
+          bütün işçilerin kıdem tazminatlarını garanti
+          altına alan bir fon teşkil etmek suretiyle çö-
+          zülecektir.
+
+      iii) 5982 sayılı Kanun’la Anayasa hükümlerin-
+           de gerçekleştirilen değişikliklerle AB ve ILO
+           norm ve standartlarına uyum çerçevesinde
+           sosyal diyalog, sendikal haklar ve iş sağlığı
+           ve güvenliği alanlarında gerekli düzenlemeler
+           yapılacaktır.
+
+      iv) Gençler, kadınlar ve özürlüler başta olmak
+          üzere işgücü piyasasında dezavantajlı ke-
+          simlere yönelik destekleyici politikalar ilave
+          tedbirler alınarak sürdürülecektir.
+
+   2. Eğitimin İşgücü Talebine Duyarlılığının
+      Artırılması
+
+   Eğitimin işgücü talebine duyarlılığının artırılması
+ve işgücü piyasasında talep edilen nitelik ve nicelikte
+insan gücünün yetiştirilmesi temel amaçtır. Bu çerçe-
+vede;
+
+
+
+                                                                  49
+     Orta Vadeli Pr ogr a m
+
+
+           i) İş dünyasının talep ettiği nitelikteki işgücünün
+              yetiştirilmesi amacıyla eğitim sistemi ile
+              işgücü piyasası arasındaki uyum, hayat
+              boyu öğrenme perspektifinde girişimcilik
+              kültürünün benimsenmesi ve temel beceri
+              ve yetkinliklerin kazandırılması yoluyla
+              güçlendirilecektir.
+
+           ii) Mesleki eğitimin payı ve kalitesi artırılacak,
+               özel sektör ve meslek örgütlerinin mesleki
+               eğitim sürecine idari ve mali yönden aktif ka-
+               tılımının sağlanması için düzenlemeler yapı-
+               lacaktır.
+
+           iii)     Ulusal Yeterlilik Çerçevesi oluşturularak
+                  eğitim ve öğretim programları ulusal meslek
+                  standartlarına göre güncellenecek ve uyum-
+                  laştırılacaktır.
+
+        3. Aktif İşgücü Politikalarının Geliştirilmesi
+
+         Bireylerin niteliklerine uygun iş edinmelerini kolay-
+     laştırmak amacıyla beceri ve nitelik düzeylerini artıra-
+     cak işgücü eğitimlerini, başta iş ve meslek danışmanlığı
+     olmak üzere kamu istihdam hizmetlerini ve iş yaratma-
+     yı içeren aktif işgücü programlarının yaygınlaştırılması
+     ve etkinleştirilmesi kapsamında sunulan hizmetlerin
+     kalitesinin yükseltilmesi temel amaçtır. Bu çerçevede;
+           i) Aktif işgücü programları, işgücü piyasası
+              üzerindeki etkileri değerlendirilerek, ulusal,
+              bölgesel ve sektörel düzeyde işgücü piyasası
+              ihtiyaç analizleri doğrultusunda yaygınlaştırı-
+              lacaktır.
+           ii) Aktif işgücü programlarının etkin uygulanma-
+               sı amacıyla, İŞKUR’un kurumsal kapasitesi
+               geliştirilecek, özel sektör ve ilgili meslek ku-
+               ruluşlarıyla işbirliği artırılacaktır.
+
+
+50
+                                     O r t a Vadel i Pr o g ra m
+
+
+   C. BEŞERİ GELİŞME VE SOSYAL
+      DAYANIŞMANIN GÜÇLENDİRİLMESİ
+
+   1. Eğitim Sisteminin Geliştirilmesi
+
+   Düşünme, algılama ve problem çözme yeteneği
+gelişmiş, yeni fikirlere açık, özgüven ve sorumluluk
+duygusuna sahip, demokratik değerleri ve milli kültürü
+özümsemiş, farklı kültürleri yorumlayabilen, paylaşıma
+ve iletişime açık, sanat ve estetik duyguları güçlü, bilgi
+toplumu gereklerini haiz bireyi yetiştirmek eğitim politi-
+kasının temel amacıdır. Eğitim sisteminde kaliteyi yük-
+selten bir dönüşüm programı kapsamında;
+
+      i) Okul türlerinin azaltıldığı, programlar arası
+         esnek geçişlerin olduğu ve öğrencilerin ruhsal
+         ve fiziksel gelişimleri ile becerilerini artırmaya
+         yönelik sportif, sanatsal ve kültürel aktiviteleri
+         daha fazla içeren ve sınav odaklı olmayan bir
+         müfredat dönüşüm programı uygulanacaktır.
+
+      ii) Öğretmen yetiştirme ve geliştirme sistemi,
+          öğretmen ve öğrenci yeterliliklerini esas alan
+          bir performans sistemini de içerecek şekilde
+          yeniden yapılandırılacaktır.
+
+      iii) Eğitimde kalite, rekabet, verimlilik ve fırsat
+           eşitliğini artırmaya yönelik olarak okulları
+           merkeze alan bir örgütlenme ve bütçe siste-
+           mi çerçevesinde eğitim yönetimi yeniden ya-
+           pılandırılacaktır.
+
+      iv) Eğitimin tüm kademelerinde okullaşma oran-
+          ları artırılacak, donanım ve fiziki altyapı geliş-
+          tirilecek, bilgi ve iletişim teknolojileri etkin bir
+          şekilde kullanılacak, eğitime erişimde bölge-
+          ler ve cinsiyet itibarıyla dengesizlikler azaltı-
+          lacaktır.
+
+
+
+                                                                   51
+     Orta Vadeli Pr ogr a m
+
+
+           v) Eğitimin her kademesinde alternatif finans-
+              man modelleri geliştirilecek, özel sektörün
+              eğitim yatırımları kalite odaklı bir anlayışla
+              teşvik edilecektir.
+
+           vi) Orta ve yükseköğretimde öğrenci ve öğretim
+               elemanı değişimi ve hareketliliğini artırmaya
+               yönelik uluslararası programlar artırılarak
+               sürdürülecek ve katılım yaygınlaştırılacaktır.
+
+           vii) YÖK, üniversiteler arasında koordinasyon
+                sağlayan ve kalite standartları belirleyerek
+                denetleyen bir kurum haline dönüştürülecek,
+                üniversitelerin idari ve mali özerklikleri artırıl-
+                mak suretiyle yükseköğretim sisteminin reka-
+                betçi bir yapıya kavuşması sağlanacaktır.
+
+           viii) Artan üniversite ve öğrenci sayısına bağlı
+                olarak ortaya çıkan öğretim üyesi gereksinimi
+                karşılanacaktır.
+
+
+        2. Sağlık Sisteminin Geliştirilmesi
+
+        Sağlık politikasının temel amacı; vatandaşların ya-
+     şam kalitesini ve süresini artırarak ekonomik ve sosyal
+     hayata katılımlarının güçlendirilmesidir. Bu çerçevede;
+
+           i) Sağlık hizmetlerinin erişilebilirliği, kalitesi ve
+              etkinliği artırılmaya devam edilecektir.
+
+           ii) Koruyucu sağlık hizmetleri güçlendirilerek
+               yaygınlaştırılacaktır.
+
+           iii) İlaçların etkin ve bilinçli kullanımını sağlamak
+                amacıyla sağlık hizmet sunucularına ve va-
+                tandaşlara yönelik bilgilendirme faaliyetleri
+                ve gerekli denetimler artırılacaktır.
+
+
+
+
+52
+                                     O r t a Vadel i Pr o g ra m
+
+
+      iv) Sağlık Bakanlığı’nın düzenleme, planlama ve
+          denetlemeye ilişkin rolleri güçlendirilecektir.
+
+      v) Üniversite hastanelerinin yapısal sorunları
+         sistematik ve bütüncül bir anlayışla çözüme
+         kavuşturulacaktır.
+
+   3. Gelir Dağılımının İyileştirilmesi, Sosyal İçerme
+      ve Yoksullukla Mücadele
+
+   Gelir dağılımının iyileştirilmesi ile yoksulluk ve sos-
+yal dışlanma riski altında bulunan birey ve grupların;
+ekonomik ve sosyal hayata katılımlarının artırılması,
+yaşam kalitelerinin yükseltilmesi ve toplumla bütünleş-
+melerinin sağlanması temel amaçlardır. Bu çerçevede;
+
+      i) Gelir dağılımı, sektörel politikalar ve sosyal
+         transferler aracılığıyla iyileştirilecektir.
+
+      ii) Dezavantajlı gruplar için eğitim, sağlık, istih-
+          dam ve sosyal güvenlik gibi temel hizmetlere
+          erişilebilirlik artırılacak ve özürlülerin ekono-
+          mik ve sosyal hayata katılımlarının artırılması
+          için sosyal ve fiziki çevre şartları iyileştirilme-
+          ye devam edilecektir.
+
+      iii) Çalışabilecek durumda olan yoksullara yö-
+           nelik sosyal yardımlar yoksulluk kültürünün
+           oluşmasını önleyici ve yoksul kesimin üretken
+           duruma geçmesini sağlayıcı nitelikte olacak,
+           çalışamayacak durumda olan yoksullar ise
+           düzenli sosyal yardımlarla desteklenecektir.
+
+      iv) Aile eğitim programları ve destek hizmetle-
+          ri yaygınlaştırılacak, kadınlara ve çocuklara
+          yönelik şiddete karşı daha yoğun mücadele
+          edilecek, dezavantajlı çocuklara yönelik ön-
+          leyici, koruyucu ve rehabilite edici hizmetlerin
+          kalitesi artırılacaktır.
+
+
+                                                                   53
+     Orta Vadeli Pr ogr a m
+
+
+           v) Sosyal yardım ve hizmet alanında ailenin ih-
+              tiyaçlarına bütüncül olarak yaklaşan ve istih-
+              dam bağlantılı bir sistem kurulacaktır.
+
+           vi) Sosyal hizmet sunumunda etkinliğin sağ-
+               lanması amacıyla nitelikli personel ve ara
+               eleman ihtiyacı giderilecek ve vatandaşların
+               gönüllü katılımının artırılmasına yönelik me-
+               kanizmalar oluşturulacaktır.
+
+           vii) Yaşlılara yönelik sosyal hizmetler çeşitlendiri-
+                lecek ve geliştirilecektir.
+
+        4. Sosyal Güvenlik Sisteminin Etkinliğinin
+           Artırılması
+
+        Sosyal güvenlik sisteminin nüfusun tümünü kap-
+     sayan, toplumun değişen ihtiyaçlarını karşılayabilen,
+     mali sürdürülebilirliğe ve etkin denetim mekanizmasına
+     sahip, kaliteli hizmet sunan bir yapıya kavuşturulması
+     temel amaçtır. Bu çerçevede;
+
+           i) Sosyal sigorta sisteminde bilgi altyapısı güç-
+              lendirilecek, sistem etkili, erişilebilir ve sürdü-
+              rülebilir hizmet sunan bir yapıya kavuşturula-
+              caktır.
+
+           ii) Sosyal yardım ve istihdam bağlantısı geliştiri-
+               lerek sosyal güvenlik sisteminin finansal sür-
+               dürülebilirliği iyileştirilecektir.
+
+           iii) Tamamlayıcı emeklilik ve sağlık sigortası mo-
+                delleri geliştirilecektir.
+
+
+
+
+54
+                                    O r t a Vadel i Pr o g ra m
+
+
+   5. Kültürün Korunması, Geliştirilmesi ve
+      Toplumsal Diyalogun Güçlendirilmesi
+    Toplumsal değişim sürecinde kültürel zenginlik ve
+çeşitliliğimizin korunması ve gelecek kuşaklara aktarıl-
+ması temel amaçtır. Bu doğrultuda, kültürel birikimi-
+mizin günümüz değerleriyle sentezlenmesi ve farklı-
+lıklarımızı zenginliğimiz kabul eden bir anlayışla, ortak
+kültürel değerlerimiz etrafında tüm bireylerin hoşgörü
+ve dayanışma içerisinde yaşaması hedeflenmektedir.
+Bu çerçevede;
+      i) Toplumda dayanışma, uzlaşı ve hoşgörü kül-
+         türünü besleyen toplumsal kurum ve kaynak-
+         ların tespiti ile bu kültürü zayıflatan etkenlerin
+         ortaya çıkarılmasına yönelik sosyal araştır-
+         malara öncelik verilecektir.
+      ii) Yazılı ve görsel basında ailenin bütünlüğünü
+          ve önemini vurgulayan, tarihimizin önem-
+          li şahsiyet, mekan ve olaylarını tanıtan dizi,
+          belgesel, çizgi film gibi yayınlar yaygınlaştı-
+          rılacaktır.
+      iii) Yurtiçi ve yurtdışı kültür mirasımızın envante-
+           rinin çıkarılarak dijital ortama aktarılması sağ-
+           lanacak ve bu mirasın korunmasına yönelik
+           çalışmalar yapılacaktır.
+      iv) Kültür turizminin geliştirilmesi ve sinema, bel-
+          gesel film gibi kültür ürünleri üretiminin teşvik
+          edilmesi suretiyle kültür sektörünün ekono-
+          mik boyutu güçlendirilecektir.
+      v) Türkçenin dil birikimini ortaya çıkaracak, Türk
+         kültür, sanat ve edebiyatının bütün dünyada
+         tanınmasını ve yaygınlaşmasını sağlayacak
+         çalışmalar desteklenecektir.
+      vi) Gençliğe yönelik hizmetlerin kapsamı geniş-
+          letilerek niteliği artırılacaktır.
+
+
+
+                                                                  55
+     Orta Vadeli Pr ogr a m
+
+
+        D. BÖLGESEL GELİŞME VE BÖLGESEL
+          GELİŞMİŞLİK FARKLARININ AZALTILMASI
+
+         Bölgesel gelişme politikalarında bölgeler arası ge-
+     lişmişlik farklarını azaltmak, kırsal alanda asgari yaşam
+     standartlarını geliştirmek ve rekabet edebilirliklerini ar-
+     tırmak suretiyle bölgelerin ulusal kalkınmaya, rekabet
+     gücüne ve istihdama katkılarını en üst seviyeye çıkar-
+     mak temel amaçtır.
+
+        1. Bölgesel Gelişme Politikasının Merkezi
+           Düzeyde Etkinleştirilmesi
+
+           i) Bölgesel gelişme ve bölgesel rekabet ede-
+              bilirlik açısından ulusal düzeyde koordinas-
+              yonu sağlamak, mekânsal gelişme ve sos-
+              yo-ekonomik kalkınma politikaları arasında
+              uyumu güçlendirmek ve alt ölçekli plan ve
+              stratejilere genel çerçeve oluşturmak üzere
+              Bölgesel Gelişme Ulusal Stratejisi çalışmaları
+              tamamlanacaktır.
+
+           ii) Merkezi politikalar ile bölgesel gelişme poli-
+               tikaları arasında planlama, uygulama ve iz-
+               leme bakımından uyum ve koordinasyonu
+               sağlayarak yönetişimi geliştirmek amacıyla
+               kurulan Bölgesel Gelişme Yüksek Kurulu ve
+               Bölgesel Gelişme Komitesi faaliyete geçirile-
+               cektir.
+
+           iii) Onuncu Kalkınma Planı dönemiyle uyumlu
+                olacak şekilde Düzey 2 bölgelerinde hazırla-
+                nacak bölge planları için gereken araştırma,
+                analiz ve strateji çalışmaları kalkınma ajans-
+                ları koordinasyonunda yürütülecektir.
+
+           iv) Kalkınma Ajansları Yönetim Sisteminin geliş-
+               tirilmesi çalışmalarına devam edilecektir.
+
+
+
+56
+                                 O r t a Vadel i Pr o g ra m
+
+
+   v) Cazibe merkezlerini destekleme programının
+      uygulanması güçlendirilerek sürdürülecektir.
+
+   vi) Müzakere sürecinin ilerlemesine bağlı olarak,
+       AB bölgesel gelişme politikalarına uyum ve
+       yapısal fonların kullanımına hazırlık için stra-
+       tejik bir çerçeve oluşturulacaktır.
+
+   vii) Kalkınma ajansları ile diğer kuruluşların ver-
+       diği teknik ve mali destekler arasında tamam-
+       layıcılık ve koordinasyon gözetilecektir.
+
+  viii) AB’den ekonomik ve sosyal uyum alanında
+       sağlanacak fonlar, oluşturulan izleme ve ko-
+       ordinasyon mekanizmasıyla etkili bir şekilde
+       yönetilecektir.
+
+2. Yerel Dinamiklere ve İçsel Potansiyele Dayalı
+   Gelişmenin Sağlanması
+
+   i) Başta bölgesel ve sektörel teşvik politikaları
+      olmak üzere, bölgesel rekabet gücünün ge-
+      liştirilmesine yönelik politikaların analizi, ta-
+      sarlanması ve etkili bir şekilde uygulanması
+      sağlanacak, bu amaçla ulusal ve bölgesel
+      düzeydeki kurumların kapasiteleri güçlendi-
+      rilecektir.
+
+   ii) Bölgesel düzeyde rekabet gücü taşıyan sek-
+       törlere odaklı ve yerel girişimleri öne çıkaran
+       kümelenme politikaları geliştirilecek, bu kap-
+       samda bir yönetişim ve destekleme mekaniz-
+       ması kurulacaktır.
+
+   iii) Yerel uzmanlaşmaya dayalı ve üniversite-iş
+        dünyası işbirliğini merkeze alan model nite-
+        likte bölgesel yenilik altyapısı hazırlanacaktır.
+   iv) Bölgesel potansiyeli ve yerel işgücü piyasa-
+
+
+                                                               57
+     Orta Vadeli Pr ogr a m
+
+
+               sı özelliklerini dikkate alan ve yerel düzeyde
+               ekonomik dönüşümü destekleyen girişimcilik,
+               finansman, işletme ve organizasyon model-
+               leri oluşturulacak, bu bağlamda, kalkınma
+               ajanslarının yerel düzeyde ihtiyaç duyulan
+               koordinasyon ilişkilerini kurması ve uzmanlık
+               kuruluşlarıyla işbirliği mekanizmalarını oluş-
+               turması sağlanacaktır.
+           v) Sanayinin yapısal dönüşümüne katkı sağla-
+              yacak Sanayi Stratejisi başta olmak üzere,
+              mevcut sektörel stratejilerin hedeflerine ulaş-
+              ması için bölge düzeyinde sektörel üretim
+              faktörleri altyapısı ve potansiyeli belirlene-
+              cektir.
+           vi) Kalkınma ajansları bünyesinde kurulan Yatı-
+               rım Destek Ofislerinin “tek durak ofis” işlevle-
+               rini güçlendirecek düzenlemeler yapılacaktır.
+
+        3. Yerel Düzeyde Kurumsal Kapasitenin
+           Artırılması
+
+           i) DAP, DOKAP, KOP Bölge Kalkınma İdareleri-
+              nin kurumsallaşması gerçekleştirilecektir. Bu
+              bölgelerde eylem planları hazırlanarak uygu-
+              lamaya konulacak, uygulamanın izlenmesi
+              ve değerlendirilmesi sağlanacaktır.
+
+           ii) Kalkınma ajanslarının kurumsallaşma çalış-
+               maları tamamlanacak ve tam olarak faaliyete
+               geçmeleri sağlanacaktır.
+
+           iii) Merkezi ve yerel düzeyde kurum ve kuruluş-
+                lar arası koordinasyon ve karar alma süreç-
+                leri desteklenecek ve merkez-yerel arasında
+                bilgi akışını güçlendirmek üzere oluşturulan İl
+                Koordinasyon ve İzleme Sistemi (İKİS) yay-
+                gınlaştırılacaktır.
+
+
+58
+                                O r t a Vadel i Pr o g ra m
+
+
+  iv) Kalkınma çalışmaları ve program/proje uygu-
+      lamalarında mahalli idare ve birliklerin teknik,
+      mali ve kurumsal kapasiteleri güçlendirilecek-
+      tir.
+  v) Kalkınma ajanslarının, AB ile mali işbirliği
+     kapsamında sağlanacak fonların kullanımın-
+     daki etkinliği artırılacak, bu doğrultuda, ajans-
+     ların kurumsal kapasiteleri geliştirilecek ve
+     bölgelerinde AB fonlarının kullanımında aracı
+     kurum rolü üstlenmelerine yönelik hazırlık ça-
+     lışmaları yürütülecektir.   
+
+4. Kırsal Kesimde Kalkınmanın Sağlanması
+  i) Kırsal Kalkınma Planının izlenmesi ve değer-
+     lendirilmesine ilişkin mekanizmalar, Planda
+     belirtilen esas ve usuller çerçevesinde oluş-
+     turulacaktır. Bu doğrultuda, kırsal kalkınmaya
+     yönelik faaliyetlerin Kırsal Kalkınma Planına
+     uyumu gözetilecektir.
+  ii) Kırsal Kalkınma Planında belirlenen öncelik-
+      lerle uyumlu şekilde tasarlanacak istihdam
+      odaklı kırsal kalkınma projeleri, bölgesel ge-
+      lişme politikaları çerçevesinde daha etkili şe-
+      kilde uygulanacaktır.
+  iii) Farklı kurumlar tarafından uygulanan tarım
+       ve kırsal kalkınma mali destek programları
+       arasında uyum ve tamamlayıcılık ilkeleri gö-
+       zetilerek kamu kaynaklarının etkinliği artırıla-
+       caktır.
+  iv) Kırsal alan ve kent tanımları, kırsal alanda
+      gelişmeyi izlemeye olanak tanıyacak şekilde
+      yeniden düzenlenerek mekânsal gelişme ve
+      bölgesel/yerel kalkınma politikalarında kır-
+      kent bütünleşmesi desteklenecektir.
+
+
+
+                                                              59
+     Orta Vadeli Pr ogr a m
+
+
+           v) Köy Kanunu yenilenecek ve kırsal alanda
+              yerleşme ve yapılaşmaya ilişkin diğer mev-
+              zuat çalışmaları da tamamlanarak uygulama
+              projeleri hayata geçirilecektir.
+
+           vi) Zorunlu nedenlerle yaşadıkları yerlerden
+               ayrılan vatandaşlara, kendi istekleri doğrul-
+               tusunda, eski veya yeni yerleşim yerlerinde
+               yaşamlarını sürdürebilecekleri koşullar oluş-
+               turulmaya devam edilecektir.
+
+           vii) Kırsal alanda dezavantajlı grupların durumu-
+                nun iyileştirilmesi ve güçlendirilmesi için ön-
+                lemler alınacaktır.
+
+           viii) Kırsal kesimde internet erişimi güçlendirile-
+                cek ve bu kesime yönelik hizmetlerin geliş-
+                tirilmesi ve yararlanıcılara ulaştırılmasında
+                bilgi ve iletişim teknolojileri etkili bir şekilde
+                kullanılacaktır.
+
+
+        E. KAMU HİZMETLERİNDE KALİTE VE
+           ETKİNLİĞİN ARTIRILMASI
+
+        1. Politika Oluşturma ve Uygulama
+           Kapasitesinin Artırılması
+
+         Kamu yönetimi reform süreci ile kamu idarelerinde
+     stratejik yönetimin gerektirdiği dönüşümün sürdürülme-
+     si, yönetsel kararların stratejik planlara dayanan, orta
+     ve uzun vadeli bakış açısıyla şekillendirilmesi, uygula-
+     nacak politikaların maliyeti, etkilediği kesimler ve fırsat
+     maliyeti de göz önüne alınarak, bütçenin, kamu idare-
+     lerinin performansını gösterecek bir yapıya kavuşturul-
+     ması temel amaçtır. Bu çerçevede;
+
+
+
+
+60
+                                    O r t a Vadel i Pr o g ra m
+
+
+      i) Kamu idarelerinde daha verimli, etkili ve uy-
+         gulanabilir stratejik planların hazırlanmasına
+         yönelik çalışmalar yapılacak, katılımcılık me-
+         kanizmaları güçlendirilecektir.
+
+      ii) Kamu yönetiminde stratejik planlar ve perfor-
+          mans programları çerçevesinde ölçme, izle-
+          me, değerlendirme süreçleri geliştirilecektir.
+
+      iii) Kamu idarelerinde mevcut idari ve beşeri ka-
+           pasite, nitelik ve nicelik olarak stratejik yöne-
+           tim anlayışı doğrultusunda geliştirilecek, yö-
+           netim kültürünün yeni yapıya uyarlanmasına
+           dönük programlar düzenlenecektir.
+
+   2. Kamu Kesiminde İnsan Kaynaklarının
+      Geliştirilmesi
+
+   Kamu kurum ve kuruluşlarında etkili bir insan kay-
+nağı planlamasının yapılması, hizmet gereklerine uy-
+gun sayı ve nitelikte personel istihdamının sağlanması
+temel amaçtır. Bu çerçevede;
+      i) Kamu personeli bilgi sisteminin oluşturulma-
+         sına yönelik çalışmalar hızlandırılacaktır.
+      ii) Kamu personel sisteminin iyileştirilmesi ama-
+          cıyla hukuki ve kurumsal düzenlemeler yapı-
+          lacaktır.
+
+   3. e-Devlet Uygulamalarının Yaygınlaştırılması
+
+   Vatandaş ve iş dünyasının gereksinimleri doğrultu-
+sunda çeşitli kanallardan bütünleşik hizmet sunumu-
+nun sağlanacağı bir e-devlet yapısının oluşturulması
+temel amaçtır. Bu çerçevede;
+
+      i) e-Devlet proje ve uygulamaları bütüncül ve
+         bilgi paylaşımını esas alan bir anlayışla koor-
+         dine edilecektir.
+
+
+                                                                  61
+     Orta Vadeli Pr ogr a m
+
+
+           ii) e-Devlet uygulamalarının hayata geçirilmesi
+               için gerekli temel bilgi sistemleri ile ortak alt-
+               yapı ve hizmetler geliştirilecektir.
+           iii) Kamu hizmetlerinin elektronik ortama taşın-
+                masında iş süreçleri; idari ve mali yüklerin
+                azaltılması, mükerrerliklerin giderilmesi ve
+                birlikte çalışabilirliğin sağlanması yönünde
+                iyileştirilecektir.
+           iv) e-Devlet uygulamalarında kullanıcı odaklılık,
+               kullanıcı memnuniyeti, kişisel bilgi mahremi-
+               yeti, bilgi güvenliği, katılımcılık ve şeffaflık
+               gözetilecektir.
+
+        4. Adalet Sisteminin İyileştirilmesi
+
+         Hukukun üstünlüğü ve hukuk devleti ilkeleri çerçe-
+     vesinde adalet hizmetlerinin daha adil, hızlı, güvenli ve
+     isabetli şekilde sunulması; yargılamanın işleyişinde ve
+     temel unsurlarında hizmet kalitesini artırıcı çabaların
+     sürdürülmesi; ekonomik ve sosyal düzenin korunma-
+     sı, iyileştirilmesi ve geliştirilmesinde hukuk kurallarının
+     araç olarak kullanılması temel amaçtır. Bu çerçevede;
+           i) Adalet hizmetlerinde, AB uygulamaları da
+              dikkate alınarak, hukuki ve kurumsal düzen-
+              lemeler yapılacak, beşeri ve fiziki altyapı ge-
+              liştirilecektir.
+           ii) Yargı Reformu Stratejisi ve Eylem Planı gün-
+               cellenecek, bu çerçevede gerekli yasal ve
+               kurumsal düzenlemeler hayata geçirilecektir.
+
+        5. Güvenlik Hizmetlerinin Etkinleştirilmesi
+
+         Bireyin, kurumların ve mülkiyet haklarının gözetildi-
+     ği, özgürlük için güvenlik yaklaşımıyla toplum destekli
+     bir asayiş hizmetinin sunumu temel amaçtır. Bu çerçe-
+     vede;
+
+
+62
+                                    O r t a Vadel i Pr o g ra m
+
+
+      i) Suçun oluşmadan önlenebilmesi amacıy-
+         la önleyici kolluk ve istihbarat hizmetlerine
+         önem verilmesi, delilden sanığa ulaşılması
+         yaklaşımı kapsamında kriminal altyapının
+         modernleştirilmesi ve Acil Çağrı Sisteminin
+         (112) ülke geneline yaygınlaştırılması çalış-
+         malarına devam edilecektir.
+
+      ii) Başta terör ve terörizmin finansmanı olmak
+          üzere organize suçlar ile mali ve bilişim suç-
+          larıyla mücadele kapsamında ihtiyaç duyulan
+          hukuki, kurumsal ve teknolojik altyapının tesi-
+          si çalışmaları sürdürülecektir.
+
+      iii) Yasa dışı göç ve iltica hareketleri, insan tica-
+           reti ve kaçakçılığı, uyuşturucu madde ticareti
+           ve kullanımıyla etkili bir şekilde mücadele için
+           gerekli olan hukuki, kurumsal ve teknolojik
+           altyapının güçlendirilmesi çalışmaları sürdü-
+           rülecek, sınır güvenliğinin yeniden yapılandı-
+           rılması çalışmalarına devam edilecektir.
+
+   6. Doğal Afetler
+
+    Afet yönetiminin merkezi ve yerel düzeyde, yeter-
+li, etkin ve bütüncül bir kapsamda yürütülmesi temel
+amaçtır. Bu çerçevede;
+
+      i) Ulusal Afet Yönetimi Stratejisi ve Eylem Planı
+         hazırlanacaktır.
+
+      ii) Ülke genelinde doğal afet riski taşıyan yer-
+          leşim yerleri afet risk düzeyine göre önce-
+          liklendirilecek, riskin planlı bir şekilde azal-
+          tılmasına yönelik teknik ve mali çalışmalar
+          sonuçlandırılacak, halkın bilinçlendirilmesine
+          yönelik faaliyetler yürütülecektir.
+
+
+
+
+                                                                  63
+     Orta Vadeli Pr ogr a m
+
+
+           iii) Afet sigorta sistemi, tüm afet türleri ve ülkenin
+                tamamını kapsayacak şekilde yaygınlaştırıla-
+                cak, gerekli yasal düzenlemeler tamamlana-
+                caktır.
+
+           iv) Güçlendirme ve dönüşüm ihtiyacı olan yerle-
+               şim yerleri ve kamu binaları için programlar
+               geliştirilecektir.
+
+
+
+
+64
+                                                                                                                                             O r t a Vadel i Pr o g ra m
+
+
+                                                                                                  Ek Tablo 1: Temel Ekonomik Büyüklükler
+               Ek Tablo 1: Temel Ekonomik Büyüklükler
+                                                                                                                                     2011     2012      2013      2014
+                                                   BÜYÜME VE ĠSTĠHDAM
+                                                   GSYH (Milyar TL, Cari Fiyatlarla)                                                 1.281    1.426     1.572     1.733
+                                                   GSYH (Milyar Dolar, Cari Fiyatlarla)                                               766      822       888       952
+                                                   Kişi Başına Milli Gelir (GSYH, Dolar)                                            10.363   10.973    11.716    12.412
+                                                                                                     (1)
+                                                   GSYH Büyümesi                                                                       7,5      4,0       5,0       5,0
+                                                                                                    (1)
+                                                   Toplam Tüketim                                                                      6,2      3,0       3,5       3,4
+                                                                                           Kamu                                        6,5      3,1       3,4       2,2
+                                                                                           Özel                                        6,1      3,0       3,5       3,5
+                                                                                                                        (1)
+                                                   Toplam Sabit Sermaye Yatırımı                                                      19,3      6,2       8,8       8,5
+                                                                                           Kamu                                        7,7     -0,6       7,7       3,8
+                                                                                           Özel                                       22,3      7,7       9,0       9,4
+                                                                                                                 (1)
+                                                   Toplam Nihai Yurtiçi Talep                                                          9,3      3,9       4,9       4,8
+                                                                                                           (1)
+                                                   Toplam Yurtiçi Talep                                                                9,4      3,9       4,8       4,7
+                 ORTA VADELİ PROGRAM
+                      (2012-2014)
+
+
+
+
+                                      EKİM 2011
+
+
+                                 Kalkınma Bakanlığı
+                                                   Nüfus (Yıl Ortası, Bin Kişi)
+                 Necatibey Cd. No: 108, 06100 Yücetepe / ANKARA
+                                                                                                                                    73.950   74.885    75.811    76.707
+                    http://www.kalkinma.gov.tr - bilgi@dpt.gov.tr
+
+
+Kalkınma Bakanlığınca hazırlanan Orta Vadeli Program (2012-2014) 07/10/2011
+tarihli ve 2011/2302 Sayılı Bakanlar Kurulu Kararı ile kabul edilerek 13/10/2011 tarihli
+ve 28083 mükerrer sayılı Resmi Gazete’de yayımlanmıştır.
+
+                                                                                      1
+
+
+
+
+                                                   İşgücüne Katılma Oranı (%)                                                         49,9     49,7      49,7      49,7
+                                                   İstihdam Düzeyi (Bin Kişi)                                                       23.925   24.257    24.752    25.264
+                                                   İstihdam Oranı (%)                                                                 44,7     44,5      44,6      44,8
+                                                   İşsizlik Oranı (%)                                                                 10,5     10,4      10,2       9,9
+                                                   DIġ TĠCARET
+                                                   İhracat (FOB) (Milyar Dolar)                                                      134,8    148,5     165,7     185,1
+                                                   İthalat (CIF) (Milyar Dolar)                                                      236,9    248,7     272,5     295,9
+                                                   Dış Ticaret Dengesi (Milyar Dolar)                                               -102,1   -100,2    -106,8    -110,8
+                                                   İhracat / İthalat (%)                                                              56,9     59,7      60,8      62,6
+                                                   Dış Ticaret Hacmi / GSYH (%)                                                       48,5     48,3      49,3      50,5
+                                                   Turizm Gelirleri (Milyar Dolar)                                                    24,0     26,0      29,0      31,0
+                                                   Cari İşlemler Dengesi (Milyar Dolar)                                              -71,7    -65,4     -67,0     -67,1
+                                                   Cari İşlemler Dengesi / GSYH (%)                                                   -9,4     -8,0      -7,5      -7,0
+                                                                                                                  (2)
+                                                   Ham Petrol Fiyatı (Dolar/w)                                                       104,7     97,0     101,5     102,2
+                                                   Enerji İthalatı (27. Fasıl, Milyar Dolar)                                          49,6     49,5      53,6      56,8
+                                                   ENFLASYON
+                                                   GSYH Deflatörü                                                                      8,0      7,0       5,0       5,0
+                                                                                                                              (3)
+                                                   TÜFE Yıl Sonu % Değişme (Tahmin)                                                    7,8      5,2       5,0       5,0
+               (1) Sabit fiyatlarla yüzde değişimi göstermektedir.
+               (2) İthal edilen ham petrolün ortalama maliyetini yansıtmakta olup Kalkınma Bakanlığı tarafından tahmin edilmiştir.
+               (3) 2012 ve 2013 yılı rakamları TCMB Enflasyon Raporu 2011-III‟te yer alan tahminlerdir.
+
+
+
+
+                                                                                                                                                                    35
+
+
+
+
+                                                                                                                                                                           65
+     Orta Vadeli Pr ogr a m
+
+
+                   Ek Tablo 2: Kamu Finansmanına İlişkin
+                                  Temel Büyüklükler
+     Ek Tablo 2: Kamu Finansmanına ĠliĢkin Temel Büyüklükler
+
+                                                                                                  (Milyar TL)
+
+                                                                            2011     2012     2013      2014
+
+     Merkezi Yönetim Bütçe Dengesi                                          -22,2   -21,1     -21,7     -18,1
+
+       Merkezi Yönetim Bütçe Gelirleri                                      290,9   329,8    359,4     390,5
+
+       Merkezi Yönetim Bütçe Harcamaları                                    313,2   350,9    381,1     408,6
+
+     Toplam Kamu Faiz DıĢı Fazlası (Program Tanımlı)                         15,3    15,8      19,8     26,4
+
+       Merkezi Yönetim Bütçesi Faiz DıĢı Fazlası (Program Tanımlı)           11,8    14,8      18,2     24,2
+
+          Merkezi Yönetim Bütçesi Gelirleri (Program Tanımlı)               282,4   315,4    346,3     377,8
+
+          Merkezi Yönetim Bütçesi Faiz Dışı Harcamaları (Program Tanımlı)   270,6   300,6    328,1     353,6
+
+       Diğer Kamu Faiz DıĢı Fazlası (Program Tanımlı)                         3,5     1,0       1,6      2,2
+
+     Toplam Kamu ÖzelleĢtirme Gelirleri                                       4,3    12,5      12,6     12,8
+
+
+
+                                                                                            (GSYH'ya Oran, %)
+
+                                                                            2011     2012     2013      2014
+
+     Merkezi Yönetim Bütçe Dengesi                                           -1,7    -1,5      -1,4      -1,0
+
+       Merkezi Yönetim Bütçe Gelirleri                                       22,7    23,1      22,9     22,5
+
+       Merkezi Yönetim Bütçe Harcamaları                                     24,4    24,6      24,2     23,6
+
+     Toplam Kamu Faiz DıĢı Fazlası (Program Tanımlı)                          1,2     1,1       1,3      1,5
+
+       Merkezi Yönetim Bütçesi Faiz DıĢı Fazlası (Program Tanımlı)            0,9     1,0       1,2      1,4
+
+          Merkezi Yönetim Bütçesi Gelirleri (Program Tanımlı)                22,0    22,1      22,0     21,8
+
+          Merkezi Yönetim Bütçesi Faiz Dışı Harcamaları (Program Tanımlı)    21,1    21,1      20,9     20,4
+
+       Diğer Kamu Faiz DıĢı Fazlası (Program Tanımlı)                         0,3     0,1       0,1      0,1
+
+     Toplam Kamu ÖzelleĢtirme Gelirleri                                       0,3     0,9       0,8      0,7
+
+       Sosyal Güvenlik Primleri Hariç Vergi Yükü (Red ve Ġadeler Hariç)      20,0    20,0      20,0     19,8
+
+       Sosyal Güvenlik Primleri Dahil Vergi Yükü (Red ve Ġadeler Hariç)      27,3    27,1      27,1     26,9
+
+       AB Tanımlı Genel Yönetim Nominal Borç Stoku                           39,8    37,0      35,0     32,0
+
+     Not: Negatif işaret açığı göstermektedir.
+
+
+
+
+                                                                                                      36
+
+
+
+
+66
+                                                                              O r t a Vadel i Pr o g ra m
+
+
+     Ek Tablo 3: Kamu Kesimi Borçlanma Gereği (1)
+Ek Tablo 3: Kamu Kesimi Borçlanma Gereği (1)
+
+
+                                                                                             (GSYH'ya Oran, %)
+
+                                                                                      2011       2012     2013    2014
+
+KAMU KESĠMĠ GENEL DENGESĠ (KKGD) (2)                                                  -1,0        -1,1     -0,8   -0,4
+
+  Genel Devlet                                                                        -1,0        -0,8     -0,8   -0,4
+
+     Merkezi Yönetim Bütçesi                                                          -1,7        -1,5     -1,4   -1,0
+
+     Mahalli İdareler                                                                  0,0        0,0      -0,1   -0,1
+
+     Bütçe Dışı Fonlar                                                                 0,0        0,0      0,0     0,0
+
+     İşsizlik Sigortası Fonu                                                           0,6        0,6      0,7     0,7
+
+     Sosyal Güvenlik Kuruluşları                                                       0,0        0,0      0,0    -0,1
+
+     Genel Sağlık Sigortası                                                            0,0        0,0      0,0     0,1
+
+     Döner Sermayeli Kuruluşlar                                                        0,1        0,1      0,1     0,1
+
+  KĠT (ÖzelleĢtirme kapsamındaki kuruluĢlar dahil)                                     0,0        -0,3     -0,1   -0,1
+
+FAĠZ GĠDERLERĠ VE ÖZELLEġTĠRME GELĠRLERĠ HARĠÇ KKGD                                    2,2        1,7      1,9     2,2
+
+  Genel Devlet                                                                         2,2        1,9      1,9     2,2
+
+     Merkezi Yönetim Bütçesi                                                           1,6        2,0      2,0     2,1
+
+     Mahalli İdareler                                                                  0,1        0,0      -0,2   -0,1
+
+     Bütçe Dışı Fonlar                                                                -0,2        -0,7     -0,6   -0,6
+
+     İşsizlik Sigortası Fonu                                                           0,6        0,6      0,7     0,7
+
+     Sosyal Güvenlik Kuruluşları                                                       0,0        0,0      0,0    -0,1
+
+     Genel Sağlık Sigortası                                                            0,0        0,0      0,0     0,1
+
+     Döner Sermayeli Kuruluşlar                                                        0,1        0,1      0,1     0,1
+
+  KĠT (ÖzelleĢtirme kapsamındaki kuruluĢlar dahil)                                     0,0        -0,2     0,0     0,0
+
+(1) Kalkınma Bakanlığının klasik kamu kesimi genel dengesi formatı esas alınmıştır.
+
+(2) Gelir - gider farkını göstermektedir.
+
+Not: Negatif işaret açığı göstermektedir.
+
+
+
+
+                                                                                                                   37
+
+
+
+
+                                                                                                                         67
+     Orta Vadeli Pr ogr a m
+
+
+           Ek Tablo 4: Genel Devlet Borçlanma Gereği (1)
+      Ek Tablo 4: Genel Devlet Borçlanma Gereği (1)
+
+
+                                                                                                  (GSYH'ya Oran, %)
+
+                                                                                      2011         2012       2013       2014
+
+      GENEL DEVLET DENGESĠ (GDD) (2)                                                   -1,0         -0,8       -0,8       -0,4
+
+        Merkezi Yönetim Bütçesi                                                        -0,5         -0,3        0,0        0,1
+
+        Mahalli İdareler                                                               -0,2         -0,2       -0,3       -0,1
+
+        Bütçe Dışı Fonlar                                                               0,2          0,7        0,6        0,5
+
+        İşsizlik Sigortası Fonu                                                         0,7          0,7        0,7        0,7
+
+        Sosyal Güvenlik Kuruluşları                                                    -1,1         -1,8       -1,8       -1,8
+
+        Genel Sağlık Sigortası                                                         -0,1          0,0        0,0        0,1
+
+        Döner Sermayeli Kuruluşlar                                                      0,2          0,1        0,2        0,1
+
+      FAĠZ GĠDERLERĠ VE ÖZELLEġTĠRME GELĠRLERĠ HARĠÇ GDD                                2,2          1,9        1,9        2,2
+
+        Merkezi Yönetim Bütçesi                                                         2,8          3,2        3,3        3,3
+
+        Mahalli İdareler                                                               -0,1         -0,2       -0,3       -0,2
+
+        Bütçe Dışı Fonlar                                                              -0,1         -0,1       -0,1       -0,1
+
+        İşsizlik Sigortası Fonu                                                         0,7          0,7        0,7        0,7
+
+        Sosyal Güvenlik Kuruluşları                                                    -1,1         -1,8       -1,8       -1,8
+
+        Genel Sağlık Sigortası                                                         -0,1          0,0        0,0        0,1
+
+        Döner Sermayeli Kuruluşlar                                                      0,2          0,1        0,2        0,1
+
+      Genel Devlet Gelirleri                                                          36,4          36,8      36,5        36,1
+
+        Özelleştirme Hariç Genel Devlet Gelirleri                                     36,1          35,9      35,7        35,4
+
+      Genel Devlet Harcamaları                                                        37,4          37,6      37,3        36,5
+
+        Faiz Giderleri Hariç Genel Devlet Harcamaları                                 33,9          34,0      33,8        33,2
+
+      (1) Kalkınma Bakanlığı tarafından Avrupa Birliğine sunulan Katılım Öncesi Ekonomik Program formatı esas alınmıştır. Bu
+      çerçevede, kamu kaynağının, ilk elde eden kuruluş bütçesinde gelir; nihai olarak harcayan kuruluş bütçesinde gider olarak
+      yazılması durumunda oluşan ve KİT'leri kapsamayan Genel Devlet Dengesinde, toplam denge rakamı klasik tanıma göre
+      değişmemekte, ancak bütçe türleri itibarıyla açık (veya fazla) değişmektedir.
+
+      (2) Gelir - gider farkını göstermektedir.
+
+      Not: Negatif işaret açığı göstermektedir.
+
+
+
+
+                                                                                                                           38
+
+
+
+
+68
+

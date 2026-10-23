@@ -1,0 +1,67 @@
+yil,kalem,deger,etiket
+2025,GSYH mlr TL,63241,VERİ OVP
+2025,vergi/GSYH,17.5,VERİ OVP T1.6
+2025,faiz hariç harcama/GSYH,19.9,VERİ
+2025,FDD/GSYH,0.4,VERİ
+2025,program tanımlı denge/GSYH,-0.2,VERİ
+2025,cari transfer/GSYH,8.6,VERİ
+2025,genel devlet transfer/GSYH,13.4,VERİ T1.5
+2025,vergi yükü SGK dahil,24.3,VERİ T1.4
+2026GT,GSYH mlr TL,85346,VERİ OVP
+2026GT,vergi/GSYH,17.1,VERİ OVP T1.6
+2026GT,faiz hariç harcama/GSYH,19.7,VERİ
+2026GT,FDD/GSYH,0.2,VERİ
+2026GT,program tanımlı denge/GSYH,-0.3,VERİ
+2026GT,cari transfer/GSYH,8.3,VERİ
+2026GT,genel devlet transfer/GSYH,13.1,VERİ T1.5
+2026GT,vergi yükü SGK dahil,24.3,VERİ T1.4
+2027P,GSYH mlr TL,111207,VERİ OVP
+2027P,vergi/GSYH,17.9,VERİ OVP T1.6
+2027P,faiz hariç harcama/GSYH,21.0,VERİ
+2027P,FDD/GSYH,0.1,VERİ
+2027P,program tanımlı denge/GSYH,-0.5,VERİ
+2027P,cari transfer/GSYH,9.2,VERİ
+2027P,genel devlet transfer/GSYH,13.4,VERİ T1.5
+2027P,vergi yükü SGK dahil,24.8,VERİ T1.4
+2028P,GSYH mlr TL,133184,VERİ OVP
+2028P,vergi/GSYH,18.0,VERİ OVP T1.6
+2028P,faiz hariç harcama/GSYH,20.6,VERİ
+2028P,FDD/GSYH,0.4,VERİ
+2028P,program tanımlı denge/GSYH,-0.2,VERİ
+2028P,cari transfer/GSYH,9.2,VERİ
+2028P,genel devlet transfer/GSYH,12.9,VERİ T1.5
+2028P,vergi yükü SGK dahil,24.9,VERİ T1.4
+2029P,GSYH mlr TL,153141,VERİ OVP
+2029P,vergi/GSYH,18.1,VERİ OVP T1.6
+2029P,faiz hariç harcama/GSYH,20.4,VERİ
+2029P,FDD/GSYH,0.6,VERİ
+2029P,program tanımlı denge/GSYH,0.1,VERİ
+2029P,cari transfer/GSYH,8.9,VERİ
+2029P,genel devlet transfer/GSYH,12.6,VERİ T1.5
+2029P,vergi yükü SGK dahil,25.1,VERİ T1.4
+2027P,enerji (elektrik+doğalgaz) mlr TL,605,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,enerji (elektrik+doğalgaz) /GSYH %,0.54,HESAP
+2027P,sosyal yardım toplam mlr TL,1341,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,sosyal yardım toplam /GSYH %,1.21,HESAP
+2027P,tarımsal destek programları mlr TL,235,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,tarımsal destek programları /GSYH %,0.21,HESAP
+2027P,tarımsal kredi sübvansiyonu mlr TL,325,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,tarımsal kredi sübvansiyonu /GSYH %,0.29,HESAP
+2027P,sosyal konut finansmanı mlr TL,250,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,sosyal konut finansmanı /GSYH %,0.22,HESAP
+2027P,evde bakım mlr TL,109,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,evde bakım /GSYH %,0.1,HESAP
+2027P,65 yaş/engelli aylıkları mlr TL,132,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,65 yaş/engelli aylıkları /GSYH %,0.12,HESAP
+2027P,doğum yardımı mlr TL,84,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,doğum yardımı /GSYH %,0.08,HESAP
+2027P,SGK işveren prim desteği mlr TL,351,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,SGK işveren prim desteği /GSYH %,0.32,HESAP
+2027P,asgari ücret GV istisnası (vergi harcaması) mlr TL,1460,İKİNCİL (Yılmaz bütçe sunumu)
+2027P,asgari ücret GV istisnası (vergi harcaması) /GSYH %,1.31,HESAP
+2026GT,"enerji sübvansiyonu mlr TL (605/1,62)",373,HESAP (İKİNCİL girdi)
+2026GT,enerji /GSYH %,0.44,HESAP
+2026,KİT enerji görevlendirme Oca-Tem mlr TL,196.0,İKİNCİL (BoldMedya; HMB)
+2026-07,en düşük emekli aylığı TL,23552,"İKİNCİL (TBMM önergesi, SGK atfı)"
+2026-07,net asgari ücret TL,28075.5,İKİNCİL (SBB haftalık atfı)
+2027,OVP TÜFE yıl sonu %,21.0,VERİ OVP

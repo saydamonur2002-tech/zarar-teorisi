@@ -1,0 +1,1 @@
+SAPMA: (1) Değerleme etkisi 0 alındı; net döviz pozisyonu teyit edilmedi. (2) Faiz geliri ayrıca modellenmedi, 2026 net zarar oranına ölçeklendi. (3) Dondurma senaryosunda TCMB'nin 2027 sterilizasyon zararı ayrıca eklenmedi (stok devri akışı durdurmaz).

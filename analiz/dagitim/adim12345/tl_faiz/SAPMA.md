@@ -1,0 +1,1 @@
+SAPMA: Mevduat faizi TCMB doğrudan değil, spread farkından (ikincil). Faiz 2026-09, stok 30.04.2026 (tarih farkı). KOBİ TL = KOBİ toplam − KOBİ YP (BDDK kalemleri aynı tanım varsayıldı). Faiz sabit; dezenflasyonla düşüş modellenmedi → süre toplamları üst sınır eğilimli. Senaryo1 banka yükü yıllık kârı aşıyor (κ≥0,25): banka tek başına taşıyamaz.
