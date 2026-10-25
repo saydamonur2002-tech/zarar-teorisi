@@ -1,0 +1,40 @@
+                                                                                                  Aylık Azami Gecikme Faiz Oranı
+2006/1 sayılı Tebliğ            Aylık Azami Akdi Faiz Oranı (%)   2006/1 sayılı Tebliğ                          (%)
+Dönemler                          TL         USD           Euro   Dönemler                          TL        USD           Euro
+2 Nisan 2006-1 Temmuz 2006        5,75       2,68          2,53   2 Nisan 2006-1 Temmuz 2006        6,88      3,34          3,05
+2 Temmuz 2006-1 Ekim 2006         5,72       2,68          2,50   2 Temmuz 2006-1 Ekim 2006         6,44      2,98          3,05
+2 Ekim 2006-1 Ocak 2007           5,70       2,66          2,50   2 Ekim 2006-1 Ocak 2007           6,29      2,93          3,05
+2 Ocak 2007 -1 Nisan 2007         5,63       2,48          2,30   2 Ocak 2007 -1 Nisan 2007         6,22      2,98          2,94
+2 Nisan 2007 –1 Temmuz 2007       5,57       2,44          2,30   2 Nisan 2007 –1 Temmuz 2007       6,21      2,99          2,86
+2 Temmuz 2007-31 Aralık 2007      5,55       2,54          2,30   2 Temmuz 2007-31 Aralık 2007      6,20      2,99          2,86
+1 Ocak 2008-31 Mart 2008          4,93       2,52          2,30   1 Ocak 2008 -31 Mart 2008         5,68      2,99          2,86
+1 Nisan 2008-30 Haziran 2008      4,54       2,59          2,30   1 Nisan 2008-30 Haziran 2008      5,29      3,12          2,86
+1 Temmuz 2008-31 Mart 2009        4,39       2,54          2,30   1 Temmuz 2008-31 Mart 2009        5,14      3,11          2,82
+1 Nisan 2009-30 Haziran 2009      3,96       2,54          2,30   1 Nisan 2009-30 Haziran 2009      4,71      3,11          2,82
+1 Temmuz 2009- 30 Eylül 2009      3,49       2,54          2,30   1 Temmuz 2009- 30 Eylül 2009      4,24      3,11          2,82
+1 Ekim 2009-31 Aralık 2009        3,26       2,54          2,30   1 Ekim 2009-31 Aralık 2009        4,01      3,11          2,82
+1 Ocak 2010-31 Mart 2010          2,91       2,54          2,30   1 Ocak 2010-31 Mart 2010          3,66      3,11          2,82
+1 Nisan 2010- 30 Haziran 2010     2,80       2,54          2,30   1 Nisan 2010- 30 Haziran 2010     3,55      3,11          2,82
+1 Temmuz 2010- 30 Eylül 2010      2,69       2,54          2,30   1 Temmuz 2010- 30 Eylül 2010      3,19      3,11          2,82
+1 Ekim 2010-31 Aralık 2010        2,44       2,54          2,30   1 Ekim 2010-31 Aralık 2010        2,94      3,11          2,82
+1 Ocak 2011-31 Mart 2011          2,26       2,02          1,90   1 Ocak 2011-31 Mart 2011          2,76      2,52          2,40
+1 Nisan 2011-31 Aralık 2011       2,12       1,70          1,64   1 Nisan 2011-31 Aralık 2011       2,62      2,20          2,14
+1 Ocak 2012-31 Mart 2013          2,34       1,70          1,64   1 Ocak 2012-31 Mart 2013          2,84      2,20          2,14
+1 Nisan 2013-30 Haziran 2013      2,22       1,70          1,64   1 Nisan 2013-30 Haziran 2013      2,72      2,20          2,14
+1 Temmuz 2013-30 Eylül 2013       2,12       1,70          1,64   1 Temmuz 2013-30 Eylül 2013       2,62      2,20          2,14
+1 Ekim 2013-31 Aralık 2014        2,02       1,70          1,64   1 Ekim 2013-31 Aralık 2014        2,52      2,20          2,14
+                                                                                                  Aylık Azami Gecikme Faiz Oranı
+2014/5 sayılı Tebliğ            Aylık Azami Akdi Faiz Oranı (%)   2014/5 sayılı Tebliğ                          (%)
+Dönemler                          TL                YP            Dönemler                          TL               YP
+1 Ocak 2015-31 Aralık 2016        2,02              1,62          1 Ocak 2015-31 Aralık 2016        2,52             2,12
+                                                                                                  Aylık Azami Gecikme Faiz Oranı
+2016/8 sayılı Tebliğ            Aylık Azami Akdi Faiz Oranı (%)   2016/8 sayılı Tebliğ                          (%)
+1 Ocak 2017-30 Haziran 2018       1,84              1,47          1 Ocak 2017-30 Haziran 2018       2,34             1,97
+1 Temmuz 2018-30 Eylül 2018       2,02              1,62          1 Temmuz 2018-30 Eylül 2018       2,52             2,12
+1 Ekim 2018-31 Mart 2019          2,25              1,80          1 Ekim 2018-31 Mart 2019          2,75             2,30
+1 Nisan 2019-30 Haziran 2019      2,15              1,72          1 Nisan 2019-30 Haziran 2019      2,65             2,22
+1 Temmuz 2019-30 Eylül 2019       2,00              1,60          1 Temmuz 2019-30 Eylül 2019       2,40             2,00
+1 Ekim 2019-31 Aralık 2019        1,60              1,28          1 Ekim 2019-31 Aralık 2019        2,00             1,68
+1 Ocak 2020-31 Mart 2020          1,40              1,12          1 Ocak 2020-31 Mart 2020          1,70             1,42
+1 Nisan 2020-31 Ekim 2020         1,25              1,00          1 Nisan 2020-31 Ekim 2020         1,55             1,30
+
