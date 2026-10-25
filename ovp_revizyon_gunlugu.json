@@ -1,0 +1,120 @@
+{
+  "onceki": {
+    "ovp_donemi": "2026-2028",
+    "yayin_tarihi": "2025-09-09"
+  },
+  "satirlar": [
+    {
+      "degisken": "gsyh_buyume",
+      "fark": null,
+      "onceki": 3.3,
+      "onceki_rol": "gerceklesme",
+      "son": null,
+      "son_rol": null,
+      "yil": 2024
+    },
+    {
+      "degisken": "gsyh_buyume",
+      "fark": 0.4,
+      "onceki": 3.3,
+      "onceki_rol": "gt",
+      "son": 3.7,
+      "son_rol": "gerceklesme",
+      "yil": 2025
+    },
+    {
+      "degisken": "gsyh_buyume",
+      "fark": -0.5,
+      "onceki": 3.8,
+      "onceki_rol": "program",
+      "son": 3.3,
+      "son_rol": "gt",
+      "yil": 2026
+    },
+    {
+      "degisken": "gsyh_buyume",
+      "fark": -0.1,
+      "onceki": 4.3,
+      "onceki_rol": "program",
+      "son": 4.2,
+      "son_rol": "program",
+      "yil": 2027
+    },
+    {
+      "degisken": "gsyh_buyume",
+      "fark": -0.4,
+      "onceki": 5.0,
+      "onceki_rol": "program",
+      "son": 4.6,
+      "son_rol": "program",
+      "yil": 2028
+    },
+    {
+      "degisken": "gsyh_buyume",
+      "fark": null,
+      "onceki": null,
+      "onceki_rol": null,
+      "son": 5.0,
+      "son_rol": "program",
+      "yil": 2029
+    },
+    {
+      "degisken": "tufe_yil_sonu",
+      "fark": null,
+      "onceki": 44.4,
+      "onceki_rol": "gerceklesme",
+      "son": null,
+      "son_rol": null,
+      "yil": 2024
+    },
+    {
+      "degisken": "tufe_yil_sonu",
+      "fark": 2.4,
+      "onceki": 28.5,
+      "onceki_rol": "gt",
+      "son": 30.9,
+      "son_rol": "gerceklesme",
+      "yil": 2025
+    },
+    {
+      "degisken": "tufe_yil_sonu",
+      "fark": 12.4,
+      "onceki": 16.0,
+      "onceki_rol": "program",
+      "son": 28.4,
+      "son_rol": "gt",
+      "yil": 2026
+    },
+    {
+      "degisken": "tufe_yil_sonu",
+      "fark": 12.0,
+      "onceki": 9.0,
+      "onceki_rol": "program",
+      "son": 21.0,
+      "son_rol": "program",
+      "yil": 2027
+    },
+    {
+      "degisken": "tufe_yil_sonu",
+      "fark": 5.5,
+      "onceki": 8.0,
+      "onceki_rol": "program",
+      "son": 13.5,
+      "son_rol": "program",
+      "yil": 2028
+    },
+    {
+      "degisken": "tufe_yil_sonu",
+      "fark": null,
+      "onceki": null,
+      "onceki_rol": null,
+      "son": 9.0,
+      "son_rol": "program",
+      "yil": 2029
+    }
+  ],
+  "son": {
+    "ovp_donemi": "2027-2029",
+    "yayin_tarihi": "2026-09-06"
+  }
+}

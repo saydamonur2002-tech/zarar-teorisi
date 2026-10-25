@@ -1,0 +1,218 @@
+{
+  "dogrulanamayan": [
+    "usd_try: OVP Tablo 1.1 kur satırı yok",
+    "gsyh_buyume geçmiş yıl: depoda EVDS yıllık hacim serisi bağlanmadı",
+    "tufe_yil_sonu 2025 öncesi: bes_yil_senaryo_ham.json Aralık çifti yok (seri 2024-01'den)"
+  ],
+  "hucreler": [
+    {
+      "deger": null,
+      "degisken": "tufe_yil_sonu",
+      "kaynak": "bos",
+      "neden": "evds_yok",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2023
+    },
+    {
+      "deger": null,
+      "degisken": "tufe_yil_sonu",
+      "kaynak": "bos",
+      "neden": "evds_yok",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2024
+    },
+    {
+      "deger": 30.89,
+      "degisken": "tufe_yil_sonu",
+      "kaynak": "evds",
+      "neden": "TP.TUKFIY2025.GENEL Aralık/Aralık",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2025
+    },
+    {
+      "deger": 28.4,
+      "degisken": "tufe_yil_sonu",
+      "kaynak": "ovp",
+      "kaynak_url": "https://www.resmigazete.gov.tr/mukerrer/20260906M1-1.pdf",
+      "neden": "gt",
+      "ovp_donemi": "2027-2029",
+      "rol": "gt",
+      "yil": 2026
+    },
+    {
+      "deger": 21.0,
+      "degisken": "tufe_yil_sonu",
+      "kaynak": "ovp",
+      "kaynak_url": "https://www.resmigazete.gov.tr/mukerrer/20260906M1-1.pdf",
+      "neden": "program",
+      "ovp_donemi": "2027-2029",
+      "rol": "program",
+      "yil": 2027
+    },
+    {
+      "deger": 13.5,
+      "degisken": "tufe_yil_sonu",
+      "kaynak": "ovp",
+      "kaynak_url": "https://www.resmigazete.gov.tr/mukerrer/20260906M1-1.pdf",
+      "neden": "program",
+      "ovp_donemi": "2027-2029",
+      "rol": "program",
+      "yil": 2028
+    },
+    {
+      "deger": 9.0,
+      "degisken": "tufe_yil_sonu",
+      "kaynak": "ovp",
+      "kaynak_url": "https://www.resmigazete.gov.tr/mukerrer/20260906M1-1.pdf",
+      "neden": "program",
+      "ovp_donemi": "2027-2029",
+      "rol": "program",
+      "yil": 2029
+    },
+    {
+      "deger": null,
+      "degisken": "gsyh_buyume",
+      "kaynak": "bos",
+      "neden": "evds_yok",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2023
+    },
+    {
+      "deger": null,
+      "degisken": "gsyh_buyume",
+      "kaynak": "bos",
+      "neden": "evds_yok",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2024
+    },
+    {
+      "deger": null,
+      "degisken": "gsyh_buyume",
+      "kaynak": "bos",
+      "neden": "evds_yok",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2025
+    },
+    {
+      "deger": 3.3,
+      "degisken": "gsyh_buyume",
+      "kaynak": "ovp",
+      "kaynak_url": "https://www.resmigazete.gov.tr/mukerrer/20260906M1-1.pdf",
+      "neden": "gt",
+      "ovp_donemi": "2027-2029",
+      "rol": "gt",
+      "yil": 2026
+    },
+    {
+      "deger": 4.2,
+      "degisken": "gsyh_buyume",
+      "kaynak": "ovp",
+      "kaynak_url": "https://www.resmigazete.gov.tr/mukerrer/20260906M1-1.pdf",
+      "neden": "program",
+      "ovp_donemi": "2027-2029",
+      "rol": "program",
+      "yil": 2027
+    },
+    {
+      "deger": 4.6,
+      "degisken": "gsyh_buyume",
+      "kaynak": "ovp",
+      "kaynak_url": "https://www.resmigazete.gov.tr/mukerrer/20260906M1-1.pdf",
+      "neden": "program",
+      "ovp_donemi": "2027-2029",
+      "rol": "program",
+      "yil": 2028
+    },
+    {
+      "deger": 5.0,
+      "degisken": "gsyh_buyume",
+      "kaynak": "ovp",
+      "kaynak_url": "https://www.resmigazete.gov.tr/mukerrer/20260906M1-1.pdf",
+      "neden": "program",
+      "ovp_donemi": "2027-2029",
+      "rol": "program",
+      "yil": 2029
+    },
+    {
+      "deger": null,
+      "degisken": "usd_try",
+      "kaynak": "bos",
+      "neden": "evds_yok",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2023
+    },
+    {
+      "deger": null,
+      "degisken": "usd_try",
+      "kaynak": "bos",
+      "neden": "evds_yok",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2024
+    },
+    {
+      "deger": null,
+      "degisken": "usd_try",
+      "kaynak": "bos",
+      "neden": "evds_yok",
+      "ovp_donemi": null,
+      "rol": null,
+      "yil": 2025
+    },
+    {
+      "deger": null,
+      "degisken": "usd_try",
+      "kaynak": "bos",
+      "neden": "ovp_hucre_yok",
+      "ovp_donemi": "2027-2029",
+      "rol": null,
+      "yil": 2026
+    },
+    {
+      "deger": null,
+      "degisken": "usd_try",
+      "kaynak": "bos",
+      "neden": "ovp_hucre_yok",
+      "ovp_donemi": "2027-2029",
+      "rol": null,
+      "yil": 2027
+    },
+    {
+      "deger": null,
+      "degisken": "usd_try",
+      "kaynak": "bos",
+      "neden": "ovp_hucre_yok",
+      "ovp_donemi": "2027-2029",
+      "rol": null,
+      "yil": 2028
+    },
+    {
+      "deger": null,
+      "degisken": "usd_try",
+      "kaynak": "bos",
+      "neden": "ovp_hucre_yok",
+      "ovp_donemi": "2027-2029",
+      "rol": null,
+      "yil": 2029
+    }
+  ],
+  "referans_yil": 2026,
+  "senaryo_tufe_yol_dokunulmadi": 0.28,
+  "son_ovp": {
+    "ovp_donemi": "2027-2029",
+    "yayin_tarihi": "2026-09-06"
+  },
+  "stok_akis_baglanti": false,
+  "tufe_yol_ovp_program": {
+    "2027": 0.21,
+    "2028": 0.135,
+    "2029": 0.09
+  }
+}
