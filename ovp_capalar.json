@@ -1,8 +1,7 @@
 {
   "dogrulanamayan": [
     "usd_try: OVP Tablo 1.1 kur satırı yok",
-    "gsyh_buyume geçmiş yıl: depoda EVDS yıllık hacim serisi bağlanmadı",
-    "tufe_yil_sonu 2025 öncesi: bes_yil_senaryo_ham.json Aralık çifti yok (seri 2024-01'den)"
+    "tufe_yil_sonu 2023, 2024: bes_yil_senaryo_ham.json Aralık çifti yok (seri 2024-01'den)"
   ],
   "hucreler": [
     {
@@ -29,6 +28,8 @@
       "kaynak": "evds",
       "neden": "TP.TUKFIY2025.GENEL Aralık/Aralık",
       "ovp_donemi": null,
+      "ovp_fark": -0.01,
+      "ovp_hucre": 30.9,
       "rol": null,
       "yil": 2025
     },
@@ -73,29 +74,34 @@
       "yil": 2029
     },
     {
-      "deger": null,
+      "deger": 5.05,
       "degisken": "gsyh_buyume",
-      "kaynak": "bos",
-      "neden": "evds_yok",
+      "kaynak": "evds",
+      "kaynak_url": "https://data.tuik.gov.tr/Bulten/Index?p=Donemsel-Gayrisafi-Yurt-Ici-Hasila-II.-Ceyrek:-Nisan-Haziran,-2026-58211",
+      "neden": "TP.GSYIH40.IFC.B1GQ dört çeyrek toplamı",
       "ovp_donemi": null,
       "rol": null,
       "yil": 2023
     },
     {
-      "deger": null,
+      "deger": 3.48,
       "degisken": "gsyh_buyume",
-      "kaynak": "bos",
-      "neden": "evds_yok",
+      "kaynak": "evds",
+      "kaynak_url": "https://data.tuik.gov.tr/Bulten/Index?p=Donemsel-Gayrisafi-Yurt-Ici-Hasila-II.-Ceyrek:-Nisan-Haziran,-2026-58211",
+      "neden": "TP.GSYIH40.IFC.B1GQ dört çeyrek toplamı",
       "ovp_donemi": null,
       "rol": null,
       "yil": 2024
     },
     {
-      "deger": null,
+      "deger": 3.74,
       "degisken": "gsyh_buyume",
-      "kaynak": "bos",
-      "neden": "evds_yok",
+      "kaynak": "evds",
+      "kaynak_url": "https://data.tuik.gov.tr/Bulten/Index?p=Donemsel-Gayrisafi-Yurt-Ici-Hasila-II.-Ceyrek:-Nisan-Haziran,-2026-58211",
+      "neden": "TP.GSYIH40.IFC.B1GQ dört çeyrek toplamı",
       "ovp_donemi": null,
+      "ovp_fark": 0.04,
+      "ovp_hucre": 3.7,
       "rol": null,
       "yil": 2025
     },

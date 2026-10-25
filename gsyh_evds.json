@@ -1,0 +1,29 @@
+{
+  "seri": "TP.GSYIH40.IFC.B1GQ",
+  "ad": "Gayrisafi Yurt İçi Hasıla (Üretim Yöntemiyle, İktisadi Faaliyet Kollarına (A10) Göre, Zincirlenmiş Hacim)",
+  "frekans": "ceyreklik",
+  "evds_grup": "bie_gsyhuretzinc",
+  "yontem": "Takvim yılı = dört çeyrek toplamı. Büyüme = yıl / önceki yıl − 1, yüzde, 2 ondalık. Eksik çeyrek olan yıl boş kalır.",
+  "bulten": "Dönemsel Gayrisafi Yurt İçi Hasıla, II. Çeyrek: Nisan-Haziran 2026",
+  "bulten_no": "58211",
+  "bulten_tarihi": "2026-08-31",
+  "kaynak_url": "https://data.tuik.gov.tr/Bulten/Index?p=Donemsel-Gayrisafi-Yurt-Ici-Hasila-II.-Ceyrek:-Nisan-Haziran,-2026-58211",
+  "gozlem": {
+    "2022-Q1": "479420805.4429",
+    "2022-Q2": "515717208.3429",
+    "2022-Q3": "569713378.7694",
+    "2022-Q4": "588388856.8401",
+    "2023-Q1": "498407252.3117",
+    "2023-Q2": "539446294.2439",
+    "2023-Q3": "606746039.0364",
+    "2023-Q4": "617274297.8838",
+    "2024-Q1": "525475817.3146",
+    "2024-Q2": "552501309.3486",
+    "2024-Q3": "624730298.0691",
+    "2024-Q4": "637781908.6195",
+    "2025-Q1": "539021478.1169",
+    "2025-Q2": "579269266.5671",
+    "2025-Q3": "649308679.5418",
+    "2025-Q4": "660365686.6781"
+  }
+}

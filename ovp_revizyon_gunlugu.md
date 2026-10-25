@@ -18,9 +18,9 @@ Senaryodaki `tufe_yol` 0.28 duruyor. OVP program yılları ayrı yüzde-yol olar
 | tufe_yil_sonu | 2027 | 21.0 | ovp |
 | tufe_yil_sonu | 2028 | 13.5 | ovp |
 | tufe_yil_sonu | 2029 | 9.0 | ovp |
-| gsyh_buyume | 2023 | — | bos |
-| gsyh_buyume | 2024 | — | bos |
-| gsyh_buyume | 2025 | — | bos |
+| gsyh_buyume | 2023 | 5.05 | evds |
+| gsyh_buyume | 2024 | 3.48 | evds |
+| gsyh_buyume | 2025 | 3.74 | evds |
 | gsyh_buyume | 2026 | 3.3 | ovp |
 | gsyh_buyume | 2027 | 4.2 | ovp |
 | gsyh_buyume | 2028 | 4.6 | ovp |
@@ -32,6 +32,15 @@ Senaryodaki `tufe_yol` 0.28 duruyor. OVP program yılları ayrı yüzde-yol olar
 | usd_try | 2027 | — | bos |
 | usd_try | 2028 | — | bos |
 | usd_try | 2029 | — | bos |
+
+## Çapa eksi son OVP hücresi
+
+Geçmiş yıl çapası gerçekleşen seridir. Fark, bu değer ile son yayındaki OVP hücresi arasındadır.
+
+| Değişken | Yıl | Çapa | OVP hücresi | Fark |
+| --- | ---: | ---: | ---: | ---: |
+| tufe_yil_sonu | 2025 | 30.89 | 30.9 | -0.01 |
+| gsyh_buyume | 2025 | 3.74 | 3.7 | 0.04 |
 
 ## Revizyon
 
@@ -55,5 +64,4 @@ Tablo iki OVP hücresini karşılaştırır. Çapa tablosundaki EVDS değeri bur
 ## Doğrulanamayan
 
 - usd_try: OVP Tablo 1.1 kur satırı yok
-- gsyh_buyume geçmiş yıl: depoda EVDS yıllık hacim serisi bağlanmadı
-- tufe_yil_sonu 2025 öncesi: bes_yil_senaryo_ham.json Aralık çifti yok (seri 2024-01'den)
+- tufe_yil_sonu 2023, 2024: bes_yil_senaryo_ham.json Aralık çifti yok (seri 2024-01'den)

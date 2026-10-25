@@ -1,11 +1,12 @@
 """OVP revizyonlarından dışsal çapa. Stok-akışa yazmaz.
 
 Son yayımlanan Orta Vadeli Program seçilir. Referans yılının öncesi, depodaki
-EVDS Aralık/Aralık TÜFE'si varsa ondan doldurulur. İçinde bulunulan yıl ve
-sonrası son OVP hücresinden gelir. Kur hedefi resmi tabloda yoksa boş kalır.
+gerçekleşen seri varsa ondan doldurulur: TÜFE Aralık/Aralık, GSYH dört çeyrek
+zincirlenmiş hacim toplamının yıllık değişimi. İçinde bulunulan yıl ve sonrası
+son OVP hücresinden gelir. Kur hedefi resmi tabloda yoksa boş kalır.
 
 Çalıştır: python3 ovp_revizyon.py
-Girdi: ovp_revizyonlar.json, bes_yil_senaryo_ham.json
+Girdi: ovp_revizyonlar.json, bes_yil_senaryo_ham.json, gsyh_evds.json
 Çıktı: ovp_revizyonlar.csv, ovp_capalar.json, ovp_revizyon_gunlugu.json, ovp_revizyon_gunlugu.md
 """
 
@@ -19,7 +20,9 @@ from pathlib import Path
 KOK = Path(__file__).resolve().parent
 KAYIT = KOK / "ovp_revizyonlar.json"
 HAM = KOK / "bes_yil_senaryo_ham.json"
+GSYH = KOK / "gsyh_evds.json"
 S_TUFE = "TP.TUKFIY2025.GENEL"
+S_GSYH = "TP.GSYIH40.IFC.B1GQ"
 
 DEGISKENLER = ("tufe_yil_sonu", "gsyh_buyume", "usd_try")
 CSV_ALAN = ("yayin_tarihi", "ovp_donemi", "degisken", "yil", "deger", "rol", "birim", "kaynak_url")
@@ -85,32 +88,71 @@ def evds_oku(yol: Path | None = None) -> dict:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
-def _evds(ham: dict, degisken: str, yil: int) -> float | None:
+def gsyh_oku(yol: Path | None = None) -> dict:
+    p = yol if yol is not None else GSYH
+    if not p.exists():
+        return {}
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def evds_gsyh_buyume(gsyh: dict, yil: int) -> float | None:
+    """Takvim yılı, yüzde. Dört çeyrekten biri yoksa None; yarım yıl toplanmaz."""
+    gozlem = gsyh.get("gozlem") or {}
+
+    def _top(y: int) -> float | None:
+        parca = []
+        for ceyrek in (1, 2, 3, 4):
+            v = gozlem.get(f"{y}-Q{ceyrek}")
+            if v in (None, ""):
+                return None
+            parca.append(float(v))
+        return sum(parca)
+
+    cur = _top(yil)
+    prev = _top(yil - 1)
+    if cur is None or prev in (None, 0):
+        return None
+    return round((cur / prev - 1) * 100, 2)
+
+
+def _evds_olcum(ham: dict, gsyh: dict, degisken: str, yil: int) -> tuple[float | None, str, str | None]:
     if degisken == "tufe_yil_sonu":
-        return evds_tufe_yil_sonu(ham, yil)
-    return None
+        return evds_tufe_yil_sonu(ham, yil), f"{S_TUFE} Aralık/Aralık", None
+    if degisken == "gsyh_buyume":
+        url = gsyh.get("kaynak_url") or None
+        return evds_gsyh_buyume(gsyh, yil), f"{S_GSYH} dört çeyrek toplamı", url
+    return None, "evds_yok", None
 
 
-def capalar(kayit: list[dict], ham: dict, referans: date) -> dict:
+def capalar(kayit: list[dict], ham: dict, referans: date, gsyh: dict | None = None) -> dict:
     """Meta çapa. NFP, servis oranı ve bant anahtarı yok."""
     son = son_yayin(kayit)
+    if gsyh is None:
+        gsyh = gsyh_oku()
     yillar = sorted({s["yil"] for s in kayit})
 
     hucreler = []
     for degisken in DEGISKENLER:
         for yil in yillar:
             if yil < referans.year:
-                olcum = _evds(ham, degisken, yil)
+                olcum, neden, url = _evds_olcum(ham, gsyh, degisken, yil)
                 if olcum is None:
                     hucreler.append({
                         "degisken": degisken, "yil": yil, "deger": None, "kaynak": "bos",
                         "neden": "evds_yok", "ovp_donemi": None, "rol": None,
                     })
                 else:
-                    hucreler.append({
+                    hucre = {
                         "degisken": degisken, "yil": yil, "deger": olcum, "kaynak": "evds",
-                        "neden": f"{S_TUFE} Aralık/Aralık", "ovp_donemi": None, "rol": None,
-                    })
+                        "neden": neden, "ovp_donemi": None, "rol": None,
+                    }
+                    if url:
+                        hucre["kaynak_url"] = url
+                    ovp = _hucre(son, degisken, yil)
+                    if ovp is not None:
+                        hucre["ovp_hucre"] = ovp["deger"]
+                        hucre["ovp_fark"] = round(olcum - ovp["deger"], 2)
+                    hucreler.append(hucre)
                 continue
             ovp = _hucre(son, degisken, yil)
             if ovp is None:
@@ -140,12 +182,23 @@ def capalar(kayit: list[dict], ham: dict, referans: date) -> dict:
         "senaryo_tufe_yol_dokunulmadi": SENARYO_TUFE_YOL,
         "tufe_yol_ovp_program": yol,
         "hucreler": hucreler,
-        "dogrulanamayan": [
-            "usd_try: OVP Tablo 1.1 kur satırı yok",
-            "gsyh_buyume geçmiş yıl: depoda EVDS yıllık hacim serisi bağlanmadı",
-            "tufe_yil_sonu 2025 öncesi: bes_yil_senaryo_ham.json Aralık çifti yok (seri 2024-01'den)",
-        ],
+        "dogrulanamayan": _dogrulanamayan(hucreler),
     }
+
+
+def _dogrulanamayan(hucreler: list[dict]) -> list[str]:
+    notlar = []
+    if any(h["degisken"] == "usd_try" and h["deger"] is None for h in hucreler):
+        notlar.append("usd_try: OVP Tablo 1.1 kur satırı yok")
+    tufe_bos = [h["yil"] for h in hucreler if h["degisken"] == "tufe_yil_sonu" and h["neden"] == "evds_yok"]
+    if tufe_bos:
+        yil = ", ".join(str(y) for y in tufe_bos)
+        notlar.append(f"tufe_yil_sonu {yil}: bes_yil_senaryo_ham.json Aralık çifti yok (seri 2024-01'den)")
+    gsyh_bos = [h["yil"] for h in hucreler if h["degisken"] == "gsyh_buyume" and h["neden"] == "evds_yok"]
+    if gsyh_bos:
+        yil = ", ".join(str(y) for y in gsyh_bos)
+        notlar.append(f"gsyh_buyume {yil}: {S_GSYH} dört çeyrek yok")
+    return notlar
 
 
 def gunluk(kayit: list[dict]) -> dict:
@@ -215,6 +268,19 @@ def _md(yol: Path, capa: dict, fark: dict) -> None:
     for h in capa["hucreler"]:
         deger = "—" if h["deger"] is None else h["deger"]
         satir.append(f"| {h['degisken']} | {h['yil']} | {deger} | {h['kaynak']} |")
+    farklar = [h for h in capa["hucreler"] if "ovp_fark" in h]
+    if farklar:
+        satir += [
+            "",
+            "## Çapa eksi son OVP hücresi",
+            "",
+            "Geçmiş yıl çapası gerçekleşen seridir. Fark, bu değer ile son yayındaki OVP hücresi arasındadır.",
+            "",
+            "| Değişken | Yıl | Çapa | OVP hücresi | Fark |",
+            "| --- | ---: | ---: | ---: | ---: |",
+        ]
+        for h in farklar:
+            satir.append(f"| {h['degisken']} | {h['yil']} | {h['deger']} | {h['ovp_hucre']} | {h['ovp_fark']} |")
     satir += [
         "",
         "## Revizyon",
@@ -240,7 +306,7 @@ def yaz(kok: Path | None = None, referans: date | None = None, ham: dict | None 
     kayit = yukle(kok / "ovp_revizyonlar.json")
     if ham is None:
         ham = evds_oku(kok / "bes_yil_senaryo_ham.json")
-    capa = capalar(kayit, ham, referans)
+    capa = capalar(kayit, ham, referans, gsyh_oku(kok / "gsyh_evds.json"))
     fark = gunluk(kayit)
     _csv(kok / "ovp_revizyonlar.csv", kayit)
     _json(kok / "ovp_capalar.json", capa)

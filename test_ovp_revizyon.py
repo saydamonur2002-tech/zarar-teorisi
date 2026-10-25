@@ -48,13 +48,35 @@ def test_gecmis_tufe_evds_gelecek_ovp():
     assert capa["senaryo_tufe_yol_dokunulmadi"] == 0.28
 
 
-def test_kur_ve_buyume_bosluklari():
+def test_kur_bos_buyume_evds():
     capa = _capa()
     assert all(h["deger"] is None for h in capa["hucreler"] if h["degisken"] == "usd_try")
-    assert _hucre(capa, "gsyh_buyume", 2025)["deger"] is None
-    assert _hucre(capa, "gsyh_buyume", 2025)["kaynak"] == "bos"
-    assert _hucre(capa, "gsyh_buyume", 2027)["deger"] == 4.2
+    b25 = _hucre(capa, "gsyh_buyume", 2025)
+    assert b25["kaynak"] == "evds"
+    assert b25["deger"] == 3.74
+    assert b25["deger"] != 3.7
+    assert b25["ovp_hucre"] == 3.7
+    assert b25["ovp_fark"] == 0.04
+    assert b25["neden"] == "TP.GSYIH40.IFC.B1GQ dört çeyrek toplamı"
+    assert "58211" in b25["kaynak_url"]
+    assert _hucre(capa, "gsyh_buyume", 2023)["deger"] == 5.05
+    assert _hucre(capa, "gsyh_buyume", 2024)["deger"] == 3.48
+    assert _hucre(capa, "gsyh_buyume", 2024)["kaynak"] == "evds"
+    assert "ovp_fark" not in _hucre(capa, "gsyh_buyume", 2024)
+    assert _hucre(capa, "gsyh_buyume", 2026)["kaynak"] == "ovp"
     assert _hucre(capa, "gsyh_buyume", 2026)["deger"] == 3.3
+    assert _hucre(capa, "gsyh_buyume", 2027)["deger"] == 4.2
+    assert all("gsyh_buyume geçmiş" not in n for n in capa["dogrulanamayan"])
+
+
+def test_acik_yil_toplami_yok():
+    """2026 dört çeyreği kapanmadan yıllık büyüme yazılmaz."""
+    capa = O.capalar(O.yukle(), O.evds_oku(), date(2027, 6, 1), O.gsyh_oku())
+    h = _hucre(capa, "gsyh_buyume", 2026)
+    assert h["deger"] is None
+    assert h["kaynak"] == "bos"
+    assert h["neden"] == "evds_yok"
+    assert _hucre(capa, "gsyh_buyume", 2025)["deger"] == 3.74
 
 
 def test_revizyon_farki():
@@ -71,6 +93,7 @@ def test_revizyon_farki():
 def test_idempotent(tmp_path):
     (tmp_path / "ovp_revizyonlar.json").write_text((KOK / "ovp_revizyonlar.json").read_text(encoding="utf-8"), encoding="utf-8")
     (tmp_path / "bes_yil_senaryo_ham.json").write_text((KOK / "bes_yil_senaryo_ham.json").read_text(encoding="utf-8"), encoding="utf-8")
+    (tmp_path / "gsyh_evds.json").write_text((KOK / "gsyh_evds.json").read_text(encoding="utf-8"), encoding="utf-8")
     O.yaz(tmp_path, REFERANS)
     ilk = {p.name: p.read_bytes() for p in tmp_path.iterdir()}
     O.yaz(tmp_path, REFERANS)
