@@ -50,10 +50,6 @@ Kaynak blob `27649252…` ile aynı olan diğer dal uçları: `cursor/adim3-faiz
 
 Zip içindeki `tests/` ve `.github/workflows/etki-cephesi.yml` kendi başına çalışmıyordu: iş akışı repo kökünde `etki_cephesi/` bekler, bu depoda o yol harm kopyasıdır. `etki_cephesi/run_model_tests.py` her iki zipi geçici dizine açar, reponun kökünü `_incoming/zarar-teorisi-main` diye bağlar (`akis_model.py`, `akis_model_ozeti.json`, `L_v2_2026-Q1.csv`, `G_v2_2026-Q1.csv`; güncel revize testi bunu ister, dizin zipte yoktur) ve `tests/test_etki_cephesi_*.py` çalıştırır. 2026-10-25: güncel paket 78 geçti, eski paket 27 geçti. `durum_ozeti.py` iki pakette de eksik dosya görmedi. İş akışı `.github/workflows/etki-cephesi-model.yml`.
 
-## Odak: İsrail, İran, Mısır
-
-`etki_cephesi/odak_israil_iran_misir/` mevcut sayılardan üretilir (`olustur.py`). Havza netleri `havza_kayip.json`, aktör defteri `PROJEKSIYON.json`, pay ve 2023 ticaret güncel zip girdisidir. İsrail'in otuz havzada satırı yoktur; havza neti null. Yan kayıtlar (`data/etki_cephesi/gozlem/duyarlilik/`) ana modelin okumadığı dökümdür, bölüme kopyalanmadı.
-
 ## Atlanan birebir çiftler
 
 `cursor/odeme-zinciri-kalicilik-f01a` `48676a332a7acf886c4826cd21fff388494020f1` `main`’in atasıdır. Aşağıdaki yollar `main` (`e0cc05f72db17d99d9ccf40147e6b50f876410d1`) ile aynı bayttır.
