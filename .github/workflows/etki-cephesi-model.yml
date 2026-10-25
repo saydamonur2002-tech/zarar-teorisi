@@ -41,5 +41,10 @@ jobs:
         run: |
           python3 etki_cephesi/git-harm/scripts/isaret_duyarlilik.py >/tmp/isaret.txt
           git diff --exit-code -- etki_cephesi/git-harm/ISARET_DUYARLILIK.md
+      - name: Odak bölümü kaynakla aynı
+        run: |
+          python3 etki_cephesi/odak_israil_iran_misir/olustur.py
+          git diff --exit-code -- etki_cephesi/odak_israil_iran_misir/odak_ulkeler.json etki_cephesi/odak_israil_iran_misir/README.md
+          python3 -m pytest etki_cephesi/odak_israil_iran_misir/test_odak.py -q
       - name: Model testleri
         run: python3 etki_cephesi/run_model_tests.py
