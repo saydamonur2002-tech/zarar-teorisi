@@ -5,7 +5,9 @@ Arama: `zarar-teorisi` uzak dalları (31), `saydamonur2002-tech/tek-sistem` `c01
 
 ## Origin `g-l-mse/git-harm`
 
-`origin` CLI bu ortamda kimliksiz (`origin repo list`: Not authenticated). GitHub `g-l-mse/git-harm` 404. Commit `204fc7c` (2026-10-15, kullanıcı anlık görüntüsü) buradan doğrulanamadı. Eklenen ağaç ekteki `git_harm_parcalar.tar.gz` üyeleridir; Next.js arayüzü pakette yok. JSON’lar `data/` altında. README metni `src/data/geriye.json` der; paketteki yol `data/geriye.json`.
+Commit `204fc7c` doğrulanamadı. 2026-10-25 denemesi: `gh api repos/g-l-mse/git-harm/commits/204fc7c` HTTP 404; `origin repo view g-l-mse/git-harm` kimliksiz (`Not authenticated`). Tarih, yazar ve ağaç uydurulmadı. Aşağıdaki tablo kopyanın ilk baytlarıdır; kaynak depodaki `204fc7c` ile aynı olduğu gösterilemedi.
+
+Eklenen ağaç ekteki `git_harm_parcalar.tar.gz` üyeleridir; Next.js arayüzü pakette yoktu. JSON’lar `data/` altında. İlk README `src/data/geriye.json` ve `npm run dev` diyordu; pakette bu yol ve bu uygulama yoktu. Betik artık `data/geriye.json` yazar. README bu kopyayı anlatır, arayüz tarif etmez.
 
 | Kaynak | Kaynak yol | Commit | Hedef | Bayt | SHA-256 |
 | --- | --- | --- | --- | ---: | --- |
@@ -18,18 +20,35 @@ Arama: `zarar-teorisi` uzak dalları (31), `saydamonur2002-tech/tek-sistem` `c01
 
 `data/evds_odeme_dengesi_aylik.csv` baytları, `main` üzerindeki `yayin/etki-cephesi-model.zip` içindeki `data/etki_cephesi/gozlem/evds_odeme_dengesi_aylik.csv` ile aynıdır. Ayrı dosya olarak çalışma ağacında yoktu; anlık görüntü bütünü kopyalandı.
 
+Yerel düzeltme: `README.md` ve `scripts/mfin_maliyet.py` ilk bayttan ayrıldı. `data/geriye.json` aynı kaldı (`ef006e66…`, 2910 bayt). Betik bu dosyayı yeniden yazar; çıktı `cmp` ile ilk dosyaya eşittir.
+
+| Dosya | Bayt | SHA-256 |
+| --- | ---: | --- |
+| `etki_cephesi/git-harm/README.md` | 2481 | `a9d3ed4f62d9edafafe37d235f66bb7433e64b3dd4944eb27edfe3d0e42d5c27` |
+| `etki_cephesi/git-harm/scripts/mfin_maliyet.py` | 12340 | `e2f73ddbebe114a68e9cd544ae0e3dc8826c5e7f815d67c46cff317e3674ce55` |
+
+`scripts/isaret_duyarlilik.py` ve `ISARET_DUYARLILIK.md` κ, pol ve üç dolar köprüsünde işaretin nasıl gezdiğini yazar. Model sayısı ve `geriye.json` değişmez.
+
 ## Kopyalanan (zarar-teorisi, revize öncesi paket)
 
-Güncel `yayin/etki-cephesi-model.zip` (`101b0d25…`, 599810 bayt) `main` ile `cursor/odeme-zinciri-kalicilik-f01a` üzerinde aynıdır. Aşağıdaki iki dosya o paketin önceki sürümüdür; dokuz dalda aynı blob. Tek kopya, en eski dal ucundan.
+`e0cc05f` üzerindeki `yayin/etki-cephesi-model.zip` 599810 bayt, SHA-256 `101b0d2534b01b2bd5309c8bc12b3a50a457b9f1868e3fbfd6634fc8e614ac3f` (aşağıdaki atlanan çiftler tablosu). Bu ağaçtaki dosya sonradan değişmiştir: 587739 bayt, SHA-256 `5b31c6435d860d891e2818fc674c86989f4ad8af7a914df036e13b6ceb680ccb`. İçindeki `reports/etki_cephesi/PROJEKSIYON.json` 467500 bayt, SHA-256 `47c370af6ac1c6b944fd2db47a5b3a31a121374d850a8207711f69deb467ddf2`.
+
+Aşağıdaki zip, `cursor/orta-vade-senaryo-f01a` ucundaki eski pakettir. İlk kopya 362057 bayt, SHA-256 `27649252f1dd7a6173a4841110ffc9166bf87fdcbaaf539c98ebb4c3185a35f1` (dokuz dalda aynı blob). Üye yolları ters bölüydü. `dis_aktör_pay.json` adı arşivde UTF-8 (`c3 b6`) ve bit 11 ile duruyordu; içerik bozuk değildi. Info-ZIP 6.00 ters bölüyü dizine çevirirken bu adı CP437 `dis_akt├╢r_pay.json` olarak açıyordu. Güncel paket zaten `yayin/etki-cephesi-model.zip` olduğu için eski paketin yerine konmadı. Eski paket yerinde yeniden paketlendi: yollar `/`, üye içeriklerinin SHA-256’si aynı, `unzip` adı `dis_aktör_pay.json` olarak açıyor. Yeni arşiv 362057 bayt, SHA-256 `acd88cfea07203252559e45459407eebc804a6b901804ed8ca4f0b6693a196ad`. İlk blob `main` geçmişindedir.
 
 | Kaynak depo / dal | Kaynak yol | Commit | Hedef | Bayt | SHA-256 |
 | --- | --- | --- | --- | ---: | --- |
-| `zarar-teorisi` `cursor/orta-vade-senaryo-f01a` | `yayin/etki-cephesi-model.zip` | `a9a35a2f256d0f954574fe4a1fc1343937215353` | `etki_cephesi/zarar-teorisi/cursor/orta-vade-senaryo-f01a/yayin/etki-cephesi-model.zip` | 362057 | `27649252f1dd7a6173a4841110ffc9166bf87fdcbaaf539c98ebb4c3185a35f1` |
+| `zarar-teorisi` `cursor/orta-vade-senaryo-f01a` | `yayin/etki-cephesi-model.zip` | `a9a35a2f256d0f954574fe4a1fc1343937215353` | `etki_cephesi/zarar-teorisi/cursor/orta-vade-senaryo-f01a/yayin/etki-cephesi-model.zip` | 362057 | `acd88cfea07203252559e45459407eebc804a6b901804ed8ca4f0b6693a196ad` (onarım; kaynak blob `27649252…`) |
 | `zarar-teorisi` `cursor/orta-vade-senaryo-f01a` | `yayin/README.md` | `a9a35a2f256d0f954574fe4a1fc1343937215353` | `etki_cephesi/zarar-teorisi/cursor/orta-vade-senaryo-f01a/yayin/README.md` | 1444 | `02692c04f0a3762c8f5b2abef1e4a90cd29afbbe57762c947f9573c89862334f` |
 
-Aynı blob’u taşıyan diğer dal uçları: `cursor/adim3-faiz-satiri-f01a` `f85d403a`, `cursor/borc-prim-f01a` `22721239`, `cursor/dis-borc-sahip-odeyen-f01a` `9e5f1958`, `cursor/faiz-dissallik-f01a` `b0d96d09`, `cursor/kalan-vade-artis-f01a` `43c92959`, `cursor/ndv-altin-artik-f01a` `bdacc55a`, `cursor/sektor-doviz-pozisyon-f01a` `a9952251`, `cursor/zincir-h1h7-sinama-f01a` `23c75956`.
+Kaynak blob `27649252…` ile aynı olan diğer dal uçları: `cursor/adim3-faiz-satiri-f01a` `f85d403a`, `cursor/borc-prim-f01a` `22721239`, `cursor/dis-borc-sahip-odeyen-f01a` `9e5f1958`, `cursor/faiz-dissallik-f01a` `b0d96d09`, `cursor/kalan-vade-artis-f01a` `43c92959`, `cursor/ndv-altin-artik-f01a` `bdacc55a`, `cursor/sektor-doviz-pozisyon-f01a` `a9952251`, `cursor/zincir-h1h7-sinama-f01a` `23c75956`.
 
-`PROJEKSIYON.json` hiçbir dalda git yolu değildir. Eski zip içinde `reports/etki_cephesi/PROJEKSIYON.json` (420988 bayt, SHA-256 `9e1cd028eab9aa97aa4695ff7d396f071d765a9fa02354f13f3e85abe3761e59`). Güncel zip içinde ayrı sürüm (467500 bayt, SHA-256 `47c370af6ac1c6b944fd2db47a5b3a31a121374d850a8207711f69deb467ddf2`); zip zaten `main`’de olduğu için dışarı çıkarılmadı.
+`PROJEKSIYON.json` hiçbir dalda git yolu değildir. Eski zip içinde `reports/etki_cephesi/PROJEKSIYON.json` (420988 bayt, SHA-256 `9e1cd028eab9aa97aa4695ff7d396f071d765a9fa02354f13f3e85abe3761e59`). Güncel zip içindeki sürüm düz dosya olarak çıkarıldı: `etki_cephesi/data/PROJEKSIYON.json` (467500 bayt, SHA-256 `47c370af6ac1c6b944fd2db47a5b3a31a121374d850a8207711f69deb467ddf2`, zip üyesiyle aynı bayt).
+
+`etki_cephesi/git-harm/data/havza_kayip.json` kaynağını `PROJEKSIYON.json bolgesel_net` diye yazar. İki sürümün `senaryolar[].bolgesel_net[].net_endeks` alanları otuz havzada A, B ve C için bu dosyayla aynıdır (0 sapma). Toplam net A −15,247, B −25,727, C −9,899. Düz dosya güncel sürümdür.
+
+## Test
+
+Zip içindeki `tests/` ve `.github/workflows/etki-cephesi.yml` kendi başına çalışmıyordu: iş akışı repo kökünde `etki_cephesi/` bekler, bu depoda o yol harm kopyasıdır. `etki_cephesi/run_model_tests.py` her iki zipi geçici dizine açar, reponun kökünü `_incoming/zarar-teorisi-main` diye bağlar (`akis_model.py`, `akis_model_ozeti.json`, `L_v2_2026-Q1.csv`, `G_v2_2026-Q1.csv`; güncel revize testi bunu ister, dizin zipte yoktur) ve `tests/test_etki_cephesi_*.py` çalıştırır. 2026-10-25: güncel paket 78 geçti, eski paket 27 geçti. `durum_ozeti.py` iki pakette de eksik dosya görmedi. İş akışı `.github/workflows/etki-cephesi-model.yml`.
 
 ## Atlanan birebir çiftler
 
