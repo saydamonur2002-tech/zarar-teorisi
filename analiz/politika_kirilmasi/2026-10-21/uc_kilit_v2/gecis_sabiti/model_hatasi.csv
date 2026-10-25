@@ -1,0 +1,7 @@
+model,n,a,a_lo,a_hi,lam_top,rho,uzun_a,e12,oca,tem
+M0,33,1.951,1.076,2.826,0.409,,,,,
+M1 +kur gecikme 1-6,33,1.615,0.453,2.778,0.54,,,,,
+M2 +atalet,33,1.488,0.089,2.887,0.489,"(np.float64(0.08), np.float64(-0.19), np.float64(0.35))",1.617,,,
+M3 +beklenti,33,-0.841,-3.754,2.072,-0.011,"(np.float64(-0.015), np.float64(-0.303), np.float64(0.274))",-0.829,"(np.float64(2.156), np.float64(-0.453), np.float64(4.766))",,
+M4 +Ocak/Temmuz,33,-1.321,-3.586,0.944,0.082,"(np.float64(0.247), np.float64(0.025), np.float64(0.469))",-1.755,"(np.float64(1.808), np.float64(-0.424), np.float64(4.04))","(np.float64(3.246), np.float64(2.626), np.float64(3.865))","(np.float64(0.598), np.float64(-0.043), np.float64(1.238))"
+M5 +12 ay kuklası (atalet+kur gecikme),33,1.302,0.766,1.838,,0.481,,,,
