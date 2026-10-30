@@ -213,7 +213,7 @@ def _mn(value: Decimal) -> float:
 
 
 def geriye_yaz() -> dict[str, object]:
-    """Sayfanın okuduğu src/data/geriye.json dosyasını yazar."""
+    """Geriye neti data/geriye.json dosyasına yazar."""
     pencere = son_on_yil()
     toplam = gecmis_on_yil()
     kazanc = Decimal(str(toplam["net"]))
@@ -257,7 +257,7 @@ def geriye_yaz() -> dict[str, object]:
         "senaryolar": senaryolar,
         "yillar": yillar,
     }
-    hedef = Path(__file__).resolve().parents[1] / "src" / "data" / "geriye.json"
+    hedef = Path(__file__).resolve().parents[1] / "data" / "geriye.json"
     hedef.parent.mkdir(parents=True, exist_ok=True)
     hedef.write_text(json.dumps(belge, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return belge
@@ -328,7 +328,7 @@ def main() -> None:
     print("Dosya bu geriye neti koşmamış. Sayı, aynı defter oranlarının gözlenen akışa uygulanması.")
     print("Üç noktada net artı. Üçünde de bant sıfırı örtüyor; işaret belli değil.")
     geriye_yaz()
-    print("Yazıldı: src/data/geriye.json")
+    print("Yazıldı: data/geriye.json")
 
 
 if __name__ == "__main__":
