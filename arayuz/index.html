@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beş adım — inceleme</title>
+<style>
+  :root {
+    --kagit: #f3f0e8;
+    --kart: #fffdf8;
+    --murekkep: #1c1915;
+    --soluk: #5c564c;
+    --cizgi: #ddd4c4;
+    --yesil: #145c32;
+    --yesil-zemin: #e7f3ec;
+    --kehribar: #7a4e00;
+    --kehribar-zemin: #f8efd8;
+    --vurgu: #1f4d3a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--kagit);
+    color: var(--murekkep);
+    font: 16px/1.5 "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  }
+  a { color: var(--vurgu); }
+  header, main { max-width: 68rem; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+  header h1 { font-size: 1.7rem; line-height: 1.2; margin: 0 0 0.4rem; }
+  header p { margin: 0.3rem 0; color: var(--soluk); }
+  #secici {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    align-items: end;
+    background: #efeae0;
+    border-bottom: 1px solid var(--cizgi);
+    padding: 0.75rem 1rem;
+  }
+  #secici fieldset { border: 0; margin: 0; padding: 0; }
+  #secici legend, #secici .etiket { display: block; font-size: 0.78rem; letter-spacing: 0.02em; color: var(--soluk); }
+  #secici button, #secici input {
+    font: inherit;
+    color: var(--murekkep);
+    background: var(--kart);
+    border: 1px solid var(--cizgi);
+    border-radius: 4px;
+    padding: 0.35rem 0.7rem;
+  }
+  #secici button[aria-pressed="true"] { background: var(--vurgu); color: #fff; border-color: var(--vurgu); }
+  #secici input { width: 5.5rem; }
+  #durum { max-width: 68rem; margin: 0 auto; padding: 0.6rem 1rem 0; }
+  section { margin: 1.5rem 0; scroll-margin-top: 6rem; }
+  section h2 { font-size: 1.35rem; margin: 0 0 0.4rem; }
+  section h3 { font-size: 1.05rem; margin: 1rem 0 0.3rem; }
+  .kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 0.75rem; }
+  article, .kutu {
+    background: var(--kart);
+    border: 1px solid var(--cizgi);
+    border-radius: 6px;
+    padding: 0.8rem 0.9rem;
+  }
+  article h3 { margin-top: 0; }
+  table { width: 100%; border-collapse: collapse; background: var(--kart); font-size: 0.92rem; }
+  th, td { border-bottom: 1px solid var(--cizgi); text-align: left; vertical-align: top; padding: 0.35rem 0.45rem; }
+  th { font-weight: 600; }
+  .tablo-kaydir { overflow-x: auto; }
+  .rakam { display: inline-flex; flex-wrap: wrap; gap: 0.25rem; align-items: baseline; }
+  .deger { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+  .birim { color: var(--soluk); font-size: 0.82rem; }
+  .kaynak { font-size: 0.72rem; }
+  .rozet {
+    font-family: "Segoe UI", sans-serif;
+    font-size: 0.68rem;
+    line-height: 1.4;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+  }
+  .rozet.kanit { background: var(--yesil-zemin); color: var(--yesil); }
+  .rozet.aday { background: var(--kehribar-zemin); color: var(--kehribar); }
+  .uyari { background: #f8e8e4; border: 1px solid #e2c4bc; padding: 0.5rem 0.7rem; border-radius: 4px; }
+  blockquote { margin: 0.4rem 0; padding-left: 0.8rem; border-left: 3px solid var(--vurgu); }
+  figure { margin: 0.8rem 0; background: var(--kart); border: 1px solid var(--cizgi); border-radius: 6px; padding: 0.5rem; }
+  figcaption { font-size: 0.9rem; margin-bottom: 0.3rem; }
+  svg { width: 100%; height: auto; }
+  .secili { background: #f3f7f4; }
+  footer { max-width: 68rem; margin: 0 auto; padding: 0 1rem 2rem; color: var(--soluk); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Beş adım, tek dosyada</h1>
+  <p>Sayılar <code>arayuz/build.py</code> ile gömülür. Sayfa ağ istemez. Formüller <code>para_arzi</code> betikleriyle aynıdır; kilitli senaryoda JSON hücresine eşitlik test edilir.</p>
+</header>
+<form id="secici">
+  <fieldset>
+    <legend>Senaryo gövdesi</legend>
+    <button type="button" data-ad="dusuk">düşük</button>
+    <button type="button" data-ad="orta" aria-pressed="true">orta</button>
+    <button type="button" data-ad="yuksek">yüksek</button>
+  </fieldset>
+  <label><span class="etiket">θ</span><input id="theta" type="number" min="0" max="1" step="0.01" value="0.25"></label>
+  <label><span class="etiket">χ</span><input id="chi" type="number" min="0" max="1" step="0.01" value="0.5"></label>
+  <fieldset>
+    <legend>β</legend>
+    <button type="button" data-beta="0">0</button>
+    <button type="button" data-beta="0.5" aria-pressed="true">0,5</button>
+    <button type="button" data-beta="1">1</button>
+  </fieldset>
+</form>
+<p id="durum" aria-live="polite"></p>
+<main>
+  <section id="adimlar"><h2>Beş adım ve 4.5</h2><div class="kartlar"></div></section>
+  <section id="m2"><h2>M2</h2></section>
+  <section id="enflasyon"><h2>Enflasyon köprüsü</h2></section>
+  <section id="reel"><h2>Net reel rahatlama</h2></section>
+  <section id="rant"><h2>Sabit rant ve etki cephesi</h2></section>
+  <section id="yanlis"><h2>Yanlışlanan hipotezler</h2></section>
+</main>
+<footer>Kilitli θ ve χ, gövdenin JSON senaryosudur. κ, adres bandı ve birleşik ayak gövdeye bağlıdır; seçici onları serbest bırakmaz.</footer>
+<script id="veri" type="application/json">{"m2":{"kriter_sha256":"86b007ac48ec1c2895306b693547278dd5601a2076ca516cbda9e70b3c3395fd","hafta":"27-03-2026","birim":"ham bin TL; milyar = ham/1e6","birim_capasi":{"ham_bin_tl":{"TP.KM.E041":7577422615.0,"TP.KB.FON033":459667168.0},"milyar":8037.0898,"repo_karsilik":8037.1,"fark":-0.0102},"m2":{"milyar":{"dolasim":879.7844,"vadesiz_tl":2282.2298,"vadesiz_yp":7144.0995,"vadeli_tl":12127.6068,"vadeli_yp":2762.6707,"tl":15289.6209,"yp":9906.7702,"m1":10306.1137,"m2":25196.3912,"m3":27699.7309,"repo":893.7354,"ppf":1484.9752,"menkul":124.6292},"yp_m2_icinde":true,"menkul_m2_icinde":false},"tl_para_stoku":{"tl_para_stoku":16472.8,"m2":25196.3912,"fark":8723.5912,"esitlik":"dustu","etiket":"kanıt"},"senet_m2_disinda":true,"senet_etiket":"kanıt","dibs_milyar":10339.8,"menkul_dibs_degil":true,"adim12":{"ayri":{"mevduat_ayak":0.0,"m2":0.0,"etiket":"kanıt"},"mahsup_0421":{"mevduat_ayak":0.0,"m2":0.0,"etiket":"kanıt"},"birlesik":{"ciftler":[{"cift":"PFK–F","silinen":7195.0,"mevduat_ayak":7195.0,"yurtici":7195.0,"yurtdisi":0.0},{"cift":"H–PFK","silinen":6772.0,"mevduat_ayak":6772.0,"yurtici":6772.0,"yurtdisi":0.0},{"cift":"PFK–ROW","silinen":4033.0,"mevduat_ayak":4033.0,"yurtici":0.0,"yurtdisi":4033.0}],"silinen":18000.0,"mevduat_ayak_yurtici":13967.0,"mevduat_ayak_yurtdisi":4033.0,"m2_aday":13967.0,"etiket_ayak":"kanıt","etiket_m2":"aday"}},"adim345":{"adim3":0.0,"adim45":0.0,"adim5":0.0,"etiket":"kanıt"},"senaryo":[{"ad":"dusuk","theta":0.1,"chi":0.0,"adres":12722.5,"adim12_sutun":"ayri","adim12_m2":0.0,"adim12_etiket":"kanıt","adim3_m2":0.0,"adim45_m2":0.0,"adim5_m2":0.0,"adim4_tepe":1272.25,"adim4_kalici":0.0,"ikinci_tur_tepe_yillik":101.78,"ikinci_tur_kalici_yillik":0.0,"baslik_stok":0.0,"baslik_yuzde":0.0,"tepe_stok":1272.25,"tepe_yuzde":5.0493,"etiket_adim4":"aday","etiket_345":"kanıt"},{"ad":"orta","theta":0.25,"chi":0.5,"adres":19076.6,"adim12_sutun":"ayri","adim12_m2":0.0,"adim12_etiket":"kanıt","adim3_m2":0.0,"adim45_m2":0.0,"adim5_m2":0.0,"adim4_tepe":4769.15,"adim4_kalici":2384.575,"ikinci_tur_tepe_yillik":381.532,"ikinci_tur_kalici_yillik":190.766,"baslik_stok":2384.575,"baslik_yuzde":9.464,"tepe_stok":4769.15,"tepe_yuzde":18.9279,"etiket_adim4":"aday","etiket_345":"kanıt"},{"ad":"yuksek","theta":0.5,"chi":0.5,"adres":19076.6,"adim12_sutun":"birlesik","adim12_m2":13967.0,"adim12_etiket":"aday","adim3_m2":0.0,"adim45_m2":0.0,"adim5_m2":0.0,"adim4_tepe":9538.3,"adim4_kalici":4769.15,"ikinci_tur_tepe_yillik":763.064,"ikinci_tur_kalici_yillik":381.532,"baslik_stok":18736.15,"baslik_yuzde":74.3605,"tepe_stok":23505.3,"tepe_yuzde":93.2884,"etiket_adim4":"aday","etiket_345":"kanıt"}],"ad":{"TP.HPBITABLO1.2":"1.M1","TP.HPBITABLO1.3":"1.1.Dolaşımdaki Para","TP.HPBITABLO1.4":"1.2.Vadesiz Mevduat (TL)","TP.HPBITABLO1.5":"1.2.1.Bankalar","TP.HPBITABLO1.6":"1.2.2.Elektronik Para Kuruluşları","TP.HPBITABLO1.7":"1.2.3.TCMB","TP.HPBITABLO1.8":"1.3.Vadesiz Mevduat (YP)","TP.HPBITABLO1.9":"1.3.1.Bankalar","TP.HPBITABLO1.10":"1.3.2.TCMB","TP.HPBITABLO1.11":"2.M2","TP.HPBITABLO1.12":"2.1.Vadeli Mevduat (TL)","TP.HPBITABLO1.13":"2.1.1.Bankalar","TP.HPBITABLO1.14":"2.1.2.TCMB","TP.HPBITABLO1.15":"2.2.Vadeli Mevduat (YP)","TP.HPBITABLO1.16":"2.2.1.Bankalar","TP.HPBITABLO1.17":"2.2.2.TCMB","TP.HPBITABLO1.18":"3.M3","TP.HPBITABLO1.19":"3.1.Repo","TP.HPBITABLO1.20":"3.2.Para Piyasası Fonları","TP.HPBITABLO1.21":"3.3.İhraç Edilen Menkul Kıymetler"}},"enf":{"kriter_sha256":"3310adf8cd50840919cd59473919b4ba9f3e94f61ea15ef978aff99cfee8a1f5","cumle":"Modelde enflasyon dışsaldır; bu hesap model dışı bir köprüdür, sonuç modele geri beslenmez","dissallik":{"enflasyon":true,"faiz":true,"kur":true,"geri_besleme":false,"tek_yon_bant":"bes_yil_senaryo enflasyon model etkisi −7,62…0 varsayım; faiz ve döviz modellenmedi. Bu bant r_t, kur ve ihracı güncellemez.","gsyh_pay":"gsyh_pay.py enflasyon senaryosunu yalnız GSYH paydasını büyütür. O payda I_t'ye girmez."},"m1":10306.1137,"m2":25196.3912,"vadesiz_yp":7144.0995,"yp_stok_2026_03":6639.4263739,"kredi_stok_milyar":27020.922512,"kredi_stok_tarih":"2026-08","gsyh_2025":63240.5,"para":{"durum":"olculdu","yillar":[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"n":16,"b1":{"coef":1.00661639,"se":0.1075142,"aralik":[0.79588855,1.21734423],"sifir_icerir":false,"nokta":1.00661639,"etiket":"aday"},"b2":{"coef":1.61458671,"se":0.18920559,"aralik":[1.24374375,1.98542967],"sifir_icerir":false,"nokta":1.61458671,"etiket":"aday"},"sabit":-0.03307898,"r2":0.8932273,"denklem":"dlog TÜFE = a + b1 dlog M1 + b2 dlog(M2/M1)","dlog_m2_min":0.11262979,"dlog_m2_max":0.50555119,"cov":[[0.00094751,-0.00289693,-0.00136301],[-0.00289693,0.0115593,0.00979463],[-0.00136301,0.00979463,0.03579876]]},"kredi_model":{"durum":"olculdu","yillar":[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"n":16,"buyume_n":16,"d":{"coef":-0.97844643,"se":0.27084492,"aralik":[-1.50930248,-0.44759039],"sifir_icerir":false,"nokta":-0.97844643,"etiket":"aday"},"r2":0.48245269,"h":{"coef":0.09293777,"se":0.06706247,"aralik":[-0.03850467,0.22438021],"sifir_icerir":true,"nokta":0.0,"etiket":"aday"},"buyume_r2":0.12063335,"buyume_durum":"olculdu"},"kur_model":{"durum":"tahmin_edilemedi","n":1,"yillar":[2025],"neden":"tek tanımda yıl sonu farkı 8'den az"},"senaryo":[{"ad":"dusuk","theta":0.1,"chi":0.0,"adim4_tepe":1272.25,"adim4_kalici":0.0,"adim12_m2":0.0,"ikinci_tur_tepe":101.78,"ikinci_tur_kalici":0.0,"dm1_tepe":[0.0,663.94],"dm1_kalici":[0.0,0.0],"para_tepe":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":-0.05181274,"nokta":-8.36561561,"merkez":-8.36561561,"aralik":[-10.28705446,-6.44417676],"etiket":"aday","dm1":0.0,"dm2":1272.25},"ust":{"durum":"olculdu","dlog_m1":-0.06659071,"dlog_oran":0.01477797,"nokta":-4.31709801,"merkez":-4.31709801,"aralik":[-5.5535832,-3.08061281],"etiket":"aday","dm1":663.94,"dm2":1272.25}},"para_geri":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":0.05181274,"nokta":8.36561561,"merkez":8.36561561,"aralik":[6.44417676,10.28705446],"etiket":"aday","dm1_bas":0.0,"dm2_bas":1272.25,"dm1_son":0.0,"dm2_son":0.0},"ust":{"durum":"olculdu","dlog_m1":0.06659071,"dlog_oran":-0.01477797,"nokta":4.31709801,"merkez":4.31709801,"aralik":[3.08061281,5.5535832],"etiket":"aday","dm1_bas":663.94,"dm2_bas":1272.25,"dm1_son":0.0,"dm2_son":0.0}},"para_net":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":0.0,"nokta":0.0,"merkez":0.0,"aralik":[0.0,0.0],"etiket":"aday"},"ust":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":0.0,"nokta":0.0,"merkez":0.0,"aralik":[0.0,0.0],"etiket":"aday"}},"kur_tepe":{"durum":"tahmin_edilemedi","dlog_yp":-0.10536007,"alt_de":0.0,"alt_puan":0.0},"kur_geri":{"durum":"tahmin_edilemedi","dlog_yp":0.10536007,"alt_de":0.0,"alt_puan":0.0},"maliyet":{"alfa0":0.0,"alfa1":-1.90953582,"I":1207.6,"etiket":"aday"},"kira":{"kapsama":0.2,"puan":[-0.56496481,-0.21483472],"yil":null,"etiket":"aday"},"kredi":{"tepe":{"durum":"olculdu","dlog":-0.00377382,"nokta":0.36924834,"merkez":0.36924834,"aralik":[0.16891268,0.56958399],"etiket":"aday","akim":101.78,"oran":0.00376671},"kalici":{"durum":"olculdu","dlog":0.0,"nokta":-0.0,"merkez":-0.0,"aralik":[-0.0,0.0],"etiket":"aday","akim":0.0,"oran":0.0}},"buyume":{"tepe":{"durum":"olculdu","dlog":-0.00377382,"nokta":-0.0,"merkez":-0.03507307,"aralik":[-0.08467711,0.01453098],"etiket":"aday"},"kalici":{"durum":"olculdu","dlog":0.0,"nokta":0.0,"merkez":0.0,"aralik":[0.0,0.0],"etiket":"aday"}},"yil":{"2027":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,0.0],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[0.0,0.0],"toplam_kredisiz":[0.0,0.0]},"2028":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,0.0],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[0.0,0.0],"toplam_kredisiz":[0.0,0.0]},"2029":{"para_alt":-8.36561561,"para_ust":-4.31709801,"para_alt_aralik":[-10.28705446,-6.44417676],"para_ust_aralik":[-5.5535832,-3.08061281],"kur":0.0,"kur_durum":"tahmin_edilemedi","maliyet":[0.0,-1.90953582],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[-10.27515143,-4.31709801],"toplam_kredisiz":[-10.27515143,-4.31709801]},"2030":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,-1.90953582],"kredi":0.36924834,"kredi_aralik":[0.16891268,0.56958399],"adim45":0.0,"toplam":[-1.54028748,0.36924834],"toplam_kredisiz":[-1.90953582,0.0]},"2031":{"para_alt":8.36561561,"para_ust":4.31709801,"para_alt_aralik":[6.44417676,10.28705446],"para_ust_aralik":[3.08061281,5.5535832],"kur":0.0,"kur_durum":"tahmin_edilemedi","maliyet":[0.0,-1.90953582],"kredi":-0.0,"kredi_aralik":[-0.0,0.0],"adim45":0.0,"toplam":[2.40756219,8.36561561],"toplam_kredisiz":[2.40756219,8.36561561]}},"hiz":{"tepe":-0.05049334,"kalici":-0.0,"fiyata_eklendi":false}},{"ad":"orta","theta":0.25,"chi":0.5,"adim4_tepe":4769.15,"adim4_kalici":2384.575,"adim12_m2":0.0,"ikinci_tur_tepe":381.532,"ikinci_tur_kalici":190.766,"dm1_tepe":[0.0,1659.85],"dm1_kalici":[0.0,829.925],"para_tepe":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":-0.20983141,"nokta":-33.87910138,"merkez":-33.87910138,"aralik":[-41.66055162,-26.09765113],"etiket":"aday","dm1":0.0,"dm2":4769.15},"ust":{"durum":"olculdu","dlog_m1":-0.17561,"dlog_oran":-0.03422142,"nokta":-23.20253482,"merkez":-23.20253482,"aralik":[-27.65533416,-18.74973548],"etiket":"aday","dm1":1659.85,"dm2":4769.15}},"para_geri":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":0.11040929,"nokta":17.82653772,"merkez":17.82653772,"aralik":[13.73208685,21.9209886],"etiket":"aday","dm1_bas":0.0,"dm2_bas":4769.15,"dm1_son":0.0,"dm2_son":2384.575},"ust":{"durum":"olculdu","dlog_m1":0.09165491,"dlog_oran":0.01875438,"nokta":12.254191,"merkez":12.254191,"aralik":[9.9073472,14.6010348],"etiket":"aday","dm1_bas":1659.85,"dm2_bas":4769.15,"dm1_son":829.925,"dm2_son":2384.575}},"para_net":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":-0.09942212,"nokta":-16.05256365,"merkez":-16.05256365,"aralik":[-19.73956302,-12.36556428],"etiket":"aday"},"ust":{"durum":"olculdu","dlog_m1":-0.08395508,"dlog_oran":-0.01546704,"nokta":-10.94834382,"merkez":-10.94834382,"aralik":[-13.05456172,-8.84212593],"etiket":"aday"}},"kur_tepe":{"durum":"tahmin_edilemedi","dlog_yp":-0.28768075,"alt_de":0.0,"alt_puan":0.0},"kur_geri":{"durum":"tahmin_edilemedi","dlog_yp":0.15414992,"alt_de":0.0,"alt_puan":0.0},"maliyet":{"alfa0":0.0,"alfa1":-3.81970415,"I":2415.6,"etiket":"aday"},"kira":{"kapsama":0.5,"puan":[-1.41241203,-0.5370868],"yil":null,"etiket":"aday"},"kredi":{"tepe":{"durum":"olculdu","dlog":-0.01422051,"nokta":1.39140044,"merkez":1.39140044,"aralik":[0.63649623,2.14630465],"etiket":"aday","akim":381.532,"oran":0.01411987},"kalici":{"durum":"olculdu","dlog":-0.00708498,"nokta":0.69322694,"merkez":0.69322694,"aralik":[0.31711671,1.06933716],"etiket":"aday","akim":190.766,"oran":0.00705994}},"buyume":{"tepe":{"durum":"olculdu","dlog":-0.01422051,"nokta":-0.0,"merkez":-0.13216222,"aralik":[-0.31908004,0.05475559],"etiket":"aday"},"kalici":{"durum":"olculdu","dlog":-0.00708498,"nokta":-0.0,"merkez":-0.06584619,"aralik":[-0.15897284,0.02728046],"etiket":"aday"}},"yil":{"2027":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,0.0],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[0.0,0.0],"toplam_kredisiz":[0.0,0.0]},"2028":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,0.0],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[0.0,0.0],"toplam_kredisiz":[0.0,0.0]},"2029":{"para_alt":-33.87910138,"para_ust":-23.20253482,"para_alt_aralik":[-41.66055162,-26.09765113],"para_ust_aralik":[-27.65533416,-18.74973548],"kur":0.0,"kur_durum":"tahmin_edilemedi","maliyet":[0.0,-3.81970415],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[-37.69880552,-23.20253482],"toplam_kredisiz":[-37.69880552,-23.20253482]},"2030":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,-3.81970415],"kredi":1.39140044,"kredi_aralik":[0.63649623,2.14630465],"adim45":0.0,"toplam":[-2.42830371,1.39140044],"toplam_kredisiz":[-3.81970415,0.0]},"2031":{"para_alt":17.82653772,"para_ust":12.254191,"para_alt_aralik":[13.73208685,21.9209886],"para_ust_aralik":[9.9073472,14.6010348],"kur":0.0,"kur_durum":"tahmin_edilemedi","maliyet":[0.0,-3.81970415],"kredi":0.69322694,"kredi_aralik":[0.31711671,1.06933716],"adim45":0.0,"toplam":[9.12771379,18.51976466],"toplam_kredisiz":[8.43448685,17.82653772]}},"hiz":{"tepe":-0.18927909,"kalici":-0.09463955,"fiyata_eklendi":false}},{"ad":"yuksek","theta":0.5,"chi":0.5,"adim4_tepe":9538.3,"adim4_kalici":4769.15,"adim12_m2":13967.0,"ikinci_tur_tepe":763.064,"ikinci_tur_kalici":381.532,"dm1_tepe":[0.0,3319.7],"dm1_kalici":[0.0,1659.85],"para_tepe":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":-0.47571298,"nokta":-76.80798631,"merkez":-76.80798631,"aralik":[-94.44946733,-59.16650528],"etiket":"aday","dm1":0.0,"dm2":9538.3},"ust":{"durum":"olculdu","dlog_m1":-0.38876992,"dlog_oran":-0.08694307,"nokta":-53.17192918,"merkez":-53.17192918,"aralik":[-63.31828848,-43.02556987],"etiket":"aday","dm1":3319.7,"dm2":9538.3}},"para_geri":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":0.26588157,"nokta":42.92888493,"merkez":42.92888493,"aralik":[33.06885415,52.78891571],"etiket":"aday","dm1_bas":0.0,"dm2_bas":9538.3,"dm1_son":0.0,"dm2_son":4769.15},"ust":{"durum":"olculdu","dlog_m1":0.21315992,"dlog_oran":0.05272165,"nokta":29.96939436,"merkez":29.96939436,"aralik":[24.2723181,35.66647061],"etiket":"aday","dm1_bas":3319.7,"dm2_bas":9538.3,"dm1_son":1659.85,"dm2_son":4769.15}},"para_net":{"alt":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":-0.20983141,"nokta":-33.87910138,"merkez":-33.87910138,"aralik":[-41.66055162,-26.09765113],"etiket":"aday"},"ust":{"durum":"olculdu","dlog_m1":-0.17561,"dlog_oran":-0.03422142,"nokta":-23.20253482,"merkez":-23.20253482,"aralik":[-27.65533416,-18.74973548],"etiket":"aday"}},"kur_tepe":{"durum":"tahmin_edilemedi","dlog_yp":-0.69314321,"alt_de":0.0,"alt_puan":0.0},"kur_geri":{"durum":"tahmin_edilemedi","dlog_yp":0.40546246,"alt_de":0.0,"alt_puan":0.0},"maliyet":{"alfa0":0.0,"alfa1":-7.63877578,"I":4830.8,"etiket":"aday"},"kira":{"kapsama":1.0,"puan":[-2.82482406,-1.0741736],"yil":null,"etiket":"aday"},"kredi":{"tepe":{"durum":"olculdu","dlog":-0.02864616,"nokta":2.80287308,"merkez":2.80287308,"aralik":[1.28217449,4.32357167],"etiket":"aday","akim":763.064,"oran":0.02823975},"kalici":{"durum":"olculdu","dlog":-0.01422051,"nokta":1.39140044,"merkez":1.39140044,"aralik":[0.63649623,2.14630465],"etiket":"aday","akim":381.532,"oran":0.01411987}},"buyume":{"tepe":{"durum":"olculdu","dlog":-0.02864616,"nokta":-0.0,"merkez":-0.26623101,"aralik":[-0.64276309,0.11030107],"etiket":"aday"},"kalici":{"durum":"olculdu","dlog":-0.01422051,"nokta":-0.0,"merkez":-0.13216222,"aralik":[-0.31908004,0.05475559],"etiket":"aday"}},"yil":{"2027":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,0.0],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[0.0,0.0],"toplam_kredisiz":[0.0,0.0]},"2028":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,0.0],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[0.0,0.0],"toplam_kredisiz":[0.0,0.0]},"2029":{"para_alt":-76.80798631,"para_ust":-53.17192918,"para_alt_aralik":[-94.44946733,-59.16650528],"para_ust_aralik":[-63.31828848,-43.02556987],"kur":0.0,"kur_durum":"tahmin_edilemedi","maliyet":[0.0,-7.63877578],"kredi":0.0,"kredi_aralik":[0.0,0.0],"adim45":0.0,"toplam":[-84.44676209,-53.17192918],"toplam_kredisiz":[-84.44676209,-53.17192918]},"2030":{"para_alt":0.0,"para_ust":0.0,"para_alt_aralik":[0.0,0.0],"para_ust_aralik":[0.0,0.0],"kur":0.0,"kur_durum":"alt_sinir","maliyet":[0.0,-7.63877578],"kredi":2.80287308,"kredi_aralik":[1.28217449,4.32357167],"adim45":0.0,"toplam":[-4.8359027,2.80287308],"toplam_kredisiz":[-7.63877578,0.0]},"2031":{"para_alt":42.92888493,"para_ust":29.96939436,"para_alt_aralik":[33.06885415,52.78891571],"para_ust_aralik":[24.2723181,35.66647061],"kur":0.0,"kur_durum":"tahmin_edilemedi","maliyet":[0.0,-7.63877578],"kredi":1.39140044,"kredi_aralik":[0.63649623,2.14630465],"adim45":0.0,"toplam":[23.72201901,44.32028537],"toplam_kredisiz":[22.33061857,42.92888493]}},"hiz":{"tepe":-0.37855818,"kalici":-0.18927909,"fiyata_eklendi":false}}],"birlesik_2028":{"durum":"olculdu","dlog_m1":0.0,"dlog_oran":-0.80816622,"nokta":-130.48544421,"merkez":-130.48544421,"aralik":[-160.45571941,-100.515169],"etiket":"aday","dm1":0.0,"dm2":13967.0,"yil":2028,"skora_girer":false},"tutarlilik":[{"senaryo":"dusuk","yil":2029,"kose":"kredi_dahil","delta_pi":-10.27515143,"nominal_fazla_milyar":233.27109774,"reel_oran":0.07920413},{"senaryo":"dusuk","yil":2029,"kose":"kredi_haric","delta_pi":-10.27515143,"nominal_fazla_milyar":233.27109774,"reel_oran":0.07920413},{"senaryo":"dusuk","yil":2030,"kose":"kredi_dahil","delta_pi":-1.54028748,"nominal_fazla_milyar":34.96829751,"reel_oran":0.01187302},{"senaryo":"dusuk","yil":2030,"kose":"kredi_haric","delta_pi":-1.90953582,"nominal_fazla_milyar":43.3511389,"reel_oran":0.01471931},{"senaryo":"orta","yil":2029,"kose":"kredi_dahil","delta_pi":-37.69880552,"nominal_fazla_milyar":1711.99388295,"reel_oran":0.29059435},{"senaryo":"orta","yil":2029,"kose":"kredi_haric","delta_pi":-37.69880552,"nominal_fazla_milyar":1711.99388295,"reel_oran":0.29059435},{"senaryo":"orta","yil":2030,"kose":"kredi_dahil","delta_pi":-2.42830371,"nominal_fazla_milyar":110.27514086,"reel_oran":0.01871814},{"senaryo":"orta","yil":2030,"kose":"kredi_haric","delta_pi":-3.81970415,"nominal_fazla_milyar":173.46199809,"reel_oran":0.02944349},{"senaryo":"yuksek","yil":2029,"kose":"kredi_dahil","delta_pi":-84.44676209,"nominal_fazla_milyar":7669.22814881,"reel_oran":0.65094243},{"senaryo":"yuksek","yil":2029,"kose":"kredi_haric","delta_pi":-84.44676209,"nominal_fazla_milyar":7669.22814881,"reel_oran":0.65094243},{"senaryo":"yuksek","yil":2030,"kose":"kredi_dahil","delta_pi":-4.8359027,"nominal_fazla_milyar":439.18369667,"reel_oran":0.03727667},{"senaryo":"yuksek","yil":2030,"kose":"kredi_haric","delta_pi":-7.63877578,"nominal_fazla_milyar":693.7331026,"reel_oran":0.05888211}],"adim45":0.0,"gecis":[0.26,0.38,0.4],"kira_agirlik":0.068028},"reel":{"kriter_sha256":"b91d9f56260e93cff37c8efb9a9e99f96ea813ad8438a60ca7b8e2f38ded2374","i0":53.1925,"pi0":29.73,"reel_oran_kanit":23.4625,"beta":[0.0,0.5,1.0],"kappa":{"dusuk":0.25,"orta":0.5,"yuksek":1.0},"cumle":"Net reel rahatlama β = 1'de bile modelin sabit tablosundan büyükse iddia ayaktadır. β = 0,5'te küçükse iddia yanlıştır.","satirlar":[{"durum":"olculdu","beta":0.0,"delta_pi":-10.27515143,"tanim_disi":false,"hukme_girer":true,"i":53.1925,"taban_bagli":false,"nominal":1207.6,"fazlalik":0.0,"reel":1010.92589749,"sabit_reel":930.85639405,"net":80.06950344,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2029,"I0":1207.6},{"durum":"olculdu","beta":0.5,"delta_pi":-10.27515143,"tanim_disi":false,"hukme_girer":true,"i":48.05492429,"taban_bagli":false,"nominal":1090.96445113,"fazlalik":116.63554887,"reel":913.28603584,"sabit_reel":930.85639405,"net":-17.57035821,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2029,"I0":1207.6},{"durum":"olculdu","beta":1.0,"delta_pi":-10.27515143,"tanim_disi":false,"hukme_girer":true,"i":42.91734857,"taban_bagli":false,"nominal":974.32890225,"fazlalik":233.27109775,"reel":815.6461742,"sabit_reel":930.85639405,"net":-115.21021985,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2029,"I0":1207.6},{"durum":"olculdu","beta":0.0,"delta_pi":-4.31709801,"tanim_disi":false,"hukme_girer":true,"i":53.1925,"taban_bagli":false,"nominal":1207.6,"fazlalik":0.0,"reel":962.89933559,"sabit_reel":930.85639405,"net":32.04294154,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2029,"I0":1207.6},{"durum":"olculdu","beta":0.5,"delta_pi":-4.31709801,"tanim_disi":false,"hukme_girer":true,"i":51.033951,"taban_bagli":false,"nominal":1158.59565205,"fazlalik":49.00434795,"reel":923.82492843,"sabit_reel":930.85639405,"net":-7.03146562,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2029,"I0":1207.6},{"durum":"olculdu","beta":1.0,"delta_pi":-4.31709801,"tanim_disi":false,"hukme_girer":true,"i":48.87540199,"taban_bagli":false,"nominal":1109.5913041,"fazlalik":98.0086959,"reel":884.75052127,"sabit_reel":930.85639405,"net":-46.10587278,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2029,"I0":1207.6},{"durum":"olculdu","beta":0.0,"delta_pi":-1.54028748,"tanim_disi":false,"hukme_girer":true,"i":53.1925,"taban_bagli":false,"nominal":1207.6,"fazlalik":0.0,"reel":942.04127325,"sabit_reel":930.85639405,"net":11.1848792,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2030,"I0":1207.6},{"durum":"olculdu","beta":0.5,"delta_pi":-1.54028748,"tanim_disi":false,"hukme_girer":true,"i":52.42235626,"taban_bagli":false,"nominal":1190.11585129,"fazlalik":17.48414871,"reel":928.40199724,"sabit_reel":930.85639405,"net":-2.45439681,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2030,"I0":1207.6},{"durum":"olculdu","beta":1.0,"delta_pi":-1.54028748,"tanim_disi":false,"hukme_girer":true,"i":51.65221252,"taban_bagli":false,"nominal":1172.63170257,"fazlalik":34.96829743,"reel":914.76272122,"sabit_reel":930.85639405,"net":-16.09367283,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2030,"I0":1207.6},{"durum":"olculdu","beta":0.0,"delta_pi":0.36924834,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":1207.6,"fazlalik":0.0,"reel":928.21443276,"sabit_reel":930.85639405,"net":-2.64196129,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2030,"I0":1207.6},{"durum":"olculdu","beta":0.5,"delta_pi":0.36924834,"tanim_disi":false,"hukme_girer":false,"i":53.37712417,"taban_bagli":false,"nominal":1211.79142074,"fazlalik":-4.19142074,"reel":931.43614295,"sabit_reel":930.85639405,"net":0.5797489,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2030,"I0":1207.6},{"durum":"olculdu","beta":1.0,"delta_pi":0.36924834,"tanim_disi":false,"hukme_girer":false,"i":53.56174834,"taban_bagli":false,"nominal":1215.98284148,"fazlalik":-8.38284148,"reel":934.65785313,"sabit_reel":930.85639405,"net":3.80145909,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2030,"I0":1207.6},{"durum":"olculdu","beta":0.0,"delta_pi":2.40756219,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":1207.6,"fazlalik":0.0,"reel":913.8960792,"sabit_reel":930.85639405,"net":-16.96031485,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2031,"I0":1207.6},{"durum":"olculdu","beta":0.5,"delta_pi":2.40756219,"tanim_disi":false,"hukme_girer":false,"i":54.3962811,"taban_bagli":false,"nominal":1234.9287785,"fazlalik":-27.3287785,"reel":934.57814571,"sabit_reel":930.85639405,"net":3.72175166,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2031,"I0":1207.6},{"durum":"olculdu","beta":1.0,"delta_pi":2.40756219,"tanim_disi":false,"hukme_girer":false,"i":55.60006219,"taban_bagli":false,"nominal":1262.257557,"fazlalik":-54.657557,"reel":955.26021222,"sabit_reel":930.85639405,"net":24.40381817,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2031,"I0":1207.6},{"durum":"olculdu","beta":0.0,"delta_pi":8.36561561,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":1207.6,"fazlalik":0.0,"reel":874.46657496,"sabit_reel":930.85639405,"net":-56.38981909,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2031,"I0":1207.6},{"durum":"olculdu","beta":0.5,"delta_pi":8.36561561,"tanim_disi":false,"hukme_girer":false,"i":57.37530781,"taban_bagli":false,"nominal":1302.55997942,"fazlalik":-94.95997942,"reel":943.23051001,"sabit_reel":930.85639405,"net":12.37411596,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2031,"I0":1207.6},{"durum":"olculdu","beta":1.0,"delta_pi":8.36561561,"tanim_disi":false,"hukme_girer":false,"i":61.55811561,"taban_bagli":false,"nominal":1397.51995884,"fazlalik":-189.91995884,"reel":1011.99444506,"sabit_reel":930.85639405,"net":81.13805101,"etiket":"aday","senaryo":"dusuk","kappa":0.25,"yil":2031,"I0":1207.6},{"durum":"olculdu","beta":0.0,"delta_pi":-37.69880552,"tanim_disi":false,"hukme_girer":true,"i":53.1925,"taban_bagli":false,"nominal":2415.6,"fazlalik":0.0,"reel":2624.76219465,"sabit_reel":1862.02112079,"net":762.74107387,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2029,"I0":2415.6},{"durum":"olculdu","beta":0.5,"delta_pi":-37.69880552,"tanim_disi":false,"hukme_girer":true,"i":34.34309724,"taban_bagli":false,"nominal":1559.60305857,"fazlalik":855.99694143,"reel":1694.64611144,"sabit_reel":1862.02112079,"net":-167.37500935,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2029,"I0":2415.6},{"durum":"olculdu","beta":1.0,"delta_pi":-37.69880552,"tanim_disi":false,"hukme_girer":true,"i":15.49369448,"taban_bagli":false,"nominal":703.60611714,"fazlalik":1711.99388286,"reel":764.53002823,"sabit_reel":1862.02112079,"net":-1097.49109256,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2029,"I0":2415.6},{"durum":"olculdu","beta":0.0,"delta_pi":-23.20253482,"tanim_disi":false,"hukme_girer":true,"i":53.1925,"taban_bagli":false,"nominal":2415.6,"fazlalik":0.0,"reel":2267.58422902,"sabit_reel":1862.02112079,"net":405.56310823,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2029,"I0":2415.6},{"durum":"olculdu","beta":0.5,"delta_pi":-23.20253482,"tanim_disi":false,"hukme_girer":true,"i":41.59123259,"taban_bagli":false,"nominal":1888.75840475,"fazlalik":526.84159525,"reel":1773.02482656,"sabit_reel":1862.02112079,"net":-88.99629423,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2029,"I0":2415.6},{"durum":"olculdu","beta":1.0,"delta_pi":-23.20253482,"tanim_disi":false,"hukme_girer":true,"i":29.98996518,"taban_bagli":false,"nominal":1361.91680949,"fazlalik":1053.68319051,"reel":1278.46542409,"sabit_reel":1862.02112079,"net":-583.5556967,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2029,"I0":2415.6},{"durum":"olculdu","beta":0.0,"delta_pi":-2.42830371,"tanim_disi":false,"hukme_girer":true,"i":53.1925,"taban_bagli":false,"nominal":2415.6,"fazlalik":0.0,"reel":1897.53952257,"sabit_reel":1862.02112079,"net":35.51840178,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2030,"I0":2415.6},{"durum":"olculdu","beta":0.5,"delta_pi":-2.42830371,"tanim_disi":false,"hukme_girer":true,"i":51.97834815,"taban_bagli":false,"nominal":2360.46242946,"fazlalik":55.13757054,"reel":1854.22700424,"sabit_reel":1862.02112079,"net":-7.79411655,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2030,"I0":2415.6},{"durum":"olculdu","beta":1.0,"delta_pi":-2.42830371,"tanim_disi":false,"hukme_girer":true,"i":50.76419629,"taban_bagli":false,"nominal":2305.32485892,"fazlalik":110.27514108,"reel":1810.91448591,"sabit_reel":1862.02112079,"net":-51.10663488,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2030,"I0":2415.6},{"durum":"olculdu","beta":0.0,"delta_pi":1.39140044,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":2415.6,"fazlalik":0.0,"reel":1842.26220273,"sabit_reel":1862.02112079,"net":-19.75891806,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2030,"I0":2415.6},{"durum":"olculdu","beta":0.5,"delta_pi":1.39140044,"tanim_disi":false,"hukme_girer":false,"i":53.88820022,"taban_bagli":false,"nominal":2447.19342861,"fazlalik":-31.59342861,"reel":1866.35699466,"sabit_reel":1862.02112079,"net":4.33587387,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2030,"I0":2415.6},{"durum":"olculdu","beta":1.0,"delta_pi":1.39140044,"tanim_disi":false,"hukme_girer":false,"i":54.58390044,"taban_bagli":false,"nominal":2478.78685722,"fazlalik":-63.18685722,"reel":1890.45178659,"sabit_reel":1862.02112079,"net":28.4306658,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2030,"I0":2415.6},{"durum":"olculdu","beta":0.0,"delta_pi":9.12771379,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":2415.6,"fazlalik":0.0,"reel":1739.6224769,"sabit_reel":1862.02112079,"net":-122.39864389,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2031,"I0":2415.6},{"durum":"olculdu","beta":0.5,"delta_pi":9.12771379,"tanim_disi":false,"hukme_girer":false,"i":57.7563569,"taban_bagli":false,"nominal":2622.85577319,"fazlalik":-207.25577319,"reel":1888.88013608,"sabit_reel":1862.02112079,"net":26.85901529,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2031,"I0":2415.6},{"durum":"olculdu","beta":1.0,"delta_pi":9.12771379,"tanim_disi":false,"hukme_girer":false,"i":62.32021379,"taban_bagli":false,"nominal":2830.11154639,"fazlalik":-414.51154639,"reel":2038.13779526,"sabit_reel":1862.02112079,"net":176.11667447,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2031,"I0":2415.6},{"durum":"olculdu","beta":0.0,"delta_pi":18.51976466,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":2415.6,"fazlalik":0.0,"reel":1629.41236739,"sabit_reel":1862.02112079,"net":-232.6087534,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2031,"I0":2415.6},{"durum":"olculdu","beta":0.5,"delta_pi":18.51976466,"tanim_disi":false,"hukme_girer":false,"i":62.45238233,"taban_bagli":false,"nominal":2836.11363926,"fazlalik":-420.51363926,"reel":1913.06451364,"sabit_reel":1862.02112079,"net":51.04339285,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2031,"I0":2415.6},{"durum":"olculdu","beta":1.0,"delta_pi":18.51976466,"tanim_disi":false,"hukme_girer":false,"i":71.71226466,"taban_bagli":false,"nominal":3256.62727852,"fazlalik":-841.02727852,"reel":2196.71665988,"sabit_reel":1862.02112079,"net":334.69553909,"etiket":"aday","senaryo":"orta","kappa":0.5,"yil":2031,"I0":2415.6},{"durum":"olculdu","beta":0.0,"delta_pi":-84.44676209,"tanim_disi":true,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":4830.8,"fazlalik":0.0,"reel":10667.96506381,"sabit_reel":3723.73390889,"net":6944.23115492,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2029,"I0":4830.8},{"durum":"olculdu","beta":0.5,"delta_pi":-84.44676209,"tanim_disi":true,"hukme_girer":false,"i":10.96911896,"taban_bagli":false,"nominal":996.18592561,"fazlalik":3834.61407439,"reel":2199.8999444,"sabit_reel":3723.73390889,"net":-1523.83396448,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2029,"I0":4830.8},{"durum":"olculdu","beta":1.0,"delta_pi":-84.44676209,"tanim_disi":true,"hukme_girer":false,"i":0.0,"taban_bagli":true,"nominal":0.0,"fazlalik":4830.8,"reel":0.0,"sabit_reel":3723.73390889,"net":-3723.73390889,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2029,"I0":4830.8},{"durum":"olculdu","beta":0.0,"delta_pi":-53.17192918,"tanim_disi":false,"hukme_girer":true,"i":53.1925,"taban_bagli":false,"nominal":4830.8,"fazlalik":0.0,"reel":6309.9813622,"sabit_reel":3723.73390889,"net":2586.24745331,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2029,"I0":4830.8},{"durum":"olculdu","beta":0.5,"delta_pi":-53.17192918,"tanim_disi":false,"hukme_girer":true,"i":26.60653541,"taban_bagli":false,"nominal":2416.33409331,"fazlalik":2414.46590669,"reel":3156.21079193,"sabit_reel":3723.73390889,"net":-567.52311696,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2029,"I0":4830.8},{"durum":"olculdu","beta":1.0,"delta_pi":-53.17192918,"tanim_disi":false,"hukme_girer":true,"i":0.02057082,"taban_bagli":false,"nominal":1.86818663,"fazlalik":4828.93181337,"reel":2.44022166,"sabit_reel":3723.73390889,"net":-3721.29368722,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2029,"I0":4830.8},{"durum":"olculdu","beta":0.0,"delta_pi":-4.8359027,"tanim_disi":false,"hukme_girer":true,"i":53.1925,"taban_bagli":false,"nominal":4830.8,"fazlalik":0.0,"reel":3867.91698281,"sabit_reel":3723.73390889,"net":144.18307393,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2030,"I0":4830.8},{"durum":"olculdu","beta":0.5,"delta_pi":-4.8359027,"tanim_disi":false,"hukme_girer":true,"i":50.77454865,"taban_bagli":false,"nominal":4611.20815187,"fazlalik":219.59184813,"reel":3692.09454374,"sabit_reel":3723.73390889,"net":-31.63936514,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2030,"I0":4830.8},{"durum":"olculdu","beta":1.0,"delta_pi":-4.8359027,"tanim_disi":false,"hukme_girer":true,"i":48.3565973,"taban_bagli":false,"nominal":4391.61630374,"fazlalik":439.18369626,"reel":3516.27210467,"sabit_reel":3723.73390889,"net":-207.46180421,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2030,"I0":4830.8},{"durum":"olculdu","beta":0.0,"delta_pi":2.80287308,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":4830.8,"fazlalik":0.0,"reel":3644.98247698,"sabit_reel":3723.73390889,"net":-78.75143191,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2030,"I0":4830.8},{"durum":"olculdu","beta":0.5,"delta_pi":2.80287308,"tanim_disi":false,"hukme_girer":false,"i":54.59393654,"taban_bagli":false,"nominal":4958.07470296,"fazlalik":-127.27470296,"reel":3741.01503102,"sabit_reel":3723.73390889,"net":17.28112213,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2030,"I0":4830.8},{"durum":"olculdu","beta":1.0,"delta_pi":2.80287308,"tanim_disi":false,"hukme_girer":false,"i":55.99537308,"taban_bagli":false,"nominal":5085.34940593,"fazlalik":-254.54940593,"reel":3837.04758506,"sabit_reel":3723.73390889,"net":113.31367617,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2030,"I0":4830.8},{"durum":"olculdu","beta":0.0,"delta_pi":23.72201901,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":4830.8,"fazlalik":0.0,"reel":3148.08500479,"sabit_reel":3723.73390889,"net":-575.6489041,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2031,"I0":4830.8},{"durum":"olculdu","beta":0.5,"delta_pi":23.72201901,"tanim_disi":false,"hukme_girer":false,"i":65.05350951,"taban_bagli":false,"nominal":5907.98503016,"fazlalik":-1077.18503016,"reel":3850.05363128,"sabit_reel":3723.73390889,"net":126.31972239,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2031,"I0":4830.8},{"durum":"olculdu","beta":1.0,"delta_pi":23.72201901,"tanim_disi":false,"hukme_girer":false,"i":76.91451901,"taban_bagli":false,"nominal":6985.17006032,"fazlalik":-2154.37006032,"reel":4552.02225776,"sabit_reel":3723.73390889,"net":828.28834887,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2031,"I0":4830.8},{"durum":"olculdu","beta":0.0,"delta_pi":44.32028537,"tanim_disi":false,"hukme_girer":false,"i":53.1925,"taban_bagli":false,"nominal":4830.8,"fazlalik":0.0,"reel":2775.51972393,"sabit_reel":3723.73390889,"net":-948.21418496,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2031,"I0":4830.8},{"durum":"olculdu","beta":0.5,"delta_pi":44.32028537,"tanim_disi":false,"hukme_girer":false,"i":75.35264269,"taban_bagli":false,"nominal":6843.32464695,"fazlalik":-2012.52464695,"reel":3931.80892085,"sabit_reel":3723.73390889,"net":208.07501196,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2031,"I0":4830.8},{"durum":"olculdu","beta":1.0,"delta_pi":44.32028537,"tanim_disi":false,"hukme_girer":false,"i":97.51278537,"taban_bagli":false,"nominal":8855.84929389,"fazlalik":-4025.04929389,"reel":5088.09811777,"sabit_reel":3723.73390889,"net":1364.36420889,"etiket":"aday","senaryo":"yuksek","kappa":1.0,"yil":2031,"I0":4830.8}],"hukum":{"hukum":"yanlis","cumle":"Net reel rahatlama β = 1'de bile modelin sabit tablosundan büyükse iddia ayaktadır. β = 0,5'te küçükse iddia yanlıştır.","n_beta1":8,"n_beta05":8,"beta1_hepsi_pozitif":false,"beta05_herhangi_negatif":true}},"rant":{"durum":"senaryo","olcum_degil":true,"baseline":{"H":256.21,"F":1445.96,"B":1887.17,"K":1152.8},"kayip":{"H":0.0,"F":0.0,"B":0.0,"K":0.0}},"etki":{"kaynak":"yayin/ETKI_CEPHESI_REVIZE.md","sfc":{"H":0.0,"F":-1.001,"B":0.0,"K":0.0,"D":1.001,"sigma":0.0},"kapanis_ok":true,"once_sigma":0.586,"f4_baz":25339.8,"f4_bant":[22805.8,20271.8],"transfer_mn_usd":22550.0,"kur":44.38,"transfer_tr_tl":1.001}}</script>
+<script id="formuller">"use strict";
+
+/**
+ * Beş adımın M2, enflasyon köprüsü ve net reel rahatlama formülleri.
+ * para_arzi/m2_etki.py, enflasyon_etki.py ve reel_rahatlama.py ile aynı aritmetik.
+ * Katsayılar çağıranın verdiği JSON belgelerinden okunur; burada sayı uydurulmaz.
+ */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === "object" && module.exports) module.exports = api;
+  root.ZT = api;
+})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+  const KREDI_PAY = 0.08;
+  const GERCEK_YP = 6639.4;
+  const I0 = 53.1925;
+  const PI0 = 29.73;
+  const KIRA_W = 0.068028;
+  const KIRA_ALT = [4783.0, 30291.0];
+  const KIRA_UST = [10291.0, 24783.0];
+  const KAPPA = { dusuk: 0.25, orta: 0.5, yuksek: 1.0 };
+  const YILLAR = ["2027", "2028", "2029", "2030", "2031"];
+  const BETALAR = [0, 0.5, 1];
+
+  function pyRound(x, n) {
+    const p = 10 ** n;
+    const y = x * p;
+    const sign = y < 0 ? -1 : 1;
+    const ay = Math.abs(y);
+    const floor = Math.floor(ay + 1e-12);
+    const frac = ay - floor;
+    let k;
+    if (Math.abs(frac - 0.5) <= 1e-8) k = floor % 2 === 0 ? floor : floor + 1;
+    else k = frac > 0.5 ? floor + 1 : floor;
+    return (sign * k) / p;
+  }
+
+  function adim4(theta, chi, adres) {
+    const tepe = pyRound(theta * adres, 4);
+    const kalici = pyRound(chi * tepe, 4);
+    return {
+      tepe: tepe,
+      kalici: kalici,
+      ikinci_tur_tepe: pyRound(KREDI_PAY * tepe, 4),
+      ikinci_tur_kalici: pyRound(KREDI_PAY * kalici, 4),
+    };
+  }
+
+  function m2Satir(adim12, a4, m2) {
+    const baslik = adim12 + a4.kalici;
+    const tepeStok = adim12 + a4.tepe;
+    return {
+      adim12_m2: adim12,
+      adim3_m2: 0,
+      adim45_m2: 0,
+      adim5_m2: 0,
+      adim4_tepe: a4.tepe,
+      adim4_kalici: a4.kalici,
+      ikinci_tur_tepe_yillik: a4.ikinci_tur_tepe,
+      ikinci_tur_kalici_yillik: a4.ikinci_tur_kalici,
+      baslik_stok: pyRound(baslik, 4),
+      baslik_yuzde: pyRound((100 * baslik) / m2, 4),
+      tepe_stok: pyRound(tepeStok, 4),
+      tepe_yuzde: pyRound((100 * tepeStok) / m2, 4),
+    };
+  }
+
+  function m1Cift(carpan, dm2, vadesiz) {
+    const ust = Math.min(carpan * GERCEK_YP, vadesiz, dm2);
+    return [0, Math.max(0, ust)];
+  }
+
+  function dlogSeviye(m1, m2, dm1, dm2) {
+    if (dm2 < dm1 - 1e-6 || m1 <= dm1 || m2 <= dm2) {
+      throw new Error("para şoku stoğu aşıyor");
+    }
+    const dlm1 = Math.log(m1 - dm1) - Math.log(m1);
+    const dlr = Math.log((m2 - dm2) / (m1 - dm1)) - Math.log(m2 / m1);
+    return [dlm1, dlr];
+  }
+
+  function dlogAradan(m1, m2, dm1a, dm2a, dm1b, dm2b) {
+    const a1 = m1 - dm1a;
+    const a2 = m2 - dm2a;
+    const b1 = m1 - dm1b;
+    const b2 = m2 - dm2b;
+    if (Math.min(a1, a2, b1, b2) <= 0) throw new Error("ara düzey eksi");
+    return [Math.log(b1) - Math.log(a1), Math.log(b2 / b1) - Math.log(a2 / a1)];
+  }
+
+  function paraNokta(b1, b2, dlm1, dlr) {
+    return 100 * (b1 * dlm1 + b2 * dlr);
+  }
+
+  function tekPuan(noktaKat, dlog) {
+    return 100 * noktaKat * dlog;
+  }
+
+  function kiraPuan(kapsam) {
+    const lo = -100 * KIRA_W * kapsam * (KIRA_ALT[0] / KIRA_ALT[1]);
+    const hi = -100 * KIRA_W * kapsam * (KIRA_UST[0] / KIRA_UST[1]);
+    return lo <= hi ? [lo, hi] : [hi, lo];
+  }
+
+  function bant(paraAlt, paraUst, mali, kredi) {
+    const vals = [];
+    for (const p of [paraAlt, paraUst]) {
+      for (const m of [0, mali]) vals.push(p + m + kredi);
+    }
+    return [Math.min.apply(null, vals), Math.max.apply(null, vals)];
+  }
+
+  function bosHucre() {
+    return bant(0, 0, 0, 0);
+  }
+
+  function enflasyon(g) {
+    const dm1Tepe = m1Cift(g.theta, g.tepe, g.vadesiz);
+    const dm1Kal = m1Cift(g.chi * g.theta, g.kalici, g.vadesiz);
+    const paraTepe = {};
+    const paraGeri = {};
+    for (const adim of ["alt", "ust"]) {
+      const i = adim === "alt" ? 0 : 1;
+      const dTepe = dlogSeviye(g.m1, g.m2, dm1Tepe[i], g.tepe);
+      const dGeri = dlogAradan(g.m1, g.m2, dm1Tepe[i], g.tepe, dm1Kal[i], g.kalici);
+      paraTepe[adim] = paraNokta(g.b1, g.b2, dTepe[0], dTepe[1]);
+      paraGeri[adim] = paraNokta(g.b1, g.b2, dGeri[0], dGeri[1]);
+    }
+    const mali = -100 * g.I / g.gsyh;
+    function krediDlog(ak) {
+      if (ak > g.krediStok) throw new Error("kredi akışı stoktan büyük");
+      return ak === 0 ? 0 : Math.log(1 - ak / g.krediStok);
+    }
+    const dlogTepe = krediDlog(g.akimTepe);
+    const dlogKal = krediDlog(g.akimKalici);
+    const kredi = {
+      tepe: tekPuan(g.dNokta, dlogTepe),
+      kalici: tekPuan(g.dNokta, dlogKal),
+    };
+    const buyume = {
+      tepe: tekPuan(g.hNokta, dlogTepe),
+      kalici: tekPuan(g.hNokta, dlogKal),
+    };
+    const h29 = bant(paraTepe.alt, paraTepe.ust, mali, 0);
+    const h30 = bant(0, 0, mali, kredi.tepe);
+    const h31 = bant(paraGeri.alt, paraGeri.ust, mali, kredi.kalici);
+    const s29 = bant(paraTepe.alt, paraTepe.ust, mali, 0);
+    const s30 = bant(0, 0, mali, 0);
+    const s31 = bant(paraGeri.alt, paraGeri.ust, mali, 0);
+    function hucre(toplam, kredisiz, paraAlt, paraUst, krediNokta, maliDeger) {
+      return {
+        toplam: toplam,
+        toplam_kredisiz: kredisiz,
+        para_alt: paraAlt,
+        para_ust: paraUst,
+        kredi: krediNokta,
+        kur: 0,
+        maliyet: [0, maliDeger],
+        adim45: 0,
+      };
+    }
+    const sifir = hucre(bosHucre(), bosHucre(), 0, 0, 0, 0);
+    return {
+      dm1_tepe: dm1Tepe,
+      dm1_kalici: dm1Kal,
+      para_tepe: paraTepe,
+      para_geri: paraGeri,
+      mali: mali,
+      kredi: kredi,
+      buyume: buyume,
+      kira: kiraPuan(g.kapsam),
+      hiz_tepe: -g.tepe / g.m2,
+      hiz_kalici: -g.kalici / g.m2,
+      yil: {
+        2027: sifir,
+        2028: sifir,
+        2029: hucre(h29, s29, paraTepe.alt, paraTepe.ust, 0, mali),
+        2030: hucre(h30, s30, 0, 0, kredi.tepe, mali),
+        2031: hucre(h31, s31, paraGeri.alt, paraGeri.ust, kredi.kalici, mali),
+      },
+    };
+  }
+
+  function iBeta(beta, dpi) {
+    return Math.max(0, I0 + beta * dpi);
+  }
+
+  function reelHucre(i0Milyar, beta, dpi) {
+    const p = 1 + (PI0 + dpi) / 100;
+    if (p <= 0) {
+      return { durum: "tanimlanamadi", delta_pi: dpi, beta: beta };
+    }
+    const oran = iBeta(beta, dpi);
+    const nominal = (i0Milyar * oran) / I0;
+    const sabit = i0Milyar / (1 + PI0 / 100);
+    const reel = nominal / p;
+    return {
+      durum: "olculdu",
+      beta: beta,
+      delta_pi: dpi,
+      tanim_disi: Math.abs(dpi) > I0,
+      hukme_girer: dpi < 0 && Math.abs(dpi) <= I0,
+      i: oran,
+      taban_bagli: I0 + beta * dpi < 0,
+      nominal: nominal,
+      fazlalik: i0Milyar - nominal,
+      reel: reel,
+      sabit_reel: sabit,
+      net: reel - sabit,
+      etiket: "aday",
+    };
+  }
+
+  function hukum(hucreler) {
+    const kapsam = hucreler.filter(function (h) {
+      return h.hukme_girer && (h.beta === 0.5 || h.beta === 1) && h.durum === "olculdu";
+    });
+    const bir = kapsam.filter(function (h) { return h.beta === 1; });
+    const yari = kapsam.filter(function (h) { return h.beta === 0.5; });
+    const yanlis = yari.some(function (h) { return h.net < 0; });
+    const ayakta = bir.length > 0 && bir.every(function (h) { return h.net > 0; });
+    return {
+      hukum: yanlis ? "yanlis" : ayakta ? "ayakta" : "ayakta_degil",
+      n_beta1: bir.length,
+      n_beta05: yari.length,
+      beta1_hepsi_pozitif: ayakta,
+      beta05_herhangi_negatif: yanlis,
+    };
+  }
+
+  function govde(ad, belgeler) {
+    const s = belgeler.m2.senaryo.find(function (x) { return x.ad === ad; });
+    const e = belgeler.enf.senaryo.find(function (x) { return x.ad === ad; });
+    if (!s || !e) throw new Error("senaryo yok");
+    return {
+      ad: ad,
+      theta_kilit: s.theta,
+      chi_kilit: s.chi,
+      adres: s.adres,
+      adim12: s.adim12_m2,
+      I: e.maliyet.I,
+      kapsam: e.kira.kapsama,
+      kappa: KAPPA[ad],
+    };
+  }
+
+  function hesapla(secim, belgeler) {
+    const g0 = govde(secim.ad, belgeler);
+    const theta = secim.theta;
+    const chi = secim.chi;
+    const enf = belgeler.enf;
+    const a4 = adim4(theta, chi, g0.adres);
+    const m2 = m2Satir(g0.adim12, a4, enf.m2);
+    const blok = enflasyon({
+      theta: theta,
+      chi: chi,
+      tepe: a4.tepe,
+      kalici: a4.kalici,
+      akimTepe: a4.ikinci_tur_tepe,
+      akimKalici: a4.ikinci_tur_kalici,
+      I: g0.I,
+      kapsam: g0.kapsam,
+      m1: enf.m1,
+      m2: enf.m2,
+      vadesiz: enf.vadesiz_yp,
+      krediStok: enf.kredi_stok_milyar,
+      gsyh: enf.gsyh_2025,
+      b1: enf.para.b1.nokta,
+      b2: enf.para.b2.nokta,
+      dNokta: enf.kredi_model.d.nokta,
+      hNokta: enf.kredi_model.h.nokta,
+    });
+    const reel = {};
+    YILLAR.forEach(function (yil) {
+      if (yil < "2029") return;
+      reel[yil] = blok.yil[yil].toplam.map(function (dpi) {
+        return BETALAR.map(function (beta) {
+          return reelHucre(g0.I, beta, dpi);
+        });
+      });
+    });
+    return {
+      govde: g0,
+      theta: theta,
+      chi: chi,
+      beta: secim.beta,
+      kilitli: Math.abs(theta - g0.theta_kilit) < 1e-12 && Math.abs(chi - g0.chi_kilit) < 1e-12,
+      m2: m2,
+      adim4: a4,
+      enf: blok,
+      reel: reel,
+    };
+  }
+
+  return {
+    KREDI_PAY: KREDI_PAY,
+    GERCEK_YP: GERCEK_YP,
+    I0: I0,
+    PI0: PI0,
+    KIRA_W: KIRA_W,
+    KAPPA: KAPPA,
+    YILLAR: YILLAR,
+    BETALAR: BETALAR,
+    pyRound: pyRound,
+    adim4: adim4,
+    hesapla: hesapla,
+    reelHucre: reelHucre,
+    hukum: hukum,
+  };
+});
+</script>
+<script id="ui">"use strict";
+
+(function () {
+  const veri = JSON.parse(document.getElementById("veri").textContent);
+  const AD = { dusuk: "düşük", orta: "orta", yuksek: "yüksek" };
+  const HUKUM = { yanlis: "yanlış", ayakta: "ayakta", ayakta_degil: "ayakta değil" };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function tr(x, n) {
+    if (x === null || x === undefined || Number.isNaN(x)) return "—";
+    const neg = x < 0;
+    const s = Math.abs(x).toFixed(n);
+    const parca = s.split(".");
+    const tam = parca[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return (neg ? "−" : "") + tam + (parca[1] ? "," + parca[1] : "");
+  }
+
+  function sinif(etiket) {
+    return etiket === "kanıt" ? "kanit" : "aday";
+  }
+
+  function rakam(deger, opt) {
+    const n = opt.ondalik === undefined ? 4 : opt.ondalik;
+    const birim = opt.birim ? '<span class="birim">' + esc(opt.birim) + "</span>" : "";
+    const href = "../" + opt.kaynak;
+    return (
+      '<span class="rakam"><span class="deger">' + tr(deger, n) + "</span>" + birim +
+      ' <a class="kaynak" href="' + esc(href) + '">' + esc(opt.kaynak.split("/").pop()) + "</a>" +
+      ' <span class="rozet ' + sinif(opt.etiket) + '">' + esc(opt.etiket) + "</span></span>"
+    );
+  }
+
+  function hucre(ad, deger, opt) {
+    return "<tr><th>" + esc(ad) + "</th><td>" + rakam(deger, opt) + "</td></tr>";
+  }
+
+  function tablo(satirlar) {
+    return '<div class="tablo-kaydir"><table><tbody>' + satirlar + "</tbody></table></div>";
+  }
+
+  function grafikCubuk(satirlar, baslik) {
+    const w = 640;
+    const h = 200;
+    const vals = satirlar.map(function (s) { return s.deger; }).concat([0]);
+    const min = Math.min.apply(null, vals);
+    const max = Math.max.apply(null, vals);
+    const span = max - min || 1;
+    const y0 = 16;
+    const y1 = 164;
+    function y(v) { return y1 - ((v - min) / span) * (y1 - y0); }
+    const bw = 600 / satirlar.length;
+    let ciz = '<line x1="28" y1="' + y(0) + '" x2="628" y2="' + y(0) + '" stroke="#1c1915"/>';
+    satirlar.forEach(function (s, i) {
+      const x = 36 + i * bw;
+      const top = Math.min(y(s.deger), y(0));
+      const height = Math.max(1, Math.abs(y(s.deger) - y(0)));
+      ciz += '<rect x="' + x + '" y="' + top + '" width="' + (bw * 0.55) + '" height="' + height + '" fill="' + (s.renk || "#1f4d3a") + '"/>';
+      ciz += '<text x="' + (x + bw * 0.28) + '" y="186" text-anchor="middle" font-size="12" fill="#1c1915">' + esc(s.ad) + "</text>";
+    });
+    return '<figure><figcaption>' + esc(baslik) + '</figcaption><svg viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="' + esc(baslik) + '">' + ciz + "</svg></figure>";
+  }
+
+  function grafikBant(satirlar, baslik) {
+    const w = 640;
+    const h = 210;
+    const vals = [0];
+    satirlar.forEach(function (s) { vals.push(s.lo, s.hi); });
+    const min = Math.min.apply(null, vals);
+    const max = Math.max.apply(null, vals);
+    const span = max - min || 1;
+    const y0 = 16;
+    const y1 = 168;
+    function y(v) { return y1 - ((v - min) / span) * (y1 - y0); }
+    const bw = 600 / satirlar.length;
+    let ciz = '<line x1="28" y1="' + y(0) + '" x2="628" y2="' + y(0) + '" stroke="#1c1915"/>';
+    satirlar.forEach(function (s, i) {
+      const x = 40 + i * bw;
+      const top = Math.min(y(s.lo), y(s.hi));
+      const height = Math.max(2, Math.abs(y(s.hi) - y(s.lo)));
+      ciz += '<rect x="' + x + '" y="' + top + '" width="' + (bw * 0.45) + '" height="' + height + '" fill="#3d5a4c"/>';
+      ciz += '<text x="' + (x + bw * 0.22) + '" y="192" text-anchor="middle" font-size="12" fill="#1c1915">' + esc(s.ad) + "</text>";
+    });
+    return '<figure><figcaption>' + esc(baslik) + '</figcaption><svg viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="' + esc(baslik) + '">' + ciz + "</svg></figure>";
+  }
+
+  function oku() {
+    const ad = document.querySelector("#secici button[data-ad][aria-pressed='true']").getAttribute("data-ad");
+    const beta = Number(document.querySelector("#secici button[data-beta][aria-pressed='true']").getAttribute("data-beta"));
+    const theta = Number(document.getElementById("theta").value);
+    const chi = Number(document.getElementById("chi").value);
+    return { ad: ad, theta: theta, chi: chi, beta: beta };
+  }
+
+  function adimlariYaz() {
+    const m = veri.m2;
+    const my = m.m2.milyar;
+    const ay = m.adim12.birlesik;
+    const json = "para_arzi/m2_etki.json";
+    const kart = [
+      {
+        no: "1",
+        baslik: "Stok üst sınırı",
+        tanim: "Kimden kime stokta üst sınır. Silinen sütun boştur; tavan bir skor değildir.",
+        girdi: "EVDS stokları ve metindeki ters bacak. Kimden-kime xls depoda yoktur.",
+        cikti: [
+          ["eski tavan", 0.0728, 4, "", "BES_ADIM.md", "kanıt"],
+          ["yeni tavan", 0.2582, 4, "", "BES_ADIM.md", "kanıt"],
+          ["araç ayrı, M2", m.adim12.ayri.m2, 1, "milyar TL", json, "kanıt"],
+          ["birleşik yurt içi ayak", ay.m2_aday, 1, "milyar TL", json, "aday"],
+          ["birleşik silinen", ay.silinen, 1, "milyar TL", json, "kanıt"],
+          ["yurt dışı mevduat ayağı", ay.mevduat_ayak_yurtdisi, 1, "milyar TL", json, "kanıt"],
+        ],
+      },
+      {
+        no: "2",
+        baslik: "Akış mahsubu",
+        tanim: "Net pozisyonu sabit tutan akış oranı. Mevduat stoku bu adımdan çıkmaz.",
+        girdi: "Mahsup oranı ve adım 2 parametreleri. λ* kalibrasyondur, M2 girdisi değildir.",
+        cikti: [
+          ["mahsup oranı", 0.421, 3, "", "para_arzi/M2_ETKI.md", "kanıt"],
+          ["mahsup, M2", m.adim12.mahsup_0421.m2, 1, "milyar TL", json, "kanıt"],
+          ["λ*", 0.8931, 4, "", "ADIM2_NACE_AG.md", "aday"],
+          ["β tavanı", 0.0439, 4, "", "ADIM2_NACE_AG.md", "aday"],
+        ],
+      },
+      {
+        no: "3",
+        baslik: "Faiz durması",
+        tanim: "I = ψ · (r/4) · D ve D = κ · u2 · S0. Anapara ve mevduat stoku düşmez. r son gözlemde donar.",
+        girdi: "S0 firma F.4 stoku, ψ ölçüm türevi, r ticari faiz, κ senaryoya kilitli varsayım.",
+        cikti: [
+          ["S0", 25339.8, 1, "milyar TL", "ADIM3_FAIZ_DURMA.md", "kanıt"],
+          ["ψ", 0.3584, 4, "", "ADIM3_FAIZ_DURMA.md", "aday"],
+          ["r, son gözlem", veri.reel.i0, 4, "%", "para_arzi/REEL_RAHATLAMA.md", "kanıt"],
+          ["doğrudan M2", m.adim345.adim3, 1, "milyar TL", json, "kanıt"],
+        ],
+      },
+      {
+        no: "4",
+        baslik: "Adres mevduatı senede",
+        tanim: "Tepe = θ × adres. Kalıcı = χ × tepe. Vade 8 çeyrek. Kredi itişi = eldeki stok × 0,08, yıllık akıştır, stoka eklenmez.",
+        girdi: "Adres, örtüşme bandı. θ ve χ seçicidedir. Ham toplam ile örtüşme sonrası adres ayrıdır.",
+        cikti: [
+          ["hane vadeli", 8322.4, 1, "milyar TL", "ADIM4_ADRES_YONLENDIRME.md", "kanıt"],
+          ["firma vadeli", 4400.1, 1, "milyar TL", "ADIM4_ADRES_YONLENDIRME.md", "kanıt"],
+          ["gerçek kişi YP", ZT.GERCEK_YP, 1, "milyar TL", "ADIM4_ADRES_YONLENDIRME.md", "kanıt"],
+          ["düşük adres", m.senaryo[0].adres, 1, "milyar TL", json, "kanıt"],
+          ["orta ve yüksek adres", m.senaryo[1].adres, 1, "milyar TL", json, "kanıt"],
+          ["kredi payı", ZT.KREDI_PAY, 2, "", "para_arzi/m2_etki.py", "aday"],
+        ],
+      },
+      {
+        no: "4.5",
+        baslik: "Yeni birim, λ = 1",
+        tanim: "Plasebo. TL stok λ ile ölçeklenir; λ = 1 iken stok durur. USD stoku ve faiz durur. Kur sabittir.",
+        girdi: "2026-Q1 TL para stoku. Bu stok M2 değildir.",
+        cikti: [
+          ["λ", 1, 0, "", "ADIM45_BIRIM.md", "aday"],
+          ["kur", 49.1274, 4, "TL/USD", "para_arzi/ENFLASYON_ETKI.md", "kanıt"],
+          ["TL stok, λ = 1", m.tl_para_stoku.tl_para_stoku, 1, "milyar TL", "ADIM45_BIRIM.md", "kanıt"],
+          ["doğrudan M2", m.adim345.adim45, 1, "milyar TL", json, "kanıt"],
+          ["yürütme A alt", 0.59, 2, "milyar TL", "BES_ADIM.md", "aday"],
+          ["yürütme A üst", 5.4, 2, "milyar TL", "BES_ADIM.md", "aday"],
+          ["yürütme B alt", 189.7, 1, "milyar TL", "BES_ADIM.md", "aday"],
+          ["yürütme B üst", 632.4, 1, "milyar TL", "BES_ADIM.md", "aday"],
+        ],
+      },
+      {
+        no: "5",
+        baslik: "Kira, Ho → Ha",
+        tanim: "İki hane arasında aktarım. Yıl adım 5 dosyasında yoktur. Doğrudan M2 sıfırdır. Kira puanı enflasyon tablosuna yazılmaz.",
+        girdi: "Birim kira ve HEKİS havuz kirası. Alan ve kiracı payı varsayımdır.",
+        cikti: [
+          ["birim kira", 275.37, 2, "TL/m²/ay", "ADIM5_KIRA.md", "kanıt"],
+          ["HEKİS havuz", 20000, 0, "TL/ay", "BES_ADIM.md", "aday"],
+          ["yol A alt", 2005.8, 1, "milyar TL/yıl", "ADIM5_KIRA.md", "aday"],
+          ["yol A üst", 2941.8, 1, "milyar TL/yıl", "ADIM5_KIRA.md", "aday"],
+          ["yol B vekil", 254.8, 1, "milyar TL/yıl", "ADIM5_KIRA.md", "aday"],
+          ["doğrudan M2", m.adim345.adim5, 1, "milyar TL", json, "kanıt"],
+        ],
+      },
+    ];
+    const kok = document.querySelector("#adimlar .kartlar");
+    kok.innerHTML = kart.map(function (k) {
+      const satir = k.cikti.map(function (c) {
+        return hucre(c[0], c[1], { ondalik: c[2], birim: c[3], kaynak: c[4], etiket: c[5] });
+      }).join("");
+      return (
+        "<article><h3>Adım " + esc(k.no) + " — " + esc(k.baslik) + "</h3>" +
+        "<p><strong>Tanım.</strong> " + esc(k.tanim) + "</p>" +
+        "<p><strong>Girdi.</strong> " + esc(k.girdi) + "</p>" +
+        "<p><strong>Çıktı.</strong></p>" + tablo(satir) + "</article>"
+      );
+    }).join("");
+    kok.insertAdjacentHTML("afterend",
+      "<p>M2 düzeyi " + rakam(my.m2, { ondalik: 4, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) +
+      ", hafta " + esc(m.hafta) + ". Menkul " +
+      rakam(my.menkul, { ondalik: 4, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) +
+      " M2 dışındadır. DİBS " +
+      rakam(m.dibs_milyar, { ondalik: 1, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) +
+      " menkul satırı değildir.</p>"
+    );
+  }
+
+  function m2Yaz(c) {
+    const json = "para_arzi/m2_etki.json";
+    const py = "para_arzi/m2_etki.py";
+    const my = veri.m2.m2.milyar;
+    const kanit = { kaynak: json, etiket: "kanıt" };
+    const aday = { kaynak: py, etiket: "aday" };
+    const s = c.m2;
+    const govde = c.govde.adim12 === 0 ? "kanıt" : "aday";
+    const govdeKaynak = c.govde.adim12 === 0 ? json : json;
+    let html = "<h3>Düzey, " + esc(veri.m2.hafta) + "</h3>" + tablo(
+      hucre("dolaşım", my.dolasim, Object.assign({ ondalik: 4, birim: "milyar TL" }, kanit)) +
+      hucre("vadesiz TL", my.vadesiz_tl, Object.assign({ ondalik: 4, birim: "milyar TL" }, kanit)) +
+      hucre("vadeli TL", my.vadeli_tl, Object.assign({ ondalik: 4, birim: "milyar TL" }, kanit)) +
+      hucre("vadesiz YP", my.vadesiz_yp, Object.assign({ ondalik: 4, birim: "milyar TL" }, kanit)) +
+      hucre("vadeli YP", my.vadeli_yp, Object.assign({ ondalik: 4, birim: "milyar TL" }, kanit)) +
+      hucre("M2", my.m2, Object.assign({ ondalik: 4, birim: "milyar TL" }, kanit)) +
+      hucre("M3", my.m3, Object.assign({ ondalik: 4, birim: "milyar TL" }, kanit))
+    );
+    html += "<h3>Seçili senaryo</h3><p>Adres " +
+      rakam(c.govde.adres, { ondalik: 1, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) +
+      ", κ " + rakam(c.govde.kappa, { ondalik: 2, kaynak: "para_arzi/reel_rahatlama.py", etiket: "aday" }) +
+      ". İkinci tur stok toplamına girmez.</p>";
+    html += tablo(
+      hucre("adım 1–2", s.adim12_m2, { ondalik: 4, birim: "milyar TL", kaynak: govdeKaynak, etiket: govde }) +
+      hucre("adım 3", s.adim3_m2, { ondalik: 1, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) +
+      hucre("adım 4 tepe", s.adim4_tepe, Object.assign({ ondalik: 4, birim: "milyar TL" }, aday)) +
+      hucre("adım 4 kalıcı", s.adim4_kalici, Object.assign({ ondalik: 4, birim: "milyar TL" }, aday)) +
+      hucre("adım 4.5", s.adim45_m2, { ondalik: 1, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) +
+      hucre("adım 5", s.adim5_m2, { ondalik: 1, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) +
+      hucre("başlık stok", s.baslik_stok, Object.assign({ ondalik: 4, birim: "milyar TL" }, aday)) +
+      hucre("başlık / M2", s.baslik_yuzde, Object.assign({ ondalik: 4, birim: "%" }, aday)) +
+      hucre("tepe stok", s.tepe_stok, Object.assign({ ondalik: 4, birim: "milyar TL" }, aday)) +
+      hucre("tepe / M2", s.tepe_yuzde, Object.assign({ ondalik: 4, birim: "%" }, aday)) +
+      hucre("2. tur tepe", s.ikinci_tur_tepe_yillik, Object.assign({ ondalik: 4, birim: "milyar TL/yıl" }, aday)) +
+      hucre("2. tur kalıcı", s.ikinci_tur_kalici_yillik, Object.assign({ ondalik: 4, birim: "milyar TL/yıl" }, aday))
+    );
+    html += grafikCubuk([
+      { ad: "tepe", deger: s.adim4_tepe },
+      { ad: "kalıcı", deger: s.adim4_kalici },
+      { ad: "başlık", deger: s.baslik_stok },
+    ], "M2 stok düşüşü, milyar TL. Tepe başlığa girmez.");
+    const bol = document.getElementById("m2");
+    bol.querySelectorAll(":scope > :not(h2)").forEach(function (n) { n.remove(); });
+    bol.insertAdjacentHTML("beforeend", html);
+  }
+
+  function enflasyonYaz(c) {
+    const ej = "para_arzi/enflasyon_etki.json";
+    const py = "para_arzi/enflasyon_etki.py";
+    const p = veri.enf.para;
+    const b = veri.enf.birlesik_2028;
+    let html = "<blockquote>Modelde enflasyon dışsaldır; bu hesap model dışı bir köprüdür, sonuç modele geri beslenmez.</blockquote>";
+    html += "<p>Kaynak <a href=\"../para_arzi/ENFLASYON_ETKI.md\">ENFLASYON_ETKI.md</a>. " +
+      "r " + rakam(veri.reel.i0, { ondalik: 4, birim: "%", kaynak: "para_arzi/ENFLASYON_ETKI.md", etiket: "kanıt" }) +
+      " ve kur " + rakam(49.1274, { ondalik: 4, kaynak: "para_arzi/ENFLASYON_ETKI.md", etiket: "kanıt" }) +
+      " beş adımın çıktısına bağlanmaz.</p>";
+    html += "<p>Örneklemde Δlog M2 " +
+      rakam(p.dlog_m2_min, { ondalik: 4, kaynak: ej, etiket: "aday" }) + " ile " +
+      rakam(p.dlog_m2_max, { ondalik: 4, kaynak: ej, etiket: "aday" }) +
+      " arasındadır; ikisi de artıştır. Daralma bu örneklemin dışındadır. b1 " +
+      rakam(p.b1.nokta, { ondalik: 4, kaynak: ej, etiket: "aday" }) + ", b2 " +
+      rakam(p.b2.nokta, { ondalik: 4, kaynak: ej, etiket: "aday" }) +
+      ". Kur kanalı tahmin edilemedi (n = " + rakam(veri.enf.kur_model.n, { ondalik: 0, kaynak: ej, etiket: "aday" }) +
+      "); skorlanan kur puanı " + rakam(0, { ondalik: 0, birim: "puan", kaynak: py, etiket: "aday" }) + ".</p>";
+    html += "<p>Birleşik ayak " + rakam(b.dm2, { ondalik: 1, birim: "milyar TL", kaynak: ej, etiket: "aday" }) +
+      " 2028 para puanı " + rakam(b.nokta, { ondalik: 2, birim: "puan", kaynak: ej, etiket: "aday" }) +
+      ". Skora girmez. Büyüme noktasının katsayısı sıfırı içerdiği için büyüme puanı " +
+      rakam(c.enf.buyume.tepe, { ondalik: 2, birim: "puan", kaynak: py, etiket: "aday" }) +
+      " (tepe) ve " + rakam(c.enf.buyume.kalici, { ondalik: 2, birim: "puan", kaynak: py, etiket: "aday" }) +
+      " (kalıcı). Enflasyon toplamına yazılmaz.</p>";
+    if (c.enf.hiz_tepe !== 0) {
+      html += '<p class="uyari">Para puanı, stokun düştüğü yılın geçişidir. Hız özdeşliği ' +
+        rakam(c.enf.hiz_tepe, { ondalik: 4, kaynak: py, etiket: "kanıt" }) +
+        " fiyat denklemine eklenmez.</p>";
+    }
+    const baslik = "<tr><th>Yıl</th><th>Para alt</th><th>Para üst</th><th>Maliyet α=1</th><th>Kredi</th><th>Toplam</th><th>Kredi hariç</th></tr>";
+    const bantlar = [];
+    let govde = "";
+    ZT.YILLAR.forEach(function (yil) {
+      const h = c.enf.yil[yil];
+      const opt = { ondalik: 2, birim: "puan", kaynak: py, etiket: "aday" };
+      govde += "<tr><th>" + yil + "</th><td>" + rakam(h.para_alt, opt) + "</td><td>" + rakam(h.para_ust, opt) +
+        "</td><td>" + rakam(h.maliyet[1], opt) + "</td><td>" + rakam(h.kredi, opt) +
+        "</td><td>" + rakam(h.toplam[0], opt) + " … " + rakam(h.toplam[1], opt) +
+        "</td><td>" + rakam(h.toplam_kredisiz[0], opt) + " … " + rakam(h.toplam_kredisiz[1], opt) + "</td></tr>";
+      bantlar.push({ ad: yil, lo: h.toplam[0], hi: h.toplam[1] });
+    });
+    html += '<div class="tablo-kaydir"><table><thead>' + baslik + "</thead><tbody>" + govde + "</tbody></table></div>";
+    html += "<p>Kira, yıl yok: " +
+      rakam(c.enf.kira[0], { ondalik: 2, birim: "puan", kaynak: py, etiket: "aday" }) + " … " +
+      rakam(c.enf.kira[1], { ondalik: 2, birim: "puan", kaynak: py, etiket: "aday" }) +
+      ". Kapsama " + rakam(c.govde.kapsam, { ondalik: 2, kaynak: "para_arzi/enflasyon_etki.py", etiket: "aday" }) +
+      ", ağırlık " + rakam(ZT.KIRA_W, { ondalik: 6, kaynak: "para_arzi/enflasyon_etki.py", etiket: "aday" }) + ".</p>";
+    html += grafikBant(bantlar, "Yıllık TÜFE puanı, kredi dahil toplamın iki ucu. Eksi, o yıl daha yavaş artıştır.");
+    const bol = document.getElementById("enflasyon");
+    bol.querySelectorAll(":scope > :not(h2)").forEach(function (n) { n.remove(); });
+    bol.insertAdjacentHTML("beforeend", html);
+  }
+
+  function isaret(h) {
+    const d = [];
+    if (h.tanim_disi) d.push("tanım dışı");
+    if (!h.hukme_girer && h.delta_pi > 0) d.push("artış");
+    if (h.delta_pi === 0) d.push("sapma yok");
+    if (h.taban_bagli) d.push("taban 0");
+    if (!d.length) d.push("tanım içi");
+    return d.join(", ");
+  }
+
+  function reelYaz(c) {
+    const py = "para_arzi/reel_rahatlama.py";
+    const md = "para_arzi/REEL_RAHATLAMA.md";
+    let html = "<blockquote>" + esc(veri.reel.cumle) + "</blockquote>";
+    html += "<p>Kilitli üç senaryonun birlikte hükmü: <strong>" + esc(HUKUM[veri.reel.hukum.hukum] || veri.reel.hukum.hukum) + "</strong>. " +
+      "Kaynak <a href=\"../" + md + "\">REEL_RAHATLAMA.md</a>. " +
+      "i(β) = max(0, i₀ + β·Δπ). Nominal taban 0'dır. Net = I(β)/(1+(π₀+Δπ)/100) − I₀/(1+π₀/100).</p>";
+    html += "<p>I₀ " + rakam(c.govde.I, { ondalik: 1, birim: "milyar TL", kaynak: "para_arzi/enflasyon_etki.json", etiket: "aday" }) +
+      ", π₀ " + rakam(veri.reel.pi0, { ondalik: 2, birim: "%", kaynak: md, etiket: "kanıt" }) +
+      ", seçili β " + rakam(c.beta, { ondalik: 1, kaynak: py, etiket: "aday" }) + ".</p>";
+    let bas = "<tr><th>Yıl</th><th>Δπ</th><th>i</th><th>Nominal</th><th>Fazlalık</th><th>Reel</th><th>Net</th><th>İşaret</th></tr>";
+    const cubuk = [];
+    ["2029", "2030", "2031"].forEach(function (yil) {
+      c.reel[yil].forEach(function (uclar, i) {
+        const h = uclar.filter(function (x) { return x.beta === c.beta; })[0];
+        const opt = { ondalik: 2, birim: "milyar TL", kaynak: py, etiket: "aday" };
+        const cls = h.tanim_disi ? ' class="uyari"' : "";
+        bas += "<tr" + cls + "><th>" + yil + "</th><td>" +
+          rakam(h.delta_pi, { ondalik: 2, birim: "puan", kaynak: py, etiket: "aday" }) + "</td><td>" +
+          rakam(h.i, { ondalik: 2, birim: "%", kaynak: py, etiket: "aday" }) + "</td><td>" +
+          rakam(h.nominal, opt) + "</td><td>" + rakam(h.fazlalik, opt) + "</td><td>" +
+          rakam(h.reel, opt) + "</td><td>" + rakam(h.net, opt) + "</td><td>" + esc(isaret(h)) + "</td></tr>";
+        cubuk.push({
+          ad: yil + (i === 0 ? " alt" : " üst"),
+          deger: h.net,
+          renk: h.net < 0 ? "#8c3b2a" : "#1f4d3a",
+        });
+      });
+    });
+    html += '<div class="tablo-kaydir"><table>' + bas + "</table></div>";
+    html += "<p>Net pozitifse sabit tablo reel rahatlamayı küçük yazar. Net negatifse tablo büyük yazar. Tanım dışı hücre hükme girmez.</p>";
+    html += grafikCubuk(cubuk, "Seçili β için net reel rahatlama, milyar TL. İki uç, o yılın toplam bandıdır.");
+    const bol = document.getElementById("reel");
+    bol.querySelectorAll(":scope > :not(h2)").forEach(function (n) { n.remove(); });
+    bol.insertAdjacentHTML("beforeend", html);
+  }
+
+  function rantYaz() {
+    const r = veri.rant;
+    const e = veri.etki;
+    const rj = "rant_aktor_sonuc.json";
+    const md = e.kaynak;
+    let html = "<p>Mevcut senaryoda yıllık rant baseline'da durur. Dosya durumu «" + esc(r.durum) +
+      "», ölçüm değil. Rozet adaydır.</p>";
+    let satir = "";
+    Object.keys(r.baseline).forEach(function (aktor) {
+      satir += hucre(aktor + " baseline", r.baseline[aktor], { ondalik: 2, birim: "milyar TL/yıl", kaynak: rj, etiket: "aday" });
+      satir += hucre(aktor + " mevcut kayıp", r.kayip[aktor], { ondalik: 1, birim: "milyar TL", kaynak: rj, etiket: "aday" });
+    });
+    html += tablo(satir);
+    html += "<h3>Etki cephesi, K1 sonrası</h3><p>Güncel SFC satırı bu bölümdür. K1 öncesi Σ " +
+      rakam(e.once_sigma, { ondalik: 3, birim: "trilyon TL", kaynak: md, etiket: "aday" }) +
+      " güncel değer değildir.</p>";
+    html += tablo(
+      ["H", "F", "B", "K", "D"].map(function (k) {
+        return hucre(k, e.sfc[k], { ondalik: 3, birim: "trilyon TL", kaynak: md, etiket: "aday" });
+      }).join("") +
+      hucre("Σ", e.sfc.sigma, { ondalik: 1, birim: "trilyon TL", kaynak: md, etiket: "aday" }) +
+      hucre("F.4 2036 baz", e.f4_baz, { ondalik: 1, birim: "milyar TL", kaynak: md, etiket: "kanıt" }) +
+      hucre("F.4 yüzde 10 varsayım", e.f4_bant[0], { ondalik: 1, birim: "milyar TL", kaynak: md, etiket: "aday" }) +
+      hucre("F.4 yüzde 20 varsayım", e.f4_bant[1], { ondalik: 1, birim: "milyar TL", kaynak: md, etiket: "aday" }) +
+      hucre("transfer", e.transfer_mn_usd, { ondalik: 0, birim: "mn USD", kaynak: md, etiket: "aday" }) +
+      hucre("dönem kuru", e.kur, { ondalik: 2, kaynak: md, etiket: "aday" }) +
+      hucre("transfer", e.transfer_tr_tl, { ondalik: 3, birim: "trilyon TL", kaynak: md, etiket: "aday" })
+    );
+    html += "<p>Kapanış belgede " + (e.kapanis_ok ? "kapanış_ok" : "kapalı değil") +
+      ". F→D transferi belgenin yazdığı çarpımdır: " +
+      rakam(e.transfer_mn_usd, { ondalik: 0, birim: "mn USD", kaynak: md, etiket: "aday" }) +
+      " × " + rakam(e.kur, { ondalik: 2, kaynak: md, etiket: "aday" }) +
+      " = " + rakam(e.transfer_tr_tl, { ondalik: 3, birim: "trilyon TL", kaynak: md, etiket: "aday" }) + ".</p>";
+    const bol = document.getElementById("rant");
+    bol.querySelectorAll(":scope > :not(h2)").forEach(function (n) { n.remove(); });
+    bol.insertAdjacentHTML("beforeend", html);
+  }
+
+  function yanlisYaz() {
+    const t = veri.m2.tl_para_stoku;
+    const json = "para_arzi/m2_etki.json";
+    const md = "para_arzi/REEL_RAHATLAMA.md";
+    let html = "<article><h3>16.472,8 = M2</h3><p>Eşitlik düştü. TL para stoku " +
+      rakam(t.tl_para_stoku, { ondalik: 1, birim: "milyar TL", kaynak: "ADIM45_BIRIM.md", etiket: "kanıt" }) +
+      ", aynı çeyreğin M2'si " + rakam(t.m2, { ondalik: 4, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) +
+      ", fark " + rakam(t.fark, { ondalik: 4, birim: "milyar TL", kaynak: json, etiket: "kanıt" }) + ".</p></article>";
+    html += "<article><h3>Net reel rahatlama iddiası</h3><blockquote>" + esc(veri.reel.cumle) +
+      "</blockquote><p>Hüküm " + esc(HUKUM[veri.reel.hukum.hukum] || veri.reel.hukum.hukum) + ". Tanım içi β = 0,5 hücresi " +
+      rakam(veri.reel.hukum.n_beta05, { ondalik: 0, kaynak: "para_arzi/reel_rahatlama.json", etiket: "aday" }) +
+      ", β = 1 hücresi " +
+      rakam(veri.reel.hukum.n_beta1, { ondalik: 0, kaynak: "para_arzi/reel_rahatlama.json", etiket: "aday" }) +
+      ". Kaynak <a href=\"../" + md + "\">REEL_RAHATLAMA.md</a>.</p></article>";
+    html += "<article><h3>Stok yüzde 20 silindi</h3><p>«Yüzde 20» kaldırıldı. Yerine adım 1 tavan bandı yazıldı. Kaynak <a href=\"../BES_ADIM.md\">BES_ADIM.md</a>.</p></article>";
+    const bol = document.getElementById("yanlis");
+    bol.querySelectorAll(":scope > :not(h2)").forEach(function (n) { n.remove(); });
+    bol.insertAdjacentHTML("beforeend", '<div class="kartlar">' + html + "</div>");
+  }
+
+  function jsonFark(c) {
+    if (!c.kilitli) return null;
+    const s = veri.m2.senaryo.find(function (x) { return x.ad === c.govde.ad; });
+    const e = veri.enf.senaryo.find(function (x) { return x.ad === c.govde.ad; });
+    let max = 0;
+    ["adim4_tepe", "adim4_kalici", "baslik_stok", "baslik_yuzde", "tepe_stok"].forEach(function (k) {
+      max = Math.max(max, Math.abs(c.m2[k] - s[k]));
+    });
+    ZT.YILLAR.forEach(function (yil) {
+      max = Math.max(max,
+        Math.abs(c.enf.yil[yil].toplam[0] - e.yil[yil].toplam[0]),
+        Math.abs(c.enf.yil[yil].toplam[1] - e.yil[yil].toplam[1]));
+    });
+    return max;
+  }
+
+  function ciz() {
+    const secim = oku();
+    const durum = document.getElementById("durum");
+    if (!Number.isFinite(secim.theta) || !Number.isFinite(secim.chi) || secim.theta < 0 || secim.theta > 1 || secim.chi < 0 || secim.chi > 1) {
+      durum.textContent = "θ ve χ 0 ile 1 arasında olmalı.";
+      return;
+    }
+    let c;
+    try {
+      c = ZT.hesapla(secim, { m2: veri.m2, enf: veri.enf, reel: veri.reel });
+    } catch (err) {
+      durum.textContent = err.message;
+      return;
+    }
+    const fark = jsonFark(c);
+    const govde = AD[c.govde.ad];
+    if (c.kilitli && fark < 1e-6) {
+      durum.textContent = "Gövde " + govde + ", θ ve χ kilitli. M2 ve enflasyon bandı JSON ile 10⁻⁶ altında.";
+    } else if (c.kilitli) {
+      durum.textContent = "Gövde " + govde + ", θ ve χ kilitli. JSON farkı " + fark + ".";
+    } else {
+      durum.textContent = "Gövde " + govde + " (κ, adres, I₀). θ veya χ kilitten farklı; formül aynı, bu satır JSON hücresi değildir.";
+    }
+    m2Yaz(c);
+    enflasyonYaz(c);
+    reelYaz(c);
+  }
+
+  document.querySelectorAll("#secici button[data-ad]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#secici button[data-ad]").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      const s = veri.m2.senaryo.find(function (x) { return x.ad === b.getAttribute("data-ad"); });
+      document.getElementById("theta").value = String(s.theta);
+      document.getElementById("chi").value = String(s.chi);
+      ciz();
+    });
+  });
+  document.querySelectorAll("#secici button[data-beta]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#secici button[data-beta]").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      ciz();
+    });
+  });
+  document.getElementById("theta").addEventListener("input", ciz);
+  document.getElementById("chi").addEventListener("input", ciz);
+
+  adimlariYaz();
+  rantYaz();
+  yanlisYaz();
+  ciz();
+})();
+</script>
+</body>
+</html>
