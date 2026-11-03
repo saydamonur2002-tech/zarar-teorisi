@@ -1,0 +1,1122 @@
+{
+  "2013-06": {
+    "reeskont_alim_mn": 826.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1700.0
+  },
+  "2013-07": {
+    "reeskont_alim_mn": 975.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 5150.0
+  },
+  "2013-08": {
+    "reeskont_alim_mn": 1191.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1950.0
+  },
+  "2013-09": {
+    "reeskont_alim_mn": 1152.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1860.0
+  },
+  "2013-10": {
+    "reeskont_alim_mn": 1068.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 840.0
+  },
+  "2013-11": {
+    "reeskont_alim_mn": 1698.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1440.0
+  },
+  "2013-12": {
+    "reeskont_alim_mn": 1024.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 4670.0
+  },
+  "2014-01": {
+    "reeskont_alim_mn": 568.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 3151.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 2600.0
+  },
+  "2014-02": {
+    "reeskont_alim_mn": 299.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1000.0
+  },
+  "2014-03": {
+    "reeskont_alim_mn": 475.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1050.0
+  },
+  "2014-04": {
+    "reeskont_alim_mn": 362.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1020.0
+  },
+  "2014-05": {
+    "reeskont_alim_mn": 2056.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 500.0
+  },
+  "2014-06": {
+    "reeskont_alim_mn": 1537.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 420.0
+  },
+  "2014-07": {
+    "reeskont_alim_mn": 1460.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 380.0
+  },
+  "2014-08": {
+    "reeskont_alim_mn": 1376.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 209.0
+  },
+  "2014-09": {
+    "reeskont_alim_mn": 1422.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 310.0
+  },
+  "2014-10": {
+    "reeskont_alim_mn": 1315.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 720.0
+  },
+  "2014-11": {
+    "reeskont_alim_mn": 790.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 800.0
+  },
+  "2014-12": {
+    "reeskont_alim_mn": 1340.0,
+    "kit_satim_mn": 1321.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 870.0
+  },
+  "2015-01": {
+    "reeskont_alim_mn": 2042.0,
+    "kit_satim_mn": 1092.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 840.0
+  },
+  "2015-02": {
+    "reeskont_alim_mn": 1346.0,
+    "kit_satim_mn": 1518.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 820.0
+  },
+  "2015-03": {
+    "reeskont_alim_mn": 1268.0,
+    "kit_satim_mn": 1848.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1080.0
+  },
+  "2015-04": {
+    "reeskont_alim_mn": 1398.0,
+    "kit_satim_mn": 1453.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 910.0
+  },
+  "2015-05": {
+    "reeskont_alim_mn": 1037.0,
+    "kit_satim_mn": 638.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 830.0
+  },
+  "2015-06": {
+    "reeskont_alim_mn": 854.0,
+    "kit_satim_mn": 537.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 970.0
+  },
+  "2015-07": {
+    "reeskont_alim_mn": 879.0,
+    "kit_satim_mn": 429.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 840.0
+  },
+  "2015-08": {
+    "reeskont_alim_mn": 936.0,
+    "kit_satim_mn": 396.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1096.0
+  },
+  "2015-09": {
+    "reeskont_alim_mn": 1539.0,
+    "kit_satim_mn": 918.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1140.0
+  },
+  "2015-10": {
+    "reeskont_alim_mn": 1436.0,
+    "kit_satim_mn": 581.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1200.0
+  },
+  "2015-11": {
+    "reeskont_alim_mn": 1389.0,
+    "kit_satim_mn": 431.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1260.0
+  },
+  "2015-12": {
+    "reeskont_alim_mn": 1057.0,
+    "kit_satim_mn": 664.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1380.0
+  },
+  "2016-01": {
+    "reeskont_alim_mn": 1084.0,
+    "kit_satim_mn": 862.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1200.0
+  },
+  "2016-02": {
+    "reeskont_alim_mn": 1106.0,
+    "kit_satim_mn": 687.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 1170.0
+  },
+  "2016-03": {
+    "reeskont_alim_mn": 1139.0,
+    "kit_satim_mn": 730.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 650.0
+  },
+  "2016-04": {
+    "reeskont_alim_mn": 1033.0,
+    "kit_satim_mn": 472.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 380.0
+  },
+  "2016-05": {
+    "reeskont_alim_mn": 1372.0,
+    "kit_satim_mn": 82.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2016-06": {
+    "reeskont_alim_mn": 1402.0,
+    "kit_satim_mn": 189.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2016-07": {
+    "reeskont_alim_mn": 1350.0,
+    "kit_satim_mn": 390.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2016-08": {
+    "reeskont_alim_mn": 1026.0,
+    "kit_satim_mn": 82.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2016-09": {
+    "reeskont_alim_mn": 1440.0,
+    "kit_satim_mn": 256.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2016-10": {
+    "reeskont_alim_mn": 1246.0,
+    "kit_satim_mn": 429.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2016-11": {
+    "reeskont_alim_mn": 1543.0,
+    "kit_satim_mn": 438.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2016-12": {
+    "reeskont_alim_mn": 1281.0,
+    "kit_satim_mn": 467.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-01": {
+    "reeskont_alim_mn": 1890.0,
+    "kit_satim_mn": 779.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-02": {
+    "reeskont_alim_mn": 932.0,
+    "kit_satim_mn": 917.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-03": {
+    "reeskont_alim_mn": 31.0,
+    "kit_satim_mn": 918.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-04": {
+    "reeskont_alim_mn": 77.0,
+    "kit_satim_mn": 559.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-05": {
+    "reeskont_alim_mn": 917.0,
+    "kit_satim_mn": 582.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-06": {
+    "reeskont_alim_mn": 1192.0,
+    "kit_satim_mn": 482.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-07": {
+    "reeskont_alim_mn": 1292.0,
+    "kit_satim_mn": 461.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-08": {
+    "reeskont_alim_mn": 2030.0,
+    "kit_satim_mn": 553.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-09": {
+    "reeskont_alim_mn": 1703.0,
+    "kit_satim_mn": 475.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-10": {
+    "reeskont_alim_mn": 1793.0,
+    "kit_satim_mn": 578.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-11": {
+    "reeskont_alim_mn": 348.0,
+    "kit_satim_mn": 686.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2017-12": {
+    "reeskont_alim_mn": 282.0,
+    "kit_satim_mn": 861.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-01": {
+    "reeskont_alim_mn": 325.0,
+    "kit_satim_mn": 904.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-02": {
+    "reeskont_alim_mn": 1362.0,
+    "kit_satim_mn": 1288.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-03": {
+    "reeskont_alim_mn": 1634.0,
+    "kit_satim_mn": 1008.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-04": {
+    "reeskont_alim_mn": 1304.0,
+    "kit_satim_mn": 797.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-05": {
+    "reeskont_alim_mn": 1535.0,
+    "kit_satim_mn": 631.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-06": {
+    "reeskont_alim_mn": 249.0,
+    "kit_satim_mn": 406.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-07": {
+    "reeskont_alim_mn": 115.0,
+    "kit_satim_mn": 421.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-08": {
+    "reeskont_alim_mn": 1407.0,
+    "kit_satim_mn": 656.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-09": {
+    "reeskont_alim_mn": 1325.0,
+    "kit_satim_mn": 605.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-10": {
+    "reeskont_alim_mn": 1912.0,
+    "kit_satim_mn": 461.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-11": {
+    "reeskont_alim_mn": 2035.0,
+    "kit_satim_mn": 329.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2018-12": {
+    "reeskont_alim_mn": 1700.0,
+    "kit_satim_mn": 193.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-01": {
+    "reeskont_alim_mn": 1762.0,
+    "kit_satim_mn": 774.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-02": {
+    "reeskont_alim_mn": 1444.0,
+    "kit_satim_mn": 938.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-03": {
+    "reeskont_alim_mn": 1838.0,
+    "kit_satim_mn": 784.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-04": {
+    "reeskont_alim_mn": 1654.0,
+    "kit_satim_mn": 730.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-05": {
+    "reeskont_alim_mn": 2220.0,
+    "kit_satim_mn": 503.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-06": {
+    "reeskont_alim_mn": 1814.0,
+    "kit_satim_mn": 328.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-07": {
+    "reeskont_alim_mn": 2214.0,
+    "kit_satim_mn": 259.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-08": {
+    "reeskont_alim_mn": 2048.0,
+    "kit_satim_mn": 558.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-09": {
+    "reeskont_alim_mn": 1555.0,
+    "kit_satim_mn": 374.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-10": {
+    "reeskont_alim_mn": 2181.0,
+    "kit_satim_mn": 488.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-11": {
+    "reeskont_alim_mn": 1813.0,
+    "kit_satim_mn": 81.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2019-12": {
+    "reeskont_alim_mn": 2150.0,
+    "kit_satim_mn": 639.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-01": {
+    "reeskont_alim_mn": 1828.0,
+    "kit_satim_mn": 787.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-02": {
+    "reeskont_alim_mn": 2314.0,
+    "kit_satim_mn": 1275.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-03": {
+    "reeskont_alim_mn": 2289.0,
+    "kit_satim_mn": 847.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-04": {
+    "reeskont_alim_mn": 1040.0,
+    "kit_satim_mn": 496.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-05": {
+    "reeskont_alim_mn": 911.0,
+    "kit_satim_mn": 469.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-06": {
+    "reeskont_alim_mn": 1386.0,
+    "kit_satim_mn": 466.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-07": {
+    "reeskont_alim_mn": 3143.0,
+    "kit_satim_mn": 70.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-08": {
+    "reeskont_alim_mn": 2355.0,
+    "kit_satim_mn": 325.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-09": {
+    "reeskont_alim_mn": 2667.0,
+    "kit_satim_mn": 604.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-10": {
+    "reeskont_alim_mn": 1744.0,
+    "kit_satim_mn": 479.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-11": {
+    "reeskont_alim_mn": 2284.0,
+    "kit_satim_mn": 97.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2020-12": {
+    "reeskont_alim_mn": 1106.0,
+    "kit_satim_mn": 70.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-01": {
+    "reeskont_alim_mn": 1000.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-02": {
+    "reeskont_alim_mn": 895.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-03": {
+    "reeskont_alim_mn": 1140.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-04": {
+    "reeskont_alim_mn": 1186.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-05": {
+    "reeskont_alim_mn": 1332.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-06": {
+    "reeskont_alim_mn": 1875.0,
+    "kit_satim_mn": 269.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-07": {
+    "reeskont_alim_mn": 1678.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-08": {
+    "reeskont_alim_mn": 2140.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-09": {
+    "reeskont_alim_mn": 2638.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-10": {
+    "reeskont_alim_mn": 2311.0,
+    "kit_satim_mn": 258.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-11": {
+    "reeskont_alim_mn": 2803.0,
+    "kit_satim_mn": 2226.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2021-12": {
+    "reeskont_alim_mn": 2081.0,
+    "kit_satim_mn": 3358.0,
+    "dogrudan_mudahale_satim_mn": 7278.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-01": {
+    "reeskont_alim_mn": 1549.0,
+    "kit_satim_mn": 4146.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-02": {
+    "reeskont_alim_mn": 1310.0,
+    "kit_satim_mn": 5368.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-03": {
+    "reeskont_alim_mn": 2025.0,
+    "kit_satim_mn": 3240.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-04": {
+    "reeskont_alim_mn": 3160.0,
+    "kit_satim_mn": 3296.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-05": {
+    "reeskont_alim_mn": 2379.0,
+    "kit_satim_mn": 1816.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-06": {
+    "reeskont_alim_mn": 1163.0,
+    "kit_satim_mn": 105.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-07": {
+    "reeskont_alim_mn": 1097.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-08": {
+    "reeskont_alim_mn": 1334.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-09": {
+    "reeskont_alim_mn": 1301.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-10": {
+    "reeskont_alim_mn": 653.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-11": {
+    "reeskont_alim_mn": 1240.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2022-12": {
+    "reeskont_alim_mn": 412.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-01": {
+    "reeskont_alim_mn": 124.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-02": {
+    "reeskont_alim_mn": 551.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-03": {
+    "reeskont_alim_mn": 629.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-04": {
+    "reeskont_alim_mn": 544.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-05": {
+    "reeskont_alim_mn": 453.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-06": {
+    "reeskont_alim_mn": 113.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-07": {
+    "reeskont_alim_mn": 161.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-08": {
+    "reeskont_alim_mn": 210.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-09": {
+    "reeskont_alim_mn": 212.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-10": {
+    "reeskont_alim_mn": 227.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-11": {
+    "reeskont_alim_mn": 322.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2023-12": {
+    "reeskont_alim_mn": 288.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-01": {
+    "reeskont_alim_mn": 473.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-02": {
+    "reeskont_alim_mn": 417.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-03": {
+    "reeskont_alim_mn": 111.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-04": {
+    "reeskont_alim_mn": 98.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-05": {
+    "reeskont_alim_mn": 120.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-06": {
+    "reeskont_alim_mn": 103.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-07": {
+    "reeskont_alim_mn": 0.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-08": {
+    "reeskont_alim_mn": 4.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-09": {
+    "reeskont_alim_mn": 0.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-10": {
+    "reeskont_alim_mn": 110.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-11": {
+    "reeskont_alim_mn": 469.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2024-12": {
+    "reeskont_alim_mn": 233.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-01": {
+    "reeskont_alim_mn": 354.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-02": {
+    "reeskont_alim_mn": 299.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-03": {
+    "reeskont_alim_mn": 354.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 1134.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-04": {
+    "reeskont_alim_mn": 115.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-05": {
+    "reeskont_alim_mn": 33.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-06": {
+    "reeskont_alim_mn": 176.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-07": {
+    "reeskont_alim_mn": 259.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-08": {
+    "reeskont_alim_mn": 179.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-09": {
+    "reeskont_alim_mn": 85.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-10": {
+    "reeskont_alim_mn": 75.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-11": {
+    "reeskont_alim_mn": 387.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2025-12": {
+    "reeskont_alim_mn": 647.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-01": {
+    "reeskont_alim_mn": 582.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-02": {
+    "reeskont_alim_mn": 351.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-03": {
+    "reeskont_alim_mn": 274.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-04": {
+    "reeskont_alim_mn": 497.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-05": {
+    "reeskont_alim_mn": 138.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-06": {
+    "reeskont_alim_mn": 130.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-07": {
+    "reeskont_alim_mn": 240.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-08": {
+    "reeskont_alim_mn": 512.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  },
+  "2026-09": {
+    "reeskont_alim_mn": 245.0,
+    "kit_satim_mn": 0.0,
+    "dogrudan_mudahale_satim_mn": 0.0,
+    "alim_ihale_mn": 0.0,
+    "satim_ihale_mn": 0.0
+  }
+}
