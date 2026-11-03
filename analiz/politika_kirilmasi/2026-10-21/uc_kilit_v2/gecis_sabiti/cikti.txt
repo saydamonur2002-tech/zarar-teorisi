@@ -1,0 +1,39 @@
+1) PR yeniden {'a': (np.float64(1.951), np.float64(1.076), np.float64(2.826)), 'lam': (np.float64(0.409), np.float64(-0.22), np.float64(1.038))} n 33
+PR seriler ['e24', 'i', 'usd', 'p_arsiv', 'p_2025', 'rezerv']
+GENEL 2025 baz aynı pencere {'a': (np.float64(1.95), np.float64(1.075), np.float64(2.826)), 'lam': (np.float64(0.41), np.float64(-0.22), np.float64(1.039))}
+NNLS ağırlık toplam 0.994 artık 0.248
+   kalem      a   a_lo   a_hi    lam  agirlik_vekil  katki
+0     01  2.226  0.649  3.802  0.144          0.244  0.543
+1     02  2.456  0.073  4.839  0.030          0.039  0.095
+2     03  3.233  0.260  6.205 -1.350          0.063  0.202
+3     04  3.133  1.359  4.908  0.334          0.155  0.485
+4     05  1.178  0.212  2.143  0.653          0.076  0.090
+5     06  1.472 -1.079  4.023  0.976          0.038  0.056
+6     07  1.137  0.007  2.267  0.764          0.155  0.176
+7     08  1.060  0.018  2.102  0.545          0.040  0.042
+8     09  0.920 -0.453  2.293  0.999          0.031  0.029
+9     10  2.144  0.172  4.116  1.640          0.025  0.053
+10    11  1.519 -0.692  3.729  0.907          0.075  0.113
+11    12  1.068 -1.642  3.779  1.265          0.005  0.006
+12    13  1.185  0.200  2.169  0.721          0.055  0.066
+13   041  3.239  1.198  5.280  0.781            NaN    NaN
+14  0411  3.239  1.198  5.280  0.781            NaN    NaN
+15   045  3.137 -0.512  6.786  0.051            NaN    NaN
+16  0451  1.752 -2.486  5.989  0.591            NaN    NaN
+17   072  1.139 -0.532  2.810  1.000            NaN    NaN
+Σkatkı 1.956 GENEL a 1.95 kapsama 1.003
+                                    model   n      a   a_lo   a_hi  lam_top                      rho  uzun_a                     e12                    oca                     tem
+0                                      M0  33  1.951  1.076  2.826    0.409                      NaN     NaN                     NaN                    NaN                     NaN
+1                     M1 +kur gecikme 1-6  33  1.615  0.453  2.778    0.540                      NaN     NaN                     NaN                    NaN                     NaN
+2                              M2 +atalet  33  1.488  0.089  2.887    0.489      (0.08, -0.19, 0.35)   1.617                     NaN                    NaN                     NaN
+3                            M3 +beklenti  33 -0.841 -3.754  2.072   -0.011  (-0.015, -0.303, 0.274)  -0.829  (2.156, -0.453, 4.766)                    NaN                     NaN
+4                         M4 +Ocak/Temmuz  33 -1.321 -3.586  0.944    0.082    (0.247, 0.025, 0.469)  -1.755   (1.808, -0.424, 4.04)  (3.246, 2.626, 3.865)  (0.598, -0.043, 1.238)
+5  M5 +12 ay kuklası (atalet+kur gecikme)  33  1.302  0.766  1.838      NaN                    0.481     NaN                     NaN                    NaN                     NaN
+A4 041 {'a': (np.float64(0.716), np.float64(-0.197), np.float64(1.628)), 'l1': (np.float64(0.697), np.float64(0.49), np.float64(0.904)), 'oca': (np.float64(5.337), np.float64(3.788), np.float64(6.886)), 'tem': (np.float64(1.34), np.float64(0.263), np.float64(2.418))}
+A4 0411 {'a': (np.float64(0.716), np.float64(-0.197), np.float64(1.628)), 'l1': (np.float64(0.697), np.float64(0.49), np.float64(0.904)), 'oca': (np.float64(5.337), np.float64(3.788), np.float64(6.886)), 'tem': (np.float64(1.34), np.float64(0.263), np.float64(2.418))}
+A4 04 {'a': (np.float64(2.366), np.float64(0.957), np.float64(3.775)), 'l1': (np.float64(0.212), np.float64(-0.115), np.float64(0.538)), 'oca': (np.float64(3.277), np.float64(1.869), np.float64(4.685)), 'tem': (np.float64(2.23), np.float64(-0.212), np.float64(4.673))}
+A4 11 {'a': (np.float64(1.144), np.float64(0.741), np.float64(1.547)), 'l1': (np.float64(0.406), np.float64(0.303), np.float64(0.508)), 'oca': (np.float64(5.925), np.float64(3.354), np.float64(8.497)), 'tem': (np.float64(0.463), np.float64(0.037), np.float64(0.889))}
+A4 01 {'a': (np.float64(1.146), np.float64(0.362), np.float64(1.93)), 'l1': (np.float64(0.41), np.float64(0.241), np.float64(0.579)), 'oca': (np.float64(2.846), np.float64(1.369), np.float64(4.323)), 'tem': (np.float64(-0.206), np.float64(-1.285), np.float64(0.874))}
+A4 045 {'a': (np.float64(2.978), np.float64(1.05), np.float64(4.906)), 'l1': (np.float64(-0.056), np.float64(-0.277), np.float64(0.164)), 'oca': (np.float64(-0.013), np.float64(-2.796), np.float64(2.769)), 'tem': (np.float64(4.72), np.float64(-0.734), np.float64(10.174))}
+BR 2024+ {'a': (np.float64(0.392), np.float64(0.281), np.float64(0.503)), 'lam': (np.float64(-0.033), np.float64(-0.075), np.float64(0.008))} n 33 ort pi1 0.387
+TR ort pi1 2024+ 2.588 ort g1 1.557

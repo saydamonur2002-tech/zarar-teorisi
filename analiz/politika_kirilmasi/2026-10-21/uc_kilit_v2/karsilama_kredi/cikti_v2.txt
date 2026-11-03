@@ -1,0 +1,22 @@
+     donem  karsilama  acik_kisi  net_akim_mlyTL  akim_stok_yuzde  Nstar_mn  Nstar_medyan
+0  2016–17       40.8       1966             4.3             1.00      2.15          2.04
+1  2018–20       42.4       2683             9.2             1.47      3.30          2.66
+2  2021–23       50.1       5373            52.3             3.39      8.77          6.62
+3  2024–26       63.4      12807           133.6             3.01     10.73         10.15
+gecikme  0: n=127 corr=-0.03 t=-0.45 | takvim kontrollü b=+0.047 t=+1.16
+gecikme  1: n=126 corr=-0.02 t=-0.33 | takvim kontrollü b=-0.010 t=-0.27
+gecikme  2: n=125 corr=+0.15 t=+1.88 | takvim kontrollü b=+0.065 t=+1.26
+gecikme  3: n=124 corr=-0.04 t=-0.50 | takvim kontrollü b=-0.020 t=-0.47
+gecikme  4: n=123 corr=+0.11 t=+1.39 | takvim kontrollü b=+0.053 t=+1.39
+gecikme  5: n=122 corr=+0.14 t=+2.13 | takvim kontrollü b=+0.066 t=+2.19
+gecikme  6: n=121 corr=+0.03 t=+0.49 | takvim kontrollü b=+0.024 t=+0.82
+gecikme  7: n=120 corr=+0.05 t=+1.16 | takvim kontrollü b=+0.024 t=+1.24
+gecikme  8: n=119 corr=+0.03 t=+0.44 | takvim kontrollü b=+0.004 t=+0.16
+gecikme  9: n=118 corr=-0.10 t=-2.15 | takvim kontrollü b=-0.048 t=-2.18
+gecikme 10: n=117 corr=+0.07 t=+1.73 | takvim kontrollü b=+0.032 t=+1.67
+gecikme 11: n=116 corr=+0.14 t=+2.59 | takvim kontrollü b=+0.070 t=+2.59
+gecikme 12: n=115 corr=-0.07 t=-1.50 | takvim kontrollü b=-0.002 t=-0.04
+düzey: akım/stok ~ karşılama 0.0804 t 3.74
+Binseg akim_stok [('2019-11', np.float64(41.7)), ('2022-05', np.float64(42.6)), ('2023-08', np.float64(62.7))]
+Binseg Nstar [('2019-11', np.float64(41.7)), ('2022-10', np.float64(46.9))]
+akım/stok ~ açık payı(%): -0.0804 t -3.74
