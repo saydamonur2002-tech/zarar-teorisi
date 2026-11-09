@@ -79,7 +79,7 @@ def _enf_2026() -> dict[str, float]:
     try:
         body = {
             "type": "json", "series": "TP.TUKFIY2025.GENEL", "aggregationTypes": "avg", "formulas": "0",
-            "startDate": "01-01-2024", "endDate": "14-10-2026", "frequency": "5",
+            "startDate": "01-01-2024", "endDate": "09-11-2026", "frequency": "5",
             "decimalSeperator": ".", "decimal": "4", "dateFormat": "0", "lang": "TR",
             "yon": "0", "sira": "0", "ozelFormuller": [], "groupSeperator": False, "isRaporSayfasi": False,
         }

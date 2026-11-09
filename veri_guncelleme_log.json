@@ -1,0 +1,678 @@
+{
+  "cekme": "2026-11-09",
+  "bitis": "09-11-2026",
+  "kaynak": "https://evds3.tcmb.gov.tr/igmevdsms-dis",
+  "dosya": [
+    {
+      "dosya": "faiz_ham.csv",
+      "eklenen": 20,
+      "revizyon_uygulanmadi": 0
+    },
+    {
+      "dosya": "npl_ham.csv",
+      "eklenen": 177,
+      "revizyon_uygulanmadi": 18
+    },
+    {
+      "dosya": "butce_ham.csv",
+      "eklenen": 309,
+      "revizyon_uygulanmadi": 0
+    },
+    {
+      "dosya": "dis_borc_ham.csv",
+      "eklenen": 0,
+      "revizyon_uygulanmadi": 0
+    },
+    {
+      "dosya": "prov_ham.csv",
+      "eklenen": 0,
+      "revizyon_uygulanmadi": 0
+    },
+    {
+      "dosya": "s125_ham.csv",
+      "eklenen": 132,
+      "revizyon_uygulanmadi": 45
+    },
+    {
+      "dosya": "mahsup_evds_ham.csv",
+      "eklenen": 614,
+      "revizyon_uygulanmadi": 256
+    },
+    {
+      "dosya": "akim_ve_tcmb_ham.csv",
+      "eklenen": 394,
+      "revizyon_uygulanmadi": 174
+    },
+    {
+      "dosya": "finansal_hesaplar_uzun.csv",
+      "eklenen": 308
+    },
+    {
+      "dosya": "stok_silim_tavan_ham.csv",
+      "eklenen": 219
+    }
+  ],
+  "hata": [],
+  "revizyon_ornek": [
+    {
+      "grup": "bie_pbtop",
+      "donem": "2026-08",
+      "seri": "TP.TOP.T14Y",
+      "eski": "7394362979.0",
+      "yeni": 7394357113.0,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_pbtop",
+      "donem": "2026-08",
+      "seri": "TP.TOP.T24",
+      "eski": "3630865370.0",
+      "yeni": 3630864042.0,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_pbtop",
+      "donem": "2026-08",
+      "seri": "TP.TOP.T26",
+      "eski": "1303823299.0",
+      "yeni": 1307480889.0,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_pbtop",
+      "donem": "2026-08",
+      "seri": "TP.TOP.T32",
+      "eski": "209845245.0",
+      "yeni": 209842367.0,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_pbtop",
+      "donem": "2026-08",
+      "seri": "TP.TOP.T36",
+      "eski": "1561147883.0",
+      "yeni": 1561147877.0,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_pbtop",
+      "donem": "2026-08",
+      "seri": "TP.TOP.T41",
+      "eski": "55612029749.0",
+      "yeni": 55615677259.0,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_pbtop",
+      "donem": "2026-08",
+      "seri": "TP.TOP.V19",
+      "eski": "172106516.0",
+      "yeni": 172106526.0,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_pbtop",
+      "donem": "2026-08",
+      "seri": "TP.TOP.V27",
+      "eski": "4134910927.0",
+      "yeni": 4134910930.0,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks710125",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS710125.ZP1",
+      "eski": "325361589.682",
+      "yeni": 331028256.682,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks710125",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS710125.ZP12",
+      "eski": "1400216949.0869",
+      "yeni": 1400217412.6924,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks710125",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS710125.ZP13",
+      "eski": "1400216949.0869",
+      "yeni": 1400217412.6924,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks710125",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS710125.ZP15",
+      "eski": "119690295.5968",
+      "yeni": 119702289.2064,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks710125",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS710125.ZP16",
+      "eski": "119690295.5968",
+      "yeni": 119702289.2064,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks710125",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS710125.ZP23",
+      "eski": "2164283297.1142",
+      "yeni": 2164295754.3293,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks710125",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS710125.ZP34",
+      "eski": "1021176666.4659",
+      "yeni": 1021177130.0714,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks710125",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS710125.ZP35",
+      "eski": "520800099.8976",
+      "yeni": 520800336.3364,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks71011",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS71011.ZP1",
+      "eski": "-30108159524.4445",
+      "yeni": -30766964672.1717,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks71011",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS71011.ZP5",
+      "eski": "8593544693.515",
+      "yeni": 8560535385.461,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks71011",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS71011.ZP6",
+      "eski": "624344492.6626",
+      "yeni": 590764805.8247,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks71011",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS71011.ZP7",
+      "eski": "3569108066.1421",
+      "yeni": 3569678444.9261,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks71011",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS71011.ZP9",
+      "eski": "538979625.7777",
+      "yeni": 536579846.4717,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks71011",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS71011.ZP10",
+      "eski": "109131777.7415",
+      "yeni": 108632868.3704,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks71011",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS71011.ZP11",
+      "eski": "429847848.0362",
+      "yeni": 427946978.1014,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks71011",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS71011.ZP15",
+      "eski": "5938291669.3488",
+      "yeni": 5934041669.2598,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks6101",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS6101.ZP1",
+      "eski": "-1725700702.0978",
+      "yeni": -1782970995.4816,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks6101",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS6101.ZP5",
+      "eski": "960168072.2561",
+      "yeni": 760411195.7367,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks6101",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS6101.ZP6",
+      "eski": "-3069036.6773",
+      "yeni": -15328128.5888,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks6101",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS6101.ZP7",
+      "eski": "671599090.0687",
+      "yeni": 546025872.1208,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks6101",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS6101.ZP8",
+      "eski": "291638018.8647",
+      "yeni": 229713452.2047,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks6101",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS6101.ZP9",
+      "eski": "-418698937.4615",
+      "yeni": -489760467.5456,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks6101",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS6101.ZP10",
+      "eski": "176757447.3387",
+      "yeni": 246823177.6809,
+      "uygulandi": false
+    },
+    {
+      "grup": "bie_finhestnks6101",
+      "donem": "2026-Q1",
+      "seri": "TP.FINHESTNKS6101.ZP11",
+      "eski": "-595456384.8003",
+      "yeni": -736583645.2265,
+      "uygulandi": false
+    }
+  ],
+  "q1_karsilastirma": [
+    {
+      "hazne": "F",
+      "seri": "TP.FINHESTNKS71011.ZP5",
+      "depo": "8593544693.515",
+      "evds": 8560535385.461
+    },
+    {
+      "hazne": "F",
+      "seri": "TP.FINHESTNKS71011.ZP8",
+      "depo": "4400092134.7103",
+      "evds": 4400092134.7103
+    },
+    {
+      "hazne": "F",
+      "seri": "TP.FINHESTNKS71011.ZP34",
+      "depo": "25339760798.2257",
+      "evds": 25349905544.171
+    },
+    {
+      "hazne": "B",
+      "seri": "TP.FINHESTNKS71012.ZP5",
+      "depo": "5913495937.9229",
+      "evds": 5914035051.5956
+    },
+    {
+      "hazne": "B",
+      "seri": "TP.FINHESTNKS71012.ZP8",
+      "depo": "2537413671.1482",
+      "evds": 2537413671.1482
+    },
+    {
+      "hazne": "B",
+      "seri": "TP.FINHESTNKS71012.ZP34",
+      "depo": "6240008744.3413",
+      "evds": 6362595232.7713
+    },
+    {
+      "hazne": "K",
+      "seri": "TP.FINHESTNKS71013.ZP5",
+      "depo": "3061473021.9717",
+      "evds": 3059425086.2694
+    },
+    {
+      "hazne": "K",
+      "seri": "TP.FINHESTNKS71013.ZP8",
+      "depo": "2326373042.4322",
+      "evds": 2324900915.6209
+    },
+    {
+      "hazne": "K",
+      "seri": "TP.FINHESTNKS71013.ZP34",
+      "depo": "1531583409.9488",
+      "evds": 1544848745.0106
+    },
+    {
+      "hazne": "H",
+      "seri": "TP.FINHESTNKS71014.ZP5",
+      "depo": "15356799936.2591",
+      "evds": 15956937244.3245
+    },
+    {
+      "hazne": "H",
+      "seri": "TP.FINHESTNKS71014.ZP8",
+      "depo": "8322425519.4307",
+      "evds": 8322425519.4307
+    },
+    {
+      "hazne": "H",
+      "seri": "TP.FINHESTNKS71014.ZP34",
+      "depo": "6755140613.3416",
+      "evds": 6755135199.3631
+    },
+    {
+      "hazne": "NPISH",
+      "seri": "TP.FINHESTNKS71015.ZP5",
+      "depo": "425075606.5424",
+      "evds": 425078823.4125
+    },
+    {
+      "hazne": "NPISH",
+      "seri": "TP.FINHESTNKS71015.ZP8",
+      "depo": "343456336.178",
+      "evds": 343456336.178
+    },
+    {
+      "hazne": "NPISH",
+      "seri": "TP.FINHESTNKS71015.ZP34",
+      "depo": "80894926.2906",
+      "evds": 80894895.4213
+    },
+    {
+      "hazne": "D",
+      "seri": "TP.FINHESTNKS7102.ZP5",
+      "depo": "5916071557.4065",
+      "evds": 6483129076.5249
+    },
+    {
+      "hazne": "D",
+      "seri": "TP.FINHESTNKS7102.ZP8",
+      "depo": "2536603410.7447",
+      "evds": 2536603410.7447
+    },
+    {
+      "hazne": "D",
+      "seri": "TP.FINHESTNKS7102.ZP34",
+      "depo": "11530874432",
+      "evds": 11676897348.16
+    },
+    {
+      "hazne": "TOPLAM",
+      "seri": "TP.FINHESTNKS7101.ZP5",
+      "depo": "33350389196.211",
+      "evds": 33916011591.0629
+    },
+    {
+      "hazne": "TOPLAM",
+      "seri": "TP.FINHESTNKS7101.ZP8",
+      "depo": "17929760703.8994",
+      "evds": 17928288577.0881
+    },
+    {
+      "hazne": "TOPLAM",
+      "seri": "TP.FINHESTNKS7101.ZP34",
+      "depo": "39947388492.148",
+      "evds": 40093379616.7374
+    }
+  ],
+  "sonda": {
+    "TP.KTF17": [
+      [
+        "2026-05",
+        53.08
+      ],
+      [
+        "2026-06",
+        52.86
+      ],
+      [
+        "2026-07",
+        52.51
+      ],
+      [
+        "2026-08",
+        51.64
+      ],
+      [
+        "2026-09",
+        52.28
+      ],
+      [
+        "2026-10",
+        50.26
+      ]
+    ],
+    "TP.KTF10": [
+      [
+        "2026-05",
+        63.61
+      ],
+      [
+        "2026-06",
+        62.85
+      ],
+      [
+        "2026-07",
+        64.93
+      ],
+      [
+        "2026-08",
+        60.64
+      ],
+      [
+        "2026-09",
+        62.73
+      ],
+      [
+        "2026-10",
+        58.68
+      ]
+    ],
+    "TP.APIFON4": [
+      [
+        "2026-06",
+        40.0
+      ],
+      [
+        "2026-07",
+        40.0
+      ],
+      [
+        "2026-08",
+        37.0
+      ],
+      [
+        "2026-09",
+        37.0
+      ],
+      [
+        "2026-10",
+        36.0
+      ],
+      [
+        "2026-11",
+        36.0
+      ]
+    ],
+    "TP.TUKFIY2025.GENEL": [
+      [
+        "2026-05",
+        128.72
+      ],
+      [
+        "2026-06",
+        129.99
+      ],
+      [
+        "2026-07",
+        132.31
+      ],
+      [
+        "2026-08",
+        134.75
+      ],
+      [
+        "2026-09",
+        137.23
+      ],
+      [
+        "2026-10",
+        140.77
+      ]
+    ],
+    "TP.FE25.OKTG01": [
+      [
+        "HATA",
+        "HTTP Error 500: Internal Server Error"
+      ]
+    ],
+    "TP.FG.J0": [
+      [
+        "2026-01",
+        3683.83
+      ]
+    ],
+    "TP.DK.USD.A.YTL": [
+      [
+        "2026-06",
+        46.5551
+      ],
+      [
+        "2026-07",
+        47.3274
+      ],
+      [
+        "2026-08",
+        48.0732
+      ],
+      [
+        "2026-09",
+        48.9131
+      ],
+      [
+        "2026-10",
+        49.6997
+      ],
+      [
+        "2026-11",
+        50.0878
+      ]
+    ],
+    "TP.FINHESTNKS11.ZP34": [
+      [
+        "2026-Q1",
+        25349905544.17
+      ],
+      [
+        "2026-Q2",
+        27441925020.37
+      ]
+    ],
+    "TP.FINHESTNKS11.ZP5": [
+      [
+        "2026-Q1",
+        8560535385.46
+      ],
+      [
+        "2026-Q2",
+        8982135665.35
+      ]
+    ],
+    "TP.FINHESTNKS14.ZP5": [
+      [
+        "2026-Q1",
+        15956937244.32
+      ],
+      [
+        "2026-Q2",
+        16601424361.81
+      ]
+    ],
+    "TP.FINHESTNKS14.ZP34": [
+      [
+        "2026-Q1",
+        6755135199.36
+      ],
+      [
+        "2026-Q2",
+        7329060152.62
+      ]
+    ],
+    "TP.HPBITABLO6.50": [
+      [
+        "2026-05",
+        293766501.0
+      ],
+      [
+        "2026-06",
+        315413066.0
+      ],
+      [
+        "2026-07",
+        339653626.0
+      ],
+      [
+        "2026-08",
+        356173261.0
+      ],
+      [
+        "2026-09",
+        372471193.0
+      ],
+      [
+        "2026-10",
+        405153835.0
+      ]
+    ],
+    "TP.AB.TOPLAM": [
+      [
+        "25-09-2026",
+        171203.8418
+      ],
+      [
+        "02-10-2026",
+        167387.7467
+      ],
+      [
+        "09-10-2026",
+        171574.9525
+      ],
+      [
+        "16-10-2026",
+        169096.5129
+      ],
+      [
+        "23-10-2026",
+        162190.9147
+      ],
+      [
+        "30-10-2026",
+        158107.0328
+      ]
+    ]
+  }
+}

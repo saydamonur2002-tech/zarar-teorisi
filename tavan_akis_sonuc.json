@@ -27,11 +27,11 @@
     },
     {
       "yil": "2025",
-      "f4_akim": 4820.9,
-      "stok_fark": 7628.4,
+      "f4_akim": 4812.7,
+      "stok_fark": 7630.9,
       "gsyh": 63240.5,
-      "oran_akim": 7.62,
-      "oran_stok": 12.06,
+      "oran_akim": 7.61,
+      "oran_stok": 12.07,
       "gecis": null,
       "tavan": null,
       "durum": "itis_olculdu; gecis_bulunamadi; tavan_bos",
@@ -39,7 +39,7 @@
     }
   ],
   "H-T": "siser",
-  "H-T_not": "2025 oran_stok 12.06 vs oran_akim 7.62 (yüzde GSYH); fark 4.44 puan. RAPOR'un yüzde 8,3'ü stok farkıyla kurulmuştur.",
+  "H-T_not": "2025 oran_stok 12.07 vs oran_akim 7.61 (yüzde GSYH); fark 4.46 puan. RAPOR'un yüzde 8,3'ü stok farkıyla kurulmuştur.",
   "H-T2": "test_edilemez",
   "H-T2_not": "geçiş payı birincil bulunamadı; tavan boş; 2,5 puan lehte yazılmaz",
   "gecis_arama": [

@@ -1,9 +1,9 @@
 ﻿kapi,esik,girdi,cikti,birim,durum,not
-gecis,0,7.62,0.0,puan,varsayim,itis 2025 = F.4 islem akimi / GSYH. Gecis bulunamadi.
-gecis,1/3,7.62,2.54,puan,varsayim,"itis 2025 = F.4 islem akimi / GSYH. Gecis bulunamadi. 2,54 = 7,62 x 1/3, bu dosya. 2,77 = 8,3 x 1/3, RAPOR orani, RAPOR yazmadi. 2,5 RAPOR yaklasik cumlesi, hesap degil. Uc sayi ayri, esitlenmez, biri digerini duzeltmez."
-gecis,1,7.62,7.62,puan,varsayim,itis 2025 = F.4 islem akimi / GSYH. Gecis bulunamadi.
+gecis,0,7.61,0.0,puan,varsayim,itis 2025 = F.4 islem akimi / GSYH. Gecis bulunamadi.
+gecis,1/3,7.61,2.54,puan,varsayim,"itis 2025 = F.4 islem akimi / GSYH. Gecis bulunamadi. 2,54 = 7,62 x 1/3, bu dosya. 2,77 = 8,3 x 1/3, RAPOR orani, RAPOR yazmadi. 2,5 RAPOR yaklasik cumlesi, hesap degil. Uc sayi ayri, esitlenmez, biri digerini duzeltmez."
+gecis,1,7.61,7.61,puan,varsayim,itis 2025 = F.4 islem akimi / GSYH. Gecis bulunamadi.
 vade_gunu,30,,asilirsa uzar; asilmazsa uzamaz,gun,kosullu,"MY vade kirilimi 'ayrılmadı', ortalama gun bos (2026-Q1). Olcum degil."
 vade_gunu,90,,asilirsa uzar; asilmazsa uzamaz,gun,kosullu,"MY vade kirilimi 'ayrılmadı', ortalama gun bos (2026-Q1). Olcum degil."
 vade_gunu,180,,asilirsa uzar; asilmazsa uzamaz,gun,kosullu,"MY vade kirilimi 'ayrılmadı', ortalama gun bos (2026-Q1). Olcum degil."
 odenmeyen_emir,,,,milyar TL,kosullu,Olcu yok. Esik konmaz.
-bddk_akim,,5208.0,387.1,milyar TL,ayrilmadi,5208.0 - 4820.9 = 387.1. Kur ve kapsam ayrilmadi.
+bddk_akim,,5208.0,395.3,milyar TL,ayrilmadi,5208.0 - 4812.7 = 395.3. Kur ve kapsam ayrilmadi.

@@ -22,12 +22,12 @@ Kural: katman sonuçları birbirine taşınmaz. Tek-sistem sayısı BDDK banka k
 | 2024-Q4 | Bireysel stok | 3,807.0 | 4,167.9 | H_F4_yuk | 360.9 | 1.095 |
 | 2024-Q4 | Toplam kredi stoku | 15,901.0 | 16,514.8 | B_VF4_var | 613.8 | 1.039 |
 | 2024-Q4 | Toplam kredi stoku | 15,901.0 | 19,068.3 | S12_VF4_var | 3,167.3 | 1.199 |
-| 2025-Q4 | Ticari stok | 17,302.0 | 23,519.9 | F_F4_yuk | 6,217.9 | 1.359 |
+| 2025-Q4 | Ticari stok | 17,302.0 | 23,522.4 | F_F4_yuk | 6,220.4 | 1.360 |
 | 2025-Q4 | Bireysel stok | 5,575.0 | 6,237.4 | H_F4_yuk | 662.4 | 1.119 |
 | 2025-Q4 | Toplam kredi stoku | 23,128.0 | 24,039.8 | B_VF4_var | 911.8 | 1.039 |
 | 2025-Q4 | Toplam kredi stoku | 23,128.0 | 27,742.7 | S12_VF4_var | 4,614.7 | 1.200 |
 
-EVDS 2026-Q1 (tek-sistem henüz yok): F_F4_yuk 25,339.8; H_F4_yuk 6,755.1; B_VF4_var 26,024.0; S12_VF4_var 31,213.9
+EVDS 2026-Q1 (tek-sistem henüz yok): F_F4_yuk 25,349.9; H_F4_yuk 6,755.1; B_VF4_var 26,024.0; S12_VF4_var 31,213.9
 
 Ölçüm: firma F.4 / BDDK ticari 1,29–1,36; hane F.4 / BDDK bireysel 1,06–1,12; mevduat bankaları VF.4 / BDDK toplam 1,00–1,04 (dört yıl sonu). Tanım: F.4 yükümlülüğü borç vereni ayırmaz (banka, banka dışı finansal, yurt dışı); BDDK sayısı yalnız banka kredisidir. Farkın hangi borç verene ait olduğu bu seriden ayrılmaz; ayrılmadı.
 
@@ -41,7 +41,7 @@ EVDS 2026-Q1 (tek-sistem henüz yok): F_F4_yuk 25,339.8; H_F4_yuk 6,755.1; B_VF4
 | 2024 | Net akis ticari | 3,132.0 | 3,971.2 | 839.2 | 1.268 |
 | 2024 | Net akis bireysel | 1,138.0 | 1,313.4 | 175.4 | 1.154 |
 | 2024 | Net akis toplam | 4,271.0 | 4,723.2 | 452.2 | 1.106 |
-| 2025 | Net akis ticari | 5,208.0 | 7,628.4 | 2,420.4 | 1.465 |
+| 2025 | Net akis ticari | 5,208.0 | 7,630.9 | 2,422.9 | 1.465 |
 | 2025 | Net akis bireysel | 1,768.0 | 2,069.6 | 301.6 | 1.171 |
 | 2025 | Net akis toplam | 7,227.0 | 7,525.0 | 298.0 | 1.041 |
 
@@ -57,7 +57,7 @@ Stok farkı kur ve değerleme içerir; net akış değildir. İşlem akımı aş
 | 2024 | Net akis ticari | 3,132.0 | 3,039.3 | -92.7 | 0.970 | `TP.FINHESTNKS62011.ZP34` |
 | 2024 | Net akis bireysel | 1,138.0 | 1,312.8 | 174.8 | 1.154 | `TP.FINHESTNKS62014.ZP34` |
 | 2024 | Net akis toplam | 4,271.0 | 4,123.2 | -147.8 | 0.965 | `TP.FINHESTNKS620122.ZP12` |
-| 2025 | Net akis ticari | 5,208.0 | 4,820.9 | -387.1 | 0.926 | `TP.FINHESTNKS62011.ZP34` |
+| 2025 | Net akis ticari | 5,208.0 | 4,812.7 | -395.3 | 0.924 | `TP.FINHESTNKS62011.ZP34` |
 | 2025 | Net akis bireysel | 1,768.0 | 2,067.7 | 299.7 | 1.170 | `TP.FINHESTNKS62014.ZP34` |
 | 2025 | Net akis toplam | 7,227.0 | 5,762.8 | -1,464.2 | 0.797 | `TP.FINHESTNKS620122.ZP12` |
 
@@ -81,10 +81,10 @@ Stok farkı kur ve değerleme içerir; net akış değildir. İşlem akımı aş
 | 1 | Aynı adım, stok tarafı | `stok_silim.py; bes_adim.py` | karşı bacak tavanı (üst sınır): eski satır toplamı / yeni çift düzeyi | 2026-Q1 | eski_tavan 0.0728 / yeni_tavan 0.2582; silinen boş | oran (üst sınır) | ust_sinir |
 | 2 | Kalan net borç silinmez; üstten alta akış planıyla ödenir; alta inen pay ücret | `odeme_mahsup.py` | mahsup sonrası akış + şart kaldıracı; temerrüt sayısı | 2026-Q1 (sentetik 150 firma) | 0 | temerrüt sayısı | modellendi |
 | 3 | Akış banka kredisiyle çevrilmez; eski stokun faizi durur | `odeme_mahsup.py` | kredi ihtiyacı brüt → şart | 2026-Q1 (sentetik 150 firma) | 0.0000 | trilyon TL/ay | modellendi |
-| 3 | Aynı adım, kredi stoku ölçüsü | `tek_sistem_kopru.py` | firma F.4 kredi yükümlülüğü (EVDS) | 2026-Q1 | 25,339.8 | milyar TL | olculdu |
-| 4 | Tasarruf dolar ve arsa yerine hedef primli endeksli senede gider | `tek_sistem_kopru.py` | hane vadeli mevduat (VF.2 ZP8) | 2026-Q1 | 8,322.4 | milyar TL | olculdu |
-| 4 | Tasarruf dolar ve arsa yerine hedef primli endeksli senede gider | `tek_sistem_kopru.py` | firma vadeli mevduat (VF.2 ZP8) | 2026-Q1 | 4,400.1 | milyar TL | olculdu |
-| 4 | Tasarruf dolar ve arsa yerine hedef primli endeksli senede gider | `tek_sistem_kopru.py` | gerçek kişi YP mevduat (HPB tablo 2) | 2026-Q1 | 6,639.4 | milyar TL (TL karşılığı) | olculdu |
+| 3 | Aynı adım, kredi stoku ölçüsü | `tek_sistem_kopru.py` | firma F.4 kredi yükümlülüğü (EVDS) | 2026-Q2 | 27,441.9 | milyar TL | olculdu |
+| 4 | Tasarruf dolar ve arsa yerine hedef primli endeksli senede gider | `tek_sistem_kopru.py` | hane vadeli mevduat (VF.2 ZP8) | 2026-Q2 | 9,082.9 | milyar TL | olculdu |
+| 4 | Tasarruf dolar ve arsa yerine hedef primli endeksli senede gider | `tek_sistem_kopru.py` | firma vadeli mevduat (VF.2 ZP8) | 2026-Q2 | 4,753.1 | milyar TL | olculdu |
+| 4 | Tasarruf dolar ve arsa yerine hedef primli endeksli senede gider | `tek_sistem_kopru.py` | gerçek kişi YP mevduat (HPB tablo 2) | 2026-Q2 | 6,430.1 | milyar TL (TL karşılığı) | olculdu |
 | 4 | Hedef primli endeksli senet | `—` | senet ihracı, prim kaynağı, ikincil piyasa çıkışı |  |  |  | modellenmedi |
 | 5 | Konut topluma açılırsa kira aynı akışın ikinci kolu | `—` | kira akışı |  |  |  | olculmedi |
 

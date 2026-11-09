@@ -10,7 +10,7 @@ Tanım: tavan = kredi itişinin fiyata geçen parçası. İtiş = firma F.4 **i�
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | 2023 | 1,829.5 | 4,111.7 | 27,091.5 | 6.75 | 15.18 |  |  | itis_olculdu; gecis_bulunamadi; tavan_bos |
 | 2024 | 3,039.3 | 3,971.2 | 44,676.0 | 6.80 | 8.89 |  |  | itis_olculdu; gecis_bulunamadi; tavan_bos |
-| 2025 | 4,820.9 | 7,628.4 | 63,240.5 | 7.62 | 12.06 |  |  | itis_olculdu; gecis_bulunamadi; tavan_bos |
+| 2025 | 4,812.7 | 7,630.9 | 63,240.5 | 7.61 | 12.07 |  |  | itis_olculdu; gecis_bulunamadi; tavan_bos |
 
 Seriler: akım `TP.FINHESTNKS62011.ZP34` (konsolide olmayan, işlem, sum), stok `TP.FINHESTNKS11.ZP34` (konsolide olmayan, last), GSYH `TP.GSYIH20.BY.B1GQ` (harcama, cari, 4 çeyrek). Stok farkı kur ve değerleme içerir; akım sütunuyla eşitlenmez. Buradaki stok farkı EVDS firma F.4'tür (tüm borç verenler); RAPOR'un 5.208'i BDDK ticari stok farkıdır (yalnız banka) — ikisi de stok farkı, ikisi de akım değil.
 
@@ -30,7 +30,7 @@ Sonuç: geçiş payı **bulunamadı**, 7 arama denendi. Geçiş sütunu boş; ta
 
 ## 3. Yanlışlayıcılar
 
-- **H-T** (stok farkı tavanı şişirir): `siser`. 2025 oran_stok 12.06 vs oran_akim 7.62 (yüzde GSYH); fark 4.44 puan. RAPOR'un yüzde 8,3'ü stok farkıyla kurulmuştur.
+- **H-T** (stok farkı tavanı şişirir): `siser`. 2025 oran_stok 12.07 vs oran_akim 7.61 (yüzde GSYH); fark 4.46 puan. RAPOR'un yüzde 8,3'ü stok farkıyla kurulmuştur.
 - **H-T2** (tavan kurulur): `test_edilemez`. geçiş payı birincil bulunamadı; tavan boş; 2,5 puan lehte yazılmaz
 
 ## 4. Referans notu (sonuç sütununa geçmez)

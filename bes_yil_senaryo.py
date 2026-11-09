@@ -47,7 +47,7 @@ URL = {"pk": "https://evds3.tcmb.gov.tr/tumSeriler/bie_pkauo", "aofm": "https://
        "usd": "https://evds3.tcmb.gov.tr/tumSeriler/bie_dkdovytl", "tufe": "https://evds3.tcmb.gov.tr/tumSeriler/bie_tukfiy2025"}
 
 
-def _fetch(series: list[str], start="01-01-2024", end="11-10-2026") -> dict[str, dict[str, float]]:
+def _fetch(series: list[str], start="01-01-2024", end="09-11-2026") -> dict[str, dict[str, float]]:
     body = {"type": "json", "series": "-".join(series), "aggregationTypes": "-".join("last" for _ in series),
             "formulas": "-".join("0" for _ in series), "startDate": start, "endDate": end, "frequency": "5",
             "decimalSeperator": ".", "decimal": "4", "dateFormat": "0", "lang": "TR", "yon": "0", "sira": "0",
@@ -90,14 +90,14 @@ def evds() -> dict:
 
 def depo() -> dict:
     kop = list(csv.DictReader((KOK / "tek_sistem_kopru.csv").open(encoding="utf-8-sig")))
-    f4 = next(r for r in kop if r["blok"] == "mutabakat" and r["donem"] == "2026-Q1" and r["evds_anahtar"] == "F_F4_yuk")
+    f4 = max((r for r in kop if r["blok"] == "mutabakat" and r["evds_anahtar"] == "F_F4_yuk" and r["evds_milyar"]), key=lambda r: r["donem"])
     ta = next(r for r in csv.DictReader((KOK / "tavan_akis.csv").open(encoding="utf-8-sig")) if r["yil"] == "2025")
     a1 = json.loads((KOK / "bes_adim_sonuc.json").read_text(encoding="utf-8"))["adimlar"]["1"]
     om = json.loads((KOK / "odeme_mahsup_sonuc.json").read_text(encoding="utf-8"))
     a3 = list(csv.DictReader((KOK / "adim3.csv").open(encoding="utf-8-sig")))
     a4 = list(csv.DictReader((KOK / "adim4.csv").open(encoding="utf-8-sig")))
     senet = next(r for r in a4 if "senet" in r["nesne"])
-    return {"stok_2026q1": float(f4["evds_milyar"]), "itis_milyar_2025": float(ta["f4_akim"]), "itis_puan_gsyh_2025": float(ta["oran_akim"]),
+    return {"stok_2026q1": float(f4["evds_milyar"]), "stok_donem": f4["donem"], "itis_milyar_2025": float(ta["f4_akim"]), "itis_puan_gsyh_2025": float(ta["oran_akim"]),
             "gecis_bos": ta["gecis"] == "" and ta["tavan"] == "", "yeni_tavan": a1["yeni_tavan"], "eski_tavan": a1["eski_tavan"],
             "silinen_bos": a1["silinen"] is None, "kredi_ihtiyaci_sart": om["ozet"]["kredi_ihtiyaci_sart"],
             "dovize_kacis_parametre": om["parametreler"]["dovize_kacis"], "faiz_durmasi": a3[0]["not"].split(".")[0],
@@ -110,6 +110,7 @@ def satirlar(ev: dict, dp: dict) -> list[dict]:
     itis = dp["itis_puan_gsyh_2025"]
     akim = dp["itis_milyar_2025"]
     stok0 = dp["stok_2026q1"]
+    stok_donem = dp["stok_donem"]
     tav = dp["yeni_tavan"]
 
     def ek(yil, degisken, taban, taban_tarih, taban_seri, bek, bek_seri, bek_ufuk, etki_alt, etki_ust, etki_durum, birim, varsayim, not_):
@@ -154,14 +155,14 @@ def satirlar(ev: dict, dp: dict) -> list[dict]:
             model_yok = round(stok0 + akim * t, 1)
             alt = round(stok0 * (1 - tav), 1)   # silinen üst sınırda
             ust = round(stok0, 1)               # silinen 0
-            rows.append({"yil": yil, "degisken": "stok_firma_f4_kredi", "taban": stok0, "taban_tarih": "2026-Q1", "taban_seri": "TP.FINHESTNKS11.ZP34",
-                         "taban_durum": "olculdu", "beklenti": model_yok, "beklenti_seri": "TP.FINHESTNKS62011.ZP34", "beklenti_ufuk": f"model yok: 2026-Q1 + 2025 akımı × {t}",
+            rows.append({"yil": yil, "degisken": "stok_firma_f4_kredi", "taban": stok0, "taban_tarih": stok_donem, "taban_seri": "TP.FINHESTNKS11.ZP34",
+                         "taban_durum": "olculdu", "beklenti": model_yok, "beklenti_seri": "TP.FINHESTNKS62011.ZP34", "beklenti_ufuk": f"model yok: {stok_donem} + 2025 akımı × {t}",
                          "beklenti_durum": "varsayim", "model_etki_alt": round(alt - model_yok, 1), "model_etki_ust": round(ust - model_yok, 1),
                          "model_etki_durum": "varsayim", "senaryo_alt": alt, "senaryo_ust": ust, "senaryo_durum": "senaryo", "birim": "milyar TL (nominal)",
                          **kapi, "varsayim": f"yeni itiş 0 (kredi_ihtiyaci_sart {dp['kredi_ihtiyaci_sart']}); eski stok silinen ∈ [0, {tav}] tek sefer; faiz tahakkuku yok",
                          "not": f"Alt uç yeni_tavan {tav} üst sınırında, üst uç silinen 0. Silinen boş, xls yok. 'Model yok' sütunu 2025 nominal akımı sabit varsayımı; GSYH yolu yok."})
         else:
-            rows.append({"yil": yil, "degisken": "stok_firma_f4_kredi", "taban": stok0, "taban_tarih": "2026-Q1", "taban_seri": "TP.FINHESTNKS11.ZP34",
+            rows.append({"yil": yil, "degisken": "stok_firma_f4_kredi", "taban": stok0, "taban_tarih": stok_donem, "taban_seri": "TP.FINHESTNKS11.ZP34",
                          "taban_durum": "olculdu", "beklenti": None, "beklenti_seri": None, "beklenti_ufuk": None, "beklenti_durum": "taban_yili",
                          "model_etki_alt": None, "model_etki_ust": None, "model_etki_durum": "taban_yili", "senaryo_alt": None, "senaryo_ust": None,
                          "senaryo_durum": "bos", "birim": "milyar TL (nominal)", **kapi, "varsayim": "", "not": "Taban: firma F.4 kredi yükümlülüğü, konsolide olmayan."})
@@ -182,7 +183,7 @@ def md(rows: list[dict], ev: dict, dp: dict, kn: dict) -> str:
     s = ["# Beş yıl senaryosu: model uygulandı varsayımı, optimum aralık (2027–2031)", "",
          "Senaryo; ölçüm değil. Çalıştır: `python3 bes_yil_senaryo.py`. Çıktı: `bes_yil_senaryo.csv`, `bes_yil_senaryo_sonuc.json`.", "",
          f"Taban: TÜFE yıllık {f(ev['tufe']['yillik'])} ({ev['tufe']['tarih']}); AOFM {f(ev['aofm']['deger'], 1)} ({ev['aofm']['tarih']}); "
-         f"USD/TRY {f(ev['usd']['deger'])} ({ev['usd']['tarih']}); firma F.4 stoku {f(dp['stok_2026q1'], 1)} milyar (2026-Q1). "
+         f"USD/TRY {f(ev['usd']['deger'])} ({ev['usd']['tarih']}); firma F.4 stoku {f(dp['stok_2026q1'], 1)} milyar ({dp['stok_donem']}). "
          f"Beklenti: EVDS Piyasa Katılımcıları Anketi, {ev['anket_ayi']}.", "",
          "Optimum aralık tanımı: model beş adımı tam uygular; yeni kredi itişi 0 (adım 3), eski stok silinen 0 ile yeni_tavan 0,2582 arası (adım 1 stok). "
          "Geçiş payı kapısı boş; enflasyon etkisi mantıksal sınırlarla [0, 1] bant olarak verilir. Faiz ve döviz için model etkisi `modellenmedi`; senaryo anket beklentisine eşit.", "",

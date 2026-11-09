@@ -26,7 +26,7 @@ Denklem: g = α + β · AOFM gecikmesi. g, çeyrek ortalaması USD/TRY'nin log f
 
 ## İleri faiz yolları
 
-- Son faiz: 2026-Q4 ve sonrası **37.00**. Eylül 2026 tam ayı ve 1–14 Ekim bu düzeydedir. Çeyrek kapanmadı; düzey varsayımdır.
+- Son faiz: 2026-Q4 ve sonrası **36.00**. Ekim 2026 tam ayı bu düzeydedir. Kasım ayı kapanmadı; düzey varsayımdır.
 - Anket: yıl sonu hedefleri `bes_yil_senaryo.csv` içinden okunur. 2026-Q4 anket yılı, sonrası yıl sonuna eşit adım. Son anket yılından sonra faiz sabit kalır.
 - 2026-Q3 faizi iki yolda da ölçülmüş çeyrek ortalamasıdır. Kur çapası 2026-Q3 ölçülmüş çeyrek ortalamasıdır. İlk tahmin 2026-Q4.
 

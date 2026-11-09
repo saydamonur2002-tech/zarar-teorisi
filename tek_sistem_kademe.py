@@ -23,8 +23,8 @@ FIRMA_MAHSUP_ORAN = 0.32959478056952846  # odeme_mahsup_sonuc ozet brut_azalma_o
 YENI_STOK_TAVAN = 0.2582  # adim1 / bes_adim
 ESKI_STOK_TAVAN = 0.0728
 MEVDUAT_ADRES_MILYAR = 8322.4 + 4400.1 + 6639.4  # adim4 üç satır
-ITIS_YILLIK_MILYAR = 4820.9  # tavan_akis 2025 firma F.4 akımı
-F4_STOK_BAS_MILYAR = 25339.8  # tek_sistem_kopru 2026-Q1
+ITIS_YILLIK_MILYAR = 4812.7  # tavan_akis 2025 firma F.4 akımı (9 Kasım 2026 çekimi)
+F4_STOK_BAS_MILYAR = 27441.9  # tek_sistem_kopru son çeyrek 2026-Q2, EVDS 9 Kasım 2026
 BRUT_KIMDEN_KIME_MILYAR = 78870.4  # adim1 TOPLAM brut
 # VARSAYIM: yönlendirilen mevduat payının yıllık yeni banka kredi itişinden düşülen oranı (modellenmedi)
 K3_MEVDUAT_KREDI_PAYI = 0.08

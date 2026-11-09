@@ -30,17 +30,17 @@
       "not_": "EVDS aylık TÜFE yıllık değişim"
     },
     "butce_faiz_harcama_pay": {
-      "deger": 0.1441,
+      "deger": 0.1434,
       "durum": "olculdu",
       "seri": "MV bütce ham",
       "tarih": "2026",
       "not_": "Merkezi yönetim; K′ tam değil"
     },
     "tga_tuketici_oran_yuzde": {
-      "deger": 13.3,
+      "deger": 13.93,
       "durum": "olculdu",
       "seri": "Takip/Tüketici stok",
-      "tarih": "2026-10-09",
+      "tarih": "2026-10-30",
       "not_": "EVDS; BDDK %2,90 vs EVDS %3,13 kapsam farkı olabilir"
     },
     "bekar_yasam": {

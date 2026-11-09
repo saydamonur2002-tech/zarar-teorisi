@@ -40,7 +40,7 @@ KAPSAMA_PAYI = (0.20, 0.50, 1.00)  # tek sisteme giren kiracı payı; varsayım 
 
 def _govde(series, agg, freq, start):
     return {"type": "json", "series": "-".join(series), "aggregationTypes": "-".join(agg), "formulas": "-".join("0" for _ in series),
-            "startDate": start, "endDate": "10-10-2026", "frequency": freq, "decimalSeperator": ".", "decimal": "4", "dateFormat": "0",
+            "startDate": start, "endDate": "09-11-2026", "frequency": freq, "decimalSeperator": ".", "decimal": "4", "dateFormat": "0",
             "lang": "TR", "yon": "0", "sira": "0", "ozelFormuller": [], "groupSeperator": False, "isRaporSayfasi": False}
 
 

@@ -73,7 +73,7 @@ def evds_indir() -> pd.DataFrame:
     rows = []
     for g in EVDS_GRUPLAR:
         try:
-            part, n = fetch_group(g, start="01-01-2015", end="07-10-2026", freq="5")
+            part, n = fetch_group(g, start="01-01-2015", end="09-11-2026", freq="5")
             print(g, n, "seri,", len(part), "gözlem", flush=True)
             rows.extend(part)
         except Exception as exc:  # noqa: BLE001

@@ -27,7 +27,7 @@ BASE = "https://evds3.tcmb.gov.tr/igmevdsms-dis"
 
 def gdp_q():
     body = {"type": "json", "series": "TP.GSYIH30.AY.B1GQ", "aggregationTypes": "last", "formulas": "0", "startDate": "01-01-2010",
-            "endDate": "07-10-2026", "frequency": "5", "decimalSeperator": ".", "decimal": "4", "dateFormat": "0", "lang": "TR", "yon": "0",
+            "endDate": "09-11-2026", "frequency": "5", "decimalSeperator": ".", "decimal": "4", "dateFormat": "0", "lang": "TR", "yon": "0",
             "sira": "0", "ozelFormuller": [], "groupSeperator": True, "isRaporSayfasi": False}
     r = urllib.request.Request(f"{BASE}/fe", data=json.dumps(body).encode(), headers={"Accept": "application/json", "Content-Type": "application/json"}, method="POST")
     d = json.loads(urllib.request.urlopen(r, timeout=120).read().decode("utf-8-sig"))

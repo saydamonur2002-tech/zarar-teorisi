@@ -21,7 +21,7 @@ def get_json(url, body=None):
         return json.loads(r.read().decode("utf-8-sig"))
 
 
-def fetch_group(code, start="01-01-2000", end="07-10-2026", freq="5"):
+def fetch_group(code, start="01-01-2000", end="09-11-2026", freq="5"):
     series = get_json(f"{BASE}/serieList/fe/type=json&code={code}")
     aggs = [s["DEFAULT_AGG_METHOD"] for s in series]
     body = {

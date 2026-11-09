@@ -14,17 +14,17 @@ for sc,p in S.items():
   for i in range(n):
    t=i/5 if i<5 else 1;gq=(1+p['g'])**.25-1;G*=1+gq
    if not plan: tc-=p['tl']*(1+p['g'])**(i/4)/4
-   rate=53.19+(p['r']-53.19)*t
+   rate=51.39+(p['r']-51.39)*t
    if plan: fv={'Genel':26.9,'KOBİ':26.9*66.8/77.7,'Büyük':31.6}
    else:
-    fv={k:v*(rate/53.19)*(1+p['gap']/100)**((i+1)/4) for k,v in fg.items()}
+    fv={k:v*(rate/51.39)*(1+p['gap']/100)**((i+1)/4) for k,v in fg.items()}
    dn=0 if plan else p['npl'];npl+=dn;L*=1+gq;rwa*=1+gq
    eq+=1014.5*(1+p['g'])**(i/4)/4-.5*dn/100*L-(1591/4*(1+p['g'])**(i/4) if plan and i<8 else 0)
    syr=eq/rwa*100
    ir+=p['kr']/400;dpq=(1+p['dep'])**.25-1;yp*=1+dpq;d+=2712.7/4*(1+p['g'])**(i/4)+yp*dpq/(1+dpq);rev*=1+gq
    ki=(ir*d+(( (272 if sc=='düşük' else 349 if sc=='orta' else 426)+P[sc][1])*(1+p['g'])**(i/4) if plan else 0))/rev*100
    res+=p['res'];dis=243.3/res if res>0 else 99
-   inf=29.73+(p['inf']-29.73)*t;dep=43.30+(p['pol']+7-43.30)*t;rm=(1+dep/100)/(1+inf/100)*100-100
+   inf=29.77+(p['inf']-29.77)*t;dep=43.30+(p['pol']+7-43.30)*t;rm=(1+dep/100)/(1+inf/100)*100-100
    if plan: rm_s=(1+(.15 if sc!='düşük' else .25))/(1+inf/100)*100-100
    tcg=(tc if not plan else -2399)/G*100/((1+gq)**0)
    R=dict(senaryo=sc,plan='5 adım' if plan else 'S1 erteleme',ceyrek=lab[i],TCMB_acik_GSYH=round(tcg*4/4/(1) ,2),firma_Genel=round(fv['Genel'],1),firma_KOBI=round(fv['KOBİ'],1),firma_Buyuk=round(fv['Büyük'],1),NPL=round(npl,2),SYR=round(syr,2),kamu_faiz_gelir=round(ki,1),KVdis_netrez=round(dis,2),reel_mevduat=round(rm,2),reel_senet=round(rm_s,2) if plan else '')

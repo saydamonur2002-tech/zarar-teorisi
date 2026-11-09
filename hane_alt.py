@@ -52,7 +52,8 @@ def ozet():
     cap_m = DTI * MEMUR / fac * N_M / 1e12
 
     npl = pd.read_csv(D / "npl_ham.csv", dtype={"Donem": str})
-    tga = float(npl[(npl.Seri == "TP.HPBITABLO6.50") & (npl.Donem == "2026-09")].Deger.iloc[0]) / 1e9
+    son_npl = npl.loc[npl.Seri == "TP.HPBITABLO6.50", "Donem"].max()
+    tga = float(npl[(npl.Seri == "TP.HPBITABLO6.50") & (npl.Donem == son_npl)].Deger.iloc[0]) / 1e9
     S_low = tga
     S_high = tga + HANE_PAY_HIGH * YI / 1000
     S_mid = tga + 0.5 * (HANE_PAY_LOW + HANE_PAY_HIGH) / 2 * YI / 1000  # ~ orta
@@ -101,7 +102,7 @@ def ozet():
         "faiz_ihtiyac_%": round(rate, 2),
         "tasima_kapasitesi_trilyonTL": {"Ha_asgari": round(cap_a, 2), "Hm_memur": round(cap_m, 2), "dayanak": f"taksit/gelir<=%{DTI*100:.0f}, {VADE} ay"},
         "kapasite_kisi_basi_bin_TL": {"Ha": round(DTI * ASGARI / fac / 1e3), "Hm": round(DTI * MEMUR / fac / 1e3)},
-        "gozlenen_hane_stresi_trilyonTL": {"takipteki_tuketici_2026-09": round(S_low, 3), "ust(takipteki+yakin_izleme_hane_payi)": round(S_high, 2)},
+        "gozlenen_hane_stresi_trilyonTL": {f"takipteki_tuketici_{son_npl}": round(S_low, 3), "ust(takipteki+yakin_izleme_hane_payi)": round(S_high, 2)},
         "ima_edilen_Ha_borc_payi_ust_siniri": imp,
         "D_A_BASE": D_A_BASE,
         "duyarlilik_semasi": {

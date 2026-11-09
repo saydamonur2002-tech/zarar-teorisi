@@ -60,7 +60,7 @@ def tufe_yoy() -> dict:
 
         body = {
             "type": "json", "series": "TP.FG.J0", "aggregationTypes": "last", "formulas": "0",
-            "startDate": "01-01-2025", "endDate": "01-10-2026", "frequency": "5",
+            "startDate": "01-01-2025", "endDate": "09-11-2026", "frequency": "5",
             "decimalSeperator": ".", "decimal": "2", "dateFormat": "0", "lang": "TR",
             "yon": "0", "sira": "0", "ozelFormuller": [], "groupSeperator": True,
             "isRaporSayfasi": False,

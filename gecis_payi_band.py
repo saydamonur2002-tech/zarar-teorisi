@@ -33,11 +33,11 @@ from evds_cek import BASE, get_json  # noqa: E402
 
 HAM = KOK / "gecis_payi_ham.csv"
 S_TUFE, S_USD, S_AKIM, S_GSYH = "TP.FG.J0", "TP.DK.USD.A.YTL", "TP.FINHESTNKS62011.ZP34", "TP.GSYIH20.BY.B1GQ"
-ITIS_GSYH_YUZDE = 7.62  # tavan_akis 2025: F.4 akımı / GSYH; bes_yil band [0, −7,62]
+ITIS_GSYH_YUZDE = 7.61  # tavan_akis 2025: F.4 akımı / GSYH; bes_yil band [0, −7,61]
 RAPOR_VARSAYIM = 1 / 3  # tek-sistem RAPOR 'üçte biri'; varsayım
 
 
-def _govde(series, agg, freq, start="01-01-2010", end="10-10-2026"):
+def _govde(series, agg, freq, start="01-01-2010", end="09-11-2026"):
     return {"type": "json", "series": "-".join(series), "aggregationTypes": "-".join(agg), "formulas": "-".join("0" for _ in series),
             "startDate": start, "endDate": end, "frequency": freq, "decimalSeperator": ".", "decimal": "4", "dateFormat": "0", "lang": "TR",
             "yon": "0", "sira": "0", "ozelFormuller": [], "groupSeperator": False, "isRaporSayfasi": False}

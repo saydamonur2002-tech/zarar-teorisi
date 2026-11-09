@@ -59,7 +59,7 @@ SERI_AYLIK = {
 }
 
 
-def _fetch(series: list[str], freq: str, start: str = "01-10-2024", end: str = "10-10-2026") -> dict[str, dict[str, float]]:
+def _fetch(series: list[str], freq: str, start: str = "01-10-2024", end: str = "09-11-2026") -> dict[str, dict[str, float]]:
     body = {
         "type": "json",
         "series": "-".join(series),

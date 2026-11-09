@@ -1,6 +1,6 @@
 """Dagilim stresi — olculmus 2026-Q1 stoklarina bagli (temiz).
 
-Toplam firma mevduati 8.59 tr TL, aylik borc servisi 1.67 tr TL (PR #3).
+Toplam firma mevduati 8.982 tr TL, aylik borc servisi 1.797 tr TL (2026-Q2).
 Alt dugumlere lognormal. Baslangic tampon = mevduat / aylik servis.
 Sikintili: tampon < 3 ay.
 Bloke periyot sayaci: ufuk icinde sikintili pay >= %25 olan periyot.
@@ -22,8 +22,8 @@ KOK = Path(__file__).resolve().parent
 TOHUM = 20261010
 N = 200
 T = 6                       # kisa ufuk
-MEVDUAT_TOP = 8.59
-SERVIS_AYLIK = 1.67
+MEVDUAT_TOP = 8.982  # 2026-Q2 para ve mevduat, trilyon TL
+SERVIS_AYLIK = 1.797  # 2026-Q2 aylık anapara servisi, trilyon TL
 FX_KREDI_PAY = 0.596
 PI_AYLIK = 0.0225
 TAMPON_ESIK = 3.0           # ay
@@ -96,7 +96,7 @@ def main():
     df = pd.DataFrame(sonuclar)
     df.to_csv(KOK / "dagilim_stresi.csv", index=False)
     ozet = {
-        "kaynak": "TCMB 2026-Q1 olculmus: firma mevduati 8.59 tr TL, aylik servis 1.67 tr TL (agregat ~5.1 ay)",
+        "kaynak": "TCMB 2026-Q2 olculmus: firma mevduati 8.982 tr TL, aylik servis 1.797 tr TL (agregat ~5.0 ay)",
         "model": "lognormal dagilim, toplam korunur; dis akim her dugume kendi servisini verir (agregat tampon sabit)",
         "sikintili": "tampon < 3 ay",
         "bloke": "sikintili dugum payi >= 0.25 olan periyot sayisi (ufuk 6)",

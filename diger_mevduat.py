@@ -66,7 +66,7 @@ BANKA = {  # HPB; (seri, para birimi)
 }
 
 
-def _fetch(series: list[str], freq: str, start: str = "01-10-2025", end: str = "10-10-2026") -> dict[str, dict[str, float]]:
+def _fetch(series: list[str], freq: str, start: str = "01-10-2025", end: str = "09-11-2026") -> dict[str, dict[str, float]]:
     out: dict[str, dict[str, float]] = {}
     for i in range(0, len(series), 25):
         ch = series[i:i + 25]

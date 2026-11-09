@@ -34,7 +34,7 @@ Q_AY = {"Q1": "03", "Q2": "06", "Q3": "09", "Q4": "12"}
 
 def _fetch(series: list[str], freq: str) -> dict[str, dict[str, float]]:
     body = {"type": "json", "series": "-".join(series), "aggregationTypes": "-".join("last" for _ in series),
-            "formulas": "-".join("0" for _ in series), "startDate": "01-10-2024", "endDate": "10-10-2026", "frequency": freq,
+            "formulas": "-".join("0" for _ in series), "startDate": "01-10-2024", "endDate": "09-11-2026", "frequency": freq,
             "decimalSeperator": ".", "decimal": "4", "dateFormat": "0", "lang": "TR", "yon": "0", "sira": "0",
             "ozelFormuller": [], "groupSeperator": False, "isRaporSayfasi": False}
     out: dict[str, dict[str, float]] = {}
