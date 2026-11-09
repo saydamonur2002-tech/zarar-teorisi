@@ -9,7 +9,7 @@
     {
       "kapi": "gecis",
       "esik": "0",
-      "girdi": 7.62,
+      "girdi": 7.61,
       "cikti": 0.0,
       "birim": "puan",
       "durum": "varsayim",
@@ -18,7 +18,7 @@
     {
       "kapi": "gecis",
       "esik": "1/3",
-      "girdi": 7.62,
+      "girdi": 7.61,
       "cikti": 2.54,
       "birim": "puan",
       "durum": "varsayim",
@@ -27,8 +27,8 @@
     {
       "kapi": "gecis",
       "esik": "1",
-      "girdi": 7.62,
-      "cikti": 7.62,
+      "girdi": 7.61,
+      "cikti": 7.61,
       "birim": "puan",
       "durum": "varsayim",
       "not": "itis 2025 = F.4 islem akimi / GSYH. Gecis bulunamadi."
@@ -73,10 +73,10 @@
       "kapi": "bddk_akim",
       "esik": null,
       "girdi": 5208.0,
-      "cikti": 387.1,
+      "cikti": 395.3,
       "birim": "milyar TL",
       "durum": "ayrilmadi",
-      "not": "5208.0 - 4820.9 = 387.1. Kur ve kapsam ayrilmadi."
+      "not": "5208.0 - 4812.7 = 395.3. Kur ve kapsam ayrilmadi."
     }
   ],
   "H-V": "temiz",

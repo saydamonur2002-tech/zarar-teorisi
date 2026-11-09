@@ -10,7 +10,7 @@ Her adım kendi dosyasını yazar; sonraki, öncekinin etiketini okur; `ihlal` i
 | --- | --- | --- | --- | --- |
 | 1 stok | `adim1_stok.csv` | H-S1 temiz, H-S2 temiz | `temiz` | eski_tavan 0.0728; yeni_tavan 0.2582; silinen boş |
 | 2 | `adim2.csv` | H-A2 temiz | `temiz` | temerrüt 0, `modellendi`; holding_odeme_orani 0.5; ucret_gecis_beta 0.3 parametre |
-| 3 | `adim3.csv` | H-A3 temiz | `temiz` | kredi ihtiyacı 0.0 `modellendi`; F F.4 25,339.8 `olculdu` (stok) |
+| 3 | `adim3.csv` | H-A3 temiz | `temiz` | kredi ihtiyacı 0.0 `modellendi`; F F.4 27,441.9 `olculdu` (stok) |
 | 4 | `adim4.csv` | H-A4 temiz | `temiz` | üç adres adayı `olculdu`; senet `modellenmedi`, ihraç/prim/çıkış boş |
 | 5 | `adim5.csv` | H-A5 temiz | `temiz` | kira `olculmedi`; HEKİS havuz kirası 20,000 TL/ay `modellendi` |
 

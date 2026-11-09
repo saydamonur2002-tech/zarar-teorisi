@@ -81,7 +81,7 @@ def _parse_tarih(t: str) -> datetime:
     return datetime(int(c), int(b), int(a))
 
 
-def _seri_zaman(seri: str, start="01-01-2024", end="07-10-2026") -> list[tuple[datetime, float]]:
+def _seri_zaman(seri: str, start="01-01-2024", end="09-11-2026") -> list[tuple[datetime, float]]:
     ham = _fe([seri], "2", start, end)
     rows = [(_parse_tarih(t), v[seri]) for t, v in ham.items()]
     rows.sort()
@@ -111,7 +111,7 @@ def buyume_13_ay(seri: str, ref: datetime | None = None) -> Olcum:
 
 def tufe_yillik() -> Olcum:
     try:
-        ham = _fe([S_TUFE], "2", "01-01-2024", "07-10-2026")
+        ham = _fe([S_TUFE], "2", "01-01-2024", "09-11-2026")
     except Exception as exc:  # noqa: BLE001
         return Olcum(None, "bulunamadi", S_TUFE, not_=str(exc))
     keys = sorted(ham.keys(), key=_parse_tarih)

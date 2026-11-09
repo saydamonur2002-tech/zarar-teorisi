@@ -149,7 +149,7 @@ def adim2() -> dict:
 def adim3() -> dict:
     om = json.load((KOK / "odeme_mahsup_sonuc.json").open(encoding="utf-8"))
     kop = _csv("tek_sistem_kopru.csv")
-    f4 = next(r for r in kop if r["blok"] == "mutabakat" and r["donem"] == "2026-Q1" and r["evds_anahtar"] == "F_F4_yuk")
+    f4 = max((r for r in kop if r["blok"] == "mutabakat" and r["evds_anahtar"] == "F_F4_yuk" and not _bos(r["evds_milyar"])), key=lambda r: r["donem"])
     bddk = next(r for r in kop if r["blok"] == "mutabakat" and r["donem"] == "2025-Q4" and r["evds_anahtar"] == "F_F4_yuk")
     fg24 = next(r for r in kop if r["blok"] == "referans" and r["donem"] == "2024" and r["kalem"] == "firma finansman gideri")
     fg25 = next(r for r in kop if r["blok"] == "referans" and r["donem"] == "2025" and r["kalem"] == "firma finansman gideri")
@@ -158,7 +158,7 @@ def adim3() -> dict:
           "not": f"Faizin durması modellenmedi. 2025 finansman gideri birincilde yok (Sektör Bilançoları son yayın 2024). "
                  f"2024 {float(fg24['evds_milyar']):.1f} milyar referans; eşitlenmez. RAPOR {float(fg25['tek_sistem_milyar']):.0f} ölçülmedi.",
           "dosya": "odeme_mahsup_sonuc.json"}
-    s2 = {"adim": 3, "kaynak": "tek_sistem_kopru.py", "nesne": "firma F.4 kredi yükümlülüğü (EVDS konsolide olmayan)", "donem": "2026-Q1",
+    s2 = {"adim": 3, "kaynak": "tek_sistem_kopru.py", "nesne": "firma F.4 kredi yükümlülüğü (EVDS konsolide olmayan)", "donem": f4["donem"],
           "deger": float(f4["evds_milyar"]), "birim": "milyar TL", "durum": "olculdu",
           "not": f"adım değil, stok. BDDK ticari 2025 {float(bddk['tek_sistem_milyar']):.0f}; EVDS/BDDK {float(bddk['evds_bolu_tek']):.2f} durur "
                  f"({f4['seri']}).", "dosya": "tek_sistem_kopru.csv"}

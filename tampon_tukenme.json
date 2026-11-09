@@ -1,0 +1,144 @@
+{
+  "donem": "2026-Q2",
+  "gozlem_ayi": "2026-06",
+  "ufuk_ay": 24,
+  "ufuk_kaynak": "odeme_zinciri.T = 24. Tablo, tükenme ayına kadar uzar (tavan 60).",
+  "dagilim_ufuk_ay": 6,
+  "tanim": {
+    "agregat": "para_mevduat / aylık anapara servisi (odeme_gercek.ag_olc)",
+    "dis_akim_servis": "dagilim_stresi: dış akım her düğüme kendi servisini verir, agregat stok sabit",
+    "dis_akim_sifir": "aynı oranın takvimi; dış akım yok",
+    "vade": "kısa kredi 12 ay, uzun kredi 60 ay, diğer 12 ay; ölçülmedi",
+    "ha": "hane_alt payları ve uc_kural servis %35; ölçülmüş alt kırılım yok",
+    "alt20": "uc_kural_senaryo.alt20_borc_gelir_ay = 2.8 sabit. Ay ay tükenme tanımı yok. 2.8 > 2.5 olduğu için limit stresi baştan açık.",
+    "faiz_durdurma": "κ anapara servisini değiştirmez (adim3 yalnız tahakkuk). Tampon ayı κ=0.5 ile değişmez.",
+    "fx": "FX mevduat/FX kredi bir oran (odeme_gercek); ay cinsinden tükenme tanımı yok."
+  },
+  "olcu": {
+    "H": {
+      "likidite_tr": 17.063,
+      "aylik_servis_tr": 0.511,
+      "ay": 33.36,
+      "tukenme_dis_akim_sifir": "2029-04",
+      "tukenme_dis_akim_servis": "tükenmez",
+      "onceki": {
+        "donem": "2026-Q1",
+        "likidite_tr": 15.782,
+        "aylik_servis_tr": 0.47,
+        "ay": 33.61,
+        "tukenme_dis_akim_sifir": "2029-01"
+      }
+    },
+    "F": {
+      "likidite_tr": 8.982,
+      "aylik_servis_tr": 1.797,
+      "ay": 5.0,
+      "tukenme_dis_akim_sifir": "2026-11",
+      "tukenme_dis_akim_servis": "tükenmez",
+      "onceki": {
+        "donem": "2026-Q1",
+        "likidite_tr": 8.594,
+        "aylik_servis_tr": 1.672,
+        "ay": 5.14,
+        "tukenme_dis_akim_sifir": "2026-09"
+      }
+    }
+  },
+  "ha": {
+    "guncel": {
+      "varlik_payi": 0.05,
+      "borc_payi": 0.4,
+      "servis_orani": 0.35,
+      "varlik_tr": 0.853,
+      "borc_tr": 3.354,
+      "NFP_tr": -2.501,
+      "aylik_servis_tr": 0.0978,
+      "brut_ay": 8.72,
+      "net_tukenme": "2026-06",
+      "brut_tukenme_dis_akim_sifir": "2027-03",
+      "not": "Paylar ve yıllık servis %35 varsayımdır (hane_alt, uc_kural_senaryo). Ölçülmüş hane altı mevduat serisi yoktur."
+    },
+    "onceki": {
+      "varlik_payi": 0.05,
+      "borc_payi": 0.4,
+      "servis_orani": 0.35,
+      "varlik_tr": 0.789,
+      "borc_tr": 3.088,
+      "NFP_tr": -2.299,
+      "aylik_servis_tr": 0.0901,
+      "brut_ay": 8.76,
+      "net_tukenme": "2026-03",
+      "brut_tukenme_dis_akim_sifir": "2026-12",
+      "not": "Paylar ve yıllık servis %35 varsayımdır (hane_alt, uc_kural_senaryo). Ölçülmüş hane altı mevduat serisi yoktur."
+    }
+  },
+  "firma_dagilim": [
+    {
+      "sigma": 0.15,
+      "p10_ay": 3.91,
+      "p50_ay": 4.89,
+      "p90_ay": 6.34,
+      "bas_sik_pay": 0.0,
+      "p10_tukenme": "2026-10",
+      "p50_tukenme": "2026-11",
+      "p90_tukenme": "2027-01"
+    },
+    {
+      "sigma": 0.4,
+      "p10_ay": 2.46,
+      "p50_ay": 4.74,
+      "p90_ay": 8.73,
+      "bas_sik_pay": 0.175,
+      "p10_tukenme": "2026-09",
+      "p50_tukenme": "2026-11",
+      "p90_tukenme": "2027-03"
+    },
+    {
+      "sigma": 0.7,
+      "p10_ay": 1.4,
+      "p50_ay": 4.45,
+      "p90_ay": 11.2,
+      "bas_sik_pay": 0.285,
+      "p10_tukenme": "2026-08",
+      "p50_tukenme": "2026-11",
+      "p90_tukenme": "2027-06"
+    },
+    {
+      "sigma": 1.1,
+      "p10_ay": 0.51,
+      "p50_ay": 3.6,
+      "p90_ay": 15.53,
+      "bas_sik_pay": 0.445,
+      "p10_tukenme": "2026-07",
+      "p50_tukenme": "2026-10",
+      "p90_tukenme": "2027-10"
+    }
+  ],
+  "fx_kapsama_F": 0.318,
+  "yol_ozet": {
+    "H": {
+      "ilk": {
+        "ay": "2026-06",
+        "stok_tr": 17.0633,
+        "kalan_ay": 33.365
+      },
+      "son": {
+        "ay": "2029-04",
+        "stok_tr": 0.0,
+        "kalan_ay": 0.0
+      }
+    },
+    "F": {
+      "ilk": {
+        "ay": "2026-06",
+        "stok_tr": 8.9821,
+        "kalan_ay": 4.999
+      },
+      "son": {
+        "ay": "2029-04",
+        "stok_tr": 0.0,
+        "kalan_ay": 0.0
+      }
+    }
+  }
+}

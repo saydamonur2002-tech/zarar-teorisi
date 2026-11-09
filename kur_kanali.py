@@ -17,7 +17,7 @@ NAMES = list(INSTR)
 
 def usd_quarter_end():
     body = {"type": "json", "series": "TP.DK.USD.A", "aggregationTypes": "last", "formulas": "0",
-            "startDate": "01-10-2014", "endDate": "07-10-2026", "frequency": "5", "decimalSeperator": ".",
+            "startDate": "01-10-2014", "endDate": "09-11-2026", "frequency": "5", "decimalSeperator": ".",
             "decimal": "4", "dateFormat": "0", "lang": "TR", "yon": "0", "sira": "0", "ozelFormuller": [],
             "groupSeperator": True, "isRaporSayfasi": False}
     req = urllib.request.Request(f"{BASE}/fe", data=json.dumps(body).encode(), headers={"Accept": "application/json", "Content-Type": "application/json"}, method="POST")

@@ -78,8 +78,9 @@ def _satirlar() -> list[dict]:
                 "gosterge": "Ha_tasima_kapasitesi", "deger": ha.get("tasima_kapasitesi_trilyonTL", {}).get("Ha_asgari"),
                 "birim": "trilyon TL", "kaynak": "hane_alt"})
     tak = ha.get("gozlenen_hane_stresi_trilyonTL", {})
-    out.append({"Donem": "2026-09", "senaryo": "olcum_bddk", "kanal": "temerrut",
-                "gosterge": "takipteki_tuketici", "deger": tak.get("takipteki_tuketici_2026-09"),
+    tga_anahtar = next((k for k in tak if str(k).startswith("takipteki_tuketici_")), "")
+    out.append({"Donem": tga_anahtar.removeprefix("takipteki_tuketici_") or "2026-09", "senaryo": "olcum_bddk", "kanal": "temerrut",
+                "gosterge": "takipteki_tuketici", "deger": tak.get(tga_anahtar),
                 "birim": "trilyon TL", "kaynak": "hane_alt/EVDS"})
     htaksit = _load_json("hane_taksit_ozeti.json")
     out.append({"Donem": "2024", "senaryo": "olcum_evds", "kanal": "taksit_gelir",

@@ -26,7 +26,7 @@ BIRLIKTE_TOL = 0.10
 
 def _fetch(series: list[str]) -> dict[str, dict[str, float]]:
     body = {"type": "json", "series": "-".join(series), "aggregationTypes": "-".join("last" for _ in series),
-            "formulas": "-".join("0" for _ in series), "startDate": "01-04-2025", "endDate": "10-10-2026", "frequency": "6",
+            "formulas": "-".join("0" for _ in series), "startDate": "01-04-2025", "endDate": "09-11-2026", "frequency": "6",
             "decimalSeperator": ".", "decimal": "4", "dateFormat": "0", "lang": "TR", "yon": "0", "sira": "0",
             "ozelFormuller": [], "groupSeperator": False, "isRaporSayfasi": False}
     out: dict[str, dict[str, float]] = {}

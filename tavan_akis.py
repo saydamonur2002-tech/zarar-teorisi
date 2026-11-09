@@ -47,7 +47,7 @@ GECIS_ARAMA = [
 
 def cek() -> dict[str, dict[str, float | None]]:
     try:
-        q = _fetch([S_AKIM, S_STOK, S_GSYH], "6", start="01-01-2022", end="10-10-2026")
+        q = _fetch([S_AKIM, S_STOK, S_GSYH], "6", start="01-01-2022", end="09-11-2026")
     except Exception as exc:  # noqa: BLE001
         if not HAM.exists():
             raise

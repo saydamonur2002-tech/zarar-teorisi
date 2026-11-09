@@ -46,7 +46,7 @@ def _fetch_ic_stok() -> pd.Series:
 
     body = {
         "type": "json", "series": "TP.KB.A09", "aggregationTypes": "last", "formulas": "0",
-        "startDate": "01-01-2016", "endDate": "01-10-2026", "frequency": "1",
+        "startDate": "01-01-2016", "endDate": "09-11-2026", "frequency": "1",
         "decimalSeperator": ".", "decimal": "2", "dateFormat": "0", "lang": "TR",
         "yon": "0", "sira": "0", "ozelFormuller": [], "groupSeperator": True, "isRaporSayfasi": False,
     }

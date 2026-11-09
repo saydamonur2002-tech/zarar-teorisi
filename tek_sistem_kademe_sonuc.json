@@ -46,8 +46,8 @@
       "yeni_stok_tavan": 0.2582,
       "brut_kimden_kime_milyar": 78870.4,
       "eski_stok_tavan": 0.0728,
-      "itis_yillik_milyar": 4820.9,
-      "f4_stok_bas_milyar": 25339.8
+      "itis_yillik_milyar": 4812.7,
+      "f4_stok_bas_milyar": 25349.9
     },
     "kural": "sıralı_pencere; kademeli_rampa; katman_tasinmaz",
     "borc_proxy": {
@@ -56,16 +56,16 @@
       "k2_f4_stoka_dogrudan_girmez": true,
       "kilometre": {
         "2027-Q4": {
-          "f4_fark_milyar": 1268.4,
-          "k1_itis_azalt_yillik": 2029.6
+          "f4_fark_milyar": 1266.5,
+          "k1_itis_azalt_yillik": 2026.1
         },
         "2029-Q4": {
-          "f4_fark_milyar": 6295.6,
-          "k1_itis_azalt_yillik": 2029.6
+          "f4_fark_milyar": 6287.3,
+          "k1_itis_azalt_yillik": 2026.1
         },
         "2031-Q4": {
-          "f4_fark_milyar": 13452.4,
-          "k1_itis_azalt_yillik": 2029.6
+          "f4_fark_milyar": 13437.7,
+          "k1_itis_azalt_yillik": 2026.1
         }
       }
     }

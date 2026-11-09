@@ -9,7 +9,7 @@ import evds_cek
 
 HERE = Path(__file__).resolve().parent
 BASLA = "01-01-2024"
-BITIS = "15-10-2026"
+BITIS = "09-11-2026"
 SERILER = {
     "cari_islemler": ("bie_odeayrsunum6", "TP.ODEAYRSUNUM6.Q1", "1"),
     "ihracat": ("bie_odeayrsunum6", "TP.ODEAYRSUNUM6.Q5", "1"),
@@ -17,7 +17,7 @@ SERILER = {
     "yatirim_geliri_net": ("bie_odeayrsunum6", "TP.ODEAYRSUNUM6.Q74", "1"),
     "yatirim_geliri_gider": ("bie_odeayrsunum6", "TP.ODEAYRSUNUM6.Q76", "1"),
     "rezerv_toplam": ("bie_abres2", "TP.AB.TOPLAM", "1"),
-    "tufe_endeks": ("bie_oktug2025", "TP.FE25.OKTG01", "1"),
+    "tufe_endeks": ("bie_tukfiy2025", "TP.TUKFIY2025.GENEL", "1"),
     "butce_gelir": ("bie_kbmgel", "TP.KB.GEL001", "1"),
     "butce_faiz_gider": ("bie_kbmgid", "TP.KB.GID152", "1"),
 }

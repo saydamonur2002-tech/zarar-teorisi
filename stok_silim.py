@@ -254,7 +254,7 @@ def tavan_ham_yukle() -> pd.DataFrame | None:
 
         rows = []
         for hz, g in TAVAN_GRUP.items():
-            r, n = fetch_group(g, start="01-01-2026", end="07-10-2026")
+            r, n = fetch_group(g, start="01-01-2026", end="09-11-2026")
             rows += [(hz, g) + tuple(x[1:]) for x in r if x[1] == "2026-Q1"]
             log({"islem": "tavan_evds", "hazne": hz, "grup": g, "seri": n, "satir_2026Q1": sum(1 for x in r if x[1] == "2026-Q1")})
         df = pd.DataFrame(rows, columns=["hazne", "grup", "donem", "seri", "ad", "agg", "deger"])

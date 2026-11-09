@@ -27,7 +27,7 @@ def test_degerle_pay_ve_stok():
 
 def test_faiz_sifir_kur_kilitli_tabloyla_ayni():
     girdi = rs.yukle()
-    assert abs(girdi["yp_yayin"] - 0.5444) < 1e-9
+    assert abs(girdi["yp_yayin"] - 0.5441) < 1e-9
     oz = list(csv.DictReader((K / "rev_adim3_ozet.csv").open(encoding="utf-8-sig")))
     for r in oz:
         yl = rs.faiz_yillik(0, girdi["G"][r["g"]], r["r"], float(r["kappa"]), girdi)

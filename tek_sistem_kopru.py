@@ -29,7 +29,7 @@ KAYNAK_COMMIT = "c01b60a"
 URL_EVDS = "https://evds3.tcmb.gov.tr/tumSeriler"
 
 YILLAR = ("2022", "2023", "2024", "2025")
-DONEMLER = tuple(f"{y}-Q4" for y in YILLAR) + ("2026-Q1",)
+DONEMLER = tuple(f"{y}-Q4" for y in YILLAR) + ("2026-Q1", "2026-Q2")
 Q_AY = {"Q1": "03", "Q2": "06", "Q3": "09", "Q4": "12"}
 
 # EVDS konsolide olmayan stoklar (bin TL → milyar TL _fetch içinde). Hepsi dönem sonu.

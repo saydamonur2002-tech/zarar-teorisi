@@ -73139,3 +73139,312 @@ bie_kbgen,2026-08,TP.KB.GEN57,11.GERİ ÖDEME (-),sum,25857.0
 bie_kbgen,2026-08,TP.KB.GEN58,12.ÖZELLEŞTİRME GELİRİ,sum,0.0
 bie_kbgen,2026-08,TP.KB.GEN59,13.TMSF GELİR FAZLALARI,sum,0.0
 bie_kbgen,2026-08,TP.KB.GEN60,14.KASA/BANKA VE DİĞER İŞLEMLER,sum,-128776348.0
+bie_kbmgel,2026-09,TP.KB.GEL001,1.Merkezi Yönetim Gelirleri,sum,1253148554.77
+bie_kbmgel,2026-09,TP.KB.GEL002,1.1. Genel Bütçe Gelirleri,sum,1216010581.75
+bie_kbmgel,2026-09,TP.KB.GEL003,1.1.1.Vergi Gelirleri,sum,1074087861.98
+bie_kbmgel,2026-09,TP.KB.GEL004,1.1.1.1. Gelir ve Kazanç Üzerinden Alınan Vergiler,sum,334545639.48
+bie_kbmgel,2026-09,TP.KB.GEL005,a) Gelir Vergisi,sum,324501343.47
+bie_kbmgel,2026-09,TP.KB.GEL006,Beyana Dayanan Gelir Vergisi,sum,4354782.16
+bie_kbmgel,2026-09,TP.KB.GEL007,Basit Usulde Gelir Vergisi,sum,-821.78
+bie_kbmgel,2026-09,TP.KB.GEL008,Gelir Vergisi Tevkifatı,sum,317198523.19
+bie_kbmgel,2026-09,TP.KB.GEL009,Gelir Geçici Vergisi,sum,2948859.89
+bie_kbmgel,2026-09,TP.KB.GEL010,b) Kurumlar Vergisi,sum,10044296.01
+bie_kbmgel,2026-09,TP.KB.GEL011,Beyana Dayanan Kurumlar Vergisi,sum,-8503847.34
+bie_kbmgel,2026-09,TP.KB.GEL012,Kurumlar Vergisi Tevkifatı,sum,555176.93
+bie_kbmgel,2026-09,TP.KB.GEL013,Kurumlar Geçici Vergisi,sum,17803791.47
+bie_kbmgel,2026-09,TP.KB.GEL0131,Yerel Asgari Tamamlayıcı Kurumlar Vergisi,sum,127898.74
+bie_kbmgel,2026-09,TP.KB.GEL107,7440 SK10Md27Fıkrası UyTahsil Edilen Ek Kurumlar Vergisi,sum,11298.43
+bie_kbmgel,2026-09,TP.KB.GEL014,1.1.1.2. Mülkiyet Üzerinden Alınan Vergiler,sum,5219984.46
+bie_kbmgel,2026-09,TP.KB.GEL015,a) Veraset ve İntikal Vergisi,sum,1079082.49
+bie_kbmgel,2026-09,TP.KB.GEL016,b) Motorlu Taşıtlar Vergisi,sum,4105716.15
+bie_kbmgel,2026-09,TP.KB.GEL109,c) 7456 Sayılı Kanun Kapsamında Alınan Ek Motorlu Taşıtlar Vergisi,sum,13904.7
+bie_kbmgel,2026-09,TP.KB.GEL104,d) Değerli Konut Vergisi,sum,21281.1
+bie_kbmgel,2026-09,TP.KB.GEL017,1.1.1.3. Dahilde Alınan Mal ve Hizmet Vergileri,sum,427760582.94
+bie_kbmgel,2026-09,TP.KB.GEL018,a) Dahilde Alınan Katma Değer Vergisi,sum,187551709.19
+bie_kbmgel,2026-09,TP.KB.GEL019,Beyana Dayanan KDV,sum,69369162.74
+bie_kbmgel,2026-09,TP.KB.GEL020,Tevkif Suretiyle Kesilen KDV,sum,118182546.44
+bie_kbmgel,2026-09,TP.KB.GEL021,b) Özel Tüketim Vergisi,sum,166218334.28
+bie_kbmgel,2026-09,TP.KB.GEL022,Petrol ve Doğalgaz Ürünleri (I),sum,13438479.97
+bie_kbmgel,2026-09,TP.KB.GEL023,Motorlu Taşıtlar (II),sum,59019957.09
+bie_kbmgel,2026-09,TP.KB.GEL024,Alkollü İçkiler (III_a),sum,16587233.67
+bie_kbmgel,2026-09,TP.KB.GEL025,Tütün Mamülleri (III_b),sum,57413214.24
+bie_kbmgel,2026-09,TP.KB.GEL026,Kolalı Gazozlar (III_c),sum,2045103.93
+bie_kbmgel,2026-09,TP.KB.GEL027,Dayanıklı Tüketim ve Diğer Mallar (IV),sum,17715149.01
+bie_kbmgel,2026-09,TP.KB.GEL0271,6111 SK Kapsamında Tahsil Olunan Özel Tüketim Vergileri,sum,-803.67
+bie_kbmgel,2026-09,TP.KB.GEL0272,6736 SK Kapsamında Tahsil Olunan Özel Tüketim Vergileri,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL102,7143 SK Kapsamında Tahsil Olunan Özel Tüketim Vergileri,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL105,7332 Sayılı Kanun Kapsamında Tahsil Olunan Özel Tüketim Vergileri,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL028,c) Banka ve Sigorta Muameleleri Vergisi,sum,56903588.64
+bie_kbmgel,2026-09,TP.KB.GEL029,d) Şans Oyunları Vergisi,sum,7030243.36
+bie_kbmgel,2026-09,TP.KB.GEL030,e) Özel İletişim Vergisi,sum,5710757.98
+bie_kbmgel,2026-09,TP.KB.GEL0300,f) Dijital Hizmet Vergisi,sum,2418474.78
+bie_kbmgel,2026-09,TP.KB.GEL0301,h) Dahilde Alınan Diğer Mal ve Hizmet Vergileri,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL031,1.1.1.4. Uluslararası Ticaret ve Muamelelerden Alınan Vergiler,sum,237968639.29
+bie_kbmgel,2026-09,TP.KB.GEL032,a) Gümrük Vergileri,sum,38108519.12
+bie_kbmgel,2026-09,TP.KB.GEL033,b) İthalde Alınan Katma Değer Vergisi,sum,198974931.94
+bie_kbmgel,2026-09,TP.KB.GEL034,c) Diğer Dış Ticaret Gelirleri,sum,885188.21
+bie_kbmgel,2026-09,TP.KB.GEL035,1.1.1.5.Damga Vergisi,sum,25782365.01
+bie_kbmgel,2026-09,TP.KB.GEL036,1.1.1.6. Harçlar,sum,42052005.64
+bie_kbmgel,2026-09,TP.KB.GEL037,1.1.1.7. Başka Yerde Sınıflandırılmayan Diğer Vergiler,sum,758645.14
+bie_kbmgel,2026-09,TP.KB.GEL038,1.1.2. Teşebbüs ve Mülkiyet Gelirleri,sum,13566742.51
+bie_kbmgel,2026-09,TP.KB.GEL039,1.1.2.1. Mal ve Hizmet Satış Gelirleri,sum,4559209.81
+bie_kbmgel,2026-09,TP.KB.GEL040,a) Mal Satış Gelirleri,sum,4347918.17
+bie_kbmgel,2026-09,TP.KB.GEL041,Banka Çekleri Değerli Kağıt Bedelleri,sum,124183.86
+bie_kbmgel,2026-09,TP.KB.GEL042,Diğer Mal Satış Gelirleri,sum,4223734.3
+bie_kbmgel,2026-09,TP.KB.GEL043,b) Hizmet Gelirleri,sum,211291.64
+bie_kbmgel,2026-09,TP.KB.GEL044,Yol Köprü ve Tünel Ücret Gelirleri,sum,47706.87
+bie_kbmgel,2026-09,TP.KB.GEL045,Diğer Hizmet Gelirleri,sum,163584.77
+bie_kbmgel,2026-09,TP.KB.GEL046,1.1.2.2. KİT ve Kamu Bankaları Gelirleri,sum,1003890.58
+bie_kbmgel,2026-09,TP.KB.GEL047,a) Hazine Portföyü ve İştirak Gelirleri,sum,1003890.58
+bie_kbmgel,2026-09,TP.KB.GEL048,b) KİT ve İDT'lerden Sağlanan Gelirler,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL049,1.1.2.3. Kurumlar Karları,sum,4380291.15
+bie_kbmgel,2026-09,TP.KB.GEL050,a) Döner Sermayeler,sum,4379953.83
+bie_kbmgel,2026-09,TP.KB.GEL051,b) Diğer Kurumlar Karları,sum,337.32
+bie_kbmgel,2026-09,TP.KB.GEL052,1.1.2.4. Kira Gelirleri,sum,2293254.85
+bie_kbmgel,2026-09,TP.KB.GEL053,a) Taşınmaz Kiraları,sum,1115602.81
+bie_kbmgel,2026-09,TP.KB.GEL054,"b) Taşınır Kiraları ve Ön İzin,İrtifak Hakkı ve Kul İzni Gel",sum,1177652.03
+bie_kbmgel,2026-09,TP.KB.GEL055,1.1.2.5. Diğer Teşebbüs ve Mülkiyet Gelirleri,sum,1330096.09
+bie_kbmgel,2026-09,TP.KB.GEL056,1.1.3. Alınan Bağışlar ve Yardımlar ile Özel Gelirler,sum,8406321.86
+bie_kbmgel,2026-09,TP.KB.GEL057,1.1.3.1.Yurt Dışından Alınan Bağış ve Yardımlar,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL058,1.1.3.2.Özel Gelirler,sum,3727953.85
+bie_kbmgel,2026-09,TP.KB.GEL059,"Çıraklık, Mesleki ve Teknik Eğitim Gelirleri",sum,6336.4
+bie_kbmgel,2026-09,TP.KB.GEL060,Diğer Özel Gelirler,sum,3721617.45
+bie_kbmgel,2026-09,TP.KB.GEL110,1.1.3.3.Hizmet Sunumu Karşılığı Alınan Gelirler,sum,4678368.0
+bie_kbmgel,2026-09,TP.KB.GEL061,"1.1.4. Faizler, Paylar ve Cezalar",sum,117778499.18
+bie_kbmgel,2026-09,TP.KB.GEL062,1.1.4.1. Faiz Gelirleri,sum,34829844.33
+bie_kbmgel,2026-09,TP.KB.GEL063,a) Borç Verme İşlemlerinden Kaynaklanan Faizler,sum,39014.41
+bie_kbmgel,2026-09,TP.KB.GEL064,b) Borçlanma Senedi Geçmiş Gün Faiz ve Pirimli Sat Gel,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL065,"c) Vergi, Resim ve Harç Gecikme Faizleri",sum,2440897.85
+bie_kbmgel,2026-09,TP.KB.GEL066,d) Diğer Faizler,sum,32349932.06
+bie_kbmgel,2026-09,TP.KB.GEL067,1.1.4.2. Kişi ve Kurumlardan Alınan Paylar,sum,41889867.05
+bie_kbmgel,2026-09,TP.KB.GEL068,a) Devlet Payları,sum,3120765.64
+bie_kbmgel,2026-09,TP.KB.GEL069,b) Genel Bütçeli İdarelere Ait Paylar,sum,38769101.4
+bie_kbmgel,2026-09,TP.KB.GEL0691,Özel Bütçeli İdarelerden Alınan Paylar,sum,5433.14
+bie_kbmgel,2026-09,TP.KB.GEL070,Düzenleyici ve Denetleyici Kurumlardan Alınan Paylar,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL071,Eğitim Özel Geliri (4306 SK),sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL072,Tasfiye Edilen Fon Gelirleri,sum,535.82
+bie_kbmgel,2026-09,TP.KB.GEL073,RTÜK'den Elde Edilen Eğitime Katkı Payı,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL074,GSM İşletmelerinden Alınan Hazine Payları,sum,5433617.5
+bie_kbmgel,2026-09,TP.KB.GEL075,Bilgi Teknolojileri ve İletişim Kurumundan Alınan Evrensel Hizmet Gelirleri,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL076,İthalatta Kaynak Kullanımı Destekleme Fonu Kesintisi,sum,1165949.28
+bie_kbmgel,2026-09,TP.KB.GEL077,Kaynak Kullanımı Destekleme Fonu Kesintisi,sum,26762756.04
+bie_kbmgel,2026-09,TP.KB.GEL078,Trafik Sigorta Payları,sum,1332300.58
+bie_kbmgel,2026-09,TP.KB.GEL079,Borsa İstanbul AŞ'den Alınan Paylar,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL0791,Elektronik Haberleşme Sekt İliş ARGE ve Eğit Faal Payı,sum,0.0
+bie_kbmgel,2026-09,TP.KB.GEL080,Diğerlerinden Alınan Paylar,sum,4068509.02
+bie_kbmgel,2026-09,TP.KB.GEL081,1.1.4.3. Para Cezaları,sum,31139472.41
+bie_kbmgel,2026-09,TP.KB.GEL082,a) Yargı Para Cezaları,sum,800566.45
+bie_kbmgel,2026-09,TP.KB.GEL083,b) İdari Para Cezaları,sum,14849407.44
+bie_kbmgel,2026-09,TP.KB.GEL084,c) Vergi Cezaları,sum,15174872.62
+bie_kbmgel,2026-09,TP.KB.GEL085,d) Diğer Para Cezaları,sum,314625.88
+bie_kbmgel,2026-09,TP.KB.GEL086,1.1.4.4. Diğer Çeşitli Gelirler,sum,9919315.38
+bie_kbmgel,2026-09,TP.KB.GEL087,1.1.5. Sermaye Gelirleri,sum,2158509.93
+bie_kbmgel,2026-09,TP.KB.GEL088,1.1.5.1. Taşınmaz Satış Gelirleri,sum,2139300.31
+bie_kbmgel,2026-09,TP.KB.GEL089,1.1.5.2. Taşınır Satış Gelirleri,sum,19188.71
+bie_kbmgel,2026-09,TP.KB.GEL090,1.1.5.3. Diğer Sermaye Satış Gelirleri,sum,20.91
+bie_kbmgel,2026-09,TP.KB.GEL093,1.1.6. Alacaklardan Tahsilat,sum,12646.27
+bie_kbmgel,2026-09,TP.KB.GEL094,Özel Bütçeli İdarelerin Gelirleri,sum,31217551.75
+bie_kbmgel,2026-09,TP.KB.GEL095,Düzenleyici ve Denetleyici Kurumların Gelirleri,sum,5920421.26
+bie_kbmgid,2026-09,TP.KB.GID001,Merkezi Yönetim Bütçe Giderleri (A+B),sum,1785390735.58
+bie_kbmgid,2026-09,TP.KB.GID002,A) Faiz Hariç Bütçe Giderleri,sum,1522350696.75
+bie_kbmgid,2026-09,TP.KB.GID003,1. Personel Giderleri,sum,455639469.15
+bie_kbmgid,2026-09,TP.KB.GID004,Memurlar,sum,364128768.26
+bie_kbmgid,2026-09,TP.KB.GID005,İşçiler,sum,51871997.6
+bie_kbmgid,2026-09,TP.KB.GID006,Sözleşmeli Personel,sum,29824458.5
+bie_kbmgid,2026-09,TP.KB.GID007,Geçici ve Diğer Personel,sum,9814244.78
+bie_kbmgid,2026-09,TP.KB.GID008,2. Sosyal Güvenlik Kurumlarına Devlet Primi Giderleri,sum,58038829.56
+bie_kbmgid,2026-09,TP.KB.GID009,Memurlar_1,sum,41066485.06
+bie_kbmgid,2026-09,TP.KB.GID010,İşçiler_1,sum,11872359.81
+bie_kbmgid,2026-09,TP.KB.GID011,Sözleşmeli Personel_1,sum,3181619.18
+bie_kbmgid,2026-09,TP.KB.GID012,Geçici ve Diğer Personel_1,sum,1918365.5
+bie_kbmgid,2026-09,TP.KB.GID014,3. Mal ve Hizmet Alım Giderleri,sum,135510730.7
+bie_kbmgid,2026-09,TP.KB.GID015,a) Savunma_Güvenlik,sum,38744768.47
+bie_kbmgid,2026-09,TP.KB.GID016,Milli Savunma Bakanlığı,sum,30845506.25
+bie_kbmgid,2026-09,TP.KB.GID017,Jandarma Genel Komutanlığı,sum,4240227.04
+bie_kbmgid,2026-09,TP.KB.GID018,Emniyet Genel Müdürlüğü,sum,3659035.17
+bie_kbmgid,2026-09,TP.KB.GID019,b) Sağlık Giderleri,sum,641709.93
+bie_kbmgid,2026-09,TP.KB.GID020,Kamu Personeli Sağlık Giderleri,sum,357919.28
+bie_kbmgid,2026-09,TP.KB.GID021,Tedavi ve Sağlık Malzemesi Giderleri,sum,283790.64
+bie_kbmgid,2026-09,TP.KB.GID024,c) Borçlanma Genel Giderleri,sum,908693.83
+bie_kbmgid,2026-09,TP.KB.GID025,d) Diğer Mal ve Hizmet Alım Giderleri,sum,95215558.45
+bie_kbmgid,2026-09,TP.KB.GID026,4. Cari Transferler,sum,679379572.19
+bie_kbmgid,2026-09,TP.KB.GID027,a) Görevlendirme Giderleri,sum,51199132.75
+bie_kbmgid,2026-09,TP.KB.GID028,KİT Görevlendirme Giderleri,sum,10148543.74
+bie_kbmgid,2026-09,TP.KB.GID030,Halk Bankası_Esnaf ve Sanatkârlara Kredi Faiz Desteği,sum,5629306.05
+bie_kbmgid,2026-09,TP.KB.GID031,Ziraat Bankası_Tarımsal Üreticilere Kredi Faiz Desteği,sum,30011538.62
+bie_kbmgid,2026-09,TP.KB.GID168,Aciz Vesikası Giderleri,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID169,_Tarım Kredi Kooperatifleri,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID170,_Ziraat Bankası,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID032,Diğer Görevlendirme Giderleri,sum,5409744.33
+bie_kbmgid,2026-09,TP.KB.GID033,b) Hazine Yardımları,sum,273621433.99
+bie_kbmgid,2026-09,TP.KB.GID034,Sosyal Güvenlik Kuruluşlarına Hazine Yardımları,sum,4879875.99
+bie_kbmgid,2026-09,TP.KB.GID038,_İşsizlik Sigorta Fonu,sum,4879875.99
+bie_kbmgid,2026-09,TP.KB.GID040,"Sağlık, Emeklilik ve Sosyal Yardım Giderleri",sum,239782434.17
+bie_kbmgid,2026-09,TP.KB.GID041,_Devlet Sosyal Güvenlik Katkısı,sum,127999999.85
+bie_kbmgid,2026-09,TP.KB.GID042,_Faturalı Ödemeler (Görev Zararı),sum,54761608.55
+bie_kbmgid,2026-09,TP.KB.GID043,_Ek Karşılıklar (Görev Zararı),sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID044,_Emeklilere Ek Ödemeler (Görev Zararı),sum,19772422.86
+bie_kbmgid,2026-09,TP.KB.GID045,_SSK 5 Puan İndirimi,sum,21267437.17
+bie_kbmgid,2026-09,TP.KB.GID0451,_Ar-Ge Prim Teşviği (Görevlendirme Gideri),sum,2869768.85
+bie_kbmgid,2026-09,TP.KB.GID046,_Sosyal Güvenlik Açık Finansmanı (Hazine Yardımı),sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID047,_Sosyal Güvenliği Omayanların Sağlık Primi,sum,13111196.87
+bie_kbmgid,2026-09,TP.KB.GID048,Mahalli İdarelere Hazine Yardımları,sum,131270.3
+bie_kbmgid,2026-09,TP.KB.GID049,_Belediyelere Yardım (Denkleştirme Ödeneği),sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID050,_İl Özel İdareleri (Köy Hiz. Personeli ve Diğer),sum,131270.3
+bie_kbmgid,2026-09,TP.KB.GID053,Diğer Hazine Yardımları,sum,28827853.53
+bie_kbmgid,2026-09,TP.KB.GID054,_DFİF,sum,6369470.82
+bie_kbmgid,2026-09,TP.KB.GID056,_Diğer_2,sum,22458382.7
+bie_kbmgid,2026-09,TP.KB.GID057,c) Kar Amacı Gütmeyen Kuruluşlara Yapılan Transferler,sum,47907576.11
+bie_kbmgid,2026-09,TP.KB.GID058,Siyasi Partilere Yardım,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID060,Diğer_3,sum,47907576.11
+bie_kbmgid,2026-09,TP.KB.GID061,d) Hane Halkına Yapılan Transferler,sum,4757127.62
+bie_kbmgid,2026-09,TP.KB.GID062,Burslar ve Harçlıklar,sum,3342499.17
+bie_kbmgid,2026-09,TP.KB.GID063,Eğitim Amaçlı Diğer Transferler,sum,734552.93
+bie_kbmgid,2026-09,TP.KB.GID064,Sağlık Amaçlı Transferler,sum,263653.71
+bie_kbmgid,2026-09,TP.KB.GID065,Yiyecek Amaçlı Transferler,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID066,Barınma Amaçlı Transferler,sum,416421.8
+bie_kbmgid,2026-09,TP.KB.GID067,e) Tarımsal Destekleme Ödemeleri,sum,10242826.35
+bie_kbmgid,2026-09,TP.KB.GID071,Alan Bazlı Tarımsal Destekleme Hizmetleri,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID072,Fark Ödemesi Destekleme Hizmetleri,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID073,Hayvancılık Destekleme Hizmetleri,sum,6001985.85
+bie_kbmgid,2026-09,TP.KB.GID075,Kırsal Kalkınma Amaçlı Tarımsal Destekleme Hizmetleri,sum,389079.45
+bie_kbmgid,2026-09,TP.KB.GID0751,Bitkisel Üretim Destekleri,sum,3814566.84
+bie_kbmgid,2026-09,TP.KB.GID076,Tarım Sigortası Destekleme Hizmetleri,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID077,Telafi Edici Ödemeler Kaps. Tarımsal Destek. Hiz.,sum,37194.19
+bie_kbmgid,2026-09,TP.KB.GID079,Diğer Tarımsal Amaçlı Destekleme Hizmetleri,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID080,f) Hane Halkına Yapılan Diğer Transferler,sum,20856681.06
+bie_kbmgid,2026-09,TP.KB.GID083,KOSGEB (Kobi Desteği),sum,36264.22
+bie_kbmgid,2026-09,TP.KB.GID084,Tabii Afetten Zarar Gören Çiftçilere Yardım,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID085,Bireysel Emeklilik Devlet Katkısı,sum,9453624.38
+bie_kbmgid,2026-09,TP.KB.GID086,Diğer_5,sum,11366792.45
+bie_kbmgid,2026-09,TP.KB.GID087,g) Sosyal Amaçlı Transferler,sum,20329167.69
+bie_kbmgid,2026-09,TP.KB.GID089,SHÇEK Yardımları,sum,10028407.52
+bie_kbmgid,2026-09,TP.KB.GID090,2022 Kanun Aylık Ödemeleri,sum,9379437.16
+bie_kbmgid,2026-09,TP.KB.GID091,Diğer Sosyal Amaçlı Transferler,sum,921323.01
+bie_kbmgid,2026-09,TP.KB.GID092,h) Yurt Dışına Yapılan Transferler,sum,1942008.04
+bie_kbmgid,2026-09,TP.KB.GID093,Kuzey Kıbrıs Türk Cumhuriyeti,sum,653685.0
+bie_kbmgid,2026-09,TP.KB.GID094,Uluslararası Kuruluşlara Katılım Payı,sum,166004.83
+bie_kbmgid,2026-09,TP.KB.GID095,Diğer_7,sum,1122318.21
+bie_kbmgid,2026-09,TP.KB.GID096,i) Gelirden Ayrılan Paylar,sum,248523618.53
+bie_kbmgid,2026-09,TP.KB.GID097,Mahalli İdare Payları,sum,178226418.24
+bie_kbmgid,2026-09,TP.KB.GID098,_İl Özel İdarelerine,sum,7366435.48
+bie_kbmgid,2026-09,TP.KB.GID099,_Büyükşehir Belediyelerine,sum,82462756.98
+bie_kbmgid,2026-09,TP.KB.GID100,_Büyükşehir İlçe Belediyelerine,sum,66297919.32
+bie_kbmgid,2026-09,TP.KB.GID101,_Diğer Belediyelere,sum,22099306.44
+bie_kbmgid,2026-09,TP.KB.GID102,Fon Payları,sum,70024047.13
+bie_kbmgid,2026-09,TP.KB.GID103,_SSDF,sum,46916134.39
+bie_kbmgid,2026-09,TP.KB.GID104,_Sosyal Yardımlaşma ve Dayanışma Teşvik Fonu,sum,19089197.19
+bie_kbmgid,2026-09,TP.KB.GID105,Diğer Paylar,sum,273153.15
+bie_kbmgid,2026-09,TP.KB.GID108,_Toplu Konut İdaresine,sum,16215.13
+bie_kbmgid,2026-09,TP.KB.GID109,_Diğer_8,sum,256938.02
+bie_kbmgid,2026-09,TP.KB.GID110,5. Sermaye Giderleri,sum,138401993.75
+bie_kbmgid,2026-09,TP.KB.GID111,Mamul Mal Alımları,sum,10991856.79
+bie_kbmgid,2026-09,TP.KB.GID112,Gayrimenkul Alımları ve Kamulaştırması,sum,5706767.45
+bie_kbmgid,2026-09,TP.KB.GID113,Gayrimenkul Sermaye Üretim Giderleri,sum,102973193.23
+bie_kbmgid,2026-09,TP.KB.GID114,Gayrimenkul Büyük Onarım Giderleri,sum,11418873.27
+bie_kbmgid,2026-09,TP.KB.GID115,Diğer Sermaye Giderleri,sum,7311302.99
+bie_kbmgid,2026-09,TP.KB.GID116,6. Sermaye Transferleri,sum,16217996.51
+bie_kbmgid,2026-09,TP.KB.GID117,a) Yurt İçi Sermaye Transferleri,sum,15481210.52
+bie_kbmgid,2026-09,TP.KB.GID119,KÖY_DES Projesi,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID120,BELDES (SUKAP),sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID121,TÜBİTAK AR_GE Ödeneği,sum,1961624.86
+bie_kbmgid,2026-09,TP.KB.GID122,Kalkınma Ajansları,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID123,SOGEP,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID1231,Cazibe Merkezleri Destekleri,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID127,Diğer_10,sum,13519585.66
+bie_kbmgid,2026-09,TP.KB.GID128,b) Yurt Dışı Sermaye Transferleri,sum,736785.98
+bie_kbmgid,2026-09,TP.KB.GID129,Kuzey Kıbrıs Türk Cumhuriyeti_1,sum,264000.0
+bie_kbmgid,2026-09,TP.KB.GID130,Diğer_11,sum,472785.98
+bie_kbmgid,2026-09,TP.KB.GID131,7. Borç Verme,sum,39162104.86
+bie_kbmgid,2026-09,TP.KB.GID132,a) Yurt İçi Borç Verme,sum,39162104.86
+bie_kbmgid,2026-09,TP.KB.GID133,KİT Sermaye,sum,19647000.0
+bie_kbmgid,2026-09,TP.KB.GID134,Risk Hesabı,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID135,Öğrenim ve Harç Kredisi,sum,2424527.17
+bie_kbmgid,2026-09,TP.KB.GID136,Kredi Garanti Kurumlarına,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID137,Diğer_12,sum,17090577.68
+bie_kbmgid,2026-09,TP.KB.GID138,b) Yurt Dışı Borç Verme,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID139,Kuzey Kıbrıs Türk Cumhuriyeti (Kredi),sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID140,Kuzey Kıbrıs Türk Cumhuriyeti (Teşvik),sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID141,Diğer_13,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID142,8. Yedek Ödenekler,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID143,Personel Giderlerini Karşılama Ödeneği,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID144,Yedek Ödenek,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID145,Doğal Afet Giderlerini Karşılama Ödeneği,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID146,Yatırımları Hızlandırma Ödeneği,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID147,İlama Bağlı Borçları Karşılama Ödeneği,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID148,Özellikli Giderleri Karşılama Ödeneği,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID149,Yeni Kurulacak Dairelerin Giderlerini Karşılama Ödeneği,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID152,B. Faiz Giderleri,sum,263040038.83
+bie_kbmgid,2026-09,TP.KB.GID153,a) İç Borç Faiz Ödemeleri,sum,214447635.94
+bie_kbmgid,2026-09,TP.KB.GID154,Kamu Kesimi,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID155,_Tahvil Faizi,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID157,Diğer İç Borç Faiz Ödemeleri,sum,214447635.94
+bie_kbmgid,2026-09,TP.KB.GID158,_Tahvil Faizi_1,sum,214447635.94
+bie_kbmgid,2026-09,TP.KB.GID159,_Bono Faizi_1,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID160,b) Dış Borç Faiz Ödemeleri,sum,14983594.26
+bie_kbmgid,2026-09,TP.KB.GID161,c) İskonto ve Kısa Vadeli Nakit İşlemlere Ait Faiz Gid.,sum,12275540.48
+bie_kbmgid,2026-09,TP.KB.GID162,d) Türev Ürün Giderleri,sum,10322.21
+bie_kbmgid,2026-09,TP.KB.GID163,e) Kira Sertifikası Giderleri,sum,21322945.93
+bie_kbmgid,2026-09,TP.KB.GID165,Sanayi ve Teknoloji B. Teşvik Ödemeleri,sum,0.0
+bie_kbmgid,2026-09,TP.KB.GID167,_Diğerleri_16,sum,4018715.55
+bie_kbgen,2026-09,TP.KB.GEN01,1.GENEL BÜTÇE GELİRLERİ,sum,1216137382.0
+bie_kbgen,2026-09,TP.KB.GEN02,1.1.Vergi Gelirleri,sum,1074087862.0
+bie_kbgen,2026-09,TP.KB.GEN03,1.1.1.Dolaysız Vergiler,sum,339765624.0
+bie_kbgen,2026-09,TP.KB.GEN04,1.1.2.Dolaylı Vergiler,sum,734322238.0
+bie_kbgen,2026-09,TP.KB.GEN05,1.2.Diğer,sum,142049520.0
+bie_kbgen,2026-09,TP.KB.GEN07,1.2.2.Teşebbüs ve Mülkiyet Gelirleri,sum,13566743.0
+bie_kbgen,2026-09,TP.KB.GEN08,1.2.3.Alınan Bağışlar ve Yardımlar,sum,8442433.0
+bie_kbgen,2026-09,TP.KB.GEN09,"1.2.4.Faizler, Paylar ve Cezalar",sum,117869189.0
+bie_kbgen,2026-09,TP.KB.GEN10,1.2.5.Sermaye Gelirleri,sum,2158510.0
+bie_kbgen,2026-09,TP.KB.GEN11,1.2.6.Alacaklardan Tahsilat,sum,12646.0
+bie_kbgen,2026-09,TP.KB.GEN12,2.GENEL BÜTÇE HARCAMALARI,sum,1672300160.0
+bie_kbgen,2026-09,TP.KB.GEN13,3.GENEL BÜTÇE FAİZ DIŞI HARCAMALARI,sum,1410032729.0
+bie_kbgen,2026-09,TP.KB.GEN14,3.1.Personel Giderleri,sum,395510332.0
+bie_kbgen,2026-09,TP.KB.GEN15,3.2.Sosyal Güvenlik Kurumları Devlet Primi,sum,49383321.0
+bie_kbgen,2026-09,TP.KB.GEN16,3.3.Mal ve Hizmet Alımları,sum,115147043.0
+bie_kbgen,2026-09,TP.KB.GEN17,3.4.Faiz Harcamaları,sum,262267432.0
+bie_kbgen,2026-09,TP.KB.GEN18,3.4.1.İç Borç Faizi,sum,214447636.0
+bie_kbgen,2026-09,TP.KB.GEN19,3.4.2.Dış Borç Faizi,sum,14210987.0
+bie_kbgen,2026-09,TP.KB.GEN20,3.4.3.İskonto ve Kısa Vadeli İşlemlere Ait Faiz,sum,33608809.0
+bie_kbgen,2026-09,TP.KB.GEN21,3.5.Cari Transferler,sum,656026844.0
+bie_kbgen,2026-09,TP.KB.GEN22,3.5.1.Görev Zararları,sum,49372595.0
+bie_kbgen,2026-09,TP.KB.GEN23,3.5.2.Hazine Yardımları,sum,306279431.0
+bie_kbgen,2026-09,TP.KB.GEN24,3.5.3.Kâr Amacı Gütmeyen Kuruluşlara Transferler,sum,3067200.0
+bie_kbgen,2026-09,TP.KB.GEN25,3.5.4.Hane Halkına Yapılan Transferler,sum,4424700.0
+bie_kbgen,2026-09,TP.KB.GEN26,3.5.5Tarımsal Destekleme,sum,10242826.0
+bie_kbgen,2026-09,TP.KB.GEN261,3.5.6.Hane Halkına Yapılan Diğer Transferler,sum,12132018.0
+bie_kbgen,2026-09,TP.KB.GEN27,3.5.7.Sosyal Amaçlı Transferler,sum,20255600.0
+bie_kbgen,2026-09,TP.KB.GEN28,3.5.8.Yurt Dışına Yapılan Transferler,sum,1746642.0
+bie_kbgen,2026-09,TP.KB.GEN29,3.5.9.Gelirlerden Ayrılan Paylar,sum,248505830.0
+bie_kbgen,2026-09,TP.KB.GEN30,3.6.Sermaye Giderleri,sum,78634421.0
+bie_kbgen,2026-09,TP.KB.GEN31,3.7.Sermaye Transferleri,sum,77053090.0
+bie_kbgen,2026-09,TP.KB.GEN32,3.8.Borç Verme,sum,38277679.0
+bie_kbgen,2026-09,TP.KB.GEN34,4.GENEL BÜTÇE FAİZ DIŞI DENGESİ,sum,-193895347.0
+bie_kbgen,2026-09,TP.KB.GEN35,5.GENEL BÜTÇE DENGESİ,sum,-456162778.0
+bie_kbgen,2026-09,TP.KB.GEN36,5.1.Bütçe Emanetleri,sum,-41456454.0
+bie_kbgen,2026-09,TP.KB.GEN38,5.3.Avanslar,sum,-481359.0
+bie_kbgen,2026-09,TP.KB.GEN39,6.GENEL BÜTÇE NAKİT DENGESİ,sum,-498100591.0
+bie_kbgen,2026-09,TP.KB.GEN40,7.GENEL BÜTÇE FINANSMANI,sum,498100591.0
+bie_kbgen,2026-09,TP.KB.GEN41,8.BORÇLANMA (NET),sum,308542711.0
+bie_kbgen,2026-09,TP.KB.GEN42,8.1.Dış Borçlanma (Net),sum,73413715.0
+bie_kbgen,2026-09,TP.KB.GEN43,8.1.1.Kullanım,sum,80304165.0
+bie_kbgen,2026-09,TP.KB.GEN44,8.1.2.Ödeme,sum,-6890449.0
+bie_kbgen,2026-09,TP.KB.GEN45,8.2.İç Borçlanma (Net),sum,235128996.0
+bie_kbgen,2026-09,TP.KB.GEN46,8.2.1.TL Cinsinden Hazine Bonosu,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN47,8.2.1.1.Satış,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN48,8.2.1.2.Ödeme,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN62,8.2.2.Döviz Cinsinden Hazine Bonosu,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN63,8.2.2.1.Satış,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN64,8.2.2.2.Ödeme,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN49,8.2.3.TL Cinsinden Devlet Tahvili,sum,235128996.0
+bie_kbgen,2026-09,TP.KB.GEN50,8.2.3.1.Satış,sum,291698833.0
+bie_kbgen,2026-09,TP.KB.GEN51,8.2.3.2.Ödeme,sum,-56569837.0
+bie_kbgen,2026-09,TP.KB.GEN52,8.2.4.Döviz Cinsinden Devlet Tahvili,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN53,8.2.4.1.Satış,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN54,8.2.4.2.Ödeme,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN55,9.NET BORÇ VERME (-),sum,-168116.0
+bie_kbgen,2026-09,TP.KB.GEN56,10.BORÇ VERME,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN57,11.GERİ ÖDEME (-),sum,168116.0
+bie_kbgen,2026-09,TP.KB.GEN58,12.ÖZELLEŞTİRME GELİRİ,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN59,13.TMSF GELİR FAZLALARI,sum,0.0
+bie_kbgen,2026-09,TP.KB.GEN60,14.KASA/BANKA VE DİĞER İŞLEMLER,sum,189389764.0

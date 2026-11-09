@@ -25,7 +25,7 @@ CODES = {"K": ["TP.BRUTDBSDDS.G2", "TP.BRUTDBSDDS.G16"], "B": ["TP.BRUTDBSDDS.G3
 def fetch_ext():
     allc = sorted({c for v in CODES.values() for c in v})
     body = {"type": "json", "series": "-".join(allc), "aggregationTypes": "-".join("last" for _ in allc), "formulas": "-".join("0" for _ in allc),
-            "startDate": "01-10-2014", "endDate": "07-10-2026", "frequency": "5", "decimalSeperator": ".", "decimal": "4",
+            "startDate": "01-10-2014", "endDate": "09-11-2026", "frequency": "5", "decimalSeperator": ".", "decimal": "4",
             "dateFormat": "0", "lang": "TR", "yon": "0", "sira": "0", "ozelFormuller": [], "groupSeperator": True, "isRaporSayfasi": False}
     req = urllib.request.Request(f"{BASE}/fe", data=json.dumps(body).encode(), headers={"Accept": "application/json", "Content-Type": "application/json"}, method="POST")
     d = json.loads(urllib.request.urlopen(req, timeout=120).read().decode("utf-8-sig"))

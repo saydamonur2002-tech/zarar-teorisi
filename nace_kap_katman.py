@@ -198,7 +198,7 @@ def nace_evds_dene() -> pd.DataFrame | None:
     log({"kaynak": "TÜİK", "islem": "birincil_dosya", "durum": "denenmedi", "not": "data.tuik.gov.tr NACE bölüm ağırlığı bu turda çekilmedi"})
     for g in NACE_EVDS_YANLIS_RAF:
         try:
-            rows, n = fetch_group(g, start="01-01-2023", end="07-10-2026", freq="5")
+            rows, n = fetch_group(g, start="01-01-2023", end="09-11-2026", freq="5")
             log({"kaynak": "EVDS", "grup": g, "seri": n, "satir": len(rows)})
             if len(rows) >= 10:
                 df = pd.DataFrame(rows, columns=["grup", "donem", "seri", "ad", "agg", "deger"])

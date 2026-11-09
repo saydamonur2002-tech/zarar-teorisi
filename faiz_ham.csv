@@ -4291,3 +4291,23 @@ bie_kt210a,2026-08,TP.BKR.USD.1,"Ticari Krediler (ABD doları, Stok, %)",avg,7.7
 bie_kt210a,2026-08,TP.BKR.TRY.KTF18,"Ticari Krediler (Tüzel Kişi KMH ve Kurumsal Kredi Kartları Hariç) (TL, Stok,%)",avg,45.31
 bie_kt210a,2026-08,TP.BKR.TRY.KTFTUK,"Tüketici Kredisi (İhtiyaç+Taşıt+Konut) (TL, Stok,%)",avg,53.06
 bie_kt210a,2026-08,TP.BKR.TRY.KTFTUK01,"Tüketici Kredisi (KMH Dahil) (TL Üzerinden Açılan) (İhtiyaç+Taşıt+Konut) (Stok,%)",avg,55.77
+bie_kt100h,2026-10,TP.KTF10,"İhtiyaç Kredisi (TL, Akım, %)",avg,60.926
+bie_kt100h,2026-10,TP.KTF101,"İhtiyaç Kredisi (KMH Dahil) (TL, Akım, %)",avg,62.572
+bie_kt100h,2026-10,TP.KTF11,"Taşıt Kredisi (TL, Akım, %)",avg,43.466
+bie_kt100h,2026-10,TP.KTF12,"Konut Kredisi (TL, Akım, %)",avg,41.602
+bie_kt100h,2026-10,TP.KTF17,"Ticari Krediler (TL, Akım, %)",avg,51.39
+bie_kt100h,2026-10,TP.KTF17.EUR,"Ticari Krediler (Euro, Akım, %)",avg,7.192
+bie_kt100h,2026-10,TP.KTF17.USD,"Ticari Krediler (ABD doları, Akım,%)",avg,8.144
+bie_kt100h,2026-10,TP.KTF18,"Ticari Krediler (Tüzel Kişi KMH ve Kurumsal Kredi Kartları Hariç) (TL, Akım, %)",avg,46.132
+bie_kt100h,2026-10,TP.KTFTUK,"Tüketici Kredisi (İhtiyaç+Taşıt+Konut) (TL, Akım, %)",avg,59.224
+bie_kt100h,2026-10,TP.KTFTUK01,"Tüketici Kredisi (KMH Dahil) (İhtiyaç+Taşıt+Konut) (TL, Akım, %)",avg,61.996
+bie_kt210a,2026-09,TP.BKR.TRY.KTF10,"İhtiyaç Kredisi (TL, Stok, %)",avg,62.8
+bie_kt210a,2026-09,TP.BKR.TRY.KTF101,"İhtiyaç Kredisi (KMH Dahil) (TL, Stok, %)",avg,62.65
+bie_kt210a,2026-09,TP.BKR.TRY.17,"Taşıt Kredisi (TL, Stok, %)",avg,37.97
+bie_kt210a,2026-09,TP.BKR.TRY.18,"Konut Kredisi (TL, Stok, %)",avg,33.1
+bie_kt210a,2026-09,TP.BKR.TRY.1,"Ticari Krediler (TL, Stok, %)",avg,46.44
+bie_kt210a,2026-09,TP.BKR.EUR.1,"Ticari Krediler (Euro, Stok, %)",avg,6.66
+bie_kt210a,2026-09,TP.BKR.USD.1,"Ticari Krediler (ABD doları, Stok, %)",avg,7.75
+bie_kt210a,2026-09,TP.BKR.TRY.KTF18,"Ticari Krediler (Tüzel Kişi KMH ve Kurumsal Kredi Kartları Hariç) (TL, Stok,%)",avg,45.12
+bie_kt210a,2026-09,TP.BKR.TRY.KTFTUK,"Tüketici Kredisi (İhtiyaç+Taşıt+Konut) (TL, Stok,%)",avg,53.17
+bie_kt210a,2026-09,TP.BKR.TRY.KTFTUK01,"Tüketici Kredisi (KMH Dahil) (TL Üzerinden Açılan) (İhtiyaç+Taşıt+Konut) (Stok,%)",avg,55.85

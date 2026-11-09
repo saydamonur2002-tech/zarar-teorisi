@@ -218,3 +218,222 @@ ROW,bie_finhestnks2,2026-Q1,TP.FINHESTNKS2.ZP42,"F.6.Sigorta ve Emeklilik Sözle
 ROW,bie_finhestnks2,2026-Q1,TP.FINHESTNKS2.ZP43,"F.7.Finansal Türevler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,255770601.0
 ROW,bie_finhestnks2,2026-Q1,TP.FINHESTNKS2.ZP44,"F.8.Diğer Borçlar,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,2937886226.89
 ROW,bie_finhestnks2,2026-Q1,TP.FINHESTNKS2.ZP45,"F.0.Toplam Yükümlülükler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,33787288769.19
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP1,"BF.9.NET FİNANSAL DEĞER,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,-33136381475.55
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP2,"VF.1.Parasal Altın ve SDR,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP3,"VF.1.1.Parasal Altın,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP4,"VF.1.2.Özel Çekme Hakları (SDR),Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP5,"VF.2.Para ve Mevduat,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,8982135665.35
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP6,"VF.2.1.Para,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,636617788.08
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP7,"VF.2.2.Vadesiz Mevduat,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,3592413697.99
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP8,"VF.2.9.Vadeli Mevduat,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,4753104179.26
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP9,"VF.3.Borçlanma Senetleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,484828635.9
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP10,"VF.3.1.Kısa Vadeli Borçlanma Senetleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,107341722.78
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP11,"VF.3.2.Uzun Vadeli Borçlanma Senetleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,377486913.12
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP12,"VF.4.Krediler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,298396262.12
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP13,"VF.4.1.Kısa Vadeli Krediler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,298396262.12
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP14,"VF.4.2.Uzun Vadeli Krediler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP15,"VF.5.Hisse Senetleri ve Özkaynaklar,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,49929764819.52
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP16,"VF.5.1.Hisse Senetleri ve Özkaynaklar,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,47752176144.9
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP17,"VF.5.2.Yatırım Fonu Katılma Belgeleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,2177588674.62
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP18,"VF.5.2.1.Para Piyasası Fonları,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,550223718.1
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP19,"VF.5.2.2.Diğer Yatırım Fonları,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,1627364956.51
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP20,"VF.6.Sigorta ve Emeklilik Sözleşmeleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,492415034.93
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP21,"VF.7.Finansal Türevler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,48173529.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP22,"VF.8.Diğer Alacaklar,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,48915168329.55
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP23,"VF.0.Toplam Varlıklar,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,109150882276.39
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP24,"F.1.Parasal Altın ve SDR,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP26,"F.1.2.Özel Çekme Hakları (SDR),Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP27,"F.2.Para ve Mevduat,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP28,"F.2.1.Para,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP29,"F.2.2.Vadesiz Mevduat,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP30,"F.2.9.Vadeli Mevduat,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP31,"F.3.Borçlanma Senetleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,1060498588.23
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP32,"F.3.1.Kısa Vadeli Borçlanma Senetleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,64352386.75
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP33,"F.3.2.Uzun Vadeli Borçlanma Senetleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,996146201.47
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP34,"F.4.Krediler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,27441925020.37
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP35,"F.4.1.Kısa Vadeli Krediler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,11780897316.04
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP36,"F.4.2.Uzun Vadeli Krediler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,15661027704.33
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP37,"F.5.Hisse Senetleri ve Özkaynaklar,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,63185138252.34
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP38,"F.5.1.Hisse Senetleri ve Özkaynaklar,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,63185138252.34
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP39,"F.5.2.Yatırım Fonu Katılma Belgeleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP40,"F.5.2.1.Para Piyasası Fonları,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP41,"F.5.2.2.Diğer Yatırım Fonları,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP42,"F.6.Sigorta ve Emeklilik Sözleşmeleri,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP43,"F.7.Finansal Türevler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,39549442.0
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP44,"F.8.Diğer Borçlar,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,50560152448.99
+F,bie_finhestnks11,2026-Q2,TP.FINHESTNKS11.ZP45,"F.0.Toplam Yükümlülükler,Finansal Olmayan Kuruluşlar (Konsolide Olmayan, Stok)",last,142287263751.94
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP1,"BF.9.NET FİNANSAL DEĞER,Hanehalkı (Konsolide Olmayan, Stok)",last,23115867768.38
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP2,"VF.1.Parasal Altın ve SDR,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP3,"VF.1.1.Parasal Altın,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP4,"VF.1.2.Özel Çekme Hakları (SDR),Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP5,"VF.2.Para ve Mevduat,Hanehalkı (Konsolide Olmayan, Stok)",last,16601424361.81
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP6,"VF.2.1.Para,Hanehalkı (Konsolide Olmayan, Stok)",last,177240315.2
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP7,"VF.2.2.Vadesiz Mevduat,Hanehalkı (Konsolide Olmayan, Stok)",last,7341288687.35
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP8,"VF.2.9.Vadeli Mevduat,Hanehalkı (Konsolide Olmayan, Stok)",last,9082895359.24
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP9,"VF.3.Borçlanma Senetleri,Hanehalkı (Konsolide Olmayan, Stok)",last,991696152.36
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP10,"VF.3.1.Kısa Vadeli Borçlanma Senetleri,Hanehalkı (Konsolide Olmayan, Stok)",last,432102351.68
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP11,"VF.3.2.Uzun Vadeli Borçlanma Senetleri,Hanehalkı (Konsolide Olmayan, Stok)",last,559593800.67
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP12,"VF.4.Krediler,Hanehalkı (Konsolide Olmayan, Stok)",last,14172317.61
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP13,"VF.4.1.Kısa Vadeli Krediler,Hanehalkı (Konsolide Olmayan, Stok)",last,14172317.61
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP14,"VF.4.2.Uzun Vadeli Krediler,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP15,"VF.5.Hisse Senetleri ve Özkaynaklar,Hanehalkı (Konsolide Olmayan, Stok)",last,9289307548.54
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP16,"VF.5.1.Hisse Senetleri ve Özkaynaklar,Hanehalkı (Konsolide Olmayan, Stok)",last,3570005101.78
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP17,"VF.5.2.Yatırım Fonu Katılma Belgeleri,Hanehalkı (Konsolide Olmayan, Stok)",last,5719302446.75
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP18,"VF.5.2.1.Para Piyasası Fonları,Hanehalkı (Konsolide Olmayan, Stok)",last,1179906322.98
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP19,"VF.5.2.2.Diğer Yatırım Fonları,Hanehalkı (Konsolide Olmayan, Stok)",last,4539396123.77
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP20,"VF.6.Sigorta ve Emeklilik Sözleşmeleri,Hanehalkı (Konsolide Olmayan, Stok)",last,3189445050.07
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP21,"VF.7.Finansal Türevler,Hanehalkı (Konsolide Olmayan, Stok)",last,8203864.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP22,"VF.8.Diğer Alacaklar,Hanehalkı (Konsolide Olmayan, Stok)",last,860367726.81
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP23,"VF.0.Toplam Varlıklar,Hanehalkı (Konsolide Olmayan, Stok)",last,30954617021.23
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP24,"F.1.Parasal Altın ve SDR,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP26,"F.1.2.Özel Çekme Hakları (SDR),Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP27,"F.2.Para ve Mevduat,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP28,"F.2.1.Para,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP29,"F.2.2.Vadesiz Mevduat,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP30,"F.2.9.Vadeli Mevduat,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP31,"F.3.Borçlanma Senetleri,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP32,"F.3.1.Kısa Vadeli Borçlanma Senetleri,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP33,"F.3.2.Uzun Vadeli Borçlanma Senetleri,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP34,"F.4.Krediler,Hanehalkı (Konsolide Olmayan, Stok)",last,7329060152.62
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP35,"F.4.1.Kısa Vadeli Krediler,Hanehalkı (Konsolide Olmayan, Stok)",last,5170478267.06
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP36,"F.4.2.Uzun Vadeli Krediler,Hanehalkı (Konsolide Olmayan, Stok)",last,2158581885.55
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP37,"F.5.Hisse Senetleri ve Özkaynaklar,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP38,"F.5.1.Hisse Senetleri ve Özkaynaklar,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP39,"F.5.2.Yatırım Fonu Katılma Belgeleri,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP40,"F.5.2.1.Para Piyasası Fonları,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP41,"F.5.2.2.Diğer Yatırım Fonları,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP42,"F.6.Sigorta ve Emeklilik Sözleşmeleri,Hanehalkı (Konsolide Olmayan, Stok)",last,0.0
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP43,"F.7.Finansal Türevler,Hanehalkı (Konsolide Olmayan, Stok)",last,29808949.19
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP44,"F.8.Diğer Borçlar,Hanehalkı (Konsolide Olmayan, Stok)",last,479880151.03
+H,bie_finhestnks14,2026-Q2,TP.FINHESTNKS14.ZP45,"F.0.Toplam Yükümlülükler,Hanehalkı (Konsolide Olmayan, Stok)",last,7838749252.84
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP1,"BF.9.NET FİNANSAL DEĞER,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,-3397290318.85
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP2,"VF.1.Parasal Altın ve SDR,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,4737728473.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP3,"VF.1.1.Parasal Altın,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,4387838697.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP4,"VF.1.2.Özel Çekme Hakları (SDR),Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,349889776.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP5,"VF.2.Para ve Mevduat,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,15742675604.03
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP6,"VF.2.1.Para,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,403463016.32
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP7,"VF.2.2.Vadesiz Mevduat,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,10182319610.66
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP8,"VF.2.9.Vadeli Mevduat,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,5156892977.04
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP9,"VF.3.Borçlanma Senetleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,8557309052.19
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP10,"VF.3.1.Kısa Vadeli Borçlanma Senetleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,1143272951.34
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP11,"VF.3.2.Uzun Vadeli Borçlanma Senetleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,7414036100.84
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP12,"VF.4.Krediler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,30462469887.24
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP13,"VF.4.1.Kısa Vadeli Krediler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,19365570517.46
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP14,"VF.4.2.Uzun Vadeli Krediler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,11096899369.78
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP15,"VF.5.Hisse Senetleri ve Özkaynaklar,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,1654416358.33
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP16,"VF.5.1.Hisse Senetleri ve Özkaynaklar,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,1482484633.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP17,"VF.5.2.Yatırım Fonu Katılma Belgeleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,171931725.33
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP18,"VF.5.2.1.Para Piyasası Fonları,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,3796227.96
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP19,"VF.5.2.2.Diğer Yatırım Fonları,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,168135497.37
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP20,"VF.6.Sigorta ve Emeklilik Sözleşmeleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP21,"VF.7.Finansal Türevler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,118932819.4
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP22,"VF.8.Diğer Alacaklar,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,2596159747.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP23,"VF.0.Toplam Varlıklar,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,63869691941.22
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP24,"F.1.Parasal Altın ve SDR,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,349889776.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP26,"F.1.2.Özel Çekme Hakları (SDR),Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,349889776.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP27,"F.2.Para ve Mevduat,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,45150590317.84
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP28,"F.2.1.Para,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,928384822.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP29,"F.2.2.Vadesiz Mevduat,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,19532215171.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP30,"F.2.9.Vadeli Mevduat,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,24689990324.84
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP31,"F.3.Borçlanma Senetleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,3090229382.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP32,"F.3.1.Kısa Vadeli Borçlanma Senetleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,146518554.37
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP33,"F.3.2.Uzun Vadeli Borçlanma Senetleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,2943710827.62
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP34,"F.4.Krediler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,8938440108.95
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP35,"F.4.1.Kısa Vadeli Krediler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,4675581624.1
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP36,"F.4.2.Uzun Vadeli Krediler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,4262858484.84
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP37,"F.5.Hisse Senetleri ve Özkaynaklar,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,6435814238.28
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP38,"F.5.1.Hisse Senetleri ve Özkaynaklar,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,4561741523.65
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP39,"F.5.2.Yatırım Fonu Katılma Belgeleri,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,1874072714.62
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP40,"F.5.2.1.Para Piyasası Fonları,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,1874072714.62
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP41,"F.5.2.2.Diğer Yatırım Fonları,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,0.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP43,"F.7.Finansal Türevler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,382848777.0
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP44,"F.8.Diğer Borçlar,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,2919169659.99
+PFK,bie_finhestnks12t,2026-Q2,TP.FINHESTNKS12T.ZP45,"F.0.Toplam Yükümlülükler,Parasal ve Finansal Kuruluşlar (Konsolide Olmayan, Stok)",last,67266982260.07
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP1,"BF.9.NET FİNANSAL DEĞER,Genel Yönetim (Konsolide Olmayan, Stok)",last,-4985147632.62
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP2,"VF.1.Parasal Altın ve SDR,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP3,"VF.1.1.Parasal Altın,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP4,"VF.1.2.Özel Çekme Hakları (SDR),Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP5,"VF.2.Para ve Mevduat,Genel Yönetim (Konsolide Olmayan, Stok)",last,3292209859.01
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP6,"VF.2.1.Para,Genel Yönetim (Konsolide Olmayan, Stok)",last,1833438.14
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP7,"VF.2.2.Vadesiz Mevduat,Genel Yönetim (Konsolide Olmayan, Stok)",last,975095683.59
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP8,"VF.2.9.Vadeli Mevduat,Genel Yönetim (Konsolide Olmayan, Stok)",last,2315280737.26
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP9,"VF.3.Borçlanma Senetleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,1251320058.09
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP10,"VF.3.1.Kısa Vadeli Borçlanma Senetleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,46497410.07
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP11,"VF.3.2.Uzun Vadeli Borçlanma Senetleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,1204822648.01
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP12,"VF.4.Krediler,Genel Yönetim (Konsolide Olmayan, Stok)",last,1727318808.68
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP13,"VF.4.1.Kısa Vadeli Krediler,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP14,"VF.4.2.Uzun Vadeli Krediler,Genel Yönetim (Konsolide Olmayan, Stok)",last,1727318808.68
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP15,"VF.5.Hisse Senetleri ve Özkaynaklar,Genel Yönetim (Konsolide Olmayan, Stok)",last,5321302411.16
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP16,"VF.5.1.Hisse Senetleri ve Özkaynaklar,Genel Yönetim (Konsolide Olmayan, Stok)",last,5321302411.16
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP17,"VF.5.2.Yatırım Fonu Katılma Belgeleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP18,"VF.5.2.1.Para Piyasası Fonları,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP19,"VF.5.2.2.Diğer Yatırım Fonları,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP20,"VF.6.Sigorta ve Emeklilik Sözleşmeleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP21,"VF.7.Finansal Türevler,Genel Yönetim (Konsolide Olmayan, Stok)",last,8831712.37
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP22,"VF.8.Diğer Alacaklar,Genel Yönetim (Konsolide Olmayan, Stok)",last,5189970772.23
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP23,"VF.0.Toplam Varlıklar,Genel Yönetim (Konsolide Olmayan, Stok)",last,16790953621.56
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP24,"F.1.Parasal Altın ve SDR,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP26,"F.1.2.Özel Çekme Hakları (SDR),Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP27,"F.2.Para ve Mevduat,Genel Yönetim (Konsolide Olmayan, Stok)",last,334420948.25
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP28,"F.2.1.Para,Genel Yönetim (Konsolide Olmayan, Stok)",last,8616583.88
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP29,"F.2.2.Vadesiz Mevduat,Genel Yönetim (Konsolide Olmayan, Stok)",last,236130357.54
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP30,"F.2.9.Vadeli Mevduat,Genel Yönetim (Konsolide Olmayan, Stok)",last,89674006.83
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP31,"F.3.Borçlanma Senetleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,15847672405.71
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP32,"F.3.1.Kısa Vadeli Borçlanma Senetleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,1964459684.54
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP33,"F.3.2.Uzun Vadeli Borçlanma Senetleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,13883212721.16
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP34,"F.4.Krediler,Genel Yönetim (Konsolide Olmayan, Stok)",last,1845266734.03
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP35,"F.4.1.Kısa Vadeli Krediler,Genel Yönetim (Konsolide Olmayan, Stok)",last,1910706.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP36,"F.4.2.Uzun Vadeli Krediler,Genel Yönetim (Konsolide Olmayan, Stok)",last,1843356028.03
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP37,"F.5.Hisse Senetleri ve Özkaynaklar,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP38,"F.5.1.Hisse Senetleri ve Özkaynaklar,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP39,"F.5.2.Yatırım Fonu Katılma Belgeleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP40,"F.5.2.1.Para Piyasası Fonları,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP41,"F.5.2.2.Diğer Yatırım Fonları,Genel Yönetim (Konsolide Olmayan, Stok)",last,0.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP42,"F.6.Sigorta ve Emeklilik Sözleşmeleri,Genel Yönetim (Konsolide Olmayan, Stok)",last,89222900.0
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP43,"F.7.Finansal Türevler,Genel Yönetim (Konsolide Olmayan, Stok)",last,3859200.5
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP44,"F.8.Diğer Borçlar,Genel Yönetim (Konsolide Olmayan, Stok)",last,3655659065.67
+GY,bie_finhestnks13,2026-Q2,TP.FINHESTNKS13.ZP45,"F.0.Toplam Yükümlülükler,Genel Yönetim (Konsolide Olmayan, Stok)",last,21776101254.18
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP1,"BF.9.NET FİNANSAL DEĞER,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,18042452045.87
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP2,"VF.1.Parasal Altın ve SDR,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,4737728473.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP3,"VF.1.1.Parasal Altın,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,4387838697.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP4,"VF.1.2.Özel Çekme Hakları (SDR),Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,349889776.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP5,"VF.2.Para ve Mevduat,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,6529806365.84
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP6,"VF.2.1.Para,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,284033005.44
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP7,"VF.2.2.Vadesiz Mevduat,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,3516157431.05
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP8,"VF.2.9.Vadeli Mevduat,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,2729615929.34
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP9,"VF.3.Borçlanma Senetleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,355448188.5
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP10,"VF.3.1.Kısa Vadeli Borçlanma Senetleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,9527690.47
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP11,"VF.3.2.Uzun Vadeli Borçlanma Senetleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,345920498.02
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP12,"VF.4.Krediler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,565225469.1
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP13,"VF.4.1.Kısa Vadeli Krediler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,208234612.52
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP14,"VF.4.2.Uzun Vadeli Krediler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,356990856.57
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP15,"VF.5.Hisse Senetleri ve Özkaynaklar,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,3777760144.6
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP16,"VF.5.1.Hisse Senetleri ve Özkaynaklar,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,3777760144.6
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP17,"VF.5.2.Yatırım Fonu Katılma Belgeleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,0.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP18,"VF.5.2.1.Para Piyasası Fonları,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,0.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP19,"VF.5.2.2.Diğer Yatırım Fonları,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,0.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP20,"VF.6.Sigorta ve Emeklilik Sözleşmeleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,0.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP21,"VF.7.Finansal Türevler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,114618656.2
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP22,"VF.8.Diğer Alacaklar,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,2834254113.44
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP23,"VF.0.Toplam Varlıklar,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,18914841410.68
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP24,"F.1.Parasal Altın ve SDR,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,349889776.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP26,"F.1.2.Özel Çekme Hakları (SDR),Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,349889776.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP27,"F.2.Para ve Mevduat,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,3064126972.45
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP28,"F.2.1.Para,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,0.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP29,"F.2.2.Vadesiz Mevduat,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,1027539860.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP30,"F.2.9.Vadeli Mevduat,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,2036587112.45
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP31,"F.3.Borçlanma Senetleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,4896851638.4
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP32,"F.3.1.Kısa Vadeli Borçlanma Senetleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,131258755.03
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP33,"F.3.2.Uzun Vadeli Borçlanma Senetleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,4765592883.36
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP34,"F.4.Krediler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,12615221201.84
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP35,"F.4.1.Kısa Vadeli Krediler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,641840491.49
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP36,"F.4.2.Uzun Vadeli Krediler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,11973380710.35
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP37,"F.5.Hisse Senetleri ve Özkaynaklar,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,12620063397.8
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP38,"F.5.1.Hisse Senetleri ve Özkaynaklar,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,12209959521.9
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP39,"F.5.2.Yatırım Fonu Katılma Belgeleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,410103875.9
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP40,"F.5.2.1.Para Piyasası Fonları,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,121579078.25
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP41,"F.5.2.2.Diğer Yatırım Fonları,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,288524797.64
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP42,"F.6.Sigorta ve Emeklilik Sözleşmeleri,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,0.0
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP43,"F.7.Finansal Türevler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,325140818.4
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP44,"F.8.Diğer Borçlar,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,3085999651.66
+ROW,bie_finhestnks2,2026-Q2,TP.FINHESTNKS2.ZP45,"F.0.Toplam Yükümlülükler,Dünyanın Geri Kalanı (Konsolide Olmayan, Stok)",last,36957293456.56

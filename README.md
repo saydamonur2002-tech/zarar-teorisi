@@ -1,6 +1,6 @@
 # Zarar Teorisi — stok-akış (SFC) modeli
 
-Türkiye finansal hesapları üzerine stok-akış tutarlı (stock-flow consistent) bir aktarım/zarar modeli. Ham seri TCMB EVDS3’ten 7 Ekim 2026’da çekildi. Birim: bin TL (aksi belirtilmedikçe).
+Türkiye finansal hesapları üzerine stok-akış tutarlı (stock-flow consistent) bir aktarım/zarar modeli. Ham seri TCMB EVDS3’ten çekildi; 7 Ekim 2026 anlığı durur, 9 Kasım 2026 çekimi yeni gözlemleri ekler. Birim: bin TL (aksi belirtilmedikçe). Ayrıntı: [`VERI_GUNCELLEME_2026-11.md`](VERI_GUNCELLEME_2026-11.md).
 
 Hazneler: **H** (S.14+S.15 hane), **F** (S.11 firmalar), **B′** (S.12 − TCMB), **K′** (S.13 + TCMB), **D** (S.2 dış alem), **U** (uyumsuzluk).
 
@@ -35,7 +35,7 @@ Bağımlılık: Python 3, `pandas`, `numpy`, `openpyxl`.
 pip install -r requirements.txt
 ```
 
-`evds_cek.py` ağı kullanır; repodaki `*_ham.csv` dosyaları 7 Ekim 2026 çekimidir, yeniden çekmeden de sonraki adımlar çalışır.
+`evds_cek.py` ağı kullanır. `*_ham.csv` dosyalarında 7 Ekim 2026 çekimi durur; 9 Kasım 2026 çekimi yeni dönemleri ekler. Yeniden çekmeden de sonraki adımlar çalışır.
 
 ## Ana çıktılar
 

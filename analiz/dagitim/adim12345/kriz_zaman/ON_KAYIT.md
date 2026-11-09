@@ -2,11 +2,11 @@
 BU BİR TAHMİN DEĞİL: mevcut eğilimlerin mekanik muhasebe projeksiyonu. Kriz zamanlaması davranışa (kaçış, kur, politika) bağlıdır; nedensellik iddiası yok.
 Dönem 2026Q4–2030Q4, çeyreklik. Senaryo düşük/orta/yüksek (proj2027 ile aynı adlar).
 Başlangıç [VERİ/HESAP]: TCMB yasal özkaynak açığı 2.187 (simdi2026); TCMB yıllık zarar 665/844/1.042 (proj2027); GSYH 2026 85.346 [TAHMİN OVP].
-Firma fin.gider/EFK 2025: Genel 77,7, KOBİ 66,8, Büyük 84,8 [VERİ]. Kredi faizi 53,19 [VERİ].
+Firma fin.gider/EFK 2025: Genel 77,7, KOBİ 66,8, Büyük 84,8 [VERİ]. Kredi faizi 51,39 [VERİ, TP.KTF17 2026-10 ort.].
 Banka SYR 16,6, özkaynak 4.771,2, yıllık kâr 1.014,5, NPL 2,92 [VERİ BDDK]; krediler 28.678 (ticari+tüketici+kart) [İKİNCİL].
 Kamu faiz/gelir 16,9 (2026 bütçe) [HESAP]; MY borç 16.202, YP %50,7 [VERİ]; bütçe açığı 2.712,7/yıl [VERİ bütçe].
 Dış: KV kalan vade 243,3 mlr$ (Ağu) [VERİ]; swap hariç net rezerv 39,34 mlr$ (16.10.2026) [İKİNCİL, TCMB haftalık aktarımı].
-Mevduat faizi 43,30 [İKİNCİL], TÜFE yıllık 29,73 (Eyl 2026) [VERİ].
+Mevduat faizi 43,30 [İKİNCİL, 9 Kasım 2026'da ayrı seri bulunamadı, eski düzey durur], TÜFE yıllık 29,77 (Eki 2026, TP.TUKFIY2025.GENEL) [VERİ].
 Senaryo yolları [VARSAYIM, düşük/orta/yüksek]:
 - Nominal GSYH büyümesi %25/%30/%38 yıllık; TCMB zararı her yıl GSYH ile büyür.
 - Kredi faizi 2027 sonuna doğrusal → 40/48/58, sonra sabit; firma borcu GSYH'den +0/+3/+6 puan hızlı büyür; EFK GSYH ile.

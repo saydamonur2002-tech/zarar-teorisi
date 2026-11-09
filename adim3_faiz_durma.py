@@ -3,7 +3,7 @@
 `adim3.csv` yazılmaz (orada "Faizin durması modellenmedi" durur; H-A3 kilidi dokunulmaz). Kural burada ayrı dosyada:
 
   Durdurulan stok  D_t = κ · u2_t · S₀
-      S₀   = firma F.4 kredi yükümlülüğü 2026-Q1 (tek_sistem_kopru.csv, `olculdu`)              → ölçüm
+      S₀   = firma F.4 kredi yükümlülüğü, son yayımlanan çeyrek (tek_sistem_kademe.F4_STOK_BAS) → ölçüm
       u2_t = K2 stok penceresi uygulama oranı (tek_sistem_kademe.py, 2028-Q1..Q4 doğrusal)     → kademe kurgusu
       κ    = tek sisteme giren ve faizi duran pay ∈ {0,25; 0,5; 1,0}                          → varsayım
   Duran faiz (çeyrek)  I_t = ψ · (r_t / 4) · D_t
@@ -66,7 +66,8 @@ def main() -> dict:
     r_son = aylik[son_ay]
     stok = f4_stok()
     s0 = tk.F4_STOK_BAS_MILYAR
-    assert abs(stok["2026-Q1"] - s0) < 0.1
+    son_stok = max(stok)
+    assert abs(stok[son_stok] - s0) < 0.1
     psi = psi_etkin(fq, stok)
     k2 = next(p for p in tk.PENCERELER if p.kod == "K2_stok")
     donemler = tk._iter_donem(tk.DONEM_BAS, tk.DONEM_SON)
@@ -94,7 +95,7 @@ def main() -> dict:
     oran_2024 = {kap: {y: round(v / psi["finansman_gideri_2024"], 3) for y, v in yl.items()} for kap, yl in tam_yil.items()}
     sonuc = {"faz": 3, "adim": 3, "adim3_csv": "yazilmadi (H-A3 kilidi durur; 'modellenmedi' metni orada kalır, kural burada)",
              "kural": "D_t = κ·u2_t·S₀; I_t = ψ·(r_t/4)·D_t; F NL += I_t, ödeyen hazne NL −= I_t; ΣNL = 0",
-             "S0_milyar": s0, "S0_kaynak": "tek_sistem_kopru.csv 2026-Q1 F_F4_yuk (olculdu)", "faiz_seri": FAIZ_SERI, "faiz_son": {son_ay: r_son},
+             "S0_milyar": s0, "S0_kaynak": "tek_sistem_kopru.csv 2026-Q2 F_F4_yuk (olculdu)", "faiz_seri": FAIZ_SERI, "faiz_son": {son_ay: r_son},
              "psi": psi, "kappa": list(KAPPA), "K2_pencere": [k2.baslangic, k2.bitis], "donem": [tk.DONEM_BAS, tk.DONEM_SON],
              "yillik_duran_faiz_etkin_milyar": tam_yil, "yillik_bolu_finansman_gideri_2024": oran_2024,
              "etiketler": {"S0": "olcum", "r_t": "olcum (2026-09'a kadar) + sabit varsayım", "psi": "olcum_turevi", "kappa": "varsayim", "u2": "kademe kurgusu"}}
@@ -106,7 +107,7 @@ def main() -> dict:
           "Çalıştır: `python3 adim3_faiz_durma.py`. Çıktı: `adim3_faiz_durma.csv`, `adim3_faiz_durma_sonuc.json`.", "",
           "`adim3.csv` yazılmaz; oradaki 'Faizin durması modellenmedi' ve H-A3 kilidi durur. Kural burada, ayrı dosyada.", "",
           "## Kural", "", f"- `{sonuc['kural']}`",
-          f"- S₀ = {f(s0)} milyar (F F.4, 2026-Q1, `olculdu`). r_t = {FAIZ_SERI} ticari kredi faizi; son gözlem {son_ay}: {r_son:.2f}%; sonrası sabit (varsayım).",
+          f"- S₀ = {f(s0)} milyar (F F.4, 2026-Q2, `olculdu`). r_t = {FAIZ_SERI} ticari kredi faizi; son gözlem {son_ay}: {r_son:.2f}%; sonrası sabit (varsayım).",
           f"- ψ = {psi['finansman_gideri_2024']:,.1f} / ({psi['r_bar_2024']:.4f} × {f(psi['s_bar_2024'])}) = **{psi['psi']:.4f}** (`{psi['durum']}`). {psi['not']}",
           f"- κ ∈ {list(KAPPA)} varsayım; u2 K2 penceresi {k2.baslangic}..{k2.bitis} doğrusal (tek_sistem_kademe.py).",
           "- SFC: F'nin ödemediği faiz B′'nin almadığı faizdir; ΣNL değişmez. B′ yerine K′ üstlenirse sütun değişir, toplam değişmez. İkisi toplanmaz.", "",

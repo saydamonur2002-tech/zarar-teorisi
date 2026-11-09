@@ -3,7 +3,7 @@ import json,os,numpy as np
 D=os.path.dirname(os.path.abspath(__file__))
 import sys;sys.path.insert(0,D);import model12 as m12
 P=json.load(open(f'{D}/params.json'))
-S0,PSI,R=25339.8,0.3584,0.5319; FDEP,ADR,KP=4400.1,19361.9,0.08
+S0,PSI,R=27441.9,0.3584,0.5139; FDEP,ADR,KP=4753.1,19361.9,0.08
 MER=dict(m12.P['merkez'],kappa=0.5,theta=0.25,pi=0.035)
 def run(mahsup,spread,kredi_faizi,silme,kobi_payi,kappa,theta,pi):
     o=m12.run(mahsup,spread,kredi_faizi,silme,kobi_payi);F,E=m12.g('fin_gider_2025'),m12.g('efk_2025')

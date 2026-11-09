@@ -32,8 +32,8 @@ HAM = KOK / "faiz_kur_ham.csv"
 ANA = ("2021-Q1", "2024-Q4")
 UZUN = ("2018-Q1", "2024-Q4")
 SINAV = ("2025-Q1", "2026-Q2")
-SON_TAM_AY = "2026-09"  # 2026-10 çekimi 14 Ekimde kesik; çeyreğe girmez
-SON_FAIZ = 37.0  # Eylül 2026 tam ay ve 1–14 Ekim, AOFM
+SON_TAM_AY = "2026-10"  # 2026-11 ayı 9 Kasımda kapanmadı; çeyreğe girmez
+SON_FAIZ = 36.0  # Ekim 2026 tam ay AOFM; Kasım ay içi aynı düzey, çeyrek kapanmadı
 
 
 def _qi(d: str) -> int:
@@ -49,7 +49,7 @@ def _cek() -> pd.DataFrame:
     body = {
         "type": "json", "series": "TP.APIFON4-TP.DK.USD.A.YTL-TP.FG.J0",
         "aggregationTypes": "avg-avg-avg", "formulas": "0-0-0",
-        "startDate": "01-01-2010", "endDate": "14-10-2026", "frequency": "5",
+        "startDate": "01-01-2010", "endDate": "09-11-2026", "frequency": "5",
         "decimalSeperator": ".", "decimal": "4", "dateFormat": "0", "lang": "TR",
         "yon": "0", "sira": "0", "ozelFormuller": [], "groupSeperator": False, "isRaporSayfasi": False,
     }
@@ -201,7 +201,7 @@ def _md(s: dict) -> str:
         "",
         "## İleri faiz yolları",
         "",
-        f"- Son faiz: 2026-Q4 ve sonrası **{SON_FAIZ:.2f}**. Eylül 2026 tam ayı ve 1–14 Ekim bu düzeydedir. Çeyrek kapanmadı; düzey varsayımdır.",
+        f"- Son faiz: 2026-Q4 ve sonrası **{SON_FAIZ:.2f}**. Ekim 2026 tam ayı bu düzeydedir. Kasım ayı kapanmadı; düzey varsayımdır.",
         "- Anket: yıl sonu hedefleri `bes_yil_senaryo.csv` içinden okunur. 2026-Q4 anket yılı, sonrası yıl sonuna eşit adım. Son anket yılından sonra faiz sabit kalır.",
         "- 2026-Q3 faizi iki yolda da ölçülmüş çeyrek ortalamasıdır. Kur çapası 2026-Q3 ölçülmüş çeyrek ortalamasıdır. İlk tahmin 2026-Q4.",
         "",
